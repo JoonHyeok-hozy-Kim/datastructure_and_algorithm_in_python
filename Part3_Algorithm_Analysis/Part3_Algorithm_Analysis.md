@@ -1,7 +1,7 @@
-#Part 3. Algorithm Analysis
+# Part 3. Algorithm Analysis
 ***
 
-##3.1 Experimental Studies
+## 3.1 Experimental Studies
 ***
 * Tech) Use __time__ function for time recording
     ```python

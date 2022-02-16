@@ -1,6 +1,5 @@
-#Index
-***
-> Why is Header not applied?
+# Index
+> Punctuality as First Priority.
 
 <div>
     <p>
