@@ -27,8 +27,7 @@
 <br>
 * Tech) Worst-Case Analysis
   * cf.) Average-Case Analysis requires expected running time based on a give input distribution => complicated
-<br>
-<br>
+
 ## 3.2 The Seven Functions Used in this book
   1. Constant Function   
   2. Logarithm Function
