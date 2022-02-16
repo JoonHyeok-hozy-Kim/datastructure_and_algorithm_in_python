@@ -24,8 +24,11 @@
     * Calling a function (excluding operations executed within the function)
     * Returning from a function.
 <br>
+<br>
 * Tech) Worst-Case Analysis
   * cf.) Average-Case Analysis requires expected running time based on a give input distribution => complicated
+<br>
+<br>
 
 ## 3.2 The Seven Functions Used in this book
   1. Constant Function   
@@ -36,6 +39,7 @@
      * e.g.) Nested Loops
   6. Cubic Function and other Polynomials
   7. Exponential Function
+<br>
 <br>
   * Concept) The Ceiling and Floor Functions
     1. └x┘ = the largest integer less than or equal to x.
