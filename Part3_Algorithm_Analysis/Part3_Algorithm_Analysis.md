@@ -13,7 +13,7 @@
     * Antidote) Use __timeit__ module instead
     
 ### 3.1.1 Moving Beyond Experimental Analysis
-####Premise) Primitive Operations   
+#### Premise) Primitive Operations   
   * Props.) The number, _t_ , of primitive operations an algorithm performs will be proportional to the actual running time of that algorithm.
   * List)
     * Assigning an identifier to an object
