@@ -41,5 +41,14 @@ elapsed = end_time-start_time
 1. └x┘ = the largest integer less than or equal to x.
 2. ┌x┐ = the smallest integer greater than or equal to x.
   
+## 3.3 Asymptotic Analysis
+* Concept) Focus on the growth rate of the running time as a function of the input size _n_, taking a “big-picture” approach.
+  * i.e.) enough just to know that the running time of an algorithm grows proportionally to _n_.
+
+### 3.3.1 The "Big-Oh" Notation
+<img src="" width="450px" height="300px" title="Big Oh" alt="Big Oh"></img><br/>
+
+
 ***
 pg 145
+
