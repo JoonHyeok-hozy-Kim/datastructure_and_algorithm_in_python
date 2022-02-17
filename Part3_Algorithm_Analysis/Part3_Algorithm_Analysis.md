@@ -64,6 +64,31 @@ elapsed = end_time-start_time
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_3_big_theta.jpg" width="800px" title="Big Theta" alt="Big Theta"></img><br/>
 </p>
 
+### 3.3.3 Examples of Algorithm Analysis
+* Concept) Python's __list__ Class
+  * Prop) len_() function is evaluated in constant time : O(1)
+    * why?) __list__ class maintains contains instance variable for the length of the data
+  * Prop) Syntax _data[idx]_ is evaluated in constant time : O(1)
+    * why?) __list__ classes are implemented as _array-based sequences_ thus references to a list's elements are stored in a consecutive block of memory.
+
+#### Prefix Average Problem
+* Sol.1) Quadratic time Algorithm
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_4_prefix_average.jpg" width="800px"></img><br/>
+</p>
+
+```python
+def prefix_average1(S):
+    n = len(S)
+    A = [0] * n
+    for j in range(n):
+        total = 0
+        for i in range(j+1):
+            total += S[i]
+        A[j] = total/(j+1)
+    return A
+```
+
 ***
 pg 145
 
