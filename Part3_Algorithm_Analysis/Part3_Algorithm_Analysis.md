@@ -71,23 +71,50 @@ elapsed = end_time-start_time
   * Prop) Syntax _data[idx]_ is evaluated in constant time : O(1)
     * why?) __list__ classes are implemented as _array-based sequences_ thus references to a list's elements are stored in a consecutive block of memory.
 
-#### Prefix Average Problem
-* Sol.1) Quadratic time Algorithm
+#### Ex.) Prefix Average Problem
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_4_prefix_average.jpg" width="800px"></img><br/>
 </p>
 
+* Sol.1) Quadratic time Algorithm   
 ```python
 def prefix_average1(S):
     n = len(S)
-    A = [0] * n
-    for j in range(n):
-        total = 0
-        for i in range(j+1):
-            total += S[i]
-        A[j] = total/(j+1)
+    total = 0
+    A = [None] * n
+    for i in range(n):
+        for j in range(i+1):
+            total += S[j]
+            A[i] = S[j]/(j+1)
     return A
 ```
+* Sol.2) Quadratic with sum function   
+```python
+def prefix_average2(S):
+    n = len(S)
+    A = [0] * n
+    for j in range(n):
+        A[j] = sum(S[0:j+1])/(j+1)
+    return A
+```
+* Sol.3) Linear time Algorithm
+```python
+def prefix_average3(S):
+    n = len(S)
+    A = [0] * n
+    total = 0
+    for i in range(n):
+        total += S[i]
+        A[i] = total/(i+1)
+    return A
+```
+
+#### Ex.) Three-Way Set Disjointness
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_5_three_way_set_disjointness.jpg" width="800px"></img><br/>
+</p>
+
+* Sol.1) Cubic Loop
 
 ***
 pg 145
