@@ -71,7 +71,7 @@ elapsed = end_time-start_time
   * Prop) Syntax _data[idx]_ is evaluated in constant time : O(1)
     * why?) __list__ classes are implemented as _array-based sequences_ thus references to a list's elements are stored in a consecutive block of memory.
 
-#### Ex.) Prefix Average Problem
+#### Ex.1) Prefix Average Problem
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_4_prefix_average.jpg" width="800px"></img><br/>
 </p>
@@ -108,14 +108,59 @@ def prefix_average3(S):
         A[i] = total/(i+1)
     return A
 ```
+<br/>
 
-#### Ex.) Three-Way Set Disjointness
+#### Ex.2) Three-Way Set Disjointness
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_5_three_way_set_disjointness.jpg" width="800px"></img><br/>
 </p>
 
-* Sol.1) Cubic Loop
+* Sol.1) Cubic Loop 1
+```python
+def disjoint1(A, B, C):
+    for a in A:
+        for b in B:
+            for c in C:
+                if a == b == c:
+                    return False
+    return True
+```
+
+* Sol.2) Cubic Loop 2
+  * why faster?) If A and B are distinctive, there will be only __at most__ O(n) pairs s.t. a==b. Thus, loop over C executes at most _n_ times. Thus, worst-case is O(n^2) running time.
+```python
+def disjoint2(A, B, C):
+    for a in A:
+        for b in B:
+            if a == b:
+                for c in C:
+                    if b == c:
+                        return False
+    return True
+```
+<br/>
+
+#### Ex.3) Element Uniqueness Problem : Find out whether all elements of a Series S with the size of n are unique.
+* Sol.1) Using two nested loops as follows : worst-case running time is O(n^2)
+```python
+def unique1(S):
+    for i in range(len(S)):
+        for j in range(i+1, len(S)):
+            if i==j:
+                return False
+    return True
+```
+
+* Sol.2) Using sorting algorithm, which guarantees a worst-case running time of O(nlogn)
+```python
+def unique2(S):
+    sorted_S = sorted(S)
+    for i in range(len(sorted_S)-1):
+        if S[i] == S[i+1]:
+            return False
+    return True
+```
 
 ***
-pg 145
+pg 159
 
