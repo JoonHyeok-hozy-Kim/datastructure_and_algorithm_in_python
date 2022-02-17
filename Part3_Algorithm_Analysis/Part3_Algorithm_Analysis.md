@@ -55,7 +55,13 @@ elapsed = end_time-start_time
 * Concept) Big-Omega
   * Prop) Provides an asymptotic way of saying that a function is __“greater than or equal to”__ another function
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_2_big_omega.jpg" width="800px" title="Big Oh" alt="Big Oh"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_2_big_omega.jpg" width="800px" title="Big Omega" alt="Big Omega"></img><br/>
+</p>
+
+* Concept) Big-Theta
+  * Prop) Two functions grow at the same rate, up to constant factors
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_3_big_theta.jpg" width="800px" title="Big Theta" alt="Big Theta"></img><br/>
 </p>
 
 ***
