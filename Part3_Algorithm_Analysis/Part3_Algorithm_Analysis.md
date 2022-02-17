@@ -46,8 +46,8 @@ elapsed = end_time-start_time
   * i.e.) enough just to know that the running time of an algorithm grows proportionally to _n_.
 
 ### 3.3.1 The "Big-Oh" Notation
-* Def.) Big-Oh
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_1_big_oh.jpg" width="800px" title="Big Oh" alt="Big Oh"></img><br/>
+* Def.) Big-Oh   
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_1_big_oh.jpg" width="800px" align="center" title="Big Oh" alt="Big Oh"></img><br/>
 
 * Concept) Big-Omega
 
