@@ -47,13 +47,16 @@ elapsed = end_time-start_time
 
 ### 3.3.1 The "Big-Oh" Notation
 * Def.) Big-Oh
+  * Prop) Provides an asymptotic way of saying that a function is __“less than or equal to”__ another function
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_1_big_oh.jpg" width="800px" title="Big Oh" alt="Big Oh"></img><br/>
 </p>
 
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_1_big_oh.jpg" style="margin-left:30px" title="Big Oh" alt="Big Oh"></img><br/>
-
 * Concept) Big-Omega
+  * Prop) Provides an asymptotic way of saying that a function is __“greater than or equal to”__ another function
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.3.1_2_big_omega.jpg" width="800px" title="Big Oh" alt="Big Oh"></img><br/>
+</p>
 
 ***
 pg 145
