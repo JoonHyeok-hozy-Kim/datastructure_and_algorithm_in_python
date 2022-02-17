@@ -160,7 +160,27 @@ def unique2(S):
             return False
     return True
 ```
+<br/>
+  
+## 3.4 Simple Justification Techniques
 
-***
-pg 159
-
+* Tech.) __counterexamples__
+* Tech.) __contrapositive__
+  * how) "If _p_ is true, then _q_ is true." <=> "If _q_ is false, then _p_ is false."
+* Tech.) __contradiction__
+  * how) Make assumption that target statement is false, and show that it's incongruous.
+* Tech.) __Induction__
+  * ex.) In order to show that _q(n)_ is true for _n_>=1,
+    1. Show _q(1)_ is true.
+    2. Justify that _q(n)_ is true for _n > k_ , where _k_ is a constant.
+* Tech.) __Loop Invariants__
+  1. The initial claim, L0, is true before the loop begins.
+  2. If Lj−1 is true before iteration j, then Lj will be true after iteration j.
+  3. The final statement, Lk, implies the desired statement L to be true.
+  
+## 3.5 Excercises
+<div>
+    <p>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/part3_5_excercises.md">Part 3. Algorithm Analysis</a>
+    </p>
+</div>
