@@ -1,6 +1,6 @@
 <div>
     <p>
-        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/README.md">Index</a>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python#readme">Index</a>
     </p>
 </div>
 
