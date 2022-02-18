@@ -1,11 +1,14 @@
 # 3.5 Excercises
 
-## R-3.1.
->Graph the functions 8n, 4nlogn, 2n2, n3, and 2n using a logarithmic scale
-for the x- and y-axes; that is, if the function value f(n) is y, plot this as a
-point with x-coordinate at logn and y-coordinate at logy
-* Sol.) 
-```python
-def a():
-    return None
-```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_1.jpg"></img><br/>
+</p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_2.jpg"></img><br/>
+</p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_3.jpg"></img><br/>
+</p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_4.jpg"></img><br/>
+</p>
