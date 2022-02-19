@@ -51,5 +51,5 @@ def example1(S):
         total += S[j]
     return total
 ```
-* sol.) O(n)
+>   > sol.) O(n)
 
