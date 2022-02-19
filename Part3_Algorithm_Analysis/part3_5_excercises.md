@@ -37,3 +37,19 @@ def n_log_n(n):
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_6.png"></img><br/>
 </p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_7.png"></img><br/>
+</p>
+
+> R-3.23. Give a big-Oh characterization, in terms of n, of the running time of the
+example1 function shown in Code Fragment 3.10.
+```python
+def example1(S):
+    n = len(S)
+    total = 0
+    for j in range(n): # loop from 0 to n-1
+        total += S[j]
+    return total
+```
+* sol.) O(n)
+
