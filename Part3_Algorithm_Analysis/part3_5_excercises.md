@@ -108,3 +108,33 @@ def example5(A, B): # assume that A and B have equal length
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_9.png"></img><br/>
 </p>
+
+> C-3.35
+```python
+def c_3_35(A):
+    n = len(A)
+    sorted_A = sorted(A)
+    print(sorted_A)
+    for i in range(n-2):
+        if sorted_A[i] == sorted_A[i+1]:
+            if sorted_A[i+1] == sorted_A[i+2]:
+                return False
+    return True
+```
+> C-3.36. Using Merge Sort algorithm, n_log_n running time is achievable.
+```python
+def c_3_36(A):
+    n = len(A)
+    if n <= 10:
+        return A
+    else:
+        sorted_A = sorted(A)
+        return sorted_A[-11:-1]
+```
+
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_10.png"></img><br/>
+</p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_11.png"></img><br/>
+</p>
