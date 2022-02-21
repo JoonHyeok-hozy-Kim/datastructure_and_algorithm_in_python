@@ -44,53 +44,55 @@ def c_3_41(A):
     return [min, max, comparison_count]
 
 
-class node:
-    _parent = None
-    _child_list = []
-    _value = None
-
-    def __init__(self, value, parent=None):
-        self._value = value
-        self._parent = parent
-
-    def __str__(self):
-        return self._value
-
-    def add_child(self, child):
-        self._child_list.append(child)
-
-    def parent(self):
-        return self._parent if self._parent else None
+def c_3_45(S):
+    n = len(S)
+    sum = n*(n+1)/2
+    for i in S:
+        sum -= i
+    return int(sum)
 
 
-def c_3_42(n):
-    comb_list = []
-    for i in range(n):
-        new_comb_list = []
-        for j in range(i+2):
-            if len(comb_list) == 0:
-                new_comb_list.append(j)
+def Fibonacci(n):
+    if n < 1:
+        return None
+    elif n == 1:
+        return [1, 1]
+    elif n == 2:
+        return [2, 1]
+    else:
+        return [Fibonacci(n-1)[0] + Fibonacci(n-2)[0], Fibonacci(n-1)[1] + Fibonacci(n-2)[1] + 1]
+
+
+def c_3_54(S):
+    n = len(S)
+    sorted_S = sorted(S)
+    target = [S[0], 1]
+    temp = [None] * 2
+    for i in range(n-1):
+        if sorted_S[i+1] == target[0]:
+            target[1] += 1
+        else:
+            if temp[0] == sorted_S[i+1]:
+                temp[1] += 1
+                if temp[1] > target[1]:
+                    target = temp
             else:
-                for element in comb_list:
-                    new_comb_list.append(element+j)
-        comb_list = sorted(new_comb_list)
-    print(comb_list)
-    C = comb_list[-1]
-    for i in range(1, len(comb_list)-1):
-        print('{}, {}, {}'.format(comb_list[i-1], comb_list[i], comb_list[i+1]))
-        if comb_list[i-1] != comb_list[i]:
-            if comb_list[i] != comb_list[i+1]:
-                C = comb_list[i]
-                print('C changed : '.format(C))
-    return C
+                temp = [sorted_S[i+1], 1]
+
+    return target[0]
 
 if __name__ == '__main__':
-    # from random import randint, uniform
-    # sample_size = 1000
-    # test_case = 1000
-    # test_result = []
+    from random import randint, uniform, shuffle
+    sample_size = 10
+    test_case = 1000
+    test_result = []
     # for i in range(test_case):
     #     A = [round(randint(0, 10000000)) for i in range(sample_size)]
     #     print(c_3_41(A))
 
-    print(c_3_42(10))
+    # S = [i for i in range(sample_size)]
+    # S.pop(randint(0,sample_size))
+    # print('{} : {}'.format(S, c_3_45(S)))
+
+    S = [randint(0, sample_size*4) for i in range(sample_size)]
+    print(c_3_54(S))

@@ -187,6 +187,6 @@ def unique2(S):
 ## 3.5 Excercises
 <div>
     <p>
-        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/part3_5_excercises.md">Part 3. Algorithm Analysis</a>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/part3_5_excercises.md">Exercises 3.5</a>
     </p>
 </div>

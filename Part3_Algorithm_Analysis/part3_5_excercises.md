@@ -171,9 +171,46 @@ def c_3_41(A):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_12.png"></img><br/>
 </p>
 
+> C-3.45. Use summation equation as apriori-knowledge.
+```python
+def c_3_45(S):
+    n = len(S)
+    sum = n*(n+1)/2
+    for i in S:
+        sum -= i
+    return int(sum)
+```
 
+> C-3.46. It is not proven or generalized that the n-th sheep has the same color as previous ones.
+> A monolithic color of previous sheeps does not guarantee the color of the next sheep.
 
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_13.png"></img><br/>
+</p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_14.png"></img><br/>
+</p>
 
+> C-3.54
+```python
+def c_3_54(S):
+    n = len(S)
+    sorted_S = sorted(S)
+    target = [S[0], 1]
+    temp = [None] * 2
+    for i in range(n-1):
+        if sorted_S[i+1] == target[0]:
+            target[1] += 1
+        else:
+            if temp[0] == sorted_S[i+1]:
+                temp[1] += 1
+                if temp[1] > target[1]:
+                    target = temp
+            else:
+                temp = [sorted_S[i+1], 1]
+
+    return target[0]
+```
 
 <div>
     <p>
