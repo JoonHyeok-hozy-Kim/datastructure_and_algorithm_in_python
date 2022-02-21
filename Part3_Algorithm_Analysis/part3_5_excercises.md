@@ -8,19 +8,19 @@
 # 3.5 Excercises
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_1.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_1.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_2.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_2.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_3.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_3.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_4.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_4.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_5.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_5.png"></img><br/>
 </p>
 
 * n_log(n) algorithm for check
@@ -35,10 +35,10 @@ def n_log_n(n):
 ```
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_6.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_6.png"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_7.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_7.png"></img><br/>
 </p>
 
 > R-3.23 ~ R-3.27   
@@ -103,10 +103,10 @@ def example5(A, B): # assume that A and B have equal length
 * sol.) O(n^3)
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_8.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_8.png"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_9.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_9.png"></img><br/>
 </p>
 
 > C-3.35
@@ -133,8 +133,50 @@ def c_3_36(A):
 ```
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_10.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_10.png"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/3.5_sol_11.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_11.png"></img><br/>
 </p>
+
+> C-3.41. By coupling adjacent elements and compare local min/max
+```python
+def c_3_41(A):
+    n = len(A)
+    min, max = A[0], A[0]
+    comparison_count = 0
+    max_candidates = []
+    min_candidates = []
+    for i in range(n//2):
+        comparison_count += 1
+        if A[i*2] >= A[i*2-1]:
+            comparison_count += 1
+            if A[i*2] > max:
+                max = A[i*2]
+            comparison_count += 1
+            if A[i*2-1] < min:
+                min = A[i*2-1]
+        else:
+            comparison_count += 1
+            if A[i*2-1] > max:
+                max = A[i*2-1]
+            comparison_count += 1
+            if A[i*2] < min:
+                min = A[i*2]
+
+    return [min, max, comparison_count]
+```
+
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/images/3.5_sol_12.png"></img><br/>
+</p>
+
+
+
+
+
+<div>
+    <p>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part3_Algorithm_Analysis/part3_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
+    </p>
+</div>
