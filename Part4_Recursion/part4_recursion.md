@@ -87,9 +87,9 @@ def binary_search(S, e, init=0, end=None):
     if S[mid] == e:
         return mid
     elif S[mid] > e:
-        return binary_search(S, e, init, mid)
+        return binary_search(S, e, init, mid-1)
     else:
-        return binary_search(S, e, mid, end)
+        return binary_search(S, e, mid+1, end)
 ```
 
 ### 4.1.4 File Systems
@@ -120,12 +120,15 @@ of the function that manages the flow of control at the time it is executed.
 * Trivially, O(n)
  
 ### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#412-drawing-an-english-ruler">English Ruler</a>
+* Use _recurrence equation_
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/images/4_2_english_ruler.png" style="height: 300px;"></img><br/>
 </p>
 
 ### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">Binary Search</a>
-
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/images/4_2_binary_search.png" style="height: 300px;"></img><br/>
+</p>
 
 ### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">Disk Space Usage</a>
 

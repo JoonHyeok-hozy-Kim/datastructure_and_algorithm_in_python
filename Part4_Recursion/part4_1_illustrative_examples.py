@@ -41,9 +41,9 @@ def binary_search(S, e, init=0, end=None):
     if S[mid] == e:
         return mid
     elif S[mid] > e:
-        return binary_search(S, e, init, mid)
+        return binary_search(S, e, init, mid-1)
     else:
-        return binary_search(S, e, mid, end)
+        return binary_search(S, e, mid+1, end)
 
 import os
 def disk_usage(path):
