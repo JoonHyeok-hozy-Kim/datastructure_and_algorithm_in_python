@@ -33,7 +33,7 @@ def factorial(n):
   * Minor Ticks : placed at intervals of 1/2 inch, 1/4 inch, and so on.
 
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/images/4_1_english_ruler.png" style="height: 50px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/images/4_1_english_ruler.png" style="height: 300px;"></img><br/>
 </p>
 
 * Tech) Consider it as a simple example of __Fractal__.
