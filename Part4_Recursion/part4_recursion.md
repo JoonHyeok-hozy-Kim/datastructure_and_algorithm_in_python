@@ -113,7 +113,22 @@ def disk_usage(path):
   * Using big-Oh, Omega, Theta, etc
   * Account each operation that is performed based upon the particular
 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#concept-activation-record-or-frame">_activation_</a>
-of the function that manages the flow of control.
+of the function that manages the flow of control at the time it is executed.
+  * Take sum of the number of operations over all the _activations_.
+
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#411-the-factorial-function">Factorials Fucntion</a>
+* Trivially, O(n)
+ 
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#412-drawing-an-english-ruler">English Ruler</a>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/images/4_2_english_ruler.png" style="height: 300px;"></img><br/>
+</p>
+
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">Binary Search</a>
+
+
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">Disk Space Usage</a>
+
 
 ----------------------------------------
 ## 4.7 Excercises
