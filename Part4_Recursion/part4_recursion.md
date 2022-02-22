@@ -108,6 +108,13 @@ def disk_usage(path):
     return total
 ```
 
+## 4.2 Analyzing Recursive Algorithms
+* How?
+  * Using big-Oh, Omega, Theta, etc
+  * Account each operation that is performed based upon the particular
+<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#concept-activation-record-or-frame">_activation_</a>
+of the function that manages the flow of control.
+
 ----------------------------------------
 ## 4.7 Excercises
 <div>
