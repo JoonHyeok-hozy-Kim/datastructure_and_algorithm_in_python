@@ -37,9 +37,76 @@ def factorial(n):
 </p>
 
 * Tech) Consider it as a simple example of __Fractal__.
+```python
+class EnglishRuler:
+    def __init__(self, num_inches, major_length):
+        self._num_inches = num_inches
+        self._major_length = major_length
+
+    def draw_line(self, tick_length, tick_label=''):
+        result_list = ['-' for i in range(tick_length)]
+        if tick_label:
+            result_list.append(' ')
+            result_list.append(tick_label)
+        result = ''.join(result_list)
+        print(result)
+        return result
+
+    def draw_interval(self, center_length):
+        if center_length > 0:
+            self.draw_interval(center_length-1)
+            self.draw_line(center_length)
+            self.draw_interval(center_length-1)
+
+    def draw_ruler(self):
+        for i in range(self._num_inches+1):
+            self.draw_line(self._major_length, str(i))
+            if i < self._num_inches:
+                self.draw_interval(self._major_length-1)
 
 
+if __name__ == '__main__':
+    a = EnglishRuler(5, 4)
+    a.draw_ruler()
+```
 
+### 4.1.3 Binary Search
+* Concept) Sequential Search
+  * Use when the sequence is __unsorted__.
+  * how?) Use a loop to examine all the elements
+  * running time : O(n)
+* Concept) Binary Search
+  * Use when the sequence is __sorted__ and __indexable__.
+```python
+def binary_search(S, e, init=0, end=None):
+    n = len(S)
+    if end is None:
+        end = n-1
+    mid = (init+end)//2
+    print('mid: {}, init: {}, end: {}'.format(mid, init, end))
+    if S[mid] == e:
+        return mid
+    elif S[mid] > e:
+        return binary_search(S, e, init, mid)
+    else:
+        return binary_search(S, e, mid, end)
+```
+
+### 4.1.4 File Systems
+* Concept) Modern OSs define file-system directories in a _recursive_ way.
+* Concept) Calculating __Cumulative__ disk space
+  * def) __Immediate disk space__ : disk space used by each entry
+  * def) __Cumulative disk space__ : disk space used by that entry and all nested features
+```python
+import os
+def disk_usage(path):
+    total = os.path.getsize(path)
+    for file in os.listdir(path):
+        child_path = os.path.join(path, file)
+        total += disk_usage(child_path)
+    print('{0:<7} | {}'.format(total, path))
+    return total
+```
 
 ----------------------------------------
 ## 4.7 Excercises
