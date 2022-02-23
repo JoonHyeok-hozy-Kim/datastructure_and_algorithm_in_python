@@ -116,21 +116,33 @@ def disk_usage(path):
 of the function that manages the flow of control at the time it is executed.
   * Take sum of the number of operations over all the _activations_.
 
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#411-the-factorial-function">Factorials Fucntion</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#411-the-factorial-function">4.2.1 Factorials Fucntion</a>
 * Trivially, O(n)
  
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#412-drawing-an-english-ruler">English Ruler</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#412-drawing-an-english-ruler">4.2.2 English Ruler</a>
 * Use _recurrence equation_
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/images/4_2_english_ruler.png" style="height: 300px;"></img><br/>
 </p>
 
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">Binary Search</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">4.2.3 Binary Search</a>
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/images/4_2_binary_search.png" style="height: 300px;"></img><br/>
 </p>
 
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">Disk Space Usage</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part4_Recursion/part4_recursion.md#413-binary-search">4.2.4 Disk Space Usage</a>
+* Weak Upperbound : O(n^2)
+  * pf) Let _n_ be the number of entries in a file system. Then, the number of the iteration 
+        invoked each entry by os.list_dir() method will be _n_.   
+        Now, if certain entry is a directory, in worst case it may include iteration of _n-1_
+        others, O(n). Thus, O(n^2)
+* Tight Upperbound : O(n)
+  * pf) Consider that it is possible that some directories contain a number of entries
+        proportional to _n_, i.e. the case that an entry contains _n-1_ is too conservative.
+        Recall that overall iteration that may happen in the whole file system is equal to _n_.
+        Thus, we may assume that only O(1) runs outside the iteration and finally O(n) overall.
+  * Refer to _amortization_ in Section 5.3.
+
 
 
 ----------------------------------------
