@@ -217,6 +217,65 @@ old = sys.getrecursionlimit()
 sys.setrecursionlimit(recursive_limit)
 ```
 
+## 4.4 Further Examples of Recursion
+* Concept) Organizing __Recursion__ by considering the maximum number of recursive calls that may be started from within the body of single activation.
+  1. Linear Recursion : at most 1 other recursion 
+  2. Binary Recursion : 2 other recursions
+  3. Multiple Recursion : 3 or more recursions
+
+### 4.4.1 Linear Recursion
+* Def) each invocation of the body makes at most one new recursive call
+* Examples already covered
+  1. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#411-the-factorial-function">Factorials Fucntion</a>
+  2. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#in-efficient-example-2--fibonacci-numbers">Efficient Fibonacci</a>
+  3. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#413-binary-search">Binary Search</a>
+
+#### Ex.1) Summing the Elements of a Sequence Recursively
+```python
+def sum(S, idx=None):
+    if idx is None:
+        idx = len(S)-1
+    if idx == 0:
+        return S[0]
+    else:
+        return sum(S, idx-1) + S[idx]
+```
+
+#### Ex.2) Reversing a Sequence with Recursion
+```python
+def reverse(S, start=None, stop=None):
+    if start is None and stop is None:
+        start, stop = 0, len(S)-1
+    if start < stop:
+        S[start], S[stop] = S[stop], S[start]
+        return reverse(S, start+1, stop-1)
+    return S
+```
+
+#### Ex.3) Computing Powers
+* Normal Version
+```python
+def power(a, n):
+    if n == 0:
+        return 1
+    else:
+        return power(a, n-1) * a
+```
+* Faster Version
+  * O(log_n) running time
+    * why?) It halves the recursion thanks to square.
+```python
+def faster_power(a, n):
+    if n == 0:
+        return 1
+    else:
+        partial = faster_power(a, n//2)
+        result = partial * partial
+        if n%2 == 1:
+            result *= a
+        return result
+```
+
 ----------------------------------------
 ## 4.7 Excercises
 <div>
