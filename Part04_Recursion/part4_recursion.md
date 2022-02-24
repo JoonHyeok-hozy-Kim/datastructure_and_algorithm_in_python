@@ -33,7 +33,7 @@ def factorial(n):
   * Minor Ticks : placed at intervals of 1/2 inch, 1/4 inch, and so on.
 
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_1_english_ruler.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_01_english_ruler.png" style="height: 300px;"></img><br/>
 </p>
 
 * Tech) Consider it as a simple example of __Fractal__.
@@ -122,12 +122,12 @@ of the function that manages the flow of control at the time it is executed.
 ### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#412-drawing-an-english-ruler">4.2.2 English Ruler</a>
 * Use _recurrence equation_
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_2_english_ruler.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_01_english_ruler_pf.png" style="height: 300px;"></img><br/>
 </p>
 
 ### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#413-binary-search">4.2.3 Binary Search</a>
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_2_binary_search.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_01_binary_search_pf.png" style="height: 300px;"></img><br/>
 </p>
 
 ### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#413-binary-search">4.2.4 Disk Space Usage</a>
@@ -143,7 +143,79 @@ of the function that manages the flow of control at the time it is executed.
         Thus, we may assume that only O(1) runs outside the iteration and finally O(n) overall.
   * Refer to _amortization_ in Section 5.3.
 
+## 4.3 Recursion Run Amok
+#### In efficient example 1 : Element Uniqueness Problem
+* Recall
+<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_algorithm_analysis.md#ex3-element-uniqueness-problem--find-out-whether-all-elements-of-a-series-s-with-the-size-of-n-are-unique">_element uniqueness problem_</a>
+  * recursive solution
+```python
+def unique3(S, start, stop):
+    if stop - start < 1:
+        print('pt1: {} / {}'.format(start, stop))
+        return True
 
+    elif not unique3(S, start, stop-1):
+        print('pt2: {} / {}-1'.format(start, stop))
+        return False
+
+    elif not unique3(S, start+1, stop):
+        print('pt3: {}+1 / {}'.format(start, stop))
+        return False
+
+    else:
+        print('pt4: {} / {}'.format(start, stop))
+        return S[start] != S[stop-1]
+```
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_03_element_uniqueness_problem.png" style="height: 300px;"></img><br/>
+</p>
+
+* Analysis) O(2^n)
+  * why?) Let n = (stop-start)
+    * Then each recursive call invokes two recursive calls
+      * unique3(S, start, stop-1)
+      * unique3(S, start+1, stop)
+
+
+#### In efficient example 2 : Fibonacci Numbers
+* Bad recursive code
+  * Analysis) O(2^n)
+    * why?) Each recursive call invoke two recursive calls
+```python
+def bad_fibonacci(n):
+    if n <= 1:
+        return 1
+    else:
+        return bad_fibonacci(n-1) + bad_fibonacci(n-2)
+```
+
+* Efficient recursive code
+  * sol.) Return n-th and (n-1)-th number together.
+```python
+def efficient_fibonacci(n):
+    if n <= 1:
+        return (n, 1)
+    else:
+        (a, b) = efficient_fibonacci(n-1)
+        return (a+b, a)
+```
+
+### 4.3.1 Maximum Recursive Depth in Python
+
+#### Concept) Infinite Recursion
+* Def.) When each recursive call makes another recursive call, without ever reaching a base case
+  * Problem) Waste CPU and Memory
+  * Thus, keep in mind that each recursive call is in some way progressing toward a base case.
+* Concept) RuntimeError
+  * Def.) Python's error exception for infinite recursion
+  * Prop.) Default recursion limit : 1000
+  * Tech.) Dynamically reconfiguring the recursive limit
+```python
+import sys
+recursive_limit = 10000000
+old = sys.getrecursionlimit()
+sys.setrecursionlimit(recursive_limit)
+```
 
 ----------------------------------------
 ## 4.7 Excercises
