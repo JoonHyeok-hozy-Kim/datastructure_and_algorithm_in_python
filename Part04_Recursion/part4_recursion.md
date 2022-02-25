@@ -329,10 +329,36 @@ if __name__ == '__main__':
     summation_puzzle(3, U)
 ```
 
+## 4.5 Designing Recursive Algorithm
+####Tech.) Typical Recursion Format
+  1. Test for base cases
+     * Every recursive calls eventually reach a base case.
+  2. Recur
+     * Define each recursive call to make progress towards a base case.
+  3. Reparameterization
+     * in order to make a recursive function with the cleaner interface
+     * or to intentionally strengthening the expectation of what is returned. (Ex.
+     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#in-efficient-example-2--fibonacci-numbers">Good Fibonacci</a>
+  returning pair of numbers instead of integers.)
+
+## 4.6 Eliminating Tail Recursion
+* Benefit of a recursive approach
+  * allows us to succintly take advantage of a repetitive structure
+* Cost of a recursive structure
+  * memory usage
+    * how?) Python interpreter must maintain activation records that keep track of the state of each nested call.
+    * Sol 1.) Use stack and store only the minimal information necessary (instead of whole activation records.)
+    * Sol 2.) Use __tail recursion__.
+      * Def.) any recursive call that is made from one context is the very last operation in that context, with the 
+      return value of the recursive call (if any) immediately returned by the enclosing recursion.
+      * Prop.) Must be _linear recursion_.
+      * Prop.) Additional calculation should not be performed after a recursive call is completed.
+        * ex.) Fibonacci : return n*factorial(n-1) --- (X)
+
 ----------------------------------------
 ## 4.7 Excercises
 <div>
     <p>
-        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_7_excercises.md">Exercises 4.7</a>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_7_exercises.md">Exercises 4.7</a>
     </p>
 </div>

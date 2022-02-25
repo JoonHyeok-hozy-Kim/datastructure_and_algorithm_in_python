@@ -1,3 +1,5 @@
 
 _
 /Part03_Algorithm_Analysis/part3_5_excercises.py,3\a\3a18129c171e41ca3ef90b95720f07b9cf3d5f0d
+e
+5Part03_Algorithm_Analysis/part3_algorithm_analysis.md,4\a\4aa1b11042fc41f5d84a2d533154252002071939
