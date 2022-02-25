@@ -12,7 +12,7 @@ the very same type of structure in its representation
 
 #### Concept) Activation Record (or Frame)
 * a structure called in Python when a function is called
-* store information about the progress of that invocation of the function
+* stores information about the progress of that invocation of the function
   1. namespace for storing the fuction call's parameters and local variables
   2. information about which command in the body of the function is currently executing
 
@@ -274,6 +274,59 @@ def faster_power(a, n):
         if n%2 == 1:
             result *= a
         return result
+```
+
+### 4.4.2 Binary Recursion
+* Def.) Making two recursive calls
+
+#### Ex.1) Binary Sum
+```python
+def binary_sum(S, start=None, length=None):
+    if start is None and length is None:
+        start, length = 0, len(S)
+    if start >= length:
+        return 0
+    elif start == length-1:
+        return S[start]
+    else:
+        mid = (start + length)//2
+        return binary_sum(S, start, mid) + binary_sum(S, mid, length)
+```
+* Analysis)
+  1. O(log_n) space usage
+     * How?) Depth of the recursion is 1+log_n (Consider the tree!)
+  2. O(n) running time
+     * Why?) There were 2n-1 function calls
+       * pf.) Sum 2^n - 1 where, n = log_N
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_04_binary_sum_graphics.png" style="height: 300px;"></img><br/>
+</p>
+
+### 4.4.3 Multiple Recursion
+* Def.) Making more than 2 recursive calls
+
+#### Ex.1) Summation Puzzle (or Permutation)
+```python
+def summation_puzzle(k, U, S=None):
+    from copy import deepcopy
+    if S is None:
+        S = []
+    for i in range(len(U)):
+        popped = U.pop(i)
+        S.append(deepcopy(popped))
+        if k == 1:
+            print(''.join(S))
+        else:
+            summation_puzzle(k-1, U, S)
+        popped_again = S.pop(-1)
+        U.insert(i, popped_again)
+
+if __name__ == '__main__':
+    sample_size = 5
+    U = [chr(i+65) for i in range(sample_size)]
+    print(U)
+    summation_puzzle(3, U)
 ```
 
 ----------------------------------------
