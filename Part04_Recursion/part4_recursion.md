@@ -330,7 +330,7 @@ if __name__ == '__main__':
 ```
 
 ## 4.5 Designing Recursive Algorithm
-####Tech.) Typical Recursion Format
+#### Tech.) Typical Recursion Format
   1. Test for base cases
      * Every recursive calls eventually reach a base case.
   2. Recur
