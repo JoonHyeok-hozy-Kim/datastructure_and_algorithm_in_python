@@ -35,7 +35,7 @@ def power(x, n):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_07_02.png" style="height: 300px;"></img><br/>
 </p>
 
-
+# R-4.3
 ```python
 # Repeated Squaring Algorithm
 def power(x, n):
