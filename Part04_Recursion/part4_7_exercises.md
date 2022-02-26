@@ -172,7 +172,85 @@ def recursive_product(m, n):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_07_13.png" style="height: 300px;"></img><br/>
 </p>
 
+### C-4.14 
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_07_14.png" style="height: 300px;"></img><br/>
+</p>
+```python
+class TowersOfHanoi:
 
+    def __init__(self, disk_num, peg_num=3):
+        self._disk_num = disk_num
+        self._peg_num = peg_num
+        self._platform_dict = [[i+1 for i in range(disk_num)]]
+        for i in range(peg_num-1):
+            self._platform_dict.append([])
+
+    def play(self, n=None, from_peg_idx=None, to_peg_idx=None, temp_peg_idx=None):
+        if n is None and from_peg_idx is None and to_peg_idx is None and temp_peg_idx is None:
+            n = self._disk_num
+            from_peg_idx, to_peg_idx, temp_peg_idx = 0, 2, 1
+        from_peg = self._platform_dict[from_peg_idx]
+        to_peg = self._platform_dict[to_peg_idx]
+        temp_peg = self._platform_dict[temp_peg_idx]
+        if n == 1:
+            disk = from_peg.pop(0)
+            to_peg.insert(0, disk)
+            print(self)
+        else:
+            self.play(n-1, from_peg_idx, temp_peg_idx, to_peg_idx)
+            disk = from_peg.pop(0)
+            to_peg.insert(0, disk)
+            print(self)
+            self.play(n-1, temp_peg_idx, to_peg_idx, from_peg_idx)
+
+    def __str__(self):
+        from copy import deepcopy
+        result_text_list = ['-----------', '\n']
+        platform_copy = deepcopy(self._platform_dict)
+        for j in range(self._disk_num):
+            for i in range(self._peg_num):
+                if len(platform_copy[(i+1)*(-1)]) == 0:
+                    result_text_list.append('|')
+                else:
+                    result_text_list.append(str(platform_copy[(i+1)*(-1)].pop(-1)))
+                result_text_list.append('  ')
+            result_text_list.append('\n')
+        return ''.join(reversed(result_text_list))
+
+    def test_play_by_luck(self):
+        from random import randint
+        move_count = 0
+        while len(self._platform_dict[-1]) < self._disk_num:
+            from_peg = randint(0, self._peg_num-1)
+            to_peg = randint(0, self._peg_num-1)
+            if from_peg != to_peg:
+                move_count += self.move_disk(from_peg, to_peg)
+        print('Move count : {}'.format(move_count))
+        print(self)
+
+    def move_disk(self, from_peg_idx, to_peg_idx):
+        from_peg = self._platform_dict[from_peg_idx]
+        to_peg = self._platform_dict[to_peg_idx]
+        if len(from_peg) == 0:
+            print('Cannot move from an empty disk.')
+            return 1
+        disk = from_peg.pop(0)
+        if len(to_peg) > 0:
+            if to_peg[0] < disk:
+                print('Cannot move to the smaller disk.')
+                from_peg.insert(0, disk)
+                return 1
+        to_peg.insert(0, disk)
+        print(self)
+        return 1
+
+
+if __name__ == '__main__':
+    t1 = TowersOfHanoi(6)
+    print(t1)
+    t1.play()
+```
 
 
 <div>
