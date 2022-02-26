@@ -324,8 +324,46 @@ def even_first(S, idx=None):
 ```
 
 ### C-4.20 Given an unsorted sequence, S, of integers and an integer k, describe a recursive algorithm for rearranging the elements in S so that all elements less than or equal to k come before any elements larger than k. What is the running time of your algorithm on a sequence of n values?
+* Analysis) O(n) running time
 ```python
+def sort_by_k(S, k, idx=None, new_S=None):
+    if idx is None and new_S is None:
+        idx = 0
+        new_S = [k]
+    if idx < len(S):
+        if S[idx] <= k:
+            new_S.insert(0, S[idx])
+        else:
+            new_S.append(S[idx])
+        return sort_by_k(S, k, idx+1, new_S)
+    return new_S
+```
 
+### C-4.21 Suppose you are given an n-element sequence, S, containing distinct integers that are listed in increasing order. Given a number k, describe a recursive algorithm to find two integers in S that sum to k, if such a pair exists. What is the running time of your algorithm?
+* Analysis) At worst O(n) running time
+```python
+def sum_to_k(S, k, start=None, end=None, result=None):
+    if start is None and end is None and result is None:
+        start, end, result = 0, 0, []
+    if start == len(S):
+        return result
+    elif end == len(S):
+        return sum_to_k(S, k, start+1, start+1, result)
+    else:
+        if S[start] + S[end] == k:
+            result.append((S[start], S[end]))
+        return sum_to_k(S, k, start, end+1, result)
+```
+
+### C-4.22 Develop a nonrecursive implementation of the version of power from Code Fragment 4.12 that uses repeated squaring.
+```python
+def power_by_square_and_loop(x, n):
+    result = 1
+    for i in range(n//2):
+        result *= x*x
+    if n%2 == 1:
+        result *= x
+    return result
 ```
 
 <div>

@@ -206,6 +206,53 @@ def even_first(S, idx=None):
     return S
 
 
+def sort_by_k(S, k, idx=None, new_S=None):
+    if idx is None and new_S is None:
+        idx = 0
+        new_S = [k]
+    if idx < len(S):
+        if S[idx] <= k:
+            new_S.insert(0, S[idx])
+        else:
+            new_S.append(S[idx])
+        return sort_by_k(S, k, idx+1, new_S)
+    return new_S
+
+
+def sum_to_k(S, k, start=None, end=None, result=None):
+    if start is None and end is None and result is None:
+        start, end, result = 0, 0, []
+    if start == len(S):
+        return result
+    elif end == len(S):
+        return sum_to_k(S, k, start+1, start+1, result)
+    else:
+        if S[start] + S[end] == k:
+            result.append((S[start], S[end]))
+        return sum_to_k(S, k, start, end+1, result)
+
+
+def power_by_square_and_recursion(x, n):
+    if n == 1:
+        return x
+    else:
+        mid = n // 2
+        partial = power_by_square_and_recursion(x, mid)
+        result = partial * partial
+        if n%2 == 1:
+            result *= x
+    return result
+
+
+def power_by_square_and_loop(x, n):
+    result = 1
+    for i in range(n//2):
+        result *= x*x
+    if n%2 == 1:
+        result *= x
+    return result
+
+
 if __name__ == '__main__':
     import random
     sample_size = 10
@@ -245,4 +292,11 @@ if __name__ == '__main__':
     # print(more_vowels(string))
     # print(more_vowels('aaaab'))
 
-    print(even_first(S))
+    # print(even_first(S))
+
+    # print(sort_by_k(random_S, 66))
+
+    # print(sum_to_k(S, 7))
+
+    print(power_by_square_and_recursion(2, 5))
+    print(power_by_square_and_loop(2, 5))
