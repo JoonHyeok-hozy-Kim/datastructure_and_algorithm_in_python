@@ -146,6 +146,66 @@ class TowersOfHanoi:
         return 1
 
 
+def subset(S, start=None, end=None, result_list=None):
+    if start is None and end is None:
+        start, end = 0, 0
+        result_list = []
+    if start == len(S):
+        return result_list
+    else:
+        if end < len(S):
+            if start < end:
+                result_list.append([S[start], S[end]])
+            return subset(S, start, end+1, result_list)
+        else:
+            return subset(S, start+1, start+1, result_list)
+
+
+def string_reverse(string, start=None, end=None, str_list=None):
+    if start is None and end is None:
+        start, end = 0, len(string)-1
+        str_list = list(string)
+    if start < end:
+        str_list[start], str_list[end] = str_list[end], str_list[start]
+        return string_reverse(string, start+1, end-1, str_list)
+    else:
+        result = ''.join(str_list)
+        return result
+
+
+def palindrome(s, start=None, end=None):
+    if start is None and end is None:
+        start, end = 0, len(s)-1
+    if start < end:
+        if s[start] != s[end]:
+            return False
+        return palindrome(s, start+1, end-1)
+    return True
+
+
+def more_vowels(s, idx=None, vowel=None, consonant=None):
+    if idx is None and vowel is None and consonant is None:
+        idx, vowel, consonant = 0, 0, 0
+    if idx < len(s):
+        if s[idx] in ['a', 'e', 'i', 'o', 'u']:
+            vowel += 1
+        else:
+            consonant += 1
+        return more_vowels(s, idx+1, vowel, consonant)
+    return True if vowel > consonant else False
+
+
+def even_first(S, idx=None):
+    if idx is None:
+        idx = 0
+    if idx < len(S):
+        if S[idx]%2 == 0:
+            even_number = S.pop(idx)
+            S.insert(0, even_number)
+        return even_first(S, idx+1)
+    return S
+
+
 if __name__ == '__main__':
     import random
     sample_size = 10
@@ -170,6 +230,19 @@ if __name__ == '__main__':
 
     # print(recursive_product(10, 6))
 
-    t1 = TowersOfHanoi(6)
-    print(t1)
-    t1.play()
+    # t1 = TowersOfHanoi(6)
+    # print(t1)
+    # t1.play()
+
+    # print(subset(S))
+    string = 'abcde'
+    # print(string_reverse(string))
+    # print(string)
+
+    # print(palindrome(string))
+    # print(palindrome('racecar'))
+
+    # print(more_vowels(string))
+    # print(more_vowels('aaaab'))
+
+    print(even_first(S))

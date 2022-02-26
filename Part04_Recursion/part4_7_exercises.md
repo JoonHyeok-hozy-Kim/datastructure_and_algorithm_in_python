@@ -176,6 +176,7 @@ def recursive_product(m, n):
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_07_14.png" style="width: 900px;"></img><br/>
 </p>
+
 ```python
 class TowersOfHanoi:
 
@@ -252,6 +253,80 @@ if __name__ == '__main__':
     t1.play()
 ```
 
+### C-4.15 Write a recursive function that will output all the subsets of a set of n elements (without repeating any subsets).
+```python
+def subset(S, start=None, end=None, result_list=None):
+    if start is None and end is None:
+        start, end = 0, 0
+        result_list = []
+    if start == len(S):
+        return result_list
+    else:
+        if end < len(S):
+            if start < end:
+                result_list.append([S[start], S[end]])
+            return subset(S, start, end+1, result_list)
+        else:
+            return subset(S, start+1, start+1, result_list)
+```
+
+### C-4.16 Write a short recursive Python function that takes a character string s and outputs its reverse.
+```python
+def string_reverse(string, start=None, end=None, str_list=None):
+    if start is None and end is None:
+        start, end = 0, len(string)-1
+        str_list = list(string)
+    if start < end:
+        str_list[start], str_list[end] = str_list[end], str_list[start]
+        return string_reverse(string, start+1, end-1, str_list)
+    else:
+        result = ''.join(str_list)
+        return result
+```
+
+### C-4.17 Write a short recursive Python function that determines if a string s is a palindrome, that is, it is equal to its reverse
+```python
+def palindrome(s, start=None, end=None):
+    if start is None and end is None:
+        start, end = 0, len(s)-1
+    if start < end:
+        if s[start] != s[end]:
+            return False
+        return palindrome(s, start+1, end-1)
+    return True
+```
+
+### C-4.18 Use recursion to write a Python function for determining if a string s has more vowels than consonants.
+```python
+def more_vowels(s, idx=None, vowel=None, consonant=None):
+    if idx is None and vowel is None and consonant is None:
+        idx, vowel, consonant = 0, 0, 0
+    if idx < len(s):
+        if s[idx] in ['a', 'e', 'i', 'o', 'u']:
+            vowel += 1
+        else:
+            consonant += 1
+        return more_vowels(s, idx+1, vowel, consonant)
+    return True if vowel > consonant else False
+```
+
+### C-4.19 Write a short recursive Python function that rearranges a sequence of integer values so that all the even values appear before all the odd values.
+```python
+def even_first(S, idx=None):
+    if idx is None:
+        idx = 0
+    if idx < len(S):
+        if S[idx]%2 == 0:
+            even_number = S.pop(idx)
+            S.insert(0, even_number)
+        return even_first(S, idx+1)
+    return S
+```
+
+### C-4.20 Given an unsorted sequence, S, of integers and an integer k, describe a recursive algorithm for rearranging the elements in S so that all elements less than or equal to k come before any elements larger than k. What is the running time of your algorithm on a sequence of n values?
+```python
+
+```
 
 <div>
     <p>
