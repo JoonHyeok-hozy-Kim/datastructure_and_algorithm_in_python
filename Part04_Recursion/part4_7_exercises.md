@@ -168,7 +168,9 @@ def recursive_product(m, n):
 
 ### C-4.13 Prove by induction that the number of dashes printed by draw_interval(c) is 2^(c+1)−c−2.
 >   <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#412-drawing-an-english-ruler">English Ruler</a>
-
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_07_13.png" style="height: 300px;"></img><br/>
+</p>
 
 
 
