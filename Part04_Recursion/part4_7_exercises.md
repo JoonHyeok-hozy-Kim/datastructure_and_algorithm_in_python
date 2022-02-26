@@ -174,7 +174,7 @@ def recursive_product(m, n):
 
 ### C-4.14 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_07_14.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_07_14.png" style="width: 900px;"></img><br/>
 </p>
 ```python
 class TowersOfHanoi:
