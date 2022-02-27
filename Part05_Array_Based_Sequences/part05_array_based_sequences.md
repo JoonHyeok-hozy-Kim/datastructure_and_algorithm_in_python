@@ -61,8 +61,14 @@
         * Compact Array directly contains the int instance.
   2. High Performance due to consecutive storing of elements in the memory.
   
-#### array class : compact storage for arrays in Python
+#### array module : compact storage for arrays in Python
+```python
+import array
+primes = array('i', [2, 3, 5, 7, 11, 13, 17, 19])
+```
 * Prop.) Takes data type as first argument parameter.
+  * Datatypes are from C-Language
+  * User-defined types cannot be used.
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_02_02_array_class_first_parameter.png" style="height: 300px;"></img><br/>
 </p>
