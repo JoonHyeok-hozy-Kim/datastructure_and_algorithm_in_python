@@ -64,7 +64,7 @@
 #### array class : compact storage for arrays in Python
 * Prop.) Takes data type as first argument parameter.
 <p align="start">
-<img src="" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_02_02_array_class_first_parameter.png" style="height: 300px;"></img><br/>
 </p>
 
 
