@@ -421,9 +421,9 @@ if __name__ == '__main__':
     e1.draw()
 ```
 ### P-4.26 Tower of Hanoi problem
-Solution : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_7_exercises.md#c-414">C-4.14</a>
+* Solution : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_7_exercises.md#c-414">C-4.14</a>
 
-
+### P-4.27 
 
 <div>
     <p>
