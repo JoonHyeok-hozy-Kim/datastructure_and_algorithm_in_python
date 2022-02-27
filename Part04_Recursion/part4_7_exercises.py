@@ -252,6 +252,49 @@ def power_by_square_and_loop(x, n):
         result *= x
     return result
 
+def summation_puzzle(k, U, S=None):
+    from copy import deepcopy
+    if S is None:
+        S = []
+    for i in range(len(U)):
+        popped = U.pop(i)
+        S.append(deepcopy(popped))
+        if k == 1:
+            print(''.join(S))
+        else:
+            summation_puzzle(k-1, U, S)
+        popped_again = S.pop(-1)
+        U.insert(i, popped_again)
+
+
+class EnglishRulerLoop:
+    def __init__(self, num_inches, major_length):
+        self._num_inches = num_inches
+        self._major_length = major_length
+
+    def draw_line(self, length, label=''):
+        line_text = []
+        for i in range(length):
+            line_text.append('-')
+        if label:
+            line_text.append(' ')
+            line_text.append(label)
+        result_text = ''.join(line_text)
+        return result_text
+
+    def draw(self):
+        result_text = []
+        for i in range(self._major_length):
+            if i == 0:
+                for j in range(self._num_inches):
+                    result_text.append(self.draw_line(self._major_length, str(j+1)))
+            else:
+                len_result_text = len(result_text)
+                for j in range(len_result_text):
+                    result_text.insert(j*2, self.draw_line(self._major_length-i))
+        result_text.insert(0, self.draw_line(self._major_length, str(0)))
+        print('\n'.join(result_text))
+
 
 if __name__ == '__main__':
     import random
@@ -298,5 +341,11 @@ if __name__ == '__main__':
 
     # print(sum_to_k(S, 7))
 
-    print(power_by_square_and_recursion(2, 5))
-    print(power_by_square_and_loop(2, 5))
+    # print(power_by_square_and_recursion(2, 5))
+    # print(power_by_square_and_loop(2, 5))
+
+    # U = ['g', 'i', 'r', 'l']
+    # summation_puzzle(4, U)
+
+    e1 = EnglishRulerLoop(2, 6)
+    e1.draw()

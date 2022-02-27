@@ -366,6 +366,62 @@ def power_by_square_and_loop(x, n):
     return result
 ```
 
+### P-4.23 Implement a recursive function with signature find(path, filename) that reports all entries of the file system rooted at the given path having the given file name.
+* list_dir?
+
+### P-4.24 Write a program for solving summation puzzles by enumerating and testing all possible configurations. Using your program, solve the three puzzles given in Section 4.4.3
+```python
+def summation_puzzle(k, U, S=None):
+    from copy import deepcopy
+    if S is None:
+        S = []
+    for i in range(len(U)):
+        popped = U.pop(i)
+        S.append(deepcopy(popped))
+        if k == 1:
+            print(''.join(S))
+        else:
+            summation_puzzle(k-1, U, S)
+        popped_again = S.pop(-1)
+        U.insert(i, popped_again)
+```
+
+### C-4.25 Provide a nonrecursive implementation of the draw interval function for the English ruler project of Section 4.1.2.
+```python
+class EnglishRulerLoop:
+    def __init__(self, num_inches, major_length):
+        self._num_inches = num_inches
+        self._major_length = major_length
+
+    def draw_line(self, length, label=''):
+        line_text = []
+        for i in range(length):
+            line_text.append('-')
+        if label:
+            line_text.append(' ')
+            line_text.append(label)
+        result_text = ''.join(line_text)
+        return result_text
+
+    def draw(self):
+        result_text = []
+        for i in range(self._major_length):
+            if i == 0:
+                for j in range(self._num_inches):
+                    result_text.append(self.draw_line(self._major_length, str(j+1)))
+            else:
+                len_result_text = len(result_text)
+                for j in range(len_result_text):
+                    result_text.insert(j*2, self.draw_line(self._major_length-i))
+        result_text.insert(0, self.draw_line(self._major_length, str(0)))
+        print('\n'.join(result_text))
+
+if __name__ == '__main__':
+    e1 = EnglishRulerLoop(2, 6)
+    e1.draw()
+```
+
+
 <div>
     <p>
         Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md">Part 4. Recursion</a>
