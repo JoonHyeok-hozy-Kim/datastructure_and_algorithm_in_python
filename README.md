@@ -15,3 +15,10 @@
         → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_7_exercises.md">Excercises</a>    
     </p>
 </div>
+<div>
+    <p>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md">Part 5. Array-Based Sequences</a>
+        <br/>
+        → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_07_exercises.md">Excercises</a>    
+    </p>
+</div>
