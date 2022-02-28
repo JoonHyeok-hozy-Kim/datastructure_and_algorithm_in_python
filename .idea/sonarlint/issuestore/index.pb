@@ -3,3 +3,13 @@ e
 5Part03_Algorithm_Analysis/part3_algorithm_analysis.md,4\a\4aa1b11042fc41f5d84a2d533154252002071939
 _
 /Part03_Algorithm_Analysis/part3_5_excercises.py,3\a\3a18129c171e41ca3ef90b95720f07b9cf3d5f0d
+^
+.Part04_Recursion/part4_3_recursion_run_amok.py,3\3\333ea7821fc49436497484e48f1551d3d4d49821
+a
+1Part04_Recursion/part4_1_illustrative_examples.py,e\f\ef36498f961dda9e2a1124e4eada564498d864c4
+i
+9Part04_Recursion/part4_4_further_examples_of_recursion.py,a\b\abf3a347af5a84cc79172f62d524949a4c75b8a3
+U
+%Part04_Recursion/part4_7_exercises.py,5\a\5a6d31a7d7cc18415dfc3006984d53604e40eab3
+_
+/Part03_Algorithm_Analysis/part3_5_excercises.md,8\c\8c2af856c5f44bb9c833063ce16fcbf4eddbab39
