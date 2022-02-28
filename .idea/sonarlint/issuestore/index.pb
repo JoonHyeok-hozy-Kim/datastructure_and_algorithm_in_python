@@ -15,7 +15,5 @@ _
 /Part03_Algorithm_Analysis/part3_5_excercises.md,8\c\8c2af856c5f44bb9c833063ce16fcbf4eddbab39
 U
 %Part04_Recursion/part4_7_exercises.md,d\5\d55576982dae83e5e74bf45a7ad7bccdb92ecae7
-L
-PartNN_Part_Name/__init__.py,3\f\3fd65cda777440eb7ec607172f16010414c0b648
-W
-'PartNN_Part_Name/partNN_NN_exercises.md,a\7\a7a4aba37900c0819d0097e001c087e14a63b9fe
+9
+	temp.html,9\2\9288dd1186e87ee1f94172deb19a56a205f99f3b
