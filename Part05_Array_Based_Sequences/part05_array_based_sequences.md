@@ -61,7 +61,7 @@
         * Compact Array directly contains the int instance.
   2. High Performance due to consecutive storing of elements in the memory.
   
-#### array module : compact storage for arrays in Python
+#### Concept) array module in Python : compact storage for arrays in Python
 ```python
 import array
 primes = array('i', [2, 3, 5, 7, 11, 13, 17, 19])
@@ -73,9 +73,71 @@ primes = array('i', [2, 3, 5, 7, 11, 13, 17, 19])
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_02_02_array_class_first_parameter.png" style="height: 300px;"></img><br/>
 </p>
 
+## 5.3 Dynamic Arrays and Amortization
 
+#### Concept) Dynamic Array
+* Props.)
+  * has a particular length when constructed
+  * no apparent limit on the overall capacity of the list
+* Ex.) Python's List class
+  * Props.)
+    * __extra capacity__ : It maintains underlying array that often has greater capacity than the current length of the list
+      * experiment ↓
+        * cf.) sys.getsizeof() only shows the size of the array that includes references, not the real instance!
+```python
+import sys
+n = 10
+data = []
+for k in range(n):
+    a = len(data)
+    b = sys.getsizeof(data)
+    print('Length: {0:3d}; Size in bytes: {1:4d}'.format(a, b))
+    data.append(None)
+```
 
+### 5.3.1 Implementing a Dynamic Array
+* Tech.) How to
+  1. When the array is full, perform following steps
+     1. Allocate a new array B with larger capacity.
+     2. Set B[i] = A[i], for i = 0,...,n−1, where n denotes current number of items.
+     3. Set A = B, that is, we henceforth use B as the array supporting the list.
+     4. Insert the new element in the new array.
+  2. For now, double when resizing!
 
+```python
+import ctypes
+
+class DynamicArray:
+
+    def __init__(self):
+        self._n = 0
+        self._capacity = 1
+        self._A = self._make_array(self._capacity)
+
+    def __len__(self):
+        return self._n
+
+    def __getitem__(self, k):
+        if not 0 <= k < self._n:
+            raise IndexError('invalid index')
+        return self._A[k]
+
+    def append(self, obj):
+        if self._n == self._capacity:
+            self._resize(2 * self._capacity)
+        self._A[self._n] = obj
+        self._n += 1
+
+    def _resize(self, c):
+        B = self._make_array(c)
+        for k in range(self._n):
+            B[k] = self._A[k]
+        self._A = B
+        self._capacity = c
+
+    def _make_array(self, c):
+        return (c * ctypes.py_object)( )
+```
 
 
 <p>
