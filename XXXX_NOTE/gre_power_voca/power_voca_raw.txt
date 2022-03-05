@@ -1,0 +1,2505 @@
+1	abandon	1. 포기하다  2. 방종
+2	abase	낮추다, 줄이다
+3	abash	무안, 당황케하다
+4	abate	줄이다
+5	abbreviate	생략, 약자로 만들다
+6	abdicate	권리 따위를 포기하다
+7	aberrant	정상에서 벗어난
+8	abet	부추기다, 자극하다
+9	abeyance	중지
+10	abject	비굴한, 비참한
+11	abjure	포기, 끊다
+12	abrade	마모로 닳게 하다
+13	abreast of	~과 나란히, 함께 하는, 정보에 뒤쳐지지 않는
+14	abridge	줄이다
+15	abrogate	철폐, 폐지하다
+16	absolve	죄를 사하다
+17	abstain	삼가, 절제하다
+18	abstract	1. 추상적인 2. [n] 요약, 논문초록
+19	abstruse 	심오한
+20	abysmal	최악의, 최저의, 가장 심한 상태의
+21	accede	응하다, 동의하다
+22	accelerate	가속하다
+23	acclaim	환호, 갈채를 보내다
+24	acclimate	환경에 적응하다
+25	accolade	찬사, 칭찬하는 말
+26	accord	1. 일치시키다, 조화를 이루게하다  2. grant 부여하다, 주다
+27	accountability	책임
+28	accrete	점진적으로 증가하다
+29	accrue	누적으로 쌓이다
+30	acerbic	신랄한, 쓴 맛의
+31	acknowledge	사실따위로 인정, 인지하다
+32	acme	최 정점
+33	acolyte	조수, 신봉자
+34	acquiesce	저항없이 받아들이다. 묵인하다acquiescent[adj]
+35	acquit	무죄로 풀어주다 acquittal [n]
+36	acrid	신랄한, 쓴, 맛이 톡 쏘는
+37	acrimonious	신랄한
+38	acumen	명민함, 감각, 비평력
+39	acute	1. 심각한  2. 날카로운 3.  예리함
+40	adamant	마음을 바꾸지 않는
+41	adduce	예로 증거를 대다
+42	adept	기술좋은, 숙련된
+43	adherent	신봉자, 지지자
+44	admonish	권고, 경고하다
+45	adorn	장식하다
+46	adrift	표류하는, 방황하는, 정해지지 않은
+47	adroit	솜씨좋은, 능숙한
+48	adulate	아부하다
+49	adulterate	불순물로 섞다
+50	adumbrate	어렴풋이 나타내다
+51	advent	도래, 출현
+52	adversary	적
+53	adversity	역경
+54	advocate	고수하다, 옹호하다
+55	aesthete	미적인 사람, 유미주의자
+56	affable 	상냥한, 친절한
+57	affect	1. 영향미치다 2. 그런 체하다, affectation [n] 가장, 꾸밈, 허세
+58	affiliated	연합한, 동맹의 관계인
+59	affinity	1.친밀감, 친화성  2. 유사성
+60	affirm	확증해주다
+61	afflict	고통주다
+62	affluent 	부유한
+63	affront	대들다, 허세부리며 대하다
+64	aggrandize	1. 크게하다   2. 찬사하다, 칭찬하다
+65	aggravate	1. 악화시키다  2. 자극하다, 분노하게하다
+66	aggregate 	[v][n]종합하다.
+67	aggrieved	분개한, 억울해 하는, 감정이 상한
+68	agile	기민한, 재빠른
+69	agitate	 마음 동요하게하다
+70	agony	극심한 고통
+71	ailing	병든, 약회된
+72	albeit	~에도 불구하고
+73	alienate	1. 소원하여 멀어지게하다  2. 양도하다
+74	align	연합하다, 정렬하다
+75	allay	 완화시키다, 누그러뜨리다
+76	alleviate	완화시키다, 가볍게하다
+77	allocate	나누다, 할당하다
+78	alloy	합금
+79	allusive	암시적인
+80	aloof	거리를 두는, 냉담한
+81	altruistic	이타주의적인  altruism [n]관대함, 이타주의
+82	amalgamate	혼합시키다, 융합시키다
+83	ambience 	분위기, 정서, 환경
+84	ambiguous	애매한,  여러가지로 해석될 수 있는
+85	ambivalent	상반된 상태가 섞여 있는
+86	amble 	천천히 걷다
+87	ameliorate	개선하다, 개량하다
+88	amenable	잘따르는, 순종적인
+89	amend	고치다, 개선하다; 수정, 개정하다
+90	amenity 	편의시설; 쾌적함, 예의
+91	amity	우호, 우정, 친목
+92	amorphous    	형태, 정의등이 확실치 않은
+93	anachronistic	시대착오적인; 구시대적인
+94	analgesic	통증을 없애주는; 진통제
+95	analogous	유사한
+96	anathema	저주, 증오, 파문, 이단배척
+97	ancillary	부속의, 보조의
+98	anecdote 	일화, 짧은 이야기
+99	annotate	주석(주해)을 달다
+100	annul	무효로하다, 취소하다, 폐지하다
+101	anomalous	변칙적인, 비정상의, 특이한
+102	anonymous	무명의, 익명의
+103	antedate	선행하다, 앞서다
+104	antidote	치료제, 해독제, 방책
+105	antipathy 	반감, 혐오
+106	antiquated	오래된, 고풍스런
+107	antithetical	반대의
+108	apathetic	무감각한, 무정한 * apathy n. 무관심
+109	apex	최고점
+110	aphorism	경구, 금언,격언 * aphoristic [adj] 글의 길이가 짧은
+111	apocalyptic	묵시적인, 종말론적인
+112	apocryphal	저작자가 의심스런, 가짜의
+113	apologist	변론자
+114	apostate	변절자
+115	appall	오싹하게하다, 겁나게하다
+116	apparition	유령, 갑자기 나타나는 것
+117	appease	달래다, 진정시키다
+118	appraise	감정, 평가하다
+119	appreciable	상당한, 쉽게 알아볼 수 있는
+120	apprehend 	1. 잡다, 체포하다 2. 파악하다  apprehensive [adj] 걱정하는, 두려워하는
+121	apprise	알리다
+122	approbation	승인
+123	appropriate	[v] 1. 전용하다  2. 혼자 가지다  3. 허락없이 가지다
+124	appurtenance 	부속물, 보조품
+125	apropos	적절한, 알맞은
+126	arable	경작가능한
+127	arbiter	1. 중재자 2. 권위자
+128	arbitrary	무작위의, 멋대로의
+129	arcane	비밀, 신비의
+130	archaic	오래된, 고풍스런
+131	archetype 	원형
+132	ardent	열의에 찬
+133	arid	매우 건조한
+134	arraign 	비난하다, 기소된 내용을 캐묻다, 조사하다
+135	arrest 	1. 멈추게하다, 체포하다 2. 관심 따위를 끌다
+136	arrogant	거만한
+137	articulate	분명하게 발음, 의미를 전달하다
+138	artless	자연스런, 가식이 없는
+139	ascendant     	상승하는, 올라가는, 우세해지는
+140	ascertain	확인하다, 명백히 하다
+141	ascetic 	금욕적인; 금욕적인 사람
+142	asperity	(말, 태도) 신랄함
+143	aspersion	비방
+144	assail	맹렬히 공격하다  assailable
+145	assert 	주장하다
+146	assess	평가하다
+147	assiduous	근면 성실한
+148	assimilate	 흡수하다, 소화하다
+149	assorted	여러 구색을 갖춘, 가지각색의
+150	assuage	달래다, 완화시키다; 만족시키다
+151	assume 	1. 가정하다 2. (권력, 의무) 떠맡다 3. 가장하다
+152	astringent	신랄한, 맛이 톡 쏘는
+153	astute	명민한, 기민한
+154	asylum	(정치범, 난민, 정신병자 등의) 보호시설,
+155	atone	속죄하다
+156	atrocious	극악무도한, 매우 잔인한; 아주나쁜
+157	atrophy	긴축, 축소
+158	attentive	1. 민감하게 반응하는 2. 경청하고 배려하는
+159	attenuate	가늘게하다, 약화시키다
+160	attest	증명하다, 증언하다, 입증하다
+161	attrition 	닳거나 약해져 없어지는 것, 감소
+162	attune	조화를 이루다, 조율하다
+163	audacious	대담한, 무모한
+164	audible	(소리) 들리는
+165	augment	증가/증대시키다; 증가하다
+166	augur	전조가 되다, 예고하다
+167	auspicious	길조의, 유리한 auspice [n]
+168	austere 	1. 엄격한 2. 금욕적인 3. 꾸밈없는, 소박한, 단순한
+169	authenticity	진짜임
+170	authenticate	(진짜임을) 입증하다
+171	authoritarian	독재적인, 권위주의적인
+172	authoritative	권위있는, 믿을만한
+173	autonomy	자율성, 자치권, 자립 autonomous[adj]
+174	avarice	탐욕
+175	avenge	복수하다
+176	aversion	혐오감 averse[v]
+177	avert	막다, 피하다; (시선을) 돌리다
+178	avian 	새[조류]의, 하늘을 나는
+179	avid	열심인, 열정적인; 탐욕적인
+180	avow	주장, 인정하다
+181	awry	휘어진, 비틀어진; 잘못된, 빗나가는
+182	axiomatic	자명한 axiom [n]
+183	babble	[n], [v]횡설수설하다　		　
+184	backwater	침체상태
+185	badger	(계속해서) 괴롭히다, 졸라대다
+186	baffle	당황하게 하다, 어리둥절하게 하다
+187	bale	재앙; 불운, 고통, 불행
+188	balk 	주저하다,; 방해하다, 막다, 좌절시키다
+189	balky	고집센, 말을 안듣는
+190	balm	위안, 아늑함을 주는 것 [adj] balmy
+191	banal	진부한, 식상함을 주는
+192	bane	고통의 근원; 맹독 baneful[adj]
+193	barb	신랄한 비난
+194	barefaced 	뻔뻔스런; 숨김없는
+195	baroque	매우 장식적인, 화려한
+196	barren	열매맺지 않는, 수확이 없는
+197	base	상스러운, 천한, 천한
+198	bask	햇볕 쪼이다, 즐기다, 누리다
+199	bastion 	보강된 장소, 요새
+200	bauble	싸구려; 시시한것
+201	beatific	기쁨이 넘치는, 행복한
+202	bedecked	장식된
+203	bedlam 	소란스러운 곳; 대소동, 혼란
+204	befitting	적절한, 알맞은
+205	befuddled	혼란스러워하는
+206	beget 	자식 낳다
+207	begrudge	시샘하다; (주기 싫은데) 억지로 주다, 아까워하다
+208	beguile	매혹시키다; 속이다, 기만하다
+209	behold	주시하다
+210	beleaguer	1. 괴롭히다, 공격하다, 2.둘러싸다
+211	belie	반박하다, 모순의 관계에 있다
+212	bellicose	호전적인, 싸우기 좋아하는
+213	belligerent 	호전적인, 전쟁중에 있는
+214	benediction	축복, 축도
+215	beneficent	자비로운 * beneficence [n]. 선행, 자비
+216	benevolent	자비심 많은, 자선을 행하는
+217	benighted 	무지한, 조잡한, 원시적인
+218	benign	친절한, 상냥한
+219	benignant	인자한, 유순한
+220	bent	1. 경향, 성향 2. 능력
+221	benumbed	무감각해진
+222	bequeath	 물려주다, 유증하다
+223	berate 	호되게 꾸짖다
+224	bereaved 	죽음등으로 홀로 남겨진, 상실한
+225	bereft of 	~을 상실한
+226	beset	괴롭히다; 에워싸다, 둘러싸다
+227	besmirch	더럽히다; (명성) 훼손하다
+228	bespeak	나타내다, 보여주다
+229	betray	1. 배신하다  2. 의도와 달리 드러내다
+230	bewail	구슬퍼하다
+231	bewilder	당황하게 만들다, 놀라다
+232	bewitch	마술걸다, 매혹시키다
+233	biased 	편파적인
+234	bifurcate	두 갈래로 가르다, 분기하다
+235	bigot	편협한 사람
+236	bilious 	허약한, 병적으로 괴팍한
+237	bilk 	속이다; 피하다; 좌절시키다, 막다
+238	biting 	신랄한; 통렬한
+239	bizarre	이상한, 별난
+240	blackmail	공갈 협박하다
+241	blandish	감언으로 설득하다 blandishment [n]
+242	blare	(소리) 울려퍼지다; 요란하게 울리다, 떠들어대다; 요란한 소리
+243	blatant	뻔한, 명백한; 떠들석한; 뻔뻔스런
+244	blazon	과시하다, 자랑하다
+245	blemish	흠, 결점, 오점
+246	blight	1. [n] 병듦, 고사 2. [v] 고사시키다, 해를 가하다, 파괴하다, 망치다
+247	bliss	더없는 행복
+248	blithe	남 신경 안쓰는, 혼자 신난; 명랑한, 쾌활한,
+249	blunder	실수하다, (일) 그르치다
+250	blunt	퉁명스럽고 직설적인; (칼, 연필) 무딘
+251	blurt	무심코 말하다
+252	bluster	호통치다, 큰 소리로 말하다
+253	boast	자랑하다, 허풍떨다
+254	boggle	압도, 놀라게하다
+255	bogus	가짜의
+256	boisterous	시끄러운
+257	bolster	개선, 강화하다
+258	bombastic	허풍떠는, 허세부리는 bombast [n]
+259	boon	은혜, 혜택, 행운
+260	boorish	무례한 사람, 천박한
+261	bootless	소용없는, 쓸모없는
+262	border (on)	~와 경계의
+263	brackish	짭짤한, 맛없는; 불쾌한
+264	brazen   	뻔뻔한, 철면피의
+265	bravado 	허세
+266	breach	1. 위반하다, 어기다 2. 구멍뚫다, 파괴하다
+267	breakthrough	돌파구; (과학 등) 큰 발전
+268	brevity	간결함
+269	broach	(민감한 이야기를) 꺼내다, 발의하다
+270	bromide	진부하고 상투적인 말
+271	brook	참다, (반대의견을) 용납하다
+272	bucolic	전원적인
+273	bully	약한자를 괴롭히는 사람, 불량배
+274	bumptious	거만한, 오만한, 자기주장이 지나치게 강한
+275	bungle 	어설픈짓하다, 실수하다
+276	buoyant	부력이 있는; 기운찬, 명랑한 buoy[ v] 뜨다, 기운을 북돋다
+277	burgeon	급속히 성장하다, 번성하다
+278	burnish	윤[광]내다
+279	bustling	부산한 움직임
+280	buttress	지탱하다, 지지하다
+281	cabal 	도당, 무리 [그들의 계획]
+282	cache	(귀중품, 무기 등) 은닉처
+283	cajole	감언으로 꼬셔서 ~하게하다
+284	calamity	재앙, 재난 * calamitous [adj]
+285	calculated	계산된, 계획된, 의도된
+286	calibrate	(총의)구경을 재다, (온도계, 자 등) 눈금을 정하다; 조정하다
+287	callous 	무관심한, 냉담한, 무감각한
+288	callow	미성숙한, 경험이 없는
+289	calumny	중상, 비방
+290	camaraderie 	우정, 동지애
+291	camouflage	위장하다; 위장, 속임
+292	candor	솔직함 candid [a]
+293	canonical	권위로 인정된, 정통의 canon = 규범, 표준
+294	cant	위선적 말투; 은어, 전문어
+295	canvass	유세하다; 여론조사하다; 면밀히 살피다
+296	capability	능력
+297	capitulate	항복하다
+298	caprice	변덕 capricious [adj] 변덕스런
+299	captious	트집잡는
+300	captivate	매료시키다
+301	carefree	걱정 근심이 없는
+302	carcinogenic	발암성의
+303	castigate	징계, 비난하다
+304	casualty 	(사건, 사고) 사상자, 부상자
+305	catalyze	촉매작용하다; 촉진시키다catalyst [n] 촉매제
+306	categorical	절대적인
+307	cater (to)	음식물을 조달[제공]하다; 만족시키려 애쓰다
+308	catholic 	(취향이) 폭넓은, 보편적인
+309	caustic	신랄한
+310	cavalier 	무관심한, 무뚝뚝한; 건방진
+311	cavil	비판하다, 사소한 것으로 시비걸다
+312	cavort	흥청거리다; 뛰놀다
+313	cede	포기, 양도, 할양하다
+314	celerity	신속함
+315	celibacy 	독신, 금욕 [성적인 의미에서]
+316	censorious	매우 비난(비판)적인
+317	censorship	검열
+318	censure	비난하다
+319	cerebral 	머리 좋은, 지적인
+320	ceremonious	1. 의식의, 지나치게 격식을 갖춘 2. 웅장한, 장엄한
+321	certitude	확신
+322	cessation	끝, 중지
+323	champion	옹호하다
+324	charlatan	돌팔이, 사기꾼
+325	chary 	조심하는, 신중한
+326	chasten	훈육하다, (마음을) 정화시키다; 겸손하게 하다, 억제하다
+327	chastise	체벌하다; 몹시 비난하다
+328	chauvinism	맹목적인 애국심
+329	cherish	소중히 여기다
+330	chicanery	속임수
+331	chide	꾸짖다
+332	chivalrous	기사도적인, 용감한, 예의 바른
+333	clique 	배타적 무리
+334	choleric	담즙질의, 화를 잘 내는
+335	churlish	무례한
+336	cipher	암호
+337	circumlocution	에두른 표현
+338	circumnavigate 	이곳 저곳을 여행하다
+339	circumscribe	제한하다
+340	circumspect	신중한, 조심스런
+341	circumvent	피하다
+342	civility	공손함
+343	clairvoyant 	천리안이 있는, 통찰력이 있는
+344	clamor	아우성, 소란, 떠들썩한 외침
+345	clandestine	비밀의, 은밀한
+346	clannish	씨족의, 당파적인.
+347	clarion  	(소리) 명쾌하게 울려퍼지는
+348	cleave	1. 쪼개다, 틈을 내다; 2. 지키다, 고수하다
+349	clemency	자비, 관대함
+350	cliché	진부한 표현
+351	clout	영향력, 힘
+352	coagulate	(혈액 등) 응고하다
+353	coalesce	합쳐지다, 하나가되다
+354	coarse	조악한, 거친; (사람) 저속한
+355	coddle	관대하게/너그럽게 대하다, 버릇없이 기르다
+356	codify 	성문화하다
+357	coercion	강요, 강제
+358	cogent	설득력 있는
+359	cognizant	 지각하는  cognizance [n]
+360	coherent	일관성 있는, 조리가 맞는
+361	coincide	동시에 발생하다; 일치하다  coincidental [adj] 동시발생의
+362	coincidence	우연coincidental [adj] 우연의
+363	collaborate	공동작업하다, 협력하다; (적과 내통하여) 공모하다
+364	colloquial 	구어체, 대화체의 colloquialism [n]
+365	collude 	결탁, 공모하다
+366	combustible	불붙기 쉬운
+367	commensurate	동등한, 같은 크기의; 비례하는
+368	commiseration	연민, 동정
+369	commitment	약속, 의무, 헌신,열심
+370	commodious	넓은, 널찍한
+371	commonplace 	흔한, 일상의, 다소 진부한
+372	compatible	양립할 수 있는
+373	compelling	1. 매력적인 2. 설득력 있는, 그럴 듯한
+374	compendious	요점을 잘 잡은, 간결한
+375	compensate	보상, 보완, 보충하다
+376	complacence	자기만족, 자족 complacent [adj]
+377	complaisant	공손, 정중한; 유순한
+378	complement	보완하다, 완전하게 하다  complementary [a]
+379	compliant	순응하는compliance [n]
+380	composure	평상심
+381	compromise 	(명예, 신용) 위태롭게 하다, 훼손하다
+382	compunction	양심의 가책
+383	comradeship	동료애, 우정
+384	concede	 1. 인정하다 2.양보하다
+385	concerted	협동/협의에 의한
+386	conciliate	1. 화해시키다 2. 달래다, 위안을 주다
+387	concoct 	원료를 섞어 만들다, 고안하다
+388	concord	일치, 조화, 화합
+389	concur	1. 동의하다 2.동시에 발생하다
+390	condensed   	요약된
+391	condescend	윗사람이 아랫사람에게 하듯 생색내다
+392	condolence	위로, 조의
+393	condone	묵과하다, 묵인하다, 용서하다
+394	conducive 	공헌하는, 도움이되는
+395	confer 	주다, 수여하다
+396	confidential	기밀의
+397	configuration	형상, 외형, 배열
+398	confine	제한하다, 가두다
+399	confluence	합류
+400	conform 	~에 일치, 순응하다
+401	confound	혼돈시키다, 당황케하다
+402	congeal	응결, 응고시키다
+403	congenial	(사람) 마음이 통하는, 친근한; (장소) 마음에 드는
+404	congenital	타고난, 선천적인
+405	congregate	모이다
+406	congruence	일치
+407	conjecture	추정, 추측
+408	conjunction	결합, 연결; 동시발생
+409	conjure	 불러내다; 마술부리다, 마법을 걸다
+410	connive	공모하다
+411	connoisseur	전문가, 권위자
+412	consecrate 	신성하게 만들다
+413	conscientious	양심적인; 면밀한, 근면성실한
+414	consensus	동의, 합의
+415	considerable	상당한, 눈여겨볼만한
+416	consign	위임, 위탁하다
+417	consolation 	위로
+418	consolidate	1. 공고히하다  2. 합하다
+419	consonance	일치, 조화; 화음
+420	conspire	공모하다
+421	consternation	대경실색, 깜짝 놀람
+422	constrain	억압하다, 억제하다
+423	consummate	(기술, 실력) 완전한, 완벽한
+424	contempt	경멸, 멸시
+425	contend	싸우다, 다투다;논쟁하다; 주장하다
+426	contentious	다투기 좋아하는, 논쟁하기 좋아하는 contention [n]
+427	contest	다투다, 논쟁하다 contestable [a]
+428	contiguous	인접하는
+429	contingent	1. 우발적인, 우연의; 2. ~의 조건에 따라 달라지는
+430	contort	(몸이) 휘다, 비틀어지다
+431	contraband 	밀수품의, 불법의
+432	contradict	1. 모순되다 2 반박하다
+433	contravene	1. 위반하다  2. 반박하다
+434	contretemps 	뜻밖의 불운한 사건; 작은 말다툼
+435	contrite	뉘우치는 contrition [n]
+436	contrive	고안하다, 꾸며내다
+437	controversial	논쟁적인
+438	controvert	부인하다, 반박하다
+439	contumacious 	고집센
+440	conundrum	난제, 수수께끼
+441	convene	소집하다
+442	conventional	틀에박힌, 진부한,  전통적인
+443	convergence	합침, 집합, 집중 convergent [adj]
+444	conversant 	정통한
+445	convert	변형시키다, 바꾸다, 개종시키다
+446	conviction	확신, 신념; 유죄판결
+447	convivial	명랑한, 사교적인
+448	convoke	소집하다
+449	convoluted	복잡한, 뒤엉켜있는
+450	convulsion	경련, 경기
+451	copious	풍부한, 많은
+452	cornucopia 	많음, 풍요로움
+453	corporate	법인의; 집합적인, 단체의
+454	corporeal	육신의, 물질적인; 유형의
+455	corpulent	뚱뚱한, 살찐
+456	correlate	상관관계에 있다; 서로 연관시키다
+457	correspond	부합하다, 상응하다; 서신을 교환하다
+458	corroborate	확증하다
+459	cosset 	응석을 받아주다
+460	countenance	찬성하다, 지지하다, 용인하다, 참다
+461	counter	거스르다, 맞서다, 반대하다, 저항하다
+462	counterpart	대응물 (동일한 것)
+463	counterpoint	대위법; 대조되는 것
+464	court	1. 구애하다 2.자초하다, 얻으려하다
+465	covert	숨겨진, 비밀의
+466	covetous	탐하는, 갈망하는
+467	cow 	겁나게하다
+468	cower	두려워 움츠리다
+469	coy	부끄러운척하는, 조신한척하는, 수줍어하는
+470	crass 	무신경한, 세밀하지 못한  crassness [n]
+471	craven	비겁한; 비겁한 사람
+472	craving	갈망, 열망
+473	credence	신용, 신임
+474	credulous	잘믿는, 잘속는
+475	crest	(산, 파도 등의) 최정상
+476	crestfallen	풀죽은, 의기소침한
+477	crotchety	화잘내는, 까다로운
+478	crumble 	바스러지다, (건물, 땅) 허물어지다
+479	crux	가장 중요한 점
+480	cryptic	숨은, 비밀의, 암호를 사용한
+481	culminate	1. 정점에 달하다 2. ~로 끝나다
+482	culpable	비난받을 만한
+483	culprit 	원인, 범인
+484	cunning	교활한, 교묘한; 속임수의, 정교한, 순진하지 않은
+485	curb	억제, 제한하다
+486	curt	(말) 퉁명스런, 짧은
+487	curtail 	단축하다, 줄이다; (비용) 절감하다
+488	cynical	냉소적인
+489	dabble	호기심으로 재미삼아 잠시 해 보다
+490	daft	어리석은, 미친
+491	dally	시간낭비하다; 가지고놀다, 희롱하다
+492	dampen 	축축하게 하다; (활력, 열의) 꺾다
+493	dart	돌진하다
+494	dash 	돌진하다
+495	dated	구식의, 오래된
+496	daunt	위협하다, 겁나게 하다
+497	dauntless	겁없는
+498	dawdle	시간 낭비하다, 허비하다; 꾸물거리다, 늑장부리다
+499	dazzle	눈부시게 하다, 매료시키다
+500	deadpan	무표정한
+501	debase	저하시키다, 품질따위를 떨어뜨리다
+502	debauchery 	방탕함
+503	debilitate	약화시키다
+504	debunk	(허구임을) 드러내다
+505	decelerate	속도를 줄이다
+506	decimate	많은 사람을 죽이다, 파괴하다
+507	decipher	(암호, 수수께끼) 풀다, 해독하다
+508	decline	1. 쇠퇴하다 2. 거절하다
+509	decorum	단정함, 예의바름
+510	decorous	단정한, 예의바른
+511	decrepit	허약한, 쇠잔한  decrepitude [n]
+512	decry	비난하다
+513	deduce	추론하다
+514	defame	명예를 훼손하다
+515	default	의무불이행, 체납
+516	defeasible	무효화할 수 있는, 파기할 수 있는
+517	defer	1. 연기하다, 미루다    2. 타자의 의견에 따르다, 그 결정에 맡기다 3. 경의를 표하다
+518	deferential	공손한 deference [n]
+519	deficiency	부족; 결점
+520	definitive	확고한, 분명한
+521	deflate	1. 수축시키다 2.  풀죽게 하다
+522	deft	솜씨 좋은, 민첩한
+523	defuse	뇌관을 제거하다; (긴장 등을) 완화시키다
+524	defy 	(공공연하게) 저항/도전하다, 불복종하다 defiant [adj]
+525	degenerate	퇴보, 타락, 퇴화하다
+526	dehydrate	건조시키다, 탈수시키다
+527	deify 	신격화하다
+528	deign	황송하게도 (자신을 낮추어) ~해주다
+529	deity	신
+530	deject 	낙담시키다
+531	delectable	1. 맛있는 2. 매우 아름다운, 매력적인
+532	delegate	대표, 사절; 위임하다
+533	deleterious	해로운
+534	deliberation	심사숙고, 합의, 토의
+535	delineate  	정확하게 묘사하다
+536	delude   	속이다, 기만하다
+537	demise	죽음, 서거, 몰락
+538	demography	인구통계학
+539	demoralize	사기를 꺾다
+540	demote	강등시키다
+541	demur	1. 이의를 제기하다   2. 주저함, 머뭇거림
+542	demure	얌전한, 조신한
+543	demystify	(신비함, 편견) 없애다, 이해하기 쉽게 설명하다
+544	denigrate	 비난하다, 폄하하다; (명예) 훼손하다
+545	denounce 	맹렬히 비난하다
+546	denude	박탈하다; 발가벗기다
+547	deplete	고갈시키다
+548	deplore 	비난하다; 개탄하다
+549	deploy	1.  배치하다 2. 이용하다
+550	depravity	타락, 부패, 사악 depraved [a] 타락한, 부패한
+551	deprecate	비난하다; 반대하다
+552	depreciate	(가치) 떨어뜨리다, 평가절하하다; 비난하다
+553	deracinate	뿌리째 뽑다; 근절하다
+554	derelict 	1. 태만한, 나태한   2.  방치된, 버려진, 못쓰게 된
+555	disrepute	불명예
+556	deride	조롱하다
+557	derogate	비하하다, 격하시키다
+558	descry	멀리서 보다, 발견하다
+559	desecrate	신성 모독하다
+560	desiccate	건조시키다
+561	designate	지정하다, 지명하다
+562	despicable   	경멸스러운, 비열한, 야비한
+563	despise	경멸하다
+564	despondent	낙심한, 풀죽은
+565	desultory	 목적없는, 산만한
+566	detachment	쌀쌀함, 냉담함
+567	detain	붙들다, 지체시키다; 구류하다
+568	deter	단념시키다
+569	deteriorate	악화시키다, 손상시키다
+570	deterministic	결정론의, 결정론적인
+571	detract	1. (가치) 떨어지다; 2. (주의) 딴데로 돌리다; 깎아내리다 비방하다
+572	detrimental	해로운
+573	deviate	(표준, 기준에서) 벗어나다
+574	devious	부정한, 사악한; 돌아가는, 우회하는
+575	dexterous	솜씨 좋은, 능숙한
+576	diagnose	진단하다
+577	diaphanous	1. 투명한, 섬세한  2, 애매한, 모호한
+578	diatribe	통렬한 비난, 혹평
+579	dichotomy	이분법
+580	didactic	가르치기 위한, 교훈적인
+581	diehard	완고한, 보수적인
+582	differentiate	구별하다, 식별하다
+583	diffident	자신없는, 기가죽은, 수줍어하는
+584	diffuse	퍼뜨리다, 확산시키다 diffusive [adj]
+585	digress	(주제, 본론에서) 벗어나다
+586	dilapidated	(건물 등) 방치된, 낡은
+587	dilate	1. 확장하다 2. 자세히 밝히다
+588	dilatory	행동이 느린, 늑장부리는
+589	dilettante 	애호가, 호사가
+590	dilute	1. 묽게하다 2. 약하게하다
+591	dingy	칙칙한, 지저분한
+592	diplomatic	수완이 있는, 능숙한,  능란한
+593	dire 	끔직한, 불길한
+594	dirge	만가, 비가
+595	disabuse	(그릇된 생각) 바로잡아주다, (오해) 풀어주다
+596	disaffect	정떨어지게 하다; 불만을 품게 하다
+597	disarming	적개심을 없애주는, 달래는
+598	disavow	부인하다, 거부하다, 의절하다
+599	discern	인지하다, 구별하다, 알아채다
+600	disciplinary	징계의
+601	discipline	규율, 기강, 훈련
+602	disclosure	폭로
+603	discombobulate	혼란시키다, 당황스럽게 하다
+604	discomfit	당황하게 하다
+605	discompose	마음의 평정을 없애다, 동요시키다
+606	disconcert	동요시키다, 혼란스럽게 하다
+607	discordant	불협화음의, 조화를 이루지 못하는
+608	discourteous	무례한
+609	discredit	불신케 하다; 불명예스럽게 하다
+610	discreet	신중한, 조심스러운
+611	discrepancy	불일치, 차이, 어긋남
+612	discrete	불연속의, 분리된, 별개의
+613	discretion	1. 신중함  2. 선택권, 자율재량권을 가짐
+614	discretionary	재량껏 할 수 있는
+615	discriminating	식별력 있는; 안목이 있는
+616	discursive	주제를 벗어난, 산만한; 논증적인
+617	disdain	경멸하다, 조롱하다
+618	disengage	(연결, 접속) 풀다; (의무) 해방하다
+619	disgruntled	화난, 불만족한
+620	disillusion	(몽상, 잘못된 믿음) 깨우치게 하다
+621	disinclined [to]	내켜하지 않는, 꺼리는
+622	disinfect	살균 소독하다
+623	disingenuous	솔직하지 않은, 부정직한
+624	disintegrate	붕괴, 분해, 해체시키다
+625	disinterested	공정한
+626	disjunction	분리, 분열, 차이
+627	dislocate	(관절) 탈구시키다; 위치를 바꾸다, 뒤죽박죽으로 만들다, 교란시키다
+628	dismal	음산한, 음울한, 참담한, 매우 안좋은
+629	dismantle 	분해, 와해시키다
+630	dismay	쩔쩔매게 하다, 용기(열정)를 잃게하다; 놀라게 하다
+631	dismiss	일축하다; 해고하다
+632	disparage 	깎아내리다, 비난하다
+633	disparate	본질적으로 다른 disparity [n]
+634	dispassionate	감정에 휘둘리지 않는, 객관적인, 공정한
+635	dispensable	없어도 되는
+636	dispirit	(열정, 사기, 희망 등을) 잃게 하다
+637	displace	(위치) 옮기다, 바꾸다; 강제이주시키다
+638	disposition	기질
+639	disputable 	논쟁의 여지가 있는
+640	disquiet	불안, 동요, 걱정하는 disquietude [n]
+641	disrupt	방해하여 중단시키다, 파괴하다
+642	dissect	(표본) 해부하다, 분석하다
+643	dissemble 	가장하다, 꾸미다
+644	disseminate	퍼뜨리다, 확산시키다
+645	dissent	의견을 달리하다, 반대하다
+646	dissident	반대하는
+647	dissipate	흩어지게 하다
+648	dissolution	(단체) 해산; (용액) 용해; 붕괴, 분해, 부패
+649	dissonance	불협화음
+650	distend 	부풀게 하다
+651	distill	증류, 순도높게 만들다
+652	distinctive	특색있는, 다른
+653	distort	왜곡하다
+654	distract	집중하지 못하게 하다
+655	divergent	분기하는, 갈라지는, (의견) 다른
+656	divert	(방향, 기분, 돈, 관심) 전환시키다, 딴 곳으로 돌리다
+657	divisive	나누는, 분리, 분열하는
+658	divulge	누설하다, 폭로하다
+659	doctrinaire	순이론가, 독단적인
+660	doctrine	정설, 원칙
+661	dodge	피하다
+662	dogged	끈질긴, 끈덕진
+663	dogma	독단, 원칙, 신조
+664	doldrum	침체, 우울, inactive한 상태
+665	dolorous 	슬퍼하는, 우울한
+666	domicile	거주지; 집
+667	domineering	오만한, 거만한
+668	dormant	활동이 없는; 동면기에 있는
+669	dote	맹목적으로 좋아하다
+670	dour	시무룩한, 우울한
+671	downplay	얕보다, 중시하지 않다
+672	drab	칙칙한, 재미없는
+673	draconian  	가혹한, 아주 엄격한
+674	drain  	서서히 배출하다, 물기없애다
+675	dramatize	극적으로 보여주다
+676	drawl	모음을 늘여서 천천히 말하다
+677	drench	흠뻑 적시다
+678	drivel	허튼 소리
+679	droll	익살스런, 우스꽝스런
+680	drone	계속 단조로운 소리내다, 지루하게 말하다
+681	dubious	의심하는, 의심스러운
+682	ductile 	순종적인; (금속) 두드려 변형시킬 수 있는, 가소성의
+683	dulcet	(소리가) 감미로운
+684	duly	적절하게, 정당하게
+685	duplicity	속이는 행위, 허위
+686	dwindle	점차 줄어들다
+687	dysfunctional	기능장애적인, 고장난
+688	earmark	(자금•물건 등을) 책정하다
+689	earthly	지상의, 세속적인
+690	eavesdrop	몰래 엿듣다
+691	ebullient	열성인, 사기 충천한
+692	eccentric 	별난, 엉뚱한
+693	ecclesiastical 	교회의
+694	echelon	(위계질서의) 계층
+695	eclectic	여러가지 방법을 쓰는, 다양한
+696	eclipse	빛을 잃게하다, 가리다, 능가하다
+697	economy	간결함, 효율성; 검소함; 경제
+698	ecumenical 	보편적인, 전반적인
+699	edify	교화하다
+700	efface	삭제하다, 지워없애다; 눈에 띄지 않게 행동하다
+701	effervescence	쾌활함, 활기, 기운이 넘침
+702	effete	활력없는
+703	efficacious	효과적인, 효능, 효험있는
+704	effusive	야단스런, 표현등이 과장된  effusion[n] 분출, 유출, 감정의 토로
+705	egalitarian	평등주의의, 공평한
+706	egregious 	몹씨 나쁜, 악랄한
+707	elaborate	공들인, 복잡한, 정교한
+708	eleemosynary 	자선의
+709	elastic	탄성있는
+710	elated	아주 즐거워하는, 기뻐하는
+711	elemental	기본적인, 근본적인
+712	elevate	들어올리다, 고양하다
+713	elicit	이끌어내다, 도출하다
+714	elliptical	생략적인; (의미) 지나치게 생략된, 모호한
+715	elongate	(길이) 늘이다, 연장하다
+716	eloquent	(글, 문장) 설득력있는, 웅변력있는
+717	elucidate	명료하게 하다, (명확히) 설명하다
+718	elusive 	(사람) 잡히지 않는; 이해, 정의하기 힘든
+719	emaciated	수척해진, 몹시 여윈
+720	emanate 	발산하다
+721	embed	안에 박아 끼워넣다
+722	embellish	꾸미다, 장식하다; (이야기) 꾸미다, 각색하다
+723	embezzle	횡령하다, 사취하다
+724	embody	구체화하다, 구현하다
+725	embolden	대담하게하다
+726	embrace	포옹하다, (생각, 의견) 채택하다
+727	embroil 	혼란스런 상황에 빠뜨리다
+728	embryonic	초기 상태의
+729	emblematic	상징적인
+730	emend	교정, 수정하다
+731	empathetic 	공감, 이해하는 empathy [n]
+732	empirical 	경험, 실험적인
+733	emulate	1. 모방하다 2. 경쟁하다
+734	enamor	매료시키다
+735	encapsulate	요약하다
+736	enchant	매료시키다
+737	encode	암호화하다
+738	encomium	찬사, 칭찬하는 말 encomiast [n] 칭송는 사람
+739	encompass	둘러싸다, 포위하다, 포함하다
+740	encounter	(우연히) 마주치다; (위험, 곤란) 만나다, 대면하다
+741	encroach	침해하다
+742	encumber	짐지우다; 막다, 방해하다
+743	endeavor	노력
+744	endorse	승인, 지지하다
+745	endow 	기부하다; 주다, 부여하다
+746	enduring	영속적인
+747	enervate 	약화시키다
+748	enfeeble	약화시키다
+749	enfranchise	투표권을 주다; 자유롭게 해주다
+750	engender	발생하게 하다
+751	engrossed	몰두한, 열중한
+752	enhance	개선, 향상시키다
+753	enigmatic	수수께끼같은, 난해한
+754	enjoin	명령하다
+755	enlighten	계몽하다, 설명하다, 가르치다
+756	enmity	적대감
+757	ennui	권태
+758	enormous	거대한, 막대한
+759	enraptured	기뻐서 어쩔 줄 모르는
+760	ensue	~결과로서 발생하다, 뒤따라 발생하다
+761	entangle	뒤엉키게 하다, 복잡하게 만들다
+762	enterprise	기업, 회사; 사업; 진취성, 모험심
+763	enthrall	마음을 사로잡다; 노예로 만들다
+764	entice	유혹하다
+765	entrammel 	얽히게하다, 구속하다, 방해하다
+766	entrance 	황홀경으로 만들다, 매료시키다
+767	entrenched	굳어진
+768	entrepreneurial	기업가의; 모험심있는, 진취적인
+769	enunciate	명확히 표현/설명/발음하다
+770	envision	상상하다, 그리다
+771	ephemeral	일시적인, 덧없는
+772	epicenter	(지진) 진앙지; 중심점
+773	epitomize	요약하다; 전형이 되다
+774	equable 	침착한, 차분한; 한결같은, 안정된
+775	equanimity	(마음) 평정, 차분함
+776	equilibrium	평형, 균형, 평정함
+777	equipoise	균형, 평형
+778	equitable	공평한
+779	equivalent	상응하는, 동등한, 같은; 대응하는 것
+780	equivocal	애매한
+781	equivocate	애매하게 둘러대다    equivocation [n]
+782	eradicate	근절하다
+783	err	틀리다; 실수하다
+784	erratic	변덕스런, 일정하지 않은; 비정상적인
+785	erudite	박식한
+786	escalate 	증대시키다, 고조되다
+787	eschew 	피하다, 삼가다
+788	esoteric      	난해한, 소수만 아는
+789	espouse	지지, 신봉하다
+790	esteem	존경, 존중
+791	estrange	(관계) 소원하게 하다
+792	ethereal 	천상의, 영적인; 가볍고 섬세한
+793	ethos 	(한 국민•사회•제도 등의) 기풍, 정신
+794	eulogy	칭송, 찬양, 송덕문
+795	euphemism 	완곡어법
+796	euphoria	행복감
+797	evade	피하다 evasive [a]
+798	evanescent	사라져가는, 덧없는
+799	even-handed	공정한
+800	even-tempered	(마음) 차분한, 온화한
+801	evict	퇴거시키다, 내쫓다
+802	evince	명시하다
+803	evoke	(감정) 불러일으키다; (반응) 이끌어내다
+804	evolve	진화, 발전하다
+805	exacerbate	악화시키다
+806	exacting	정확한; 엄격한
+807	exalt	칭송하다, 높이다; 고상하게 하다
+808	exasperate	몹시 화나게 하다
+809	exceptionable	반대될 수 있는, 이의제기 될 수
+810	exceptional 	특출난, 이례적인
+811	excise	잘라내다, 삭제하다
+812	excoriate	몹시 비난하다
+813	excruciating	심한 고통을 주는, 괴롭히는
+814	exculpate	혐의를 벗겨주다, 무죄로하다
+815	execrable	혐오하다, 비난하다
+816	exemplar	전형, 모범
+817	exemplify	예증하다, 모범이 되다
+818	exemption	면제, 공제
+819	exhaustive	포괄적인, 철저한 exhaust[v] 지치게하다, 소진시키다
+820	exhilarate 	즐겁게 하다
+821	exhort	강력하게 권고하다, 간곡히 타이르다
+822	exhume	(매장된 것, 시신) 파내다
+823	exigency	위급, 긴급함
+824	exile 	추방, 유배
+825	exonerate	용서하다, 면제하다
+826	exorbitant	엄청난
+827	exorcise	(귀신을) 내쫓다;(사람•장소에서) (귀신을) 몰아내다
+828	expansive	(성격, 태도) 개방적인, 너그러운, 대범한
+829	expatriate 	조국에서 추방하다, 이민하다 [n] 고국을 떠나 있는 사람
+830	expedient	편의주의적인; 신속한 expediency [n]
+831	expedite	촉진시키다
+832	expeditious 	신속한
+833	explicate	설명하다
+834	explicit	명백한, 명시적인
+835	exploit	위업, 업적; 이용하다, 착취하다
+836	exponent	지지자
+837	exponential	기하급수적인, 급격한
+838	expository	설명적인, 설명의
+839	expostulate 	훈계하다, 따지다
+840	expressly	명백히, 확실히
+841	expurgate	검열하여 삭제하다
+842	extant	현존하는
+843	extemporaneous 	즉흥적인, 계획없이 이루어진
+844	extenuate	(죄, 과실) 경감시키다, 가볍게 하다
+845	extol	극찬하다
+846	extradite 	범인을 관할국에 인도하다
+847	extraneous	관련없는
+848	extrapolate 	(사실로부터의) 추정하다
+849	extravagant	사치, 낭비하는; 지나친
+850	extricate	(위험, 곤란에서) 벗어나게 하다, 구해내다, 빼내주다
+851	extrinsic	비본질적인, 외래의, 외부의
+852	exuberant 	열의에 찬, 원기왕성한, 활력적인
+853	exude	스며나오게 하다, 발산시키다
+854	exultant	매우기뻐하는
+855	fabricate	만들어내다, 꾸며내다; 제조하다, 조립하다
+856	facet	(사물의) 한 면, 특성
+857	facetious	익살스런, 웃기는; 가벼운
+858	facile 	피상적인; 손쉬운, 용이한
+859	facilitate 	용이하게 하다
+860	factious	당파적인 faction[n]
+861	fad	일시적으로 유행하는, 그런 유행을 좇는
+862	fail-safe	(고장에 대비하여) 안전장치를 갖춘
+863	fallacy	궤변, 오류
+864	falter   	주저하다, 비틀거리다
+865	fanatic	광신도, 열광자   fanatical a. 광신도적인
+866	farcical	우스꽝스런
+867	far-reaching	(효과•영향 등이) 멀리까지 미치는, 폭넓은
+868	fashion	만들어내다
+869	fastidious	꼼꼼한, 까다로운
+870	fastness  	요새, 안전한 곳; 고정; 신속
+871	fathom	헤아리다; 수심을 재다
+872	fatuous	어리석은, 바보같은
+873	faultfinding	비판적인
+874	fawn	아부하다
+875	faze	당황시키다
+876	fealty	(영주에 대한) 충성
+877	feasible	실행가능한
+878	feckless	무책임한; 쓸모없는
+879	fecund	비옥한, 생산력이 있는, 풍성한
+880	feeble	연약한
+881	feign	가장하다, 꾸미다
+882	feisty	적극적인, 원기왕성한
+883	ferocity	사나움, 광포함
+884	ferret 	찾아다니다
+885	fertile	비옥한, 생산력 있는
+886	fervent	열렬한
+887	fervor  	열성, 열렬
+888	fetching	매력적인
+889	fetter	족쇄를 채우다, 구속하다
+890	feud	(두 집안 사이의 또는 여러 대에 걸친) 불화, 반복, 다툼
+891	fiasco	대실패
+892	fickle	변덕스런
+893	fidelity 	충성, 정조
+894	figurative	비유적인
+895	filibuster	의사진행 방해 (긴 연설 등)
+896	filthy	매우 더러운, 난잡한, 비열한
+897	finicky	몹시 까다로운
+898	fiscal	재정의, 재무의, 회계의
+899	fissure	(땅, 바위) 균열; 불화
+900	fit	1. 안성맞춤으로 맞추다 2. 적당한 3. 발작
+901	fitful 	불규칙적인, 발작적인
+902	flabby	살이 축늘어진, 허약한
+903	flaccid	축늘어진; 무기력한
+904	flag	약화되다  flagging [adj] 축처진
+905	flagrant  	극악한, 악명높은
+906	flamboyant	눈부신, 화려한, 현란한
+907	flatter	추켜세우다, 알랑거리다, (찬사 등으로) 기쁘게하다
+908	flaunt	자랑, 과시하다
+909	fledgling	풋나기(의), 애송이(의)
+910	flee	도망가다; 빠르게 지나가다, 사라지다
+911	fleeting	휙지나가는, 순식간의, 덧없는
+912	flimsy	부서지기 쉬운, 약한; (주장) 설득력이 없는
+913	fling	거칠게 내던지다; 버리다, 폐기하다
+914	flippant	경박한, 성의 없는; 무례한
+915	flit	가볍게 움직이다; 빨리지나가다
+916	floppy	준비하지않은, (옷이) 펄럭이는, 늘어진, 느슨한
+917	flounder	간신히 나아가다; 버둥거리다, 몸부림치다
+918	flourish 	번성하다
+919	flout	경멸하다, 비웃다, 어기다
+920	fluctuate	변동하다
+921	flux  	흐름, 끝없는 변동
+922	foe	적, 원수
+923	foible 	약점, 단점
+924	foil 	방해하다, 막다
+925	folly 	어리석음, 우둔
+926	foment	선동하다, 자극하다
+927	foot-dragging	지체, 더딤, 주저
+928	footloose	마음대로 할 수 있는, 구속없는
+929	forswear	포기하다; 위증하다
+930	forage	(식량) 찾다, 구하다 / 사육할 때 주는 음식
+931	forbear	삼가다, 인내하다 forbearance n.
+932	forceful	강력한
+933	forebode	전조가 되다
+934	foreknowledge	선지, 예지, 통찰력
+935	foreshadow	전조가 되다
+936	forestall	미리 손을써서 막다, 미리 하다
+937	forfeit	몰수(박탈)당하다
+938	forgo	~없이 살다
+939	forlorn 	버림받은, 절망적인
+940	formidable	겁먹게 하는, 위협적인, 경외감을 갖게 하는
+941	formulaic 	도식적인, 공식에만 따른
+942	forsake	버리다
+943	forthcoming	다가오는, 임박한; 솔직한
+944	fortuitous	우연한
+945	forward	1. 지나칠 정도로 스스럼없는   2.  앞으로, 앞선
+946	foster	양성, 촉진, 육성, 발전시키다
+947	foul	불쾌하고 역겨운; (날씨) 사나운, 나쁜; (사람, 언행) 사악한, 부도덕한, 저속한
+948	founder 	침몰하다; 실패하다l
+949	fractious	화, 짜증 잘 내는; 다루기 힘든
+950	fragile 	약한, 부서지기 쉬운
+951	fragmentary	단편적인
+952	frail	약한, 깨지기쉬운
+953	frantic	광란의, 정신없는, 미쳐날뛰는
+954	fraternize 	사귀다, 친해지다, 형제처럼 지내다
+955	fraudulent	사기치는, 속이는
+956	fraught	가득한; (정신) 괴로워하는
+957	frenetic  	광란의, 지나치게 열광적인
+958	frenzy	광란, 열광
+959	frequent	자주 들르다
+960	fretful	안달하는, 초조해하는, 화내는, 언짢아하는
+961	friable	잘 부서지는
+962	friction	마찰, 갈등, 알력
+963	frivolous	가벼운, 경박한; 하찮은
+964	frothy	거품같은; 가벼운, 경박한
+965	froward	다루기힘든, 완고한
+966	fugitive	1. 덧없는, 금방사라지는  2. 탈주자
+967	full-fledged	완전한, 성숙한
+968	fulminate	공격, 비난하다
+969	fulsome	(찬양따위가)  지나친
+970	fumble	서툴게 다루다, 더듬어 찾다, 말을 더듬거리다
+971	furtive	은밀한
+972	fussy	1. 지나치게 꼼꼼한, 2. 지나치게 장식된, 3. 쉽게 성내는,
+973	fustian	과장되고 허풍떠는
+974	futile	쓸모없는, 무익한 futility n.
+975	gaffe	(사교상) 실수, 결례
+976	gainsay	반박하다, 부인하다, 반대하다
+977	gait	걸음걸이
+978	gall	화나게 하다
+979	gallant	1. 용감한 2. 정중한, 기사도적인 gallantry n. 용감함, 정중함, 기사도정신
+980	galvanize	전기자극을 주다; 자극하다
+981	gambol	뛰놀다
+982	garble	왜곡하다, 혼동하다, 섞이다
+983	gargantuan	거대한
+984	garish	(옷 등) 지나치게 화려한, 너무 요란한
+985	garnish	장식하다
+986	garrulous	지나치게 수다스러운
+987	gauche	서투른, 세련되지 않은, 솜씨없는
+988	gaudy	(옷, 장식) 지나치게 화려한, 세련되지 못한
+989	gaunt	수척해진, 쇠약해진
+990	gawky	서투른, 어색한
+991	generic	일반적인
+992	genial	친절하고 쾌활한, 상냥한
+993	genteel	품위있는, 우아한, 점잔빼는
+994	genuine	진짜의
+995	germane	관련있는, 적절한
+996	gibberish	이해할 수 없는 말, 글, 횡설수설
+997	gibe	조롱(하다)
+998	giddy	경솔한, 진지하지 못한; 현기증나는
+999	glacial	매우 추운; 매우 느린; (태도, 눈빛) 매우 차가운
+1000	glance	흘긋보기; 흘긋보다
+1001	glaring	눈부시게 빛나는; (색) 지나치게 야한; 눈에 띄는, 뻔한 glare [v]
+1002	glee	기쁨, 환호
+1003	glib  	(깊이없이) 말만 유창한, 입심좋은
+1004	glimmer	희미하게 빛나다
+1005	gloat 	자신의 성취에 우쭐하다
+1006	gloss 	1. 광택  2. 겉으로 좋아보이는 허울  3. 겉치례, 허식  4. 주석, 주해, 해설
+1007	glut	과도, 과다
+1008	glutton	식신, 식탐이 과한 사람
+1009	gossamer	매우 얇은, 섬세한
+1010	gouge	1. 바가지 씌우다, 속이다 2. 도려내다
+1011	gourmand	미식가, 대식가
+1012	graft	접목시키다, 접붙이다
+1013	grandiloquent	과장된, 허풍떠는
+1014	grandiose	(겉모습, 외양) 웅장한, 장엄한; (계획) 거창한
+1015	grandstand	(관객, 미디어로 부터) 주목받으려 하다, (관객을 의식하여) 화려한 플레이를 하다
+1016	gratify	만족시키다
+1017	grating 	삐걱거리는; (소리가) 신경에 거슬리는
+1018	gratuitous	무료의; 필요없는, 근거없는
+1019	grave	엄숙한, 진지한
+1020	gravitas	진지함, 무게
+1021	gravelly  	자갈같은, 자갈소리가 나는, 귀에 거슬리는
+1022	gregarious 	사교적인
+1023	grievous	심각한, 중대한, 슬픈
+1024	grill	엄중히 심문하다; 취조하다
+1025	grim	엄격한, 단호한, 잔인한, 무서운, 섬뜩한, 무시무시한
+1026	grimace	찡그림; 찡그리다(병, 고통 등으로)
+1027	gripe	(사소한 일에) 불평하다
+1028	gripping	주의를 끄는, 흥미로운, 재미있는
+1029	gritty	용감한, 단호한
+1030	grouch	불평꾼, 짜증 잘내는 사람
+1031	groundless   	근거없는
+1032	groveling	비굴한, 아첨하는; 기는
+1033	growl	으르렁 거리다
+1034	grudge	원한
+1035	grueling 	몹시 힘든
+1036	gruesome	소름끼치는, 오싹하는
+1037	gruff	퉁명스런, (목소리) 거친, 쉰
+1038	grumble	투덜거리다
+1039	guarded	조심하는, 신중한
+1040	guffaw	시끄럽게 웃다, 그런 웃음
+1041	guile	속임수, 꾀, 술책
+1042	gull	속이다
+1043	gullible 	잘 속는 gullibility [n]
+1044	gust	(갑자기) 휙 부는 바람, 돌풍
+1045	hackneyed 	진부한
+1046	hairbreadth	털끝만한 간격, 폭; 가까스로(의)
+1047	halcyon	평온한, 고요한, 번성하는
+1048	hale 	튼튼한, 원기왕성한
+1049	halfhearted	열성이 없는, 내키지 않는
+1050	hallmark	특질, 특징
+1051	hallow	거룩히 여기다, 신성하게 하다
+1052	hallucination	환각
+1053	halting	(말) 더듬거리는; 막히는
+1054	ham-handed	서투른, 실수하는
+1055	hamper	막다, 방해하다
+1056	hamstring	무력화하다, 좌절시키다; 다리를 절게하다
+1057	hangdog	처량한, 부끄러워하는
+1058	hankering	갈망
+1059	haphazard	아무렇게나, 되는대로
+1060	hapless	운없는
+1061	harangue	장광설; 비난, 질책
+1062	harass	괴롭히다
+1063	harbinger	예언자; 전조
+1064	harbor	피난처를 제공하다, 숨겨주다
+1065	hard-boiled	현실적인, 실제적인; 무정한, 감상적이지 않은, 비정한
+1066	hardheaded	완고한, 고집센; 현실적인
+1067	hard-nosed	현실적인, 실제적인
+1068	hardy 	강건한, 용감한
+1069	harebrained	경솔한, 무모한
+1070	harrow	괴롭히다, 못살게 굴다, 망치다, 침해하다
+1071	harry	괴롭히다, 못살게 굴다
+1072	hasten	서두르다
+1073	haunt	자주 가는 장소
+1074	hauteur	오만함, 거만함
+1075	haven	항구; 피난처
+1076	havoc	대파괴, 황폐, 대혼란
+1077	headlong	무모한, 성급한
+1078	headstrong	고집센
+1079	hearten	용기, 기운을 북돋어주다, 격려하다
+1080	heart-rending	마음을 찢어지게 하는, 매우 슬픈
+1081	heavy-handed	서투른, 솜씨없는; 고압적인, 포악한
+1082	heckle	괴롭히다
+1083	hedonism	쾌락주의 hedonistic [adj]
+1084	heed	주의를 기울이다
+1085	hegemony	(힘의) 주도권
+1086	heinous	(행동) 극악한
+1087	helter-skelter	허둥지둥
+1088	herald	알리다, 고지하다
+1089	heresy	이단
+1090	heretic	(일반적인 믿음을) 따르지 않는 사람, 이단자
+1091	heretofore	이제까지, 여태까지
+1092	hermetic	밀봉, 밀폐된; 난해한
+1093	heterodox	이단, 이설, 이교의
+1094	heyday	전성기
+1095	hidebound	완고한, 몹시 보수적인
+1096	hieroglyph	상형문자
+1097	hirsute	털이 많은
+1098	hiss	'쉬' 소리를 내다; 비난하다
+1099	histrionic	배우의, 연기의; 지나치게 감정적인
+1100	hitherto 	지금까지, 여태가지
+1101	hoard	보관, 저장하다
+1102	hoarse	(목소리가) 거친, 쉰소리가 나는
+1103	hoary	백발의, 나이든; 오래된, 진부한
+1104	hoax	짓궂은 속임수; 속이다
+1105	hobble	절뚝거리다
+1106	hobnob	(높은 신분과) 친하게 지내다, 사귀다
+1107	hoist	들어올리다
+1108	hollow  	텅빈, 내용없는
+1109	homage	존경
+1110	homily	설교; 지루한 도덕적 훈계
+1111	homogeneous	동종의, 균질의, 비슷한
+1112	hone	연마하다, 갈고 닦다
+1113	hortative	(조언•연설 등이) 격려하는; 충고의
+1114	hospitable	친절한, 대접을 잘 하는
+1115	hubris	지나친 자신감, 오만함
+1116	hue	색깔, 색조
+1117	humdrum	단조로운, 재미없는
+1118	humiliate	굴욕스럽게 하다
+1119	humility	겸손함
+1120	hunch	예감, 직감, 느낌
+1121	husband	아껴쓰다, 절약하다
+1122	hybrid	잡종의
+1123	hygiene	위생
+1124	hyperbole	과장된 말, 과장법 hyperbolic [adj]
+1125	hypnotic	최면에 걸리게 하는, 잠이오게하는
+1126	hypothetical	가설의
+1127	iconoclast	성상파괴자; 인습타파론자
+1128	idiocy	우둔함
+1129	idiosyncrasy	특유의 성질 idiosyncratic[adj]
+1130	idle	(기계, 공장) 작동하지 않는, 사용되지 않는
+1131	ignoble	비천한
+1132	ignominy	불명예, 치욕, 굴욕
+1133	illegible	읽을 수 없는, 해독불가한
+1134	illicit	불법적인
+1135	illiteracy	무학, 문맹, 무교양
+1136	illuminate	조명하다, 계몽, 알게하다
+1137	illustrate	(그림, 챠트, 예를 이용해서) 설명하다
+1138	imbue	(생각)주입시키다; 스며들게하다; (색깔)물들이다
+1139	immaterial	중요하지 않은, 관련없는; 영적인
+1140	immediate	(시간, 장소, 관계) 가까운, 즉각적인
+1141	immemorial	옛날의, 태고적의
+1142	immerse 	 푹 담그다; 열중, 몰두시키다
+1143	imminent	임박한
+1144	immortalize	불멸로 만들다, 불후의 명성을 주다
+1145	immune	면역의; 면제된
+1146	immure	감금하다, 가두다, 제한하다
+1147	immutable 	불변의
+1148	impair	약화시키다, 손상시키다
+1149	impartial	공정한
+1150	impassioned	열정적인
+1151	impassive	무정한, 비정한, 무표정한
+1152	impeachable    	탄핵/비난 받을 만한
+1153	impeccable	결함없는, 완벽한
+1154	impecunious	무일푼의
+1155	impede	방해하다, 훼방놓다
+1156	impediment	장애물
+1157	impel	강요하다, 강제하다
+1158	impending	임박한
+1159	impenetrable	통과할 수 없는, 스며들 수 없는, 이해할 수 없는
+1160	imperative	꼭 해야 하는, 필수적인
+1161	imperceptible	지각/감지할 수 없는, 미세한, 경미한
+1162	imperious	오만한, 고압적인
+1163	impermeable	불침투성의, 뚫을 수 없는
+1164	imperturbable	차분한, 동요하지 않는
+1165	impervious	통과시키지 않는; 영향을 받지 않는, 해를 입지 않
+1166	impetuous 	충동적인, 성급한
+1167	implant  	심다, 이식하다, 박다, 주입하다
+1168	implement	이행하다
+1169	implicate	1. (범죄) 연루시키다; 2. 암시하다
+1170	implicit	암시된, 암묵적인
+1171	importune 	성가시게 졸라대다
+1172	impose	부과하다, 지우다; 강제하다
+1173	imposter	사기꾼
+1174	impregnable	무적의, 확고한
+1175	impressionable	영향을 잘 받는; 감수성이 예민한
+1176	impromptu	즉흥적인; 즉흥연주
+1177	improvident	미래를 대비하지 않는; 낭비하는
+1178	improvise	즉흥적으로 하다
+1179	imprudent 	신중하지 못한, 경솔한, 무분별한
+1180	impudent	무례한, 불손한, 건방진
+1181	impugn	의심하다, 이의를 제기하다, 비난하다, 공격하다
+1182	inadequate	부적절한, 불충분한
+1183	inadvertent	우연적인, 의도하지 않은
+1184	inadvisable	현명하지 못한
+1185	inalienable	양도할 수 없는
+1186	inane	무의미한, 어리석은
+1187	inanimate	살아 있지 않은; 생명이 없는
+1188	inattentive 	무신경의, 집중하지 않는, 부주의한
+1189	inaugurate	시작하다; 취임시키다
+1190	incantation	주술
+1191	incarcerate	투옥시키다, 감금시키다
+1192	incendiary	방화범; 선동가
+1193	incense	몹시 화나게 하다
+1194	incentive	격려, 자극
+1195	inception 	시작, 설립
+1196	incessant	끊임없는, 계속적인
+1197	inchoate 	초기단계의, 발전하지 않은
+1198	incidental	우연적인
+1199	incinerate	소각하다
+1200	incipient	시작단계의, 초기의, 발단의
+1201	incise	자르다, 절개하다
+1202	incisive	예리한, 날카로운, 통렬한
+1203	incite	자극하다, 선동하다
+1204	inclement 	(날씨) 혹독한, 궂은
+1205	incoherent 	(말, 글) 조리가 없는
+1206	inconclusive  	결정적이지 않은
+1207	incongruous	조화롭지 않은, 일치하지 않는
+1208	inconsistent	일치하지 않는; 일관성없는; 모순적인
+1209	inconsonant	조화/일치되지 않는
+1210	incontrovertible	논박의 여지가 없는
+1211	incorporate	구체화하다; 포함, 통합시키다
+1212	incorrigible 	고집불통의, 구제불능의
+1213	increment 	증가, 이득
+1214	incriminate	죄를 씌우다, 고소하다
+1215	inculpate	혐의를 씌우다, 죄를 씌우다
+1216	incumbent 	현직의
+1217	incursion	침입
+1218	indefatigable	지치지 않는
+1219	indefeasible  	무효화할 수 없는
+1220	indelible	지울 수 없는, 제거할 수 없는
+1221	indenture	고용을 계약서로써 정하다;기한부 도제로 받아들이다
+1222	indicate	나타내다, 암시하다
+1223	indict	기소하다
+1224	indigent	궁핍한, (생필품) 결핍된
+1225	indignation	분노, 분개
+1226	indispensable	필수불가결의
+1227	indistinguishable	구별안되는
+1228	indolence 	게으름
+1229	indomitable	불굴의, 꿋꿋한, 굴복하지 않는
+1230	indulge	탐닉하다; 관대히 대하다
+1231	ineffable	말로 표현할 수 없는, 형언할 수 없는
+1232	ineluctable	피할 수 없는
+1233	inept	서투른 ineptitude[n]
+1234	inequity	불공정, 불공평
+1235	ineradicable	제거되어질 수 없는
+1236	inert	움직이지 않는, 활력없는
+1237	inestimable	측량할 수 없는, 무수한
+1238	inevitable	피할 수 없는, 불가피한
+1239	inexhaustible	소모, 고갈되지 않는
+1240	inexorable	설득할 수 없는, 막을 수 없는, 무자비한
+1241	inexplicable	설명될 수 없는, 난해한
+1242	inexpungible	지울 수 없는
+1243	infection	감염
+1244	infiltrate	잠입하다
+1245	infinitesimal	극소의, 매우 작은
+1246	infirm	허약한; (마음) 불확실한
+1247	inflame	불타게 하다, 자극하다
+1248	inflate	부풀게 하다, 확장시키다, 팽창시키다
+1249	infraction	(법률, 약속) 위반
+1250	infrangible	부서지지 않는; 위반해서는 안되는, 불가침의
+1251	infuriate  	몹시 화나게 하다, 분노케하다
+1252	infuse	가득채우다, 주입하다
+1253	ingenious	독창적인
+1254	ingenuous   	순진한, 솔직한
+1255	ingrained	(기질, 습관) 뿌리깊은, 깊이박힌
+1256	ingratiate	환심을 사기 위해서 비위를 맞추다
+1257	inherent	본질적인, 타고난
+1258	inimical	해로운, 적대적인
+1259	iniquity	부도덕함, 사악함, 극악함 iniquitous [adj]
+1260	inkling	어렴풋이 알고 있음; 넌지시 비침, 암시
+1261	innate 	타고난, 자연스런
+1262	innocuous	무해한
+1263	inordinate 	과도한
+1264	inopportune	(시기) 부적절한
+1265	inquisitive	호기심 많은, 질문많은
+1266	insatiable	(식욕, 욕망) 만족시킬 수 없는
+1267	inscrutable	불가사의한, 난해한
+1268	insentient	무감각한, 비정한, 생명없는
+1269	insidious 	배신하는, 속이는
+1270	insinuate	넌지시말하다
+1271	insipid	맛없는; 재미없는, 지루한
+1272	insolent	무례한, 불손한
+1273	insouciant	태평한, 근심이 없는
+1274	instigate	부추기다, 선동하다
+1275	instill	(점차적으로) 주입하다
+1276	insubstantial	허약한, 튼튼하지 않은, 실제적, 실질적이지 못한
+1277	insular	섬의, 고립된, 편협한
+1278	insurgent	반란을 일으킨, 폭도의
+1279	intact	손대지 않은, 손상되지 않은
+1280	intangible 	만질 수 없는, 비물질적인
+1281	integral	불가결한, 필수의
+1282	integrate	통합하다
+1283	integrity	정직, 청렴; 흠없는 상태, 보전
+1284	intemperate	무절제한, 방탕한
+1285	intensify	심화시키다; 강화시키다
+1286	inter	매장하다
+1287	interdisciplinary	학제간의
+1288	interim	중간의, 임시의
+1289	interminable	끝없는
+1290	intermittent	때때로, 가끔 발생하는
+1291	interpose	삽입시키다; 양자 사이에 개입하다
+1292	intertwine	얽히게 하다
+1293	intervene	개입, 간섭하다
+1294	intimate	넌지시 알려주다, 암시하다
+1295	intimidate	위협하다
+1296	intractable	유순하지 않는, 다루기힘든, 고집센
+1297	intransigent	비타협적인, 완고한 intransigence [n]
+1298	intrepid	겁없는, 대담한
+1299	intricate	복잡한, 얽힌
+1300	intriguing	호기심을 자아내는, 재미를 자아내는; 매력적인
+1301	intrinsic	본질적인, 고유의
+1302	introspection	내성, 성찰
+1303	introverted	내성적인
+1304	intrusive	간섭, 참견하는
+1305	inundate 	범람하다, 압도하다, 쇄도하다
+1306	inured	(안좋은 것에) 익숙해진
+1307	invalidate	무효로 하다
+1308	invective	욕설, 모욕적인 말
+1309	inventory	재고목록, 품목 일람, 재고조사
+1310	invert	거꾸로 하다
+1311	inveterate	만성적인
+1312	invigorate	기운나게하다, 격려하다
+1313	invincible	이길 수 없는, 무적의
+1314	inviolate	신성한, 더럽혀지지 않은
+1315	invoke	불러일으키다, 호소하다, (법등을)적용하다
+1316	invulnerable	무적의, 강한
+1317	irascible 	화 잘내는
+1318	irk 	짜증나게 하다; 화나게 하다
+1319	irreconcilable 	화해될 수 없는
+1320	irrefutable 	논박할 수 없는
+1321	irregular	불규칙한, 비정규의, 불안정한
+1322	irrelevant	관련없는
+1323	irreproachable	비난의 여지가 없는, 흠잡을 데 없는
+1324	irresolution	주저함, 마음의 불확실
+1325	irreverent	불손한, 불경스런
+1326	irrevocable	돌이킬 수 없는, 취소할 수 없는
+1327	irritation	화, 짜증 잘 내는; 다루기 힘든
+1328	jaded	지친, 지긋지긋한, 싫증난
+1329	jargon	전문어
+1330	jaundice	편파적으로 대하다
+1331	jaunty	경쾌한, 활발한
+1332	jejune	무미건조한, 재미없는
+1333	jest	농담; 놀리다, 비웃다
+1334	jingoism 	국수주의
+1335	jittery	신경질적인, 초조해하는
+1336	jocose	익살맞은, 웃기는
+1337	jocular 	익살맞은, 까부는
+1338	jocund	쾌활한
+1339	jubilant	환희에 가득찬, 매우 기뻐하는
+1340	judicious	현명한
+1341	juxtaposition	병렬, 병치
+1342	keen	열렬한, 예리한, 날카로운
+1343	kindred	1. [adj]유사한, 2. [n] 일가친척
+1344	kinetic 	움직임과 관련한, 활동적인  kinetic energy운동에너지
+1345	knack	요령, 비결
+1346	knotty	매듭으로 가득한; 풀기 어려운
+1347	kudos	영광, 명성; 찬양
+1348	labyrinth	미로
+1349	lacerate 	찢다; 깊은 상처를 주다, 괴롭히다
+1350	lachrymose	눈물이 가득한; 눈물나게 하는
+1351	lackluster	빛(광택)이 없는; 활기없는
+1352	laconic 	간결한, 과묵한, 무뚝뚝한
+1353	lag	꾸물거리다, 처지다
+1354	laggard   	꾸물거리는, 처지는; 게으름뱅이
+1355	lambaste	심하게 비난하다
+1356	lament	한탄하다, 슬퍼하다, 애통해하다
+1357	languid	늘어진, 나른한, 기력없는
+1358	languish	기력을 잃다, 쇠약해지다
+1359	languor 	쇠약; 무기력, 권태; 무관심
+1360	lapse	1. (일시적인) 쇠퇴, 잘못, 과실 2. (시간의) 경과, 기간
+1361	largesse	후함
+1362	lassitude	무기력
+1363	latent	잠재성의
+1364	latitude	(행동, 사항, 견해) 자유, 허용 정도
+1365	laud	칭찬하다, 찬양하다 laudable [adj]
+1366	lavish	사치스런, 아낌없는; 낭비하다
+1367	lax	축늘어진; 엄하지 않은, 관대한, 부주의한
+1368	layperson 	문외한
+1369	leaden	둔한, 느릿한; 활기없는
+1370	leaning(s)	기호, 편애
+1371	learned	유식한
+1372	leeway 	자유로 할 수 있는, 일정수준의 여지
+1373	legendary	전설적인, 매우 유명한
+1374	legible	읽을수/이해할수있는
+1375	lethargy	무기력
+1376	lettered	박식한, 교육받은
+1377	leviathan	거대한 바다동물; 거대한 것
+1378	levity	경솔함, 변덕, 경박함
+1379	libel	문서에 의한 명예훼손; (문서로) 명예를 훼손하다
+1380	liberality 	후함, 관대함
+1381	libertine	난봉꾼
+1382	license	허락, 인가하다
+1383	licentious	음란한, 문란한
+1384	lighthearted	걱정이 없는, 쾌활한, 명랑한
+1385	liken	비유하다, 비견하다
+1386	limp	절뚝거리다
+1387	limpid 	(액체) 깨끗한, 맑은
+1388	linger	(아쉬운 듯이) 남아 있다, (떠나지 않고) 꾸물거리다;서성대다
+1389	lionize	명사로 대접해주다, 치켜세우다
+1390	lithe	유연한, 우아한
+1391	loaf	빈둥거리다
+1392	loath	내켜하지 않는  loathe 협오하다  loathsome 혐오스런
+1393	locus	(특정) 위치, 장소
+1394	lofty	숭고한
+1395	longevity	장수, 오래 지속됨
+1396	lopsided	한쪽으로 기울어진, 불균형의
+1397	loquacious	(매우) 수다스런
+1398	lubricate	기름칠하다, 매끄럽게 하다, 원활하게 하다
+1399	lucid	명백하여 이해하기 쉬운
+1400	ludicrous	웃기는, 익살스런
+1401	lugubrious	침울한, 슬픈
+1402	lukewarm	(물) 미지근한, 열의없는
+1403	lull 	일시적 잠잠함, 소강상태; 달래다, 어르다, 재우다
+1404	luminary 	선각자, 권위자, 유명인
+1405	luminous	빛나는, 반짝이는
+1406	lurch 	[n], [v] 갑자기 휘청거리다
+1407	lurid	무시무시한; (색깔) 매우 밝은, 선정적인
+1408	lurk 	잠복하다, 숨어서 기다리다
+1409	luster	광택
+1410	luxuriant  	무성한, 비옥한, 풍성한
+1411	luxurious 	사치스런; 호사스런
+1412	macabre	으스스한, 소름끼치는
+1413	machination 	음모, 계획
+1414	maculate	반점이 있는, 더러워진; 반점을 찍다, 더럽히다
+1415	madcap 	무모한, 황급한, 미친
+1416	magnanimity	도량, 관대함
+1417	magniloquent	호언 장담하는
+1418	mainstay 	기둥, 중심축
+1419	majestic	위엄한, 당당한, 장엄한
+1420	maladroit	솜씨없는, 서투른
+1421	malady	질병, 병폐
+1422	malaise	초조, 불안, 불편, 불쾌
+1423	malapropism	말의 익살스런 오용 [뜻이 다르지만 발음이 비슷해서 발생하는 실수 혹은 그런 의도적 사용]
+1424	malevolent	악의적인, 사악한
+1425	malicious	악의[적의] 있는, 심술궂은
+1426	malign	(악의적으로) 비난하다
+1427	malinger	꾀병을 부리다, (의무) 회피하다
+1428	malleable 	(금속) 변형이 잘되는
+1429	malodorous	악취가 나는
+1430	mandate	권한, 지시하다 [n,v]
+1431	maniac	광적으로 열중하는 사람
+1432	manifest	뚜렷한, 명백한
+1433	manipulate	교묘하게 다루다, 조종하다
+1434	manumit	해방하다
+1435	mar	망치다, 손상하다
+1436	marbled	대리석 무늬의
+1437	marginal 	사소한, 중요하지 않은
+1438	martial 	전쟁,전투와 관련된
+1439	martinet	엄격한 규율가, 엄격한 교관
+1440	mask	가면; 숨기다, 가리다
+1441	masticate	씹다
+1442	matchless    	적수가 없는, 대단한
+1443	matter-of-fact	현실적인, 실질적인,사실 그대로만의
+1444	maudlin	지나치게 감상적인, 취하면 우는
+1445	maven	전문가
+1446	maverick	독불장군
+1447	mawkish	매우 감상적인
+1448	meager	부족한, 빈약한
+1449	meander 	정처없이 거닐다, (강) 굽이굽이 흐르다
+1450	measly	(양) 아주조금인
+1451	measured	정확히 측정한; 신중한
+1452	meddle 	참견하다
+1453	mediate	(평화, 협정) 성립시키다, (논쟁, 쟁의) 조정하다, 중재하다
+1454	mediocre 	평범한, 보통의
+1455	meek	온순한, 유순한
+1456	meet	적절한
+1457	meld	혼합하다
+1458	mellifluous 	(소리, 말) 감미로운
+1459	menace	위협하는 것(사람); 위협하다
+1460	mend	고치다, 수선하다
+1461	mendacious	거짓말하는
+1462	mendicant	거지, 구걸, 탁발승의
+1463	menial  	하인의, 비천한
+1464	mercurial	변덕스런
+1465	merge	융합, 합병하다
+1466	merited	(상, 벌, 주목) 받을 자격이 있는
+1467	metamorphose 	변형하다
+1468	metaphoric[al]	은유의, 은유적인
+1469	metaphysical	형이상학적인, 극히 추상적인 metaphysics n. 형이상학
+1470	meteoric	유성같이 빠른, 밝은, 금방사라지는
+1471	methodical	질서정연한, 방법론적인
+1472	meticulous 	매우 꼼꼼한, 주의깊은, 정확한
+1473	mettle	용기, 원기, 기개  mettlesome[adj]
+1474	milestone	이정표 기념비적인(획기적인) 사건, 일
+1475	minatory	위협하는
+1476	mindful	인식하는, 알고있는
+1477	minute	(요리) 즉석으로 만든; 미세한, 상세한
+1478	minutia	작고 사소한 세부사항
+1479	mire	습지, 늪; 곤경; (어려운 상황에) 얽히게 하다
+1480	mirth	환희, 유쾌함, 웃음
+1481	misanthrope 	인간을 싫어하는 사람, 염세가
+1482	miscellaneous	갖가지 잡다한; 잡동사니의
+1483	miscreant	범법자
+1484	misdemeanor	나쁜 행동
+1485	miserly	구두쇠의
+1486	mishap 	불행한 일
+1487	mislead	속이다, 오도하다
+1488	misnomer	오명, 잘못 붙여진 이름
+1489	mitigate	완화시키다, 가볍게하다
+1490	moderate	적절하게 하다, 완화시키다
+1491	modicum	소량
+1492	mold	모양을 바꾸다; 변형시키다
+1493	mollify	달래다
+1494	momentum	운동량
+1495	monolithic 	거대한, 강한, 균일한, 획일적인
+1496	monopolize	독점하다
+1497	moratorium	(지불, 집행) 유예
+1498	morbid	병의, 병적인
+1499	mordant	신랄한
+1500	moribund	다죽어가는; 기력없는
+1501	morose	시무룩하고 언짢은
+1502	motley	잡동사니의, 잡색의
+1503	mottle	점, 얼룩
+1504	muddle	혼동시키다
+1505	muffle	소음(消音)시키다
+1506	mulish	고집스런
+1507	multifaceted	다면적인
+1508	mundane 	평범한, 흔한; 세속적인
+1509	munificent	돈을 후하게 쓰는
+1510	murky	어둑어둑한, 안개가자욱한, 모호한, 애매한
+1511	mutability 	변화성
+1512	mutate	변화하다, 변화시키다
+1513	mute	소리 없는
+1514	myopia	근시안
+1515	myriad	수많은, 다수
+1516	nadir	천저, 밑바닥, 절망상태
+1517	naive	순진한, 순박한, 경험이 없는
+1518	nascent  	지금 막 생겨난
+1519	natty	말끔한
+1520	nebulous	흐린, 구름같은, 뚜렷하지 않은
+1521	nefarious	사악한, 범법의
+1522	negligent	태만한; 적절한 주의를 기울이지 못하는
+1523	negligible	하찮은
+1524	nemesis   	벌; 강적
+1525	neologism 	신조어, 관용구
+1526	nepotism	친족주의
+1527	nervy	건방진, 뻔뻔스런
+1528	nettle	화나게 하다, 안절부절못하게 하다; 쐐기풀
+1529	nibble   	조금씩 물어뜯다, 잠식하다
+1530	nice	철저한, 꼼꼼한, 정확한
+1531	nimble	민첩한, 영리한
+1532	nitpick	트집잡다
+1533	nocturnal	밤의, 야행성의
+1534	noisome	불쾌한, 해로운, 악취가 나는
+1535	nonchalant	태연한, 무관심한
+1536	noncommittal 	분명한 의견을 표명하지 않은, 애매한, 확실하지 않은
+1537	nonconformity	(표준, 전통, 규칙, 법률등) 따르지 않음, 불순응
+1538	nondescript	뚜렷한 특징이 없는
+1539	nonentity	보잘것없는 대상
+1540	nonplus	혼란스럽게 하다, 놀라게 하다
+1541	nostrum 	엉터리처방
+1542	notch	(V자형 모양) 새김눈; 급, 단계
+1543	notoriety	(악명으로) 유명함
+1544	novice	초보자
+1545	noxious	해로운, 불쾌한
+1546	nuance	미묘한 차이, 음영 nuanced [adj]
+1547	nugatory	중요하지 않은, 하찮은
+1548	nuisance 	귀찮은 것, 성가신 것, 폐
+1549	nullify	무효화하다
+1550	numb	마비된; 마비시키다
+1551	numberless	셀 수 없이 많은
+1552	nurture 	양육하다, 돌보다
+1553	oaf 	바보, 멍청이 oafish [adj]
+1554	obdurate	고집센
+1555	obeisant 	정중한
+1556	obfuscate	애매하게 하게 하다, 어리둥절하게 하다
+1557	oblique	기울어진, 비스듬한; 완곡한, 모호한; 부정한, 잘못된
+1558	obliterate	완전제거하다, 지우다
+1559	oblivious	알아채지 못한, 염두에 없는, 망각한 oblivion [n]
+1560	obscenity	저속한 행동, 말
+1561	obscure	불명료하게 하다; 불명료한; 유명하지 않은
+1562	obsequious	아부하는
+1563	observant	지각력이 예민한, 기민한
+1564	obsolete	구식의, 못쓰게 된 obsolescence [n]
+1565	obstinate	완고한, 완강한 obstinacy [n]
+1566	obstreperous	통제가 안되는, 시끄러운, 떠들석한
+1567	obstructionist	(입법행위) 의사방해자
+1568	obtrusive	돌출한, 눈에 거슬리는; 나서는, 주제넘은
+1569	obtuse	둔한, 이해가 매우 느린; 뭉퉁한, 둔한
+1570	obviate	미리 막다, 피하다; (필요성이나 어려움) 제거하다
+1571	occlude	닫다, 가두다, 막다
+1572	occult	숨겨진, 눈에 보이지 않는, 난해한
+1573	odious	몹시 불쾌한, 혐오스런
+1574	offbeat	색다른
+1575	offend	불쾌하게 하다
+1576	officious	참견이 심한
+1577	offset	상쇄하다
+1578	omnipotent	전능한
+1579	onerous	힘든, 성가신, 귀찮은
+1580	onset 	시작
+1581	opaque	불투명한
+1582	opportune	(시기, 시간) 적절한
+1583	opportunistic	기회주의적인
+1584	opprobrium	불명예, 비난  opporobrious [adj]
+1585	opulent  	부유한, 풍성한
+1586	orator	웅변가, 대중연설가
+1587	orthodox	정설, 정교의
+1588	oscillate 	진동하다, 주저하다, 흔들리다
+1589	ossify	골화(骨化)되다; 보수화되다
+1590	ostensible	표면상의, 겉보기만의; 명백한, 명료한
+1591	ostentatious 	자랑/과시하는, 허세부리는
+1592	ostracize	추방하다
+1593	oust	(지위, 장소에서) 내쫓다, 축출하다
+1594	outdated	구식의
+1595	outlandish	별난, 기이한, 희한한; 이국적인
+1596	outlaw	범법자, 무법자; 금하다
+1597	outmoded 	구식의
+1598	outspoken	솔직한
+1599	outstrip	능가하다, 뛰어나다
+1600	overbearing	횡포한, 고압적인, 거만한; 압도적인
+1601	overhaul	정밀점검하다; 전면 개보수하다
+1602	overriding 	가장 중요한, 최우선의
+1603	overrule	(결정 등) 뒤엎다, 파기하다;  거부하다
+1604	overshadow	그늘지게 하다, 다른 것보다 중요하게 되다
+1605	overt	공공연한, 명백한, 숨김없는
+1606	overwhelming	압도적인
+1607	pacify	달래다, 진정시키다
+1608	paean	찬가
+1609	painstaking	애쓰는, 수고를 아끼지 않는, 면밀한, 철저한
+1610	palatable	맛있는
+1611	palatial	궁전같이 웅장하고 멋진
+1612	palliate 	(증상) 완화시키다
+1613	pallid	(얼굴) 창백한
+1614	pallor	창백함
+1615	palpable	만져서 알 수 있는; 명백한, 뚜렷한
+1616	palpitate	(심장) 빠르게 뛰다
+1617	palter	둘러대다, 얼버무리다, 속이다
+1618	paltry	시시한, 하찮은
+1619	pan 	심하게 비난하다
+1620	panacea 	만병통치약, 이상적인 해결책이지만 사실 없는
+1621	panache	당당한 태도, 품격, 기백, 과
+1622	pandemic	(병이) 전국이나 전세계적으로 퍼지는; 그런 전염병
+1623	panegyric  	칭송, 찬양
+1624	paradigm	전형, 모범
+1625	paragon	완벽한 예가 되는 사람이나 사물, 모범, 전형
+1626	parallel	평행; 유사
+1627	paralyze	마비시키다
+1628	paramount	가장 중요한; 최고의
+1629	paranoid	편집증의, 지나치게 의심하는
+1630	pariah	사회적으로 경멸받고 따돌림 당하는 사람, 추방자
+1631	parity	동등, 동격, 동량
+1632	parochial 	제한된, 편협한, 지방의
+1633	paroxysm	갑작스런 발작, 감정의 폭발
+1634	parry	(대답 등) 회피하다
+1635	parsimony	인색함
+1636	partisan	열렬한 지지자(당원)
+1637	pastoral 	전원적인
+1638	patent	명백한, 눈에 띄는
+1639	paternalism 	온정주의, 가부장주의
+1640	patronage	후원
+1641	patronize	후원하다; 우월하게 행동하다, 생색내다
+1642	paucity	소량, 결핍, 부족
+1643	peccadillo	가벼운 죄, 사소한 실수
+1644	pedagogue	선생님; 교육자
+1645	pedantic	현학적인; 아는척하는, 규칙에 목메는 pedantry [n]
+1646	pedestrian	평범한, 진부한
+1647	peerless	적수가 없는, 최고의
+1648	peeve	화나게 하다 peevish [adj]
+1649	pejorative	경멸적인, 비난적인
+1650	pell-mell	뒤죽박죽, 황급한
+1651	penchant	강한 기호, 경향, 좋아함
+1652	penetrate	1. 관통하다, 꿰뚫다; 2. (사실, 진리) 간파하다, 이해하다
+1653	penitent	참회하는, 뉘우치는
+1654	penurious	몹시 가난한; 인색한
+1655	pep	활기, 원기, 활력
+1656	perceptual	지각의
+1657	percipient	지각하는, 감지하는, 통찰력 있는
+1658	peregrination 	여정, 여행
+1659	peremptory	단호한, 지엄한; 위압적인, 독단적인
+1660	perennial	지속적인, 영구적인
+1661	perfidy	배신, 속임
+1662	perforate	구멍뚫다
+1663	perfunctory	형식적인, 기계적인
+1664	perimeter	주변, 주위; 한계, 한도
+1665	peripatetic	순회하는, 돌아다니는
+1666	peripheral	주변부의, 중요하지 않은
+1667	permissive	허용하는
+1668	permute   	변경하다, 순서를 바꾸다
+1669	pernicious 	해로운
+1670	perpetrate	(범죄, 과실, 실책) 범하다, 저지르다
+1671	perpetual	영원한
+1672	perpetuate	영속하게 하다, 불멸하게하다
+1673	perquisite	(직위로 인해 얻는) 특권
+1674	persevere	인내하다, 견디다
+1675	persistent	집요한, 고집부리는; 지속하는
+1676	personable	잘생긴, 매력적인
+1677	personify	의인화하다; 구체화하다
+1678	perspective	관점
+1679	perspicacious	통찰력있는, 명민한 perspicacity [n]
+1680	perspicuous 	명확한, 명료한 * perspicuity [n]
+1681	persuasive	설득력있는
+1682	pertain	포함하다; 관계있다
+1683	pertinacious	완고한
+1684	pertinent	관련된, 적절한
+1685	perturb	마음을 동요시키다
+1686	peruse 	꼼꼼히 살피다, 정독하다
+1687	pervade	퍼지다, 온통가득하다
+1688	pervasive	널리 퍼져있는
+1689	pester	괴롭히다, 조르다
+1690	petty	사소한, 하찮은
+1691	petulant	성마른
+1692	phantom           	유령(같은)
+1693	phenomenal	경이로운, 대단한
+1694	philanthropy	박애주의
+1695	phlegmatic	점액질의; 무감한, 무기력한
+1696	piety	경건함
+1697	pilfer	훔치다
+1698	pinion 	손발을 묶다, 구속/속박하다
+1699	pinnacle	절정, 전성기, 정상
+1700	pinpoint 	정확히 짚다, 정밀조준
+1701	piquant	자극적이고 맛있는; (분위기, 태도) 자극적이고 적극적인
+1702	pique	화나게하다, 자극하다 cf] piquant
+1703	pitfall	함정, 숨겨진 위험
+1704	pithy	간결한
+1705	pittance	아주 적은 용돈, 수당, 보상
+1706	placate	달래다
+1707	placid	평온한
+1708	plagiarism	표절
+1709	plague	괴롭히다
+1710	plaintive	슬픈, 불쌍한, 애처로운
+1711	platitude 	진부한 말; 진부함
+1712	platitudinous	진부한
+1713	plaudit	박수, 찬양, 갈채
+1714	plead	간청, 탄원하다
+1715	plebeian 	중산층의, 보통의, 저속한
+1716	plenitude	풍성함
+1717	plethora	초과, 과다
+1718	pliable 	모양이 잘 휘는; 고분고분한
+1719	pliant	유연한, 고분고분한
+1720	pluck	용기
+1721	plumb	면밀히 조사하다
+1722	plummet	수직으로 떨어지다, 급락, 폭락하다
+1723	plunder	약탈하다, 훔치다
+1724	poignant	통렬한, 마음에 사무치는, 날카로운
+1725	poised	차분한, 침착한
+1726	polarity	양극성, 극단 polarize [v]
+1727	polemical	논쟁적인 polemicize[v]
+1728	politic	현명한, 분별력 있는
+1729	pompous	(태도, 말) 오만한, 거만한, 과장된
+1730	ponder	심사숙고하다
+1731	ponderous  	무거운, 육중한; 지루한
+1732	pontificate	오만하고 독단적으로 말하다
+1733	porous	다공성의, (기체, 액체) 쉽게 통과하는; 침투하기 쉬운
+1734	portentous	심각한, 중요한
+1735	poseur 	젠체하는 사람
+1736	posit	가정하다, 상정하다
+1737	postulate	가정하다; 당연한 것으로 여기다
+1738	potable	마시기에 적당한
+1739	potentate	권세가, 강대한 힘의 소유자
+1740	pragmatic	실용적인
+1741	prate	재잘재잘 지껄이다
+1742	precarious	위태로운, 불확실한
+1743	precedent	선례 precede [v]
+1744	precipitate	재촉하다, 촉발하다  성급한 [adj]
+1745	precipitous	급경사의; 성급한
+1746	preclude   	배제하다, 막다
+1747	preconception	편견
+1748	precursor 	선구자, 선행하는 것
+1749	predecessor	전임자
+1750	predetermined 	미리 결정된
+1751	predominant	우세한, 탁월한
+1752	preeminence	가장 뛰어남, 탁월함
+1753	preempt	선제적으로 막다; 선취하다, 선점하다  preemptive [adj]
+1754	preen   	치장하다, 자기만족을 드러내다
+1755	premeditate	미리 계획, 생각하다
+1756	preoccupation	몰두, 열중
+1757	preponderant	우세한, 압도적인, 능가하는
+1758	prepossessed 	매료된, 선입견에 사로잡힌
+1759	preposterous 	비상식적인, 터무니없는
+1760	prerequisite	필요조건
+1761	prerogative	특권
+1762	prescience	예지력; 통찰력
+1763	prescribe	규정, 명령, 처방하다
+1764	preservative	방부제
+1765	prestigious	훌륭한, 일류의
+1766	presume	추정하다
+1767	presumptuous	건방진
+1768	pretentious 	허세부리는, 과시하는
+1769	prevailing	널리 퍼져있는, 유행하는
+1770	prevalent	널리 퍼져있는
+1771	prevaricate	얼버무리다, 둘러대다, 속이다
+1772	prime	주요한; 탁월한, 최고의; 최초의
+1773	primeval	원시시대의
+1774	primordial	원시의, 태고의, 옛날의
+1775	principled	윤리적인, 규율이 있는
+1776	pristine	원래 그대로의, 오염되지 않은, 깨끗한
+1777	privilege	특권
+1778	prize	소중히 여기다
+1779	probity	정직, 청렴
+1780	proclivity	성향, 경향
+1781	procrastinate 	미루다, 지연하다, 늑장부리다
+1782	procurement	획득 procure[v]
+1783	prodigal	낭비하는 prodigality[n]
+1784	prodigious	거대한
+1785	prodigy	신동, 천재; 불가사의한 것, 경이로움
+1786	profane	불경스러운, 세속적인; 거룩하지 않은 더러운
+1787	proficient	능숙한, 유능한
+1788	profligate	탕진하는, 낭비하는
+1789	profound	심오한, 통찰력이 있는 profundity [n]
+1790	profuse	많은, 풍부한; 낭비하는
+1791	prognostication	예언,  진단
+1792	prohibitive	(가격) 지나치게 비싼; 금지하는, 제한하는
+1793	prolific 	다산의; 비옥한; 다작의
+1794	prolix	장황한, 지루하게 긴
+1795	prominence	명성, 중요함
+1796	promulgate	공표하다, 알리다 , 선포하다
+1797	proofread	교정하다
+1798	propagate	번식/증식 시키다, 보급하다, 전파하다
+1799	propensity	강한 기호, 경향
+1800	propitiatory	달래는
+1801	propitious	유리한
+1802	proponent	지지자, 제안자
+1803	proportionate 	비례하는, 균형에 맞는
+1804	propound	제안하다
+1805	propriety	행동의 적절함, 예의바름
+1806	prosaic	진부한; 산문형식의
+1807	proscribe	법으로 금지하다
+1808	prosecution	기소
+1809	proselytize	개종시키다; 개종하다
+1810	prostrate    	1. 엎드린, 굴복한, 기진맥진한 2. 굴복시키다, 쇠약하게 하다;
+1811	protagonist 	주연, 주인공
+1812	protract           	(기간) 연장하다; (몸) (앞으로) 쭉 뻗다
+1813	protuberance	돌출, 돌기, 융기
+1814	provident	(미래를 대비하여) 검소한, 절약하는
+1815	providential	시기적절한, 운이좋은; 섭리의, 신의 뜻에 의한
+1816	provincial	지방의, 촌스러운, 세련되지 못한; 시야가 좁은, 편협한
+1817	provision	(법) 조항; (장래) 준비
+1818	provoke	자극하다; 화나게 하다
+1819	prowess	용기, 기술
+1820	proximate	(관계, 원인, 장소, 시간) 가장 가까운; 근사값의
+1821	prudent	현명한, 신중한
+1822	prude	내숭떠는 사람 prudish [adj] 얌전한, 지나치게 고상한척 하는
+1823	pry	사적인 문제를 지나치게 캐묻다
+1824	pseudonym	(작가) 필명
+1825	puckish	짓궂은, 장난기 있는
+1826	puerile	유치한
+1827	pugnacious	호전적인
+1828	pulchritude	아름다움
+1829	pulverize     	분쇄하다
+1830	punctilious	세심한, 꼼꼼한
+1831	pundit	권위자, (미디어에 출연해서 의견을 말하는) 전문가
+1832	punitive	벌을 가하는
+1833	puny	작고 약한
+1834	purported 	~라고 알려진, 주장되는
+1835	pusillanimous 	소심한, 심약한
+1836	quack	돌팔이 의사, 사기꾼
+1837	quagmire	진흙탕; 어렵고 복잡한 상황, 궁지
+1838	quaint	(특이하거나 옛스런 정취로 인해) 흥미로운; 이상한 특이한
+1839	qualified	자격있는; 제한적인, 조건부의
+1840	qualify	(예외를 두어서) 제한하다, 한정하다
+1841	qualm	불안, 걱정; 양심의 가책
+1842	quandary	난처함, 궁지
+1843	quash	억제하다, 억누르다
+1844	queasy	멀미하는; 멀미나게 하는; 걱정, 염려하는, 긴장한
+1845	quell	진압하다
+1846	quench	불을 끄다; 억제하다; 갈증을 해소하다, 만족시키다
+1847	querulous	불평이 많은, 징징거리는
+1848	query	질문하다
+1849	quibble	사소한 반대, 트집잡기; 사소한 문제에 트집잡다, 논의의 주제를 회피하다
+1850	quiescence	무활동, 정지, 고요 quiescent [adj]
+1851	quintessential 	필수적인, 전형의
+1852	quirky	별난, 특이한
+1853	quixotic	지나치게 이상적인; 비현실적인
+1854	quotidian	일상적인, 매일매일의, 평범한
+1855	rabid	과격한, 광신적인, 맹렬한
+1856	radical	1. 근본적인 2. 급진적인
+1857	ragged	(옷이) 낡고 헤진; (표면이) 울퉁불퉁한
+1858	rail  	몹시 비난하다
+1859	rally	1. 세를 규합하다; 집회로 모이다 2 (사기) 진작시키다
+1860	rambunctious	떠들석한
+1861	ramification	(사건의) 결과
+1862	rampant	(나쁜 것) 만연하는, 횡행하는; (사람, 행동) 사나운, 미쳐날뛰는
+1863	ramshackle	(집 등) 쓰러져가는, 상태가 매우 안좋은
+1864	rancid	(부패로) 악취나는
+1865	rancor	원한, 악의 rancorous [adj]
+1866	rankle	화나게 하다
+1867	ransack	철저히 수색하다, 조사하다
+1868	rant	호언장담, 과장된 말; 고함치다, 고래고래 소리치다
+1869	rapport	(관계) 조화로움, 친근함
+1870	rash	무모한, 서두르는, 성급한
+1871	rationale	이론적 근거, 이성적 계산, 이유 rationalize [v]
+1872	rapacious	탐욕스런, 약탈하는
+1873	raucous	(소리) 거슬리는, 불쾌한
+1874	ravage	휩쓸어 파괴하다; 파괴행위, 파괴적 영향
+1875	rave	횡설수설 말하다; 극찬하다 raving = wild, irrational, or incoherent talk
+1876	reactionary	개혁에 반대하는, 보수적인
+1877	reassure	안심시키다
+1878	rebel   	반항하다, 반란을 일으키다
+1879	rebuff	퉁명스럽게 거부하다, 거절하다
+1880	rebuke	 심하게 꾸짖다
+1881	rebut 	반박, 논박하다
+1882	recalcitrant	권위에 저항하는, 다루기힘든
+1883	recant	(주장) 철회하다; (믿음) 부정하다
+1884	recapitulate	요약하다
+1885	recast	고쳐만들다, 쓰다, 변경하다
+1886	recede	물러나다; 감소하다
+1887	recess	쉬는시간; 휴식기간; 활동의 임시적 중단
+1888	recession	경기침체기, 쇠퇴
+1889	recidivism  	상습적 범행,  좋지 않았던 것을 되풀이함
+1890	reciprocity	호혜주의
+1891	reckless	무모한, 무분별한
+1892	recluse	은둔자
+1893	reconcile	화해시키다; 조화롭게 하다
+1894	recondite	난해한
+1895	reconnoiter 	정찰활동을 하다; 정보를 얻기 위하여 사전조사를 하다
+1896	recourse	의지, 의뢰
+1897	rectitude	(행동) 정의로움, 옳음, 정직
+1898	recuperative	(건강) 회복시켜주는
+1899	recurrent	재현되는
+1900	redeem	되찾다
+1901	redolent	향기로운
+1902	redoubtable	(적) 두렵고 존경스러운; 가공할만한
+1903	redundant 	잉여의, 생략한, (말) 장황한
+1904	refractory	고집불통의, 다루기힘든
+1905	refrain	삼가하다
+1906	refulgent	밝게 빛나는, 환희 빛나는
+1907	refute	논박하다
+1908	regimentation	조직화,통제
+1909	regression	1. 회귀, 복귀, 2. 후퇴
+1910	rein 	억제하다, 멈추다
+1911	reinforce	강화시키다
+1912	reiterate	되풀이하다, 반복하다
+1913	rejuvenate	다시 젊게 하다
+1914	rekindle	다시 불붙이다, 다시 불러 일으키다
+1915	relegate	강등시키다 [relegate A to B]
+1916	relentless	엄격한, 가혹한, 무자비한
+1917	relinquish	포기하다, 양보하다, 양도하다
+1918	reluctant 	내키지 않는
+1919	remedial 	치료, 교정의  remedy [n]
+1920	reminisce	회상하다
+1921	remiss	태만한, 성의없는, 소홀한
+1922	remold	(모양, 구조, 특징) 바꾸다
+1923	remonstrate	항의하다, 이의를 제출하다
+1924	remorse	양심의 가책, 후회 remorseful [adj]
+1925	remunerate	보답하다, 보수를 지불하다
+1926	rend	(잡아) 찢다
+1927	renegade	변절자; 반역자
+1928	renege	약속을 이행하지 못하다; (약속,계약) 폐기시키다
+1929	renounce	공식적으로 포기하다, 철회하다, 거부하다  renouncement [n]
+1930	reparation 	배상, 보수, 보상
+1931	repeal	취소, 철회하다
+1932	repel	물리치다; 불쾌감을 주다
+1933	repellent	불쾌감을 주는, 물따위가 스며들지 않게하는
+1934	replenish	다시 채우다
+1935	replete	충분한, 가득한
+1936	replicate	복제, 복사하다
+1937	repose 	휴식
+1938	reprehensible 	비난받아 마땅한
+1939	repress	억압하다, 억제하다
+1940	reprimand 	비난하다, 질책하다
+1941	reprisal 	보복적행동
+1942	reproachable	비난받을 만한  repoach [v]
+1943	reproof	질책, 비난
+1944	reprobate 	타락한 자, 별질자
+1945	repudiate	부인하다, 거절하다
+1946	repugnance	혐오함 repugnant [adj]
+1947	repulsive	불쾌감을 주는, 밀쳐낼
+1948	repute	~라고 믿다, 간주하다; 평판
+1949	requisite	필요한, 필수적인
+1950	rescind	폐지, 폐기, 철회하다
+1951	rescission	철회, 취소, 폐지
+1952	resentful	분개한, 화를 잘 내는
+1953	reserve	보유; 제한, 유보적 태도, 의심
+1954	reside 	거주하다; 존재하다, 있다 residency [n]
+1955	resignation	사퇴; 체념, 포기, 단념
+1956	resilience	탄력, 회복력
+1957	resolute	마음이 확고한
+1958	resolve	해결하다, 결심하다
+1959	resonant 	낭랑하게 울리는, 공명하는
+1960	resort to	기대다, 이용하다
+1961	respite	짧은 휴식
+1962	resplendent	화려한, 눈부신
+1963	restitution	반환, 상환
+1964	restive	불안, 초조한
+1965	restrain	제한하다, 억제하다
+1966	resume	재개하다
+1967	resurgence	소생, 부활, 되살아남  resurge [v]
+1968	resurrect	소생하다
+1969	resuscitate	소생하다
+1970	retain	보유하다, 유지하다 [n] retention
+1971	retaliate	(같은 수단으로) 보복하다, 복수하다, 앙갚음하다
+1972	reticent	과묵한
+1973	retort	(말) (빠르고 재치있게, 신랄하게) 되받아치다, 응수하다
+1974	retract	취소하다, 철회하다
+1975	retreat	(군대) 후퇴하다, 철수하다; 철회하다
+1976	retrench	경비따위를 줄이다
+1977	retrieve	되찾다, 회수하다
+1978	revamp 	변경하다
+1979	revel	매우 기뻐하다, 즐거워하다, 마시고 흥청거리다
+1980	reverberate	반향하다, 울려퍼지다
+1981	revere	깊이 존경하다
+1982	reverence	공경, 존경
+1983	revert	되돌아 가다
+1984	revile	비난하다
+1985	revisionist	수정주의자
+1986	revulsion	역겨움, 혐오감
+1987	ribald  	무례한, 음담패설을 해대는
+1988	rickety	(구조물) 곧 무너질 것 같은
+1989	riddle	수수께끼, 난제
+1990	rife	가득한, 퍼져있는, 유행하는
+1991	rift	금, 균열
+1992	righteous	도덕적인, 바른, 정의로운
+1993	rigid	휘지 않는, 융통성 없는
+1994	rigor	정확함, 엄격함
+1995	rile	화나게 하다
+1996	rip	거칠게 찢다, 갈기갈기 찢다
+1997	ripen	익다, 숙성하다, 익히다, 숙성시키다
+1998	rite	의식, 절차
+1999	rive	찢다, 찢어발기다
+2000	riveting	매력적인
+2001	robust 	건강한, 건장한
+2002	rococo	매우 화려한, 꾸밈이 많은
+2003	roil	화나게 하다, 초조하게 만들다
+2004	rotund	[살쪄서]둥근모양의
+2005	rowdy	소란스러운
+2006	rudimentary	미발달의, 미성숙의; 기본적인
+2007	rue	뉘우치다, 후회하다, 유감으로 여기다  rueful [adj]
+2008	ruminate	반추해보다, 깊이 생각해 보다
+2009	ruse	계략, 책략, 음모
+2010	rustic 	전원적인, 시골의
+2011	sabotage	고의적으로 방해하다, 파괴하다
+2012	saccharine 	맛이 단, 지나치게 감상적인
+2013	sacrilegious 	신성을 더럽히는
+2014	sacrosanct 	신성불가침의
+2015	saga	무용담, 영웅이야기
+2016	sagacious 	현명한, 기민한
+2017	sage	현인, 현자
+2018	salacious 	외설스런
+2019	salient	돌출한, 눈에 띄는, 유명한
+2020	saline	염분을 함유한; 짠
+2021	sally	반격, 돌격 (하다)
+2022	salubrious	건강에 좋은, 유익한; 건강한
+2023	salutary	유익한
+2024	salvage	(난파선 등) 구조하다, 해난구조하다
+2025	salvation	(죄로부터) 구원, (손상을) 구제
+2026	sanction	허가하다, 승인하다
+2027	sanctimonious 	신실한 체 하는
+2028	sanctuary	신성보호구역, 피난처
+2029	sanctum	신성한 장소, 성소; (간섭이 없는)
+2030	sangfroid    	침착, 냉정
+2031	sanguine	낙관적인, 쾌활한
+2032	sap	쇠약하게 만들다
+2033	sapient	슬기로운, 지혜로운
+2034	sarcasm	비꼼, 빈정거림, 풍자
+2035	sartorial	재단사의, 의복의
+2036	sate	충분히 만족시키다
+2037	satiate	충분히 만족시키다, 물리게 하다
+2038	satire	풍자
+2039	saturate	흠뻑적시다
+2040	saturnine	침울한, 우울한
+2041	savant 	학식이 높은 사람
+2042	savor	맛보다, 즐기다
+2043	savory	맛좋은
+2044	scant	적은, 불충분한; (공급, 수량) 줄이다
+2045	scathing	상처내는, 신랄한
+2046	sceptic 	회의주의자
+2047	scheme	음모, 모의; 음모를 꾸미다 [n] plot [adj] schematic
+2048	schism	분열, 분파
+2049	scintillate	불꽃이 너울거리다, 기지가 번뜩이다
+2050	scission	절단, 분리, 분열
+2051	scoff	조롱하다
+2052	scour	(솔과 물로) 북북 문질러 닦; 샅샅이 뒤지다
+2053	scrimp     	매우아끼다, 인색하게 굴다
+2054	scrupulous	양심적인; 세심한, 꼼꼼한, 면밀 scruple n. 양심, 양심의가책
+2055	scrutinize	면밀히 살피다
+2056	scurrilous	(입) 상스런, 저속한, 욕하는
+2057	seamy	도덕적으로 낮은, 천한
+2058	seasoned	경험있는, 능숙한
+2059	secrete 	분비하다; 숨기다, 감추다
+2060	secretive	비밀의, 숨기려하는
+2061	sectarian	파벌을 만드는, 한쪽에 치우친sectarianism [n]
+2062	secular	세속적인
+2063	sedentary	정주하는, 주로 앉아 있는
+2064	sedition 	반역, 폭동
+2065	sedulous	근면성실한, 주의깊고 부지런한
+2066	seemly	예절을 지키는, (행동) 적절한
+2067	seethe 	(마음속이) 분노로 부글부글 끓다; 분노로 끓어오르는 상태
+2068	self-abasement 	자기비하
+2069	self-effacing 	삼가는, 겸손한, 과시하지 않는
+2070	semantics	의미론
+2071	semblance 	유사, 비슷한 것
+2072	sentient 	감각이 있는, 느낄 수 있는
+2073	sequence	순서, 연속
+2074	sequent	추후의, 나중의
+2075	sequential	순차적인
+2076	sequester	고립시키다
+2077	seraphic 	천사의, 천사같은
+2078	serendipity	운수 좋은 뜻밖의 발견(물)
+2079	serene	고요한, 평온한
+2080	serration	톱니모양
+2081	serried	(사람, 물건) 꽉 찬, 빽빽한
+2082	servitude	노예상태
+2083	shackle	족쇄를 채우다
+2084	shadowy	그림자 드리워진, 희미한, 애매한, illusory
+2085	sham 	가짜의, 모조의; 모조품, 가짜
+2086	shard	(도자기, 유리, 바위) 파편조각
+2087	sheer	순전한; (천) 비치는
+2088	shifty	속이는, 기교있는
+2089	shiftless	의욕없는, 무기력한
+2090	shirk	회피하다  shirker [n]
+2091	shoddy	(물건 등) 질 떨어지는, 볼품없는
+2092	shore up	지지하다
+2093	shrewd	현명, 명민한
+2094	shrug (off)	(무관심, 의문, 불쾌의 표시) 양 어깨를 으쓱하다
+2095	shun	기피하다
+2096	sinewy	힘찬, 활발한, 건장한
+2097	singular	별난, 특이한; 탁월한
+2098	sinister	불길한, 해를 입힐 것 같은; 사악한
+2099	skimp	아까워하다, 인색하게 굴다
+2100	skirt	가장자리에 있다; 회피하다
+2101	skittish	잘 놀라는, 겁많은; 변덕스런, 활발한
+2102	skulduggery 	야바위, 속임수
+2103	skulk	살금살금 움직이다
+2104	slacken	느슨하게 만들다, 느슨해지다
+2105	slake	갈증을 해소하다, 만족시키다
+2106	slant	기울다, 기울어지게 하다; 왜곡하다, 편향된 시각을 보여주다
+2107	slight	1. 사소한, 대수롭지 않은 2. 무시하다, 경시하다
+2108	slink	조용히, 은밀하게 움직이다
+2109	slipshod	칠칠치 못한, 대충하는; 단정하지 못한
+2110	slothful	게으른
+2111	slouch 	1. 구부정하게 서있다/걷다 2. 게으름뱅이, 무능한 사람
+2112	slovenly 	지저분한, 단정치못한; 되는대로 하는, 날림의
+2113	sluggish	둔한, 활력없는 slow-moving or inactive
+2114	slur	1. 비방하다 2.불분명하게 발음하다
+2115	sly	교활한, 간사한, 음흉한
+2116	smash	박살내다, 파괴하다; 격렬하게 충돌하다
+2117	smattering	피상적인 지식; 적은 양
+2118	smirk	(자기만족 또는 비웃듯이) 히죽웃다
+2119	smolder	연기만 내면서 서서히 타다; (감정) 속에 맺히다; (눈 등이) (감정을) 나타내다
+2120	smother	(덮어서) 질식시키다, 불을 끄다; (감정, 행동) 억제하다
+2121	smug	자기만족하는, 우쭐한, 자부심 넘치는
+2122	smuggle	밀수하다
+2123	snarl	뒤엉키게 하다, 방해하다
+2124	sneer	비웃다, 조롱하다, 조소하다
+2125	sobriety 	냉정, 근엄, 진지함
+2126	solicit	요청하다, 구하다, 간청하다
+2127	solicitous	1. 걱정, 염려하는 2. 열심인, 잘하려고하는
+2128	solvent	지급 능력이 있는; 녹이는, 용해력있는
+2129	soothing	진정시키는
+2130	sop	달래려고 준 것; 뇌물
+2131	sophistic 	궤변의, 잘못된 이론의  sophism[n]
+2132	sophisticated	세련된; 순진하지 않은, 세상물정에 익숙한; 정교한
+2133	sophomoric   	아는 척하는, 미성숙한
+2134	soporific	수면성의, 잠이 오게하는; 졸리는
+2135	sordid	추잡스런, 더러운, 비열한
+2136	sparse	희박한, 드문드문 있는
+2137	spartan	엄격한, 간소한, 사치부리지 않는
+2138	spate	많은 양
+2139	specious	허울좋은, 겉만 번드르르한, 실제로는 잘못된
+2140	speculate	추측하다, 생각하다, 모험걸다, 투기하다
+2141	speculative 	추측에 의한, 투기의
+2142	spent 	(힘, 에너지) 소진된
+2143	spirited	활기(용기, 열의)넘치는
+2144	splenetic 	울화, 악의의  spleen[n]
+2145	splurge	 (돈) 펑펑쓰다[n,v]
+2146	spontaneous	사전계획없이 행해진; 충동/즉흥/자발적으로 움직이는
+2147	sporadic	간헐적인
+2148	sprawl	(도시•가로 등) 불규칙하게 넓어지다[뻗다]
+2149	spur	박차를 가하다, 독려하다, 자극하다
+2150	spurious	가짜의, 허위의
+2151	spurn	조롱하며 대하다
+2152	squabble	사소한 말다툼
+2153	squalor 	더러움, 누추함; 천함, 비열함
+2154	squander	탕진하다, 낭비하다
+2155	squash	진압하다, 억압하다
+2156	squeamish	비위가 약한, 너무 까다로운
+2157	squelch	억제하다
+2158	stagnant	(물이) 흐르지 않고 고여있는
+2159	staid  	조용한, 진지한
+2160	stain	[n][v] 얼룩 [지다]
+2161	stalwart	튼튼한
+2162	stanch 	멈추게하다
+2163	standoffish	쌀쌀맞은, 마음을 잘 열지 않는, 무뚝뚝한
+2164	stark 	1. 순전한 sheer, utter  2. 상태가 심한harsh, grim, desolate   3. 단순한simple, plain
+2165	starry-eyed	비현실적인, 이상적인
+2166	stasis	정지상태, 균형상태
+2167	steep	1. 가파른, 가격등이 비싼  2. 흠뻑 적시다
+2168	stench	악취
+2169	stentorian	큰 소리의, 우렁찬
+2170	stickler	끝까지 주장하는 사람; 당황스럽고 어려운 것
+2171	stifle	제한하다, 억제하다
+2172	stigmatize	낙인을 찍다; 비난하다; 오명을 씌우다
+2173	stilted	(글, 말) 형식적인, 부자연스러운, 뽐내는
+2174	stipulate	약정하다, 명문화하다
+2175	stodgy	칙칙한, 재미없는; 매우 보수적인
+2176	stoic	고통을 참고 내색하지 않는; 감정을 드러내지 않는
+2177	stolid	둔감한, 무감한
+2178	stopgap	임시변통
+2179	straightforward	솔직한, 애매함없는
+2180	stratagem	계략, 책략, 음모
+2181	stratify	계층화하다, 층을 이루게하다
+2182	stray	(있어야할 곳을 벗어나) 헤매다
+2183	streamline	(일, 과정) 능률적으로 하다, 간소화하다
+2184	stricture 	방해, 제한, 혹평
+2185	strident	(소리가) 불쾌한, 귀에 거슬리는, 삐걱거리는
+2186	stringent	엄격한, 엄한 =rigorous, tight
+2187	strive	노력하다, 애쓰다
+2188	strut	거만하게 걷다; 버팀목
+2189	stultify	활력을 없애다, 바보로 만들다; 무효로하다
+2190	stun	깜짝 놀라게 하다  stunning [n]
+2191	sturdy	튼튼한
+2192	subjugate	굴복시키다, 지배하다
+2193	sublime	숭고한
+2194	submerge	물에 푹 빠뜨리다, 잠수시키다
+2195	submissive	순종하는, 순응하는
+2196	subordinate	종속적인
+2197	subservient	굴종하는, 비굴한; 부차적인, 부수적인
+2198	subside 	내려앉다, 가라앉다
+2199	subsidiary	보조적인
+2200	subsidize	보조금을 지급하며 돕다
+2201	substantial	상당히 크고 중요한; 대단한
+2202	substantiate	입증하다
+2203	substantive	실질적인, 확고한
+2204	subsume	(규칙, 원칙에) 포함시키다
+2205	subterfuge	핑계, 구실, 속임수
+2206	subtle	미묘한, 분석이나 설명이 힘든, 복잡한
+2207	subvert  	전복시키다  subversive [adj]반항의, 반란의
+2208	succinct	간결한
+2209	succor	돕다
+2210	succulent	즙이 많은, 맛있는
+2211	succumb	굴복, 항복하다; (병으로) 쓰러지다
+2212	sullen	성질 더러운, 토라진, 뚱한
+2213	sully	더럽히다
+2214	sumptuous	호화로운, 사치스러운, 비싸보이는
+2215	sunder	분리하다, 절단하다
+2216	supercilious	거만한, 건방진
+2217	superficial 	피상적인, 깊이가 없는
+2218	superfluous	잉여의, 생략한
+2219	supersede	대신하다, 대체하다
+2220	supplant	(자리 등) 찬탈하다, 대신하다
+2221	supplement 	보완하다, 보충하다
+2222	suppleness  	유연함
+2223	supplicate	간청, 탄원하다
+2224	supreme 	최고의, 최상의
+2225	surfeit	과다
+2226	surge	쇄도, 밀려옴
+2227	surly	무뚝뚝한, 퉁명스러운
+2228	surmise	추측하다, 짐작하다
+2229	surmount	극복하다
+2230	surpass 	능가하다
+2231	surrender 	포기하다, 양보하다
+2232	surreptitious 	은밀한
+2233	surrogate	대리, 대행
+2234	susceptible	~하기 쉬운
+2235	suspend 	매달다; 막다; 연기시키다
+2236	sustain 	유지하다, 지탱하다
+2237	sway	흔들리다, 동요하다
+2238	swerve	(진로에서) 벗어나다, 이탈하다, 방향을 갑자기 바꾸다
+2239	sybarite		쾌락주의자
+2240	sycophant	아첨꾼
+2241	symbiosis		공생
+2242	symmetry	대칭
+2243	synchronous	동시발생의
+2244	synopsis		요약
+2245	syntactic		문장 구성의
+2246	synthesize	합성하다, 종합하다
+2247	tacit		암묵적인
+2248	taciturn		과묵한
+2249	tacky		1. 끈끈한  2. 촌스런, 조잡한
+2250	tact	(사람, 상황을 잘 다루어 불쾌하지 않게 하는) 센스, 재치
+2251	tactile	촉각의
+2252	tailor	(필요, 목적에 맞게 ) 변경하다
+2253	tainted  	더렵혀진
+2254	talisman	부적
+2255	tangential	주변의, 핵심에서 벗어난
+2256	tangible	만질 수 있는, 현실적인, 구체적인
+2257	tantalize	감질나게하다; 자극하다
+2258	tantamount 	비슷한, 동등한
+2259	tantrum	역정, 울화
+2260	tarnish	광택을 잃다, 더럽히다
+2261	tatty	낡고 초라한
+2262	taunt	자극하다, 조롱하다
+2263	taut	팽팽한, 긴장된
+2264	tawdry	장식만 번지르르하고 싸구려의
+2265	tax	비난하다
+2266	tear	찢다, 분리하다; 화급하게 움직이다, 돌진하다
+2267	tedious	지루한, 재미없는
+2268	teem	가득하다
+2269	teeter	비틀거리다
+2270	telling 	효과적인, 의미있는, 설득력있는
+2271	temerity	지나친 자신감, 무모함, 뻔뻔함
+2272	temper	누그러뜨리다, 완화시키다
+2273	temperance 	자제, 절제
+2274	tempestuous	폭풍우치는; 격정적인
+2275	temporize	우물쭈물하다, 미적지근한 태도를 취하다, 결단을 내리지 않다; 대세에 따르다
+2276	tenable	(반대, 공격) 방어할 수 있는, 견뎌내는
+2277	tenacious 	고집스런, 끈질긴
+2278	tendentious	편향적인
+2279	tender	제공하다, 입찰하다
+2280	tenet 	교리, 주의, 원리
+2281	tentative	임시적인, 주저하는
+2282	tenuous	가느라단, 희박한, (논거)박약한
+2283	tepid	미지근한, 열정이 거의 없는
+2284	terrestrial	지구의, 세속적인, 땅의
+2285	terrify	매우 두렵게 하다
+2286	terse	간결한
+2287	testimonial	추천서; 감사, 찬양의 표현
+2288	testy	조급한, 쉽게 화내는
+2289	thorny	가시가 많은; 어려운, 곤란한
+2290	thoroughgoing	철저한
+2291	threadbare	옷이 해어지고 낡은; 진부한
+2292	thrift	검소함
+2293	thrive	번성하다, 무성하게 자라다
+2294	throng	군중, 인파; 많은 수로 모이다
+2295	thwart 	막다, 좌절시키다
+2296	ticklish  	까다로운, 신경질적인; (문제) 다루기 힘든
+2297	tiff	사소한 말다툼
+2298	tilt	기울다; 기울게 하다
+2299	timeworn	너무 오래입어서 해어진; 너무 많이 써먹은; 진부한
+2300	timid	겁먹은, 소심한
+2301	timorous	겁먹은, 소심한, 자신감이 없는
+2302	tinge	색채를 더 하다
+2303	tirade	장황한 비난, 길고 열정적인 연설, 일장연설
+2304	tiresome	지루하게 하는, 짜증나게 하는
+2305	toady	아첨하는 사람
+2306	toil	애쓰다, 열심히 일하다
+2307	tolerant 	자신과 다른 의견이나 행동양식을 인정해 주는; 관대한
+2308	tongue-tied	(당황하여) 말문이 막힌
+2309	tonic	힘을 주는, 원기왕성하게 하는
+2310	toothsome	맛있는, 매력적인
+2311	topple	앞으로 꼬꾸라지다, 비틀거리다, 몰락시키다
+2312	topsy-turvy	거꾸로, 머리를 아래로; 뒤죽박죽
+2313	torment	고문, 괴롭힘
+2314	torpor	무기력
+2315	torrid	매우 더운; 열정적인
+2316	tortuous	구불구불한; 에두르는, 솔직하지 못한
+2317	totalitarianism	전체주의
+2318	touchy	지나치게 민감하게 구는
+2319	tout	과대선전하다, 몹시 칭송하다
+2320	tractable	다루기 쉬운, 유순한
+2321	trail    	(흔적을) 따라가다
+2322	trammel  	얽히게하다, 방해하다, 막다
+2323	trample	짓밟다
+2324	tranquil	고요한, 평온한 tranquility [n]
+2325	transcend	초월하다
+2326	transfer	이전하다, 양도하다
+2327	transient	일시적인
+2328	transition	변화, 전이
+2329	transitory	영원하지 않은, 일시적인
+2330	translucent	반투명인; 명쾌한; 맑은, 투명한
+2331	transmute	성질을 바꾸다, 변형하다to change or alter in form
+2332	transparent	투명한; 이해하기 쉬운, 명쾌한;
+2333	transplant	(기관 등) 이식하다, 옮겨심다
+2334	travail 	힘들게 일하다, 수고하다
+2335	treacherous	배신하는
+2336	treasure	소중히 여기다, 간직하다
+2337	tremulous	(손발) 떨리는; 겁많은, 소심한
+2338	trenchant 	(표현이) 신랄한, 날카로운; 명쾌한, 효과적인
+2339	trepidation	두려움
+2340	trespass	(종교) 죄, 위반, 부정; 불법 침해, 불법 침입;침해하다, 침입하다
+2341	tribute	감사, 존경, 찬양의 표시
+2342	trite	진부한
+2343	trivial	사소한
+2344	truculent	싸우기 좋아하는, 호전적인, 공격적인
+2345	truism	자명한 이치, 뻔히 아는 일
+2346	truncate	길이를 줄이다
+2347	tumultuous	요동하는
+2348	turbulent	무질서하고 혼란스러운
+2349	turgid	과장된, 허풍떠는; 부푼, 팽창한, 부어오른
+2350	turmoil	소란, 혼란, 불안, 동요
+2351	tussle	난투전, 싸움, 갈등
+2352	tyranny	폭정, 전제정치
+2353	ubiquitous	어디에나 있는
+2354	umbrage	불쾌감, 화
+2355	unaccountable	설명되지 않는
+2356	unaffected	꾸밈, 가장없는, 허세부리지 않는
+2357	unanimous   	만장일치의
+2358	unassuming	겸손한
+2359	unbridled	구속되지 않은, 자유로운
+2360	uncanny 	신비로운, 이상한
+2361	uncouth	(사람, 행동) 무례한, 거친; (외모) 세련되지 못한, 꼴사나운
+2362	unctuous	(사람이) 지나치게 아부하는; (물질이) 미끈미끈한
+2363	undaunted 	풀죽지 않은, 대담한
+2364	undercut	약화시키다
+2365	underestimate	과소평가하다
+2366	underhanded 	정당하지 못한, 은밀한, 불공정한
+2367	undermine	약화시키다
+2368	underpinning 	토대, 기초
+2369	underplay	하찮게 보이게 하다
+2370	underscore	밑줄그어 강조하다
+2371	understated	과소평가된
+2372	undeserved	가치없는; 정당성없는, 부당한
+2373	undeterred	풀죽지 않은, 단념하지 않은
+2374	unencumbered	방해없는
+2375	unequivocal	 명확한
+2376	unexceptionable	반대의 여지가 없는
+2377	unfailing	실패가 없는, 확실한
+2378	unfathomable	이해하기 힘든; 측정하기 힘든
+2379	unfeigned	꾸밈, 가장없는
+2380	unfettered	구속없는, 자유로운
+2381	unflappable	침착한
+2382	ungainly	(외모, 행동, 솜씨 등) 서툴고 어색한
+2383	ungovernable	통제나 지배가 불가능한
+2384	unintelligible	이해할 수 없는
+2385	unkempt	(외모) 흐트러진, 단정하지 못한
+2386	unprecedented	전례없는
+2387	unremitting	끊임없는, 계속적인
+2388	unrepentant	후회하지 않는, 회개하지 않는
+2389	unruly	규칙을 따르지 않는, 제어하기 어려운
+2390	unscathed	상처없는
+2391	unseemly	(행동) 적절하지 않은
+2392	unstudied	꾸밈이 없는, 자연스러운; 배우지 않고 터득한
+2393	untenable 	(논리) 방어되지 않는
+2394	untold 	셀 수 없을 만큼 많은, 무수한
+2395	untoward	적당치않는, 곤란한, 불리한
+2396	unveil	덮개를 걷다; 최초공개하다
+2397	unwarranted	정당성 없는, 생략한
+2398	unwieldy	다루기 힘든; 성가신, 귀찮은
+2399	unwitting	무의식적인; 고의가 아닌, 우연적인
+2400	unwonted 	익숙하지 않은, 일반적이지 않은
+2401	upbraid	(몹시) 나무라다, 비난하다
+2402	uphold	수호하다, 지지하다
+2403	urbane	세련된, 예의바른
+2404	usurp	권력을 불법적으로 찬탈하다
+2405	utter 	1. 완전한, 절대적인 2. 말하다
+2406	vaccinate	예방접종하다
+2407	vacillate	주저하다, 망설이다
+2408	vacuous	생각이 없는, 어리석은
+2409	vagabond	방랑하는; 방랑자
+2410	vagary	변덕, 엉뚱한 짓
+2411	vagrant	방랑자, 부랑자; 방랑하는; (생각) 변덕스런, 불안정한
+2412	vainglorious	허영심 강한
+2413	valediction	작별; 작별인사
+2414	valiant 	용감한
+2415	validity 	타당성
+2416	valorous	용감한
+2417	vanquish 	정복하다, 항복시키다
+2418	vapid	맛없는, 재미없는
+2419	vaporous	증기의, 가벼운, 신뢰할 수 없는, 자주 변하는
+2420	variegation 	얼룩덜룩함
+2421	varnish	니스칠하다, 광내다
+2422	vault	금고
+2423	vaunt	자랑하다, 허푸떨다
+2424	veer	방향을 바꾸다; 의견이나 주제를 바꾸다
+2425	vehement 	격렬한, 열정적인
+2426	veiled	숨겨진, 감추어진
+2427	venal     	매수되기쉬운, 타락한
+2428	venerable	공경받는
+2429	venerate	깊이 존경하다, 우러르다
+2430	venial	(죄, 잘못) 사소한, 용서받을만한
+2431	venture	감히 ~하다
+2432	veracity	진실함; 정확함
+2433	verbiage	장황함
+2434	verbose	장황한
+2435	verdant 	초목이 무성한; 경험적은, 미숙한
+2436	verisimilitude	있을법함, 사실같음
+2437	veritable	참다운, 진짜의
+2438	vernacular	사투리, 방언; 일상어
+2439	versatile	다재다능한, 다용도의
+2440	versed	경험이 있는, 잘 알고 있는
+2441	verve	활력, 기백, 열정
+2442	veto	거부권; 금지, 거부
+2443	vex	짜증나게, 화나게하다
+2444	viable	실행가능한; 생존할 수 있는
+2445	vicarious	대리의, 대행의
+2446	vicissitude	변천,  변하기 쉬움, 우여곡절
+2447	vigilant 	경계하는, 방심하지 않는
+2448	vigorous	원기왕성한, 활력적인
+2449	vile	사악한, 부도덕한, 불쾌한
+2450	vilify	비방, 중상하다
+2451	vim	정력, 활기, 열정
+2452	vindicate	옹호하다, 무죄방면하다
+2453	vindictive	복수심이 불타는, 앙심을 품은
+2454	virtuoso	명인, 대가
+2455	virulent	맹독성의, 매우 해로운
+2456	visceral	내장의; 이성보다는 감정에서 비롯되는; 거친, 노골적인
+2457	vital	매우 중요한; 활기넘치는
+2458	vitiate 	손상시키다, 망치다
+2459	vitriolic	신랄한 vitriol [n] 독설
+2460	vituperative	욕설하는, 몹시 비난하는
+2461	vivify	생기를 주다, 기운차리게 하다
+2462	vociferous    	떠들썩한
+2463	void	법적 효력이 없는
+2464	volitional	의지, 결단력있는
+2465	voluble	유창한, 말많은
+2466	voluminous	부피가 큰, 방대한
+2467	voluptuous	사치스런, 향락적인, 관능적인
+2468	voracious	식욕이 왕성한, 게걸스러운
+2469	votary  	열렬한 추종자, 신봉자
+2470	vouch	(신뢰성을) 보증하다, 보장하다
+2471	vouchsafe	하사하다, (아랫사람에게)주다
+2472	vulgar	저속한 (저속한 인간)
+2473	vulnerable	연약한, 상처/공격받기 쉬운
+2474	waffle	장황하게 말을 늘어놓다; 모호한 태도, 입장을 취하다
+2475	waggish	웃기는, 익살스런
+2476	waive	보류하다, 포기하다
+2477	wan 	병약한, 안색이 나쁜
+2478	wander	(정처없이) 헤매다, 배회하다
+2479	wane	작아지다, 약해지다, 달이 기울다
+2480	wanting	부족한
+2481	warrant	정당화하다
+2482	wary	조심하는, 주의하는
+2483	watchful	경계를 서는, 조심하는, 주의깊은
+2484	wax	커지다, 강해지다
+2485	wayward	통제할 수 없는, (행동이) 어디로 튈지 모르는
+2486	whet	날카롭게하다; 자극하다
+2487	whimsical 	변덕스런  whimsy [n]
+2488	willowy	(사람이) 키크고 날씬한, 우아한
+2489	wilt  	시들다
+2490	wince	(고통, 두려움) 찡그리다, 움츠리다
+2491	winning	매력적인
+2492	winsome	매력적인
+2493	wiretap	전화 도청하다
+2494	wistful	갈망하는, 탐내는 듯한; 생각에 잠긴, 슬픈
+2495	withdrawn	사교적이지 않은
+2496	wither	쭈글쭈글한, 쇠약한, 시든
+2497	withhold	보류하다, 주지 않다; 억제하다
+2498	withstand	저항하다, 버티다
+2499	woe	비통, 고뇌; (비통의 원인), 어려움
+2500	worldly	세속적인, 경험많고 세상을 잘 아는
+2501	yielding	유순한, 순종적인, 고분고분한
+2502	zeal	강한 열정 zealous [adj] zealotry [n]
+2503	zealot 	광신도, 열광자 zealotry [n]
+2504	zest 	기분좋은 맛, 자극, 흥미, 관심
+2505	zeitgeist 	시대정신

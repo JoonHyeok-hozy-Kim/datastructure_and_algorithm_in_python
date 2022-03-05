@@ -17,3 +17,7 @@ U
 %Part04_Recursion/part4_7_exercises.md,d\5\d55576982dae83e5e74bf45a7ad7bccdb92ecae7
 9
 	temp.html,9\2\9288dd1186e87ee1f94172deb19a56a205f99f3b
+l
+<Part05_Array_Based_Sequences/part05_array_based_sequences.md,f\8\f82853f40dbdaa265b80e74425ba0057239e7c26
+G
+DataStructures/array.py,0\d\0d7641f27ffb239413561f2db4896c923c568dc1
