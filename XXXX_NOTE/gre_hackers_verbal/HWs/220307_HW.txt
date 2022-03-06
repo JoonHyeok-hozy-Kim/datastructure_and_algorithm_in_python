@@ -17,7 +17,7 @@
 		9. BC
 			§ Strain : 압박, 부담
 		10. B
-		
+
 		1. B
 			§ Outright : 완전한 (downright)
 			§ Intransigent : 고집스런
@@ -45,8 +45,8 @@
 			§ Goad : 못살게 굴다
 			§ Engrossed : 몰두한
 			§ Inured : 단련된
-		
-		
+
+
 	• SETC
 		○ TEST1
 			1. A
@@ -76,7 +76,7 @@
 				□ Supplant : 대신하다
 			11. CE
 				□ Reel : 비틀거리다
-			
+
 		○ TEST2
 			1. AD
 			2. CF
@@ -97,8 +97,46 @@
 				□ Chivalrous : 예의바른
 				□ Gallant : 용감한
 			11. BDH
-			
-			
+
+		○ TEST3
+			1. CEG
+			2. BD
+				□ Pluck off : 뽑다
+				□ Embroider : (이야기를) 윤색하다
+				□ Embellish : 윤색하다
+			3. BEI
+			4. AB
+				□ Economic strait : 경제적 궁핍
+				□ Woe : 고민, 비애
+			5. BDI
+				□ Fidelity : 정확도, 충실함
+				□ Concur : 동의하다, 일치를 보다
+			6. EF
+				□ 질문
+					® 이 문장의 동사가 무엇인가…? 동사가 없어보임...
+				□ voca
+					® Notwithstanding : 그럼에도 불구하고
+					® Pedigree : 족보, 혈통있는
+					® Antecedent : 선행사건
+			7. AB
+				□ Elation : 기쁨
+				□ Untoward : 뜻밖의
+			8. AEG
+				□ Popularize : 대중화하다
+			9. BD
+				□ 질문
+					® Waterproof가 밖에서 안으로 말고 안에서 밖으로도 의미하나?
+				□ voca
+					® desiccation : 건조
+					® Lithe : 유연한
+			10. CFI
+				□ Hoist : 들어올리다
+				□ Scrupulously : 양심적으로
+				□ Flutter : 흔들림, 소액의 내기 돈
+			11. CD
+				□ Articulate : 잘 표현하는, 또렷한, 분명한
+
+
 	• Reading Comprehension
 		○ Seismic-reflection
 			§ 답 : (A)
@@ -106,7 +144,7 @@
 				□ Seismic-reflection이 중요한 tool이다.
 			§ Assumption
 				□ 각종 방법으로 모든 wave-train source들의 오차를 줄여준다.
-				
+
 		○ African Music
 			§ 답 : (C)
 			§ Voca
@@ -116,7 +154,7 @@
 				□ 학자들이 아프리카 문화에서 음악의 역할을 과소평가한다.
 			§ Assumption
 				□ 음악은 아프리카 흑인문화속에 베어있어, 노예제로 dislocated 되어도 문화보존에 역할 했기 때문이다.
-				
+
 		○ Occupational Unionism
 			§ Voca
 				□ Collective : 집단의, 공통의
@@ -124,8 +162,8 @@
 				□ Occupational Unionism은 worksite unionism과 구분되는 특징들이 있었으며, 고용인들의 노동권을 더욱 적극적으로 보장했다.
 			§ Assumption
 				□ 실직시 이직을 보장하고, 근로가능성을 보장했다.
-				
-				
+
+
 		○ Croce - Art origianates in intuitive faculties
 			§ Voca
 				□ Frenzy : 광분, 광란
@@ -133,21 +171,21 @@
 				□ 철학자들은 Croce에 반대한다.
 			§ Assumption
 				□ 법칙, 지식, 기술 등의 지식의 힘으로 예술을 발전시켰기 때문
-				
+
 		○ Marine Extinction
 			§ Con
 				□ 주기적 Marine/terrestrial 멸종이, 지질학적 사건들에 기인할지 모른다는 아이디어가 도출된다.
 			§ Assumption
 				□ 해상동물들도, 지상 동물들도 주기적으로 멸종했다.
 				□ 무언가 거대한 힘이 있을 것이다 -> 지질학적 사건
-				
+
 		○ Zooplankton
 			§ 답 : A
 			§ Con
 				□ 동물성 플랑크톤의 섭생방식
 			§ Assumption
 				□ Tadpolelike appendicularian으로 예시
-				
+
 		○ Earth rocks to Mars
 			§ 답 : B
 			§ Con
@@ -155,20 +193,57 @@
 			§ Assumption
 				□ 중력을 이겨낼 정도의 힘을 위해선, 매우 큰 운석이 충돌해야한다.
 				□ 화성의 공전궤도가 크므로 지구의 파편이 도달할 확률도 적다.
-				
+
 		○ The Origin of Moon
 			§ 답 : A
 				□ Why?) 두개의 가설을 나열하고 있을뿐 어떤 stance를 취하진 않음.
-				
+
 		○ Bearden - Black American Artist?
 			§ 답 : B?
 			§ Con
 				□ Bearden을 단순히 미국 흑인 예술가로 치부할 순 없다.
 			§ Assumption
 				□ Bearden은 단순히 미국의 흑인의 삶을 표현하는것에 그치지 않고 그것이 amplify하는 것에 중점을 두어, 좀더 보편적인 의미를 갖도록 했기 때문이다.
-				
-				
-				
+
+		○ David Cressy - 초기 미국 이민자들
+			§ 답 : B
+				□ Why?) 종교적 이유보단 물질적 보상이 이민의 이유였다는 주장을 전개하고 있음.
+			§ Con
+				□ 미국 초기이민자들은 종교적 이유보단 물질적이유로 이민했다.
+			§ Assumption
+				□ 이민자 대부분이 농업전문가들의 가정이 있는 사람들이었다.
+			§ Voca
+				□ Clergy : 성직자들
+
+		○ Nuclear Fusion은 시기상조다
+			§ 답 : B
+			§ Con
+				□ 연구단계는 몰라도 응용단계에서 핵융합은 시기상조다.
+			§ Assumption
+				□ 핵융합도 방사능을 방출한다.
+				□ 핵융합은 리튬의 제한적 매장으로 무한하지 않다.
+
+		○ Black American Music
+			§ 답 : C
+				□ B가 아닌 이유 - 삶을 통째로 나타내는건 흑인음악만의 특징이었음.
+			§ Voca
+				□ Err : 실수를 범하다.
+
+		○ Zooplankton
+			§ 답 : E
+
+		○ Marine Extinction
+			§ 답 : BD
+
+		○ Mathematics : Single-minded, literal-minded, simpleminded
+			1. 답 : E
+				□ 전제가 조금 바뀌더라도 먹히는 주장들을 해야한다고 함.
+			2. 답 : A
+			3. 답 : D
+
+
+
+
 	• Critical Reasoning
 		1. Johnson's distortion of Dickinson's poetry
 			§ 답 : A
@@ -178,7 +253,7 @@
 				□ Johnson 본인도 Dickinson의 시를 왜곡한다.
 			§ Assumption
 				□ Dickinson이 확정한적 없는 punctuation들을 dash로 대체했다.
-				
+
 		2. Asteriod - Thetis and Iole
 			• 답 : E
 				□ Why?) Iole에 운석이 더 많이 충돌할텐데 Thetis에 crater가 더 많다는건 더 오래되었다는 것의 방증이므로
@@ -186,7 +261,7 @@
 				□ Thetis가 Iole보다 오래됐다.
 			• Assumption
 				□ Iole보다 Thetis에 구덩이가 더 많기 때문이다.
-				
+
 		3. Daily Bugle in Gotham City
 			• 답 : D
 				□ Why?) Daily Bugle이 고담에 오래 산 사람들에 의해 쓰여진다면 그 것이 real voice of Gotham 일 것이므로.
@@ -196,7 +271,7 @@
 				□ Daily Clarion이 진짜 Gotham 시민들을 대변하는 신문이다.
 			• Assumption
 				□ Daily Bugle은 시외 사업체가 운영한다.
-				
+
 		4. Melon is not sweet in rainy days
 			• 답 : C
 				□ Why?) 최종적으로 하려는 얘기는 비 많이오면 멜론이 안달다는것.
@@ -206,21 +281,28 @@
 				□ Melon is not sweet in rainy days
 			• Assumption
 				□ 땅이 젖으면 산소가 부족하여, 뿌리가 손상되고 광합성을 덜 하므로, 양분이 부족해져 열매에 당분이 적게 남는다.
-				
-				
+
+		24. 40세 이후 과학적 발견
+			• 답 : D
+			• Con
+				□ 나이 40이 지났다고 과학적 발견을 하지 못하는 것은 아니다.
+			• Assumption
+				□ 40세가 지나고서도 획기적 발표를 하는 사람들이 있는데 얘네는 늦게 시작했다.
+				□ 40세 이전에 발표한 사람들은 최소 학계에 15년정도 있었다.
+
 	• 출제문제풀이
 		1. 비행기에서 영화 재미없는 것 논증
 			• 답 : C
 				□ 영화가 형편없지 않다면, 명작이어야 Consuelo가 본 영화가 명작임에도 즐기지 못했음을 확실히 해준다.
 				□ 영화가 평범했기 때문에 재미없었을 수도 있기 때문이다.
-				
+
 	2-3. 19세기 유럽, 여성의 정치 참여
 		2. 답 : B
 			• Why?) "사회에 대한 인내력있는 유대와 일상생활 너머의 존재감을 개인들이 형성할 수 있도록 한다는 점에서, 단순한 정치 참여로 폄하되어선 안된다"는 말이 있음.
-				
+
 		3. 답 : B
 			• Why?) 여성들의 정치참여를 피상적으로 서술한 표현이라고 함.
-			
+
 		4. Capuchin Monkey
 			• 답 : ADH
 				□ Why?)
@@ -231,26 +313,26 @@
 			• Voca
 				□ Repertoire : 레퍼토리
 				□ Augment : 늘리다.
-				
+
 		5. Miles Davis
 			• 답 : AD
 				□ Why?) 더 이상 팔아치울것이 없어서 똑같은것만 계속 찍어낸다는 뉘앙스?
 			• Voca
 				□ Plunder : 약탈하다
 				□ Bare : 헐벗은/텅빈
-				
+
 	6-7 새들이 새벽에 더 우는 이유
 		6. 답 : B
 			• Why?) Kacelnik의 설명에서 한계가 있었던, 밤에는 왜 안 우는지에 대한 답임.
-			
+
 		7. 답 : B
 			• Why?) 글은 먹이의 유무가 아니라 새들 간의 상호작용이 새들이 울어대는 이유라고 말하고 싶어함.
-			
+
 		8. XYZ Attorney의 항변 - 정부 속였다고 기소당한것은 부당하다
 			• 답 : D
 				□ Why?) 변호인은 내부고발제도의 존재가 부정행위를 막을것이라 주장함
 					® 만약 조직적으로 가담한 것이라면?
-					
+
 	9-12 folklore
 		○ voca
 			• folklore : 민속, 전통문화
@@ -260,9 +342,49 @@
 		9. 답 : E
 			• 전통문화에 대해 글을 쓰면서도 의도적으로 인용을 빼먹는 사람 = 민속적 연구를 무시하는 사람
 		10. 답 : C
-			• why?) Wester ethos에 기반한 전통문화를 괄시하는 관점을 지칭
+			• why?) Western ethos에 기반하여 전통문화를 괄시하는 관점을 지칭
 		11. 답 : B
 			• why?) 문학 비평가들이 흑인 전통문화의 규범들이 자신들의 것과 동급이라 생각하는 일이 거의 없었다고 함.
 		12. 답 : A
 			• why?) 인용이라는 공식적인 방법을 쓰지 않고, "자칭 ~~ 인류학 전문가"라는 조롱하는 듯한 표현을 사용했으므로.
-		
+
+	13-15
+		○ voca
+			• spring : 갑자기 튀어오르다.
+			• heather : 헤더 꽃
+			• albeit ~ : 비록 ~ 일지라도
+			• impinge : 영향을 주다
+			• upheaval : 격변의
+			• rustic : 시골 특유의
+		13. 답 : C
+			• why?) 여러 분석가들을 소개하다가 Juliet Barker에 와서야 제대로 설명하고 있다고 함.
+		14. 답 : B
+			• why?) Gaskell이 말한 위험한 내용없다는 견해에 being at varience 하고 subvertive spirit이 있다고 했으므로
+		15. 답 : E
+			• 변화무쌍한 산업화 사회와는 동떨어진 proper하고 안전한 생각들만 있다고 했으므로.
+
+		16. Soybean
+			• 답 : DF
+			• voca
+				□ provenance : 기원, 유래
+
+	17-18 Patronage replaced by pension awarded by the Crown
+		17. 답 : B
+			• why?) pension award는 Samual Johnson이 patronage 대신 받던 것이므로.
+		18. 답 : B
+			• why?) 50년간 patronage가 감소해가는 추세였기 때문에 Johnson도 거절했을것이므로.
+
+	19-21 Matisse's Idiosyncrasy
+		19. 답 : A
+			• why?) Braque도 혁신적이긴 했지만 최소한 전통적 규범들을 공부할때 쓰는 도구들을 활용했음.
+		20. 답 : AB
+			• why?) A - Braque 조차 사용했던 tool 마저도 안쓰는 마티스
+			• why?) B - "unrelated to any system of ideas"
+		21. 답 : AC
+			• why?) A - 피카소는 traditional signs and symbols를 쓴다고 함. 마티스는 안 씀.
+			• why?) B - 피카소는 어느정도의 체계가 있으나, 마티스는 전적으로 직관에 의존해서 분석해야함.
+		4. 답 : B
+			• voca
+				□ amenable : 말을 잘 듣는
+
+
