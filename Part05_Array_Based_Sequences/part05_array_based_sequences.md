@@ -170,8 +170,37 @@ class DynamicArray:
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_03_02_arithmetic_capacity_increase.png" style="height: 300px;"></img><br/>
 </p>
 
+#### Concept) O(n) memory usage.
+* Why Needed?
+  * O(n) memory usage secures the total size of the array proportional to the number of the elements.
+  * If not, repeated append/delete operation may incur arbitrary size of the underlying array.
+* Geometric Capacity Increase
+  * Applicable!
+    * why?) The size of the Array is proportional to the size of the actual element.
 
 
+### 5.3.3. Python's List Class
+* Prop.) Python's List Class does not use Geometric nor Arithmetic Capacity Increase.
+  * Still, amortized constant-time behavior is guaranteed.
+  * Experiment Below
+```python
+from time import time
+
+def compute_average(n):
+    data = []
+    start = time()
+    for k in range(n):
+        data.append(None)
+    end = time()
+    return (end-start)/n * 10000000
+
+if __name__ == '__main__':
+    print(compute_average(100))
+    print(compute_average(1000))
+    print(compute_average(10000))
+    print(compute_average(100000))
+    print(compute_average(1000000))
+```
 
 
 
