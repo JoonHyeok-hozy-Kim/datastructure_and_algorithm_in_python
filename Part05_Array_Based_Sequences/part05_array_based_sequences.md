@@ -143,6 +143,7 @@ class DynamicArray:
 * Tech.) Detailed analysis on the running time of operations on Dyanmic Arrays
   * Tool) big-Omega notation (giving asymptotic lower bound)   
 <br>
+
 #### Concept) Amortized Anaylsis
 * Assumption
   * Dynamic Array doubles its size when it is full.
@@ -157,15 +158,21 @@ class DynamicArray:
   8. From now on, appending operations will save 2 additional coins as usual and this will be used for the next doubling.
   9. Therefore, appending operation takes 3n running time and the running time is O(n).   
 <br>
+
 #### Concept) Trade-off between run-time efficiency and memory usage for Geometric Increase in Capacity
 * Why?)
   * If the base of Geometric Capacity Increase is larger, less Capacity Increasing will take place.
   * But more memory space is required.   
 <br>
+
 #### Concept) Arithmetic Capacity Increase takes Ω(n^2) running times.
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_03_02_arithmetic_capacity_increase.png" style="height: 300px;"></img><br/>
 </p>
+
+
+
+
 
 
 <p>
