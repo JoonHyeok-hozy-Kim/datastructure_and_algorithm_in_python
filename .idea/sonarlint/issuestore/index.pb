@@ -23,3 +23,9 @@ S
 #Part04_Recursion/part4_recursion.md,9\c\9cc46703ee26ad2122814c16b64edf24b2204003
 h
 8Part03_Algorithm_Analysis/part3_3_asymptotic_analysis.py,c\4\c41523b8817c8f30cdc622d3700a0548d7542867
+]
+-XXXX_NOTE/gre_power_voca/power_voca_editor.py,2\6\26b700c5793f0967cd28a1862320138cdec3688c
+R
+"XXXX_NOTE/AmgheegohraeFormatter.py,5\b\5b09b8299522d3ac44bb31c91304510e0b4ee25d
+U
+%XXXX_NOTE/exchange_loss_comparison.py,5\1\51896e834e66a620354276a42d717cae99121672
