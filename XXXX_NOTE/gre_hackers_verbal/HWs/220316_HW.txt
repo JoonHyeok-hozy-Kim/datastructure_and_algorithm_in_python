@@ -1,0 +1,123 @@
+	• Voca
+		1. -
+
+
+	• SETC
+		○ TEST 10
+			1. CDI
+			2. AD -> CD
+				□ Prodigious : 엄청난
+			3. BE -> CF
+				□ Quizzical : 약간 놀란(재미있어 하면서)
+				□ Subdued : 분위기가 가라앉은, 우울한
+				□ Raucous : 시끌벅적한
+				□ Rapturous : 황홀해하는, 열광적인
+			4. DE
+				□ Feign : 가장하다
+			5. AF -> CF
+			6. BD -> BE
+			7. BE
+			8. AE -> BE
+				□ Directly에서 힌트를...
+			9. BDI
+			10. B
+				□ Embellish : 꾸미다
+				□ Bemoan : 한탄하다 (투덜거림의 느낌)
+			11. BC -> C
+
+		○ TEST 11
+			1. CD -> CF
+			2. CD
+			3. AEH -> BEG
+			4. AD -> BD
+			5. CD
+			6. BE
+			7. B
+			8. C
+			9. BEG -> BEH
+			10. EF -> CD
+			11. CEH
+				□ Umbrage : 분기탱천
+
+		○ TEST 12
+			1. DE -> BE
+			2. BEI -> BFI
+			3. BDI
+			4. BDG
+			5. CF
+				□ Provisional : 일시적인, 잠정적인
+				□ Appreciable : 주목할만한
+			6. CFI -> AEG
+				□ Concession : 양보
+				□ Disown : 의절하다
+				□ Scuttle : 무산시키다
+			7. D -> A
+			8. CF
+			9. AE -> BD
+				□ Churlish : 무례한
+				□ Cagey : 말을 안 하는, 비밀스러운
+			10. CF -> CE
+				□ Attempt : 시도하다
+			11. AEH -> BFG
+				□ Disgruntled : 불만을 품은
+				□ Repel : 쫓아내다
+				□ Disaffected : 불만을 품은
+
+
+	• RC
+		○ TEST 3-1
+			1. D
+			2. A
+			3. B
+
+		○ TEST 3-2
+			1. E
+
+		○ TEST 3-3
+			1. C
+			2. D
+
+		○ TEST 3-4
+			1. B
+			2. D
+			3. B -> A
+			4. B
+			5. D
+			6. A
+			7. D
+
+		○ TEST 3-5
+			1. D -> E
+			2. B
+			3. B -> E
+			4. C
+
+		○ TEST 3-6
+			1. C
+			2. B
+
+		○ TEST 3-7
+			1. D
+
+		○ TEST 3-8
+			1. A
+			2. D
+			3. B -> C
+
+		○ TEST 9-5
+			1. D
+			2. D -> E
+			3. Symons가 없음? -> C
+
+		○ TEST 9-6
+			1. B -> A
+			2. It is unlikely that in the seventh century …
+			3. B
+			4. C
+			5. D
+
+	• CR
+		9. B
+		10. A
+		11. C -> D
+			§ D의 vault가 공기를 차단하기 때문에 정답이라고 함… wtf…

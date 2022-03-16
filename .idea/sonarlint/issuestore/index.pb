@@ -31,3 +31,5 @@ U
 %XXXX_NOTE/exchange_loss_comparison.py,5\1\51896e834e66a620354276a42d717cae99121672
 X
 (XXXX_NOTE/gre_hackers_verbal/__init__.py,b\a\ba1bca92c3c7ae2498c81be2e0207dcaa04c9939
+^
+.XXXX_NOTE/gre_hackers_verbal/HWs/220307_HW.txt,2\9\29608dbe815e55f74e09c55ab42016de7c245c14
