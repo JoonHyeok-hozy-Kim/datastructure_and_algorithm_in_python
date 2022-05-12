@@ -75,3 +75,13 @@ class DynamicArray:
         if self._n == self._capacity//2:
             self._resize(int(self._capacity//2))
         return result
+
+    # 5.4
+    def extend(self, other):
+        if self.__class__ != other.__class__:
+            raise TypeError('Extend can be applied to DynamicArray instance only')
+        while self._capacity < self._n + other._n:
+            self._resize(2 * self._capacity)
+        for i in range(other._n):
+            self._A[self._n+i] = other._A[i]
+        self._n += other._n

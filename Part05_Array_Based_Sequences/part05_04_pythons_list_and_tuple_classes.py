@@ -4,5 +4,11 @@ a = DynamicArray()
 for i in range(10):
     a.append(i)
 print(a)
-for i in range(3):
-    print(a.remove(i), a)
+
+b = DynamicArray()
+for i in range(10):
+    b.append((i+1)*(-1))
+print(b)
+
+a.extend(b)
+print(a)

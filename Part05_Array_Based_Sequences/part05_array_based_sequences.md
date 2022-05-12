@@ -204,15 +204,28 @@ if __name__ == '__main__':
 
 ## 5.4 Efficiency of Python's Sequence Types
 
-### 5.4.1 Python's List and Tuple Classs
+### 5.4.1 Python's List and Tuple Classes
 #### Prop.) List vs Tuple
   1. Tuple is immutable -> More efficient than mutable objects
   2. _Nonmutating_ behaviors of List are identical to Tuple's
   3. Asymptotic analysis of List class goes as follows.
 
-<p align="center">
+<p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_04_01_tuple_asymptotic.png" style="height: 300px;"></img><br/>
 </p>
+
+#### Prop.) Operations
+  1. insert(k, value)
+  2. remove(k)
+  3. extend(other)
+  4. Constructing New Lists  
+     - Recall list comprehension.
+     - Known to be faster than repeated appending.
+```python
+a = [k*k for k in range(10)]
+```
+
+### 5.4.2 Python's String Class
 
 
 
