@@ -226,7 +226,29 @@ a = [k*k for k in range(10)]
 ```
 
 ### 5.4.2 Python's String Class
-
+#### Prop.) String is immutable
+* Thus, following code incurs repeated creation of string instances.
+  * Resulting in O(n^2) running time
+```python
+letters = ''
+for c in document:
+    if c.isalpha():
+        letters += c
+    
+```
+* Instead use following methods
+```python
+temp = []
+for c in document:
+    temp.append(c)
+letter = ''.join(temp)
+```
+```python
+letter = ''.join([c for c in document])
+```
+```python
+letter = ''.join(c for c in document)
+```
 
 
 
