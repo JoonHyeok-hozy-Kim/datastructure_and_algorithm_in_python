@@ -202,7 +202,19 @@ if __name__ == '__main__':
     print(compute_average(1000000))
 ```
 
-test for git remote
+## 5.4 Efficiency of Python's Sequence Types
+
+### 5.4.1 Python's List and Tuple Classs
+#### Prop.) List vs Tuple
+  1. Tuple is immutable -> More efficient than mutable objects
+  2. _Nonmutating_ behaviors of List are identical to Tuple's
+  3. Asymptotic analysis of List class goes as follows.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_04_01_tuple_asymptotic.png" style="height: 300px;"></img><br/>
+</p>
+
+
 
 
 <p>
