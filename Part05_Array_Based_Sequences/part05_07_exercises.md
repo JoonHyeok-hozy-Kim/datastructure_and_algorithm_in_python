@@ -175,7 +175,12 @@ if __name__ == '__main__':
 * Sol.) The existing logic is applicable if the starting character and the total number of characters are provided.
   * By altering ord('A') and 26, it can be applied to any language supported by Uni-code.
 
-
+### R-5.10.
+```python
+def __init__(self, shift):
+    self._forward = ''.join([chr((k+shift) % 26 + ord('A')) for k in range(26)])
+    self._backward = ''.join([chr((k-shift) % 26 + ord('A')) for k in range(26)])
+```
 
 
 
