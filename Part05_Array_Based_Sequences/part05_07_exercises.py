@@ -35,3 +35,5 @@ if __name__ == '__main__':
     print(a)
     for i in range(10):
         print(a[(i+1)*(-1)])
+    for i in range(10):
+        print(a[i])

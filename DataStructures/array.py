@@ -16,7 +16,6 @@ class DynamicArray:
         # R-5.4
         if k < 0:
             return self._A[self._n + k]
-
         return self._A[k]
 
     def __str__(self):
