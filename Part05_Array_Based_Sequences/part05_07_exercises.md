@@ -175,7 +175,7 @@ if __name__ == '__main__':
 * Sol.) The existing logic is applicable if the starting character and the total number of characters are provided.
   * By altering ord('A') and 26, it can be applied to any language supported by Uni-code.
 
-### R-5.10.
+### R-5.10. The constructor for the CaesarCipher class in Code Fragment 5.11 can be implemented with a two-line body by building the forward and backward strings using a combination of the join method and an appropriate comprehension syntax. Give such an implementation.
 ```python
 def __init__(self, shift):
     self._forward = ''.join([chr((k+shift) % 26 + ord('A')) for k in range(26)])
