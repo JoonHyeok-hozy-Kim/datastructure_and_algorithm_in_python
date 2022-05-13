@@ -318,6 +318,40 @@ def insertion_sort(S):
         S[j] = cur
 ```
 
+### 5.5.3 Simple Cryptography
+```python
+class CaesarCypher:
+
+    def __init__(self, shift):
+        encoder = [None] * 52
+        decoder = [None] * 52
+        for k in range(26):
+            encoder[k] = chr((k+shift) % 26 + ord('A'))
+            encoder[k+26] = chr((k+shift) % 26 + ord('a'))
+            decoder[k] = chr((k-shift) % 26 + ord('A'))
+            decoder[k+26] = chr((k-shift) % 26 + ord('a'))
+        self._forward = ''.join(encoder)
+        self._backward = ''.join(decoder)
+
+    def encrypt(self, message):
+        return self._transform(message, self._forward)
+
+    def decrypt(self, secret):
+        return self._transform(secret, self._backward)
+
+    def _transform(self, original, code):
+        chr_list = list(original)
+        for i in range(len(chr_list)):
+            if chr_list[i].isupper():
+                chr_list[i] = code[ord(chr_list[i]) - ord('A')]
+            elif chr_list[i].islower():
+                chr_list[i] = code[26 + ord(chr_list[i]) - ord('a')]
+        return ''.join(chr_list)
+```
+
+### 5.6 Multidimensional Data Sets
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_07_exercises.md">Excercises</a>    
