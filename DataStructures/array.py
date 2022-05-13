@@ -11,8 +11,12 @@ class DynamicArray:
         return self._n
 
     def __getitem__(self, k):
-        if not 0 <= k < self._n:
+        if not self._n * (-1) <= k < self._n:
             raise IndexError('invalid index')
+        # R-5.4
+        if k < 0:
+            return self._A[self._n + k]
+
         return self._A[k]
 
     def __str__(self):

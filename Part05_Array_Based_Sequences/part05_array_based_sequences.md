@@ -350,8 +350,13 @@ class CaesarCypher:
 ```
 
 ### 5.6 Multidimensional Data Sets
-
-
+#### Tech) Constructing Multidimensional List
+* Two Dimensional List
+```python
+row = 4
+column = 5
+matrix = [[None]*column for i in range(row)]
+```
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_07_exercises.md">Excercises</a>    
