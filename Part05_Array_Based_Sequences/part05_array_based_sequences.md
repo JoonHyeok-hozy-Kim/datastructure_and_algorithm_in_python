@@ -250,6 +250,73 @@ letter = ''.join([c for c in document])
 letter = ''.join(c for c in document)
 ```
 
+## 5.5 Using Array-Based Sequences
+### 5.5.1 Storing High Score Game
+* Rules
+  * GameEntry stores a name and a score.
+  * ScoreBoard stores GameEntries and its capacity can be customized.
+  * Every GameEntry should be sorted by the score
+```python
+class GameEntry:
+
+    def __init__(self, name, score):
+        self._name = name
+        self._score = score
+
+    def get_name(self):
+        return self._name
+
+    def get_score(self):
+        return self._score
+
+    def __str__(self):
+        return '({0}, {1})'.format(self._name, self._score)
+
+class ScoreBoard:
+
+    def __init__(self, capacity=10):
+        self._capacity = capacity
+        self._board = [None] * capacity
+        self._n = 0
+
+    def getitem(self, k):
+        return self._board[k]
+
+    def __str__(self):
+        str_list = ['---------------']
+        for j in range(self._n):
+            str_list.append(str(self._board[j]))
+        str_list.append('---------------')
+        return '\n'.join(str_list)
+
+    def add(self, entry):
+        score = entry.get_score()
+        good = self._n < self._capacity or score > self.getitem(self._n-1).get_score()
+
+        if good:
+            if self._n < self._capacity:
+                self._board[self._n] = entry
+                self._n += 1
+
+            j = self._n-1
+            while j > 0 and score >= self.getitem(j).get_score():
+                self._board[j] = self._board[j-1]
+                j -= 1
+            self._board[j] = entry
+```
+
+### 5.5.2 Sorting a Sequence
+#### Concept) The Insertion Sort Algorithm
+```python
+def insertion_sort(S):
+    for i in range(1, len(S)):
+        cur = S[i]
+        j = i
+        while j > 0 and S[j-1] > cur:
+            S[j] = S[j-1]
+            j -= 1
+        S[j] = cur
+```
 
 
 <p>
