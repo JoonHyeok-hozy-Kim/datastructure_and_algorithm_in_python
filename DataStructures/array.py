@@ -62,10 +62,11 @@ class DynamicArray:
             if self._n == self._capacity:
                 # R-5.5
                 B = self._make_array(self._capacity * 2)
-                for i in range(k):
-                    B[i] = self._A[i]
-                for i in range(self._n, k, -1):
-                    B[i] = self._A[i-1]
+                for i in range(self._n):
+                    if i < k:
+                        B[i] = self._A[i]
+                    else:
+                        B[i+1] = self._A[i]
                 self._A = B
             else:
                 for i in range(self._n, k, -1):

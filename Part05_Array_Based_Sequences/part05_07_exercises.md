@@ -68,10 +68,11 @@ def insert(self, k, value):
         if self._n == self._capacity:
             # R-5.5
             B = self._make_array(self._capacity * 2)
-            for i in range(k):
-                B[i] = self._A[i]
-            for i in range(self._n, k, -1):
-                B[i] = self._A[i-1]
+            for i in range(self._n):
+                if i < k:
+                    B[i] = self._A[i]
+                else:
+                    B[i+1] = self._A[i]
             self._A = B
         else:
             for i in range(self._n, k, -1):
@@ -80,8 +81,95 @@ def insert(self, k, value):
         self._n += 1
 ```
 
+### R-5.7. Let A be an array of size n ≥ 2 containing integers from 1 to n−1, inclusive, with exactly one repeated. Describe a fast algorithm for finding the integer in A that is repeated.
+* Sol.) Sort the list and find the repeated one : O(nlogn)
+```python
+from copy import deepcopy
+def repeat_finder(L):
+    S = deepcopy(L)
+    S.sort()
+    for i in range(len(S) - 1):
+        if S[i] == S[i + 1]:
+            return S[i]
+    return False
 
+if __name__ == '__main__':
+    from random import randint
+    n = 10
+    l = [randint(0, n * 2) for i in range(n)]
+    print(l)
+    print(repeat_finder(l))
+```
 
+### R-5.8. Experimentally evaluate the efficiency of the pop method of Python’s list class when using varying indices as a parameter, as we did for insert on page 205. Report your results akin to Table 5.5.
+```python
+from math import pow
+from datetime import datetime, timedelta
+from copy import deepcopy
+class OperationTester:
+    def __init__(self, sample_size_digit=4, operation='pop'):
+        self._operation = operation
+        self._sample_list = []
+        self._test_result = []
+        for i in range(sample_size_digit):
+            temp = [None] * int(pow(10, 2+i))
+            self._sample_list.append(temp)
+
+    def do_test(self):
+        self._test_result.append(self._operate_at_start())
+        self._test_result.append(self._operate_at_mid())
+        self._test_result.append(self._operate_at_end())
+        self.print_test_result(self._test_result)
+
+    def print_test_result(self, test_result):
+        for i in test_result:
+            print(i)
+
+    def _operate_at_start(self):
+        sample_copy = deepcopy(self._sample_list)
+        test_results = []
+        for i in sample_copy:
+            test_results.append([len(i),
+                                 self._operation_time_count(i, 0)])
+        return ['k=0', test_results]
+
+    def _operate_at_mid(self):
+        sample_copy = deepcopy(self._sample_list)
+        test_results = []
+        for i in sample_copy:
+            test_results.append([len(i),
+                                 self._operation_time_count(i, len(i)//2)])
+        return ['k=n//2', test_results]
+
+    def _operate_at_end(self):
+        sample_copy = deepcopy(self._sample_list)
+        test_results = []
+        for i in sample_copy:
+            test_results.append([len(i),
+                                 self._operation_time_count(i, len(i)-1)])
+        return ['k=n', test_results]
+
+    def _operation_time_count(self, target, index):
+        start_time = datetime.now()
+        self._operate(target, index)
+        end_time = datetime.now()
+        time_spent = end_time-start_time
+        result = time_spent.microseconds
+        return result
+
+    def _operate(self, target, index):
+        if self._operation == 'pop':
+            target.pop(index)
+        elif self._operation == 'insert':
+            target.insert(index, None)
+        return
+
+if __name__ == '__main__':
+    test = OperationTester(6, 'pop')
+    # test = OperationTester(4, 'insert')
+    test.do_test()
+    
+```
 
 
 
