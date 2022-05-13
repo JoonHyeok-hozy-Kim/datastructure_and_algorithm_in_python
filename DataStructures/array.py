@@ -60,9 +60,16 @@ class DynamicArray:
             self.append(value)
         else:
             if self._n == self._capacity:
-                self._resize(2 * self._capacity)
-            for i in range(self._n, k, -1):
-                self._A[i] = self._A[i-1]
+                # R-5.5
+                B = self._make_array(self._capacity * 2)
+                for i in range(k):
+                    B[i] = self._A[i]
+                for i in range(self._n, k, -1):
+                    B[i] = self._A[i-1]
+                self._A = B
+            else:
+                for i in range(self._n, k, -1):
+                    self._A[i] = self._A[i-1]
             self._A[k] = value
             self._n += 1
 

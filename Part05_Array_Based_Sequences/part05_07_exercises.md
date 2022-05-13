@@ -54,8 +54,31 @@ def __getitem__(self, k):
     return self._A[k]
 ```
 
+### R-5.5. Redo the justification of Proposition 5.1 assuming that the the cost of growing the array from size k to size 2k is 3k cyber-dollars. How much should each append operation be charged to make the amortization work?
+* Sol.) Charge 6 dollars for each append operations
 
-
+### R-5.6. Our implementation of insert for the DynamicArray class, as given in Code Fragment 5.5, has the following inefficiency. In the case when a re-size occurs, the resize operation takes time to copy all the elements from an old array to a new array, and then the subsequent loop in the body of insert shifts many of those elements. Give an improved implementation of the insert method, so that, in the case of a resize, the elements are shifted into their final position during that operation, thereby avoiding the subsequent shifting. 
+```python
+def insert(self, k, value):
+    if k > self._n+1:
+        raise IndexError('Cannot insert at {}-th index. Max is {}.'.format(k, self._n+1))
+    if k == self._n+1:
+        self.append(value)
+    else:
+        if self._n == self._capacity:
+            # R-5.5
+            B = self._make_array(self._capacity * 2)
+            for i in range(k):
+                B[i] = self._A[i]
+            for i in range(self._n, k, -1):
+                B[i] = self._A[i-1]
+            self._A = B
+        else:
+            for i in range(self._n, k, -1):
+                self._A[i] = self._A[i-1]
+        self._A[k] = value
+        self._n += 1
+```
 
 
 

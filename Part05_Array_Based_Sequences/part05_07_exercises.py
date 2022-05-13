@@ -30,10 +30,17 @@ if __name__ == '__main__':
     # R-5.4
     from DataStructures import array
     a = array.DynamicArray()
-    for i in range(10):
+    for i in range(8):
         a.append(i)
+    # print(a)
+    # for i in range(10):
+    #     print(a[(i+1)*(-1)])
+    # for i in range(10):
+    #     print(a[i])
+
+    # R-5.4
     print(a)
-    for i in range(10):
-        print(a[(i+1)*(-1)])
-    for i in range(10):
-        print(a[i])
+    a.insert(3,999)
+    print(a)
+    a.insert(3,1000)
+    print(a)
