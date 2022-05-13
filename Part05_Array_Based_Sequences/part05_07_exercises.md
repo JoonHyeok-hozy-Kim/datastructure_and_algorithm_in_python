@@ -171,6 +171,9 @@ if __name__ == '__main__':
     
 ```
 
+### R-5.9. Explain the changes that would have to be made to the program of Code Fragment 5.11 so that it could perform the Caesar cipher for messages that are written in an alphabet-based language other than English, such as Greek, Russian, or Hebrew.
+* Sol.) The existing logic is applicable if the starting character and the total number of characters are provided.
+  * By altering ord('A') and 26, it can be applied to any language supported by Uni-code.
 
 
 
