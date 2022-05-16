@@ -436,9 +436,61 @@ if __name__ == '__main__':
 ```
 
 ### C-5.27. Given a Python list L of n positive integers, each represented with k = ┌log n┐+ 1 bits, describe an O(n)-time method for finding a k-bit integer not in L.
-```python
 
+### C-5.28. Argue why any solution to the previous problem must run in Ω(n) time.
+
+### C-5.29. A useful operation in databases is the natural join. If we view a database as a list of ordered pairs of objects, then the natural join of databases A and B is the list of all ordered triples (x,y,z) such that the pair (x,y) is in A and the pair (y,z) is in B. Describe and analyze an efficient algorithm for computing the natural join of a list A of n pairs and a list B of m pairs.
+```python
+def natural_join(A, B):
+    result = []
+    for i in A:
+        for j in B:
+            if i[1] == j[0]:
+                result.append([i[0], i[1], j[1]])
+    return result
+
+if __name__ == '__main__':
+    from random import randint
+    sample_size = 10
+    a = [chr(randint(65, 65+25)) for i in range(sample_size * 4)]
+    set_x = [['X', 'Y']]
+    set_y = [['Y', 'Z']]
+    for i in range(sample_size):
+        set_x.append([a[i*4-4], a[i*4-3]])
+        set_y.append([a[i*4-2], a[i*4-1]])
+    print(set_x)
+    print(set_y)
+    print(natural_join(set_x, set_y))
 ```
+
+### C-5.30 When Bob wants to send Alice a message M on the Internet, he breaks M into n data packets, numbers the packets consecutively, and injects them into the network. When the packets arrive at Alice’s computer, they may be out of order, so Alice must assemble the sequence of n packets in order before she can be sure she has the entire message. Describe an efficient scheme for Alice to do this, assuming that she knows the value of n. What is the running time of this algorithm?
+* Sol.) O(n log(n)) if binary sorting is used.
+```python
+def data_packet_receiver(A):
+    result = [None] * len(A)
+    for i in A:
+        result[i] = i
+        print(result)
+    return result
+
+def custom_shuffle(A):
+    from random import randrange
+    n = len(A)
+    result = []
+    while n > 0:
+        result.append(A.pop(randrange(n)))
+        n -= 1
+    return result
+
+if __name__ == '__main__':
+    a = [i for i in range(10)]
+    a_s = custom_shuffle(a)
+    print(a_s)
+    data_packet_receiver(a_s)
+```
+
+### C-5.31 Describe a way to use recursion to add all the numbers in an n × n data set, represented as a list of lists.
+
 
 
 

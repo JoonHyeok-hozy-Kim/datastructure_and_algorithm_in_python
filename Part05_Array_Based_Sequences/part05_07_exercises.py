@@ -198,6 +198,35 @@ def repeat_finder(A):
         idx += 1
     return result
 
+def natural_join(A, B):
+    result = []
+    for i in A:
+        for j in B:
+            if i[1] == j[0]:
+                result.append([i[0], i[1], j[1]])
+    return result
+
+class data_packet_receiver:
+
+    def __init__(self, data_received_sequence):
+        self._n = len(data_received_sequence)
+        self._data_received_sequence = data_received_sequence
+        self._result = [None] * self._n
+
+    def receive(self):
+        for i in self._data_received_sequence:
+            self._result[i] = i
+            print(self._result)
+        return self._result
+
+def data_packet_receiver(A):
+    result = [None] * len(A)
+    for i in A:
+        result[i] = i
+        print(result)
+    return result
+
+
 if __name__ == '__main__':
     # R-5.1,2
     # import sys
@@ -304,5 +333,23 @@ if __name__ == '__main__':
     # print(remove_all(a,5))
 
     # C-5.26
-    print(repeat_finder(a))
+    # print(repeat_finder(a))
 
+    # C-5.29
+    from random import randint
+    # sample_size = 10
+    # a = [chr(randint(65, 65+25)) for i in range(sample_size * 4)]
+    # set_x = [['X', 'Y']]
+    # set_y = [['Y', 'Z']]
+    # for i in range(sample_size):
+    #     set_x.append([a[i*4-4], a[i*4-3]])
+    #     set_y.append([a[i*4-2], a[i*4-1]])
+    # print(set_x)
+    # print(set_y)
+    # print(natural_join(set_x, set_y))
+
+    # C-5.30.
+    a = [i for i in range(10)]
+    a_s = custom_shuffle(a)
+    print(a_s)
+    data_packet_receiver(a_s)
