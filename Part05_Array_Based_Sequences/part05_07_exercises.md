@@ -269,7 +269,13 @@ def pop(self):
 * pf.) Recall, that if O(a_n)=n and O(b_n)=n, O(a_n + b_n)=n asymptotically. Therefore, the given operation's O(n)=n.
 
 
-### C-5.18.
+### C-5.18. Give a formal proof that any sequence of n append or pop operations on an initially empty dynamic array takes O(n) time, if using the strategy described in Exercise C-5.16.
+* Considering the concept of amortization, popping operation can be proved to have O(n)=n time consumption.
+  * Suppose each pop consumes 2 cyber dollars. 
+  * One is instantly consumed when the target element in the internal array altered into None.
+  * The other is consumed when the space that is used for storing the element is deleted and the capacity shrinks.
+  * Then every operation required is cleared.
+  * Therefore, we may assume that popping operation is O(2n) = O(n)
 
 ### C-5.19.
 
