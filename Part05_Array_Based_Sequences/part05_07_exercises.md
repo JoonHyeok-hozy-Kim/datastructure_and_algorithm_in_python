@@ -509,6 +509,94 @@ if __name__ == '__main__':
     print(n_by_n_sum(target))
 ```
 
+### P-5.32 Write a Python function that takes two three-dimensional numeric data sets and adds them componentwise.
+```python
+def three_d_addition(A, B):
+    if len(A) == len(B):
+        if len(A[0]) == len(B[0]):
+            if len(A[0][0]) == len(B[0][0]):
+                for i in range(len(A)):
+                    for j in range(len(A[0])):
+                        for k in range(len(A[0][0])):
+                            A[i][j][k] += B[i][j][k]
+                return A
+    raise TypeError
+```
+
+### P-5.33 Write a Python program for a matrix class that can add and multiply two-dimensional arrays of numbers, assuming the dimensions agree appropriately for the operation.
+```python
+class Matrix:
+
+    def __init__(self, row_num, col_num):
+        self._A = [([None] * col_num) for i in range(row_num)]
+        self._row_num = row_num
+        self._col_num = col_num
+
+    def __str__(self):
+        text_list = []
+        for i in range(self._row_num):
+            text_list.append('|')
+            for j in range(self._col_num):
+                # print(self._A[i][j])
+                if self._A[i][j] is None:
+                    text_list.append(' ')
+                elif type(self._A[i][j]) is not str:
+                    text_list.append(str(self._A[i][j]))
+                else:
+                    text_list.append(self._A[i][j])
+                text_list.append(', ')
+            text_list.pop()
+            text_list.append('|')
+            text_list.append('\n')
+        return ''.join(text_list)
+
+    def homogeneous_setting(self, parameter):
+        for i in range(self._row_num):
+            for j in range(self._col_num):
+                self._A[i][j] = parameter
+
+    def add(self, other):
+        if not self._row_num == other._row_num and self._col_num == other._row_num:
+            raise TypeError
+        for i in range(self._row_num):
+            for j in range(self._col_num):
+                self._A[i][j] += other._A[i][j]
+        return self
+
+    def multiply(self, other):
+        if self._col_num != other._row_num:
+            raise TypeError
+
+        result = Matrix(self._row_num, other._col_num)
+        for i in range(self._row_num):
+            for k in range(other._col_num):
+                temp_sum = 0
+                for j in range(self._col_num):
+                    temp_sum += self._A[i][j] * other._A[j][k]
+                result._A[i][k] = temp_sum
+        return result
+
+if __name__ == '__main__':
+    m = Matrix(3, 4)
+    m.homogeneous_setting(1)
+    print(m)
+
+    n = Matrix(3, 4)
+    n.homogeneous_setting(2)
+    print(n)
+    print(m.add(n))
+
+    l = Matrix(4, 3)
+    l.homogeneous_setting(4)
+    l._A[2][2] = 5
+    print(l)
+    print(m.multiply(l))
+```
+
+### P-5.34 Write a program that can perform the Caesar cipher for English messages that include both upper- and lowercase characters.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md#553-simple-cryptography"> * Sol.) Caesar cipher</a>
+</p>
 
 
 <p>
