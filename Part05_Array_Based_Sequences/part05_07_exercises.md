@@ -182,6 +182,39 @@ def __init__(self, shift):
     self._backward = ''.join([chr((k-shift) % 26 + ord('A')) for k in range(26)])
 ```
 
+### R-5.11. Use standard control structures to compute the sum of all numbers in an n×n data set, represented as a list of lists.
+```python
+def sum_n_by_n(A):
+    result = 0
+    for i in A:
+        for j in i:
+            result += j
+    return result
+
+if __name__ == '__main__':
+    from random import randint
+    a = [[randint(0, 10) for j in range(5)] for i in range(5)]
+    for i in a:
+        print(i)
+    print(sum_n_by_n(a))
+```
+
+### R-5.12. Describe how the built-in sum function can be combined with Python’s comprehension syntax to compute the sum of all numbers in an n×n data set, represented as a list of lists.
+```python
+def sum_n_by_n_syntax(A):
+    return sum([sum(i) for i in A])
+
+if __name__ == '__main__':
+    from random import randint
+    a = [[randint(0, 10) for j in range(5)] for i in range(5)]
+    print(sum_n_by_n_syntax(a))    
+```
+
+### R-5.13. In the experiment of Code Fragment 5.1, we begin with an empty list. If data were initially constructed with nonempty length, does this affect the sequence of values at which the underlying array is expanded? Perform your own experiments, and comment on any relationship you see between the initial length and the expansion sequence.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md">Code Fragment 5.1</a>
+</p>
+
 
 
 <p>

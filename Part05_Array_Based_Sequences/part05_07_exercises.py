@@ -60,6 +60,16 @@ class OperationTester:
             target.insert(index, None)
         return
 
+def sum_n_by_n(A):
+    result = 0
+    for i in A:
+        for j in i:
+            result += j
+    return result
+
+def sum_n_by_n_syntax(A):
+    return sum([sum(i) for i in A])
+
 
 if __name__ == '__main__':
     # R-5.1,2
@@ -123,6 +133,12 @@ if __name__ == '__main__':
     # print(l)
 
     # R-5.8.
-    test = OperationTester(6, 'pop')
-    # test = OperationTester(4, 'insert')
-    test.do_test()
+    # test = OperationTester(6, 'pop')
+    # # test = OperationTester(4, 'insert')
+    # test.do_test()
+
+    # R-5.11.
+    from random import randint
+    a = [[randint(0, 10) for j in range(5)] for i in range(5)]
+    print(sum_n_by_n(a))
+    print(sum_n_by_n_syntax(a))

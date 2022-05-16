@@ -84,6 +84,8 @@ primes = array('i', [2, 3, 5, 7, 11, 13, 17, 19])
     * __extra capacity__ : It maintains underlying array that often has greater capacity than the current length of the list
       * experiment ↓
         * cf.) sys.getsizeof() only shows the size of the array that includes references, not the real instance!
+
+#### Code Fragment 5.1
 ```python
 import sys
 n = 10
