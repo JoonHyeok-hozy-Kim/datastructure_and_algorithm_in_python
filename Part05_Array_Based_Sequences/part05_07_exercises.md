@@ -598,6 +598,98 @@ if __name__ == '__main__':
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md#553-simple-cryptography"> * Sol.) Caesar cipher</a>
 </p>
 
+### P-5.35 Implement a class, SubstitutionCipher, with a constructor that takes a string with the 26 uppercase letters in an arbitrary order and uses that for the forward mapping for encryption (akin to the self. forward string in our CaesarCipher class of Code Fragment 5.11). You should derive the backward mapping from the forward version.
+```python
+class SubstitutionCipher:
+
+    def __init__(self, letter_string):
+        if len(letter_string) != 26:
+            raise TypeError
+        self._encoder = letter_string
+        self._decoder = [None] * 26
+        for i in range(26):
+            self._decoder[ord(self._encoder[i]) - ord('A')] = chr(i+65)
+
+    def encode(self, message):
+        return self._transform(message, self._encoder)
+
+    def decode(self, secret):
+        return self._transform(secret, self._decoder)
+
+    def _transform(self, original, code):
+        chr_list = list(original)
+        for i in range(len(chr_list)):
+            if chr_list[i].isupper():
+                chr_list[i] = code[ord(chr_list[i]) - ord('A')]
+        return ''.join(chr_list)
+
+def custom_shuffle(A):
+    from random import randrange
+    n = len(A)
+    result = []
+    while n > 0:
+        result.append(A.pop(randrange(n)))
+        n -= 1
+    return result
+
+if __name__ == '__main__':
+    a = custom_shuffle([i+65 for i in range(26)])
+    alpha_shuffled = []
+    for i in a:
+        alpha_shuffled.append(chr(i))
+    print(alpha_shuffled)
+    c = SubstitutionCipher(alpha_shuffled)
+    print(c.encode('ABC'))
+    print(c.decode(c.encode('ABC')))
+```
+
+### P-5.36. Redesign the CaesarCipher class as a subclass of the SubstitutionCipher from the previous problem.
+```python
+class CaesarCipher:
+
+    def __init__(self, n):
+        self._sub = SubstitutionCipher([chr((n+i)%26+65) for i in range(26)])
+
+    def encode(self, message):
+        return self._sub.encode(message)
+
+    def decode(self, secret):
+        return self._sub.decode(secret)
+
+if __name__ == '__main__':
+    c = CaesarCipher(1)
+    print(c.encode('ABC'))
+    print(c.decode(c.encode('ABC')))
+```
+
+### P-5.37 Design a RandomCipher class as a subclass of the SubstitutionCipher from Exercise P-5.35, so that each instance of the class relies on a random permutation of letters for its mapping.
+```python
+class RandomCipher:
+
+    def __init__(self):
+        self._sub = SubstitutionCipher(self.shuffle([chr(i+65) for i in range(26)]))
+        print(self._sub._encoder)
+
+    def encode(self, message):
+        return self._sub.encode(message)
+
+    def decode(self, secret):
+        return self._sub.decode(secret)
+
+    def shuffle(self, A):
+        from random import randrange
+        n = len(A)
+        result = []
+        while n > 0:
+            result.append(A.pop(randrange(n)))
+            n -= 1
+        return result
+    
+if __name__ == '__main__':
+    c = RandomCipher()
+    print(c.encode('ABC'))
+    print(c.decode(c.encode('ABC')))
+```
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md">Part 5. Array-Based Sequences</a>

@@ -299,6 +299,65 @@ class Matrix:
         return result
 
 
+class SubstitutionCipher:
+
+    def __init__(self, letter_string):
+        if len(letter_string) != 26:
+            raise TypeError
+        self._encoder = letter_string
+        self._decoder = [None] * 26
+        for i in range(26):
+            self._decoder[ord(self._encoder[i]) - ord('A')] = chr(i+65)
+
+    def encode(self, message):
+        return self._transform(message, self._encoder)
+
+    def decode(self, secret):
+        return self._transform(secret, self._decoder)
+
+    def _transform(self, original, code):
+        chr_list = list(original)
+        for i in range(len(chr_list)):
+            if chr_list[i].isupper():
+                chr_list[i] = code[ord(chr_list[i]) - ord('A')]
+        return ''.join(chr_list)
+
+
+class CaesarCipher:
+
+    def __init__(self, n):
+        self._sub = SubstitutionCipher([chr((n+i)%26+65) for i in range(26)])
+
+    def encode(self, message):
+        return self._sub.encode(message)
+
+    def decode(self, secret):
+        return self._sub.decode(secret)
+
+
+class RandomCipher:
+
+    def __init__(self):
+        self._sub = SubstitutionCipher(self.shuffle([chr(i+65) for i in range(26)]))
+        print(self._sub._encoder)
+
+    def encode(self, message):
+        return self._sub.encode(message)
+
+    def decode(self, secret):
+        return self._sub.decode(secret)
+
+    def shuffle(self, A):
+        from random import randrange
+        n = len(A)
+        result = []
+        while n > 0:
+            result.append(A.pop(randrange(n)))
+            n -= 1
+        return result
+
+
+
 if __name__ == '__main__':
     # R-5.1,2
     # import sys
@@ -483,17 +542,37 @@ if __name__ == '__main__':
     # print(three_d_addition(a, b))
 
     # P-5.33.
-    m = Matrix(3, 4)
-    m.homogeneous_setting(1)
-    print(m)
+    # m = Matrix(3, 4)
+    # m.homogeneous_setting(1)
+    # print(m)
+    #
+    # n = Matrix(3, 4)
+    # n.homogeneous_setting(2)
+    # print(n)
+    # print(m.add(n))
+    #
+    # l = Matrix(4, 3)
+    # l.homogeneous_setting(4)
+    # l._A[2][2] = 5
+    # print(l)
+    # print(m.multiply(l))
 
-    n = Matrix(3, 4)
-    n.homogeneous_setting(2)
-    print(n)
-    print(m.add(n))
+    # P-5.34.
+    # a = custom_shuffle([i+65 for i in range(26)])
+    # alpha_shuffled = []
+    # for i in a:
+    #     alpha_shuffled.append(chr(i))
+    # print(alpha_shuffled)
+    # c = SubstitutionCipher(alpha_shuffled)
+    # print(c.encode('ABC'))
+    # print(c.decode(c.encode('ABC')))
 
-    l = Matrix(4, 3)
-    l.homogeneous_setting(4)
-    l._A[2][2] = 5
-    print(l)
-    print(m.multiply(l))
+    # P-5.36
+    # c = CaesarCipher(1)
+    # print(c.encode('ABC'))
+    # print(c.decode(c.encode('ABC')))
+
+    # P-5.37
+    c = RandomCipher()
+    print(c.encode('ABC'))
+    print(c.decode(c.encode('ABC')))
