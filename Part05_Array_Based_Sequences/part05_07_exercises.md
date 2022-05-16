@@ -362,15 +362,83 @@ if __name__ == '__main__':
 
 ### C-5.24. Perform experiments to evaluate the efficiency of the remove method of Python’s list class, as we did for insert on page 205. Use known values so that all removals occur either at the beginning, middle, or end of the list. Report your results akin to Table 5.5. 
 ```python
+def remove_tester(sample_size_digit=5):
+    from time import time
+    from copy import deepcopy
+    report_list = [['sample size', 'start', 'mid', 'end']]
+    for i in range(2, sample_size_digit):
+        sample_size = int(pow(10, i))
+        temp_entity = [sample_size]
+        temp_list = [i for i in range(sample_size)]
+        copy_list_1 = deepcopy(temp_list)
+        copy_list_2 = deepcopy(temp_list)
+        copy_list_3 = deepcopy(temp_list)
 
+        # start
+        t0 = time()
+        copy_list_1.remove(0)
+        t1 = time()
+        temp_entity.append(t1-t0)
+
+        # mid
+        t0 = time()
+        copy_list_2.remove(sample_size//2)
+        t1 = time()
+        temp_entity.append(t1-t0)
+
+        # end
+        t0 = time()
+        copy_list_3.remove(sample_size-1)
+        t1 = time()
+        temp_entity.append(t1-t0)
+
+        report_list.append(temp_entity)
+
+    for i in report_list:
+        print(i)
+
+if __name__ == '__main__':
+    remove_tester(7)
 ```
 
-### C-5.25.
+### C-5.25. The syntax data.remove(value) for Python list data removes only the first occurrence of element value from the list. Give an implementation of a function, with signature remove all(data, value), that removes all occurrences of value from the given list, such that the worst-case running time of the function is O(n) on a list with n elements. Not that it is not efficient enough in general to rely on repeated calls to remove. 
+```python
+def remove_all(A, value):
+    result = []
+    for i in range(len(A)):
+        if A[i] != value:
+            result.append(A[i])
+    return result
 
-### C-5.26.
+if __name__ == '__main__':
+    a = [1,1,1,1,1,2,3,4,5,5,5,5,6,7,8,9]
+    print(remove_all(a,5)
+```
 
-### C-5.27.
+### C-5.26. Let B be an array of size n ≥ 6 containing integers from 1 to n−5, inclusive, with exactly five repeated. Describe a good algorithm for finding the five integers in B that are repeated.
+```python
+def repeat_finder(A):
+    sorted(A)
+    result = []
+    idx = 0
+    while idx < len(A)-1:
+        if A[idx] == A[idx+1]:
+            if len(result) == 0:
+                result.append(A[idx])
+            elif result[-1] != A[idx]:
+                result.append(A[idx])
+        idx += 1
+    return result
 
+if __name__ == '__main__':
+    a = [1,1,1,1,1,2,3,4,5,5,5,5,6,7,8,9]
+    print(repeat_finder(a,5)
+```
+
+### C-5.27. Given a Python list L of n positive integers, each represented with k = ┌log n┐+ 1 bits, describe an O(n)-time method for finding a k-bit integer not in L.
+```python
+
+```
 
 
 

@@ -143,6 +143,60 @@ def comprehension_tester(n):
     for i in range(len(time_list)-1):
         print('{}. {}'.format(i+1, time_list[i+1]-time_list[i]))
 
+def remove_tester(sample_size_digit=5):
+    from time import time
+    from copy import deepcopy
+    report_list = [['sample size', 'start', 'mid', 'end']]
+    for i in range(2, sample_size_digit):
+        sample_size = int(pow(10, i))
+        temp_entity = [sample_size]
+        temp_list = [i for i in range(sample_size)]
+        copy_list_1 = deepcopy(temp_list)
+        copy_list_2 = deepcopy(temp_list)
+        copy_list_3 = deepcopy(temp_list)
+
+        # start
+        t0 = time()
+        copy_list_1.remove(0)
+        t1 = time()
+        temp_entity.append(t1-t0)
+
+        # mid
+        t0 = time()
+        copy_list_2.remove(sample_size//2)
+        t1 = time()
+        temp_entity.append(t1-t0)
+
+        # end
+        t0 = time()
+        copy_list_3.remove(sample_size-1)
+        t1 = time()
+        temp_entity.append(t1-t0)
+
+        report_list.append(temp_entity)
+
+    for i in report_list:
+        print(i)
+
+def remove_all(A, value):
+    result = []
+    for i in range(len(A)):
+        if A[i] != value:
+            result.append(A[i])
+    return result
+
+def repeat_finder(A):
+    sorted(A)
+    result = []
+    idx = 0
+    while idx < len(A)-1:
+        if A[idx] == A[idx+1]:
+            if len(result) == 0:
+                result.append(A[idx])
+            elif result[-1] != A[idx]:
+                result.append(A[idx])
+        idx += 1
+    return result
 
 if __name__ == '__main__':
     # R-5.1,2
@@ -236,8 +290,19 @@ if __name__ == '__main__':
     # C-5.21
     # string_tester(1000000)
 
-    # C-5.21
-    extend_tester(10000000)
+    # # C-5.21
+    # extend_tester(10000000)
+    #
+    # # C-5.22
+    # comprehension_tester(10000000)
 
-    # C-5.22
-    comprehension_tester(10000000)
+    # C-5.23
+    # remove_tester(7)
+
+    # C-5.25
+    a = [1,1,1,1,1,2,3,3,4,5,5,5,5,6,7,8,9]
+    # print(remove_all(a,5))
+
+    # C-5.26
+    print(repeat_finder(a))
+
