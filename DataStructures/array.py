@@ -34,12 +34,13 @@ class DynamicArray:
         self._A[self._n] = obj
         self._n += 1
 
+    # C-5.16
     def pop(self):
         result = self._A[self._n-1]
         self._A[self._n-1] = None
         self._n -= 1
-        if self._n == self._capacity//2:
-            self._resize(int(self._capacity//2))
+        if self._n == self._capacity//4:
+            self._resize(int(self._capacity//4))
         return result
 
     def _resize(self, c):

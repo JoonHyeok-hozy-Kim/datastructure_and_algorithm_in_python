@@ -168,6 +168,17 @@ if __name__ == '__main__':
     # initial_length_tester(10,10)
 
     # C-5.14.
-    a = [i for i in range(4)]
+    # a = [i for i in range(4)]
+    # print(a)
+    # print(custom_shuffle(a))
+
+    # C-5.16.
+    from DataStructures import array
+    a = array.DynamicArray()
+    for i in range(10):
+        a.append(i)
     print(a)
-    print(custom_shuffle(a))
+    while len(a) > 0:
+        a.pop()
+
+    #

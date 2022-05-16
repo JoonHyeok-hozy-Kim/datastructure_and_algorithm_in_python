@@ -254,9 +254,20 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_07_15.png" style="height: 600px;"></img><br/>
 </p>
 
-### C-5.16.
+### C-5.16. Implement a pop method for the DynamicArray class, given in Code Fragment 5.3, that removes the last element of the array, and that shrinks the capacity, N, of the array by half any time the number of elements in the array goes below N/4.
+```python
+def pop(self):
+    result = self._A[self._n-1]
+    self._A[self._n-1] = None
+    self._n -= 1
+    if self._n == self._capacity//4:
+        self._resize(int(self._capacity//4))
+    return result
+```
 
-### C-5.17.
+### C-5.17. Prove that when using a dynamic array that grows and shrinks as in the previous exercise, the following series of 2n operations takes O(n) time: n append operations on an initially empty array, followed by n pop operation. 
+* pf.) Recall, that if O(a_n)=n and O(b_n)=n, O(a_n + b_n)=n asymptotically. Therefore, the given operation's O(n)=n.
+
 
 ### C-5.18.
 
