@@ -277,17 +277,93 @@ def pop(self):
   * Then every operation required is cleared.
   * Therefore, we may assume that popping operation is O(2n) = O(n)
 
-### C-5.19.
+### C-5.19. Consider a variant of Exercise C-5.16, in which an array of capacity N is resized to capacity precisely that of the number of elements, any time the number of elements in the array goes strictly below N/4. Give a formal proof that any sequence of n append or pop operations on an initially empty dynamic array takes O(n) time.
+* Again using the concept of amortization, consider that each append consumes 3 cyber dollars and pop consumes 2 cyber dollars.
+  * Continuous operations of both operations are proven to be O(n)=n.
+  * Suppose that these two operations are done in a mixed sense and do not incur capacity expansion nor shrinkage since they offset the changed capacity of each other.
+  * Then those cyber dollars that are already paid for the potential expansion or shrinkage may not be used in reality.
+  * Additionally, since expansion and shrinkage do not take place, the number of unit operations of append-pop-mixed-sequence may be smaller than the homogeneous series of respective operations.
+  * Therefore, mixed operation's O(n) is n, where its upperbound is O(n)=n.
 
-### C-5.20.
+### C-5.20. Consider a variant of Exercise C-5.16, in which an array of capacity N, is resized to capacity precisely that of the number of elements, any time the number of elements in the array goes strictly below N/2. Show that there exists a sequence of n operations that requires Ω(n2) time to execute.
 
-### C-5.21.
 
-### C-5.22.
+### C-5.21.In Section 5.4.2, we described four different ways to compose a long string: (1) repeated concatenation, (2) appending to a temporary list and then joining, (3) using list comprehension with join, and (4) using generator comprehension with join. Develop an experiment to test the efficiency of all four of these approaches and report your findings. 
+```python
+def string_tester(n):
+    from time import time
+    test_result_time = []
+    test_result_time.append(time())
+    # 1. repeated concatenation
+    s = ''
+    for i in range(n):
+        s += 'a'
+    test_result_time.append(time())
+    # 2. appending to a temporary list and then joining
+    l = []
+    for i in range(n):
+        l.append('a')
+    j = ''.join(l)
+    test_result_time.append(time())
+    # 3. using list comprehension with join
+    k = ''.join(['a' for i in range(n)])
+    test_result_time.append(time())
+    # 4. using generator comprehension with join
+    k = ''.join('a' for i in range(n))
+    test_result_time.append(time())
+    for i in range(len(test_result_time)-1):
+        print('{}. {}'.format(i+1, test_result_time[i+1]-test_result_time[i]))
 
-### C-5.23.
+if __name__ == '__main__':
+    string_tester(1000000)
+```
 
-### C-5.24.
+### C-5.22. Develop an experiment to compare the relative efficiency of the extend method of Python’s list class versus using repeated calls to append to accomplish the equivalent task.
+```python
+def extend_tester(n):
+    from time import time
+    time_list = []
+    original_list1 = [None] * 5
+    original_list2 = [None] * 5
+    temp_list = [None] * n
+    time_list.append(time())
+    original_list1.extend(temp_list)
+    time_list.append(time())
+    for i in range(n):
+        original_list2.append(None)
+    time_list.append(time())
+    for i in range(len(time_list)-1):
+        print('{}. {}'.format(i+1, time_list[i+1]-time_list[i]))
+
+if __name__ == '__main__':
+    extend_tester(10000000)
+```
+
+### C-5.23. Based on the discussion of page 207, develop an experiment to compare the efficiency of Python’s list comprehension syntax versus the construction of a list by means of repeated calls to append.
+```python
+
+
+def comprehension_tester(n):
+    from time import time
+    time_list = []
+    time_list.append(time())
+    l = [k*k for k in range(n)]
+    time_list.append(time())
+    m = []
+    for k in range(n):
+        m.append(k*k)
+    time_list.append(time())
+    for i in range(len(time_list)-1):
+        print('{}. {}'.format(i+1, time_list[i+1]-time_list[i]))
+
+if __name__ == '__main__':
+    comprehension_tester(10000000)
+```
+
+### C-5.24. Perform experiments to evaluate the efficiency of the remove method of Python’s list class, as we did for insert on page 205. Use known values so that all removals occur either at the beginning, middle, or end of the list. Report your results akin to Table 5.5. 
+```python
+
+```
 
 ### C-5.25.
 

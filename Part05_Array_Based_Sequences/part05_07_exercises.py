@@ -91,6 +91,58 @@ def custom_shuffle(A):
         n -= 1
     return result
 
+def string_tester(n):
+    from time import time
+    test_result_time = []
+    test_result_time.append(time())
+    # 1. repeated concatenation
+    s = ''
+    for i in range(n):
+        s += 'a'
+    test_result_time.append(time())
+    # 2. appending to a temporary list and then joining
+    l = []
+    for i in range(n):
+        l.append('a')
+    j = ''.join(l)
+    test_result_time.append(time())
+    # 3. using list comprehension with join
+    k = ''.join(['a' for i in range(n)])
+    test_result_time.append(time())
+    # 4. using generator comprehension with join
+    k = ''.join('a' for i in range(n))
+    test_result_time.append(time())
+    for i in range(len(test_result_time)-1):
+        print('{}. {}'.format(i+1, test_result_time[i+1]-test_result_time[i]))
+
+def extend_tester(n):
+    from time import time
+    time_list = []
+    original_list1 = [None] * 5
+    original_list2 = [None] * 5
+    temp_list = [None] * n
+    time_list.append(time())
+    original_list1.extend(temp_list)
+    time_list.append(time())
+    for i in range(n):
+        original_list2.append(None)
+    time_list.append(time())
+    for i in range(len(time_list)-1):
+        print('{}. {}'.format(i+1, time_list[i+1]-time_list[i]))
+
+def comprehension_tester(n):
+    from time import time
+    time_list = []
+    time_list.append(time())
+    l = [k*k for k in range(n)]
+    time_list.append(time())
+    m = []
+    for k in range(n):
+        m.append(k*k)
+    time_list.append(time())
+    for i in range(len(time_list)-1):
+        print('{}. {}'.format(i+1, time_list[i+1]-time_list[i]))
+
 
 if __name__ == '__main__':
     # R-5.1,2
@@ -173,12 +225,19 @@ if __name__ == '__main__':
     # print(custom_shuffle(a))
 
     # C-5.16.
-    from DataStructures import array
-    a = array.DynamicArray()
-    for i in range(10):
-        a.append(i)
-    print(a)
-    while len(a) > 0:
-        a.pop()
+    # from DataStructures import array
+    # a = array.DynamicArray()
+    # for i in range(10):
+    #     a.append(i)
+    # print(a)
+    # while len(a) > 0:
+    #     a.pop()
 
-    #
+    # C-5.21
+    # string_tester(1000000)
+
+    # C-5.21
+    extend_tester(10000000)
+
+    # C-5.22
+    comprehension_tester(10000000)
