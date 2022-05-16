@@ -251,7 +251,7 @@ if __name__ == '__main__':
 
 ### C-5.15. Consider an implementation of a dynamic array, but instead of copying the elements into an array of double the size (that is, from N to 2N) when its capacity is reached, we copy the elements into an array with ┌N/4┐ additional cells, going from capacity N to capacity N + ┌N/4┐. Prove that performing a sequence of n append operations still runs in O(n) time in this case.
 <p align="start">
-<img src="" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/images/05_07_15.png" style="height: 300px;"></img><br/>
 </p>
 
 ### C-5.16.
