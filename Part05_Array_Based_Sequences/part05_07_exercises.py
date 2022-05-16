@@ -226,6 +226,16 @@ def data_packet_receiver(A):
         print(result)
     return result
 
+def n_by_n_sum(A, sum=0):
+    if len(A) == 0:
+        return [A, sum]
+    else:
+        temp = A[0].pop(0)
+        if len(A[0]) == 0:
+            A.pop(0)
+        print(temp, A, sum)
+        return n_by_n_sum(A, sum+temp)
+
 
 if __name__ == '__main__':
     # R-5.1,2
@@ -349,7 +359,14 @@ if __name__ == '__main__':
     # print(natural_join(set_x, set_y))
 
     # C-5.30.
-    a = [i for i in range(10)]
-    a_s = custom_shuffle(a)
-    print(a_s)
-    data_packet_receiver(a_s)
+    # a = [i for i in range(10)]
+    # a_s = custom_shuffle(a)
+    # print(a_s)
+    # data_packet_receiver(a_s)
+
+    # C-5.31.
+    target = []
+    for i in range(3):
+        target.append([1 for j in range(4)])
+    print(target)
+    print(n_by_n_sum(target))

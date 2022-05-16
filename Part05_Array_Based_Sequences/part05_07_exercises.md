@@ -490,7 +490,24 @@ if __name__ == '__main__':
 ```
 
 ### C-5.31 Describe a way to use recursion to add all the numbers in an n × n data set, represented as a list of lists.
+```python
+def n_by_n_sum(A, sum=0):
+    if len(A) == 0:
+        return [A, sum]
+    else:
+        temp = A[0].pop(0)
+        if len(A[0]) == 0:
+            A.pop(0)
+        print(temp, A, sum)
+        return n_by_n_sum(A, sum+temp)
 
+if __name__ == '__main__':
+    target = []
+    for i in range(3):
+        target.append([1 for j in range(4)])
+    print(target)
+    print(n_by_n_sum(target))
+```
 
 
 
