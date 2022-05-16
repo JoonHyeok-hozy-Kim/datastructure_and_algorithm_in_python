@@ -70,6 +70,27 @@ def sum_n_by_n(A):
 def sum_n_by_n_syntax(A):
     return sum([sum(i) for i in A])
 
+def initial_length_tester(max_initial_size, append_times):
+    import sys
+    for i in range(max_initial_size):
+        data = [None] * i
+        print('=====[max : {} / append : {}]====='.format(i,
+                                                          append_times))
+        for k in range(append_times):
+            a = len(data)
+            b = sys.getsizeof(data)
+            print('Length: {0:3d}; Size in bytes: {1:4d}'.format(a, b))
+            data.append(None)
+
+def custom_shuffle(A):
+    from random import randrange
+    n = len(A)
+    result = []
+    while n > 0:
+        result.append(A.pop(randrange(n)))
+        n -= 1
+    return result
+
 
 if __name__ == '__main__':
     # R-5.1,2
@@ -138,7 +159,15 @@ if __name__ == '__main__':
     # test.do_test()
 
     # R-5.11.
-    from random import randint
-    a = [[randint(0, 10) for j in range(5)] for i in range(5)]
-    print(sum_n_by_n(a))
-    print(sum_n_by_n_syntax(a))
+    # from random import randint
+    # a = [[randint(0, 10) for j in range(5)] for i in range(5)]
+    # print(sum_n_by_n(a))
+    # print(sum_n_by_n_syntax(a))
+
+    # R-5.12.
+    # initial_length_tester(10,10)
+
+    # C-5.14.
+    a = [i for i in range(4)]
+    print(a)
+    print(custom_shuffle(a))

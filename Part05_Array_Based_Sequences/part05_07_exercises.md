@@ -210,10 +210,74 @@ if __name__ == '__main__':
     print(sum_n_by_n_syntax(a))    
 ```
 
-### R-5.13. In the experiment of Code Fragment 5.1, we begin with an empty list. If data were initially constructed with nonempty length, does this affect the sequence of values at which the underlying array is expanded? Perform your own experiments, and comment on any relationship you see between the initial length and the expansion sequence.
+### C-5.13. In the experiment of Code Fragment 5.1, we begin with an empty list. If data were initially constructed with nonempty length, does this affect the sequence of values at which the underlying array is expanded? Perform your own experiments, and comment on any relationship you see between the initial length and the expansion sequence.
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md#code-fragment-51">Code Fragment 5.1</a>
 </p>
+
+```python
+def initial_length_tester(max_initial_size, append_times):
+    import sys
+    for i in range(max_initial_size):
+        data = [None] * i
+        print('=====[max : {} / append : {}]====='.format(i,
+                                                          append_times))
+        for k in range(append_times):
+            a = len(data)
+            b = sys.getsizeof(data)
+            print('Length: {0:3d}; Size in bytes: {1:4d}'.format(a, b))
+            data.append(None)
+            
+if __name__ == '__main__':
+    initial_length_tester(10,10)
+```
+
+### C-5.14. The shuffle method, supported by the random module, takes a Python list and rearranges it so that every possible ordering is equally likely. Implement your own version of such a function. You may rely on the randrange(n) function of the random module, which returns a random number between 0 and n−1 inclusive.
+```python
+def custom_shuffle(A):
+    from random import randrange
+    n = len(A)
+    result = []
+    while n > 0:
+        result.append(A.pop(randrange(n)))
+        n -= 1
+    return result
+
+if __name__ == '__main__':
+    a = [i for i in range(4)]
+    print(a)
+    print(custom_shuffle(a))
+```
+
+### C-5.15. Consider an implementation of a dynamic array, but instead of copying the elements into an array of double the size (that is, from N to 2N) when its capacity is reached, we copy the elements into an array with ┌N/4┐ additional cells, going from capacity N to capacity N + ┌N/4┐. Prove that performing a sequence of n append operations still runs in O(n) time in this case.
+<p align="start">
+<img src="" style="height: 300px;"></img><br/>
+</p>
+
+### C-5.16.
+
+### C-5.17.
+
+### C-5.18.
+
+### C-5.19.
+
+### C-5.20.
+
+### C-5.21.
+
+### C-5.22.
+
+### C-5.23.
+
+### C-5.24.
+
+### C-5.25.
+
+### C-5.26.
+
+### C-5.27.
+
 
 
 
