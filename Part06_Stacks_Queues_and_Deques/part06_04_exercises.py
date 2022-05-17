@@ -9,6 +9,27 @@ def stack_reverse(A):
         result.append(S.pop())
     return result
 
+def recursive_match(expr, stack=None):
+    lefty = '({['
+    righty = ')}]'
+    print('{} - {}'.format(expr, stack))
+    if stack is None:
+        stack = ArrayStack()
+    if len(expr) == 0:
+        return True
+
+    if expr[0] in righty:
+        if stack.is_empty() or righty.index(expr[0]) != lefty.index(stack.pop()):
+            return False
+        else:
+            return recursive_match(expr[1:], stack)
+    else:
+        if expr[0] in lefty:
+            stack.push(expr[0])
+        return recursive_match(expr[1:], stack)
+
+
+
 if __name__ == '__main__':
     # R-6.1
     # S = ArrayStack()
@@ -46,6 +67,10 @@ if __name__ == '__main__':
     # print(T)
 
     # R-6.5
-    a = [i for i in range(10)]
-    print(a)
-    print(stack_reverse(a))
+    # a = [i for i in range(10)]
+    # print(a)
+    # print(stack_reverse(a))
+
+    # R-6.6
+    a = '(5+3*{12+1})+1-3]'
+    print(recursive_match(a))

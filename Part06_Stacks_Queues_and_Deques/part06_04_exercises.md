@@ -59,8 +59,28 @@ def stack_reverse(A):
 ```
 
 ### R-6.6 Give a precise and complete definition of the concept of matching for grouping symbols in an arithmetic expression. Your definition may be recursive.
+```python
+def recursive_match(expr, stack=None):
+    lefty = '({['
+    righty = ')}]'
+    print('{} - {}'.format(expr, stack))
+    if stack is None:
+        stack = ArrayStack()
+    if len(expr) == 0:
+        return True
 
+    if expr[0] in righty:
+        if stack.is_empty() or righty.index(expr[0]) != lefty.index(stack.pop()):
+            return False
+        else:
+            return recursive_match(expr[1:], stack)
+    else:
+        if expr[0] in lefty:
+            stack.push(expr[0])
+        return recursive_match(expr[1:], stack)
+```
 
+### 
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/part06_stacks_queues_and_deques.md">Part 6. Stacks, Queues, and Deques</a>
