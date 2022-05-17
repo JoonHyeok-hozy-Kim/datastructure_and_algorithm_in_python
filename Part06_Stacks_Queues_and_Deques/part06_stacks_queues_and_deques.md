@@ -19,6 +19,36 @@
 * Every operation has O(1) time consumption.
 * However, O(n) running time is also possible if the List storage resizes.
   * Thus, it is desirable to create underlying List with the length of n.
+```python
+class Empty(Exception):
+    """ Error attempting to access an element from an empty container """
+    pass
+
+class ArrayStack:
+    """ LIFO Stack implementation using Python's List class as an underlying storage """
+
+    def __init__(self):
+        self._data = []
+
+    def __len__(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self._data) == 0
+
+    def push(self, val):
+        self._data.append(val)
+
+    def top(self):
+        if self.is_empty():
+            raise Empty('Stack is empty.')
+        return self._data[-1]
+
+    def pop(self):
+        if self.is_empty():
+            raise Empty('Stack is empty.')
+        return self._data.pop()
+```
 
 ### 6.1.3 Reversing Data Using a Stack
 ```python
@@ -78,6 +108,156 @@ if __name__ == '__main__':
     html = '<body><center><h1> The Little Boat </h1></center><p> The storm tossed the little boat like a cheap sneaker in an old washing machine.</p><ol><li> Will the salesman die? </li><li> What color is the boat? </li><li> And what about Naomi? </li></ol></body>'
     print(is_matched_html(html))
 ```
+
+## 6.2 Queues
+#### Props.) Queue
+* A collection of objects that are inserted and removed according to the first-in, first-out (FIFO) principle
+
+#### Concept) ArrayQueue
+* Use Python's List class as the underlying storage.
+* Set the default capacity of the queue by N.
+  * And circularly use the Array with the modulo operator.
+```python
+from DataStructures.stack import Empty
+
+class ArrayQueue:
+    DEFAULT_CAPACITY = 10
+
+    def __init__(self):
+        self._data = [None] * ArrayQueue.DEFAULT_CAPACITY
+        self._size = 0
+        self._front = -1
+
+    def __len__(self):
+        return self._size
+
+    def __str__(self):
+        text_list = ['[']
+        if self._size > 0:
+            for i in range(self._size):
+                text_list.append(str(self._data[(self._front + i) % len(self._data)]))
+                text_list.append(', ')
+            text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise Empty
+        return self._data[self._front]
+
+    def dequeue(self):
+        if self.is_empty():
+            raise Empty
+        if self._size < len(self._data)//4:
+            self._resize(len(self._data)//2)
+        result = self._data[self._front]
+        self._data[self._front] = None
+        self._size -= 1
+        self._front += 1
+        return result
+
+    def enqueue(self, val):
+        if self._size == len(self._data):
+            self._resize(2 * len(self._data))
+        self._data[(self._front + self._size) % len(self._data)] = val
+        self._size += 1
+
+    def _resize(self, cap):
+        temp = [None] * cap
+        for i in range(self._size):
+            temp[i] = self._data[(self._front + i) % len(self._data)]
+        self._data = temp
+        self._front = 0
+```
+
+## 6.3 Double-Ended Queue
+```python
+from DataStructures.stack import Empty
+
+class ArrayDeque:
+    DEFAULT_CAPACITY = 10
+
+    def __init__(self):
+        self._data = [None] * ArrayDeque.DEFAULT_CAPACITY
+        self._size = 0
+        self._front = -1
+
+    def __len__(self):
+        return self._size
+
+    def __str__(self):
+        text_list = ['[']
+        if self._size > 0:
+            for i in range(self._size):
+                text_list.append(str(self._data[(self._front + i) % len(self._data)]))
+                text_list.append(', ')
+            text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            return Empty
+        return self._data[self._front]
+
+    def last(self):
+        if self.is_empty():
+            return Empty
+        return self._data[(self._front + self._size -1) % len(self._data)]
+
+    def _resize(self, cap):
+        temp = [None] * cap
+        for i in range(self._size):
+            temp[i] = self._data[(self._front + i) % len(self._data)]
+        self._data = temp
+        self._front = 0
+
+    def add_first(self, val):
+        if self._size == len(self._data):
+            self._resize(2 * len(self._data))
+        if self._front == -1:
+            new_front = 0
+        elif self._front == 0:
+            new_front = len(self._data)-1
+        else:
+            new_front = self._front-1
+        self._data[new_front] = val
+        self._front = new_front
+        self._size += 1
+
+    def add_last(self, val):
+        if self._size == len(self._data):
+            self._resize(2 * len(self._data))
+        self._data[(self._front + self._size) % len(self._data)] = val
+        self._size += 1
+
+    def delete_first(self):
+        if self._size < len(self._data)//4:
+            self._resize(len(self._data)//2)
+        result = self._data[self._front]
+        self._data[self._front] = None
+        self._size -= 1
+        self._front = (self._front + 1) % len(self._data)
+        return result
+
+    def delete_last(self):
+        if self._size < len(self._data)//4:
+            self._resize(len(self._data)//2)
+        last_idx = (self._front + self._size -1) % len(self._data)
+        result = self._data[last_idx]
+        self._data[last_idx] = None
+        self._size -= 1
+        return result
+```
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/part06_04_exercises.md">Excercises</a>    
