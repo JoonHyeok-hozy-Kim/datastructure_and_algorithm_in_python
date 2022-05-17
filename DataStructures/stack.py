@@ -11,6 +11,16 @@ class ArrayStack:
     def __len__(self):
         return len(self._data)
 
+    def __str__(self):
+        text_list = ['[']
+        if len(self) > 0:
+            for i in self._data:
+                text_list.append(str(i))
+                text_list.append(', ')
+            text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
     def is_empty(self):
         return len(self._data) == 0
 
