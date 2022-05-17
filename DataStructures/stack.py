@@ -36,3 +36,15 @@ class ArrayStack:
         if self.is_empty():
             raise Empty('Stack is empty.')
         return self._data.pop()
+
+    def transfer(self, other):
+        if type(self) != type(other):
+            raise TypeError
+        for i in range(len(self)):
+            other.push(self.pop())
+
+    def recursive_truncate(self):
+        if len(self) == 0:
+            return
+        self.pop()
+        return self.recursive_truncate()
