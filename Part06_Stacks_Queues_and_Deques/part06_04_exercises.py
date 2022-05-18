@@ -89,6 +89,34 @@ class ArrayQueue:
         self._data = temp
         self._front = 0
 
+def probably_largest(S):
+    x = S.pop()
+    if x < S[-1]:
+        x = S.pop()
+    return x
+
+def permutation(A, num= None, result_set=None, temp_set=None):
+    from copy import deepcopy
+    if num is None:
+        num = len(A)
+    if result_set is None:
+        result_set = []
+    if temp_set is None:
+        temp_set = []
+    for i in range(len(A)):
+        popped = A.pop(i)
+        temp_set.append(popped)
+        if num == 1:
+            temp_copy = deepcopy(temp_set)
+            result_set.append(temp_copy)
+            # print(result_set)
+        else:
+            permutation(A, num-1, result_set, temp_set)
+        re_popped = temp_set.pop(-1)
+        A.insert(i, re_popped)
+    return result_set
+
+
 
 if __name__ == '__main__':
     1
@@ -206,18 +234,33 @@ if __name__ == '__main__':
     # print('D {} - Q {}'.format(d, q))
 
     # R-6.14
-    d = ArrayDeque()
-    s = ArrayStack()
-    for i in range(8):
-        d.add_last(i+1)
-    print('D {} - S {}'.format(d, s))
+    # d = ArrayDeque()
+    # s = ArrayStack()
+    # for i in range(8):
+    #     d.add_last(i+1)
+    # print('D {} - S {}'.format(d, s))
+    # for i in range(4):
+    #     s.push(d.delete_first())
+    # print('D {} - S {}'.format(d, s))
+    # d.add_last(s.pop())
+    # s.push(d.delete_first())
+    # s.push(d.delete_last())
+    # print('D {} - S {}'.format(d, s))
+    # for i in range(5):
+    #     d.add_first(s.pop())
+    # print('D {} - S {}'.format(d, s))
+
+    # C-6.15
+    # a = [i for i in range(3)]
+    # permutaion_set = permutation(a)
+    # right_count = 0
+    # for i in permutaion_set:
+    #     x = probably_largest(i)
+    #     if x == max(a):
+    #         right_count += 1
+    # print('Probability : {}/{}'.format(right_count, len(permutaion_set)))
+
+    # C-6.16
+    s = ArrayStack(3)
     for i in range(4):
-        s.push(d.delete_first())
-    print('D {} - S {}'.format(d, s))
-    d.add_last(s.pop())
-    s.push(d.delete_first())
-    s.push(d.delete_last())
-    print('D {} - S {}'.format(d, s))
-    for i in range(5):
-        d.add_first(s.pop())
-    print('D {} - S {}'.format(d, s))
+        s.push(i)

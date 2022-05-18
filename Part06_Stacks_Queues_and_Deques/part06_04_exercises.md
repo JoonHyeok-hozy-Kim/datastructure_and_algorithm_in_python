@@ -243,6 +243,57 @@ for i in range(5):
 print('D {} - S {}'.format(d, s))
 ```
 
+### C-6.15 Suppose Alice has picked three distinct integers and placed them into a stack S in random order. Write a short, straight-line piece of pseudo-code (with no loops or recursion) that uses only one comparison and only one variable x, yet that results in variable x storing the largest of Alice’s three integers with probability 2/3. Argue why your method is correct.
+```python
+def probably_largest(S):
+    x = S.pop()
+    if x < S[-1]:
+        x = S.pop()
+    return x
+
+def permutation(A, num= None, result_set=None, temp_set=None):
+    from copy import deepcopy
+    if num is None:
+        num = len(A)
+    if result_set is None:
+        result_set = []
+    if temp_set is None:
+        temp_set = []
+    for i in range(len(A)):
+        popped = A.pop(i)
+        temp_set.append(popped)
+        if num == 1:
+            temp_copy = deepcopy(temp_set)
+            result_set.append(temp_copy)
+            # print(result_set)
+        else:
+            permutation(A, num-1, result_set, temp_set)
+        re_popped = temp_set.pop(-1)
+        A.insert(i, re_popped)
+    return result_set
+
+if __name__ == '__main__':
+    a = [i for i in range(3)]
+    permutaion_set = permutation(a)
+    right_count = 0
+    for i in permutaion_set:
+        x = probably_largest(i)
+        if x == max(a):
+            right_count += 1
+    print('Probability : {}/{}'.format(right_count, len(permutaion_set)))
+```
+
+### C-6.16 Modify the ArrayStack implementation so that the stack’s capacity is limited to maxlen elements, where maxlen is an optional parameter to the constructor (that defaults to None). If push is called when the stack is at full capacity, throw a Full exception (defined similarly to Empty).
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/array.py">Modified ArrayStack</a>
+</p>
+
+```python
+if __name__ == '__main__':
+    s = ArrayStack(3)
+    for i in range(4):
+        s.push(i)
+```
 
 
 

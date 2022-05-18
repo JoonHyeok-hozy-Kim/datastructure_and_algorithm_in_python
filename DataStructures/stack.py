@@ -2,11 +2,16 @@ class Empty(Exception):
     """ Error attempting to access an element from an empty container """
     pass
 
+class Full(Exception):
+    """ Error pushing more elements than maxlen if maxlen exists """
+    pass
+
 class ArrayStack:
     """ LIFO Stack implementation using Python's List class as an underlying storage """
 
-    def __init__(self):
+    def __init__(self, maxlen=None):
         self._data = []
+        self._maxlen = maxlen
 
     def __len__(self):
         return len(self._data)
@@ -25,6 +30,9 @@ class ArrayStack:
         return len(self._data) == 0
 
     def push(self, val):
+        if len(self) == self._maxlen:
+            text = 'Stack is full with the capacity of {}'.format(self._maxlen)
+            raise Full(text)
         self._data.append(val)
 
     def top(self):
