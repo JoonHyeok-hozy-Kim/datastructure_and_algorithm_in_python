@@ -301,6 +301,22 @@ if __name__ == '__main__':
 </p>
 
 ### C-6.18 Show how to use the transfer function, described in Exercise R-6.3, and two temporary stacks, to replace the contents of a given stack S with those same elements, but in reversed order.
+```python
+a = ArrayStack()
+b = ArrayStack()
+c = ArrayStack()
+for i in range(5):
+    a.push(i)
+print(a)
+a.transfer(b)
+b.transfer(c)
+c.transfer(a)
+print(a)
+```
+
+### C-6.19 In Code Fragment 6.5 we assume that opening tags in HTML have form <name>, as with <li>. More generally, HTML allows optional attributes to be expressed as part of an opening tag. The general form used is <name attribute1="value1" attribute2="value2">; for example, a table can be given a border and additional padding by using an opening tag of <table border="3" cellpadding="5">. Modify Code Fragment 6.5 so that it can properly match tags, even when an opening tag may include one or more such attributes.
+
+
 
 
 
