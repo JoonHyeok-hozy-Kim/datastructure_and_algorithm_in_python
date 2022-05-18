@@ -356,9 +356,36 @@ def non_recursive_permutation(A):
                 S.push(temp_copy)
                 # print('{} -> {}'.format(S, result_set))
     return result_set
+
+if __name__ == '__main__':
+    a = [i for i in range(5)]
+    print(len(non_recursive_permutation(a)))
+    print(non_recursive_permutation(a))
 ```
 
+### C-6.21 Show how to use a stack S and a queue Q to generate all possible subsets of an n-element set T nonrecursively.
+```python
+def non_recursive_subset(A):
+    from copy import deepcopy
+    S = ArrayStack()
+    Q = ArrayQueue()
+    Q.enqueue([])
+    for i in A:
+        while not Q.is_empty():
+            S.push(Q.dequeue())
+            # print('[Filling S] S {}, Q {}'.format(S, Q))
 
+        while not S.is_empty():
+            temp = S.pop()
+            temp_copy = deepcopy(temp)
+            Q.enqueue(temp)
+            temp_copy.append(i)
+            Q.enqueue(temp_copy)
+            # print('[Filling Q] S {}, Q {}'.format(S, Q))
+    return Q
+```
+
+### 
 
 
 

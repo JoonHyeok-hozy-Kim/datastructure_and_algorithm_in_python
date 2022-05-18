@@ -37,7 +37,7 @@ class ArrayQueue:
         result = self._data[self._front]
         self._data[self._front] = None
         self._size -= 1
-        self._front += 1
+        self._front = (self._front + 1) % len(self._data)
         return result
 
     def enqueue(self, val):
