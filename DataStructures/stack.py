@@ -11,7 +11,7 @@ class ArrayStack:
 
     def __init__(self, maxlen=None):
         self._data = []
-        self._maxlen = maxlen
+        self._maxlen = maxlen # Added by C-6.16
 
     def __len__(self):
         return len(self._data)
@@ -30,6 +30,7 @@ class ArrayStack:
         return len(self._data) == 0
 
     def push(self, val):
+        # Added by C-6.16
         if len(self) == self._maxlen:
             text = 'Stack is full with the capacity of {}'.format(self._maxlen)
             raise Full(text)
