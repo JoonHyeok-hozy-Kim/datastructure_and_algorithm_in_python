@@ -1,4 +1,6 @@
 from DataStructures.stack import ArrayStack
+from DataStructures.queue import ArrayQueue
+from DataStructures.deque import ArrayDeque
 
 def stack_reverse(A):
     S = ArrayStack()
@@ -29,8 +31,67 @@ def recursive_match(expr, stack=None):
         return recursive_match(expr[1:], stack)
 
 
+from collections import deque
+from DataStructures.stack import Empty
+
+class ArrayQueue:
+    DEFAULT_CAPACITY = 10
+
+    def __init__(self):
+        self._data = deque()
+        for i in range(ArrayQueue.DEFAULT_CAPACITY):
+            self._data.append(None)
+        self._size = 0
+        self._front = -1
+
+    def __len__(self):
+        return self._size
+
+    def __str__(self):
+        text_list = ['[']
+        if self._size > 0:
+            for i in range(self._size):
+                text_list.append(str(self._data[(self._front + i) % len(self._data)]))
+                text_list.append(', ')
+            text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise Empty
+        return self._data[self._front]
+
+    def dequeue(self):
+        if self.is_empty():
+            raise Empty
+        if self._size < len(self._data)//4:
+            self._resize(len(self._data)//2)
+        result = self._data[self._front]
+        self._data[self._front] = None
+        self._size -= 1
+        self._front += 1
+        return result
+
+    def enqueue(self, val):
+        if self._size == len(self._data):
+            self._resize(2 * len(self._data))
+        self._data[(self._front + self._size) % len(self._data)] = val
+        self._size += 1
+
+    def _resize(self, cap):
+        temp = [None] * cap
+        for i in range(self._size):
+            temp[i] = self._data[(self._front + i) % len(self._data)]
+        self._data = temp
+        self._front = 0
+
 
 if __name__ == '__main__':
+    1
     # R-6.1
     # S = ArrayStack()
     # S.push(5)
@@ -72,5 +133,60 @@ if __name__ == '__main__':
     # print(stack_reverse(a))
 
     # R-6.6
-    a = '(5+3*{12+1})+1-3]'
-    print(recursive_match(a))
+    # a = '(5+3*{12+1})+1-3]'
+    # print(recursive_match(a))
+
+    # R-6.7
+    # q = ArrayQueue()
+    # q.enqueue(5)
+    # q.enqueue(3)
+    # q.dequeue()
+    # q.enqueue(2)
+    # q.enqueue(8)
+    # q.dequeue()
+    # q.dequeue()
+    # q.enqueue(9)
+    # q.enqueue(1)
+    # q.dequeue()
+    # q.enqueue(7)
+    # q.enqueue(6)
+    # q.dequeue()
+    # q.dequeue()
+    # q.enqueue(4)
+    # q.dequeue()
+    # q.dequeue()
+    # print(q)
+
+    # a = ArrayQueue()
+    # for i in range(3):
+    #     a.enqueue(i)
+    #     print(a)
+    # for i in range(3):
+    #     a.dequeue()
+    #     print(a)
+
+    # R-6.12
+    # d = ArrayDeque()
+    # d.add_first(4)
+    # d.add_last(8)
+    # d.add_last(9)
+    # d.add_first(5)
+    # # d.back()
+    # d.delete_first()
+    # d.delete_last()
+    # d.add_last(7)
+    # d.first()
+    # d.last()
+    # d.add_last(6)
+    # d.delete_first()
+    # d.delete_first()
+    # print(d)
+
+    # R-6.13
+    d = ArrayDeque()
+    q = ArrayQueue()
+    for i in range(8):
+        d.add_last(i+1)
+    print(d)
+    for i in range(3):
+        q.en

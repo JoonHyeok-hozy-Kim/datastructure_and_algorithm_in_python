@@ -80,7 +80,130 @@ def recursive_match(expr, stack=None):
         return recursive_match(expr[1:], stack)
 ```
 
-### 
+### R-6.7 What values are returned during the following sequence of queue operations, if executed on an initially empty queue?
+* enqueue(5), enqueue(3), dequeue(), enqueue(2), enqueue(8), dequeue(), dequeue(), enqueue(9), enqueue(1), dequeue(), enqueue(7), enqueue(6), dequeue(), dequeue(), enqueue(4), dequeue(), dequeue().
+```python
+q = ArrayQueue()
+q.enqueue(5)
+q.enqueue(3)
+q.dequeue()
+q.enqueue(2)
+q.enqueue(8)
+q.dequeue()
+q.dequeue()
+q.enqueue(9)
+q.enqueue(1)
+q.dequeue()
+q.enqueue(7)
+q.enqueue(6)
+q.dequeue()
+q.dequeue()
+q.enqueue(4)
+q.dequeue()
+q.dequeue()
+print(q)
+```
+
+### R-6.8 Suppose an initially empty queue Q has executed a total of 32 enqueue operations, 10 first operations, and 15 dequeue operations, 5 of which raised Empty errors that were caught and ignored. What is the current size of Q?
+* Sol.) 32-(15-5) = 22
+
+### R-6.9 Had the queue of the previous problem been an instance of ArrayQueue that used an initial array of capacity 30, and had its size never been greater than 30, what would be the final value of the front instance variable?
+* Sol.) self._front = 10
+
+### R-6.10 Consider what happens if the loop in the ArrayQueue. resize method at lines 53–55 of Code Fragment 6.7 had been implemented as:
+```python
+for k in range(self. size):
+    self. data[k] = old[k]
+```
+### Give a clear explanation of what could go wrong.
+* Sol.) Existing elements in the previous self._data may remain and distort the data.
+
+### R-6.11 Give a simple adapter that implements our queue ADT while using a collections.deque instance for storage.
+```python
+from collections import deque
+from DataStructures.stack import Empty
+
+class ArrayQueue:
+    DEFAULT_CAPACITY = 10
+
+    def __init__(self):
+        self._data = deque()
+        for i in range(ArrayQueue.DEFAULT_CAPACITY):
+            self._data.append(None)
+        self._size = 0
+        self._front = -1
+
+    def __len__(self):
+        return self._size
+
+    def __str__(self):
+        text_list = ['[']
+        if self._size > 0:
+            for i in range(self._size):
+                text_list.append(str(self._data[(self._front + i) % len(self._data)]))
+                text_list.append(', ')
+            text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise Empty
+        return self._data[self._front]
+
+    def dequeue(self):
+        if self.is_empty():
+            raise Empty
+        if self._size < len(self._data)//4:
+            self._resize(len(self._data)//2)
+        result = self._data[self._front]
+        self._data[self._front] = None
+        self._size -= 1
+        self._front += 1
+        return result
+
+    def enqueue(self, val):
+        if self._size == len(self._data):
+            self._resize(2 * len(self._data))
+        self._data[(self._front + self._size) % len(self._data)] = val
+        self._size += 1
+
+    def _resize(self, cap):
+        temp = [None] * cap
+        for i in range(self._size):
+            temp[i] = self._data[(self._front + i) % len(self._data)]
+        self._data = temp
+        self._front = 0
+```
+
+### R-6.12 What values are returned during the following sequence of deque ADT operations, on initially empty deque? 
+* add first(4), add last(8), add last(9), add first(5), back( ), delete first( ), delete last( ), add last(7), first( ), last( ), add last(6), delete first( ), delete first( ).
+```python
+d = ArrayDeque()
+d.add_first(4)
+d.add_last(8)
+d.add_last(9)
+d.add_first(5)
+# d.back() # ???
+d.delete_first()
+d.delete_last()
+d.add_last(7)
+d.first()
+d.last()
+d.add_last(6)
+d.delete_first()
+d.delete_first()
+print(d)
+```
+
+### R-6.13 Suppose you have a deque D containing the numbers (1,2,3,4,5,6,7,8), in this order. Suppose further that you have an initially empty queue Q. Give a code fragment that uses only D and Q (and no other variables) and results in D storing the elements in the order (1,2,3,5,4,6,7,8).
+
+
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/part06_stacks_queues_and_deques.md">Part 6. Stacks, Queues, and Deques</a>
