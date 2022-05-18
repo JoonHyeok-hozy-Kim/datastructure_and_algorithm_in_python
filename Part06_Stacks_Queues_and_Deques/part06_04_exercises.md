@@ -315,6 +315,50 @@ print(a)
 ```
 
 ### C-6.19 In Code Fragment 6.5 we assume that opening tags in HTML have form \<name>, as with \<li>. More generally, HTML allows optional attributes to be expressed as part of an opening tag. The general form used is \<name attribute1="value1" attribute2="value2">; for example, a table can be given a border and additional padding by using an opening tag of \<table border="3" cellpadding="5">. Modify Code Fragment 6.5 so that it can properly match tags, even when an opening tag may include one or more such attributes.
+```python
+def is_matched_html(raw):
+    S = ArrayStack()
+    j = raw.find('<')
+    while j > -1:
+        k = raw.find('>', j+1)
+        if k == -1:
+            return False
+        tag = raw[j+1:k].split()[0]
+        print(tag)
+        if not tag.startswith('/'):
+            S.push(tag)
+        else:
+            if S.is_empty():
+                return False
+            elif S.pop() != tag[1:]:
+                return False
+        j = raw.find('<', k+1)
+    return S.is_empty()
+```
+
+### C-6.20 Describe a nonrecursive algorithm for enumerating all permutations of the numbers {1,2,...,n} using an explicit stack.
+```python
+def non_recursive_permutation(A):
+    from copy import deepcopy
+    result_set = []
+    S = ArrayStack()
+    for i in range(len(A)):
+        S.push([A[i]])
+    while len(S) > 0:
+        temp = S.pop()
+        if len(temp) == len(A):
+            temp_copy = deepcopy(temp)
+            result_set.append(temp_copy)
+        for i in A:
+            temp_copy = deepcopy(temp)
+            if i not in temp:
+                temp_copy.append(i)
+                S.push(temp_copy)
+                # print('{} -> {}'.format(S, result_set))
+    return result_set
+```
+
+
 
 
 

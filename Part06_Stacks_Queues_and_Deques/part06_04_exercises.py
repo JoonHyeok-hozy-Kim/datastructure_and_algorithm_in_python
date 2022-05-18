@@ -117,6 +117,45 @@ def permutation(A, num= None, result_set=None, temp_set=None):
     return result_set
 
 
+def is_matched_html(raw):
+    S = ArrayStack()
+    j = raw.find('<')
+    while j > -1:
+        k = raw.find('>', j+1)
+        if k == -1:
+            return False
+        tag = raw[j+1:k].split()[0]
+        print(tag)
+        if not tag.startswith('/'):
+            S.push(tag)
+        else:
+            if S.is_empty():
+                return False
+            elif S.pop() != tag[1:]:
+                return False
+        j = raw.find('<', k+1)
+    return S.is_empty()
+
+def non_recursive_permutation(A):
+    from copy import deepcopy
+    result_set = []
+    S = ArrayStack()
+    for i in range(len(A)):
+        S.push([A[i]])
+    while len(S) > 0:
+        temp = S.pop()
+        if len(temp) == len(A):
+            temp_copy = deepcopy(temp)
+            result_set.append(temp_copy)
+        for i in A:
+            temp_copy = deepcopy(temp)
+            if i not in temp:
+                temp_copy.append(i)
+                S.push(temp_copy)
+                # print('{} -> {}'.format(S, result_set))
+    return result_set
+
+
 
 if __name__ == '__main__':
     1
@@ -270,13 +309,21 @@ if __name__ == '__main__':
     #     print(s)
 
     # C-6.18
-    a = ArrayStack()
-    b = ArrayStack()
-    c = ArrayStack()
-    for i in range(5):
-        a.push(i)
-    print(a)
-    a.transfer(b)
-    b.transfer(c)
-    c.transfer(a)
-    print(a)
+    # a = ArrayStack()
+    # b = ArrayStack()
+    # c = ArrayStack()
+    # for i in range(5):
+    #     a.push(i)
+    # print(a)
+    # a.transfer(b)
+    # b.transfer(c)
+    # c.transfer(a)
+    # print(a)
+
+    # C-6.19
+    # a = '<table border="3" cellpadding="5"></table>'
+    # print(is_matched_html(a))
+
+    # C-6.20
+    a = [i for i in range(3)]
+    print(non_recursive_permutation(a))
