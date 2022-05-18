@@ -183,10 +183,41 @@ if __name__ == '__main__':
     # print(d)
 
     # R-6.13
+    # d = ArrayDeque()
+    # q = ArrayQueue()
+    # for i in range(8):
+    #     d.add_last(i+1)
+    # print('D {} - Q {}'.format(d, q))
+    # for i in range(4):
+    #     q.enqueue(d.delete_first())
+    # print('D {} - Q {}'.format(d, q))
+    # for i in range(3):
+    #     d.add_last(q.dequeue())
+    # print('D {} - Q {}'.format(d, q))
+    # q.enqueue(d.delete_first())
+    # print('D {} - Q {}'.format(d, q))
+    # d.add_first(q.dequeue())
+    # print('D {} - Q {}'.format(d, q))
+    # for i in range(4):
+    #     q.enqueue(d.delete_first())
+    # print('D {} - Q {}'.format(d, q))
+    # for i in range(5):
+    #     d.add_last(q.dequeue())
+    # print('D {} - Q {}'.format(d, q))
+
+    # R-6.14
     d = ArrayDeque()
-    q = ArrayQueue()
+    s = ArrayStack()
     for i in range(8):
         d.add_last(i+1)
-    print(d)
-    for i in range(3):
-        q.en
+    print('D {} - S {}'.format(d, s))
+    for i in range(4):
+        s.push(d.delete_first())
+    print('D {} - S {}'.format(d, s))
+    d.add_last(s.pop())
+    s.push(d.delete_first())
+    s.push(d.delete_last())
+    print('D {} - S {}'.format(d, s))
+    for i in range(5):
+        d.add_first(s.pop())
+    print('D {} - S {}'.format(d, s))
