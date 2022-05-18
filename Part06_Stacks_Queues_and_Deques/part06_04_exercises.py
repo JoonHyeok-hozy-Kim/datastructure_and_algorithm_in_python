@@ -260,7 +260,23 @@ if __name__ == '__main__':
     #         right_count += 1
     # print('Probability : {}/{}'.format(right_count, len(permutaion_set)))
 
-    # C-6.16
-    s = ArrayStack(3)
-    for i in range(4):
-        s.push(i)
+    # C-6.16, C-6.17
+    # s = ArrayStack(3)
+    # for i in range(3):
+    #     s.push(i)
+    #     print(s)
+    # for i in range(4):
+    #     s.pop()
+    #     print(s)
+
+    # C-6.18
+    a = ArrayStack()
+    b = ArrayStack()
+    c = ArrayStack()
+    for i in range(5):
+        a.push(i)
+    print(a)
+    a.transfer(b)
+    b.transfer(c)
+    c.transfer(a)
+    print(a)

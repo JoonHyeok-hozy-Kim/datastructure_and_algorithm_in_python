@@ -295,6 +295,12 @@ if __name__ == '__main__':
         s.push(i)
 ```
 
+### C-6.17 In the previous exercise, we assume that the underlying list is initially empty. Redo that exercise, this time preallocating an underlying list with length equal to the stack’s maximum capacity.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/stack.py">Modified ArrayStack</a>
+</p>
+
+### C-6.18 Show how to use the transfer function, described in Exercise R-6.3, and two temporary stacks, to replace the contents of a given stack S with those same elements, but in reversed order.
 
 
 
