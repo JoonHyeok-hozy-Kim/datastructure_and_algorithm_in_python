@@ -670,7 +670,9 @@ if __name__ == '__main__':
         sd.delete_first()
         print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
 ```
-
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/images/04_04_25.png" style="height: 600px;"></img><br/>
+</p>
 
 
 
