@@ -35,3 +35,18 @@ X
 .XXXX_NOTE/gre_hackers_verbal/HWs/220307_HW.txt,2\9\29608dbe815e55f74e09c55ab42016de7c245c14
 f
 6XXXX_NOTE/gre_hackers_verbal/assignment_voca_parser.py,5\4\54687e43c74d106714d1895aa2a29feca9972aec
+E
+XXXX_NOTE/__init__.py,7\7\77a6f86439406568c4a0390d17f0b166aea336b1
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+^
+.XXXX_NOTE/gre_hackers_verbal/HWs/220309_HW.txt,3\3\339c5df7a269ea30a47a18133fcbfc6e1ca41170
+^
+.XXXX_NOTE/gre_hackers_verbal/HWs/220314_HW.txt,9\1\91f974be1050ecc8ab7f44a84a50cd3fff5643e0
+^
+.XXXX_NOTE/gre_hackers_verbal/HWs/220316_HW.txt,6\7\673e0dd25d0ee5a28737ac8d12dd6c8683f687d9
+z
+JPart05_Array_Based_Sequences/part05_03_dynamic_arrays_and_amortiazation.py,f\c\fc52b745c6b77c9b43f6251cd50edb6b4baeb867

@@ -401,7 +401,25 @@ class StackDeque:
         text_list.append(']')
         return ''.join(text_list)
 
-
+from DataStructures.queue import ArrayQueue
+def StackScanner(S, val):
+    Q = ArrayQueue()
+    scan_cnt = 0
+    found_flag = False
+    while len(S) > 0:
+        scan_cnt += 1
+        popped = S.pop()
+        Q.enqueue(popped)
+        if val == popped:
+            found_flag = True
+            break
+    for i in range(scan_cnt):
+        S.push(Q.dequeue())
+    for i in range(scan_cnt):
+        Q.enqueue(S.pop())
+    for i in range(scan_cnt):
+        S.push(Q.dequeue())
+    return found_flag
 
 
 
@@ -654,9 +672,24 @@ if __name__ == '__main__':
     #     print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
 
     # C-6.25
-    sq = StackQueue()
-    for i in range(5):
-        sq.enqueue(i)
-    for i in range(5):
-        print(sq.dequeue())
+    # sq = StackQueue()
+    # for i in range(5):
+    #     sq.enqueue(i)
+    # for i in range(5):
+    #     print(sq.dequeue())
+
+    # C-6.27
+    # S = ArrayStack()
+    # for i in range(10):
+    #     S.push(i)
+    # print(S)
+    # print(StackScanner(S, 3), S)
+    # print(StackScanner(S, 9), S)
+    # print(StackScanner(S, -1), S)
+
+    # C-6.28
+    Q = ArrayQueue(5)
+    for i in range(6):
+        Q.enqueue(i)
+        print(Q)
 

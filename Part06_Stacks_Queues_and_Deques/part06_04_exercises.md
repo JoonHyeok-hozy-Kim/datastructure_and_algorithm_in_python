@@ -710,6 +710,49 @@ if __name__ == '__main__':
         print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
 ```
 
+### C-6.27 Suppose you have a stack S containing n elements and a queue Q that is initially empty. Describe how you can use Q to scan S to see if it contains a certain element x, with the additional constraint that your algorithm must return the elements back to S in their original order. You may only use S, Q, and a constant number of other variables.
+```python
+from DataStructures.queue import ArrayQueue
+def StackScanner(S, val):
+    Q = ArrayQueue()
+    scan_cnt = 0
+    found_flag = False
+    while len(S) > 0:
+        scan_cnt += 1
+        popped = S.pop()
+        Q.enqueue(popped)
+        if val == popped:
+            found_flag = True
+            break
+    for i in range(scan_cnt):
+        S.push(Q.dequeue())
+    for i in range(scan_cnt):
+        Q.enqueue(S.pop())
+    for i in range(scan_cnt):
+        S.push(Q.dequeue())
+    return found_flag
+
+if __name__ == '__main__':
+    S = ArrayStack()
+    for i in range(10):
+        S.push(i)
+    print(S)
+    print(StackScanner(S, 3), S)
+    print(StackScanner(S, 9), S)
+    print(StackScanner(S, -1), S)
+```
+
+### C-6.28 Modify the ArrayQueue implementation so that the queue’s capacity is limited to maxlen elements, where maxlen is an optional parameter to the constructor (that defaults to None). If enqueue is called when the queue is at full capacity, throw a Full exception (defined similarly to Empty).
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/queue.py">Modified Queue</a>
+</p>
+
+```python
+Q = ArrayQueue(5)
+for i in range(6):
+    Q.enqueue(i)
+    print(Q)
+```
 
 
 

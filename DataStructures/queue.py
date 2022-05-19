@@ -1,12 +1,13 @@
-from DataStructures.stack import Empty
+from DataStructures.stack import Empty, Full
 
 class ArrayQueue:
     DEFAULT_CAPACITY = 10
 
-    def __init__(self):
+    def __init__(self, maxlen=None):
         self._data = [None] * ArrayQueue.DEFAULT_CAPACITY
         self._size = 0
         self._front = -1
+        self._maxlen = maxlen
 
     def __len__(self):
         return self._size
@@ -41,6 +42,8 @@ class ArrayQueue:
         return result
 
     def enqueue(self, val):
+        if self._maxlen is not None and self._size == self._maxlen:
+            raise Full
         if self._size == len(self._data):
             self._resize(2 * len(self._data))
         self._data[(self._front + self._size) % len(self._data)] = val
