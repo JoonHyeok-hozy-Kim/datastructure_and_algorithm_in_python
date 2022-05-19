@@ -688,8 +688,17 @@ if __name__ == '__main__':
     # print(StackScanner(S, -1), S)
 
     # C-6.28
-    Q = ArrayQueue(5)
-    for i in range(6):
+    # Q = ArrayQueue(5)
+    # for i in range(6):
+    #     Q.enqueue(i)
+    #     print(Q)
+
+    # C-6.29
+    Q = ArrayQueue()
+    for i in range(5):
         Q.enqueue(i)
-        print(Q)
+    print(Q, Q._data)
+    print(Q.rotate(), Q, Q._data)
+    print(Q.rotate(), Q, Q._data)
+    print(Q.rotate(), Q, Q._data)
 

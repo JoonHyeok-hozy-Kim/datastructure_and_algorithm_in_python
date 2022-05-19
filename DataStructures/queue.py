@@ -55,3 +55,10 @@ class ArrayQueue:
             temp[i] = self._data[(self._front + i) % len(self._data)]
         self._data = temp
         self._front = 0
+
+    def rotate(self):
+        dequeued = self._data[self._front]
+        self._data[self._front] = None
+        self._data[(self._front + self._size) % len(self._data)] = dequeued
+        self._front += 1
+        return dequeued
