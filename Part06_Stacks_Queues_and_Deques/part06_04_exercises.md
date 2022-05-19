@@ -615,7 +615,7 @@ if __name__ == '__main__':
         print(sq.dequeue())
 ```
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/images/06_04_25.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/images/06_04_25.png" style="height: 150px;"></img><br/>
 </p>
 
 ### C-6.26 Describe how to implement the double-ended queue ADT using two stacks as instance variables. What are the running times of the methods?
