@@ -285,6 +285,103 @@ class PostfixConverter:
             debug_point = ''
         print('[DEBUG {}] temp_expr : {} / _temp_element : {}'.format(debug_point, self._temp_expr, self._temp_element))
 
+from DataStructures.queue import ArrayQueue
+class QueueStack:
+
+    def __init__(self):
+        self._queue = ArrayQueue()
+
+    def __len__(self):
+        return len(self._queue)
+
+    def push(self, val):
+        self._queue.enqueue(val)
+
+    def pop(self):
+        for i in range(len(self)-1):
+            e = self._queue.dequeue()
+            self._queue.enqueue(e)
+        return self._queue.dequeue()
+
+    def top(self):
+        for i in range(len(self)):
+            e = self._queue.dequeue()
+            self._queue.enqueue(e)
+        return e
+
+
+from DataStructures.stack import ArrayStack
+class StackDeque:
+
+    def __init__(self):
+        self._front_stack = ArrayStack()
+        self._back_stack = ArrayStack()
+
+    def __len__(self):
+        return len(self._front_stack) + len(self._back_stack)
+
+    def back_to_front(self):
+        if len(self._front_stack) > 0:
+            raise ValueError('Front is NOT empty.')
+        for i in range(len(self._back_stack)):
+            self._front_stack.push(self._back_stack.pop())
+
+    def front_to_back(self):
+        if len(self._back_stack) > 0:
+            raise ValueError('Back is NOT empty.')
+        for i in range(len(self._front_stack)):
+            self._back_stack.push(self._front_stack.pop())
+
+    def add_first(self, val):
+        self._front_stack.push(val)
+
+    def add_last(self, val):
+        self._back_stack.push(val)
+
+    def delete_first(self):
+        if len(self) == 0:
+            raise IndexError('Deque is empty.')
+        if len(self._front_stack) == 0:
+            self.back_to_front()
+        return self._front_stack.pop()
+
+    def delete_last(self):
+        if len(self) == 0:
+            raise IndexError('Deque is empty.')
+        if len(self._back_stack) == 0:
+            self.front_to_back()
+        return self._back_stack.pop()
+
+    def __str__(self):
+        reverser_stack = ArrayStack()
+        if len(self._back_stack) > 0:
+            for i in range(len(self._back_stack)):
+                reverser_stack.push(self._back_stack.pop())
+        text_list = ['[']
+        len_front = len(self._front_stack)
+        if len_front + len(reverser_stack) > 0:
+            if len_front > 0:
+                for i in range(len_front):
+                    text_list.append(str(self._front_stack.pop()))
+                    text_list.append(', ')
+                for i in range(len_front):
+                    self._front_stack.push(text_list[(i+1)*(-2)])
+            if len(reverser_stack) > 0:
+                for i in range(len(reverser_stack)):
+                    e = reverser_stack.pop()
+                    text_list.append(str(e))
+                    text_list.append(', ')
+                    self._back_stack.push(e)
+            text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -471,30 +568,63 @@ if __name__ == '__main__':
     #     print(p.parse_expression(expr))
 
     # C-6.23
-    def mixer(R, S, T):
-        print('[Before] R : {}, S : {}, T : {}'.format(R, S, T))
-        len_s = len(S)
-        len_t = len(T)
-        for i in range(len_s):
-            R.push(S.pop())
-        for i in range(len_t):
-            R.push(T.pop())
-        for i in range(len_s+len_t):
-            S.push(R.pop())
-        print('[After] R : {}, S : {}, T : {}'.format(R, S, T))
+    # def mixer(R, S, T):
+    #     print('[Before] R : {}, S : {}, T : {}'.format(R, S, T))
+    #     len_s = len(S)
+    #     len_t = len(T)
+    #     for i in range(len_s):
+    #         R.push(S.pop())
+    #     for i in range(len_t):
+    #         R.push(T.pop())
+    #     for i in range(len_s+len_t):
+    #         S.push(R.pop())
+    #     print('[After] R : {}, S : {}, T : {}'.format(R, S, T))
+    #
+    # R = ArrayStack()
+    # S = ArrayStack()
+    # T = ArrayStack()
+    # r = [1, 2, 3]
+    # s = [4, 5]
+    # t = [6, 7, 8, 9]
+    #
+    # for i in r:
+    #     R.push(i)
+    # for i in s:
+    #     S.push(i)
+    # for i in t:
+    #     T.push(i)
+    #
+    # mixer(R, S, T)
 
-    R = ArrayStack()
-    S = ArrayStack()
-    T = ArrayStack()
-    r = [1, 2, 3]
-    s = [4, 5]
-    t = [6, 7, 8, 9]
+    # C-6.24
+    # s = QueueStack()
+    # for i in range(3):
+    #     s.push(i)
+    # for i in range(2):
+    #     print(s.top())
+    # for i in range(3):
+    #     print(s.pop())
 
-    for i in r:
-        R.push(i)
-    for i in s:
-        S.push(i)
-    for i in t:
-        T.push(i)
+    # C-6.25
+    # sd = StackDeque()
+    # print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    # for i in range(5):
+    #     sd.add_first(i)
+    # print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    # print(sd.delete_first())
+    # print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    # print(sd.delete_last())
+    # print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    # for i in range(3):
+    #     sd.add_first((i+1)*10)
+    # print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    # for i in range(2):
+    #     sd.add_last((i+1)*(-1))
+    # print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    # for i in range(6):
+    #     sd.delete_last()
+    # print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    # for i in range(2):
+    #     sd.delete_first()
+    #     print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
 
-    mixer(R, S, T)

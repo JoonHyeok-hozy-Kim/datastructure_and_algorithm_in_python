@@ -540,9 +540,136 @@ mixer(R, S, T)
 ```
 
 ### C-6.24 Describe how to implement the stack ADT using a single queue as an instance variable, and only constant additional local memory within the method bodies. What is the running time of the push(), pop(), and top() methods for your design?
+* Sol.) 
+  * push : O(1)
+  * pop : O(n)
+  * top : O(n)
+```python
+from DataStructures.queue import ArrayQueue
+class QueueStack:
 
+    def __init__(self):
+        self._queue = ArrayQueue()
 
+    def __len__(self):
+        return len(self._queue)
 
+    def push(self, val):
+        self._queue.enqueue(val)
+
+    def pop(self):
+        for i in range(len(self)-1):
+            e = self._queue.dequeue()
+            self._queue.enqueue(e)
+        return self._queue.dequeue()
+
+    def top(self):
+        for i in range(len(self)):
+            e = self._queue.dequeue()
+            self._queue.enqueue(e)
+        return e
+
+if __name__ == '__main__':
+    s = QueueStack()
+    for i in range(3):
+        s.push(i)
+    for i in range(2):
+        print(s.top())
+    for i in range(3):
+        print(s.pop())
+```
+
+### C-6.25 Describe how to implement the queue ADT using two stacks as instance variables, such that all queue operations execute in amortized O(1) time. Give a formal proof of the amortized bound.
+```python
+from DataStructures.stack import ArrayStack
+class StackDeque:
+
+    def __init__(self):
+        self._front_stack = ArrayStack()
+        self._back_stack = ArrayStack()
+
+    def __len__(self):
+        return len(self._front_stack) + len(self._back_stack)
+
+    def back_to_front(self):
+        if len(self._front_stack) > 0:
+            raise ValueError('Front is NOT empty.')
+        for i in range(len(self._back_stack)):
+            self._front_stack.push(self._back_stack.pop())
+
+    def front_to_back(self):
+        if len(self._back_stack) > 0:
+            raise ValueError('Back is NOT empty.')
+        for i in range(len(self._front_stack)):
+            self._back_stack.push(self._front_stack.pop())
+
+    def add_first(self, val):
+        self._front_stack.push(val)
+
+    def add_last(self, val):
+        self._back_stack.push(val)
+
+    def delete_first(self):
+        if len(self) == 0:
+            raise IndexError('Deque is empty.')
+        if len(self._front_stack) == 0:
+            self.back_to_front()
+        return self._front_stack.pop()
+
+    def delete_last(self):
+        if len(self) == 0:
+            raise IndexError('Deque is empty.')
+        if len(self._back_stack) == 0:
+            self.front_to_back()
+        return self._back_stack.pop()
+
+    def __str__(self):
+        reverser_stack = ArrayStack()
+        if len(self._back_stack) > 0:
+            for i in range(len(self._back_stack)):
+                reverser_stack.push(self._back_stack.pop())
+        text_list = ['[']
+        len_front = len(self._front_stack)
+        if len_front + len(reverser_stack) > 0:
+            if len_front > 0:
+                for i in range(len_front):
+                    text_list.append(str(self._front_stack.pop()))
+                    text_list.append(', ')
+                for i in range(len_front):
+                    self._front_stack.push(text_list[(i+1)*(-2)])
+            if len(reverser_stack) > 0:
+                for i in range(len(reverser_stack)):
+                    e = reverser_stack.pop()
+                    text_list.append(str(e))
+                    text_list.append(', ')
+                    self._back_stack.push(e)
+            text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
+if __name__ == '__main__':
+    sd = StackDeque()
+    print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    for i in range(5):
+        sd.add_first(i)
+    print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    print(sd.delete_first())
+    print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    print(sd.delete_last())
+    print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    for i in range(3):
+        sd.add_first((i+1)*10)
+    print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    for i in range(2):
+        sd.add_last((i+1)*(-1))
+    print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    for i in range(6):
+        sd.delete_last()
+    print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+    for i in range(2):
+        sd.delete_first()
+        print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+```
 
 
 
