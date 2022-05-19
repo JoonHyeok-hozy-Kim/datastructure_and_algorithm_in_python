@@ -309,6 +309,31 @@ class QueueStack:
             self._queue.enqueue(e)
         return e
 
+from DataStructures.stack import ArrayStack
+class StackQueue:
+    def __init__(self):
+        self._enqueue_stack = ArrayStack()
+        self._dequeue_stack = ArrayStack()
+
+    def __len__(self):
+        return len(self._enqueue_stack) + len(self._dequeue_stack)
+
+    def enqueue(self, val):
+        self._enqueue_stack.push(val)
+
+    def dequeue(self):
+        if len(self) == 0:
+            raise IndexError
+        if len(self._dequeue_stack) == 0:
+            self.migration()
+        return self._dequeue_stack.pop()
+
+    def migration(self):
+        if len(self._dequeue_stack) == 0 and len(self._enqueue_stack) > 0:
+            for i in range(len(self._enqueue_stack)):
+                self._dequeue_stack.push(self._enqueue_stack.pop())
+        else:
+            raise ValueError('Migration inapplicable.')
 
 from DataStructures.stack import ArrayStack
 class StackDeque:
@@ -627,4 +652,11 @@ if __name__ == '__main__':
     # for i in range(2):
     #     sd.delete_first()
     #     print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
+
+    # C-6.25
+    sq = StackQueue()
+    for i in range(5):
+        sq.enqueue(i)
+    for i in range(5):
+        print(sq.dequeue())
 

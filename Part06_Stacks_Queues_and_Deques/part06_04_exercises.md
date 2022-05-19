@@ -580,9 +580,42 @@ if __name__ == '__main__':
 ```
 
 ### C-6.25 Describe how to implement the queue ADT using two stacks as instance variables, such that all queue operations execute in amortized O(1) time. Give a formal proof of the amortized bound.
+```python
+from DataStructures.stack import ArrayStack
+class StackQueue:
+    def __init__(self):
+        self._enqueue_stack = ArrayStack()
+        self._dequeue_stack = ArrayStack()
 
+    def __len__(self):
+        return len(self._enqueue_stack) + len(self._dequeue_stack)
+
+    def enqueue(self, val):
+        self._enqueue_stack.push(val)
+
+    def dequeue(self):
+        if len(self) == 0:
+            raise IndexError
+        if len(self._dequeue_stack) == 0:
+            self.migration()
+        return self._dequeue_stack.pop()
+
+    def migration(self):
+        if len(self._dequeue_stack) == 0 and len(self._enqueue_stack) > 0:
+            for i in range(len(self._enqueue_stack)):
+                self._dequeue_stack.push(self._enqueue_stack.pop())
+        else:
+            raise ValueError('Migration inapplicable.')
+
+if __name__ == '__main__':
+    sq = StackQueue()
+    for i in range(5):
+        sq.enqueue(i)
+    for i in range(5):
+        print(sq.dequeue())
+```
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/images/06_04_25.png" style="height: 600px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/images/06_04_25.png" style="height: 300px;"></img><br/>
 </p>
 
 ### C-6.26 Describe how to implement the double-ended queue ADT using two stacks as instance variables. What are the running times of the methods?
