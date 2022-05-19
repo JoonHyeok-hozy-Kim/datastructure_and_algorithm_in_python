@@ -175,7 +175,115 @@ def non_recursive_subset(A):
     return Q
 
 
+from copy import deepcopy
+class PostfixConverter:
 
+    LEFTY_PARENTHESIS = '({['
+    RIGHTY_PARENTHESIS = ')}]'
+    OPERATORS = '+-*/'
+
+    def __init__(self):
+        self._parenthesis_stack = ArrayStack()
+        self._temp_expr = [None] * 3
+        self._temp_element = None
+        self._temp_element_list = []
+        self._operator_cnt = 0
+
+    def parse_expression(self, str_expr):
+        for c in str_expr:
+            # print('TARGET CHAR : {}'.format(c))
+            if c == ' ':
+                pass
+
+            elif c in PostfixConverter.LEFTY_PARENTHESIS:
+                copy_expr = deepcopy(self._temp_expr)
+                self._parenthesis_stack.push([c, copy_expr, self._operator_cnt])
+                self._temp_expr = [None] * 3
+                self._operator_cnt = 0
+                # self.debug_temp_expr_num('Open parenthesis')
+
+            elif c in PostfixConverter.RIGHTY_PARENTHESIS:
+                parenthesis_pop = self._parenthesis_stack.pop()
+                if PostfixConverter.LEFTY_PARENTHESIS.index(parenthesis_pop[0]) != PostfixConverter.RIGHTY_PARENTHESIS.index(c):
+                    raise ValueError('Parenthesis mismatch.')
+
+                if self._temp_element is None:
+                    self._temp_element = ''.join(self._temp_element_list)
+                after_close_expr = self.merge_expression_num(self._temp_expr, self._temp_element)
+
+                self._temp_element = self.clear_expression(after_close_expr)
+                self._temp_element_list = []
+                self._temp_expr = parenthesis_pop[1]
+                self._operator_cnt = parenthesis_pop[2]
+
+                # self.debug_temp_expr_num('Close parenthesis')
+
+            elif c.isnumeric():
+                self._temp_element_list.append(c)
+
+            elif c in PostfixConverter.OPERATORS:
+                if self._temp_element_list is None:
+                    raise ValueError('[parse_expression] operator : temp_num is None : {}'.format(self._temp_expr))
+
+                if self._operator_cnt > 0:
+                    # self.debug_temp_expr_num('IF in operation')
+                    self._temp_element = ''.join(self._temp_element_list)
+                    self._temp_element_list = self.merge_expression_num(self._temp_expr, self._temp_element)
+                    self._temp_element = ' '.join(self._temp_element_list)
+
+                self._operator_cnt += 1
+                if self._temp_element is None:
+                    self._temp_element = ''.join(self._temp_element_list)
+
+                element = deepcopy(self._temp_element)
+                self._temp_expr[0] = element
+                self._temp_expr[2] = c
+
+                self._temp_element = None
+                self._temp_element_list = []
+                # self.debug_temp_expr_num('operation_end')
+
+        if len(self._temp_element_list) > 0:
+            self._temp_element = ''.join(self._temp_element_list)
+        final_expression = self.merge_expression_num(self._temp_expr, self._temp_element)
+
+        if self._operator_cnt > 0:
+            raise ValueError('Operator not cleared.')
+
+        return self.clear_expression(final_expression)
+
+
+    def merge_expression_num(self, expr, element):
+        none_cnt =0
+        for i in expr:
+            if i is None:
+                none_cnt += 1
+        if none_cnt > 2 or expr[2] is None:
+            raise ValueError('[merge_expression_num] expr not qualified : {}'.format(expr))
+
+        copy_expr = deepcopy(expr)
+        if copy_expr[0] is None:
+            copy_expr[0] = element
+        elif copy_expr[1] is None:
+            copy_expr[1] = element
+        else:
+            raise ValueError('[merge_expression_num] temp_num not added to temp_expr')
+
+        self._operator_cnt -= 1
+        return copy_expr
+
+    def clear_expression(self, expr):
+        for i in expr:
+            if i is None:
+                raise ValueError('[clear_expr] Expression not qualified : {}'.format(expr))
+
+        result = ' '.join(expr)
+        return result
+
+    def debug_temp_expr_num(self, debug_point=None):
+        if debug_point is None:
+            debug_point = ''
+        print('[DEBUG {}] temp_expr : {} / _temp_element : {}'.format(debug_point, self._temp_expr, self._temp_element))
 
 
 
@@ -347,7 +455,46 @@ if __name__ == '__main__':
     # print(is_matched_html(a))
 
     # C-6.20
-    a = [i for i in range(3)]
-    # print(len(non_recursive_permutation(a)))
-    # print(non_recursive_permutation(a))
-    print(non_recursive_subset(a))
+    # a = [i for i in range(3)]
+    # # print(len(non_recursive_permutation(a)))
+    # # print(non_recursive_permutation(a))
+    # print(non_recursive_subset(a))
+
+    # C-6.22
+    # expr_list = []
+    # expr_list.append('((5+2)*(8-3))/4')
+    # expr_list.append('(12+13)-4')
+    # expr_list.append('9*(12+13)')
+    # expr_list.append('1+2*3')
+    # p = PostfixConverter()
+    # for expr in expr_list:
+    #     print(p.parse_expression(expr))
+
+    # C-6.23
+    def mixer(R, S, T):
+        print('[Before] R : {}, S : {}, T : {}'.format(R, S, T))
+        len_s = len(S)
+        len_t = len(T)
+        for i in range(len_s):
+            R.push(S.pop())
+        for i in range(len_t):
+            R.push(T.pop())
+        for i in range(len_s+len_t):
+            S.push(R.pop())
+        print('[After] R : {}, S : {}, T : {}'.format(R, S, T))
+
+    R = ArrayStack()
+    S = ArrayStack()
+    T = ArrayStack()
+    r = [1, 2, 3]
+    s = [4, 5]
+    t = [6, 7, 8, 9]
+
+    for i in r:
+        R.push(i)
+    for i in s:
+        S.push(i)
+    for i in t:
+        T.push(i)
+
+    mixer(R, S, T)
