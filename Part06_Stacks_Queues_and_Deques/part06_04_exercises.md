@@ -581,6 +581,9 @@ if __name__ == '__main__':
 
 ### C-6.25 Describe how to implement the queue ADT using two stacks as instance variables, such that all queue operations execute in amortized O(1) time. Give a formal proof of the amortized bound.
 
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/images/06_04_25.png" style="height: 600px;"></img><br/>
+</p>
 
 ### C-6.26 Describe how to implement the double-ended queue ADT using two stacks as instance variables. What are the running times of the methods?
 ```python
@@ -673,9 +676,6 @@ if __name__ == '__main__':
         sd.delete_first()
         print('{} | {}-{}'.format(sd, sd._front_stack, sd._back_stack))
 ```
-<p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/images/06_04_26.png" style="height: 500px;"></img><br/>
-</p>
 
 
 
