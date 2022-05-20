@@ -826,9 +826,92 @@ if __name__ == '__main__':
     print(a)
 ```
 
+### P-6.36 When a share of common stock of some company is sold, the capital gain (or, sometimes, loss) is the difference between the share’s selling price and the price originally paid to buy it. This rule is easy to understand for a single share, but if we sell multiple shares of stock bought over a long period of time, then we must identify the shares actually being sold. A standard accounting principle for identifying which shares of a stock were sold in such a case is to use a FIFO protocol—the shares sold are the ones that have been held the longest (indeed, this is the default method built into several personal finance software packages). For example, suppose we buy 100 shares at $20 each on day 1, 20 shares at $24 on day 2, 200 shares at $36 on day 3, and then sell 150 shares on day 4 at $30 each. Then applying the FIFO protocol means that of the 150 shares sold, 100 were bought on day 1, 20 were bought on day 2, and 30 were bought on day 3. The capital gain in this case would therefore be 100 · 10+20 · 6+30 ·(−6), or $940. Write a program that takes as input a sequence of transactions of the form “buy x share(s) at y each” or “sell x share(s) at y each,” assuming that the transactions occur on consecutive days and the values x and y are integers. Given this input sequence, the output should be the total capital gain (or loss) for the entire sequence, using the FIFO protocol to identify shares. 
+```python
+from DataStructures.queue import ArrayQueue
+class CapitalGainFIFO:
+    def __init__(self):
+        self._transactions = ArrayQueue()
+        self._quantity = 0
+        self._captial_gain = 0
 
+    def buy(self, quantity, price):
+        self._quantity += quantity
+        for i in range(quantity):
+            self._transactions.enqueue(price)
 
+    def sell(self, quantity, price):
+        self._quantity -= quantity
+        for i in range(quantity):
+            self._captial_gain += price
+            self._captial_gain -= self._transactions.dequeue()
 
+    def show_capital_gain(self):
+        print(self._captial_gain)
+        return self._captial_gain
+
+if __name__ == '__main__':
+    fifo = CapitalGainFIFO()
+    fifo.buy(100, 20)
+    fifo.buy(20, 24)
+    fifo.buy(200, 36)
+    fifo.sell(150, 30)
+    fifo.show_capital_gain()
+```
+
+### P-6.37 Design an ADT for a two-color, double-stack ADT that consists of two stacks—one “red” and one “blue”—and has as its operations color-coded versions of the regular stack ADT operations. For example, this ADT should support both a red push operation and a blue push operation. Give an efficient implementation of this ADT using a single array whose capacity is set at some value N that is assumed to always be larger than the sizes of the red and blue stacks combined. 
+```python
+from DataStructures.deque import ArrayDeque, Empty
+class DoubleStack:
+
+    def __init__(self):
+        self._data = ArrayDeque()
+        self._red_length = 0
+        self._blue_length = 0
+
+    def __len__(self):
+        return len(self._data)
+
+    def red_push(self, val):
+        self._data.add_first(val)
+        self._red_length += 1
+
+    def red_pop(self):
+        if self._red_length == 0:
+            raise Empty('Red Stack is empty.')
+        self._red_length -= 1
+        return self._data.delete_first()
+
+    def red_top(self):
+        if self._red_length == 0:
+            raise Empty('Red Stack is empty.')
+        return self._data.first()
+
+    def blue_push(self, val):
+        self._data.add_last(val)
+        self._blue_length += 1
+
+    def blue_pop(self):
+        if self._blue_length == 0:
+            raise Empty('Blue Stack is empty.')
+        self._blue_length -= 1
+        return self._data.delete_last()
+
+    def blue_top(self):
+        if self._blue_length == 0:
+            raise Empty('Blue Stack is empty.')
+        return self._data.last()
+
+if __name__ == '__main__':
+    ds = DoubleStack()
+    for i in range(3):
+        ds.red_push(i+1)
+    for i in range(3):
+        ds.blue_push((i+1)*(-1))
+    for i in range(4):
+        print(ds.red_pop())
+        print(ds.blue_pop())
+```
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/part06_stacks_queues_and_deques.md">Part 6. Stacks, Queues, and Deques</a>

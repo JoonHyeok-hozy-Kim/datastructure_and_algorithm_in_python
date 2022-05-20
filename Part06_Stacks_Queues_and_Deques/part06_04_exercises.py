@@ -421,9 +421,68 @@ def StackScanner(S, val):
         S.push(Q.dequeue())
     return found_flag
 
+from DataStructures.queue import ArrayQueue
+class CapitalGainFIFO:
+    def __init__(self):
+        self._transactions = ArrayQueue()
+        self._quantity = 0
+        self._captial_gain = 0
 
+    def buy(self, quantity, price):
+        self._quantity += quantity
+        for i in range(quantity):
+            self._transactions.enqueue(price)
 
+    def sell(self, quantity, price):
+        self._quantity -= quantity
+        for i in range(quantity):
+            self._captial_gain += price
+            self._captial_gain -= self._transactions.dequeue()
 
+    def show_capital_gain(self):
+        print(self._captial_gain)
+        return self._captial_gain
+
+from DataStructures.deque import ArrayDeque, Empty
+class DoubleStack:
+
+    def __init__(self):
+        self._data = ArrayDeque()
+        self._red_length = 0
+        self._blue_length = 0
+
+    def __len__(self):
+        return len(self._data)
+
+    def red_push(self, val):
+        self._data.add_first(val)
+        self._red_length += 1
+
+    def red_pop(self):
+        if self._red_length == 0:
+            raise Empty('Red Stack is empty.')
+        self._red_length -= 1
+        return self._data.delete_first()
+
+    def red_top(self):
+        if self._red_length == 0:
+            raise Empty('Red Stack is empty.')
+        return self._data.first()
+
+    def blue_push(self, val):
+        self._data.add_last(val)
+        self._blue_length += 1
+
+    def blue_pop(self):
+        if self._blue_length == 0:
+            raise Empty('Blue Stack is empty.')
+        self._blue_length -= 1
+        return self._data.delete_last()
+
+    def blue_top(self):
+        if self._blue_length == 0:
+            raise Empty('Blue Stack is empty.')
+        return self._data.last()
 
 
 
@@ -744,14 +803,28 @@ if __name__ == '__main__':
     # for i in range(5):
     #     print(a.pop(), a, a._data)
 
-    a = LeakyArrayStack(5)
-    for i in range(5):
-        a.push(i)
-        print(a, a._data)
-    a.push(100)
+    # a = LeakyArrayStack(5)
     # for i in range(5):
-    #     print(a.pop(), a, a._data)
-    print(a)
+    #     a.push(i)
+    #     print(a, a._data)
+    # a.push(100)
+    # # for i in range(5):
+    # #     print(a.pop(), a, a._data)
+    # print(a)
+    #
+    # # P-3.36
+    # fifo = CapitalGainFIFO()
+    # fifo.buy(100, 20)
+    # fifo.buy(20, 24)
+    # fifo.buy(200, 36)
+    # fifo.sell(150, 30)
+    # fifo.show_capital_gain()
 
-
-
+    ds = DoubleStack()
+    for i in range(3):
+        ds.red_push(i+1)
+    for i in range(3):
+        ds.blue_push((i+1)*(-1))
+    for i in range(4):
+        print(ds.red_pop())
+        print(ds.blue_pop())
