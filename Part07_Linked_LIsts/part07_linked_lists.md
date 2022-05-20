@@ -9,5 +9,5 @@
 
 
 <p>
-    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/part06_04_exercises.md">Excercises</a>    
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/part07_08_exercises.md">Excercises</a>    
 </p>
