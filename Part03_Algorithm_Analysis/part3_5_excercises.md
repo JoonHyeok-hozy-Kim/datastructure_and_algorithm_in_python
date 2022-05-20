@@ -1,7 +1,7 @@
 
 <div>
     <p>
-        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
     </p>
 </div>
 
@@ -214,6 +214,6 @@ def c_3_54(S):
 
 <div>
     <p>
-        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
     </p>
 </div>

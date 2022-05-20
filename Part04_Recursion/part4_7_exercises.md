@@ -1,7 +1,7 @@
 
 <div>
     <p>
-        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md">Part 4. Recursion</a>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md">Part 4. Recursion</a>
     </p>
 </div>
 
@@ -427,6 +427,6 @@ if __name__ == '__main__':
 
 <div>
     <p>
-        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md">Part 4. Recursion</a>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md">Part 4. Recursion</a>
     </p>
 </div>
