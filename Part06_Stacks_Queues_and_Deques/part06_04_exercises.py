@@ -694,11 +694,46 @@ if __name__ == '__main__':
     #     print(Q)
 
     # C-6.29
-    Q = ArrayQueue()
+    # Q = ArrayQueue()
+    # for i in range(5):
+    #     Q.enqueue(i)
+    # print(Q, Q._data)
+    # print(Q.rotate(), Q, Q._data)
+    # print(Q.rotate(), Q, Q._data)
+    # print(Q.rotate(), Q, Q._data)
+
+    # P-6.33
+    d = ArrayDeque()
     for i in range(5):
-        Q.enqueue(i)
-    print(Q, Q._data)
-    print(Q.rotate(), Q, Q._data)
-    print(Q.rotate(), Q, Q._data)
-    print(Q.rotate(), Q, Q._data)
+        d.add_last(i)
+    print(d)
+    # print(d)
+    # for i in range(5):
+    #     print(d[i], d)
+    #     print(d[(i+1)*(-1)])
+    # print(d[6])
+    # print(d[-6])
+
+    # for i in range(5):
+    #     d.rotate(4)
+    #     print(d, d._data)
+
+    # for i in range(len(d)):
+    #     d[i] = 999
+    #     print(d)
+
+    # d.clear()
+    # print(d)
+    # for i in range(10):
+    #     d.add_last(i)
+    d.remove(2)
+    print(d, d._data)
+    for i in range(3):
+        d.add_last(0)
+    print(d, d._data)
+    d.remove(0)
+    print(d, d._data)
+
+    print(d.count(1))
+    print(d.count(0))
 

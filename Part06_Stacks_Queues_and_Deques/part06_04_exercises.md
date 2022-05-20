@@ -764,6 +764,31 @@ def rotate(self):
     return dequeued
 ```
 
+### C-6.30 Alice has two queues, Q and R, which can store integers. Bob gives Alice 50 odd integers and 50 even integers and insists that she store all 100 integers in Q and R. They then play a game where Bob picks Q or R at random and then applies the round-robin scheduler, described in the chapter, to the chosen queue a random number of times. If the last number to be processed at the end of this game was odd, Bob wins. Otherwise, Alice wins. How can Alice allocate integers to queues to optimize her chances of winning? What is her chance of winning?
+* By enqueuing even numbers to Q and R respectively as the first element, Alice can win the game with the probability of 1.
+
+### C-6.31 Suppose Bob has four cows that he wants to take across a bridge, but only one yoke, which can hold up to two cows, side by side, tied to the yoke. The yoke is too heavy for him to carry across the bridge, but he can tie (and untie) cows to it in no time at all. Of his four cows, Mazie can cross the bridge in 2 minutes, Daisy can cross it in 4 minutes, Crazy can cross it in 10 minutes, and Lazy can cross it in 20 minutes. Of course, when two cows are tied to the yoke, they must go at the speed of the slower cow. Describe how Bob can get all his cows across the bridge in 34 minutes. 
+* Under the assumption that Bob can make one cow cross the bridge and a single cow can carry the yoke, Bob may be able to cross the bridge with the minimum time of 28 minutes.
+  1. 4 mins : [Mazie, Daisy] with yoke
+  2. 2 mins : [Mazie] carrying yoke
+  3. 20 mins : [Crazy, Lazy] with yoke
+  4. N mins : Bob solely crossing the bridge.
+  5. 2 mins : [Mazie] crossing the bridge with Bob.
+    * (28+N) mins required for making four cows crossing the bridge.
+
+### P-6.32 Give a complete ArrayDeque implementation of the double-ended queue ADT as sketched in Section 6.3.2.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/deque.py">Deque ADT</a>
+</p>
+
+### P-6.33 Give an array-based implementation of a double-ended queue supporting all of the public behaviors shown in Table 6.4 for the collections.deque class, including use of the maxlen optional parameter. When a lengthlimited deque is full, provide semantics similar to the collections.deque class, whereby a call to insert an element on one end of a deque causes an element to be lost from the opposite side. 
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/deque.py">Upgraded Deque ADT</a>
+</p>
+
+### 
+
+
 
 
 <p>

@@ -1,4 +1,5 @@
 from DataStructures.stack import Empty
+from copy import deepcopy
 
 class ArrayDeque:
     DEFAULT_CAPACITY = 10
@@ -76,4 +77,65 @@ class ArrayDeque:
         result = self._data[last_idx]
         self._data[last_idx] = None
         self._size -= 1
+        return result
+
+    # Imitating collections.deque
+    def __getitem__(self, key):
+        result = None
+        if len(self) == 0:
+            raise Empty
+        if key >= len(self) or key < len(self) * (-1):
+            raise IndexError
+        if key < 0:
+            key += len(self)
+        for i in range(len(self)):
+            temp = self.delete_first()
+            if i == key:
+                result = deepcopy(temp)
+            self.add_last(temp)
+        return result
+
+    def __setitem__(self, key, value):
+        if len(self) == 0:
+            raise Empty
+        if key >= len(self) or key < len(self) * (-1):
+            raise IndexError
+        if key < 0:
+            key += len(self)
+        self.rotate(key)
+        self.delete_first()
+        self.add_last(value)
+        self.rotate(len(self)-key-1)
+
+    def clear(self):
+        for i in range(len(self)):
+            self._data[(self._front + i) % len(self._data)] = None
+        self._front = -1
+        self._size = 0
+
+
+    def rotate(self, k=None):
+        if k is None:
+            k = 1
+        for i in range(k):
+            temp = deepcopy(self._data[self._front])
+            self._data[(self._front + self._size) % len(self._data)] = temp
+            self._data[self._front] = None
+            self._front = (self._front + 1) % len(self._data)
+
+    def remove(self, element):
+        removed_flag = False
+        for i in range(len(self)):
+            if not removed_flag and self.first() == element:
+                self.delete_first()
+                removed_flag = True
+                continue
+            self.rotate()
+
+    def count(self, element):
+        result = 0
+        for i in range(len(self)):
+            if self.first() == element:
+                result += 1
+            self.rotate()
         return result
