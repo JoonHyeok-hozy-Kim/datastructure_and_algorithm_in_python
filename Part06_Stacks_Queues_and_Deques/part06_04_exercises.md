@@ -793,7 +793,38 @@ def rotate(self):
 </p>
 
 ### P-6.35 The introduction of Section 6.1 notes that stacks are often used to provide “undo” support in applications like a Web browser or text editor. While support for undo can be implemented with an unbounded stack, many applications provide only limited support for such an undo history, with a fixed-capacity stack. When push is invoked with the stack at full capacity, rather than throwing a Full exception (as described in Exercise C-6.16), a more typical semantic is to accept the pushed element at the top while “leaking” the oldest element from the bottom of the stack to make room. Give an implementation of such a LeakyStack abstraction, using a circular array with appropriate storage capacity. This class should have a public interface similar to the bounded-capacity stack in Exercise C-6.16, but with the desired leaky semantics when full.
+```python
+class LeakyArrayStack(ArrayStack):
 
+    def push(self, val):
+        if self._maxlen is not None:
+            if len(self) == self._maxlen:
+                self.leak()
+            self._data[self._top+1] = val
+        else:
+            self._data.append(val)
+        self._top += 1
+
+    def leak(self):
+        from DataStructures.queue import ArrayQueue
+        if self._maxlen < len(self):
+            raise ValueError('Array is not full. Cannot leak.')
+        Q = ArrayQueue()
+        for i in range(len(self)):
+            Q.enqueue(self.pop())
+        for i in range(len(Q)-1):
+            self.push(Q.dequeue())
+
+if __name__ == '__main__':
+    a = LeakyArrayStack(5)
+    for i in range(5):
+        a.push(i)
+        print(a, a._data)
+    a.push(100)
+    # for i in range(5):
+    #     print(a.pop(), a, a._data)
+    print(a)
+```
 
 
 

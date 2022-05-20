@@ -41,7 +41,7 @@ class ArrayStack:
                 text = 'Stack is full with the capacity of {}'.format(self._maxlen)
                 raise Full(text)
             else:
-                self._data[self._top] = val
+                self._data[self._top+1] = val
         else:
             self._data.append(val)
         self._top += 1
@@ -75,3 +75,26 @@ class ArrayStack:
             return
         self.pop()
         return self.recursive_truncate()
+
+
+class LeakyArrayStack(ArrayStack):
+
+    def push(self, val):
+        if self._maxlen is not None:
+            if len(self) == self._maxlen:
+                self.leak()
+            self._data[self._top+1] = val
+        else:
+            self._data.append(val)
+        self._top += 1
+
+    def leak(self):
+        from DataStructures.queue import ArrayQueue
+        if self._maxlen < len(self):
+            raise ValueError('Array is not full. Cannot leak.')
+        Q = ArrayQueue()
+        for i in range(len(self)):
+            Q.enqueue(self.pop())
+        for i in range(len(Q)-1):
+            self.push(Q.dequeue())
+

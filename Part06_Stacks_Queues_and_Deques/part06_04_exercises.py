@@ -1,4 +1,4 @@
-from DataStructures.stack import ArrayStack
+from DataStructures.stack import ArrayStack, LeakyArrayStack
 from DataStructures.queue import ArrayQueue
 from DataStructures.deque import ArrayDeque
 
@@ -736,4 +736,22 @@ if __name__ == '__main__':
     #
     # print(d.count(1))
     # print(d.count(0))
+
+    # a = ArrayStack(5)
+    # for i in range(5):
+    #     a.push(i)
+    #     print(a, a._data)
+    # for i in range(5):
+    #     print(a.pop(), a, a._data)
+
+    a = LeakyArrayStack(5)
+    for i in range(5):
+        a.push(i)
+        print(a, a._data)
+    a.push(100)
+    # for i in range(5):
+    #     print(a.pop(), a, a._data)
+    print(a)
+
+
 
