@@ -112,25 +112,25 @@ def disk_usage(path):
 * How?
   * Using big-Oh, Omega, Theta, etc
   * Account each operation that is performed based upon the particular
-<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/Part04_Recursion.md#concept-activation-record-or-frame">_activation_</a>
+<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#concept-activation-record-or-frame">_activation_</a>
 of the function that manages the flow of control at the time it is executed.
   * Take sum of the number of operations over all the _activations_.
 
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#411-the-factorial-function">4.2.1 Factorials Fucntion</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#411-the-factorial-function">4.2.1 Factorials Function</a>
 * Trivially, O(n)
  
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#412-drawing-an-english-ruler">4.2.2 English Ruler</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#412-drawing-an-english-ruler">4.2.2 English Ruler</a>
 * Use _recurrence equation_
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_01_english_ruler_pf.png" style="height: 300px;"></img><br/>
 </p>
 
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#413-binary-search">4.2.3 Binary Search</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#413-binary-search">4.2.3 Binary Search</a>
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/images/4_01_binary_search_pf.png" style="height: 300px;"></img><br/>
 </p>
 
-### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#413-binary-search">4.2.4 Disk Space Usage</a>
+### <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#413-binary-search">4.2.4 Disk Space Usage</a>
 * Weak Upperbound : O(n^2)
   * pf) Let _n_ be the number of entries in a file system. Then, the number of the iteration 
         invoked each entry by os.list_dir() method will be _n_.   
@@ -146,7 +146,7 @@ of the function that manages the flow of control at the time it is executed.
 ## 4.3 Recursion Run Amok
 #### In efficient example 1 : Element Uniqueness Problem
 * Recall
-<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_algorithm_analysis.md#ex3-element-uniqueness-problem--find-out-whether-all-elements-of-a-series-s-with-the-size-of-n-are-unique">_element uniqueness problem_</a>
+<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md#ex3-element-uniqueness-problem--find-out-whether-all-elements-of-a-series-s-with-the-size-of-n-are-unique">_element uniqueness problem_</a>
   * recursive solution
 ```python
 def unique3(S, start, stop):
@@ -226,9 +226,9 @@ sys.setrecursionlimit(recursive_limit)
 ### 4.4.1 Linear Recursion
 * Def) each invocation of the body makes at most one new recursive call
 * Examples already covered
-  1. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#411-the-factorial-function">Factorials Fucntion</a>
-  2. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#in-efficient-example-2--fibonacci-numbers">Efficient Fibonacci</a>
-  3. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#413-binary-search">Binary Search</a>
+  1. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#411-the-factorial-function">Factorials Fucntion</a>
+  2. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#in-efficient-example-2--fibonacci-numbers">Efficient Fibonacci</a>
+  3. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#413-binary-search">Binary Search</a>
 
 #### Ex.1) Summing the Elements of a Sequence Recursively
 ```python
@@ -338,7 +338,7 @@ if __name__ == '__main__':
   3. Reparameterization
      * in order to make a recursive function with the cleaner interface
      * or to intentionally strengthening the expectation of what is returned. (Ex.
-     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_recursion.md#in-efficient-example-2--fibonacci-numbers">Good Fibonacci</a>
+     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part04_Recursion/part4_00_recursion.md#in-efficient-example-2--fibonacci-numbers">Good Fibonacci</a>
   returning pair of numbers instead of integers.)
 
 ## 4.6 Eliminating Tail Recursion
