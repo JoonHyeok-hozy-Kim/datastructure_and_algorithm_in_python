@@ -29,3 +29,10 @@
         → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/part06_04_exercises.md">Excercises</a>
     </p>
 </div>
+<div>
+    <p>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_Lists/part07_linked_lists.md">Part 6. Stacks, Queues, and Deques</a>
+        <br/>
+        → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_Lists/part07_08_exercises.md">Excercises</a>
+    </p>
+</div>
