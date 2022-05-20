@@ -1,8 +1,15 @@
-from DataStructures.linked_list import LinkedStack
+from DataStructures.linked_list import LinkedStack, LinkedQueue
 
 if __name__ == '__main__':
-    s = LinkedStack()
+    # s = LinkedStack()
+    # for i in range(5):
+    #     s.push(i)
+    # for i in range(5):
+    #     print(s.pop())
+
+    q = LinkedQueue()
     for i in range(5):
-        s.push(i)
+        q.enqueue(i)
     for i in range(5):
-        print(s.pop())
+        print(q.dequeue())
+        print(q.first())
