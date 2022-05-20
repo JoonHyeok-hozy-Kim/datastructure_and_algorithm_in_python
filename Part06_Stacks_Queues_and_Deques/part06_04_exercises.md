@@ -786,7 +786,15 @@ def rotate(self):
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/deque.py">Upgraded Deque ADT</a>
 </p>
 
-### 
+### P-6.34 Implement a program that can input an expression in postfix notation (see Exercise C-6.22) and output its value.
+* cf.) Operation sequence in +- and */ may be covered later.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part06_Stacks_Queues_and_Deques/part06_04_exercises.md#c-622-postfix-notation-is-an-unambiguous-way-of-writing-an-arithmetic-expression-without-parentheses-it-is-defined-so-that-if-exp1opexp2-is-a-normal-fully-parenthesized-expression-whose-operation-is-op-the-postfix-version-of-this-is-pexp1-pexp2-op-where-pexp1-is-the-postfix-version-of-exp1-and-pexp2-is-the-postfix-version-of-exp2-the-postfix-version-of-a-single-number-or-variable-is-just-that-number-or-variable-for-example-the-postfix-version-of-52--834-is-5-2--8-3---4--describe-a-nonrecursive-way-of-evaluating-an-expression-in-postfix-notation">Postfix Converter</a>
+</p>
+
+### P-6.35 The introduction of Section 6.1 notes that stacks are often used to provide “undo” support in applications like a Web browser or text editor. While support for undo can be implemented with an unbounded stack, many applications provide only limited support for such an undo history, with a fixed-capacity stack. When push is invoked with the stack at full capacity, rather than throwing a Full exception (as described in Exercise C-6.16), a more typical semantic is to accept the pushed element at the top while “leaking” the oldest element from the bottom of the stack to make room. Give an implementation of such a LeakyStack abstraction, using a circular array with appropriate storage capacity. This class should have a public interface similar to the bounded-capacity stack in Exercise C-6.16, but with the desired leaky semantics when full.
+
+
 
 
 

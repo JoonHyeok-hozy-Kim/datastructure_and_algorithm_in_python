@@ -703,10 +703,10 @@ if __name__ == '__main__':
     # print(Q.rotate(), Q, Q._data)
 
     # P-6.33
-    d = ArrayDeque()
-    for i in range(5):
-        d.add_last(i)
-    print(d)
+    # d = ArrayDeque()
+    # for i in range(5):
+    #     d.add_last(i)
+    # print(d)
     # print(d)
     # for i in range(5):
     #     print(d[i], d)
@@ -726,14 +726,14 @@ if __name__ == '__main__':
     # print(d)
     # for i in range(10):
     #     d.add_last(i)
-    d.remove(2)
-    print(d, d._data)
-    for i in range(3):
-        d.add_last(0)
-    print(d, d._data)
-    d.remove(0)
-    print(d, d._data)
-
-    print(d.count(1))
-    print(d.count(0))
+    # d.remove(2)
+    # print(d, d._data)
+    # for i in range(3):
+    #     d.add_last(0)
+    # print(d, d._data)
+    # d.remove(0)
+    # print(d, d._data)
+    #
+    # print(d.count(1))
+    # print(d.count(0))
 
