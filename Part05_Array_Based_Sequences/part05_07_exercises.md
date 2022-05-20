@@ -212,7 +212,7 @@ if __name__ == '__main__':
 
 ### C-5.13. In the experiment of Code Fragment 5.1, we begin with an empty list. If data were initially constructed with nonempty length, does this affect the sequence of values at which the underlying array is expanded? Perform your own experiments, and comment on any relationship you see between the initial length and the expansion sequence.
 <p>
-    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md#code-fragment-51">Code Fragment 5.1</a>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_00_array_based_sequences.md#code-fragment-51">Code Fragment 5.1</a>
 </p>
 
 ```python
@@ -595,7 +595,7 @@ if __name__ == '__main__':
 
 ### P-5.34 Write a program that can perform the Caesar cipher for English messages that include both upper- and lowercase characters.
 <p>
-    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_array_based_sequences.md#553-simple-cryptography"> * Sol.) Caesar cipher</a>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part05_Array_Based_Sequences/part05_00_array_based_sequences.md#553-simple-cryptography"> * Sol.) Caesar cipher</a>
 </p>
 
 ### P-5.35 Implement a class, SubstitutionCipher, with a constructor that takes a string with the 26 uppercase letters in an arbitrary order and uses that for the forward mapping for encryption (akin to the self. forward string in our CaesarCipher class of Code Fragment 5.11). You should derive the backward mapping from the forward version.
