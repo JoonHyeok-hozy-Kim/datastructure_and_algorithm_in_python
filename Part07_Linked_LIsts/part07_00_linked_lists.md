@@ -179,6 +179,69 @@ class CircularQueue:
             self._tail = self._tail._next
 ```
 
+## 7.3 Doubly Linked List
+#### Props.) Doubly Linked List
+* Each node contains address of its predecessor and successor nodes.
+* Symmetric structure compared to the singly-linked-list
+  * Thus, more efficient when deleting elements near the tail node.
+
+#### Tech.) Implementing Doubly Linked List
+* Use concept Sentinel Nodes, which contain Nones as their elements and keep their positions as the header and the trailer.
+  * Every consecutive nodes containing elements will be positioned between the sentinels.
+* Use _DoublyLinkedBase class as base class.
+  * It contains basic properties that following data structures share. 
+    1. Doubly Linked List
+    2. Positional List
+    
+```python
+class LinkedDeque(_DoublyLinkedBase):
+    def first(self):
+        if self.is_empty():
+            raise Empty
+        return self._header._next._element
+
+    def last(self):
+        if self.is_empty():
+            raise Empty
+        return self._trailer._prev._element
+
+    def insert_first(self, e):
+        self._insert_between(e, self._header, self._header._next)
+
+    def insert_last(self, e):
+        self._insert_between(e, self._trailer._prev, self._trailer)
+
+    def delete_first(self):
+        if self.is_empty():
+            raise Empty
+        deleted = self._delete_node(self._header._next)
+        return deleted
+
+    def delete_last(self):
+        if self.is_empty():
+            raise Empty
+        deleted = self._delete_node(self._trailer._prev)
+        return deleted
+```
+
+## 7.4 Positional List ADT
+#### Props.) Positional List ADT
+* Allows more advanced operations compared to stacks, queues, deques.
+  * Such as insertion and deletion in the middle of the list.
+    * If frequent revisions for the elements at arbitrary positions are expected, positional array can be a fine choice.
+      * ex.) word processor program
+* Numeric indices used in Python's List class is not a efficient material for the Positional Array
+
+#### Tech.) How to describe position
+* Use _DoublyLinkedBase class for low level manipulations of nodes.
+  * Encapsulate _insert_between and _delete_node methods.
+* Create position abstract data type
+  * Acts as a marker or token within broader positional list
+  * Unaffected by changes in the list
+  * Becomes invalid only if an explicit command is issued to delete it.
+
+
+
 
 
 <p>
