@@ -434,7 +434,7 @@ class FavoriteList:
     * Sol.) Move-to-Front Heuristic
 
 <p align="center">
-  <img src="" style="height: 150px;"></img><br/>
+  <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/images/07_06_01_worst_scenario.png" style="height: 150px;"></img><br/>
 </p>
 
 ### 7.6.2 Using a List with the Move-to-Front Heuristic
