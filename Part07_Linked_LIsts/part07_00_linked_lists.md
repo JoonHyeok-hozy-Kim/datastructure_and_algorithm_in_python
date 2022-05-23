@@ -118,8 +118,11 @@ class LinkedQueue:
 
 ## 7.2 Circularly Linked Lists
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/images/07_02_01_circularly_linked_list_image.png" style="height: 150px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/images/07_02_01_circularly_linked_list_image.png" style="height: 300px;"></img><br/>
 </p>
+
+### 7.2.2. Implementing a Queue with a Circularly Linked List
+
 
 
 

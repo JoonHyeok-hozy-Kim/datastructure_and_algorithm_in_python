@@ -1,4 +1,4 @@
-from DataStructures.linked_list import LinkedStack, LinkedQueue
+from DataStructures.linked_list import LinkedStack, LinkedQueue, CircularQueue
 
 if __name__ == '__main__':
     # s = LinkedStack()
@@ -7,9 +7,15 @@ if __name__ == '__main__':
     # for i in range(5):
     #     print(s.pop())
 
-    q = LinkedQueue()
+    # q = LinkedQueue()
+    # for i in range(5):
+    #     q.enqueue(i)
+    # for i in range(5):
+    #     print(q.dequeue())
+    #     print(q.first())
+
+    cq = CircularQueue()
     for i in range(5):
-        q.enqueue(i)
+        cq.enqueue(i)
     for i in range(5):
-        print(q.dequeue())
-        print(q.first())
+        print(cq.dequeue())
