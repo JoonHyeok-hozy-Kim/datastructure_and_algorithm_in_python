@@ -448,8 +448,51 @@ class FavoriteList:
 </p>
 
 #### Analysis) Trade-Offs with the Move-to-Front Heuristic
+* __top(k)__ operation
+  * Recall that this heuristic does not keep the sorted list.
+  * Thus, __top(k)__ operation will take O(kn) running time.
+    * why?) Each __top(k)__ operation may go as follows.
+      1. We copy all entries of our favorites list into another list, named temp.
+      2. We scan the temp list k times. In each scan, we find the entry with the largest access count, remove this entry from temp, and report it in the results.
+    * Then if k is fixed as a constant, __top(k)__ operation takes O(n) running time.
+    * However, if k is proportional to n, it takes O(n^2) times.
+      * ex.) Top 25%
 
+#### Tech) Implementation of Move-To-Front Heuristics
+```python
+class FavoriteListMTF(FavoriteList):
+    def _move_up(self, p):
+        if p is not self._data.first():
+            self._data.add_first(self._data.delete(p))
 
+    def top(self, k):
+        if not 1 <= k <= len(self):
+            raise ValueError('Illegal value for k')
+
+        temp = PositionalList()
+        for i in self._data:
+            temp.add_last(i)
+
+        for i in range(k):
+            highPos = temp.first()
+            walk = temp.after(highPos)
+            while walk is not None:
+                if walk.element()._count > highPos.element()._count:
+                    highPos = walk
+                walk = temp.after(walk)
+            yield highPos.element()._value
+            temp.delete(highPos)
+
+if __name__ == '__main__':
+    a = FavoriteListMTF()
+    for i in range(5):
+        a.access(i)
+    top = a.top(3)
+    for i in a.top(3):
+        print(i)
+```
+
+## 7.7
 
 
 
