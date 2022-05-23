@@ -15,7 +15,17 @@ if __name__ == '__main__':
     #     print(q.first())
 
     cq = CircularQueue()
-    for i in range(5):
+    # cq.enqueue(1)
+    # print(cq.first())
+    # print(cq.dequeue())
+    # # print(cq.first())
+    # cq.enqueue(3)
+    # print(cq.first())
+    # print(cq.dequeue())
+
+    for i in range(1):
         cq.enqueue(i)
-    for i in range(5):
-        print(cq.dequeue())
+    for i in range(10):
+        # print(cq.dequeue())
+        print(cq.first())
+        cq.rotate()

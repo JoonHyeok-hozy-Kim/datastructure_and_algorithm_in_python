@@ -125,8 +125,19 @@ class CircularQueue:
         new_node = self._Node(val, None)
         if self.is_empty():
             new_node._next = new_node
-
+        else:
+            new_node._next = self._tail._next
+            self._tail._next = new_node
+        self._tail = new_node
         self._size += 1
+
+    def rotate(self):
+        if self.is_empty():
+            raise Empty('The queue is empty.')
+        # elif len(self) == 1:
+        #     pass
+        else:
+            self._tail = self._tail._next
 
 
 
