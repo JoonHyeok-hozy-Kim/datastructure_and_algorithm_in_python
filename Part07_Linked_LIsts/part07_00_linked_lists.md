@@ -431,10 +431,10 @@ class FavoriteList:
 * Props)
   * If an element is k-th favorite itme in the list, the access to this item may cost O(k) running time.
   * Worst Case) O(n^3) running time for the access operations.
-    * Sol.) Move-to-Front Heuristic
+    * Sol.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/part07_00_linked_lists.md#762-using-a-list-with-the-move-to-front-heuristic">Move-to-Front Heuristic</a>
 
 <p align="center">
-  <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/images/07_06_01_worst_scenario.png" style="height: 600px;"></img><br/>
+  <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/images/07_06_01_worst_scenario.png" style="height: 450px;"></img><br/>
 </p>
 
 ### 7.6.2 Using a List with the Move-to-Front Heuristic
