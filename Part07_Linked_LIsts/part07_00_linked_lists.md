@@ -441,7 +441,15 @@ class FavoriteList:
 * Concept) Locality of Reference
   * a scenario such that once an element is accessed it is more likely to be accessed again in the near future
   * Heuristic (AKA rule of thumb) : How to apply this to the FavoriteList
-    * 
+    * Move_up the most recent accessed item.
+
+<p align="center">
+  <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part07_Linked_LIsts/images/07_06_02_move_to_front_heuristic.png" style="height: 150px;"></img><br/>
+</p>
+
+#### Analysis) Trade-Offs with the Move-to-Front Heuristic
+
+
 
 
 
