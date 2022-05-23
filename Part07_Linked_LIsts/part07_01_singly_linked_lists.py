@@ -1,5 +1,5 @@
 from DataStructures.linked_list import LinkedStack, LinkedQueue, CircularQueue
-from DataStructures.linked_list import _DoublyLinkedBase, LinkedDeque
+from DataStructures.linked_list import _DoublyLinkedBase, LinkedDeque, PositionalList
 
 if __name__ == '__main__':
     # s = LinkedStack()
@@ -51,10 +51,34 @@ if __name__ == '__main__':
     # print(a._trailer._prev._prev._element)
     # print(a._trailer._prev._element)
 
-    ld = LinkedDeque()
-    for i in range(5):
-        # ld.insert_first(i)
-        ld.insert_last(i)
-    for i in range(5):
-        print(ld.delete_first())
-        # print(ld.delete_last())
+    # ld = LinkedDeque()
+    # for i in range(5):
+    #     # ld.insert_first(i)
+    #     ld.insert_last(i)
+    # for i in range(5):
+    #     print(ld.delete_first())
+    #     # print(ld.delete_last())
+
+    # pl = PositionalList()
+    # # empty case
+    # print(pl)
+    # pl.insertion_sort()
+    # print(pl)
+    # # length == 1
+    # pl.add_last(1)
+    # print(pl)
+    # pl.insertion_sort()
+    # print(pl)
+    # from random import randint
+    # # randint
+    # for i in range(10):
+    #     pl.add_first(randint(0,100))
+    # print(pl)
+    # pl.insertion_sort()
+    # print(pl)
+    # # same num repeated
+    # for i in range(10):
+    #     pl.add_first(1)
+    # print(pl)
+    # pl.insertion_sort()
+    # print(pl)

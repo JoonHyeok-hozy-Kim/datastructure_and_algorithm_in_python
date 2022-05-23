@@ -240,7 +240,208 @@ class LinkedDeque(_DoublyLinkedBase):
   * Unaffected by changes in the list
   * Becomes invalid only if an explicit command is issued to delete it.
 
+```python
+class PositionalList(_DoublyLinkedBase):
 
+    class Position:
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(other) == type(self) and other._node ==  self._node
+
+        def __ne__(self, other):
+            return not (self == other)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be proper Position Type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p._node._next is None:
+            raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_poistion(self, node):
+        if node == self._header or node == self._trailer:
+            return None
+        else:
+            return self.Position(self, node)
+
+    def first(self):
+        return self._make_poistion(self._header._next)
+
+    def last(self):
+        return self._make_poistion(self._trailer._prev)
+
+    def before(self, p):
+        target_node = self._validate(p)
+        return self._make_poistion(target_node._prev)
+
+    def after(self, p):
+        target_node = self._validate(p)
+        return self._make_poistion(target_node._next)
+
+    def __iter__(self):
+        cursor = self.first()
+        while cursor is not None:
+            yield cursor.element()
+            cursor = self.after(cursor)
+
+    def _insert_between(self, e, predecessor, successor):
+        node = super()._insert_between(e, predecessor, successor)
+        return self._make_poistion(node)
+
+    def add_first(self, e):
+        return self._insert_between(e, self._header, self._header._next)
+
+    def add_last(self, e):
+        return self._insert_between(e, self._trailer._prev, self._trailer)
+
+    def add_before(self, p, e):
+        target_node = self._validate(p)
+        return self._insert_between(e, target_node._prev, target_node)
+
+    def add_after(self, p, e):
+        target_node = self._validate(p)
+        return self._insert_between(e, target_node, target_node._next)
+
+    def delete(self, p):
+        target_node = self._validate(p)
+        return self._delete_node(target_node)
+
+    def replace(self, p, e):
+        target_node = self._validate(p)
+        old_value = target_node._element
+        target_node._element = e
+        return old_value
+
+    def __str__(self):
+        if self.is_empty():
+            return '[]'
+        else:
+            return self._create_str_text()
+
+    def _create_str_text(self, text_list=None, cursor=None):
+        if text_list is None and cursor is None:
+            text_list = ['[']
+            cursor = self.first()
+        if cursor is self.after(self.last()):
+            text_list.pop()
+            text_list.append(']')
+            return ''.join(text_list)
+        else:
+            text_list.append(str(cursor.element()))
+            text_list.append(', ')
+            return self._create_str_text(text_list, self.after(cursor))
+```
+
+## 7.5 Sorting a Positional List
+#### Tech.) Insertion Sort Algorithm for the Positional List
+```python
+def insertion_sort(self):
+    if self.is_empty():
+        return
+    target = self.after(self.first())
+    while target is not None:
+        cursor = self.first()
+        # print('[Phase1] target : {}'.format(target.element()))
+        while cursor != target:
+            # print('[Phase2] cursor : {}'.format(cursor.element()))
+            if cursor.element() > target.element():
+                temp_target = self.before(target)
+                deleted = self.delete(target)
+                # print('[Shifted] {} <> {}'.format(cursor.element(),
+                #                                   deleted))
+                self.add_before(cursor, deleted)
+                target = temp_target
+                break
+            else:
+                cursor = self.after(cursor)
+        target = self.after(target)
+```
+
+## 7.6 Case Study : Maintaining Access Frequencies
+
+### 7.6.1 Using a Sorted List
+* Tech.) Favorite List
+  * Make a list such that most frequently accessed item comes to the very top of the list.
+  * Each access will move_up the item's position if the count is larger than the one above it in the list.
+
+```python
+from DataStructures.linked_list import PositionalList
+
+class FavoriteList:
+    class Item:
+        __slots__ = '_value', '_count'
+
+        def __init__(self, e):
+            self._value = e
+            self._count = 0
+
+    def _find_position(self, e):
+        walk = self._data.first()
+        while walk is not None and walk.element()._value != e:
+            walk = self._data.after(walk)
+        return walk
+
+    def _move_up(self, p):
+        if p is not self._data.first():
+            cnt = p.element()._count
+            walk = self._data.before(p)
+            if cnt > walk.element()._count:
+                while (walk != self._data.first() and cnt > walk.element()._count):
+                    walk = self._data.before(walk)
+                self._data.add_before(walk)
+
+    def __init__(self):
+        self._data = PositionalList()
+
+    def __len__(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def access(self, e):
+        p = self._find_position(e)
+        if p is None:
+            self._data.add_last(self.Item(e))
+        p.element()._count += 1
+        self._move_up(p)
+
+    def remove(self, e):
+        p = self._find_position(e)
+        if p is not None:
+            self._data.delete(p)
+
+    def top(self, k):
+        if not 1 <= k <= len(self):
+            raise ValueError('Illegal Value for k')
+        walk = self._data.first()
+        for i in range(k):
+            item = walk.element()
+            yield item._value
+            walk = self._data.after(walk)
+```
+* Props)
+  * If an element is k-th favorite itme in the list, the access to this item may cost O(k) running time.
+  * Worst Case) O(n^3) running time for the access operations.
+    * Sol.) Move-to-Front Heuristic
+
+<p align="center">
+  <img src="" style="height: 150px;"></img><br/>
+</p>
+
+### 7.6.2 Using a List with the Move-to-Front Heuristic
+* Concept) Locality of Reference
+  * a scenario such that once an element is accessed it is more likely to be accessed again in the near future
+  * Heuristic (AKA rule of thumb) : How to apply this to the FavoriteList
+    * 
 
 
 

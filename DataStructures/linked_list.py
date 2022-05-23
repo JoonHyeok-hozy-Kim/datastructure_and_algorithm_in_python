@@ -223,7 +223,7 @@ class PositionalList(_DoublyLinkedBase):
             return type(other) == type(self) and other._node ==  self._node
 
         def __ne__(self, other):
-            return self != other
+            return not (self == other)
 
     def _validate(self, p):
         if not isinstance(p, self.Position):
@@ -288,4 +288,42 @@ class PositionalList(_DoublyLinkedBase):
         target_node._element = e
         return old_value
 
+    def __str__(self):
+        if self.is_empty():
+            return '[]'
+        else:
+            return self._create_str_text()
 
+    def _create_str_text(self, text_list=None, cursor=None):
+        if text_list is None and cursor is None:
+            text_list = ['[']
+            cursor = self.first()
+        if cursor is self.after(self.last()):
+            text_list.pop()
+            text_list.append(']')
+            return ''.join(text_list)
+        else:
+            text_list.append(str(cursor.element()))
+            text_list.append(', ')
+            return self._create_str_text(text_list, self.after(cursor))
+
+    def insertion_sort(self):
+        if self.is_empty():
+            return
+        target = self.after(self.first())
+        while target is not None:
+            cursor = self.first()
+            # print('[Phase1] target : {}'.format(target.element()))
+            while cursor != target:
+                # print('[Phase2] cursor : {}'.format(cursor.element()))
+                if cursor.element() > target.element():
+                    temp_target = self.before(target)
+                    deleted = self.delete(target)
+                    # print('[Shifted] {} <> {}'.format(cursor.element(),
+                    #                                   deleted))
+                    self.add_before(cursor, deleted)
+                    target = temp_target
+                    break
+                else:
+                    cursor = self.after(cursor)
+            target = self.after(target)
