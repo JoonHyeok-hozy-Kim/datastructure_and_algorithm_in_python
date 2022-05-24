@@ -108,6 +108,3 @@ class LinkedQueue:
             walk = walk._next
         walk._next = self._Node(e, None)
         self._size += 1
-
-
-
