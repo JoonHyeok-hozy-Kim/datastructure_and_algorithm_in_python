@@ -266,16 +266,30 @@ if __name__ == '__main__':
     #     text_list.append(str(i))
     # print(' '.join(text_list))
 
-    f = FavoriteList()
-    for i in range(5):
-        f.access(i)
-    first = f._data.first()
-    for i in range(4):
-        print(first.element()._count)
-        first = f._data.after(first)
-    f.reset_counts()
-    first = f._data.first()
-    for i in range(4):
-        print(first.element()._count)
-        first = f._data.after(first)
+    # f = FavoriteList()
+    # for i in range(5):
+    #     f.access(i)
+    # first = f._data.first()
+    # for i in range(4):
+    #     print(first.element()._count)
+    #     first = f._data.after(first)
+    # f.reset_counts()
+    # first = f._data.first()
+    # for i in range(4):
+    #     print(first.element()._count)
+    #     first = f._data.after(first)
 
+    from DataStructures.stack import LinkedStack as new_linked_stack
+    # a = new_linked_stack()
+    # for i in range(5):
+    #     a.push(i)
+    # print(a.top())
+    # for i in range(6):
+    #     print(a.pop())
+
+    from DataStructures.queue import LinkedQueue as new_linked_queue
+    a = new_linked_queue()
+    for i in range(5):
+        a.enqueue(i)
+    for i in range(5):
+        print(a.dequeue())

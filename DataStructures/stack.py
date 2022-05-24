@@ -98,3 +98,44 @@ class LeakyArrayStack(ArrayStack):
         for i in range(len(Q)-1):
             self.push(Q.dequeue())
 
+
+# C-7.24
+class LinkedStack:
+    class _Node:
+        __slots__ = '_element', '_next'
+
+        def __init__(self, element, next):
+            self._element = element
+            self._next = next
+
+    def __init__(self):
+        self._header = self._Node(None, None)
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def push(self, e):
+        new_node = self._Node(e, None)
+        if not self.is_empty():
+            new_node._next = self._header._next
+        self._header._next = new_node
+        self._size += 1
+
+    def top(self):
+        if self.is_empty():
+            raise Empty('The stack is Empty')
+        top_node = self._header._next
+        return top_node._element
+
+    def pop(self):
+        if self.is_empty():
+            raise Empty('The stack is Empty')
+        original_top = self._header._next
+        self._header._next = original_top._next
+        self._size -= 1
+        return original_top._element
+

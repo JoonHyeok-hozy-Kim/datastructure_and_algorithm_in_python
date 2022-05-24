@@ -350,7 +350,97 @@ def reset_counts(self):
         walk = self._data.after(walk)
 ```
 
+### C-7.24 Give a complete implementation of the stack ADT using a singly linked list that includes a header sentinel.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/stack.py">LinkedStack</a>
+</p>
 
+```python
+class LinkedStack:
+    class _Node:
+        __slots__ = '_element', '_next'
+
+        def __init__(self, element, next):
+            self._element = element
+            self._next = next
+
+    def __init__(self):
+        self._header = self._Node(None, None)
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def push(self, e):
+        new_node = self._Node(e, None)
+        if not self.is_empty():
+            new_node._next = self._header._next
+        self._header._next = new_node
+        self._size += 1
+
+    def top(self):
+        if self.is_empty():
+            raise Empty('The stack is Empty')
+        top_node = self._header._next
+        return top_node._element
+
+    def pop(self):
+        if self.is_empty():
+            raise Empty('The stack is Empty')
+        original_top = self._header._next
+        self._header._next = original_top._next
+        self._size -= 1
+        return original_top._element
+```
+
+### C-7.25 Give a complete implementation of the queue ADT using a singly linked list that includes a header sentinel.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/queue.py">LinkedQueue</a>
+</p>
+
+```python
+class LinkedQueue:
+    class _Node:
+        __slots__ = '_element', '_next'
+
+        def __init__(self, element, next):
+            self._element = element
+            self._next = next
+
+    def __init__(self):
+        self._header = self._Node(None, None)
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise Empty('The queue is empty.')
+        first_node = self._header._next
+        return first_node._element
+
+    def dequeue(self):
+        if self.is_empty():
+            raise Empty('The queue is empty.')
+        first_node = self._header._next
+        self._header._next = first_node._next
+        self._size -= 1
+        return first_node._element
+
+    def enqueue(self, e):
+        walk = self._header
+        while walk._next is not None:
+            walk = walk._next
+        walk._next = self._Node(e, None)
+        self._size += 1
+```
 
 
 
