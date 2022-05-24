@@ -134,8 +134,6 @@ class CircularQueue:
     def rotate(self):
         if self.is_empty():
             raise Empty('The queue is empty.')
-        # elif len(self) == 1:
-        #     pass
         else:
             self._tail = self._tail._next
 
@@ -327,3 +325,36 @@ class PositionalList(_DoublyLinkedBase):
                 else:
                     cursor = self.after(cursor)
             target = self.after(target)
+
+    def max(self):
+        walk = self.first()
+        result = walk.element()
+        while self.after(walk) is not None:
+            if result < self.after(walk).element():
+                result = self.after(walk).element()
+            walk = self.after(walk)
+        return result
+
+    def find(self, e):
+        walk = self.first()
+        while self.after(walk) is not None:
+            if walk.element() == e:
+                return walk
+            walk = self.after(walk)
+        return None
+
+    def recursive_find(self, e, node=None):
+        if node is None:
+            node = self.first()
+        if node.element() == e:
+            return node
+        elif node == self.last():
+            return None
+        else:
+            return self.recursive_find(e, self.after(node))
+
+    def __reversed__(self):
+        cursor = self.last()
+        while cursor is not None:
+            yield cursor.element()
+            cursor = self.before(cursor)

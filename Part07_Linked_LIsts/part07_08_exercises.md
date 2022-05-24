@@ -127,6 +127,146 @@ if __name__ == '__main__':
         print(b.delete_first())
 ```
 
+### R-7.5 Implement a function that counts the number of nodes in a circularly linked list.
+* Sol.) Parameter _size already exists.
+
+### R-7.6 Suppose that x and y are references to nodes of circularly linked lists, although not necessarily the same list. Describe a fast algorithm for telling if x and y belong to the same list.
+* Sol.) Check whether y exists while rotating the list that x is contained.
+
+### R-7.7 Our CircularQueue class of Section 7.2.2 provides a rotate( ) method that has semantics equivalent to Q.enqueue(Q.dequeue( )), for a nonempty queue. Implement such a method for the LinkedQueue class of Section 7.1.2 without the creation of any new nodes.
+```python
+def rotate(self):
+    if self.is_empty():
+        raise Empty('The queue is empty.')
+    else:
+        self._tail = self._tail._next
+```
+
+### R-7.8 Describe a nonrecursive method for finding, by link hopping, the middle node of a doubly linked list with header and trailer sentinels. In the case of an even number of nodes, report the node slightly left of center as the “middle.” (Note: This method must only use link hopping; it cannot use a counter.) What is the running time of this method? 
+* Sol.) Running Time : 
+```python
+def middle_finder(L):
+    front = L._header
+    back = L._trailer
+    while True:
+        front = front._next
+        back = back._prev
+        if front is back:
+            break
+        elif front._next is back:
+            break
+    return front._element
+```
+
+### R-7.9 Give a fast algorithm for concatenating two doubly linked lists L and M, with header and trailer sentinel nodes, into a single list L'.
+```python
+def concatenate_doubly(L, M):
+    L._size += M._size
+    # Link Middle
+    L._trailer._prev._next = M._header._next
+    M._header._next._prev = L._trailer._prev
+    L._trailer = M._trailer
+    
+if __name__ == '__main__':
+    a = LinkedDeque()
+    for i in range(5):
+        a.insert_last(i+1)
+    b = LinkedDeque()
+    for i in range(5):
+        b.insert_last((i+1)*(-1))
+    concatenate_doubly(a, b)
+    for i in range(10):
+        print(a.delete_first())
+```
+
+### R-7.10 There seems to be some redundancy in the repertoire of the positional list ADT, as the operation L.add first(e) could be enacted by the alternative L.add before(L.first( ), e). Likewise, L.add last(e) might be performed as L.add after(L.last( ), e). Explain why the methods add first and add last are necessary.
+* Sol.) Maintaining redundant methods can prevent the potential traversal. 
+  * Suppose insert_last() and delete_last() are the only available methods.
+  * And repeated insert or delete at the position before the target elements is required.
+  * Then one-node traversal to the element previous to the targe is needed any time insertion or deletion takes place.
+  * On the other hand, by securing insert_before() and delete_before() method, that traversal may not be needed.
+
+### R-7.11 Implement a function, with calling syntax max(L), that returns the maximum element from a PositionalList instance L containing comparable elements.
+```python
+def max(L):
+    walk = L._header._next
+    result = walk._element
+    while walk._next is not None:
+        if result < walk._element:
+            result = walk._element
+        walk = walk._next
+    return result
+```
+
+### R-7.12 Redo the previously problem with max as a method of the PositionalList class, so that calling syntax L.max( ) is supported.
+```python
+def max(self):
+    walk = self.first()
+    result = walk.element()
+    while self.after(walk) is not None:
+        if result < self.after(walk).element():
+            result = self.after(walk).element()
+        walk = self.after(walk)
+    return result
+```
+
+### R-7.13 Update the PositionalList class to support an additional method find(e), which returns the position of the (first occurrence of) element e in the list (or None if not found).
+```python
+def find(self, e):
+    walk = self.first()
+    while self.after(walk) is not None:
+        if walk.element() == e:
+            return walk
+        walk = self.after(walk)
+    return None
+```
+
+### R-7.14 Repeat the previous process using recursion. Your method should not contain any loops. How much space does your method use in addition to the space used for L?
+* Sol.) Assuming that the element _e_ is located at the k-th position, it requires 3k additional memories.
+  * why?) Each recursion returns one node which contains 3 memory spaces for the element, the reference to the prev, and the one for the next.
+```python
+def recursive_find(self, e, node=None):
+    if node is None:
+        node = self.first()
+    if node.element() == e:
+        return node
+    elif node == self.last():
+        return None
+    else:
+        return self.recursive_find(e, self.after(node))
+```
+
+### R-7.15 Provide support for a reversed method of the PositionalList class that is similar to the given iter , but that iterates the elements in reversed order.
+```python
+def __reversed__(self):
+    cursor = self.last()
+    while cursor is not None:
+        yield cursor.element()
+        cursor = self.before(cursor)
+```
+
+### R-7.16 Describe an implementation of the PositionalList methods add last and add before realized by using only methods in the set {is empty, first, last, prev, next, add after, and add first}.
+```python
+def add_last(L, e):
+    if L.is_empty:
+        L.add_first(e)
+    else:
+        last = L.last()
+        L.add_after(last, e)
+
+def add_before(L, p, e):
+    if p == L.first():
+        L.add_first(e)
+    else:
+        walk = L.first()
+        while walk._next is not None:
+            if walk._next == p:
+                L.add_after(walk, e)
+                return
+```
+
+### R-7.17 In the FavoritesListMTF class, we rely on public methods of the positional list ADT to move an element of a list at position p to become the first element of the list, while keeping the relative order of the remaining elements unchanged. Internally, that combination of operations causes one node to be removed and a new node to be inserted. Augment the PositionalList class to support a new method, move to front(p), that accomplishes this goal more directly, by relinking the existing node. 
+
 
 
 

@@ -81,6 +81,52 @@ def doubly_swap(node_x, node_y):
     node_y._prev = temp_prev
     node_y._next = temp_next
 
+def middle_finder(L):
+    front = L._header
+    back = L._trailer
+    while True:
+        front = front._next
+        back = back._prev
+        if front is back:
+            break
+        elif front._next is back:
+            break
+    return front._element
+
+def concatenate_doubly(L, M):
+    L._size += M._size
+    # Link Middle
+    L._trailer._prev._next = M._header._next
+    M._header._next._prev = L._trailer._prev
+    L._trailer = M._trailer
+
+def max(L):
+    walk = L._header._next
+    result = walk._element
+    while walk._next is not None:
+        if result < walk._element:
+            result = walk._element
+        walk = walk._next
+    return result
+
+def add_last(L, e):
+    if L.is_empty:
+        L.add_first(e)
+    else:
+        last = L.last()
+        L.add_after(last, e)
+
+def add_before(L, p, e):
+    if p == L.first():
+        L.add_first(e)
+    else:
+        walk = L.first()
+        while walk._next is not None:
+            if walk._next == p:
+                L.add_after(walk, e)
+                return
+
+
 
 
 if __name__ == '__main__':
@@ -136,16 +182,54 @@ if __name__ == '__main__':
     #     print(a.dequeue())
 
     # Test for Doubly
-    b = LinkedDeque()
-    for i in range(10):
-        b.insert_last(i)
-    node_x = b._header
-    for i in range(3):
-        node_x = node_x._next
-    node_y = b._trailer
-    for i in range(4):
-        node_y = node_y._prev
-    print('node_x : {}, node_y : {}'.format(node_x._element, node_y._element))
-    doubly_swap(node_x, node_y)
-    for i in range(10):
-        print(b.delete_first())
+    # b = LinkedDeque()
+    # for i in range(10):
+    #     b.insert_last(i)
+    # node_x = b._header
+    # for i in range(3):
+    #     node_x = node_x._next
+    # node_y = b._trailer
+    # for i in range(4):
+    #     node_y = node_y._prev
+    # print('node_x : {}, node_y : {}'.format(node_x._element, node_y._element))
+    # doubly_swap(node_x, node_y)
+    # for i in range(10):
+    #     print(b.delete_first())
+
+
+    # b = LinkedDeque()
+    # for i in range(9):
+    #     b.insert_last(i)
+    # print(middle_finder(b))
+    # for i in range(len(b)):
+    #     print(b.delete_first())
+
+    # a = LinkedDeque()
+    # for i in range(5):
+    #     a.insert_last(i+1)
+    # b = LinkedDeque()
+    # for i in range(5):
+    #     b.insert_last((i+1)*(-1))
+    # concatenate_doubly(a, b)
+    # # for i in range(10):
+    # #     print(a.delete_first())
+    #
+    # print(max(a))
+
+    a = PositionalList()
+    from random import randint
+    for i in range(5):
+        # a.add_last(randint(0, 100))
+        a.add_last(i)
+    print(a)
+    # print(max(a))
+    # print(a.max())
+    # print(a.find(0), a.find(0).element())
+    # print(a.find(10))
+    #
+    # print(a.recursive_find(0), a.recursive_find(0).element())
+    # print(a.recursive_find(10))
+
+    # for i in a.__reversed__():
+    #     print(i)
+
