@@ -266,6 +266,91 @@ def add_before(L, p, e):
 ```
 
 ### R-7.17 In the FavoritesListMTF class, we rely on public methods of the positional list ADT to move an element of a list at position p to become the first element of the list, while keeping the relative order of the remaining elements unchanged. Internally, that combination of operations causes one node to be removed and a new node to be inserted. Augment the PositionalList class to support a new method, move to front(p), that accomplishes this goal more directly, by relinking the existing node. 
+```python
+def move_to_front(self, p):
+    target_node = self._validate(p)
+    prev_node = self._validate(self.before(p))
+    if self.last() == p:
+        next_node = self._trailer
+    else:
+        next_node = self._validate(self.after(p))
+    prev_node._next = next_node
+    next_node._prev = prev_node
+
+    old_first_node = self._validate(self.first())
+    self._header._next = target_node
+    old_first_node._prev = target_node
+
+    target_node._prev = self._header
+    target_node._next = old_first_node
+```
+
+### R-7.18 Given the set of element {a,b,c,d,e, f } stored in a list, show the final state of the list, assuming we use the move-to-front heuristic and access the elements according to the following sequence: (a,b,c,d,e,f,a,c,f,b,d,e).
+```python
+if __name__ == '__main__':
+    fl = FavoriteListMTF()
+    fl.access('a')
+    fl.access('b')
+    fl.access('c')
+    fl.access('d')
+    fl.access('e')
+    fl.access('f')
+    fl.access('a')
+    fl.access('b')
+    fl.access('c')
+    fl.access('d')
+    fl.access('e')
+    for i in fl.top(6):
+        print(i)
+```
+
+### R-7.19 Suppose that we have made kn total accesses to the elements in a list L of n elements, for some integer k ≥ 1. What are the minimum and maximum number of elements that have been accessed fewer than k times? 
+* Sol.) Max : (n-1), Min : 0
+
+### R-7.20 Let L be a list of n items maintained according to the move-to-front heuristic. Describe a series of O(n) accesses that will reverse L.
+```python
+fl = FavoriteListMTF()
+sample_size = 5
+for i in range(sample_size):
+    fl.access(i)
+text_list = ['Original :']
+for i in fl.top(sample_size):
+    text_list.append(str(i))
+print(' '.join(text_list))
+for i in range(sample_size-1):
+    fl.access(sample_size-i-2)
+text_list = ['Reversed :']
+for i in fl.top(sample_size):
+    text_list.append(str(i))
+print(' '.join(text_list))
+```
+
+### R-7.21 Suppose we have an n-element list L maintained according to the move-to-front heuristic. Describe a sequence of n^2 accesses that is guaranteed to take Ω(n^3) time to perform on L.
+```python
+    fl = FavoriteListMTF()
+    sample_size = 5
+    for i in range(sample_size):
+        fl.access(i)
+    for i in range(sample_size):
+        fl.access(sample_size-i-1)
+```
+
+### R-7.22 Implement a clear( ) method for the FavoritesList class that returns the list to empty.
+```python
+def clear(self):
+    self._data = PositionalList()
+```
+
+### R-7.23 Implement a reset counts( ) method for the FavoritesList class that resets all elements’ access counts to zero (while leaving the order of the list unchanged).
+```python
+def reset_counts(self):
+    walk = self._data.first()
+    while self._data.after(walk) is not None:
+        walk.element()._count = 0
+        walk = self._data.after(walk)
+```
+
+
 
 
 

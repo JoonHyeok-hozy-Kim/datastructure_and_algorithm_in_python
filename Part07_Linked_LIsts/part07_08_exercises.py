@@ -216,20 +216,66 @@ if __name__ == '__main__':
     #
     # print(max(a))
 
-    a = PositionalList()
+    # a = PositionalList()
     from random import randint
-    for i in range(5):
-        # a.add_last(randint(0, 100))
-        a.add_last(i)
-    print(a)
-    # print(max(a))
-    # print(a.max())
-    # print(a.find(0), a.find(0).element())
-    # print(a.find(10))
+    # for i in range(5):
+    #     # a.add_last(randint(0, 100))
+    #     a.add_last(i)
+    # print(a)
+    # # print(max(a))
+    # # print(a.max())
+    # # print(a.find(0), a.find(0).element())
+    # # print(a.find(10))
+    # #
+    # # print(a.recursive_find(0), a.recursive_find(0).element())
+    # # print(a.recursive_find(10))
     #
-    # print(a.recursive_find(0), a.recursive_find(0).element())
-    # print(a.recursive_find(10))
+    # # for i in a.__reversed__():
+    # #     print(i)
+    # for i in range(5):
+    #     a.move_to_front(a.last())
+    #     print(a)
 
-    # for i in a.__reversed__():
+    # fl = FavoriteListMTF()
+    # fl.access('a')
+    # fl.access('b')
+    # fl.access('c')
+    # fl.access('d')
+    # fl.access('e')
+    # fl.access('f')
+    # fl.access('a')
+    # fl.access('b')
+    # fl.access('c')
+    # fl.access('d')
+    # fl.access('e')
+    # for i in fl.top(6):
     #     print(i)
+
+    # fl = FavoriteListMTF()
+    # sample_size = 5
+    # for i in range(sample_size):
+    #     fl.access(i)
+    # text_list = ['Original :']
+    # for i in fl.top(sample_size):
+    #     text_list.append(str(i))
+    # print(' '.join(text_list))
+    # for i in range(sample_size):
+    #     fl.access(sample_size-i-1)
+    # text_list = ['Reversed :']
+    # for i in fl.top(sample_size):
+    #     text_list.append(str(i))
+    # print(' '.join(text_list))
+
+    f = FavoriteList()
+    for i in range(5):
+        f.access(i)
+    first = f._data.first()
+    for i in range(4):
+        print(first.element()._count)
+        first = f._data.after(first)
+    f.reset_counts()
+    first = f._data.first()
+    for i in range(4):
+        print(first.element()._count)
+        first = f._data.after(first)
 
