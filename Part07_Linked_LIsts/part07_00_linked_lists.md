@@ -492,7 +492,42 @@ if __name__ == '__main__':
         print(i)
 ```
 
-## 7.7
+## 7.7 Link-Based vs. Array-Based Sequences
+#### Props.) Advantages of Array-Based Sequences
+1. O(1)-time access to an element based on an integer index.
+   * Linked List : O(k) time for the traversal to the k-th element.
+2. More efficient for running operations with equivalent asymptotic bounds
+   * ex.) __Array Queue vs. Linked Queue__ when adding an element
+     1. Array Queue
+        * (If the resizing of the existing array is ignored...)
+        * self._size was the only constant variable that required numeric addition.
+          * self._size += 1
+     2. Linked Queue
+        * Required more complicated operations
+          1. the instantiation of a node
+          2. appropriate linking of nodes 
+          3. an increment of an integer
+3. Less memory usage proportional to the size.
+   * Considering the fact that both data types are referential data types,
+     * the primary memory for storing the actual objects that are elements is the same for either structure.
+   * However, __auxiliary amount of memory__ of them differs!
+     * ex.) Typical worst case for the n-elements array
+       1. Array Based : 2n memory allocation
+          * why?) Recently resized array allocates 2n memory usage.
+       2. Linked List : 2n~3n memory allocation
+          * why?) n for the object and rest for the __explicit reference that link the nodes__
+            * Singly Linked : 2n
+            * Doubly Linked : 3n
+
+#### Props.) Advantages of Link-Based Sequences
+1. Provide worst-case time bounds for their operations.
+   * Recall the __amortized bounds__ for the Array-Based Sequences.
+     * Amortized bounds may be helpful to analyze operations that are part of a larger computation.
+     * HOWEVER, not applicable to real-time system designed to provide immediate responses.
+       * Recall the repeated additions and deletions made in a word processor.
+2. O(1)-time insertions and deletions at arbitrary positions.
+   * Recall the loop operation requirement when it comes to inserting or deleting elements in the middle of an array based sequences.
+
 
 
 
