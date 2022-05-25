@@ -784,6 +784,79 @@ class CircularlyLinkedList:
         return self._make_poistion(new_cursor_node)
 ```
 
+### C-7.33 Modify the DoublyLinkedBase class to include a reverse method that reverses the order of the list, yet without creating or destroying any nodes.
+```python
+def reverse(self):
+    if self.is_empty():
+        raise Empty
+    walk = self._header
+    while True:
+        temp_next = walk._next
+        walk._next = walk._prev
+        walk._prev = temp_next
+        if walk == self._trailer:
+            break
+        else:
+            walk = temp_next
+    temp_trailer = self._trailer
+    self._trailer = self._header
+    self._header = temp_trailer
+```
+
+### C-7.34 Modify the PositionalList class to support a method swap(p, q)that causes the underlying nodes referenced by positions p and q to be exchanged for each other. Relink the existing nodes; do not create any new nodes.
+```python
+def swap(self, p, q):
+    node_p = self._validate(p)
+    node_q = self._validate(q)
+    adjacent_flag = False
+    if node_p._next == node_q:
+        adjacent_flag = True
+    elif node_p._prev == node_q:
+        self.swap(q, p)
+        return
+
+    # prev, next allocation
+    p_prev = node_p._prev
+    p_next = node_p._next  # if adjacent, node_q
+    q_prev = node_q._prev  # if adjacent, node_p
+    q_next = node_q._next
+
+    # outer linkage
+    p_prev._next = node_q
+    node_q._prev = p_prev
+    q_next._prev = node_p
+    node_p._next = q_next
+
+    # inner linkage
+    if adjacent_flag:
+        node_p._prev = node_q
+        node_q._next = node_p
+    else:
+        p_next._prev = node_q
+        q_prev._next = node_p
+        node_p._prev = q_prev
+        node_q._next = p_next
+
+    return
+```
+
+### C-7.35 To implement the iter method of the PositionalList class, we relied on the convenience of Python’s generator syntax and the yield statement. Give an alternative implementation of iter by designing a nested iterator class. (See Section 2.3.4 for discussion of iterators.)
+```python
+def __init__(self):
+    super().__init__()
+    self._iter_cursor = self._header
+    
+def __next__(self):
+    self._iter_cursor = self._iter_cursor._next
+    if self._iter_cursor != self._trailer:
+        return self._iter_cursor._element
+    else:
+        raise StopIteration()
+
+def __iter__(self):
+    return self
+```
+
 
 
 

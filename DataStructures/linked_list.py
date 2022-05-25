@@ -176,6 +176,23 @@ class _DoublyLinkedBase:
         node._prev = node._next = node._element = None  # This truncation may help Python's garbage collection
         return element
 
+    def reverse(self):
+        if self.is_empty():
+            raise Empty
+        walk = self._header
+        while True:
+            temp_next = walk._next
+            walk._next = walk._prev
+            walk._prev = temp_next
+            if walk == self._trailer:
+                break
+            else:
+                walk = temp_next
+        temp_trailer = self._trailer
+        self._trailer = self._header
+        self._header = temp_trailer
+
+
 
 class LinkedDeque(_DoublyLinkedBase):
     def first(self):
@@ -223,6 +240,10 @@ class PositionalList(_DoublyLinkedBase):
         def __ne__(self, other):
             return not (self == other)
 
+    def __init__(self):
+        super().__init__()
+        self._iter_cursor = self._header
+
     def _validate(self, p):
         if not isinstance(p, self.Position):
             raise TypeError('p must be proper Position Type.')
@@ -252,11 +273,23 @@ class PositionalList(_DoublyLinkedBase):
         target_node = self._validate(p)
         return self._make_poistion(target_node._next)
 
+    # [C-7.35] Formal Iteration Definition
+    def __next__(self):
+        self._iter_cursor = self._iter_cursor._next
+        if self._iter_cursor != self._trailer:
+            return self._iter_cursor._element
+        else:
+            raise StopIteration()
+
     def __iter__(self):
-        cursor = self.first()
-        while cursor is not None:
-            yield cursor.element()
-            cursor = self.after(cursor)
+        return self
+
+    # # Python's Iteration Generator Syntax
+    # def __iter__(self):
+    #     cursor = self.first()
+    #     while cursor is not None:
+    #         yield cursor.element()
+    #         cursor = self.after(cursor)
 
     def _insert_between(self, e, predecessor, successor):
         node = super()._insert_between(e, predecessor, successor)
@@ -375,6 +408,42 @@ class PositionalList(_DoublyLinkedBase):
 
         target_node._prev = self._header
         target_node._next = old_first_node
+
+    # C-7.34
+    def swap(self, p, q):
+        node_p = self._validate(p)
+        node_q = self._validate(q)
+        adjacent_flag = False
+        if node_p._next == node_q:
+            adjacent_flag = True
+        elif node_p._prev == node_q:
+            self.swap(q, p)
+            return
+
+        # prev, next allocation
+        p_prev = node_p._prev
+        p_next = node_p._next  # if adjacent, node_q
+        q_prev = node_q._prev  # if adjacent, node_p
+        q_next = node_q._next
+
+        # outer linkage
+        p_prev._next = node_q
+        node_q._prev = p_prev
+        q_next._prev = node_p
+        node_p._next = q_next
+
+        # inner linkage
+        if adjacent_flag:
+            node_p._prev = node_q
+            node_q._next = node_p
+        else:
+            p_next._prev = node_q
+            q_prev._next = node_p
+            node_p._prev = q_prev
+            node_q._next = p_next
+
+        return
+
 
 
 class FavoriteList:

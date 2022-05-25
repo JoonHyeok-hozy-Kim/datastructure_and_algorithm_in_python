@@ -329,15 +329,44 @@ if __name__ == '__main__':
     # print(fl.delete(fl.last()))
     # print(fl.last().element())
 
-    a = CircularlyLinkedList()
-    a.append(-1)
-    print(a.cursor().element())
+    # a = CircularlyLinkedList()
+    # a.append(-1)
+    # print(a.cursor().element())
+    # for i in range(5):
+    #     a.append(i)
+    #     print(a.cursor().element())
+    # a.delete()
+    # print(a.cursor().element())
+    # a.rotate()
+    # print(a.cursor().element())
+    # a.rotate()
+    # print(a.cursor().element())
+
+    # from DataStructures.linked_list import _DoublyLinkedBase
+    # a = _DoublyLinkedBase()
+    # cursor = a._header
+    # for i in range(5):
+    #     a._insert_between(i, cursor, a._trailer)
+    #     cursor = cursor._next
+    # cursor = a._header._next
+    # for i in range(len(a)):
+    #     print(cursor._element)
+    #     cursor = cursor._next
+    # a.reverse()
+    # cursor = a._header._next
+    # for i in range(len(a)):
+    #     print(cursor._element)
+    #     cursor = cursor._next
+
+    a = PositionalList()
     for i in range(5):
-        a.append(i)
-        print(a.cursor().element())
-    a.delete()
-    print(a.cursor().element())
-    a.rotate()
-    print(a.cursor().element())
-    a.rotate()
-    print(a.cursor().element())
+        a.add_last(i)
+    print(a)
+    a.swap(a.first(), a.last())
+    print(a)
+    # a.swap(a.first(), a.after(a.first()))
+    a.swap(a.after(a.first()), a.first())
+    print(a)
+
+    for i in a:
+        print(i)
