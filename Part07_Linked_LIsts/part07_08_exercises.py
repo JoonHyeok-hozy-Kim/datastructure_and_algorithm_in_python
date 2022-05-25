@@ -290,6 +290,13 @@ if __name__ == '__main__':
     from DataStructures.queue import LinkedQueue as new_linked_queue
     a = new_linked_queue()
     for i in range(5):
-        a.enqueue(i)
+        a.enqueue(i+1)
+    for i in range(5):
+        print(a.dequeue())
+    print('=========================')
+    for i in range(5):
+        a.enqueue(i+1)
+    # reversed(a)
+    a.nonrecursive_reverse()
     for i in range(5):
         print(a.dequeue())

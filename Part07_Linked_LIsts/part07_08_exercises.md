@@ -442,6 +442,83 @@ class LinkedQueue:
         self._size += 1
 ```
 
+### C-7.26 Implement a method, concatenate(Q2) for the LinkedQueue class that takes all elements of LinkedQueue Q2 and appends them to the end of the original queue. The operation should run in O(1) time and should result in Q2 being an empty queue.
+* Sol.) As long as a queue has a singly linked form, the inefficiency that comes from traversing elements is inevitable.
+  * Let k the size of Q1 and n the size of Q2.
+  * Consider that concatenating needs the linkage between Q1's last and Q2's first element.
+  * Under the singly linked condition, we have to make a choice : whether each element possesses the reference to the item next to or previous to it.
+    * In case of the former, searching for the last item needs traversing while the latter requires it for targeting the first item.
+  * Thus, at least one queue, Q1 or Q2, needs to be traversed at least one time.
+  * Since the problem requires O(1) running time for Q2, regarding the number of elements in Q1 as a constant, we may achieve our goal.
+```python
+def concatenate(self, other):
+    if type(self) != type(other):
+        raise TypeError
+    last_node = self._header
+    while last_node._next is not None:
+        last_node = last_node._next
+    last_node._next = other._header._next
+    other._header._next = None
+    self._size += other._size
+    other._size = 0
+```
+
+### C-7.27 Give a recursive implementation of a singly linked list class, such that an instance of a nonempty list stores its first element and a reference to a list of remaining elements.
+* Sol.) Recursive traversing logic created for the Singly LinkedQueue.
+```python
+def recursively_traverse(self, e, node=None):
+    if node is None:
+        node = self._header
+    if node._element == e:
+        return node
+    elif node._next is None:
+        return None
+    else:
+        return self.recursively_traverse(e, node._next)
+```
+
+### C-7.28 Describe a fast recursive algorithm for reversing a singly linked list.
+* Sol.) Recursive reverse algorithm for Singly Linked Queue as follows
+```python
+def __reversed__(self, current_node=None, prev_node=None):
+    if self.is_empty():
+        raise Empty('The queue is empty.')
+    if current_node is None:
+        current_node = self._header._next
+
+    original_next_node = current_node._next
+
+    if prev_node is None:
+        current_node._next = None
+    else:
+        current_node._next = prev_node
+
+    if original_next_node is None:
+        self._header._next = current_node
+        return
+    else:
+        return self.__reversed__(original_next_node, current_node)
+```
+
+### C-7.29 Describe in detail an algorithm for reversing a singly linked list L using only a constant amount of additional space and not using any recursion.
+* Sol.) Using two memory spaces for prev and original_next, the non-recursive reverse algorithm goes as follows.
+```python
+def nonrecursive_reverse(self):
+    if self.is_empty():
+        raise Empty
+    if len(self) == 1:
+        return
+    walk = self._header._next
+    prev = None
+    while walk._next is not None:
+        original_next = walk._next
+        walk._next = prev
+        prev = walk
+        walk = original_next
+    walk._next = prev
+    self._header._next = walk
+```
+
 
 
 

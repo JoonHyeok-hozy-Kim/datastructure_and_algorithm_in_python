@@ -108,3 +108,59 @@ class LinkedQueue:
             walk = walk._next
         walk._next = self._Node(e, None)
         self._size += 1
+
+    def concatenate(self, other):
+        if type(self) != type(other):
+            raise TypeError
+        last_node = self._header
+        while last_node._next is not None:
+            last_node = last_node._next
+        last_node._next = other._header._next
+        other._header._next = None
+        self._size += other._size
+        other._size = 0
+
+    def recursively_traverse(self, e, node=None):
+        if node is None:
+            node = self._header
+        if node._element == e:
+            return node
+        elif node._next is None:
+            return None
+        else:
+            return self.recursively_traverse(e, node._next)
+
+    def __reversed__(self, current_node=None, prev_node=None):
+        if self.is_empty():
+            raise Empty('The queue is empty.')
+        if current_node is None:
+            current_node = self._header._next
+
+        original_next_node = current_node._next
+
+        if prev_node is None:
+            current_node._next = None
+        else:
+            current_node._next = prev_node
+
+        if original_next_node is None:
+            self._header._next = current_node
+            return
+        else:
+            return self.__reversed__(original_next_node, current_node)
+
+    def nonrecursive_reverse(self):
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            return
+        walk = self._header._next
+        prev = None
+        while walk._next is not None:
+            original_next = walk._next
+            walk._next = prev
+            prev = walk
+            walk = original_next
+        walk._next = prev
+        self._header._next = walk
+
