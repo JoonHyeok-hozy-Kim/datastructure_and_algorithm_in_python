@@ -108,9 +108,10 @@ class LinkedStack:
             self._element = element
             self._next = next
 
-    def __init__(self):
+    def __init__(self, maxlen=None):
         self._header = self._Node(None, None)
         self._size = 0
+        self._maxlen = maxlen
 
     def __len__(self):
         return self._size
@@ -119,6 +120,8 @@ class LinkedStack:
         return len(self) == 0
 
     def push(self, e):
+        if self._maxlen is not None and self._maxlen == self._size:
+            raise Full
         new_node = self._Node(e, None)
         if not self.is_empty():
             new_node._next = self._header._next
@@ -139,3 +142,16 @@ class LinkedStack:
         self._size -= 1
         return original_top._element
 
+
+class LeakyLinkedStack(LinkedStack):
+    def push(self, e):
+        if self._size == self._maxlen:
+            self.leak()
+        super().push(e)
+
+    def leak(self):
+        walk = self._header
+        while walk._next._next is not None:
+            walk = walk._next
+        walk._next = None
+        self._size -= 1

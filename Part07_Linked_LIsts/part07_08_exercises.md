@@ -445,9 +445,9 @@ class LinkedQueue:
 ### C-7.26 Implement a method, concatenate(Q2) for the LinkedQueue class that takes all elements of LinkedQueue Q2 and appends them to the end of the original queue. The operation should run in O(1) time and should result in Q2 being an empty queue.
 * Sol.) As long as a queue has a singly linked form, the inefficiency that comes from traversing elements is inevitable.
   * Let k the size of Q1 and n the size of Q2.
-  * Consider that concatenating needs the linkage between Q1's last and Q2's first element.
-  * Under the singly linked condition, we have to make a choice : whether each element possesses the reference to the item next to or previous to it.
-    * In case of the former, searching for the last item needs traversing while the latter requires it for targeting the first item.
+  * Consider that concatenation can be implemented by the linkage between Q1's last and Q2's first element.
+  * However, under the singly linked condition, we have to make a choice : whether each element possesses the reference to the item next to or previous to it.
+    * In case of the former, searching for the last item needs traversing while the latter requires it for searching the first one.
   * Thus, at least one queue, Q1 or Q2, needs to be traversed at least one time.
   * Since the problem requires O(1) running time for Q2, regarding the number of elements in Q1 as a constant, we may achieve our goal.
 ```python
@@ -501,7 +501,7 @@ def __reversed__(self, current_node=None, prev_node=None):
 ```
 
 ### C-7.29 Describe in detail an algorithm for reversing a singly linked list L using only a constant amount of additional space and not using any recursion.
-* Sol.) Using two memory spaces for prev and original_next, the non-recursive reverse algorithm goes as follows.
+* Sol.) Using two memory spaces for variables, prev and original_next, the non-recursive reverse algorithm goes as follows.
 ```python
 def nonrecursive_reverse(self):
     if self.is_empty():
@@ -518,6 +518,149 @@ def nonrecursive_reverse(self):
     walk._next = prev
     self._header._next = walk
 ```
+
+### C-7.30 Exercise P-6.35 describes a LeakyStack abstraction. Implement that ADT using a singly linked list for storage.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/stack.py">LeakyLinkedStack</a>
+</p>
+
+```python
+class LeakyLinkedStack(LinkedStack):
+    def push(self, e):
+        if self._size == self._maxlen:
+            self.leak()
+        super().push(e)
+
+    def leak(self):
+        walk = self._header
+        while walk._next._next is not None:
+            walk = walk._next
+        walk._next = None
+        self._size -= 1
+```
+
+### C-7.31 Design a forward list ADT that abstracts the operations on a singly linked list, much as the positional list ADT abstracts the use of a doubly linked list. Implement a ForwardList class that supports such an ADT.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/linked_list.py">ForwardList</a>
+</p>
+
+```python
+class ForwardList:
+
+    class _Node:
+        def __init__(self, element, next):
+            self._element = element
+            self._next = next
+
+    class Position:
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(other) == type(self) and other._node ==  self._node
+
+        def __ne__(self, other):
+            return not (self == other)
+
+    def __init__(self):
+        self._header = self._Node(None, None)
+        self._size = 0
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be proper Position Type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        # if p._node._next is None:
+        #     raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_poistion(self, node):
+        if node == self._header:
+            return None
+        else:
+            return self.Position(self, node)
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise Empty
+        return self._make_poistion(self._header._next)
+
+    def last(self):
+        if self.is_empty():
+            raise Empty
+        walk = self.first()
+        while walk._node._next is not None:
+            walk = self.after(walk)
+        return walk
+
+    def before(self, p):
+        target_node = self._validate(p)
+        if self._header._next == target_node:
+            return None
+        walk = self.first()
+        while self.after(walk) is not None:
+            if self.after(walk) == p:
+                return walk
+            walk = self.after(walk)
+        return None
+
+    def after(self, p):
+        target_node = self._validate(p)
+        return self._make_poistion(target_node._next)
+
+    def __iter__(self):
+        cursor = self.first()
+        while cursor is not None:
+            yield cursor.element()
+            cursor = self.after(cursor)
+
+    def _insert_after(self, e, prev_node):
+        new_node = self._Node(e, prev_node._next)
+        prev_node._next = new_node
+        self._size += 1
+        return self._make_poistion(new_node)
+
+    def add_first(self, e):
+        return self._insert_after(e, self._header)
+
+    def add_last(self, e):
+        if self.is_empty():
+            return self.add_first(e)
+        last_position = self.last()
+        return self._insert_after(e, last_position._node)
+
+    def add_before(self, p, e):
+        if p == self.first():
+            return self.add_first(e)
+        return self.add_after(self.before(p), e)
+
+    def add_after(self, p, e):
+        target_node = self._validate(p)
+        return self._insert_after(e, target_node)
+
+    def delete(self, p):
+        target_node = self._validate(p)
+        if p == self.first():
+            prev_node = self._header
+        else:
+            prev_node = self._validate(self.before(p))
+        prev_node._next = target_node._next
+        self._size -= 1
+        return target_node._element
+```
+
+
 
 
 

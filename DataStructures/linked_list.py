@@ -462,3 +462,118 @@ class FavoriteListMTF(FavoriteList):
                 walk = temp.after(walk)
             yield highPos.element()._value
             temp.delete(highPos)
+
+
+class ForwardList:
+
+    class _Node:
+        def __init__(self, element, next):
+            self._element = element
+            self._next = next
+
+    class Position:
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(other) == type(self) and other._node ==  self._node
+
+        def __ne__(self, other):
+            return not (self == other)
+
+    def __init__(self):
+        self._header = self._Node(None, None)
+        self._size = 0
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be proper Position Type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        # if p._node._next is None:
+        #     raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_poistion(self, node):
+        if node == self._header:
+            return None
+        else:
+            return self.Position(self, node)
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise Empty
+        return self._make_poistion(self._header._next)
+
+    def last(self):
+        if self.is_empty():
+            raise Empty
+        walk = self.first()
+        while walk._node._next is not None:
+            walk = self.after(walk)
+        return walk
+
+    def before(self, p):
+        target_node = self._validate(p)
+        if self._header._next == target_node:
+            return None
+        walk = self.first()
+        while self.after(walk) is not None:
+            if self.after(walk) == p:
+                return walk
+            walk = self.after(walk)
+        return None
+
+    def after(self, p):
+        target_node = self._validate(p)
+        return self._make_poistion(target_node._next)
+
+    def __iter__(self):
+        cursor = self.first()
+        while cursor is not None:
+            yield cursor.element()
+            cursor = self.after(cursor)
+
+    def _insert_after(self, e, prev_node):
+        new_node = self._Node(e, prev_node._next)
+        prev_node._next = new_node
+        self._size += 1
+        return self._make_poistion(new_node)
+
+    def add_first(self, e):
+        return self._insert_after(e, self._header)
+
+    def add_last(self, e):
+        if self.is_empty():
+            return self.add_first(e)
+        last_position = self.last()
+        return self._insert_after(e, last_position._node)
+
+    def add_before(self, p, e):
+        if p == self.first():
+            return self.add_first(e)
+        return self.add_after(self.before(p), e)
+
+    def add_after(self, p, e):
+        target_node = self._validate(p)
+        return self._insert_after(e, target_node)
+
+    def delete(self, p):
+        target_node = self._validate(p)
+        if p == self.first():
+            prev_node = self._header
+        else:
+            prev_node = self._validate(self.before(p))
+        prev_node._next = target_node._next
+        self._size -= 1
+        return target_node._element

@@ -288,15 +288,43 @@ if __name__ == '__main__':
     #     print(a.pop())
 
     from DataStructures.queue import LinkedQueue as new_linked_queue
-    a = new_linked_queue()
+    # a = new_linked_queue()
+    # for i in range(5):
+    #     a.enqueue(i+1)
+    # for i in range(5):
+    #     print(a.dequeue())
+    # print('=========================')
+    # for i in range(5):
+    #     a.enqueue(i+1)
+    # # reversed(a)
+    # a.nonrecursive_reverse()
+    # for i in range(5):
+    #     print(a.dequeue())
+
+    from DataStructures.stack import LinkedStack as new_linked_stack
+    from DataStructures.stack import LeakyLinkedStack as new_leaky_linked_stack
+    # lls = new_leaky_linked_stack(5)
+    # for i in range(7):
+    #     lls.push(i)
+    # for i in range(5):
+    #     print(lls.pop())
+    # print(lls.pop())
+
+    fl = ForwardList()
     for i in range(5):
-        a.enqueue(i+1)
+        fl.add_first((i+1)*(-1))
+        # print(fl.first().element())
     for i in range(5):
-        print(a.dequeue())
-    print('=========================')
-    for i in range(5):
-        a.enqueue(i+1)
-    # reversed(a)
-    a.nonrecursive_reverse()
-    for i in range(5):
-        print(a.dequeue())
+        fl.add_last(i)
+        # print(fl.last().element())
+    fl.add_after(fl.last(), 999)
+    print(fl.last().element())
+    fl.add_before(fl.first(), 6666)
+    print(fl.first().element())
+    fl.add_before(fl.after(fl.first()), -777)
+    print(fl.after(fl.first()).element())
+    print(fl.delete(fl.first()))
+    print(fl.first().element())
+    print(fl.last().element())
+    print(fl.delete(fl.last()))
+    print(fl.last().element())
