@@ -993,6 +993,9 @@ class PositionalListNoSentinel:
         return self._delete_node(target_node)
 ```
 
+### C-7.37 Implement a function that accepts a PositionalList L of n integers sorted in nondecreasing order, and another value V, and determines in O(n) time if there are two elements of L that sum precisely to V. The function should return a pair of positions of such elements, if found, or None otherwise. 
+
+
 
 
 
