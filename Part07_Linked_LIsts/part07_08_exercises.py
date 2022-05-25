@@ -127,6 +127,138 @@ def add_before(L, p, e):
                 return
 
 
+class PositionalListNoSentinel:
+
+    class _Node:
+        __slots__ = '_element', '_prev', '_next'
+
+        def __init__(self, element, prev, next):
+            self._element = element
+            self._prev = prev
+            self._next = next
+
+    class Position:
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(other) == type(self) and other._node ==  self._node
+
+        def __ne__(self, other):
+            return not (self == other)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be proper Position Type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        # if p._node._next is None:
+        #     raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_poistion(self, node):
+        return self.Position(self, node)
+
+    def __init__(self):
+        self._cursor = None
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def __iter__(self):
+        iter_cursor = self.first()
+        while True:
+            yield iter_cursor.element()
+            if len(self) > 1:
+                iter_cursor = self.after(iter_cursor)
+            if iter_cursor == self.first():
+                break
+
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise Empty
+        return self._make_poistion(self._cursor)
+
+    def last(self):
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            return self.first()
+        return self._make_poistion(self._cursor._prev)
+
+    def before(self, p):
+        target_node = self._validate(p)
+        return self._make_poistion(target_node._prev)
+
+    def after(self, p):
+        target_node = self._validate(p)
+        return self._make_poistion(target_node._next)
+
+    def _insert_between(self, e, prev_node=None, next_node=None):
+        new_node = self._Node(e, prev_node, next_node)
+        if self.is_empty():
+            self._cursor = new_node
+        elif len(self) == 1:
+            self._cursor._prev = self._cursor._next = new_node
+            new_node._prev = new_node._next = self._cursor
+        else:
+            prev_node._next = new_node
+            next_node._prev = new_node
+
+        self._size += 1
+        return new_node
+
+    def _delete_node(self, node):
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            self._cursor = None
+        else:
+            if node == self._cursor:
+                self._cursor = node._next
+            if len(self) == 2:
+                self._cursor._prev = self._cursor._next = None
+            else:
+                node._prev._next = node._next
+                node._next._prev = node._prev
+        self._size -= 1
+        return node._element
+
+    def add_first(self, e):
+        if self.is_empty():
+            return self._insert_between(e)
+        return self.add_before(self.first(), e)
+
+    def add_last(self, e):
+        if self.is_empty():
+            return self._insert_between(e)
+        return self.add_after(self.last(), e)
+
+
+    def add_before(self, p, e):
+        target_node = self._validate(p)
+        new_node = self._insert_between(e, target_node._prev, target_node)
+        if target_node == self._cursor:
+            self._cursor = new_node
+        return self._make_poistion(new_node)
+
+    def add_after(self, p, e):
+        target_node = self._validate(p)
+        new_node = self._insert_between(e, target_node, target_node._next)
+        return self._make_poistion(new_node)
+
+    def delete(self, p):
+        target_node = self._validate(p)
+        return self._delete_node(target_node)
 
 
 if __name__ == '__main__':
@@ -358,15 +490,28 @@ if __name__ == '__main__':
     #     print(cursor._element)
     #     cursor = cursor._next
 
-    a = PositionalList()
-    for i in range(5):
-        a.add_last(i)
-    print(a)
-    a.swap(a.first(), a.last())
-    print(a)
-    # a.swap(a.first(), a.after(a.first()))
-    a.swap(a.after(a.first()), a.first())
-    print(a)
+    # a = PositionalList()
+    # for i in range(5):
+    #     a.add_last(i)
+    # print(a)
+    # a.swap(a.first(), a.last())
+    # print(a)
+    # # a.swap(a.first(), a.after(a.first()))
+    # a.swap(a.after(a.first()), a.first())
+    # print(a)
+    #
+    # for i in a:
+    #     print(i)
 
+    a = PositionalListNoSentinel()
+    for i in range(5):
+        # a.add_first(i)
+        a.add_last(i)
+    print('----------------------')
     for i in a:
         print(i)
+    for i in range(5):
+        print('----------------------')
+        print('Delete {}'.format(a.delete(a.last())))
+        for i in a:
+            print(i)
