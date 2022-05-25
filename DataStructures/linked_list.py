@@ -577,3 +577,121 @@ class ForwardList:
         prev_node._next = target_node._next
         self._size -= 1
         return target_node._element
+
+
+class CircularlyLinkedList:
+
+    class _Node:
+        __slots__ = '_element', '_prev', '_next'
+
+        def __init__(self, element, prev, next):
+            self._element = element
+            self._prev = prev
+            self._next = next
+
+    def __init__(self):
+        self._header = self._Node(None, None, None)
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return self._size == 0
+
+    class Position:
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(other) == type(self) and other._node ==  self._node
+
+        def __ne__(self, other):
+            return not (self == other)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be proper Position Type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p._node._next is None:
+            raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_poistion(self, node):
+        if node == self._header:
+            return None
+        else:
+            return self.Position(self, node)
+
+    def cursor(self):
+        if self.is_empty():
+            raise Empty
+        return self._make_poistion(self._header._prev)
+
+    def before(self, p):
+        target_node = self._validate(p)
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            return p
+        return self._make_poistion(target_node._prev)
+
+    def after(self, p):
+        target_node = self._validate(p)
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            return p
+        return self._make_poistion(target_node._next)
+
+    def append(self, e):
+        new_node = self._Node(e, None, None)
+        if self.is_empty():
+            prev_node = next_node = self._header
+            self._header._next = new_node
+        else:
+            cursor_node = self._validate(self.cursor())
+            prev_node = cursor_node
+            next_node = cursor_node._next
+            cursor_node._next = new_node
+        new_node._prev = prev_node
+        new_node._next = next_node
+        self._header._prev = new_node
+        self._size += 1
+        return self._make_poistion(new_node)
+
+    def delete(self):
+        if self.is_empty():
+            raise Empty
+        target_node = self._validate(self.cursor())
+        if len(self) == 1:
+            self._header._prev = None
+            self._header._next = None
+        else:
+            target_node._next._prev = target_node._prev
+            target_node._prev._next = target_node._next
+        self._size -= 1
+        return target_node._element
+
+    def rotate(self):
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            return self.cursor()
+        old_cursor_node = self._validate(self.cursor())
+        after_header = self._header._next
+        new_cursor_node = old_cursor_node._prev
+
+        after_header._prev = old_cursor_node
+        old_cursor_node._next = after_header
+        old_cursor_node._prev = self._header
+        self._header._next = old_cursor_node
+        self._header._prev = new_cursor_node
+        new_cursor_node._next = self._header
+
+        return self._make_poistion(new_cursor_node)
