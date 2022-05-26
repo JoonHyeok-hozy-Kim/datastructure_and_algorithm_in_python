@@ -1096,7 +1096,39 @@ def purge(self, n):
 ```
 
 ### C-7.41 Exercise C-5.29 introduces the notion of a natural join of two databases. Describe and analyze an efficient algorithm for computing the natural join of a linked list A of n pairs and a linked list B of m pairs.
+```python
+from DataStructures.linked_list import PositionalList
+def natural_join(L, M):
+    from copy import deepcopy
+    L_cursor = L.first()
+    result = []
+    while L_cursor is not None:
+        M_cursor = M.first()
+        while M_cursor is not None:
+            if L_cursor.element()[-1] == M_cursor.element()[0]:
+                print('Matched {} - {}'.format(L_cursor.element(),
+                                               M_cursor.element()))
+                temp = deepcopy(L_cursor.element())
+                temp.append(M_cursor.element()[-1])
+                result.append(temp)
+            M_cursor = M.after(M_cursor)
+        L_cursor = L.after(L_cursor)
+    return result
 
+if __name__ == '__main__':
+    l = PositionalList()
+    m = PositionalList()
+    l.add_last(['a', 'd'])
+    l.add_last(['b', 'e'])
+    l.add_last(['c', 'f'])
+    m.add_last(['d', 'x'])
+    m.add_last(['d', 'y'])
+    m.add_last(['f', 'z'])
+    m.add_last(['g', 'w'])
+    m.add_last(['g', 'o'])
+    print('{} JOIN {}'.format(l, m))
+    print(natural_join(l, m))
+```
 
 
 
