@@ -994,7 +994,39 @@ class PositionalListNoSentinel:
 ```
 
 ### C-7.37 Implement a function that accepts a PositionalList L of n integers sorted in nondecreasing order, and another value V, and determines in O(n) time if there are two elements of L that sum precisely to V. The function should return a pair of positions of such elements, if found, or None otherwise. 
+```python
+from DataStructures.linked_list import PositionalList
+def sum_pair(N, V):
+    diff_list = PositionalList()
+    for i in N:
+        temp = V-i
+        if temp <= N.last().element():
+            diff_list.add_first(temp)
+    N_cursor = N.first()
+    diff_cursor = diff_list.first()
+    while N.after(N_cursor) is not None and diff_list.after(diff_cursor) is not None:
+        if N_cursor.element() == diff_cursor.element():
+            return [N_cursor.element(), V-N_cursor.element()]
+        elif N_cursor.element() > diff_cursor.element():
+            diff_cursor = diff_list.after(diff_cursor)
+        else:
+            N_cursor = N.after(N_cursor)
+    return None
 
+if __name__ == '__main__':
+    import sys
+    recursive_limit = 10000000
+    old = sys.getrecursionlimit()
+    sys.setrecursionlimit(recursive_limit)
+    
+    a = PositionalList()
+    for i in range(7000):
+        a.add_last(i)
+    print(a)
+    print(sum_pair(a, 12000))
+```
+
+### C-7.38 There is a simple, but inefficient, algorithm, called bubble-sort, for sorting a list L of n comparable elements. This algorithm scans the list n−1 times, where, in each scan, the algorithm compares the current element with the next one and swaps them if they are out of order. Implement a bubble sort function that takes a positional list L as a parameter. What is the running time of this algorithm, assuming the positional list is implemented with a doubly linked list? 
 
 
 

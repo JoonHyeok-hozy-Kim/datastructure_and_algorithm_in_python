@@ -260,10 +260,27 @@ class PositionalListNoSentinel:
         target_node = self._validate(p)
         return self._delete_node(target_node)
 
+def sum_pair(N, V):
+    diff_list = PositionalList()
+    for i in N:
+        temp = V-i
+        if temp <= N.last().element():
+            diff_list.add_first(temp)
+    N_cursor = N.first()
+    diff_cursor = diff_list.first()
+    while N.after(N_cursor) is not None and diff_list.after(diff_cursor) is not None:
+        if N_cursor.element() == diff_cursor.element():
+            return [N_cursor.element(), V-N_cursor.element()]
+        elif N_cursor.element() > diff_cursor.element():
+            diff_cursor = diff_list.after(diff_cursor)
+        else:
+            N_cursor = N.after(N_cursor)
+    return None
+
 
 if __name__ == '__main__':
     1
-    # 7.1
+        # 7.1
 
     # lq = LinkedQueue()
     # for i in range(5):
@@ -502,16 +519,28 @@ if __name__ == '__main__':
     #
     # for i in a:
     #     print(i)
+    # a = PositionalListNoSentinel()
+    # for i in range(5):
+    #     # a.add_first(i)
+    #     a.add_last(i)
+    # print('----------------------')
+    # for i in a:
+    #     print(i)
+    # for i in range(5):
+    #     print('----------------------')
+    #     print('Delete {}'.format(a.delete(a.last())))
+    #     for i in a:
+    #         print(i)
 
-    a = PositionalListNoSentinel()
-    for i in range(5):
-        # a.add_first(i)
+    # 7.37
+    import sys
+    recursive_limit = 10000000
+    old = sys.getrecursionlimit()
+    sys.setrecursionlimit(recursive_limit)
+    a = PositionalList()
+    for i in range(7000):
         a.add_last(i)
-    print('----------------------')
-    for i in a:
-        print(i)
-    for i in range(5):
-        print('----------------------')
-        print('Delete {}'.format(a.delete(a.last())))
-        for i in a:
-            print(i)
+    print(a)
+    print(sum_pair(a, 12000))
+
+    # 7.38
