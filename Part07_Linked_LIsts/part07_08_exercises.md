@@ -1130,6 +1130,71 @@ if __name__ == '__main__':
     print(natural_join(l, m))
 ```
 
+### C-7.42 Write a Scoreboard class that maintains the top 10 scores for a game application using a singly linked list, rather than the array that was used in Section 5.5.1.
+```python
+from DataStructures.queue import LinkedQueue as new_linked_queue
+class GameEntry:
+
+    def __init__(self, name, score):
+        self._name = name
+        self._score = score
+
+    def get_name(self):
+        return self._name
+
+    def get_score(self):
+        return self._score
+
+    def __str__(self):
+        return '({0}, {1})'.format(self._name, self._score)
+
+class ScoreBoard:
+
+    def __init__(self, capacity=10):
+        self._capacity = capacity
+        self._board = new_linked_queue()
+        self._n = 0
+
+    def __str__(self):
+        str_list = ['---------------']
+        walk = self._board._header._next
+        while walk is not None:
+            str_list.append(str(walk._element))
+            walk = walk._next
+        str_list.append('---------------')
+        return '\n'.join(str_list)
+
+    def add(self, entry):
+        if self._board.is_empty():
+            self._board.enqueue(entry)
+            return
+
+        score = entry.get_score()
+        walk = self._board._header
+        rotate_cnt = min(self._capacity-1, len(self._board))
+        not_inserted = True
+
+        for i in range(rotate_cnt):
+            if score > walk._next._element.get_score() and not_inserted:
+                self._board.enqueue(entry)
+                not_inserted = False
+            self._board.enqueue(self._board.dequeue())
+
+        while self._capacity < len(self._board):
+            self._board.dequeue()
+
+if __name__ == '__main__':
+    s = ScoreBoard()
+    for i in range(12):
+        s.add(GameEntry(chr(i+65), i))
+        print(s)
+```
+
+### C-7.43 Describe a method for performing a card shuffle of a list of 2n elements, by converting it into two lists. A card shuffle is a permutation where a list L is cut into two lists, L1 and L2, where L1 is the first half of L and L2 is the second half of L, and then these two lists are merged into one by taking the first element in L1, then the first element in L2, followed by the second element in L1, the second element in L2, and so on. 
+
+
+
+
 
 
 

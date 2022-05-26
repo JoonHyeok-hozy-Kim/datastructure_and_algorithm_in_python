@@ -321,6 +321,58 @@ def natural_join(L, M):
         L_cursor = L.after(L_cursor)
     return result
 
+from DataStructures.queue import LinkedQueue as new_linked_queue
+class GameEntry:
+
+    def __init__(self, name, score):
+        self._name = name
+        self._score = score
+
+    def get_name(self):
+        return self._name
+
+    def get_score(self):
+        return self._score
+
+    def __str__(self):
+        return '({0}, {1})'.format(self._name, self._score)
+
+class ScoreBoard:
+
+    def __init__(self, capacity=10):
+        self._capacity = capacity
+        self._board = new_linked_queue()
+        self._n = 0
+
+    def __str__(self):
+        str_list = ['---------------']
+        walk = self._board._header._next
+        while walk is not None:
+            str_list.append(str(walk._element))
+            walk = walk._next
+        str_list.append('---------------')
+        return '\n'.join(str_list)
+
+    def add(self, entry):
+        if self._board.is_empty():
+            self._board.enqueue(entry)
+            return
+
+        score = entry.get_score()
+        walk = self._board._header
+        rotate_cnt = min(self._capacity-1, len(self._board))
+        not_inserted = True
+
+        for i in range(rotate_cnt):
+            if score > walk._next._element.get_score() and not_inserted:
+                self._board.enqueue(entry)
+                not_inserted = False
+            self._board.enqueue(self._board.dequeue())
+
+        while self._capacity < len(self._board):
+            self._board.dequeue()
+
+
 if __name__ == '__main__':
     None
     # 7.1
@@ -619,15 +671,20 @@ if __name__ == '__main__':
     # for i in a.top(3):
     #     print(i)
 
-    l = PositionalList()
-    m = PositionalList()
-    l.add_last(['a', 'd'])
-    l.add_last(['b', 'e'])
-    l.add_last(['c', 'f'])
-    m.add_last(['d', 'x'])
-    m.add_last(['d', 'y'])
-    m.add_last(['f', 'z'])
-    m.add_last(['g', 'w'])
-    m.add_last(['g', 'o'])
-    print('{} JOIN {}'.format(l, m))
-    print(natural_join(l, m))
+    # l = PositionalList()
+    # m = PositionalList()
+    # l.add_last(['a', 'd'])
+    # l.add_last(['b', 'e'])
+    # l.add_last(['c', 'f'])
+    # m.add_last(['d', 'x'])
+    # m.add_last(['d', 'y'])
+    # m.add_last(['f', 'z'])
+    # m.add_last(['g', 'w'])
+    # m.add_last(['g', 'o'])
+    # print('{} JOIN {}'.format(l, m))
+    # print(natural_join(l, m))
+
+    s = ScoreBoard()
+    for i in range(12):
+        s.add(GameEntry(chr(i+65), i))
+        print(s)
