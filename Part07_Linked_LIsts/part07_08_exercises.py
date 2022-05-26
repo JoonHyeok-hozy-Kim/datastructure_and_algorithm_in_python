@@ -278,9 +278,36 @@ def sum_pair(N, V):
     return None
 
 
+def bubble_sort(L):
+    cnt = len(L)
+    swap_cnt = 0
+    move_cnt = 0
+    while cnt > 0:
+        cursor = L.first()
+        walk = L.after(cursor)
+        while walk is not None:
+            if cursor.element() > walk.element():
+                print('Swap[{}] {} <> {} : {}'.format(swap_cnt+1,
+                                                      cursor.element(),
+                                                      walk.element(),
+                                                      L))
+                L.swap(cursor, walk)
+                walk = L.after(cursor)
+                swap_cnt += 1
+            else:
+                cursor = L.after(cursor)
+                walk = L.after(cursor)
+                move_cnt += 1
+        cnt -= 1
+
+    return 'swap : {}, move : {}, total : {}'.format(swap_cnt,
+                                                     move_cnt,
+                                                     swap_cnt+move_cnt)
+
+
 if __name__ == '__main__':
-    1
-        # 7.1
+    None
+    # 7.1
 
     # lq = LinkedQueue()
     # for i in range(5):
@@ -534,13 +561,21 @@ if __name__ == '__main__':
 
     # 7.37
     import sys
-    recursive_limit = 10000000
-    old = sys.getrecursionlimit()
-    sys.setrecursionlimit(recursive_limit)
-    a = PositionalList()
-    for i in range(7000):
-        a.add_last(i)
-    print(a)
-    print(sum_pair(a, 12000))
+    # recursive_limit = 10000000
+    # old = sys.getrecursionlimit()
+    # sys.setrecursionlimit(recursive_limit)
+    # a = PositionalList()
+    # for i in range(7000):
+    #     a.add_last(i)
+    # print(a)
+    # print(sum_pair(a, 12000))
 
     # 7.38
+    from DataStructures.linked_list import PositionalList
+    # a = PositionalList()
+    # for i in range(10):
+    #     a.add_last(randint(0, 100))
+    # print(a)
+    # print(bubble_sort(a))
+    # print(a)
+

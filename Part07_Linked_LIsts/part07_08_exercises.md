@@ -1027,8 +1027,49 @@ if __name__ == '__main__':
 ```
 
 ### C-7.38 There is a simple, but inefficient, algorithm, called bubble-sort, for sorting a list L of n comparable elements. This algorithm scans the list n−1 times, where, in each scan, the algorithm compares the current element with the next one and swaps them if they are out of order. Implement a bubble sort function that takes a positional list L as a parameter. What is the running time of this algorithm, assuming the positional list is implemented with a doubly linked list? 
+* Sol.) O(n^2) running time.
+```python
+def bubble_sort(L):
+    cnt = len(L)
+    swap_cnt = 0
+    move_cnt = 0
+    while cnt > 0:
+        cursor = L.first()
+        walk = L.after(cursor)
+        while walk is not None:
+            if cursor.element() > walk.element():
+                print('Swap[{}] {} <> {} : {}'.format(swap_cnt+1,
+                                                      cursor.element(),
+                                                      walk.element(),
+                                                      L))
+                L.swap(cursor, walk)
+                walk = L.after(cursor)
+                swap_cnt += 1
+            else:
+                cursor = L.after(cursor)
+                walk = L.after(cursor)
+                move_cnt += 1
+        cnt -= 1
 
+    return 'swap : {}, move : {}, total : {}'.format(swap_cnt,
+                                                     move_cnt,
+                                                     swap_cnt+move_cnt)
 
+if __name__ == '__main__':
+    from DataStructures.linked_list import PositionalList
+    from random import randint
+    a = PositionalList()
+    for i in range(10):
+        a.add_last(randint(0, 100))
+    print(a)
+    print(bubble_sort(a))
+    print(a)
+```
+
+### C-7.39 To better model a FIFO queue in which entries may be deleted before
+reaching the front, design a PositionalQueue class that supports the complete queue ADT, yet with enqueue returning a position instance and support for a new method, delete(p), that removes the element associated
+with position p from the queue. You may use the adapter design pattern
+(Section 6.1.2), using a PositionalList as your storage.
 
 
 <p>
