@@ -409,6 +409,56 @@ class CardShuffle:
         return self._card_deck
 
 
+class TextEditor:
+    def __init__(self):
+        self._data = PositionalList()
+        self._cursor = None
+
+    def __len__(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def left(self):
+        if self.is_empty():
+            raise Empty
+        if self._cursor != self._data.first():
+            self._cursor = self._data.before(self._cursor)
+        return self._cursor
+
+    def right(self):
+        if self.is_empty():
+            raise Empty
+        if self._cursor != self._data.last():
+            self._cursor = self._data.after(self._cursor)
+        return self._cursor
+
+    def insert(self, c):
+        if self.is_empty():
+            self._data.add_last(c)
+            self._cursor = self._data.first()
+        else:
+            self._cursor = self._data.add_after(self._cursor, c)
+        return self._cursor
+
+    def delete(self):
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            None
+        return
+
+    def __str__(self):
+        if self.is_empty():
+            return ''
+        text_list = []
+        walk = self._data.first()
+        while walk is not None:
+            text_list.append(str(walk.element()))
+            walk = self._data.after(walk)
+        return ''.join(text_list)
+
 if __name__ == '__main__':
     None
     # 7.1
@@ -732,4 +782,18 @@ if __name__ == '__main__':
     #     c.shuffle()
     #     print(c._card_deck)
 
-    
+    t = TextEditor()
+    for i in range(5):
+        t.insert(chr(i+65))
+    print(t)
+    t.left()
+    t.left()
+    t.left()
+    t.left()
+    t.insert(4)
+    print(t)
+    t.right()
+    t.right()
+    t.insert(6)
+    print(t)
+

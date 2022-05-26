@@ -1237,7 +1237,64 @@ if __name__ == '__main__':
         print(c._card_deck)
 ```
 
+### P-7.44 Write a simple text editor that stores and displays a string of characters using the positional list ADT, together with a cursor object that highlights a position in this string. A simple interface is to print the string and then to use a second line of output to underline the position of the cursor. Your editor should support the following operations:
+* left: Move cursor left one character (do nothing if at beginning).
+* right: Move cursor right one character (do nothing if at end).
+* insert c: Insert the character c just after the cursor.
+* delete: Delete the character just after the cursor (do nothing at end).
+```python
+class TextEditor:
+    def __init__(self):
+        self._data = PositionalList()
+        self._cursor = None
 
+    def __len__(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def left(self):
+        if self.is_empty():
+            raise Empty
+        if self._cursor != self._data.first():
+            self._cursor = self._data.before(self._cursor)
+        return self._cursor
+
+    def right(self):
+        if self.is_empty():
+            raise Empty
+        if self._cursor != self._data.last():
+            self._cursor = self._data.after(self._cursor)
+        return self._cursor
+
+    def insert(self, c):
+        if self.is_empty():
+            self._data.add_last(c)
+            self._cursor = self._data.first()
+        else:
+            self._cursor = self._data.add_after(self._cursor, c)
+        return self._cursor
+
+    def delete(self):
+        if self.is_empty():
+            raise Empty
+        if len(self) == 1:
+            None
+        return
+
+    def __str__(self):
+        if self.is_empty():
+            return ''
+        text_list = []
+        walk = self._data.first()
+        while walk is not None:
+            text_list.append(str(walk.element()))
+            walk = self._data.after(walk)
+        return ''.join(text_list)
+```
+
+### 
 
 
 
