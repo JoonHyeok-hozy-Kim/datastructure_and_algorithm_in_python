@@ -1191,7 +1191,51 @@ if __name__ == '__main__':
 ```
 
 ### C-7.43 Describe a method for performing a card shuffle of a list of 2n elements, by converting it into two lists. A card shuffle is a permutation where a list L is cut into two lists, L1 and L2, where L1 is the first half of L and L2 is the second half of L, and then these two lists are merged into one by taking the first element in L1, then the first element in L2, followed by the second element in L1, the second element in L2, and so on. 
+```python
+from DataStructures.linked_list import PositionalList
+class CardShuffle:
 
+    def __init__(self):
+        self._card_deck = PositionalList()
+
+    def create_card_deck(self, symbols=None, numbers=None):
+        self._card_deck = PositionalList()
+        if symbols is None:
+            symbols = ['♠', '♣', '♡', '◇']
+        if numbers is None:
+            numbers = ['A']
+            for i in range(9):
+                numbers.append(str(i+2))
+            numbers.append('K')
+            numbers.append('Q')
+            numbers.append('J')
+
+        for symbol in symbols:
+            for number in numbers:
+                self._card_deck.add_last(symbol+number)
+
+    def shuffle(self):
+        l1_walk = self._card_deck.first()
+        l2_walk = self._card_deck.first()
+        for i in range(len(self._card_deck)//2):
+            l2_walk = self._card_deck.after(l2_walk)
+        print('[In shuffle] mid : {}'.format(l2_walk.element()))
+        while self._card_deck.after(l2_walk) is not None:
+            temp_l1 = self._card_deck.after(l1_walk)
+            temp_l2 = self._card_deck.after(l2_walk)
+            self._card_deck.add_after(l1_walk, self._card_deck.delete(l2_walk))
+            l1_walk = temp_l1
+            l2_walk = temp_l2
+        return self._card_deck
+
+if __name__ == '__main__':
+    c = CardShuffle()
+    c.create_card_deck()
+    print(c._card_deck)
+    for i in range(10):
+        c.shuffle()
+        print(c._card_deck)
+```
 
 
 

@@ -372,6 +372,42 @@ class ScoreBoard:
         while self._capacity < len(self._board):
             self._board.dequeue()
 
+from DataStructures.linked_list import PositionalList
+class CardShuffle:
+
+    def __init__(self):
+        self._card_deck = PositionalList()
+
+    def create_card_deck(self, symbols=None, numbers=None):
+        self._card_deck = PositionalList()
+        if symbols is None:
+            symbols = ['♠', '♣', '♡', '◇']
+        if numbers is None:
+            numbers = ['A']
+            for i in range(9):
+                numbers.append(str(i+2))
+            numbers.append('K')
+            numbers.append('Q')
+            numbers.append('J')
+
+        for symbol in symbols:
+            for number in numbers:
+                self._card_deck.add_last(symbol+number)
+
+    def shuffle(self):
+        l1_walk = self._card_deck.first()
+        l2_walk = self._card_deck.first()
+        for i in range(len(self._card_deck)//2):
+            l2_walk = self._card_deck.after(l2_walk)
+        print('[In shuffle] mid : {}'.format(l2_walk.element()))
+        while self._card_deck.after(l2_walk) is not None:
+            temp_l1 = self._card_deck.after(l1_walk)
+            temp_l2 = self._card_deck.after(l2_walk)
+            self._card_deck.add_after(l1_walk, self._card_deck.delete(l2_walk))
+            l1_walk = temp_l1
+            l2_walk = temp_l2
+        return self._card_deck
+
 
 if __name__ == '__main__':
     None
@@ -684,7 +720,16 @@ if __name__ == '__main__':
     # print('{} JOIN {}'.format(l, m))
     # print(natural_join(l, m))
 
-    s = ScoreBoard()
-    for i in range(12):
-        s.add(GameEntry(chr(i+65), i))
-        print(s)
+    # s = ScoreBoard()
+    # for i in range(12):
+    #     s.add(GameEntry(chr(i+65), i))
+    #     print(s)
+
+    # c = CardShuffle()
+    # c.create_card_deck()
+    # print(c._card_deck)
+    # for i in range(10):
+    #     c.shuffle()
+    #     print(c._card_deck)
+
+    
