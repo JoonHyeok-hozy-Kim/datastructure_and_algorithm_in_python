@@ -443,11 +443,9 @@ class TextEditor:
         return self._cursor
 
     def delete(self):
-        if self.is_empty():
-            raise Empty
-        if len(self) == 1:
-            None
-        return
+        if self._cursor != self._data.last():
+            self._data.delete(self._data.after(self._cursor))
+            return
 
     def __str__(self):
         if self.is_empty():
@@ -796,4 +794,9 @@ if __name__ == '__main__':
     t.right()
     t.insert(6)
     print(t)
+    for i in range(3):
+        t.left()
+    for i in range(8):
+        t.delete()
+        print(t)
 
