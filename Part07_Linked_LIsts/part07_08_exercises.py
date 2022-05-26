@@ -579,3 +579,11 @@ if __name__ == '__main__':
     # print(bubble_sort(a))
     # print(a)
 
+    from DataStructures.queue import PositionalQueue
+    a = PositionalQueue()
+    for i in range(5):
+        a.enqueue(i)
+        print(a)
+    for i in range(5):
+        # print(a.dequeue(), a)
+        print(a.delete(a.last()), a)

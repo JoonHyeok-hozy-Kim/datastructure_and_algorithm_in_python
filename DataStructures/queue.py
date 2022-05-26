@@ -164,3 +164,39 @@ class LinkedQueue:
         walk._next = prev
         self._header._next = walk
 
+
+from DataStructures.linked_list import PositionalList
+class PositionalQueue:
+    def __init__(self):
+        self._data = PositionalList()
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        return self._data.first()
+
+    def last(self):
+        return self._data.last()
+
+    def after(self, p):
+        return self._data.after(p)
+
+    def before(self, p):
+        return self._data.before(p)
+
+    def dequeue(self):
+        return self._data.delete(self._data.last())
+
+    def enqueue(self, e):
+        return self._data.add_last(e)
+
+    def delete(self, p):
+        return self._data.delete(p)
+
+    def __str__(self):
+        return str(self._data)
