@@ -532,6 +532,14 @@ class FavoriteListMTF(FavoriteList):
             yield highPos.element()._value
             temp.delete(highPos)
 
+    def purge(self, n):
+        if len(self) < n:
+            raise ValueError('Cannot purge more than {} elements.'.format(len(self)))
+        walk = self._data.first()
+        for i in range(n-1):
+            walk = self._data.after(walk)
+        while self._data.after(walk) is not None:
+            self._data.delete(self._data.after(walk))
 
 class ForwardList:
 

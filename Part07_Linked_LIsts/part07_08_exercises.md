@@ -1083,6 +1083,19 @@ if __name__ == '__main__':
         print(a.delete(a.last()), a)
 ```
 
+### C-7.40 Describe an efficient method for maintaining a favorites list L, with move-to-front heuristic, such that elements that have not been accessed in the most recent n accesses are automatically purged from the list.
+```python
+def purge(self, n):
+    if len(self) < n:
+        raise ValueError('Cannot purge more than {} elements.'.format(len(self)))
+    walk = self._data.first()
+    for i in range(n-1):
+        walk = self._data.after(walk)
+    while self._data.after(walk) is not None:
+        self._data.delete(self._data.after(walk))
+```
+
+### C-7.41 Exercise C-5.29 introduces the notion of a natural join of two databases. Describe and analyze an efficient algorithm for computing the natural join of a linked list A of n pairs and a linked list B of m pairs.
 
 
 

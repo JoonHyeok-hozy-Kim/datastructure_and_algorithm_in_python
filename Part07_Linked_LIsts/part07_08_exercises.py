@@ -580,10 +580,25 @@ if __name__ == '__main__':
     # print(a)
 
     from DataStructures.queue import PositionalQueue
-    a = PositionalQueue()
+    # a = PositionalQueue()
+    # for i in range(5):
+    #     a.enqueue(i)
+    #     print(a)
+    # for i in range(5):
+    #     # print(a.dequeue(), a)
+    #     print(a.delete(a.last()), a)
+
+    a = FavoriteListMTF()
     for i in range(5):
-        a.enqueue(i)
-        print(a)
-    for i in range(5):
-        # print(a.dequeue(), a)
-        print(a.delete(a.last()), a)
+        for j in range(5):
+            a.access(i)
+    for i in range(3):
+        a.access(i)
+    for i in range(10):
+        a.access(i)
+    # for i in a.top(5):
+    #     print(i)
+
+    a.purge(7)
+    for i in a.top(3):
+        print(i)
