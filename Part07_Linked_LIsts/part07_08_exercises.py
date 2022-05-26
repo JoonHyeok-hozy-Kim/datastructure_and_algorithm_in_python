@@ -457,6 +457,101 @@ class TextEditor:
             walk = self._data.after(walk)
         return ''.join(text_list)
 
+class SparseArray:
+    class Entry:
+        __slots__ = '_index', '_value'
+
+        def __init__(self, index, value):
+            self._index = index
+            self._value = value
+
+        def index(self):
+            return self._index
+
+        def value(self):
+            return self._value
+
+        def __str__(self):
+            return 'A[{}]={}'.format(self._index, self._value)
+
+    def __init__(self):
+        self._data = PositionalList()
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def add_last(self, v):
+        if self.is_empty():
+            self._data.add_last(self.Entry(0, v))
+        else:
+            self._data.add_last(self.Entry(len(self), v))
+        self._size += 1
+        return self._data.last()
+
+    def make_none(self, index):
+        if index > len(self)-1:
+            raise IndexError
+        walk = self._data.first()
+        while walk is not None:
+            if walk.element().index() == index:
+                return self._data.delete(walk)
+            walk = self._data.after(walk)
+
+
+    def __getitem__(self, item):
+        if len(self)-1 < item:
+            raise IndexError
+        walk = self._data.first()
+        while walk is not None:
+            if walk.element().index() == item:
+                return walk.element().value()
+            walk = self._data.after(walk)
+        return None
+
+    def __setitem__(self, key, value):
+        if key > len(self)-1:
+            raise IndexError
+        if key == len(self)-1:
+            if self._data.last().element().index() == key:
+                self._data.last().element()._value = value
+                return self._data.last()
+            else:
+                return self._data.add_after(self._data.last(), self.Entry(key, value))
+
+        walk = self._data.first()
+        while self._data.after(walk) is not None:
+            if walk.element().index() == key:
+                walk.element()._value = value
+                return walk
+            if self._data.after(walk).element().index() > key:
+                return self._data.add_after(walk, self.Entry(key, value))
+            walk = self._data.after(walk)
+
+    def __str__(self):
+        text_list = ['[']
+        idx = 0
+        walk = self._data.first()
+        while idx <= len(self)-1:
+            if walk is None:
+                text_list.append('None')
+            else:
+                if idx == walk.element().index():
+                    text_list.append(walk.element().value())
+                    walk = self._data.after(walk)
+                else:
+                    text_list.append('None')
+            text_list.append(',')
+            idx += 1
+        text_list.pop()
+        text_list.append(']')
+        return ''.join(text_list)
+
+
+
 if __name__ == '__main__':
     None
     # 7.1
@@ -780,23 +875,40 @@ if __name__ == '__main__':
     #     c.shuffle()
     #     print(c._card_deck)
 
-    t = TextEditor()
-    for i in range(5):
-        t.insert(chr(i+65))
-    print(t)
-    t.left()
-    t.left()
-    t.left()
-    t.left()
-    t.insert(4)
-    print(t)
-    t.right()
-    t.right()
-    t.insert(6)
-    print(t)
-    for i in range(3):
-        t.left()
-    for i in range(8):
-        t.delete()
-        print(t)
+    # t = TextEditor()
+    # for i in range(5):
+    #     t.insert(chr(i+65))
+    # print(t)
+    # t.left()
+    # t.left()
+    # t.left()
+    # t.left()
+    # t.insert(4)
+    # print(t)
+    # t.right()
+    # t.right()
+    # t.insert(6)
+    # print(t)
+    # for i in range(3):
+    #     t.left()
+    # for i in range(8):
+    #     t.delete()
+    #     print(t)
 
+    s = SparseArray()
+    for i in range(10):
+        s.add_last(chr(i+65))
+    print(s)
+    for i in range(5):
+        s.make_none(i+3)
+    print(s)
+    s[0] = 'X'
+    print(s)
+    s[5] = 'Y'
+    print(s)
+    s[len(s)-1] = '가'
+    print(s)
+    s.make_none(len(s)-1)
+    print(s)
+    s[len(s)-1] = 'ㅎ'
+    print(s)
