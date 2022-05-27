@@ -235,7 +235,7 @@ class PositionalList(_DoublyLinkedBase):
 
     def find(self, e):
         walk = self.first()
-        while self.after(walk) is not None:
+        while walk is not None:
             if walk.element() == e:
                 return walk
             walk = self.after(walk)

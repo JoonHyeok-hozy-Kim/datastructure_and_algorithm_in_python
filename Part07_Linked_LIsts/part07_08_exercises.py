@@ -662,6 +662,153 @@ class ArrayBasedPositionalArray:
         return result.element()
 
 
+from DataStructures.linked_list import PositionalList
+from random import randint
+class CardHand:
+    def __init__(self):
+        self._suits = ['♠', '♣', '♡', '◇']
+        self._ranks = ['A', 'K', 'Q', 'J']
+        for i in range(9):
+            self._ranks.append(str(10-i))
+        self._card_list = self.reset_card_list()
+        self._hand = []
+        for i in range(len(self._suits)):
+            new_list = PositionalList()
+            self._hand.append(new_list)
+        self._hand_cnt = 0
+        self._iter_cursor = self._hand[0]._header
+        self._iter_cnt = 0
+
+    def _reset_iterator(self):
+        self._iter_cursor = self._hand[0]._header
+        self._iter_cnt = 0
+
+    def reset_card_list(self):
+        card_list = PositionalList()
+        for s in self._suits:
+            for r in self._ranks:
+                card_list.add_last(s+r)
+        return card_list
+
+    def _get_from_card_list(self, r, s):
+        r = str(r)
+        if s in self._suits:
+            walk = self._card_list.first()
+            while walk is not None:
+                if walk.element()[1:] == r and walk.element()[0] == s:
+                    card = self._card_list.delete(walk)
+                    return card
+                walk = self._card_list.after(walk)
+        raise ValueError('Card {}{} not in _card_list'.format(s, r))
+
+    def _add_card_to_hand(self, card):
+        if card is None:
+            raise ValueError('Received None for card.')
+        self._hand[self._suits.index(card[0])].add_last(card)
+        self._hand_cnt += 1
+        print('Add card {}'.format(card))
+
+    def add_card(self, r, s):
+        card = self._get_from_card_list(r, s)
+        self._add_card_to_hand(card)
+
+    def _get_random_card_from_card_list(self, s=None):
+        if s is None:
+            random_new_idx = randint(0, len(self._card_list) - 1)
+            walk = self._card_list.first()
+            for i in range(random_new_idx):
+                walk = self._card_list.after(walk)
+        else:
+            in_hand_cnt = len(self._hand[self._suits.index(s)])
+            random_new_idx = randint(0, len(self._ranks)-in_hand_cnt-1)
+            walk = self._card_list.first()
+            while walk is not None:
+                if walk.element()[0] == s:
+                    if random_new_idx == 0:
+                        break
+                    else:
+                        random_new_idx -= 1
+                walk = self._card_list.after(walk)
+
+        return self._card_list.delete(walk)
+
+
+    def play(self, s):
+        suit_idx = self._suits.index(s)
+        loop_cnt = 0
+
+        # delete card
+        if len(self._hand[suit_idx]) == 0:
+            random_idx = randint(0, self._hand_cnt-1)
+            for card in self:
+                if loop_cnt == random_idx:
+                    # Delete card from hand
+                    print('In play, delete card : {}'.format(card))
+                    target_finger = self._hand[self._suits.index(card[0])]
+                    target_finger.delete(target_finger.find(card))
+                    self._hand_cnt -= 1
+
+                    # Add Random Card to _hand
+                    new_card = self._get_random_card_from_card_list()
+                    self._add_card_to_hand(new_card)
+
+                    # Add deleted card to _card_list
+                    self._card_list.add_last(card)
+
+                    self._reset_iterator()
+                    break
+                else:
+                    loop_cnt += 1
+        else:
+            target_hand = self._hand[self._suits.index(s)]
+            random_idx = randint(0, len(target_hand)-1)
+            walk = target_hand.first()
+            for i in range(random_idx):
+                walk = target_hand.after(walk)
+            old_card = target_hand.delete(walk)
+            print('In play, delete card : {}'.format(old_card))
+
+            new_card = self._get_random_card_from_card_list(s)
+            self._add_card_to_hand(new_card)
+
+            self._card_list.add_last(old_card)
+
+        # get card
+        return
+
+    def __next__(self):
+        self._iter_cursor = self._iter_cursor._next
+        if self._iter_cursor == self._hand[self._iter_cnt]._trailer:
+            if self._iter_cnt == len(self._hand)-1:
+                self._iter_cursor = self._hand[0]._header
+                self._iter_cnt = 0
+                raise StopIteration()
+            else:
+                self._iter_cnt += 1
+                while len(self._hand[self._iter_cnt]) == 0:
+                    self._iter_cnt += 1
+                self._iter_cursor = self._hand[self._iter_cnt]._header._next
+
+        return self._iter_cursor._element
+
+    def __iter__(self):
+        return self
+
+    def all_of_suits(self, s):
+        finger = self._hand[self._suits.index(s)]
+        walk = finger.first()
+        while walk is not None:
+            yield walk.element()
+            walk = finger.after(walk)
+
+    def show_hand(self):
+        text_list = []
+        for i in self:
+            text_list.append(i)
+        result = ','.join(text_list)
+        print(result)
+        return result
+
 
 if __name__ == '__main__':
     None
@@ -1019,22 +1166,38 @@ if __name__ == '__main__':
     # s[len(s)-1] = 'ㅎ'
     # print(s)
 
-    a = ArrayBasedPositionalArray()
-    for i in range(3):
-        a.add_first(i)
-        print(a)
-    for i in range(3):
-        a.add_before(a.after(a.first()), chr(ord('가')+i))
-        print(a)
-    for i in range(3):
-        a.add_last(chr(i+65))
-        print(a)
-    for i in range(3):
-        a.add_after(a.before(a.last()), chr(ord('나')+i))
-        print(a)
-    for i in range(5):
-        a.delete(a.last())
-        print(a)
-    for i in range(8):
-        a.delete(a.first())
-        print(a)
+    # a = ArrayBasedPositionalArray()
+    # for i in range(3):
+    #     a.add_first(i)
+    #     print(a)
+    # for i in range(3):
+    #     a.add_before(a.after(a.first()), chr(ord('가')+i))
+    #     print(a)
+    # for i in range(3):
+    #     a.add_last(chr(i+65))
+    #     print(a)
+    # for i in range(3):
+    #     a.add_after(a.before(a.last()), chr(ord('나')+i))
+    #     print(a)
+    # for i in range(5):
+    #     a.delete(a.last())
+    #     print(a)
+    # for i in range(8):
+    #     a.delete(a.first())
+    #     print(a)
+
+    # '♠', '♣', '♡', '◇'
+    c = CardHand()
+    c.add_card('A', '◇')
+    # c.add_card('K', '♡')
+    c.add_card('3', '♠')
+    c.add_card('5', '♣')
+    c.add_card('10', '◇')
+    c.add_card('J', '♠')
+    c.add_card('K', '♠')
+    c.show_hand()
+    c.play('♡')
+    c.show_hand()
+    c.play('♠')
+    c.show_hand()
+
