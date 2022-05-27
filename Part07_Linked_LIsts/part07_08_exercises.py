@@ -8,7 +8,7 @@ def second_to_last(A):
         walk = walk._next
     return walk._element
 
-from DataStructures.linked_list import LinkedQueue
+from DataStructures.queue import LinkedQueue
 def concatenate(first_node, second_node):
     new_queue = LinkedQueue()
     new_queue._head = first_node
@@ -551,9 +551,123 @@ class SparseArray:
         return ''.join(text_list)
 
 
+from DataStructures.stack import ArrayStack
+class ArrayBasedPositionalArray:
+    class Item:
+        def __init__(self, index, element):
+            self._index = index
+            self._element = element
+
+        def element(self):
+            return self._element
+
+        def __str__(self):
+            return '([{}] {})'.format(self._index, self._element)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Item):
+            raise ValueError('Not a proper Item instance.')
+        return p._index
+
+    def __init__(self):
+        self._data = []
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def __str__(self):
+        text_list = []
+        for i in range(len(self)):
+            text_list.append(str(self._data[i]))
+        return ','.join(text_list)
+
+    def is_empty(self):
+        return self._size == 0
+
+    def empty_validation(self):
+        if self.is_empty():
+            raise Empty
+
+    def first(self):
+        self.empty_validation()
+        return self._data[0]
+
+    def last(self):
+        self.empty_validation()
+        return self._data[-1]
+
+    def before(self, p):
+        target_index = self._validate(p)
+        if target_index == 0:
+            raise IndexError
+        return self._data[target_index-1]
+
+    def after(self, p):
+        target_index = self._validate(p)
+        if target_index == self._size-1:
+            raise IndexError
+        return self._data[target_index+1]
+
+    def add_first(self, e):
+        if self.is_empty():
+            self._data.append(self.Item(0, e))
+            self._size += 1
+        else:
+            self.add_before(self.first(), e)
+        return
+
+    def add_last(self, e):
+        self._data.append(self.Item(len(self), e))
+        self._size += 1
+
+    def add_before(self, p, e):
+        target_index = self._validate(p)
+        temp_stack = ArrayStack()
+        for i in range(len(self)-target_index):
+            temp_stack.push(self._data.pop())
+        self._data.append(self.Item(target_index, e))
+        while not temp_stack.is_empty():
+            temp_item = temp_stack.pop()
+            temp_item._index += 1
+            self._data.append(temp_item)
+        self._size += 1
+        return
+
+    def add_after(self, p, e):
+        target_index = self._validate(p)
+        temp_stack = ArrayStack()
+        for i in range(len(self)-target_index-1):
+            temp_stack.push(self._data.pop())
+        self._data.append(self.Item(target_index+1, e))
+        while not temp_stack.is_empty():
+            temp_item = temp_stack.pop()
+            temp_item._index += 1
+            self._data.append(temp_item)
+        self._size += 1
+        return
+
+    def delete(self, p):
+        self.empty_validation()
+        target_index = self._validate(p)
+        temp_stack = ArrayStack()
+        for i in range(len(self)-target_index-1):
+            temp_stack.push(self._data.pop())
+        result = self._data.pop()
+        while not temp_stack.is_empty():
+            temp_item = temp_stack.pop()
+            temp_item._index -= 1
+            self._data.append(temp_item)
+        self._size -= 1
+        return result.element()
+
+
 
 if __name__ == '__main__':
     None
+    from DataStructures.queue import LinkedQueue as new_linked_queue
+    from DataStructures.linked_list import PositionalList
+    import sys
     # 7.1
 
     # lq = LinkedQueue()
@@ -640,7 +754,6 @@ if __name__ == '__main__':
     # print(max(a))
 
     # a = PositionalList()
-    from random import randint
     # for i in range(5):
     #     # a.add_last(randint(0, 100))
     #     a.add_last(i)
@@ -702,7 +815,6 @@ if __name__ == '__main__':
     #     print(first.element()._count)
     #     first = f._data.after(first)
 
-    from DataStructures.stack import LinkedStack as new_linked_stack
     # a = new_linked_stack()
     # for i in range(5):
     #     a.push(i)
@@ -710,7 +822,6 @@ if __name__ == '__main__':
     # for i in range(6):
     #     print(a.pop())
 
-    from DataStructures.queue import LinkedQueue as new_linked_queue
     # a = new_linked_queue()
     # for i in range(5):
     #     a.enqueue(i+1)
@@ -724,8 +835,6 @@ if __name__ == '__main__':
     # for i in range(5):
     #     print(a.dequeue())
 
-    from DataStructures.stack import LinkedStack as new_linked_stack
-    from DataStructures.stack import LeakyLinkedStack as new_leaky_linked_stack
     # lls = new_leaky_linked_stack(5)
     # for i in range(7):
     #     lls.push(i)
@@ -807,7 +916,6 @@ if __name__ == '__main__':
     #         print(i)
 
     # 7.37
-    import sys
     # recursive_limit = 10000000
     # old = sys.getrecursionlimit()
     # sys.setrecursionlimit(recursive_limit)
@@ -818,7 +926,6 @@ if __name__ == '__main__':
     # print(sum_pair(a, 12000))
 
     # 7.38
-    from DataStructures.linked_list import PositionalList
     # a = PositionalList()
     # for i in range(10):
     #     a.add_last(randint(0, 100))
@@ -826,7 +933,6 @@ if __name__ == '__main__':
     # print(bubble_sort(a))
     # print(a)
 
-    from DataStructures.queue import PositionalQueue
     # a = PositionalQueue()
     # for i in range(5):
     #     a.enqueue(i)
@@ -895,20 +1001,40 @@ if __name__ == '__main__':
     #     t.delete()
     #     print(t)
 
-    s = SparseArray()
-    for i in range(10):
-        s.add_last(chr(i+65))
-    print(s)
+    # s = SparseArray()
+    # for i in range(10):
+    #     s.add_last(chr(i+65))
+    # print(s)
+    # for i in range(5):
+    #     s.make_none(i+3)
+    # print(s)
+    # s[0] = 'X'
+    # print(s)
+    # s[5] = 'Y'
+    # print(s)
+    # s[len(s)-1] = '가'
+    # print(s)
+    # s.make_none(len(s)-1)
+    # print(s)
+    # s[len(s)-1] = 'ㅎ'
+    # print(s)
+
+    a = ArrayBasedPositionalArray()
+    for i in range(3):
+        a.add_first(i)
+        print(a)
+    for i in range(3):
+        a.add_before(a.after(a.first()), chr(ord('가')+i))
+        print(a)
+    for i in range(3):
+        a.add_last(chr(i+65))
+        print(a)
+    for i in range(3):
+        a.add_after(a.before(a.last()), chr(ord('나')+i))
+        print(a)
     for i in range(5):
-        s.make_none(i+3)
-    print(s)
-    s[0] = 'X'
-    print(s)
-    s[5] = 'Y'
-    print(s)
-    s[len(s)-1] = '가'
-    print(s)
-    s.make_none(len(s)-1)
-    print(s)
-    s[len(s)-1] = 'ㅎ'
-    print(s)
+        a.delete(a.last())
+        print(a)
+    for i in range(8):
+        a.delete(a.first())
+        print(a)

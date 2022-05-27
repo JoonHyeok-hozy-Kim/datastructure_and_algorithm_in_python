@@ -1407,6 +1407,148 @@ if __name__ == '__main__':
     print(s)
 ```
 
+### P-7.46 Although we have used a doubly linked list to implement the positional list ADT, it is possible to support the ADT with an array-based implementation. The key is to use the composition pattern and store a sequence of position items, where each item stores an element as well as that element’s current index in the array. Whenever an element’s place in the array is changed, the recorded index in the position must be updated to match. Given a complete class providing such an array-based implementation of the positional list ADT. What is the efficiency of the various operations? 
+* Analysis 1) Array-Based positional list is inefficient if add or delete takes place in the middle of the list.
+  * Suppose add or delete is needed at the k-th index of a list with the length n.
+  * Then, elements from (k+1)-th to (n-1)-th must undergo following two operations.
+    1. Changing the index value of each Item : decrease by 1 when deleting and increase by 1 when adding.
+    2. Shifting Item's position in self._data : leftward when deleting and rightward when adding.
+* Analysis 2) However, this ADT is efficient when searching an element by index. 
+  * why?) The index of the element is synchronized with the index of Item instance in self._data.
+  * One can directly call k-th element in the positional list.
+    * In the Linked version, it was inefficient on the point that every search required traversals.
+```python
+from DataStructures.stack import ArrayStack
+class ArrayBasedPositionalArray:
+    class Item:
+        def __init__(self, index, element):
+            self._index = index
+            self._element = element
+
+        def element(self):
+            return self._element
+
+        def __str__(self):
+            return '([{}] {})'.format(self._index, self._element)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Item):
+            raise ValueError('Not a proper Item instance.')
+        return p._index
+
+    def __init__(self):
+        self._data = []
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def __str__(self):
+        text_list = []
+        for i in range(len(self)):
+            text_list.append(str(self._data[i]))
+        return ','.join(text_list)
+
+    def is_empty(self):
+        return self._size == 0
+
+    def empty_validation(self):
+        if self.is_empty():
+            raise Empty
+
+    def first(self):
+        self.empty_validation()
+        return self._data[0]
+
+    def last(self):
+        self.empty_validation()
+        return self._data[-1]
+
+    def before(self, p):
+        target_index = self._validate(p)
+        if target_index == 0:
+            raise IndexError
+        return self._data[target_index-1]
+
+    def after(self, p):
+        target_index = self._validate(p)
+        if target_index == self._size-1:
+            raise IndexError
+        return self._data[target_index+1]
+
+    def add_first(self, e):
+        if self.is_empty():
+            self._data.append(self.Item(0, e))
+            self._size += 1
+        else:
+            self.add_before(self.first(), e)
+        return
+
+    def add_last(self, e):
+        self._data.append(self.Item(len(self), e))
+        self._size += 1
+
+    def add_before(self, p, e):
+        target_index = self._validate(p)
+        temp_stack = ArrayStack()
+        for i in range(len(self)-target_index):
+            temp_stack.push(self._data.pop())
+        self._data.append(self.Item(target_index, e))
+        while not temp_stack.is_empty():
+            temp_item = temp_stack.pop()
+            temp_item._index += 1
+            self._data.append(temp_item)
+        self._size += 1
+        return
+
+    def add_after(self, p, e):
+        target_index = self._validate(p)
+        temp_stack = ArrayStack()
+        for i in range(len(self)-target_index-1):
+            temp_stack.push(self._data.pop())
+        self._data.append(self.Item(target_index+1, e))
+        while not temp_stack.is_empty():
+            temp_item = temp_stack.pop()
+            temp_item._index += 1
+            self._data.append(temp_item)
+        self._size += 1
+        return
+
+    def delete(self, p):
+        self.empty_validation()
+        target_index = self._validate(p)
+        temp_stack = ArrayStack()
+        for i in range(len(self)-target_index-1):
+            temp_stack.push(self._data.pop())
+        result = self._data.pop()
+        while not temp_stack.is_empty():
+            temp_item = temp_stack.pop()
+            temp_item._index -= 1
+            self._data.append(temp_item)
+        self._size -= 1
+        return result.element()
+
+if __name__ == '__main__':
+    a = ArrayBasedPositionalArray()
+    for i in range(3):
+        a.add_first(i)
+        print(a)
+    for i in range(3):
+        a.add_before(a.after(a.first()), chr(ord('가')+i))
+        print(a)
+    for i in range(3):
+        a.add_last(chr(i+65))
+        print(a)
+    for i in range(3):
+        a.add_after(a.before(a.last()), chr(ord('나')+i))
+        print(a)
+    for i in range(5):
+        a.delete(a.last())
+        print(a)
+    for i in range(8):
+        a.delete(a.first())
+        print(a)
+```
 
 
 
