@@ -16,9 +16,11 @@
   1. If _T_ is nonempty, it has a special node, called the _root_ of _T_, that has no parent.
   2. Each node _v_ of _T_ different from the _root_ has a unique parent node _w_.
      * Every node with parent _w_ is a child of _w_.
-* Concept) "_T_ is Empty" means ...
-  * _T_ does not have any nodes.
-* Node Relationships
+
+#### Concept) "_T_ is Empty" means ...
+  * _T_ does not have any nodes.  
+
+#### Node Relationships
   * Concept) Siblings
     * Two nodes that are children of the same parent
   * Concept) External
@@ -33,6 +35,16 @@
   * Concept) Subtree
     * The subtree of _T_ rooted at a node _v_ is the tree consisting of all the descendants of _v_ in _T_ (including _v_ itself).
 
+#### Edges and Paths in Trees
+  * Concept) Edge
+    * a pair of nodes (_u_,_v_) such that _u_ is the parent of _v_, or vice versa.
+  * Concept) Path
+    *  a sequence of nodes such that any two consecutive nodes in the sequence form an edge
+
+#### Example.) Python's Exception Tree
+<p align="start">
+<img src="" style="height: 300px;"></img><br/>
+</p>
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_06_exercises.md">Exercises</a>    
