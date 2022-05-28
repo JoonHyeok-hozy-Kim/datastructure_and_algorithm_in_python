@@ -114,7 +114,9 @@ def _height1(self):
        * Then iterating every children for a position p takes O(c_p+1)
        * It is repeated for every element of T.
        * Assume the following.
-
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_02_02_proposition_8_5.png" style="height: 150px;"></img><br/>
+</p>
 
 
 
