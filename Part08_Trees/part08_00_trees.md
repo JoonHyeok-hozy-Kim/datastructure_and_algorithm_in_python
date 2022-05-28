@@ -46,6 +46,34 @@
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_01_01_tree_example_python_exceptions.png" style="height: 300px;"></img><br/>
 </p>
 
+#### Concept) Ordered Tree
+* A tree is ordered if there is a meaningful linear order among the children of each node.
+  * i.e.) We purposefully identify the children of a node as being the first, second, third, and so on.
+* usually visualized by arranging siblings left to right, according to their order.
+
+### 8.1.2 The Tree Abstract Data Type
+#### Tech.) Abstract Base Class
+* Why doing this?
+  * A more formal mechanism to designate the relationships between different implementations of the same abstraction.
+  * Define one class that can serve as the base form of similar classes.
+  * Various subclasses can be generated via inheritance.
+* Advantage
+  * Allows greater code reuse.
+
+<div>
+    <p>
+        Back to <a href="">Tree Abstract Base Class</a>
+    </p>
+</div>
+
+
+
+
+
+
+
+
+
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_06_exercises.md">Exercises</a>    
 </p>
