@@ -13,7 +13,7 @@ class Tree:
     def root(self):
         raise NotImplementedError('Must be implemented by subclass.')
 
-    def parent(self):
+    def parent(self, p):
         raise NotImplementedError('Must be implemented by subclass.')
 
     def num_children(self, p):
@@ -33,3 +33,9 @@ class Tree:
 
     def is_empty(self):
         return len(self) == 0
+
+    def depth(self, p):
+        if self.is_root(p):
+            return 0
+        else:
+            return self.depth(self.parent(p)) + 1

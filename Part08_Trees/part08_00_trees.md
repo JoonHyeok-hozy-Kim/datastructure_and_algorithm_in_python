@@ -67,6 +67,56 @@
 </div>
 
 ### 8.1.3 Computing Depth and Height
+#### Concept) Depth of a position
+* Let _p_ be the position of a node of a tree _T_.
+* The depth of _p_ is the number of ancestors of _p_, excluding p itself.
+  * If _p_ is the root, then the depth of _p_ is 0.
+  * Otherwise, the depth of _p_ is one plus the depth of the parent of _p_.
+
+#### Tech.) Recursive Algorithm for calculating the depth of a position.
+```python
+def depth(self, p):
+    if self.is_root(p):
+        return 0
+    else:
+        return self.depth(self.parent(p)) + 1
+```
+
+#### Prop.) The running time of T.depth(p) for position p is O(d_p +1), where d_p denotes the depth of p in the tree T.
+* Worst Case : O(n)
+  * when n is the total number of positions of T
+  * and all nodes form a single branch
+
+#### Concept) Height of a position
+* The height of a position p in a tree T is also defined recursively,
+  * If p is a leaf, then the height of p is 0.
+  * Otherwise, the height of p is one more than the maximum of the heights of p’s children.
+
+#### Prop.) The height of a nonempty tree T is equal to the maximum of the depths of its leaf positions.
+
+#### Tech.) Algorithm for calculating the height of a position
+1. _height1
+   * 
+   * Running Time : Worst case O(n^2)
+     * why?)
+       * Calculating Depth required O(n) in worst case.
+       * It is repeated n times for every element of T.
+```python
+def _height1(self):
+    return max(self.depth(p) for p in self.children() if self.is_leaf(p))
+```
+
+2. _height2 : O(n)
+   * 
+   * Running Time : O(n)
+     * why?)
+       * Let c_p denotes the number of children of p.
+       * Then iterating every children for a position p takes O(c_p+1)
+       * It is repeated for every element of T.
+       * Assume the following.
+
+
+
 
 
 
