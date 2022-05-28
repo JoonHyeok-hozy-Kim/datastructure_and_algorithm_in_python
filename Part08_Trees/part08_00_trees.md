@@ -107,7 +107,6 @@ def _height1(self):
 ```
 
 2. _height2 : O(n)
-   * 
    * Running Time : O(n)
      * why?)
        * Let c_p denotes the number of children of p.
@@ -118,6 +117,15 @@ def _height1(self):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_02_02_proposition_8_5.png" style="height: 150px;"></img><br/>
 </p>
 
+```python
+def height(self, p=None):
+    if p is None:
+        p = self.root()
+    if self.is_leaf(p):
+        return 0
+    else:
+        return 1 + max(self.height(c) for c in self.children(p))
+```
 
 
 
