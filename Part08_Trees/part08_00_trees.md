@@ -171,10 +171,27 @@ def height(self, p=None):
 </p>
 
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_03_03_array_based_binary_tree_graphic.png" style="height: 150px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_03_03_array_based_binary_tree_graphic.png" style="height: 450px;"></img><br/>
 </p>
 
+#### Analysis) Advantages and Disadvantages of the Array-Based Representation
+* Advantage
+  * a position _p_ can be represented by a single integer of _f(p)_.
+* Disadvantage
+  * The space usage of an array-based representation depends greatly on the shape of the tree.
+    * ex.) Consider the case that every node have only right child.
+  * Some update operations for trees cannot be efficiently supported.
+    * ex.) Deleting a node and promoting its child takes O(n) time because it is not just the child that moves locations within the array, but all descendants of that child
 
+### 8.3.3 Linked Structure for General Trees
+#### Props.) General Trees
+* For a general tree, there is no a priori limit on the number of children that a node may have. 
+* A natural way to realize a general tree T as a linked structure is to have each node store a single container of references to its children.
+  * ex.) Python's List Class as a container
+
+
+## 8.4 Tree Traversal Algorithms
+### 
 
 
 
