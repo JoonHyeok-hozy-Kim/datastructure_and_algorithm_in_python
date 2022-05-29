@@ -159,8 +159,8 @@ def height(self, p=None):
 </div>
 
 #### Performance of the Linked Binary Tree Implementation
-<p align="center">
-<img src="" style="height: 300px;"></img><br/>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_03_01_performance_linked_binary_tree.png" style="height: 300px;"></img><br/>
 </p>
 
 
