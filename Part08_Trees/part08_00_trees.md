@@ -137,10 +137,17 @@ def height(self, p=None):
 * Concept) Proper Binary Tree
   * if each node has either zero or two children.
 
-* Props.) Binary Tree
+#### Props.) Binary Tree
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_02_02_props_binary_tree.png" style="height: 450px;"></img><br/>
 </p>
+
+#### Props.) Relating Internal Nodes to External Nodes in a Proper Binary Tree
+<p align="start">
+<img src="" style="height: 750px;"></img><br/>
+</p>
+
+
 
 
 
