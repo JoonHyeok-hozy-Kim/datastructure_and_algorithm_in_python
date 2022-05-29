@@ -127,10 +127,20 @@ def height(self, p=None):
         return 1 + max(self.height(c) for c in self.children(p))
 ```
 
+## 8.2 Binary Trees
+* Def.) Binary Tree
+  * an ordered tree with the following properties:
+    1. Every node has at most two children.
+    2. Each child node is labeled as being either a left child or a right child.
+    3. A left child precedes a right child in the order of children of a node.
 
+* Concept) Proper Binary Tree
+  * if each node has either zero or two children.
 
-
-
+* Props.) Binary Tree
+<p align="start">
+<img src="" style="height: 450px;"></img><br/>
+</p>
 
 
 
