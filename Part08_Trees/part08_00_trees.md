@@ -144,7 +144,7 @@ def height(self, p=None):
 
 #### Props.) Relating Internal Nodes to External Nodes in a Proper Binary Tree
 <p align="start">
-<img src="" style="height: 750px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_08_03_proper_binary_tree_internal_external_nodes.png" style="height: 750px;"></img><br/>
 </p>
 
 
