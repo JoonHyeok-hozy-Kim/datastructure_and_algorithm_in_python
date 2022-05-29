@@ -146,6 +146,9 @@ def height(self, p=None):
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_08_03_proper_binary_tree_internal_external_nodes.png" style="height: 750px;"></img><br/>
 </p>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_08_04_proper_binary_tree_internal_external_nodes_graphic.png" style="height: 300px;"></img><br/>
+</p>
 
 
 
