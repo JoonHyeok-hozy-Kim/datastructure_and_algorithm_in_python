@@ -163,7 +163,10 @@ def height(self, p=None):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_03_01_performance_linked_binary_tree.png" style="height: 300px;"></img><br/>
 </p>
 
-
+### 8.3.2 Array-Based Representation of a Binary Tree
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_03_02_array_based_binary_tree.png" style="height: 150px;"></img><br/>
+</p>
 
 
 
