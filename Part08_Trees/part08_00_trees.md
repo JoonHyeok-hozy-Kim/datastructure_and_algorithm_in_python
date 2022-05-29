@@ -139,7 +139,7 @@ def height(self, p=None):
 
 * Props.) Binary Tree
 <p align="start">
-<img src="" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_02_02_props_binary_tree.png" style="height: 450px;"></img><br/>
 </p>
 
 
