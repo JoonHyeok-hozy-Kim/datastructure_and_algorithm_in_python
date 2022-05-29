@@ -154,7 +154,7 @@ def height(self, p=None):
 ### 8.3.1 Linked Structure for Binary Trees
 <div>
     <p>
-        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py">Linked Binary Tree</a>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L75">Linked Binary Tree</a>
     </p>
 </div>
 
