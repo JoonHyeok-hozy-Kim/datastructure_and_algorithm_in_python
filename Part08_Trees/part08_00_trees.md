@@ -144,12 +144,24 @@ def height(self, p=None):
 
 #### Props.) Relating Internal Nodes to External Nodes in a Proper Binary Tree
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_08_03_proper_binary_tree_internal_external_nodes.png" style="height: 750px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_02_03_proper_binary_tree_internal_external_nodes.png" style="height: 750px;"></img><br/>
 </p>
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_08_04_proper_binary_tree_internal_external_nodes_graphic.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_02_04_proper_binary_tree_internal_external_nodes_graphic.png" style="height: 300px;"></img><br/>
 </p>
 
+## 8.3 Implementing Trees
+### 8.3.1 Linked Structure for Binary Trees
+<div>
+    <p>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py">Linked Binary Tree</a>
+    </p>
+</div>
+
+#### Performance of the Linked Binary Tree Implementation
+<p align="center">
+<img src="" style="height: 300px;"></img><br/>
+</p>
 
 
 
