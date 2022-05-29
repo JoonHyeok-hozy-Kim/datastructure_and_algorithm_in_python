@@ -164,9 +164,17 @@ def height(self, p=None):
 </p>
 
 ### 8.3.2 Array-Based Representation of a Binary Tree
+#### Tech.) How?
+* Level Numbering
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_03_02_array_based_binary_tree.png" style="height: 150px;"></img><br/>
 </p>
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_03_03_array_based_binary_tree_graphic.png" style="height: 150px;"></img><br/>
+</p>
+
+
 
 
 
