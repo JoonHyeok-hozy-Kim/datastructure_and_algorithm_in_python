@@ -273,6 +273,92 @@ def inorder(T, p):
 * <p><a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L246">Inorder</a></p>
 
 ### 8.4.5 Application of Tree Traversals
+#### Tech.) Table of Contents
+1. Normal Print
+```python
+def preorder_print(T):
+    for i in T.preorder():
+        print(i.element())
+```
+2. Indent Print
+```python
+def preorder_indent(T, p=None, d=None):
+    if p is None and d is None:
+        p = T.root()
+        d = 0
+    text_list = []
+    for i in range(d):
+        text_list.append('  ')
+    text_list.append(p.element())
+    print(''.join(text_list))
+    for c in T.children(p):
+        preorder_indent(T, c, d+1)
+```
+3. Label Print
+```python
+def preorder_label(T, p=None, label_list=None):
+    if p is None and label_list is None:
+        p = T.root()
+        label_list = []
+    label_list.append(' ')
+    label_list.append(p.element())
+    print(''.join(label_list))
+    label_list.pop()
+    label_list.pop()
+    cnt = 1
+    for c in T.children(p):
+        label_list.append(str(cnt))
+        label_list.append('.')
+        preorder_label(T, c, label_list)
+        label_list.pop()
+        label_list.pop()
+        cnt += 1
+```
+
+#### Tech.) Parenthetic Representation of a Tree
+```python
+def parenthesize(T):
+    text_list = _parenthesize_text(T)
+    return ''.join(text_list)
+
+def _parenthesize_text(T, p=None, text_list=None):
+    if p is None:
+        p = T.root()
+        text_list = []
+    text_list.append(p.element())
+    if T.num_children(p ) > 0:
+        text_list.append(' ( ')
+        for c in T.children(p):
+            text_list = _parenthesize_text(T, c, text_list)
+            text_list.append(', ')
+        text_list.pop()
+        text_list.append(' ) ')
+    return text_list
+```
+
+### 8.4.6 Euler Tours and Template Method Pattern
+* Target
+  * Develop a more general framework for implementing tree traversals
+  * More Objective-Oriented Programing
+    * More adaptability and reusability
+
+#### Concept) Euler Tour
+* How?
+  * Two notable “visits” to each position p
+    1. A “pre visit” occurs when first reaching the position, that is, when the walk passes immediately left of the node in our visualization.
+    2. A “post visit” occurs when the walk later proceeds upward from that position, that is, when the walk passes to the right of the node in our visualization.
+* Pseudo Code
+```python
+def euler_tour(T, p):
+    pre_visit_action(p)
+    for c in T.children(p):
+        euler_tour(T, c)
+    post_visit_action(p)
+```
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_04_01_euler_tour_graphic.png" style="height: 450px;"></img><br/>
+</p>
+
 
 
 
