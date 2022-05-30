@@ -153,7 +153,7 @@ class LinkedBinaryTree(BinaryTree):
 
     def _add_right(self, p, e):
         node = self._validate(p)
-        if node._left is not None:
+        if node._right is not None:
             raise ValueError('Right already exists.')
         node._right = self._Node(e, node)
         self._size += 1
@@ -201,3 +201,58 @@ class LinkedBinaryTree(BinaryTree):
             node._right = t2._root
             t2._root = None
             t2._size = 0
+
+    # Choose traversal type
+    def positions(self):
+        # return self.preorder()
+        # return self.postorder()
+        # return self.breadfast()
+        return self.inorder()
+
+    def preorder(self):
+        if not self.is_empty():
+            for p in self._subtree_preorder(self.root()):
+                yield p
+
+    def _subtree_preorder(self, p):
+        yield p
+        for c in self.children(p):
+            for other in self._subtree_preorder(c):
+                yield other
+
+    def postorder(self):
+        if not self.is_empty():
+            for p in self._subtree_postorder(self.root()):
+                yield p
+
+    def _subtree_postorder(self, p):
+        for c in self.children(p):
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p
+
+    def breadfast(self, p=None):
+        from DataStructures.queue import LinkedQueue
+        if p is None:
+            p = self.root()
+        q = LinkedQueue()
+        q.enqueue(p)
+        while not q.is_empty():
+            dequeued = q.dequeue()
+            yield dequeued
+            for c in self.children(dequeued):
+                q.enqueue(c)
+
+    def inorder(self):
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+
+    def _subtree_inorder(self, p):
+        if self.left(p) is not None:
+            for left_descendent in self._subtree_inorder(self.left(p)):
+                yield left_descendent
+        yield p
+        if self.right(p) is not None:
+            for right_descendent in self._subtree_inorder(self.right(p)):
+                yield right_descendent

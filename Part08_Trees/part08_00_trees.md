@@ -231,9 +231,9 @@ def postorder(T, p):
   * So the computer will consider all moves, then responses to those moves, going as deep as computational time allows.
 * Pseudo Code
 ```python
-from DataStructures.queue import ArrayQueue
+from DataStructures.queue import LinkedQueue
 def breadthfirst(T, p=None):
-    q = ArrayQueue()
+    q = LinkedQueue()
     q.enqueue(p)
     while not q.is_empty():
         visit_action(q.dequeue())
@@ -266,6 +266,13 @@ def inorder(T, p):
   * Running time greatly depends on the height of the tree.
     * i.e.) minimum height = maximum efficiency of binary searching algorithm
 
+### 8.4.4 Implementation of Traversal Algorithms
+* <p><a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L212">Preorder</a></p>
+* <p><a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L223">Postorder</a></p>
+* <p><a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L234">Breadth-First</a></p>
+* <p><a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L246">Inorder</a></p>
+
+### 8.4.5 Application of Tree Traversals
 
 
 
