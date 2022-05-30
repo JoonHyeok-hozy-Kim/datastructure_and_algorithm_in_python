@@ -356,8 +356,16 @@ def euler_tour(T, p):
     post_visit_action(p)
 ```
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_04_01_euler_tour_graphic.png" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_04_01_euler_tour_graphic.png" style="height: 300px;"></img><br/>
 </p>
+
+#### Tech.) Template Method Pattern
+* Target
+  * Provide a framework that is reusable and adaptable
+* How?
+  * Calls auxiliary functions known as __hooks__ at designated steps of the process.
+
+
 
 
 
