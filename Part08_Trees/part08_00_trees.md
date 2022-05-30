@@ -191,7 +191,81 @@ def height(self, p=None):
 
 
 ## 8.4 Tree Traversal Algorithms
-### 
+### 8.4.1 Preorder and Postorder Traversals for General Trees
+#### Tech.) Preorder Traversal
+* Props.)
+  * The root of T is visited first.
+  * Then the subtrees rooted at its children are traversed recursively.
+* Running Time Analysis
+  * For a position _p_ and the number of its children _c_p_,
+    1. Running time of visits at the position p : O(_c_p_)
+    2. Running time of the whole traversal : O(n)
+* Pseudo Code
+```python
+def preorder(T, p):
+    visit_action(p)
+    for child in T.children(p):
+        T.preorder(T, child)
+```
+
+#### Tech.) Postorder Traversal
+* Props.)
+  * Recursively traverses the subtrees rooted at the children of the root first.
+  * Then visits the root
+* Running Time Analysis
+  * Identical to Preorder Traversal
+* Pseudo Code
+```python
+def postorder(T, p):
+    for child in T.children(p):
+        T.preorder(T, child)
+    visit_action(p)
+```
+
+### 8.4.2 Breadth-First Tree Traversal
+#### Tech.) Breadth-First Tree Traversal
+* Props.)
+  * visit all the positions at depth _d_ before we visit the positions at depth _d+1_.
+* Why using this?
+  * A computer may be unable to explore a complete game tree in a limited amount of time.
+  * So the computer will consider all moves, then responses to those moves, going as deep as computational time allows.
+* Pseudo Code
+```python
+from DataStructures.queue import ArrayQueue
+def breadthfirst(T, p=None):
+    q = ArrayQueue()
+    q.enqueue(p)
+    while not q.is_empty():
+        visit_action(q.dequeue())
+        for child in T.children(p):
+            q.enqueue(child)
+```
+
+### 8.4.3 Inorder Traversal of a Binary Tree
+* Props.)
+  * Visiting the nodes of _T_ “from left to right.”
+* Pseudo Code
+```python
+def inorder(T, p):
+    if T.left() is not None:
+        T.inorder(T, T.left())
+    visit_action(p)
+    if T.right() is not None:
+        T.inorder(T, T.right())
+```
+
+#### Application) Binary Search Tree
+* Def.)
+  * Let _S_ be a set whose unique elements have an order relation.
+  * A binary search tree for _S_ is a binary tree _T_ such that, for each position _p_ of _T_:
+    * Position _p_ stores an element of _S_, denoted as _e(p)_.
+    * Elements stored in the left subtree of _p_ (if any) are less than _e(p)_.
+    * Elements stored in the right subtree of _p_ (if any) are greater than _e(p)_.
+
+* Props.)
+  * Running time greatly depends on the height of the tree.
+    * i.e.) minimum height = maximum efficiency of binary searching algorithm
+
 
 
 
