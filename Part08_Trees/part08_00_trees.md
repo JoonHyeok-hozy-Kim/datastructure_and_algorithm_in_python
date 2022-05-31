@@ -434,9 +434,25 @@ class ParenthesizeTour(EulerTour):
                 print(', ', end='')
 ```
 
-#### 
+#### Concept) Euler Tour Traversal of a Binary Tree
+* Hook action added between the traversals of left_child and the right child.
+* Application : Layout for Binary Tree
+```python
+class BinaryLayout(BinaryEulerTour):
+    def __init__(self, tree):
+        super().__init__(tree)
+        self._count = 0
 
+    def _hook_invisit(self, p, d, path):
+        p.element().setX(self._count)
+        p.element().setY(d)
+        self._count += 1
+```
 
+## 8.6 Case Study: An Expression Tree
+<p>
+    <a href="">Expression Tree Implemented</a>    
+</p>
 
 
 
