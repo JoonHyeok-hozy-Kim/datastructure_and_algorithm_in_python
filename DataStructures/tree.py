@@ -257,6 +257,24 @@ class LinkedBinaryTree(BinaryTree):
             for right_descendent in self._subtree_inorder(self.right(p)):
                 yield right_descendent
 
+    def fill_tree(self, height):
+        if not self.is_empty():
+            raise ValueError('Tree is not empty.')
+        num_list = [i for i in reversed(range(pow(2, height)-1))]
+        self._fill_recursive(height, num_list)
+
+    def _fill_recursive(self, max_height, val_list, p=None, curr_height=None):
+        if p is None:
+            p = self._add_root(val_list.pop())
+            curr_height = 1
+        if curr_height == max_height:
+            return
+        left_child = self._add_left(p, val_list.pop())
+        self._fill_recursive(max_height, val_list, left_child, curr_height+1)
+        right_child = self._add_right(p, val_list.pop())
+        self._fill_recursive(max_height, val_list, right_child, curr_height+1)
+
+
 
 class EulerTour:
 

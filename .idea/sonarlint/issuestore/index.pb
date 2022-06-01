@@ -1,6 +1,4 @@
 
-e
-5Part03_Algorithm_Analysis/part3_algorithm_analysis.md,4\a\4aa1b11042fc41f5d84a2d533154252002071939
 _
 /Part03_Algorithm_Analysis/part3_5_excercises.py,3\a\3a18129c171e41ca3ef90b95720f07b9cf3d5f0d
 ^
@@ -19,8 +17,6 @@ U
 	temp.html,9\2\9288dd1186e87ee1f94172deb19a56a205f99f3b
 G
 DataStructures/array.py,0\d\0d7641f27ffb239413561f2db4896c923c568dc1
-S
-#Part04_Recursion/part4_recursion.md,9\c\9cc46703ee26ad2122814c16b64edf24b2204003
 h
 8Part03_Algorithm_Analysis/part3_3_asymptotic_analysis.py,c\4\c41523b8817c8f30cdc622d3700a0548d7542867
 ]

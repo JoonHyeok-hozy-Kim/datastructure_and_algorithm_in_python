@@ -44,7 +44,42 @@ if __name__ == '__main__':
 </p>
 
 
+### R-8.4 What is the running time of a call to T. height2(p) when called on a position p distinct from the root of T? (See Code Fragment 8.5.)
+* Sol.) O(n). It can be considered as distinct subtree that regarding p as the root of it.
 
+### R-8.5 Describe an algorithm, relying only on the BinaryTree operations, that counts the number of leaves in a binary tree that are the left child of their respective parent.
+```python
+def num_left_leaves(T, p=None):
+    if p is None:
+        p = T.root()
+    if T.is_leaf(p):
+        parent = T.parent(p)
+        if p == T.left(parent):
+            return 1
+        else:
+            return 0
+    result = 0
+    for c in T.children(p):
+        result += num_left_leaves(T, c)
+    return result
+```
+
+### R-8.6 Let T be an n-node binary tree that may be improper. Describe how to represent T by means of a proper binary tree T' with O(n) nodes.
+* Sol.)
+  * Case 1. n is even.
+    * By moving leaves that are the only-childs of respective parents to some parents who also have only-child, T can turn out to be a proper tree.
+  * Case 2. n is odd.
+    * By repeating the job described in the even case, there will be only one leaf that remains to be the only child eventually.
+    * Simply by add one dummy node as a sibling of that leaf, T' becomes a proper tree with (n+1) nodes, which can be considered as O(n).
+
+### R-8.7 What are the minimum and maximum number of internal and external nodes in an improper binary tree with n nodes?
+* Sol.)
+  * Case 1.
+    * minimum internal : n//2
+    * maximum external : (n+1)//2
+  * Case 2.
+    * maximum internal : n-1
+    * minimum external : 1
 
 
 <p>
