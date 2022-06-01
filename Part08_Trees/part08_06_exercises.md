@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 ### R-8.3 Give a justification of Proposition 8.4.
 <p align="start">
-<img src="" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_03_proposition_8_4.png" style="height: 100px;"></img><br/>
 </p>
 
 
