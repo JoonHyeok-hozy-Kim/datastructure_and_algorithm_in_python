@@ -43,6 +43,14 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_03_proposition_8_4.png" style="height: 100px;"></img><br/>
 </p>
 
+* Sol.) 
+  * Suppose not, i.e., there exists a leaf, L0, in a tree that its depth is not the maximum value among the tree's leaves and it is equal to the height of the tree.
+  * Also, there exists at least one leaf L1 whose depth is the maximum among the nodes of the tree.
+  * Let D0 and D1 the depth of L0 and L1 respectively.
+    * Then D0 < D1
+  * Considering the definition of the depth, L0 and L1 has (D0-1) and (D1-1) ancestors respectively.
+  * Then L0's (D0-2)-th ancestor and L1's (D1-2)-th ancestor will be the children of the root with the height of (D0-2) and (D1-2) respectively.
+  * By definition, the height of the root is (D1-2) because (D0-1) < (D1-1) ---> Contradiction.
 
 ### R-8.4 What is the running time of a call to T. height2(p) when called on a position p distinct from the root of T? (See Code Fragment 8.5.)
 * Sol.) O(n). It can be considered as distinct subtree that regarding p as the root of it.
@@ -81,6 +89,26 @@ def num_left_leaves(T, p=None):
     * maximum internal : n-1
     * minimum external : 1
 
+### Answer the following questions so as to justify Proposition 8.8.
+1. What is the minimum number of external nodes for a proper binary tree with height h? Justify your answer.
+   * Sol.) h-1
+     * why?) Consider the case that very-left node can only have children.
+2. What is the maximum number of external nodes for a proper binary tree with height h? Justify your answer.
+   * Sol.) 2^(h-1)
+     * why?) Consider the case that every leaf has the depth of h.
+3. Let T be a proper binary tree with height h and n nodes. Show that log(n+1)−1 ≤ h ≤ (n−1)/2.
+   * Sol.) 
+     1. Case Q1 : n = (2h-1) -> h = (n+1)/2 : Upper bound of n
+     2. Case Q2 : n = 2^(h+1)-1 -> h = log(n+1)-1 : Lower bound of n
+4. For which values of n and h can the above lower and upper bounds on h be attained with equality?
+   * Sol.)  
+
+### R-8.9 Give a proof by induction of Proposition 8.9.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_09_proposition_8_9.png" style="height: 100px;"></img><br/>
+</p>
+
+* pf.) 
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md">Part 8. Trees</a>
