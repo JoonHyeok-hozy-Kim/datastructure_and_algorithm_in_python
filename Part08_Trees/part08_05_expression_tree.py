@@ -21,7 +21,7 @@ class ExpressionTree(LinkedBinaryTree):
 
     def _parenthesize_recur(self, p, result):
         if self.is_leaf(p):
-            result.append(p.element())
+            result.append(str(p.element()))
         else:
             result.append('(')
             self._parenthesize_recur(self.left(p), result)
@@ -34,6 +34,8 @@ class ExpressionTree(LinkedBinaryTree):
 
     def _evaluate_recur(self, p):
         if self.is_leaf(p):
+            if isinstance(p.element(), ExpressionTree):
+                return float(p.element().root().element())
             return float(p.element())
         else:
             op = p.element()
@@ -47,6 +49,9 @@ class ExpressionTree(LinkedBinaryTree):
             elif op == '*':
                 return left_val * right_val
             else:
+                if right_val == 0:
+                    # print('Zero-division : {} / {}'.format(left_val, right_val))
+                    return 0
                 return left_val / right_val
 
 def build_expression_trees(tokens):
