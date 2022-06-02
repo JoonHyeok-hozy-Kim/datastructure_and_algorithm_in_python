@@ -29,5 +29,7 @@ if __name__ == '__main__':
     lbt = LinkedBinaryTree()
     lbt.fill_tree(5)
     print(num_left_leaves(lbt))
+    print(lbt.num_children(lbt.root()))
+
 
 

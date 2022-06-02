@@ -109,6 +109,27 @@ def num_left_leaves(T, p=None):
 </p>
 
 * pf.) 
+    1. h = 0;
+       * Trivially, n_E = 1, n_I = 0
+    2. h = 1;
+       * Trivially, n_E = 2, n_I = 1
+    3. Suppose, one of the external node gets children.
+       * Then, that external node becomes internal and two new external nodes are generated.
+       * Thus, n_E += 1, n_I += 1.
+    4. It can be generalized that whenever a certain external node makes children, n_E and n_I increase by 1.
+       * Therefore, n_E = n_I + 1
+
+### R-8.10 Give a direct implementation of the num children method within the class BinaryTree.
+```python
+def num_children(self, p):
+    result = 0
+    for c in self.children(p):
+        result += 1
+    return result
+```
+
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md">Part 8. Trees</a>

@@ -71,6 +71,13 @@ class BinaryTree(Tree):
         if self.right(p) is not None:
             yield self.right(p)
 
+    ''' R-8.10 ''' 
+    def num_children(self, p):
+        result = 0
+        for c in self.children(p):
+            result += 1
+        return result
+
 
 class LinkedBinaryTree(BinaryTree):
     class _Node:
@@ -128,13 +135,14 @@ class LinkedBinaryTree(BinaryTree):
         node = self._validate(p)
         return self._make_position(node._right)
 
-    def num_children(self, p):
-        result = 0
-        if self.left(p) is not None:
-            result += 1
-        if self.right(p) is not None:
-            result += 1
-        return result
+    ''' Implemented in BinaryTree class by R-8.10 '''
+    # def num_children(self, p):
+    #     result = 0
+    #     if self.left(p) is not None:
+    #         result += 1
+    #     if self.right(p) is not None:
+    #         result += 1
+    #     return result
 
     def _add_root(self, e):
         if self.root() is not None:
