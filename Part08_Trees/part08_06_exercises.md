@@ -128,6 +128,14 @@ def num_children(self, p):
     return result
 ```
 
+### R-8.11 Find the value of the arithmetic expression associated with each subtree of the binary tree of Figure 8.8.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_11_proposition_8_8_subtree_value.png" style="height: 100px;"></img><br/>
+</p>
+
+
+
+
 
 
 

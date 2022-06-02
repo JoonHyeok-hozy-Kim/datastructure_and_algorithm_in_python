@@ -71,7 +71,7 @@ class BinaryTree(Tree):
         if self.right(p) is not None:
             yield self.right(p)
 
-    ''' R-8.10 ''' 
+    ''' R-8.10 '''
     def num_children(self, p):
         result = 0
         for c in self.children(p):
