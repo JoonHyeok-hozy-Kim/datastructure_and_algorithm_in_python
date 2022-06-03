@@ -444,7 +444,9 @@ class ArrayTree:
 * Each internal node of T stores a single character.
 * A preorder traversal of T yields EXAMFUN.
 * An inorder traversal of T yields MAFXUEN.  
-  * Sol.) Use the following programs.
+<br/>
+<br/>
+* Sol.) Use the following programs.
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_20_answer.png" style="height: 150px;"></img><br/>
 </p>
@@ -530,6 +532,13 @@ if __name__ == '__main__':
         if result is not None:
             print(tree)
 ```
+
+### R-8.21 In what order are positions visited during a preorder traversal of the tree of Figure 8.8?
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_21_figure_8_8.png" style="height: 450px;"></img><br/>
+</p>
+
+
 
 
 
