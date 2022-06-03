@@ -112,6 +112,80 @@ class ArrayTree:
     def g(self, p):
         return self._data.index(p) + 1
 
+from DataStructures.tree import MutableLinkedBinaryTree
+from DataStructures.queue import LinkedQueue
+from copy import deepcopy
+def tree_generator(element_list):
+    result_list = []
+    q = LinkedQueue()
+    num_elements = len(element_list)
+    initial_tree = MutableLinkedBinaryTree()
+    initial_tree.add_root(element_list.pop(0))
+    q.enqueue(initial_tree)
+
+    while len(element_list) > 0:
+        popped = element_list.pop(0)
+        current_len = len(q)
+        for i in range(current_len):
+            dequeued = q.dequeue()
+            tree_builder = TreeBuilderTour(dequeued)
+            tree_list = tree_builder.execute(popped)
+            for tree in tree_list:
+                q.enqueue(tree)
+
+    while not q.is_empty():
+        dequeued = q.dequeue()
+        if len(dequeued) == num_elements:
+            result_list.append(dequeued)
+
+    return result_list
+
+class TreeBuilderTour(EulerTour):
+    def execute(self, e):
+        result_list = []
+        self._tour(self.tree().root(), e, result_list)
+        return result_list
+
+    def _tour(self, p, e, result_list):
+        self._hook_previsit(p, e, result_list)
+        if self.tree().left(p) is not None:
+            self._tour(self.tree().left(p), e, result_list)
+        if self.tree().right(p) is not None:
+            self._tour(self.tree().right(p), e, result_list)
+
+    def _hook_previsit(self, p, e, result_list):
+        if self.tree().right(p) is None:
+            # Add left if left and right are None
+            if self.tree().left(p) is None:
+                new_left = self.tree()._add_left(p, e)
+                tree_copy = deepcopy(self.tree())
+                result_list.append(tree_copy)
+                self.tree()._delete(new_left)
+
+            # Add right if right is None
+            new_right = self.tree()._add_right(p, e)
+            tree_copy = deepcopy(self.tree())
+            result_list.append(tree_copy)
+            self.tree()._delete(new_right)
+
+def preorder_inorder_comparison(T, pre_target, in_target, p=None, pre_result=None, in_result=None):
+    if p is None:
+        p = T.root()
+        pre_result = []
+        in_result = []
+    pre_result.append(p.element())
+    if T.left(p) is not None:
+        preorder_inorder_comparison(T, pre_target, in_target, T.left(p), pre_result, in_result)
+    in_result.append(p.element())
+    if T.right(p) is not None:
+        preorder_inorder_comparison(T, pre_target, in_target, T.right(p), pre_result, in_result)
+
+    if pre_target == ''.join(pre_result):
+        if in_target == ''.join(in_result):
+            return T
+
+
+
 if __name__ == '__main__':
     a = LinkedBinaryTree()
     # recursive_add_left(a, 5)
@@ -149,20 +223,26 @@ if __name__ == '__main__':
     # a.add_left(right, 5)
     # print(a)
 
-    from DataStructures.tree import MutableLinkedBinaryTree
-    a = MutableLinkedBinaryTree()
-    for i in range(7):
-        if i == 0:
-            node = a.add_root(i)
-        else:
-            node = a.add_right(node, i)
-    b = LevelNumberCalculator(a)
-    print(b.tree())
-    b_root = b.tree().root()
-    print(b.f(b_root))
-    b_root_right = b.tree().right(b_root)
-    print(b.f(b_root_right))
+    # from DataStructures.tree import MutableLinkedBinaryTree
+    # a = MutableLinkedBinaryTree()
+    # for i in range(7):
+    #     if i == 0:
+    #         node = a.add_root(i)
+    #     else:
+    #         node = a.add_right(node, i)
+    # b = LevelNumberCalculator(a)
+    # print(b.tree())
+    # b_root = b.tree().root()
+    # print(b.f(b_root))
+    # b_root_right = b.tree().right(b_root)
+    # print(b.f(b_root_right))
 
+    str_list = list('EXAMFUN')
+    tree_list = tree_generator(str_list)
+    for tree in tree_list:
+        result = preorder_inorder_comparison(tree, 'EXAMFUN', 'MAFXUEN')
+        if result is not None:
+            print(tree)
 
 
 
