@@ -267,6 +267,13 @@ b.execute()
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_13_expression_tree_display.png" style="height: 300px;"></img><br/>
 </p>
 
+### R-8.14 Justify Table 8.2, summarizing the running time of the methods of a tree represented with a linked structure, by providing, for each method, a description of its implementation, and an analysis of its running time.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_14_table_8_2.png" style="height: 300px;"></img><br/>
+</p>
+* Sol.) 
+
+
 
 
 
