@@ -50,7 +50,5 @@ f
 6Part06_Stacks_Queues_and_Deques/part06_04_exercises.py,a\8\a8b639f27803cd6d02022a7746c69cd77d2705b9
 c
 3Part05_Array_Based_Sequences/part05_07_exercises.py,5\5\558561af800c74bb7ccfe6157a9967700c8b2d1c
-O
-Part08_Trees/part08_00_trees.md,c\8\c853cd0f75487bebcc784d9e6200d6b962476381
 V
 &Part04_Recursion/part4_00_recursion.md,e\0\e000c7ad396af66dc25eed93aa7194010b26c7b4

@@ -324,10 +324,126 @@ for i in range(7):
 print(a)
 ```
 
+### R-8.17 Show how to use the Euler tour traversal to compute the level number _f(p)_, as defined in Section 8.3.2, of each position in a binary tree T.
+```python
+from DataStructures.tree import EulerTour
+class LevelNumberCalculator(EulerTour):
 
+    def f(self, p):
+        return self._tour(self.tree().root(), p)
 
-   
+    def _tour(self, current_p, target_p, level_num=None):
+        if level_num is None:
+            level_num = 0
+        if current_p == target_p:
+            return level_num
+        if self.tree().left(current_p) is not None:
+            left_val = self._tour(self.tree().left(current_p), target_p, 2*level_num+1)
+            if left_val is not None:
+                return left_val
+        if self.tree().right(current_p) is not None:
+            right_val = self._tour(self.tree().right(current_p), target_p, 2*level_num+2)
+            if right_val is not None:
+                return right_val
 
+if __name__ == '__main__':
+    from DataStructures.tree import MutableLinkedBinaryTree
+    a = MutableLinkedBinaryTree()
+    for i in range(7):
+        if i == 0:
+            node = a.add_root(i)
+        else:
+            node = a.add_right(node, i)
+    b = LevelNumberCalculator(a)
+    
+    b_root = b.tree().root()
+    print(b.f(b_root))
+    
+    b_root_right = b.tree().right(b_root)
+    print(b.f(b_root_right))
+```
+
+### R-8.18 Let T be a binary tree with n positions that is realized with an array representation A, and let f() be the level numbering function of the positions of T, as given in Section 8.3.2. Give pseudo-code descriptions of each of the methods root, parent, left, right, is leaf, and is root. 
+```python
+class ArrayTree:
+
+    class Position:
+        def __init__(self, container, element):
+            self._container = container
+            self._element = element
+
+        def element(self):
+            return self._element
+
+    def _make_position(self, element):
+        return self.Position(self, element)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p.element() is None:
+            raise ValueError('p is no longer valid.')
+        return p.element()
+
+    def __init__(self):
+        self._data = []
+
+    def __len__(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def root(self):
+        if self.is_empty():
+            raise ValueError('Tree is Empty.')
+        return self._data[0]
+
+    def parent(self, p):
+        idx = self._data.index(p)
+        if i % 2 == 0:
+            return self._data[(idx-2)//2]
+        else:
+            return self._data[(idx-1)//2]
+
+    def left(self, p):
+        idx = self._data.index(p)
+        if len(self) < 2*idx+1:
+            return None
+        else:
+            return self._data[2*idx+1]
+
+    def right(self, p):
+        idx = self._data.index(p)
+        if len(self) < 2*idx+2:
+            return None
+        else:
+            return self._data[2*idx+2]
+
+    def is_leaf(self, p):
+        idx = self._data.index(p)
+        return self._data[2*idx+1] is None and self._data[2*idx+2] is None
+
+    def is_root(self, p):
+        return self._data.index(p) == 0
+    
+    def f(self, p):
+        return self._data.index(p)
+```
+
+### R-8.19 Our definition of the level numbering function f(p), as given in Section 8.3.2, began with the root having number 0. Some authors prefer to use a level numbering g(p) in which the root is assigned number 1, because it simplifies the arithmetic for finding neighboring positions. Redo Exercise R-8.18, but assuming that we use a level numbering g(p) in which the root is assigned number 1.
+```python
+class ArrayTree:
+    def g(self, p):
+        return self._data.index(p) + 1
+```
+
+### R-8.20 Draw a binary tree T that simultaneously satisfies the following:
+* Each internal node of T stores a single character.
+* A preorder traversal of T yields EXAMFUN.
+* An inorder traversal of T yields MAFXUEN.
 
 
 

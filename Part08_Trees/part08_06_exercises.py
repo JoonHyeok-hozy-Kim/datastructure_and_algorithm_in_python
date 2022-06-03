@@ -22,8 +22,98 @@ def num_left_leaves(T, p=None):
         result += num_left_leaves(T, c)
     return result
 
+
+class LevelNumberCalculator(EulerTour):
+
+    def f(self, p):
+        return self._tour(self.tree().root(), p)
+
+    def _tour(self, current_p, target_p, level_num=None):
+        if level_num is None:
+            level_num = 0
+        if current_p == target_p:
+            return level_num
+        if self.tree().left(current_p) is not None:
+            left_val = self._tour(self.tree().left(current_p), target_p, 2*level_num+1)
+            if left_val is not None:
+                return left_val
+        if self.tree().right(current_p) is not None:
+            right_val = self._tour(self.tree().right(current_p), target_p, 2*level_num+2)
+            if right_val is not None:
+                return right_val
+
+class ArrayTree:
+
+    class Position:
+        def __init__(self, container, element):
+            self._container = container
+            self._element = element
+
+        def element(self):
+            return self._element
+
+    def _make_position(self, element):
+        return self.Position(self, element)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p.element() is None:
+            raise ValueError('p is no longer valid.')
+        return p.element()
+
+    def __init__(self):
+        self._data = []
+
+    def __len__(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def root(self):
+        if self.is_empty():
+            raise ValueError('Tree is Empty.')
+        return self._data[0]
+
+    def parent(self, p):
+        idx = self._data.index(p)
+        if i % 2 == 0:
+            return self._data[(idx-2)//2]
+        else:
+            return self._data[(idx-1)//2]
+
+    def left(self, p):
+        idx = self._data.index(p)
+        if len(self) < 2*idx+1:
+            return None
+        else:
+            return self._data[2*idx+1]
+
+    def right(self, p):
+        idx = self._data.index(p)
+        if len(self) < 2*idx+2:
+            return None
+        else:
+            return self._data[2*idx+2]
+
+    def is_leaf(self, p):
+        idx = self._data.index(p)
+        return self._data[2*idx+1] is None and self._data[2*idx+2] is None
+
+    def is_root(self, p):
+        return self._data.index(p) == 0
+
+    def f(self, p):
+        return self._data.index(p)
+
+    def g(self, p):
+        return self._data.index(p) + 1
+
 if __name__ == '__main__':
-    # a = LinkedBinaryTree()
+    a = LinkedBinaryTree()
     # recursive_add_left(a, 5)
 
     # lbt = LinkedBinaryTree()
@@ -66,7 +156,14 @@ if __name__ == '__main__':
             node = a.add_root(i)
         else:
             node = a.add_right(node, i)
-    print(a)
+    b = LevelNumberCalculator(a)
+    print(b.tree())
+    b_root = b.tree().root()
+    print(b.f(b_root))
+    b_root_right = b.tree().right(b_root)
+    print(b.f(b_root_right))
+
+
 
 
 
