@@ -46,17 +46,26 @@ if __name__ == '__main__':
     # print(exp_str, '=', a.evaluate())
     # print(b.execute())
 
+    # from DataStructures.tree import MutableLinkedBinaryTree
+    # a = MutableLinkedBinaryTree()
+    # a.add_root(1)
+    # print(a)
+    # left = a.add_left(a.root(), 2)
+    # print(a)
+    # right = a.add_right(a.root(), 3)
+    # print(a)
+    # a.add_right(left, 4)
+    # print(a)
+    # a.add_left(right, 5)
+    # print(a)
+
     from DataStructures.tree import MutableLinkedBinaryTree
     a = MutableLinkedBinaryTree()
-    a.add_root(1)
-    print(a)
-    left = a.add_left(a.root(), 2)
-    print(a)
-    right = a.add_right(a.root(), 3)
-    print(a)
-    a.add_right(left, 4)
-    print(a)
-    a.add_left(right, 5)
+    for i in range(7):
+        if i == 0:
+            node = a.add_root(i)
+        else:
+            node = a.add_right(node, i)
     print(a)
 
 

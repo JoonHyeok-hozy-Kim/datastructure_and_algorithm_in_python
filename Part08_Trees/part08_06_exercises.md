@@ -307,10 +307,22 @@ class MutableLinkedBinaryTree(LinkedBinaryTree):
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md#tech-how"> -> Numbering Revisited</a>
 </p>
 
-1. Show that, for every position p of T, f(p) ≤ 2n −2.
-   * Sol.) 
+1. Show that, for every position p of T, f(p) ≤ 2^n −2.
+   * Sol.) Extreme case must be that every node has only one right child.
+     * In that specific case, for p_i and p_(i+1), which p_i is parent of p_(i+1), f(p_(i+1)) = 2*f(p_i)+2
+     * Then f(p_i) = {f(p_0) + 2} * 2^(i-1) - 2 = 2^i-2
+     * Therefore, the leaf node, which must be n-th node, will have f(p) = 2^n-2.
 2. Show an example of a binary tree with seven nodes that attains the above upper bound on f(p) for some position p.
-   * Sol.) 
+```python
+from DataStructures.tree import MutableLinkedBinaryTree
+a = MutableLinkedBinaryTree()
+for i in range(7):
+    if i == 0:
+        node = a.add_root(i)
+    else:
+        node = a.add_right(node, i)
+print(a)
+```
 
 
 
