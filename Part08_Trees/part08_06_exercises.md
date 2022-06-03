@@ -253,8 +253,19 @@ if __name__ == '__main__':
     a.find_value(21)
 ```
 
-### 
-
+### R-8.13 Draw the binary tree representation of the following arithmetic expression: (((5+2)*(2-1))/((2+9)+((7-2)-1))*8)
+```python
+from Part08_Trees.part08_05_expression_tree import ExpressionTree, build_expression_trees
+from DataStructures.tree import BinaryLayout
+exp_str = '(((5+2)*(2-1))/((2+9)+((7-2)-1))*8)'
+a = build_expression_trees(exp_str)
+b = BinaryLayout(a)
+print(exp_str, '=', a.evaluate())
+b.execute()
+```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_13_expression_tree_display.png" style="height: 300px;"></img><br/>
+</p>
 
 
 

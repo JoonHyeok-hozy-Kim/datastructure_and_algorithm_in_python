@@ -331,19 +331,45 @@ class BinaryEulerTour(EulerTour):
         if self.tree().right(p) is not None:
             path.append(1)
             result[1] = self._tour(self.tree().right(p), d+1, path)
-        answer = self._hook_postvisit(p, d, result)
+        answer = self._hook_postvisit(p, d, path, result)
         return answer
 
     def _hook_invisit(self, p, d, path):
         pass
 
-
+from copy import deepcopy
 class BinaryLayout(BinaryEulerTour):
     def __init__(self, tree):
         super().__init__(tree)
         self._count = 0
+        self._x_max = 0
+        self._y_max = 0
+        self._graphic = [[' ']]
+
+    def execute(self):
+        super().execute()
+        for i in self._graphic:
+            print(''.join(i))
 
     def _hook_invisit(self, p, d, path):
-        p.element().setX(self._count)
-        p.element().setY(d)
-        self._count += 1
+        x_increase = len(str(p.element()))
+        self.x_max_increase(x_increase)
+        self.y_max_increase(d+1)
+        for i in range(x_increase):
+            self._graphic[d+1][self._x_max-i] = str(p.element())[x_increase-1-i]
+        return None
+
+    def x_max_increase(self, n):
+        for row in self._graphic:
+            for i in range(n):
+                row.append(' ')
+        self._x_max += n
+
+    def y_max_increase(self, n):
+        if n < self._y_max:
+            return
+        new_row = [' '] * (self._x_max + 1)
+        for i in range(n - self._y_max):
+            new_row_copy = deepcopy(new_row)
+            self._graphic.append(new_row_copy)
+        self._y_max = n

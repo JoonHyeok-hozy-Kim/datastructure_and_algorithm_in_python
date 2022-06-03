@@ -31,11 +31,21 @@ if __name__ == '__main__':
     # print(num_left_leaves(lbt))
     # print(lbt.num_children(lbt.root()))
 
-    from Part08_Trees.part08_05_expression_tree import ExpressionGenerator
-    num = [1, 5, 6, 7]
-    a = ExpressionGenerator(num)
-    # a.display_all()
-    a.find_value(21)
+    # from Part08_Trees.part08_05_expression_tree import ExpressionGenerator
+    # num = [1, 5, 6, 7]
+    # a = ExpressionGenerator(num)
+    # # a.display_all()
+    # a.find_value(21)
+
+
+    from Part08_Trees.part08_05_expression_tree import ExpressionTree, build_expression_trees
+    from DataStructures.tree import BinaryLayout
+    exp_str = '(((5+2)*(2-1))/((2+9)+((7-2)-1))*8)'
+    a = build_expression_trees(exp_str)
+    b = BinaryLayout(a)
+    print(exp_str, '=', a.evaluate())
+    b.execute()
+
 
 
 

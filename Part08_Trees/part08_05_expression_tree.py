@@ -70,6 +70,7 @@ def build_expression_trees(tokens):
 
 
 from DataStructures.queue import LinkedQueue
+from DataStructures.tree import BinaryLayout
 from copy import deepcopy
 class ExpressionGenerator:
     def __init__(self, num_list):
@@ -98,6 +99,7 @@ class ExpressionGenerator:
                     expression_value = expression.evaluate()
                     if expression_value == value:
                         print('{} = {}'.format(expression, value))
+                        self.display_tree(expression)
                         return expression
         return None
 
@@ -177,6 +179,9 @@ class ExpressionGenerator:
             S.insert(i, re_popped)
         return result_list
 
+    def display_tree(self, T):
+        layout = BinaryLayout(T)
+        layout.execute()
 
 if __name__ == '__main__':
     # exp = '((1+3)*(2-7))'

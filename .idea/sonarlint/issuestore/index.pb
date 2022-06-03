@@ -44,3 +44,13 @@ E
 .XXXX_NOTE/gre_hackers_verbal/HWs/220316_HW.txt,6\7\673e0dd25d0ee5a28737ac8d12dd6c8683f687d9
 z
 JPart05_Array_Based_Sequences/part05_03_dynamic_arrays_and_amortiazation.py,f\c\fc52b745c6b77c9b43f6251cd50edb6b4baeb867
+G
+DataStructures/queue.py,9\1\91b53d7ee3ceb99336653ca1c312a8156b2d6358
+f
+6Part06_Stacks_Queues_and_Deques/part06_04_exercises.py,a\8\a8b639f27803cd6d02022a7746c69cd77d2705b9
+c
+3Part05_Array_Based_Sequences/part05_07_exercises.py,5\5\558561af800c74bb7ccfe6157a9967700c8b2d1c
+O
+Part08_Trees/part08_00_trees.md,c\8\c853cd0f75487bebcc784d9e6200d6b962476381
+V
+&Part04_Recursion/part4_00_recursion.md,e\0\e000c7ad396af66dc25eed93aa7194010b26c7b4
