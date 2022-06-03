@@ -534,11 +534,27 @@ if __name__ == '__main__':
 ```
 
 ### R-8.21 In what order are positions visited during a preorder traversal of the tree of Figure 8.8?
+* Sol.) Inorder traversal.
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_21_figure_8_8.png" style="height: 450px;"></img><br/>
 </p>
 
+### R-8.22 In what order are positions visited during a postorder traversal of the tree of Figure 8.8?
+* Sol.) 3 1 + 3 x 9 5 - 2 + / 3 7 4 - x 6 + -
 
+### R-8.23 Let T be an ordered tree with more than one node. Is it possible that the preorder traversal of T visits the nodes in the same order as the postorder traversal of T? If so, give an example; otherwise, explain why this cannot occur. Likewise, is it possible that the preorder traversal of T visits the nodes in the reverse order of the postorder traversal of T? If so, give an example; otherwise, explain why this cannot occur. 
+* Sol.)
+  * Preorder and postorder traversal can not traverse an ordered tree identically.
+    * Preorder visits parent first while postorder visits child as first priority.
+  * If every parent in a tree has only one child, preorder and postorder may traverse in exactly reversed manner.
+
+### R-8.24 Answer the previous question for the case when T is a proper binary tree with more than one node.
+* Sol.)
+  * Still no identical traverse.
+  * Reverse order is impossible as well.
+    * why?) For a proper binary tree, if a parent has at least one descendant, it must have both left and right child.
+      * Since the tree is ordered, traversing siblings will go from left to right whether the traversal is preorder or postorder.
+      * Thus, reversed traversal of preorder can not be equal to postorder traversal.
 
 
 
