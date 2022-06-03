@@ -38,13 +38,27 @@ if __name__ == '__main__':
     # a.find_value(21)
 
 
-    from Part08_Trees.part08_05_expression_tree import ExpressionTree, build_expression_trees
-    from DataStructures.tree import BinaryLayout
-    exp_str = '(((5+2)*(2-1))/((2+9)+((7-2)-1))*8)'
-    a = build_expression_trees(exp_str)
-    b = BinaryLayout(a)
-    print(exp_str, '=', a.evaluate())
-    b.execute()
+    # from Part08_Trees.part08_05_expression_tree import ExpressionTree, build_expression_trees
+    # from DataStructures.tree import BinaryLayout
+    # exp_str = '(((5+2)*(2-1))/((2+9)+((7-2)-1))*8)'
+    # a = build_expression_trees(exp_str)
+    # b = BinaryLayout(a)
+    # print(exp_str, '=', a.evaluate())
+    # print(b.execute())
+
+    from DataStructures.tree import MutableLinkedBinaryTree
+    a = MutableLinkedBinaryTree()
+    a.add_root(1)
+    print(a)
+    left = a.add_left(a.root(), 2)
+    print(a)
+    right = a.add_right(a.root(), 3)
+    print(a)
+    a.add_right(left, 4)
+    print(a)
+    a.add_left(right, 5)
+    print(a)
+
 
 
 

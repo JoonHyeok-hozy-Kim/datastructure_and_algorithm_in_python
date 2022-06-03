@@ -78,6 +78,10 @@ class BinaryTree(Tree):
             result += 1
         return result
 
+    def __str__(self):
+        layout = BinaryLayout(self)
+        layout.execute()
+        return layout.str_graphic()
 
 class LinkedBinaryTree(BinaryTree):
     class _Node:
@@ -348,8 +352,17 @@ class BinaryLayout(BinaryEulerTour):
 
     def execute(self):
         super().execute()
+        str_graphic = self.str_graphic()
+        # print(str_graphic)
+        return str_graphic
+
+    def str_graphic(self):
+        text_list = []
         for i in self._graphic:
-            print(''.join(i))
+            text_list.append(''.join(i))
+            text_list.append('\n')
+        result = ''.join(text_list)
+        return result
 
     def _hook_invisit(self, p, d, path):
         x_increase = len(str(p.element()))
@@ -373,3 +386,18 @@ class BinaryLayout(BinaryEulerTour):
             new_row_copy = deepcopy(new_row)
             self._graphic.append(new_row_copy)
         self._y_max = n
+
+
+class MutableLinkedBinaryTree(LinkedBinaryTree):
+
+    def add_root(self, e):
+        return self._add_root(e)
+
+    def add_left(self, p, e):
+        return self._add_left(p, e)
+
+    def add_right(self, p, e):
+        return self._add_right(p, e)
+
+    def delete(self, p):
+        return self._delete(p)

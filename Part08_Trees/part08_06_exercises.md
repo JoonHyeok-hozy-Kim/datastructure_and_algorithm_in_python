@@ -261,7 +261,7 @@ exp_str = '(((5+2)*(2-1))/((2+9)+((7-2)-1))*8)'
 a = build_expression_trees(exp_str)
 b = BinaryLayout(a)
 print(exp_str, '=', a.evaluate())
-b.execute()
+print(b.execute())
 ```
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_13_expression_tree_display.png" style="height: 300px;"></img><br/>
@@ -284,6 +284,37 @@ b.execute()
   * depth(p) : go all the way up to the root of the tree -> O(d_p)
   * height : maximum height value from children + 1.
     * Due to the maximum operation, height calculation of O(n) times is required.
+
+### R-8.15 The LinkedBinaryTree class provides only nonpublic versions of the update methods discussed on page 319. Implement a simple subclass named MutableLinkedBinaryTree that provides public wrapper functions for each of the inherited nonpublic update methods.
+```python
+class MutableLinkedBinaryTree(LinkedBinaryTree):
+
+    def add_root(self, e):
+        return self._add_root(e)
+
+    def add_left(self, p, e):
+        return self._add_left(p, e)
+
+    def add_right(self, p, e):
+        return self._add_right(p, e)
+
+    def delete(self, p):
+        return self._delete(p)
+```
+
+### R-8.16 Let T be a binary tree with n nodes, and let f() be the level numbering function of the positions of T, as given in Section 8.3.2.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md#tech-how"> -> Numbering Revisited</a>
+</p>
+
+1. Show that, for every position p of T, f(p) ≤ 2n −2.
+   * Sol.) 
+2. Show an example of a binary tree with seven nodes that attains the above upper bound on f(p) for some position p.
+   * Sol.) 
+
+
+
+   
 
 
 
