@@ -271,7 +271,19 @@ b.execute()
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_14_table_8_2.png" style="height: 300px;"></img><br/>
 </p>
+
 * Sol.) 
+  * len : return parameter self._size -> O(1)
+  * is_empty : return len(self) == 0 -> O(1)
+  * root : return self._root -> O(1)
+    * make_position method also takes O(1) running time.
+  * is_root : return p == self.root() -> O(1)
+  * is_leaf : return self.num_children() == 0 -> O(1)
+    * Technically, it is O(c_p). If c_p is considered to be constant, then it is O(1)
+  * children(p) : for loop executed trough every child -> O(c_p)
+  * depth(p) : go all the way up to the root of the tree -> O(d_p)
+  * height : maximum height value from children + 1.
+    * Due to the maximum operation, height calculation of O(n) times is required.
 
 
 
