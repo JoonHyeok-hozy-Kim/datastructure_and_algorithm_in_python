@@ -184,6 +184,33 @@ def preorder_inorder_comparison(T, pre_target, in_target, p=None, pre_result=Non
         if in_target == ''.join(in_result):
             return T
 
+def parenthesize(T):
+    text_list = _parenthesize_text(T)
+    return ''.join(text_list)
+
+def _parenthesize_text(T, p=None, text_list=None):
+    if p is None:
+        p = T.root()
+        text_list = []
+    text_list.append(p.element())
+    if T.num_children(p ) > 0:
+        text_list.append(' ( ')
+        for c in T.children(p):
+            text_list = _parenthesize_text(T, c, text_list)
+            text_list.append(', ')
+        text_list.pop()
+        text_list.append(' ) ')
+    return text_list
+
+from DataStructures.tree import EulerTour
+class NumDescendants(EulerTour):
+    def _hook_postvisit(self, p, d, path, results):
+        num_descendants = 0
+        if not self.tree().is_leaf(p):
+            for i in results:
+                num_descendants += (i+1)
+        print("{}'s num_descendants : {}".format(p.element(), num_descendants))
+        return num_descendants
 
 
 if __name__ == '__main__':
@@ -244,18 +271,20 @@ if __name__ == '__main__':
     #     if result is not None:
     #         print(tree)
 
+    # a = MutableLinkedBinaryTree()
+    # a.fill_tree(3)
+    # print(a)
+    # for i in a.breadthfirst():
+    #     print(i.element())
+
+    # from Part08_Trees.part08_05_expression_tree import build_expression_trees
+    # exp = '((((3+1)*3)/((9-5)+2))-((3*(7-4))+6))'
+    # a = build_expression_trees(exp)
+    # p = parenthesize(a)
+    # print(p)
+
     a = MutableLinkedBinaryTree()
-    a.fill_tree(3)
+    a.fill_tree(4)
     print(a)
-    for i in a.breadthfirst():
-        print(i.element())
-
-
-
-
-
-
-
-
-
-
+    b = NumDescendants(a)
+    b.execute()

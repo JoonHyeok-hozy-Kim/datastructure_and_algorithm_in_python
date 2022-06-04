@@ -570,25 +570,80 @@ if __name__ == '__main__':
 
 ### R-8.26 The collections.deque class supports an extend method that adds a collection of elements to the end of the queue at once. Reimplement the breadthfirst method of the Tree class to take advantage of this feature.
 ```python
-def breadthfirst(self, p=None):
-    from collections import deque
-    dq = deque()
+def parenthesize(T):
+    text_list = _parenthesize_text(T)
+    return ''.join(text_list)
+
+def _parenthesize_text(T, p=None, text_list=None):
     if p is None:
-        p = self.root()
-    dq.append(p)
-    while len(dq) > 0:
-        popped = dq.popleft()
-        yield popped
-        dq.extend(self.children(popped))
+        p = T.root()
+        text_list = []
+    text_list.append(p.element())
+    if T.num_children(p ) > 0:
+        text_list.append(' ( ')
+        for c in T.children(p):
+            text_list = _parenthesize_text(T, c, text_list)
+            text_list.append(', ')
+        text_list.pop()
+        text_list.append(' ) ')
+    return text_list
+```
+
+### R-8.27 Give the output of the function parenthesize(T, T.root( )), as described in Code Fragment 8.25, when T is the tree of Figure 8.8.
+```python
+def parenthesize(T):
+    text_list = _parenthesize_text(T)
+    return ''.join(text_list)
+
+def _parenthesize_text(T, p=None, text_list=None):
+    if p is None:
+        p = T.root()
+        text_list = []
+    text_list.append(p.element())
+    if T.num_children(p) > 0:
+        text_list.append(' ( ')
+        for c in T.children(p):
+            text_list = _parenthesize_text(T, c, text_list)
+            text_list.append(', ')
+        text_list.pop()
+        text_list.append(' ) ')
+    return text_list
+
+if __name__ == '__main__':
+    from Part08_Trees.part08_05_expression_tree import build_expression_trees
+    exp = '((((3+1)*3)/((9-5)+2))-((3*(7-4))+6))'
+    a = build_expression_trees(exp)
+    p = parenthesize(a)
+    print(p)
+```
+
+### R-8.28 What is the running time of parenthesize(T, T.root( )), as given in Code Fragment 8.25, for a tree T with n nodes?
+* Sol.) O(n)
+  * why?) It traverses through all the nodes and operate O(1) operations.
+
+### R-8.29 Describe, in pseudo-code, an algorithm for computing the number of descendants of each node of a binary tree. The algorithm should be based on the Euler tour traversal.
+```python
+from DataStructures.tree import EulerTour
+class NumDescendants(EulerTour):
+    def _hook_postvisit(self, p, d, path, results):
+        num_descendants = 0
+        if not self.tree().is_leaf(p):
+            for i in results:
+                num_descendants += (i+1)
+        print("{}'s num_descendants : {}".format(p.element(), num_descendants))
+        return num_descendants
 
 if __name__ == '__main__':
     from DataStructures.tree import MutableLinkedBinaryTree
     a = MutableLinkedBinaryTree()
-    a.fill_tree(3)
+    a.fill_tree(4)
     print(a)
-    for i in a.breadthfirst():
-        print(i.element())
+    b = NumDescendants(a)
+    b.execute()
 ```
+
+### R-8.30 The build expression tree method of the ExpressionTree class requires input that is an iterable of string tokens. We used a convenient example, (((3+1)x4)/((9-5)+2)) , in which each character is its own token, so that the string itself sufficed as input to build expression tree. In general, a string, such as (35 + 14) , must be explicitly tokenized into list \[ ( , 35 , + , 14 , ) ] so as to ignore whitespace and to recognize multi-digit numbers as a single token. Write a utility method, tokenize(raw), that returns such a list of tokens for a raw string.
+
 
 
 

@@ -4,7 +4,6 @@ from copy import deepcopy
 
 def tree_generator(element_list):
     """
-
     :param element_list: Possible trees with elements in this list will be created.
     :return: List of possible trees is returned.
     """
@@ -67,3 +66,4 @@ class TreeBuilderTour(EulerTour):
             tree_copy = deepcopy(self.tree())
             result_list.append(tree_copy)
             self.tree()._delete(new_right)
+
