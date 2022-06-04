@@ -54,3 +54,7 @@ S
 #Part08_Trees/part08_04_traversal.py,a\1\a17793ac9fc30dc5c53c28b56c30d227b9ceb988
 c
 3Part05_Array_Based_Sequences/part05_07_exercises.md,1\d\1d8b6a1aa73106f4df0610c438ea93148e24b66c
+o
+?Part05_Array_Based_Sequences/part05_00_array_based_sequences.md,b\9\b90d6935daf306250bc06cf9478e52cc09de7d15
+U
+%Part04_Recursion/part4_7_exercises.md,d\5\d55576982dae83e5e74bf45a7ad7bccdb92ecae7

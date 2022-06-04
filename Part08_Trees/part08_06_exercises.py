@@ -275,9 +275,6 @@ if __name__ == '__main__':
     # a.fill_tree(3)
     # print(a)
     # for i in a.breadthfirst():
-    #     print(i.element())
-
-
 
     # a = MutableLinkedBinaryTree()
     # a.fill_tree(4)

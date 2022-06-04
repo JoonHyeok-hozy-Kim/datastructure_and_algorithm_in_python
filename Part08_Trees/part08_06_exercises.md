@@ -679,6 +679,31 @@ if __name__ == '__main__':
     print(a)
 ```
 
+### C-8.31 Define the internal path length, I(T), of a tree T to be the sum of the depths of all the internal positions in T. Likewise, define the external path length, E(T), of a tree T to be the sum of the depths of all the external positions in T. Show that if T is a proper binary tree with n positions, then E(T) = I(T) + n−1.
+* pf.)
+  1. h = 1
+     * I(T) = 0
+     * E(T) = 0
+     * equation : 0 = 0 + 1 - 1
+  2. h = 2
+     * I(T) = 0
+       * why?) root only.
+     * E(T) = 2 * 1 = 2
+     * equation : 2 = 0 + 3 - 1
+  3. Generalization : Children addition at the leaf node with the depth d.
+     * Since it is proper binary tree, two children should be added.
+     * Thus, when children are added,
+       1. One external node with the depth d will change into internal node
+          * I(T) += d
+          * E(T) -= d
+       2. Two external nodes with the depth (d+1) are added
+          * E(T) += 2 * (d+1)
+     * Total change of I(T) and E(T) goes as follows.
+       * I(T') = I(T) + d
+       * E(T') = E(T) -d + 2*(d+1) = E(T) + d + 2
+       * Also consider that the number of nodes increased into n+2
+       * Therefore, E(T') = E(T) + d + 2 = (I(T) + n - 1) + d + 2 = I(T) + d + (n+2) - 1 = I(T') + (n+2) - 1
+
 
 
 <p>
