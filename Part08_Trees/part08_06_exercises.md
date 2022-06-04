@@ -826,6 +826,85 @@ def _delete_subtree(self, p):
         self._delete(descendant)
 ```
 
+### C-8.39 Add support in LinkedBinaryTree for a method, _swap(p,q), that has the effect of restructuring the tree so that the node referenced by p takes the place of the node referenced by q, and vice versa. Make sure to properly handle the case when the nodes are adjacent.
+```python
+    def _swap(self, p, q):
+        p_node = self._validate(p)
+        q_node = self._validate(q)
+
+        p_parent_node = self._validate(self.parent(p))
+        p_left_flag = False
+        if p_parent_node._left == p_node:
+            p_left_flag = True
+        p_l_child_node = None
+        p_r_child_node = None
+        if self.left(p) is not None:
+            p_l_child_node = self._validate(self.left(p))
+        if self.right(p) is not None:
+            p_r_child_node = self._validate(self.right(p))
+
+        q_parent_node = self._validate(self.parent(q))
+        q_left_flag = False
+        if q_parent_node._left == q_node:
+            q_left_flag = True
+        q_l_child_node = None
+        q_r_child_node = None
+        if self.left(q) is not None:
+            q_l_child_node = self._validate(self.left(q))
+        if self.right(q) is not None:
+            q_r_child_node = self._validate(self.right(q))
+
+        # Parent Shift
+        if p_left_flag:
+            p_parent_node._left = q_node
+        else:
+            p_parent_node._right = q_node
+        q_node._parent = p_parent_node
+        self._make_position(p_parent_node)
+
+        if q_left_flag:
+            q_parent_node._left = p_node
+        else:
+            q_parent_node._right = p_node
+        p_node._parent = q_parent_node
+        self._make_position(q_parent_node)
+
+        # Left Child Shift
+        p_node._left = q_l_child_node
+        q_node._left = p_l_child_node
+        p_l_child_node._parent = q_node
+        self._make_position(p_l_child_node)
+        q_l_child_node._parent = p_node
+        self._make_position(q_l_child_node)
+
+        # Right Child Shift
+        p_node._right = q_r_child_node
+        q_node._right = p_r_child_node
+        p_r_child_node._parent = q_node
+        self._make_position(p_r_child_node)
+        q_r_child_node._parent = p_node
+        self._make_position(q_r_child_node)
+
+        return [self._make_position(p_node), self._make_position(q_node)]
+
+if __name__ == '__main__':
+    from DataStructures.tree import LinkedBinaryTree
+    a = LinkedBinaryTree()
+    a.fill_tree(5)
+    print(a)
+    aroot = a.root()
+
+    target1 = a.left(a.left(aroot))
+    target2 = a.left(a.right(a.right(aroot)))
+    print('{} <> {}'.format(target1.element(), target2.element()))
+    a._swap(target1, target2)
+    print(a)
+```
+
+### C-8.40 We can simplify parts of our LinkedBinaryTree implementation if we make use of of a single sentinel node, referenced as the sentinel member of the tree instance, such that the sentinel is the parent of the real root of the tree, and the root is referenced as the left child of the sentinel. Furthermore, the sentinel will take the place of None as the value of the left or right member for a node without such a child. Give a new implementation of the update methods delete and attach, assuming such a representation.
+<p>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L86">Successfully Implemented</a>
+</p>
 
 
 

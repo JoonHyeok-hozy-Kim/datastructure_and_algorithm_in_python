@@ -115,11 +115,14 @@ class LinkedBinaryTree(BinaryTree):
         return p._node
 
     def _make_position(self, node):
-        return self.Position(self, node) if node is not None else None
+        if node == self._sentinel or node is None:
+            return None
+        return self.Position(self, node)
 
     def __init__(self):
         self._root = None
         self._size = 0
+        self._sentinel = self._Node(None, None, None, None)
 
     def __len__(self):
         return self._size
@@ -151,23 +154,24 @@ class LinkedBinaryTree(BinaryTree):
     def _add_root(self, e):
         if self.root() is not None:
             raise ValueError('Root already exists.')
-        self._root = self._Node(e)
+        self._root = self._Node(e, self._sentinel, self._sentinel, self._sentinel)
+        self._sentinel._left = self._root
         self._size += 1
         return self._make_position(self._root)
 
     def _add_left(self, p, e):
         node = self._validate(p)
-        if node._left is not None:
+        if node._left != self._sentinel:
             raise ValueError('Left already exists.')
-        node._left = self._Node(e, node)
+        node._left = self._Node(e, node, self._sentinel, self._sentinel)
         self._size += 1
         return self._make_position(node._left)
 
     def _add_right(self, p, e):
         node = self._validate(p)
-        if node._right is not None:
+        if node._right != self._sentinel:
             raise ValueError('Right already exists.')
-        node._right = self._Node(e, node)
+        node._right = self._Node(e, node, self._sentinel, self._sentinel)
         self._size += 1
         return self._make_position(node._right)
 
@@ -175,17 +179,20 @@ class LinkedBinaryTree(BinaryTree):
         node = self._validate(p)
         old = node._element
         node._element = e
+        self._make_position(node)
         return old
 
     def _delete(self, p):
         node = self._validate(p)
         if self.num_children(p) == 2:
             raise ValueError('p has two children.')
-        child = node._left if node._left is not None else node._right
+        child = node._left if node._left != self._sentinel else node._right
         if child is not None:
             child._parent = node._parent
         if node == self._root:
             self._root = child
+            child._parent = self._sentinel
+            self._sentinel._left = self._root
         else:
             parent = node._parent
             if node == parent._left:
@@ -287,9 +294,69 @@ class LinkedBinaryTree(BinaryTree):
 
     # C-8.38
     def _delete_subtree(self, p):
+        self._validate(p)
         for descendant in self._subtree_postorder(p):
             self._delete(descendant)
 
+    # C-8.39
+    def _swap(self, p, q):
+        p_node = self._validate(p)
+        q_node = self._validate(q)
+
+        p_parent_node = self._validate(self.parent(p))
+        p_left_flag = False
+        if p_parent_node._left == p_node:
+            p_left_flag = True
+        p_l_child_node = self._sentinel
+        p_r_child_node = self._sentinel
+        if self.left(p) is not None:
+            p_l_child_node = self._validate(self.left(p))
+        if self.right(p) is not None:
+            p_r_child_node = self._validate(self.right(p))
+
+        q_parent_node = self._validate(self.parent(q))
+        q_left_flag = False
+        if q_parent_node._left == q_node:
+            q_left_flag = True
+        q_l_child_node = self._sentinel
+        q_r_child_node = self._sentinel
+        if self.left(q) is not None:
+            q_l_child_node = self._validate(self.left(q))
+        if self.right(q) is not None:
+            q_r_child_node = self._validate(self.right(q))
+
+        # Parent Shift
+        if p_left_flag:
+            p_parent_node._left = q_node
+        else:
+            p_parent_node._right = q_node
+        q_node._parent = p_parent_node
+        self._make_position(p_parent_node)
+
+        if q_left_flag:
+            q_parent_node._left = p_node
+        else:
+            q_parent_node._right = p_node
+        p_node._parent = q_parent_node
+        self._make_position(q_parent_node)
+
+        # Left Child Shift
+        p_node._left = q_l_child_node
+        q_node._left = p_l_child_node
+        p_l_child_node._parent = q_node
+        self._make_position(p_l_child_node)
+        q_l_child_node._parent = p_node
+        self._make_position(q_l_child_node)
+
+        # Right Child Shift
+        p_node._right = q_r_child_node
+        q_node._right = p_r_child_node
+        p_r_child_node._parent = q_node
+        self._make_position(p_r_child_node)
+        q_r_child_node._parent = p_node
+        self._make_position(q_r_child_node)
+
+        return [self._make_position(p_node), self._make_position(q_node)]
 
 class EulerTour:
 
