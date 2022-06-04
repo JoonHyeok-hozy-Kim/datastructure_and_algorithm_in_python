@@ -561,6 +561,14 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_22_figure_8_17.png" style="height: 450px;"></img><br/>
 </p>
 
+* Sol.)
+    * Initial    : {1}
+    * 1 dequeued : {2,3,4}
+    * 2 dequeued : {3,4,5,6}
+    * 3 dequeued : {4,5,6,7,8,9,10,11}
+    * 4 dequeued : {5,6,7,8,9,10,11,12,13,14,15,16}
+
+### R-8.26 The collections.deque class supports an extend method that adds a collection of elements to the end of the queue at once. Reimplement the breadthfirst method of the Tree class to take advantage of this feature.
 
 
 
