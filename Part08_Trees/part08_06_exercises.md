@@ -715,8 +715,105 @@ if __name__ == '__main__':
      * Therefore, D = O(n log(n))
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_32_max_external.png" style="height: 600px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_32_max_external.png" style="height: 450px;"></img><br/>
 </p>
+
+### C-8.33 Let T be a (possibly improper) binary tree with n nodes, and let D be the sum of the depths of all the external nodes of T. Describe a configuration for T such that D is Ω(n2). Such a tree would be the worst case for the asymptotic running time of method height1 (Code Fragment 8.4).
+```python
+a = MutableLinkedBinaryTree()
+p = a.add_root(0)
+for i in range(10):
+    a.add_right(p, 2*i+1)
+    p = a.add_left(p, 2*i+2)
+print(a)
+```
+* Sol.) Consider the case above.
+  * Then D(n) goes as follows.
+    * n is even : Σ(i/2) = (n^2+n)/4
+    * n is odd : Σ(i/2) + (n//2) = (n^2+n)/4 + (n//2)
+  * Thus, O(n^2)
+
+### C-8.34 For a tree T, let n_I denote the number of its internal nodes, and let n_E denote the number of its external nodes. Show that if every internal node in T has exactly 3 children, then n_E = 2n_I +1.
+* Sol.)
+  * h = 1
+    * n_I = 0
+    * n_E = 1
+  * h = 2
+    * n_I = 1
+    * n_E = 3
+  * Generalization : When one internal node gets three children.
+    1. One external node becomes internal node.
+       * n_I' = n_I + 1
+    2. Three external nodes are added.
+       * n_E' = n_E - 1 + 3 = n_E + 2
+    * Thus, n_E' = n_E + 2 = (2*n_I + 1) + 2 = 2 * n_I' + 1
+  
+### C-8.35 Two ordered trees T' and T'' are said to be isomorphic if one of the following holds:
+* Both T' and T'' are empty.
+* The roots of T' and T' have the same number k ≥ 0 of subtrees, and the i-th such subtree of T' is isomorphic to the i-th such subtree of T'' for i = 1,...,k.
+### Design an algorithm that tests whether two given ordered trees are isomorphic. What is the running time of your algorithm?
+```python
+def isomorphic_test(T1, T2):
+    T1_subtrees = generalize_subtrees(T1)
+    T2_subtrees = generalize_subtrees(T2)
+    for i in range(len(T1_subtrees)):
+        for j in range(len(T2_subtrees)):
+            if T1_subtrees[i] == T2_subtrees[j]:
+                popped = T2_subtrees.pop(j)
+                # print('popped : {}'.format(popped))
+                break
+    if len(T2_subtrees) == 0:
+        return True
+    else:
+        return False
+
+def generalize_subtrees(T, p=None, result_list=None):
+    if p is None:
+        p = T.root()
+        result_list = []
+    for c in T.children(p):
+        generalize_subtrees(T, c, result_list)
+    result_list.append(parenthesis_generalize(T, p))
+    return result_list
+
+def parenthesis_generalize(T, p, text_list=None):
+    if text_list is None:
+        text_list = []
+    text_list.append('_')
+    if T.num_children(p) > 0:
+        text_list.append('(')
+        if T.left(p) is not None:
+            parenthesis_generalize(T, T.left(p), text_list)
+        text_list.append(',')
+        if T.right(p) is not None:
+            parenthesis_generalize(T, T.right(p), text_list)
+        text_list.append(')')
+    return ''.join(text_list)
+
+if __name__ == '__main__':
+    from DataStructures.tree import MutableLinkedBinaryTree
+    a = MutableLinkedBinaryTree()
+    a.fill_tree(3)
+    b = MutableLinkedBinaryTree()
+    b.fill_tree(3)
+    
+    # Test 1
+    print(a)
+    print(b)
+    print(isomorphic_test(a, b))
+    
+    # Test 2
+    b.delete(b.right(b.right(b.root())))
+    print(a)
+    print(b)
+    print(isomorphic_test(a, b))
+```
+    
+
+
+
+
+
 
 
 

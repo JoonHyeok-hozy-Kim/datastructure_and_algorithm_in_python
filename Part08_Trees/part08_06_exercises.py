@@ -212,6 +212,42 @@ class NumDescendants(EulerTour):
         print("{}'s num_descendants : {}".format(p.element(), num_descendants))
         return num_descendants
 
+def isomorphic_test(T1, T2):
+    T1_subtrees = generalize_subtrees(T1)
+    T2_subtrees = generalize_subtrees(T2)
+    for i in range(len(T1_subtrees)):
+        for j in range(len(T2_subtrees)):
+            if T1_subtrees[i] == T2_subtrees[j]:
+                popped = T2_subtrees.pop(j)
+                # print('popped : {}'.format(popped))
+                break
+    if len(T2_subtrees) == 0:
+        return True
+    else:
+        return False
+
+def generalize_subtrees(T, p=None, result_list=None):
+    if p is None:
+        p = T.root()
+        result_list = []
+    for c in T.children(p):
+        generalize_subtrees(T, c, result_list)
+    result_list.append(parenthesis_generalize(T, p))
+    return result_list
+
+def parenthesis_generalize(T, p, text_list=None):
+    if text_list is None:
+        text_list = []
+    text_list.append('_')
+    if T.num_children(p) > 0:
+        text_list.append('(')
+        if T.left(p) is not None:
+            parenthesis_generalize(T, T.left(p), text_list)
+        text_list.append(',')
+        if T.right(p) is not None:
+            parenthesis_generalize(T, T.right(p), text_list)
+        text_list.append(')')
+    return ''.join(text_list)
 
 if __name__ == '__main__':
     a = LinkedBinaryTree()
@@ -282,11 +318,27 @@ if __name__ == '__main__':
     # b = NumDescendants(a)
     # b.execute()
 
-    from DataStructures.tree_application import tokenize
-    a = '(35 + 14)'
-    print(tokenize(a))
+    # from DataStructures.tree_application import tokenize
+    # a = '(35 + 14)'
+    # print(tokenize(a))
+    #
+    # from DataStructures.tree_application import build_expression_trees
+    # exp = '((((32+11)*39)/((9-5)+2))-((3*(7-4))+6))'
+    # a = build_expression_trees(exp)
+    # print(a.evaluate())
 
-    from DataStructures.tree_application import build_expression_trees
-    exp = '((((32+11)*39)/((9-5)+2))-((3*(7-4))+6))'
-    a = build_expression_trees(exp)
-    print(a.evaluate())
+    a = MutableLinkedBinaryTree()
+    a.fill_tree(3)
+    b = MutableLinkedBinaryTree()
+    b.fill_tree(3)
+
+    # Test 1
+    print(a)
+    print(b)
+    print(isomorphic_test(a, b))
+
+    # Test 2
+    b.delete(b.right(b.right(b.root())))
+    print(a)
+    print(b)
+    print(isomorphic_test(a, b))

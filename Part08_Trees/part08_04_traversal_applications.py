@@ -43,13 +43,13 @@ def _parenthesize_text(T, p=None, text_list=None):
         p = T.root()
         text_list = []
     text_list.append(p.element())
-    if T.num_children(p ) > 0:
-        text_list.append(' ( ')
+    if T.num_children(p) > 0:
+        text_list.append('(')
         for c in T.children(p):
             text_list = _parenthesize_text(T, c, text_list)
-            text_list.append(', ')
+            text_list.append(',')
         text_list.pop()
-        text_list.append(' ) ')
+        text_list.append(')')
     return text_list
 
 if __name__ == '__main__':

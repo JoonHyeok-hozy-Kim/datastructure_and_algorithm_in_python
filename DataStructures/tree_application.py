@@ -271,3 +271,24 @@ class ExpressionGenerator:
     def display_tree(self, T):
         layout = BinaryLayout(T)
         layout.execute()
+
+
+# Parenthesize Tree Algorythm.
+def parenthesize(T, p=None):
+    if p is None:
+        p = T.root()
+    text_list = _parenthesize_text(T, p)
+    return ''.join(text_list)
+
+def _parenthesize_text(T, p, text_list=None):
+    if text_list is None:
+        text_list = []
+    text_list.append(str(p.element()))
+    if T.num_children(p) > 0:
+        text_list.append('(')
+        for c in T.children(p):
+            text_list = _parenthesize_text(T, c, text_list)
+            text_list.append(',')
+        text_list.pop()
+        text_list.append(')')
+    return text_list
