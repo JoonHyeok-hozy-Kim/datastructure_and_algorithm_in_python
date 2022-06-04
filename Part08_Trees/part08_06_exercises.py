@@ -277,14 +277,19 @@ if __name__ == '__main__':
     # for i in a.breadthfirst():
     #     print(i.element())
 
-    # from Part08_Trees.part08_05_expression_tree import build_expression_trees
-    # exp = '((((3+1)*3)/((9-5)+2))-((3*(7-4))+6))'
-    # a = build_expression_trees(exp)
-    # p = parenthesize(a)
-    # print(p)
 
-    a = MutableLinkedBinaryTree()
-    a.fill_tree(4)
-    print(a)
-    b = NumDescendants(a)
-    b.execute()
+
+    # a = MutableLinkedBinaryTree()
+    # a.fill_tree(4)
+    # print(a)
+    # b = NumDescendants(a)
+    # b.execute()
+
+    from DataStructures.tree_application import tokenize
+    a = '(35 + 14)'
+    print(tokenize(a))
+
+    from DataStructures.tree_application import build_expression_trees
+    exp = '((((32+11)*39)/((9-5)+2))-((3*(7-4))+6))'
+    a = build_expression_trees(exp)
+    print(a.evaluate())

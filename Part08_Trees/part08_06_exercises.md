@@ -570,23 +570,16 @@ if __name__ == '__main__':
 
 ### R-8.26 The collections.deque class supports an extend method that adds a collection of elements to the end of the queue at once. Reimplement the breadthfirst method of the Tree class to take advantage of this feature.
 ```python
-def parenthesize(T):
-    text_list = _parenthesize_text(T)
-    return ''.join(text_list)
-
-def _parenthesize_text(T, p=None, text_list=None):
+def breadthfirst(self, p=None):
+    from collections import deque
+    dq = deque()
     if p is None:
-        p = T.root()
-        text_list = []
-    text_list.append(p.element())
-    if T.num_children(p ) > 0:
-        text_list.append(' ( ')
-        for c in T.children(p):
-            text_list = _parenthesize_text(T, c, text_list)
-            text_list.append(', ')
-        text_list.pop()
-        text_list.append(' ) ')
-    return text_list
+        p = self.root()
+    dq.append(p)
+    while len(dq) > 0:
+        popped = dq.popleft()
+        yield popped
+        dq.extend(self.children(popped))
 ```
 
 ### R-8.27 Give the output of the function parenthesize(T, T.root( )), as described in Code Fragment 8.25, when T is the tree of Figure 8.8.
@@ -642,8 +635,49 @@ if __name__ == '__main__':
     b.execute()
 ```
 
-### R-8.30 The build expression tree method of the ExpressionTree class requires input that is an iterable of string tokens. We used a convenient example, (((3+1)x4)/((9-5)+2)) , in which each character is its own token, so that the string itself sufficed as input to build expression tree. In general, a string, such as (35 + 14) , must be explicitly tokenized into list \[ ( , 35 , + , 14 , ) ] so as to ignore whitespace and to recognize multi-digit numbers as a single token. Write a utility method, tokenize(raw), that returns such a list of tokens for a raw string.
+### R-8.30 The build expression tree method of the ExpressionTree class requires input that is an iterable of string tokens. We used a convenient example, (((3+1)x4)/((9-5)+2)) , in which each character is its own token, so that the string itself sufficed as input to build expression tree. In general, a string, such as (35 + 14) , must be explicitly tokenized into list \[ '(' , '35' , '+' , '14' , ')' ] so as to ignore whitespace and to recognize multi-digit numbers as a single token. Write a utility method, tokenize(raw), that returns such a list of tokens for a raw string.
+```python
+def build_expression_trees(tokens):
+    S = []
+    tokenized = tokenize(tokens)
+    for t in tokenized:
+        if t in '+-*/':
+            S.append(t)
+        elif t not in '()':
+            S.append(ExpressionTree(t))
+        elif t == ')':
+            right = S.pop()
+            op = S.pop()
+            left = S.pop()
+            S.append(ExpressionTree(op, left, right))
+    return S.pop()
 
+def tokenize(raw):
+    result_set = []
+    temp_numeric = []
+    for c in raw:
+        if c.isnumeric():
+            temp_numeric.append(c)
+        else:
+            if len(temp_numeric) > 0:
+                result_set.append(''.join(temp_numeric))
+                temp_numeric = []
+            if c == ' ':
+                pass
+            else:
+                result_set.append(c)
+    return result_set
+
+if __name__ == '__main__':
+    from DataStructures.tree_application import tokenize
+    a = '(35 + 14)'
+    print(tokenize(a))
+    
+    from DataStructures.tree_application import build_expression_trees
+    exp = '((((32+11)*39)/((9-5)+2))-((3*(7-4))+6))'
+    a = build_expression_trees(exp)
+    print(a)
+```
 
 
 
