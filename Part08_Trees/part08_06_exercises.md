@@ -704,6 +704,20 @@ if __name__ == '__main__':
        * Also consider that the number of nodes increased into n+2
        * Therefore, E(T') = E(T) + d + 2 = (I(T) + n - 1) + d + 2 = I(T) + d + (n+2) - 1 = I(T') + (n+2) - 1
 
+### C-8.32 Let T be a (not necessarily proper) binary tree with n nodes, and let D be the sum of the depths of all the external nodes of T. Show that if T has the minimum number of external nodes possible, then D is O(n) and if T has the maximum number of external nodes possible, then D is O(nlogn).
+* Sol.)
+  1. Minimum external node case : Every node has identically left child or right child.
+    * Then there will be only one external node with the depth of (n-1)
+    * Thus D = O(n)
+  2. Maximum external node case : At most one internal node has one child.
+     * The number of external nodes for such tree with n nodes is (n+1)//2
+     * The maximum depth of external nodes of the tree is log(n)
+     * Therefore, D = O(n log(n))
+
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_32_max_external.png" style="height: 600px;"></img><br/>
+</p>
+
 
 
 <p>
