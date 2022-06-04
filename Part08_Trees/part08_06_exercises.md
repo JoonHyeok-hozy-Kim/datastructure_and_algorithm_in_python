@@ -569,7 +569,26 @@ if __name__ == '__main__':
     * 4 dequeued : {5,6,7,8,9,10,11,12,13,14,15,16}
 
 ### R-8.26 The collections.deque class supports an extend method that adds a collection of elements to the end of the queue at once. Reimplement the breadthfirst method of the Tree class to take advantage of this feature.
+```python
+def breadthfirst(self, p=None):
+    from collections import deque
+    dq = deque()
+    if p is None:
+        p = self.root()
+    dq.append(p)
+    while len(dq) > 0:
+        popped = dq.popleft()
+        yield popped
+        dq.extend(self.children(popped))
 
+if __name__ == '__main__':
+    from DataStructures.tree import MutableLinkedBinaryTree
+    a = MutableLinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    for i in a.breadthfirst():
+        print(i.element())
+```
 
 
 

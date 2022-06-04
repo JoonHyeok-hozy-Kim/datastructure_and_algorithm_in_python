@@ -218,7 +218,7 @@ class LinkedBinaryTree(BinaryTree):
     def positions(self):
         # return self.preorder()
         # return self.postorder()
-        # return self.breadfast()
+        # return self.breadthfirst()
         return self.inorder()
 
     def preorder(self):
@@ -243,17 +243,16 @@ class LinkedBinaryTree(BinaryTree):
                 yield other
         yield p
 
-    def breadfast(self, p=None):
-        from DataStructures.queue import LinkedQueue
+    def breadthfirst(self, p=None):
+        from collections import deque
+        dq = deque()
         if p is None:
             p = self.root()
-        q = LinkedQueue()
-        q.enqueue(p)
-        while not q.is_empty():
-            dequeued = q.dequeue()
-            yield dequeued
-            for c in self.children(dequeued):
-                q.enqueue(c)
+        dq.append(p)
+        while len(dq) > 0:
+            popped = dq.popleft()
+            yield popped
+            dq.extend(self.children(popped))
 
     def inorder(self):
         if not self.is_empty():

@@ -237,14 +237,18 @@ if __name__ == '__main__':
     # b_root_right = b.tree().right(b_root)
     # print(b.f(b_root_right))
 
-    str_list = list('EXAMFUN')
-    tree_list = tree_generator(str_list)
-    for tree in tree_list:
-        result = preorder_inorder_comparison(tree, 'EXAMFUN', 'MAFXUEN')
-        if result is not None:
-            print(tree)
+    # str_list = list('EXAMFUN')
+    # tree_list = tree_generator(str_list)
+    # for tree in tree_list:
+    #     result = preorder_inorder_comparison(tree, 'EXAMFUN', 'MAFXUEN')
+    #     if result is not None:
+    #         print(tree)
 
-
+    a = MutableLinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    for i in a.breadthfirst():
+        print(i.element())
 
 
 
