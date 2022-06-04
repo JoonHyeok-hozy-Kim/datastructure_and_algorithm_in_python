@@ -285,6 +285,10 @@ class LinkedBinaryTree(BinaryTree):
         right_child = self._add_right(p, val_list.pop())
         self._fill_recursive(max_height, val_list, right_child, curr_height+1)
 
+    # C-8.38
+    def _delete_subtree(self, p):
+        for descendant in self._subtree_postorder(p):
+            self._delete(descendant)
 
 
 class EulerTour:

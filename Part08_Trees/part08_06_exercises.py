@@ -215,16 +215,12 @@ class NumDescendants(EulerTour):
 def isomorphic_test(T1, T2):
     T1_subtrees = generalize_subtrees(T1)
     T2_subtrees = generalize_subtrees(T2)
-    for i in range(len(T1_subtrees)):
-        for j in range(len(T2_subtrees)):
-            if T1_subtrees[i] == T2_subtrees[j]:
-                popped = T2_subtrees.pop(j)
-                # print('popped : {}'.format(popped))
-                break
-    if len(T2_subtrees) == 0:
-        return True
-    else:
+    if len(T1_subtrees) != len(T2_subtrees):
         return False
+    for i in range(len(T1_subtrees)):
+        if T1_subtrees[i] != T2_subtrees[i]:
+            return False
+    return True
 
 def generalize_subtrees(T, p=None, result_list=None):
     if p is None:
@@ -327,18 +323,33 @@ if __name__ == '__main__':
     # a = build_expression_trees(exp)
     # print(a.evaluate())
 
-    a = MutableLinkedBinaryTree()
-    a.fill_tree(3)
-    b = MutableLinkedBinaryTree()
-    b.fill_tree(3)
+    # a = MutableLinkedBinaryTree()
+    # a.fill_tree(3)
+    # b = MutableLinkedBinaryTree()
+    # b.fill_tree(3)
+    # b.root()._node._element = 'a'
+    #
+    # # Test 1
+    # print(a)
+    # print(b)
+    # print(isomorphic_test(a, b))
+    #
+    # # Test 2
+    # b.delete(b.right(b.right(b.root())))
+    # print(a)
+    # print(b)
+    # print(isomorphic_test(a, b))
 
-    # Test 1
-    print(a)
-    print(b)
-    print(isomorphic_test(a, b))
+    # from DataStructures.tree_application import tree_generator
+    # internal_num = 5
+    # num_list = [i for i in range(internal_num)]
+    # tree_list = tree_generator(num_list)
+    # for tree in tree_list:
+    #     print(tree)
 
-    # Test 2
-    b.delete(b.right(b.right(b.root())))
+    a = LinkedBinaryTree()
+    a.fill_tree(5)
     print(a)
-    print(b)
-    print(isomorphic_test(a, b))
+    target = a.left(a.root())
+    a._delete_subtree(target)
+    print(a)

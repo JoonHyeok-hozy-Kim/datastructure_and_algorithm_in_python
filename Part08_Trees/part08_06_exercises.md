@@ -756,16 +756,12 @@ print(a)
 def isomorphic_test(T1, T2):
     T1_subtrees = generalize_subtrees(T1)
     T2_subtrees = generalize_subtrees(T2)
-    for i in range(len(T1_subtrees)):
-        for j in range(len(T2_subtrees)):
-            if T1_subtrees[i] == T2_subtrees[j]:
-                popped = T2_subtrees.pop(j)
-                # print('popped : {}'.format(popped))
-                break
-    if len(T2_subtrees) == 0:
-        return True
-    else:
+    if len(T1_subtrees) != len(T2_subtrees):
         return False
+    for i in range(len(T1_subtrees)):
+        if T1_subtrees[i] != T2_subtrees[i]:
+            return False
+    return True
 
 def generalize_subtrees(T, p=None, result_list=None):
     if p is None:
@@ -796,21 +792,39 @@ if __name__ == '__main__':
     a.fill_tree(3)
     b = MutableLinkedBinaryTree()
     b.fill_tree(3)
-    
+    b.root()._node._element = 'a'
+
     # Test 1
     print(a)
     print(b)
     print(isomorphic_test(a, b))
-    
+
     # Test 2
     b.delete(b.right(b.right(b.root())))
     print(a)
     print(b)
     print(isomorphic_test(a, b))
 ```
-    
 
+### C-8.36 Show that there are more than 2^n improper binary trees with n internal nodes such that no pair are isomorphic (see Exercise C-8.35).
+* Sol.)
+  * Maximum internal node case : When every n nodes have only left (or right) child.
+    * The internal node with the maximum depth has 3 choices : l_child only, r_child only, or l-r-child.
+    * Other internal nodes have 2 choices, l_child only or l-r_child
+    * Thus, 3 * 2^(n-1) non-isomorphic trees exists.
+    * Hence, 3 * 2^(n-1) > 2 * 2^(n-1) = 2^n
+  * Moreover, other forms of n-internal nodes are possible.
 
+### C-8.37 If we exclude isomorphic trees (see Exercise C-8.35), exactly how many proper binary trees exist with exactly 4 leaves?
+* Sol.) 5 trees.
+
+### C-8.38 Add support in LinkedBinaryTree for a method, delete subtree(p), that removes the entire subtree rooted at position p, making sure to maintain the count on the size of the tree. What is the running time of your implementation?
+* Sol.) O(s_p) times where s_p is the size of the subtree.
+```python
+def _delete_subtree(self, p):
+    for descendant in self._subtree_postorder(p):
+        self._delete(descendant)
+```
 
 
 
