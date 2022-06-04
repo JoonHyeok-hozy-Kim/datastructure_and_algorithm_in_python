@@ -556,6 +556,13 @@ if __name__ == '__main__':
       * Since the tree is ordered, traversing siblings will go from left to right whether the traversal is preorder or postorder.
       * Thus, reversed traversal of preorder can not be equal to postorder traversal.
 
+### R-8.25 Consider the example of a breadth-first traversal given in Figure 8.17. Using the annotated numbers from that figure, describe the contents of the queue before each pass of the while loop in Code Fragment 8.14. To get started, the queue has contents {1} before the first pass, and contents {2,3,4} before the second pass.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_22_figure_8_17.png" style="height: 450px;"></img><br/>
+</p>
+
+
+
 
 
 <p>
