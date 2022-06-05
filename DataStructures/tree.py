@@ -123,6 +123,9 @@ class LinkedBinaryTree(BinaryTree):
         self._root = None
         self._size = 0
         self._sentinel = self._Node(None, None, None, None)
+        self._preorder_iter = None
+        self._preorder_iter_stop = False
+        self._preorder_iter_cnt = 0
 
     def __len__(self):
         return self._size
@@ -238,10 +241,35 @@ class LinkedBinaryTree(BinaryTree):
 
     # Choose traversal type
     def positions(self):
-        # return self.preorder()
+        return self.preorder()
         # return self.postorder()
         # return self.breadthfirst()
-        return self.inorder()
+        # return self.inorder()
+
+    def __next__(self):
+        if self._preorder_iter_cnt == self._size-1:
+            raise StopIteration
+        if self._preorder_iter is None:
+            self._preorder_iter = self.root()
+        else:
+            self._next_preorder(self.root())
+        self._preorder_iter_stop = False
+        return self._preorder_iter
+
+    def _next_preorder(self, p):
+        if self._preorder_iter_stop:
+            self._preorder_iter = p
+            self._preorder_iter_cnt += 1
+            return True
+        if p == self._preorder_iter:
+            self._preorder_iter_stop = True
+        if not self.is_leaf(p):
+            for c in self.children(p):
+                if self._next_preorder(c):
+                    return True
+
+    def __iter__(self):
+        return self
 
     def preorder(self):
         if not self.is_empty():

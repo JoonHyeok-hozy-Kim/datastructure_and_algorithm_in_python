@@ -339,7 +339,7 @@ def inorder_next(T, p):
 
 if __name__ == '__main__':
     a = LinkedBinaryTree()
-    a.fill_tree(3)
+    a.fill_tree(5)
     print(a)
     # recursive_add_left(a, 5)
 
@@ -481,8 +481,11 @@ if __name__ == '__main__':
     #     b_text.append(str(i.element()))
     # print(' '.join(b_text))
 
-    b = a.right(a.left(a.root()))
-    print(b.element())
-    print(preorder_next(a, b).element())
-    print(postorder_next(a, b).element())
-    print(inorder_next(a, b).element())
+    # b = a.right(a.left(a.root()))
+    # print(b.element())
+    # print(preorder_next(a, b).element())
+    # print(postorder_next(a, b).element())
+    # print(inorder_next(a, b).element())
+
+    for i in a:
+        print('ITER -> {}'.format(i.element()))
