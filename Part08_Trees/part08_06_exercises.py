@@ -309,9 +309,38 @@ def reflection(T, p=None):
         temp_tree._attach(temp_root, left, right)
     return temp_tree
 
+def preorder_next(T, p):
+    break_flag = False
+    for i in T.preorder():
+        if break_flag:
+            return i
+        if i == p:
+            break_flag = True
+    return None
+
+def postorder_next(T, p):
+    break_flag = False
+    for i in T.postorder():
+        if break_flag:
+            return i
+        if i == p:
+            break_flag = True
+    return None
+
+def inorder_next(T, p):
+    break_flag = False
+    for i in T.inorder():
+        if break_flag:
+            return i
+        if i == p:
+            break_flag = True
+    return None
+
 
 if __name__ == '__main__':
     a = LinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
     # recursive_add_left(a, 5)
 
     # lbt = LinkedBinaryTree()
@@ -412,9 +441,6 @@ if __name__ == '__main__':
     # for tree in tree_list:
     #     print(tree)
 
-    a = LinkedBinaryTree()
-    a.fill_tree(3)
-    print(a)
     # aroot = a.root()
     # target = a.left(a.left(a.left(aroot)))
     # a._delete_subtree(target)
@@ -444,14 +470,19 @@ if __name__ == '__main__':
     # c = BalanceFactor(a)
     # print(c.check_balance(a.root()))
 
-    a_text = []
-    for i in a.preorder():
-        a_text.append(str(i.element()))
-    print(' '.join(a_text))
-    b = reflection(a)
-    print(b)
-    b_text = []
-    for i in b.postorder():
-        b_text.append(str(i.element()))
-    print(' '.join(b_text))
+    # a_text = []
+    # for i in a.preorder():
+    #     a_text.append(str(i.element()))
+    # print(' '.join(a_text))
+    # b = reflection(a)
+    # print(b)
+    # b_text = []
+    # for i in b.postorder():
+    #     b_text.append(str(i.element()))
+    # print(' '.join(b_text))
 
+    b = a.right(a.left(a.root()))
+    print(b.element())
+    print(preorder_next(a, b).element())
+    print(postorder_next(a, b).element())
+    print(inorder_next(a, b).element())

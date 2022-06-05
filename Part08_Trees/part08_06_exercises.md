@@ -1068,11 +1068,55 @@ if __name__ == '__main__':
 ```
 
 ### C-8.49 Let the rank of a position p during a traversal be defined such that the first element visited has rank 1, the second element visited has rank 2, and so on. For each position p in a tree T, let pre(p) be the rank of p in a preorder traversal of T, let post(p) be the rank of p in a postorder traversal of T, let depth(p) be the depth of p, and let desc(p) be the number of descendants of p, including p itself. Derive a formula defining post(p) in terms of desc(p), depth(p), and pre(p), for each node p in T.
+* Sol.) post(p) = pre(p) + desc(p) - depth(p)
 
+### C-8.50 Design algorithms for the following operations for a binary tree T:
+* preorder next(p): Return the position visited after p in a preorder traversal of T (or None if p is the last node visited).
+* inorder next(p): Return the position visited after p in an inorder traversal of T (or None if p is the last node visited).
+* postorder next(p): Return the position visited after p in a postorder traversal of T (or None if p is the last node visited).
+#### What are the worst-case running times of your algorithms?
+* Sol.) worst-case : O(n)
 
+```python
+def preorder_next(T, p):
+    break_flag = False
+    for i in T.preorder():
+        if break_flag:
+            return i
+        if i == p:
+            break_flag = True
+    return None
 
+def postorder_next(T, p):
+    break_flag = False
+    for i in T.postorder():
+        if break_flag:
+            return i
+        if i == p:
+            break_flag = True
+    return None
 
+def inorder_next(T, p):
+    break_flag = False
+    for i in T.inorder():
+        if break_flag:
+            return i
+        if i == p:
+            break_flag = True
+    return None
 
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    b = a.right(a.left(a.root()))
+    print(b.element())
+    print(preorder_next(a, b).element())
+    print(postorder_next(a, b).element())
+    print(inorder_next(a, b).element())
+```
+
+### C-8.51 To implement the preorder method of the LinkedBinaryTree class, we relied on the convenience of Python’s generator syntax and the yield statement. Give an alternative implementation of preorder that returns an explicit instance of a nested iterator class. (See Section 2.3.4 for discussion of iterators.)
 
 
 <p>
