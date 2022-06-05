@@ -958,12 +958,22 @@ if __name__ == '__main__':
 * If _p_ is a leaf of _T_, then _p'_ in _T'_ does not have a left child; otherwise the left child of _p'_ is _q'_, where _q_ is the first child of _p_ in _T_.
 * If _p_ has a sibling _q_ ordered immediately after it in _T_, then _q'_ is the right child of _p'_ in _T_; otherwise _p'_ does not have a right child.
 #### Given such a representation _T'_ of a general ordered tree _T_, answer each of the following questions:
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_43_binary_representation_of_ordered_tree.png" style="height: 450px;"></img><br/>
+</p>
+
 1. Is a preorder traversal of _T'_ equivalent to a preorder traversal of _T_?
-* Sol.) 
+* Sol.) Yes.
+  * _T'_ : A - B - E - F - C - D - G
+  * _T_  : A - B - E - F - C - D - G
 2. Is a postorder traversal of _T'_ equivalent to a postorder traversal of _T_?
-* Sol.) 
+* Sol.) No.
+  * _T'_ : F - E - G - D - C - B - A
+  * _T_  : E - F - B - C - G - D - A
 3. Is an inorder traversal of _T'_ equivalent to one of the standard traversals of _T_? If so, which one?
-* Sol.) 
+* Sol.) Postorder Tranversal of _T_
+  * _T'_ : E - F - B - C - G - D
+  * _T_  : E - F - B - C - G - D
 
 
 
