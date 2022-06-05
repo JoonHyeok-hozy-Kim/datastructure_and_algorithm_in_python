@@ -957,10 +957,13 @@ if __name__ == '__main__':
 * For each position _p_ of _T_, there is an associated position _p'_ of _T'_.
 * If _p_ is a leaf of _T_, then _p'_ in _T'_ does not have a left child; otherwise the left child of _p'_ is _q'_, where _q_ is the first child of _p_ in _T_.
 * If _p_ has a sibling _q_ ordered immediately after it in _T_, then _q'_ is the right child of _p'_ in _T_; otherwise _p'_ does not have a right child.
-### Given such a representation _T'_ of a general ordered tree _T_, answer each of the following questions:
+#### Given such a representation _T'_ of a general ordered tree _T_, answer each of the following questions:
 1. Is a preorder traversal of _T'_ equivalent to a preorder traversal of _T_?
-b. Is a postorder traversal of _T'_ equivalent to a postorder traversal of _T_?
-c. Is an inorder traversal of _T'_ equivalent to one of the standard traversals of _T_? If so, which one?
+* Sol.) 
+2. Is a postorder traversal of _T'_ equivalent to a postorder traversal of _T_?
+* Sol.) 
+3. Is an inorder traversal of _T'_ equivalent to one of the standard traversals of _T_? If so, which one?
+* Sol.) 
 
 
 
