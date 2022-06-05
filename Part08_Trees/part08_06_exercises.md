@@ -972,9 +972,70 @@ if __name__ == '__main__':
   * _T_  : E - F - B - C - G - D - A
 3. Is an inorder traversal of _T'_ equivalent to one of the standard traversals of _T_? If so, which one?
 * Sol.) Postorder Tranversal of _T_
-  * _T'_ : E - F - B - C - G - D
-  * _T_  : E - F - B - C - G - D
+  * _T'_ : E - F - B - C - G - D - A
+  * _T_  : E - F - B - C - G - D - A
 
+### C-8.44 Give an efficient algorithm that computes and prints, for every position p of a tree T, the element of p followed by the height of p’s subtree.
+```python
+def height_element(T, p):
+    return '{} - {}'.format(T.height(p), p.element())
+```
+
+### C-8.45 Give an O(n)-time algorithm for computing the depths of all positions of a tree T, where n is the number of nodes of T.
+* Sol.) BinaryEulerTour class can be used.
+
+### C-8.46 The path length of a tree T is the sum of the depths of all positions in T. Describe a linear-time method for computing the path length of a tree T.
+```python
+class PathLength(EulerTour):
+    def _hook_postvisit(self, p, d, path, results):
+        path_length = d
+        for child_depth in results:
+            path_length += child_depth
+        print('{} - {}'.format(p.element(), path_length))
+        return path_length
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    b = PathLength(a)
+    path_length = b.execute()
+    print(path_length)
+```
+
+### C-8.47 The balance factor of an internal position p of a proper binary tree is the difference between the heights of the right and left subtrees of p. Show how to specialize the Euler tour traversal of Section 8.4.6 to print the balance factors of all the internal nodes of a proper binary tree.
+```python
+class BalanceFactor(BinaryEulerTour):
+    def check_balance(self, p):
+        p_depth = self.tree().depth(p)
+        left_depth = self._tour(self.tree().left(p), p_depth+1, [])
+        right_depth = self._tour(self.tree().right(p), p_depth+1, [])
+        return left_depth == right_depth
+
+    def _hook_postvisit(self, p, d, path, results):
+        if self.tree().is_leaf(p):
+            # print('{} - Leaf : {}'.format(p.element(), d))
+            return d
+        else:
+            # print('{} - Results : {}'.format(p.element(), results))
+            return min(results)
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(5)
+    print(a)
+    
+    # Balanced
+    b = BalanceFactor(a)
+    print(b.check_balance(a.root()))
+    
+    # Unbalanced
+    a._delete_subtree(a.left(a.right(a.left(a.root()))))
+    a._add_left(a.right(a.left(a.root())), -11)
+    print(a)
+    c = BalanceFactor(a)
+    print(c.check_balance(a.root()))
+```
 
 
 <p>

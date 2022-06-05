@@ -143,6 +143,7 @@ class LinkedBinaryTree(BinaryTree):
         return self._make_position(node._right)
 
     ''' Implemented in BinaryTree class by R-8.10 '''
+    ''' Method overriding due to sentinel '''
     def num_children(self, p):
         result = 0
         if self.left(p) is not None:

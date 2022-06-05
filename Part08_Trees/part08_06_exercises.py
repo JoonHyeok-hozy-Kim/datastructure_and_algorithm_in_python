@@ -269,6 +269,33 @@ def clone_improper_binary_tree(T, p=None):
         temp_tree._add_right(temp_root, T.right(p).element())
     return temp_tree
 
+def height_element(T, p):
+    return '{} - {}'.format(T.height(p), p.element())
+
+
+class PathLength(EulerTour):
+    def _hook_postvisit(self, p, d, path, results):
+        path_length = d
+        for child_depth in results:
+            path_length += child_depth
+        print('{} - {}'.format(p.element(), path_length))
+        return path_length
+
+
+class BalanceFactor(BinaryEulerTour):
+    def check_balance(self, p):
+        p_depth = self.tree().depth(p)
+        left_depth = self._tour(self.tree().left(p), p_depth+1, [])
+        right_depth = self._tour(self.tree().right(p), p_depth+1, [])
+        return left_depth == right_depth
+
+    def _hook_postvisit(self, p, d, path, results):
+        if self.tree().is_leaf(p):
+            # print('{} - Leaf : {}'.format(p.element(), d))
+            return d
+        else:
+            # print('{} - Results : {}'.format(p.element(), results))
+            return min(results)
 
 
 
@@ -375,7 +402,7 @@ if __name__ == '__main__':
     #     print(tree)
 
     a = LinkedBinaryTree()
-    a.fill_tree(3)
+    a.fill_tree(5)
     print(a)
     # aroot = a.root()
     # target = a.left(a.left(a.left(aroot)))
@@ -388,12 +415,22 @@ if __name__ == '__main__':
     # a._swap(target1, target2)
     # print(a)
 
-    b = clone_proper_binary_tree(a)
-    print(b)
-    from DataStructures.tree_application import isomorphic_test
-    print(isomorphic_test(a, b))
 
-    a._delete(a.left(a.right(a.root())))
+    # print(height_element(a, a.root()))
+    # print(height_element(a, a.left(a.root())))
+    # print(height_element(a, a.left(a.left(a.root()))))
+
+    # b = PathLength(a)
+    # path_length = b.execute()
+    # print(path_length)
+
+    b = BalanceFactor(a)
+    print(b.check_balance(a.root()))
+
+    a._delete_subtree(a.left(a.right(a.left(a.root()))))
+    a._add_left(a.right(a.left(a.root())), -11)
     print(a)
-    b = clone_improper_binary_tree(a)
-    print(a)
+    c = BalanceFactor(a)
+    print(c.check_balance(a.root()))
+
+
