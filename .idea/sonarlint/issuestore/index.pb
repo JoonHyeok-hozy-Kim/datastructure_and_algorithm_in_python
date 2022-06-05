@@ -60,11 +60,7 @@ U
 %Part04_Recursion/part4_7_exercises.md,d\5\d55576982dae83e5e74bf45a7ad7bccdb92ecae7
 G
 DataStructures/queue.py,9\1\91b53d7ee3ceb99336653ca1c312a8156b2d6358
-`
-0Part08_Trees/part08_04_traversal_applications.py,f\5\f50f771650031a2a340b8d0357a8134b689f4da9
 u
 EPart06_Stacks_Queues_and_Deques/part06_00_stacks_queues_and_deques.md,a\8\a89df94313fdf1102940bd616c3b6362e9d615c4
 f
 6Part06_Stacks_Queues_and_Deques/part06_04_exercises.md,4\5\456c3b215b5082fd90b3f34beaf4b0c1c6d06e1d
-Y
-)Part08_Trees/part08_05_expression_tree.py,5\b\5bba89bb7666e9827b040ec93d934edc8140fe33

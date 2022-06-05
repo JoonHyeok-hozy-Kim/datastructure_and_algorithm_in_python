@@ -143,13 +143,13 @@ class LinkedBinaryTree(BinaryTree):
         return self._make_position(node._right)
 
     ''' Implemented in BinaryTree class by R-8.10 '''
-    # def num_children(self, p):
-    #     result = 0
-    #     if self.left(p) is not None:
-    #         result += 1
-    #     if self.right(p) is not None:
-    #         result += 1
-    #     return result
+    def num_children(self, p):
+        result = 0
+        if self.left(p) is not None:
+            result += 1
+        if self.right(p) is not None:
+            result += 1
+        return result
 
     def _add_root(self, e):
         if self.root() is not None:
@@ -210,16 +210,30 @@ class LinkedBinaryTree(BinaryTree):
         if not type(self) == type(t1) == type(t2):
             raise TypeError('Tree types must match.')
         self._size += len(t1) + len(t2)
+        # print('Attach {} <- {}, {}'.format(node._element, t1._root._element, t2._root._element))
         if not t1.is_empty():
-            t1._root._parent = node
+            for p in t1.postorder():
+                if p._node._parent == t1._sentinel:
+                    p._node._parent = node
+                if p._node._left == t1._sentinel:
+                    p._node._left = self._sentinel
+                if p._node._right == t1._sentinel:
+                    p._node._right = self._sentinel
             node._left = t1._root
-            t1._root = None
             t1._size = 0
+            self._make_position(node._left)
+
         if not t2.is_empty():
-            t2._root._parent = node
+            for p in t2.postorder():
+                if p._node._parent == t2._sentinel:
+                    p._node._parent = node
+                if p._node._left == t2._sentinel:
+                    p._node._left = self._sentinel
+                if p._node._right == t2._sentinel:
+                    p._node._right = self._sentinel
             node._right = t2._root
-            t2._root = None
             t2._size = 0
+            self._make_position(node._right)
 
     # Choose traversal type
     def positions(self):

@@ -906,7 +906,61 @@ if __name__ == '__main__':
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L86">Successfully Implemented</a>
 </p>
 
+### C-8.41 Describe how to clone a LinkedBinaryTree instance representing a proper binary tree, with use of the attach method.
+```python
+def clone_proper_binary_tree(T, p=None):
+    if p is None:
+        p = T.root()
+    temp_tree = LinkedBinaryTree()
+    temp_tree._add_root(p.element())
+    child_trees = []
+    for c in T.children(p):
+        child_trees.append(clone_proper_binary_tree(T, c))
+    if not T.is_leaf(p):
+        temp_tree._attach(temp_tree.root(), child_trees[0], child_trees[1])
+    return temp_tree
 
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    b = clone_proper_binary_tree(a)
+    print(b)
+    from DataStructures.tree_application import isomorphic_test
+    print(isomorphic_test(a, b))
+```
+
+### C-8.42 Describe how to clone a LinkedBinaryTree instance representing a (not necessarily proper) binary tree, with use of the add left and add right methods.
+```python
+def clone_improper_binary_tree(T, p=None):
+    if p is None:
+        p = T.root()
+    temp_tree = LinkedBinaryTree()
+    temp_root = temp_tree._add_root(p.element())
+    if T.left(p) is not None:
+        temp_tree._add_left(temp_root, T.left(p).element())
+    if T.right(p) is not None:
+        temp_tree._add_right(temp_root, T.right(p).element())
+    return temp_tree
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    a._delete(a.left(a.right(a.root())))
+    print(a)
+    b = clone_improper_binary_tree(a)
+    print(a)
+```
+
+### C-8.43 We can define a binary tree representation _T'_ for an ordered general tree _T_ as follows (see Figure 8.23):
+* For each position _p_ of _T_, there is an associated position _p'_ of _T'_.
+* If _p_ is a leaf of _T_, then _p'_ in _T'_ does not have a left child; otherwise the left child of _p'_ is _q'_, where _q_ is the first child of _p_ in _T_.
+* If _p_ has a sibling _q_ ordered immediately after it in _T_, then _q'_ is the right child of _p'_ in _T_; otherwise _p'_ does not have a right child.
+### Given such a representation _T'_ of a general ordered tree _T_, answer each of the following questions:
+1. Is a preorder traversal of _T'_ equivalent to a preorder traversal of _T_?
+b. Is a postorder traversal of _T'_ equivalent to a postorder traversal of _T_?
+c. Is an inorder traversal of _T'_ equivalent to one of the standard traversals of _T_? If so, which one?
 
 
 

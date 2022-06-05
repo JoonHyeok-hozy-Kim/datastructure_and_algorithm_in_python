@@ -292,3 +292,38 @@ def _parenthesize_text(T, p, text_list=None):
         text_list.pop()
         text_list.append(')')
     return text_list
+
+
+# Isomorphic Test Series
+def isomorphic_test(T1, T2):
+    T1_subtrees = generalize_subtrees(T1)
+    T2_subtrees = generalize_subtrees(T2)
+    if len(T1_subtrees) != len(T2_subtrees):
+        return False
+    for i in range(len(T1_subtrees)):
+        if T1_subtrees[i] != T2_subtrees[i]:
+            return False
+    return True
+
+def generalize_subtrees(T, p=None, result_list=None):
+    if p is None:
+        p = T.root()
+        result_list = []
+    for c in T.children(p):
+        generalize_subtrees(T, c, result_list)
+    result_list.append(parenthesis_generalize(T, p))
+    return result_list
+
+def parenthesis_generalize(T, p, text_list=None):
+    if text_list is None:
+        text_list = []
+    text_list.append('_')
+    if T.num_children(p) > 0:
+        text_list.append('(')
+        if T.left(p) is not None:
+            parenthesis_generalize(T, T.left(p), text_list)
+        text_list.append(',')
+        if T.right(p) is not None:
+            parenthesis_generalize(T, T.right(p), text_list)
+        text_list.append(')')
+    return ''.join(text_list)

@@ -245,6 +245,33 @@ def parenthesis_generalize(T, p, text_list=None):
         text_list.append(')')
     return ''.join(text_list)
 
+
+def clone_proper_binary_tree(T, p=None):
+    if p is None:
+        p = T.root()
+    temp_tree = LinkedBinaryTree()
+    temp_tree._add_root(p.element())
+    child_trees = []
+    for c in T.children(p):
+        child_trees.append(clone_proper_binary_tree(T, c))
+    if not T.is_leaf(p):
+        temp_tree._attach(temp_tree.root(), child_trees[0], child_trees[1])
+    return temp_tree
+
+def clone_improper_binary_tree(T, p=None):
+    if p is None:
+        p = T.root()
+    temp_tree = LinkedBinaryTree()
+    temp_root = temp_tree._add_root(p.element())
+    if T.left(p) is not None:
+        temp_tree._add_left(temp_root, T.left(p).element())
+    if T.right(p) is not None:
+        temp_tree._add_right(temp_root, T.right(p).element())
+    return temp_tree
+
+
+
+
 if __name__ == '__main__':
     a = LinkedBinaryTree()
     # recursive_add_left(a, 5)
@@ -348,15 +375,25 @@ if __name__ == '__main__':
     #     print(tree)
 
     a = LinkedBinaryTree()
-    a.fill_tree(5)
+    a.fill_tree(3)
     print(a)
-    aroot = a.root()
-    target = a.left(a.left(a.left(aroot)))
-    a._delete_subtree(target)
-    print(a)
+    # aroot = a.root()
+    # target = a.left(a.left(a.left(aroot)))
+    # a._delete_subtree(target)
+    # print(a)
+    #
+    # target1 = a.left(a.left(aroot))
+    # target2 = a.left(a.right(a.right(aroot)))
+    # print('{} <> {}'.format(target1.element(), target2.element()))
+    # a._swap(target1, target2)
+    # print(a)
 
-    target1 = a.left(a.left(aroot))
-    target2 = a.left(a.right(a.right(aroot)))
-    print('{} <> {}'.format(target1.element(), target2.element()))
-    a._swap(target1, target2)
+    b = clone_proper_binary_tree(a)
+    print(b)
+    from DataStructures.tree_application import isomorphic_test
+    print(isomorphic_test(a, b))
+
+    a._delete(a.left(a.right(a.root())))
+    print(a)
+    b = clone_improper_binary_tree(a)
     print(a)
