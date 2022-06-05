@@ -298,6 +298,17 @@ class BalanceFactor(BinaryEulerTour):
             return min(results)
 
 
+def reflection(T, p=None):
+    if p is None:
+        p = T.root()
+    temp_tree = LinkedBinaryTree()
+    temp_root = temp_tree._add_root(p.element())
+    if T.num_children(p) == 2:
+        left = reflection(T, T.right(p))
+        right = reflection(T, T.left(p))
+        temp_tree._attach(temp_root, left, right)
+    return temp_tree
+
 
 if __name__ == '__main__':
     a = LinkedBinaryTree()
@@ -402,7 +413,7 @@ if __name__ == '__main__':
     #     print(tree)
 
     a = LinkedBinaryTree()
-    a.fill_tree(5)
+    a.fill_tree(3)
     print(a)
     # aroot = a.root()
     # target = a.left(a.left(a.left(aroot)))
@@ -424,13 +435,23 @@ if __name__ == '__main__':
     # path_length = b.execute()
     # print(path_length)
 
-    b = BalanceFactor(a)
-    print(b.check_balance(a.root()))
+    # b = BalanceFactor(a)
+    # print(b.check_balance(a.root()))
+    #
+    # a._delete_subtree(a.left(a.right(a.left(a.root()))))
+    # a._add_left(a.right(a.left(a.root())), -11)
+    # print(a)
+    # c = BalanceFactor(a)
+    # print(c.check_balance(a.root()))
 
-    a._delete_subtree(a.left(a.right(a.left(a.root()))))
-    a._add_left(a.right(a.left(a.root())), -11)
-    print(a)
-    c = BalanceFactor(a)
-    print(c.check_balance(a.root()))
-
+    a_text = []
+    for i in a.preorder():
+        a_text.append(str(i.element()))
+    print(' '.join(a_text))
+    b = reflection(a)
+    print(b)
+    b_text = []
+    for i in b.postorder():
+        b_text.append(str(i.element()))
+    print(' '.join(b_text))
 

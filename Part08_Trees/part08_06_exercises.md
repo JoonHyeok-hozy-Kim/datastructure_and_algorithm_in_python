@@ -1037,6 +1037,43 @@ if __name__ == '__main__':
     print(c.check_balance(a.root()))
 ```
 
+### C-8.48 Given a proper binary tree T, define the reflection of T to be the binary tree T such that each node v in T is also in T , but the left child of v in T is v’s right child in T and the right child of v in T is v’s left child in T. Show that a preorder traversal of a proper binary tree T is the same as the postorder traversal of T’s reflection, but in reverse order.
+```python
+def reflection(T, p=None):
+    if p is None:
+        p = T.root()
+    temp_tree = LinkedBinaryTree()
+    temp_root = temp_tree._add_root(p.element())
+    if T.num_children(p) == 2:
+        left = reflection(T, T.right(p))
+        right = reflection(T, T.left(p))
+        temp_tree._attach(temp_root, left, right)
+    return temp_tree
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    a_text = []
+    for i in a.preorder():
+        a_text.append(str(i.element()))
+    print(' '.join(a_text))
+    
+    b = reflection(a)
+    print(b)
+    b_text = []
+    for i in b.postorder():
+        b_text.append(str(i.element()))
+    print(' '.join(b_text))
+```
+
+### C-8.49 Let the rank of a position p during a traversal be defined such that the first element visited has rank 1, the second element visited has rank 2, and so on. For each position p in a tree T, let pre(p) be the rank of p in a preorder traversal of T, let post(p) be the rank of p in a postorder traversal of T, let depth(p) be the depth of p, and let desc(p) be the number of descendants of p, including p itself. Derive a formula defining post(p) in terms of desc(p), depth(p), and pre(p), for each node p in T.
+
+
+
+
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md">Part 8. Trees</a>
