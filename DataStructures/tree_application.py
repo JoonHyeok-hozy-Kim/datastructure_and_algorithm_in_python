@@ -133,6 +133,18 @@ class ExpressionTree(LinkedBinaryTree):
                     return 0
                 return left_val / right_val
 
+    def postfix_notation(self, p=None, text_list=None):
+        if p is None:
+            p = self.root()
+            text_list = []
+        text_list.insert(0, p.element())
+        if self.right(p) is not None:
+            self.postfix_notation(self.right(p), text_list)
+        if self.left(p) is not None:
+            self.postfix_notation(self.left(p), text_list)
+        return ' '.join(text_list)
+
+
 def build_expression_trees(tokens):
     S = []
     tokenized = tokenize(tokens)

@@ -795,10 +795,15 @@ if __name__ == '__main__':
     # print(a.level_numbering(node2))
     # print(lca_by_level_number(a, a.level_numbering(node1), a.level_numbering(node2)))
 
-    exp = '((a+b)*(c-d))'
-    et = recursively_build_expression_trees(exp)
-    print(et)
-    print(et.evaluate({'a': 1,
-                       'b': 2,
-                       'c': 3,
-                       'd': 1}))
+    # exp = '((a+b)*(c-d))'
+    # et = recursively_build_expression_trees(exp)
+    # print(et)
+    # print(et.evaluate({'a': 1,
+    #                    'b': 2,
+    #                    'c': 3,
+    #                    'd': 1}))
+
+    exp = '(((5+2)*(8-3))/4)'
+    et = build_expression_trees(exp)
+    print(et, '=', et.evaluate())
+    print(et.postfix_notation())

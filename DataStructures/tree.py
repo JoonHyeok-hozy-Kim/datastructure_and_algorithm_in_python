@@ -525,3 +525,70 @@ class MutableLinkedBinaryTree(LinkedBinaryTree):
 
     def delete(self, p):
         return self._delete(p)
+
+
+class ArrayBasedTree:
+    class Position:
+        def __init__(self, container, element):
+            self._container = container
+            self._element = element
+
+        def element(self):
+            return self._element
+
+    def _make_position(self, element):
+        return self.Position(self, element)
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p.element() is None:
+            raise ValueError('p is no longer valid.')
+        return p.element()
+
+    def __init__(self):
+        self._data = []
+
+    def __len__(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def root(self):
+        if self.is_empty():
+            raise ValueError('Tree is Empty.')
+        return self._data[0]
+
+    def parent(self, p):
+        idx = self._data.index(p)
+        if i % 2 == 0:
+            return self._data[(idx - 2) // 2]
+        else:
+            return self._data[(idx - 1) // 2]
+
+    def left(self, p):
+        idx = self._data.index(p)
+        if len(self) < 2 * idx + 1:
+            return None
+        else:
+            return self._data[2 * idx + 1]
+
+    def right(self, p):
+        idx = self._data.index(p)
+        if len(self) < 2 * idx + 2:
+            return None
+        else:
+            return self._data[2 * idx + 2]
+
+    def is_leaf(self, p):
+        idx = self._data.index(p)
+        return self._data[2 * idx + 1] is None and self._data[2 * idx + 2] is None
+
+    def is_root(self, p):
+        return self._data.index(p) == 0
+
+    def f(self, p):
+        return self._data.index(p)

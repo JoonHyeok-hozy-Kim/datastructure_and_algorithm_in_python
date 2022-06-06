@@ -13,8 +13,6 @@ _
 /Part03_Algorithm_Analysis/part3_5_excercises.md,8\c\8c2af856c5f44bb9c833063ce16fcbf4eddbab39
 9
 	temp.html,9\2\9288dd1186e87ee1f94172deb19a56a205f99f3b
-G
-DataStructures/array.py,0\d\0d7641f27ffb239413561f2db4896c923c568dc1
 h
 8Part03_Algorithm_Analysis/part3_3_asymptotic_analysis.py,c\4\c41523b8817c8f30cdc622d3700a0548d7542867
 ]
@@ -50,8 +48,6 @@ c
 3Part05_Array_Based_Sequences/part05_07_exercises.py,5\5\558561af800c74bb7ccfe6157a9967700c8b2d1c
 V
 &Part04_Recursion/part4_00_recursion.md,e\0\e000c7ad396af66dc25eed93aa7194010b26c7b4
-S
-#Part08_Trees/part08_04_traversal.py,a\1\a17793ac9fc30dc5c53c28b56c30d227b9ceb988
 c
 3Part05_Array_Based_Sequences/part05_07_exercises.md,1\d\1d8b6a1aa73106f4df0610c438ea93148e24b66c
 o
