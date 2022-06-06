@@ -337,9 +337,33 @@ def inorder_next(T, p):
     return None
 
 
+def parenthesize(T):
+    text_list = _parenthesize_text(T)
+    return ''.join(text_list)
+
+def _parenthesize_text(T, p=None, indent_cnt=None, text_list=None):
+    if p is None:
+        p = T.root()
+        indent_cnt = 0
+        text_list = []
+    indent = []
+    for i in range(indent_cnt):
+        indent.append('  ')
+    text_list.append(''.join(indent))
+    text_list.append(str(p.element()))
+    if T.num_children(p) > 0:
+        text_list.append('(\n')
+        for c in T.children(p):
+            _parenthesize_text(T, c, indent_cnt+1, text_list)
+        text_list.append(''.join(indent))
+        text_list.append(')')
+    text_list.append('\n')
+    return text_list
+
+
 if __name__ == '__main__':
     a = LinkedBinaryTree()
-    a.fill_tree(5)
+    a.fill_tree(3)
     print(a)
     # recursive_add_left(a, 5)
 
@@ -490,21 +514,21 @@ if __name__ == '__main__':
     # for i in a:
     #     print('ITER -> {}'.format(i.element()))
 
-    c = MutableLinkedBinaryTree()
-    root = c.add_root(0)
-    l = c.add_left(root, 0)
-    ll = c.add_left(l, 0)
-    c.add_left(ll, 0)
-    llr = c.add_right(ll, 0)
-    c.add_left(llr, 0)
-    c.add_right(llr, 0)
-    c.add_right(l, 0)
-    r = c.add_right(root, 0)
-    rl = c.add_left(r, 0)
-    c.add_right(rl, 0)
-    c.add_left(rl, 0)
-    c.add_right(r, 0)
-    print(c)
+    # c = MutableLinkedBinaryTree()
+    # root = c.add_root(0)
+    # l = c.add_left(root, 0)
+    # ll = c.add_left(l, 0)
+    # c.add_left(ll, 0)
+    # llr = c.add_right(ll, 0)
+    # c.add_left(llr, 0)
+    # c.add_right(llr, 0)
+    # c.add_right(l, 0)
+    # r = c.add_right(root, 0)
+    # rl = c.add_left(r, 0)
+    # c.add_right(rl, 0)
+    # c.add_left(rl, 0)
+    # c.add_right(r, 0)
+    # print(c)
 
-    from os import walk
+    print(parenthesize(a))
 

@@ -273,7 +273,7 @@ class ExpressionGenerator:
         layout.execute()
 
 
-# Parenthesize Tree Algorythm.
+# Parenthesize Tree Algorithm.
 def parenthesize(T, p=None):
     if p is None:
         p = T.root()
@@ -292,7 +292,6 @@ def _parenthesize_text(T, p, text_list=None):
         text_list.pop()
         text_list.append(')')
     return text_list
-
 
 # Isomorphic Test Series
 def isomorphic_test(T1, T2):

@@ -1229,7 +1229,36 @@ print(c)
 * Thus, if topdown is true, the tree traverses in preorder. If not, it traverses in postorder.
 
 ### C-8.56 The indented parenthetic representation of a tree T is a variation of the parenthetic representation of T (see Code Fragment 8.25) that uses indentation and line breaks as illustrated in Figure 8.24. Give an algorithm that prints this representation of a tree.
+```python
+def parenthesize(T):
+    text_list = _parenthesize_text(T)
+    return ''.join(text_list)
 
+def _parenthesize_text(T, p=None, indent_cnt=None, text_list=None):
+    if p is None:
+        p = T.root()
+        indent_cnt = 0
+        text_list = []
+    indent = []
+    for i in range(indent_cnt):
+        indent.append('  ')
+    text_list.append(''.join(indent))
+    text_list.append(str(p.element()))
+    if T.num_children(p) > 0:
+        text_list.append('(\n')
+        for c in T.children(p):
+            _parenthesize_text(T, c, indent_cnt+1, text_list)
+        text_list.append(''.join(indent))
+        text_list.append(')')
+    text_list.append('\n')
+    return text_list
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(3)
+    print(a)
+    print(parenthesize(a))
+```
 
 
 
