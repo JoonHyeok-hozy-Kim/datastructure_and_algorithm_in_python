@@ -1260,6 +1260,58 @@ if __name__ == '__main__':
     print(parenthesize(a))
 ```
 
+### C-8.57 Let T be a binary tree with n positions. Define a Roman position to be a position p in T, such that the number of descendants in p’s left subtree differ from the number of descendants in p’s right subtree by at most 5. Describe a linear-time method for finding each position p of T, such that p is not a Roman position, but all of p’s descendants are Roman.
+* Sol.) O(n) running time algorithm as follows.
+```python
+def roman_position_tester(T, p):
+    left_num = 0
+    right_num = 0
+    if T.left(p) is not None:
+        left_num = _roman_descendants(T, T.left(p))
+        if not left_num:
+            return False
+    if T.right(p) is not None:
+        right_num = _roman_descendants(T, T.right(p))
+        if not right_num:
+            return False
+    if left_num - right_num > 5:
+        return False
+    else:
+        return True
+
+def _roman_descendants(T, p):
+    if T.is_leaf(p):
+        return 1
+    else:
+        left_num = 0
+        right_num = 0
+        if T.left(p) is not None:
+            left_num = _roman_descendants(T, T.left(p))
+            if not left_num:
+                return False
+        if T.right(p) is not None:
+            right_num = _roman_descendants(T, T.right(p))
+            if not right_num:
+                return False
+    if left_num - right_num <= 5:
+        return left_num + right_num + 1
+    else:
+        return False
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(4)
+    print(a)
+    print(roman_position_tester(a, a.root()))
+
+    a._delete_subtree(a.right(a.root()))
+    print(a)
+    print(roman_position_tester(a, a.root()))
+```
+
+
+
+
 
 
 

@@ -360,10 +360,46 @@ def _parenthesize_text(T, p=None, indent_cnt=None, text_list=None):
     text_list.append('\n')
     return text_list
 
+def roman_position_tester(T, p):
+    left_num = 0
+    right_num = 0
+    if T.left(p) is not None:
+        left_num = _roman_descendants(T, T.left(p))
+        if not left_num:
+            return False
+    if T.right(p) is not None:
+        right_num = _roman_descendants(T, T.right(p))
+        if not right_num:
+            return False
+    if left_num - right_num > 5:
+        return False
+    else:
+        return True
+
+def _roman_descendants(T, p):
+    if T.is_leaf(p):
+        return 1
+    else:
+        left_num = 0
+        right_num = 0
+        if T.left(p) is not None:
+            left_num = _roman_descendants(T, T.left(p))
+            if not left_num:
+                return False
+        if T.right(p) is not None:
+            right_num = _roman_descendants(T, T.right(p))
+            if not right_num:
+                return False
+    if left_num - right_num <= 5:
+        return left_num + right_num + 1
+    else:
+        return False
+
+
 
 if __name__ == '__main__':
     a = LinkedBinaryTree()
-    a.fill_tree(3)
+    a.fill_tree(4)
     print(a)
     # recursive_add_left(a, 5)
 
@@ -530,5 +566,11 @@ if __name__ == '__main__':
     # c.add_right(r, 0)
     # print(c)
 
-    print(parenthesize(a))
+    # print(parenthesize(a))
+
+    print(roman_position_tester(a, a.root()))
+
+    a._delete_subtree(a.right(a.root()))
+    print(a)
+    print(roman_position_tester(a, a.root()))
 
