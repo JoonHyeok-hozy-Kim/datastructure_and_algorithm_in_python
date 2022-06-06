@@ -1309,6 +1309,74 @@ if __name__ == '__main__':
     print(roman_position_tester(a, a.root()))
 ```
 
+### C-8.58 Let T be a tree with n positions. Define the lowest common ancestor(LCA) between two positions p and q as the lowest position in T that has both p and q as descendants (where we allow a position to be a descendant of itself). Given two positions p and q, describe an efficient algorithm for finding the LCA of p and q. What is the running time of your algorithm?
+* Sol.) O(n) for traversing the tree.
+```python
+from copy import deepcopy
+def lowest_common_ancestor(T, position_list):
+    path_list = tour_tree(T, position_list, T.root(), [], [])
+    min_len = len(path_list[0])
+    for path in path_list:
+        if min_len > len(path):
+            min_len = len(path)
+    ancestor = None
+
+    for i in range(min_len):
+        common_flag = True
+        temp = path_list[0][i]
+        for path in path_list:
+            if temp != path[i]:
+                common_flag = False
+                break
+        if common_flag:
+            ancestor = temp
+        else:
+            break
+
+    return ancestor
+
+def tour_tree(T, position_list, p, path, result_list):
+    if len(position_list) == 0:
+        return result_list
+    path.append(p)
+    for i in range(len(position_list)):
+        if position_list[i] == p:
+            path_copy = []
+            for position in path:
+                path_copy.append(position)
+            result_list.append(path_copy)
+            position_list.pop(i)
+        break
+    if len(position_list) == 0:
+        return result_list
+    for c in T.children(p):
+        tour_tree(T, position_list, c, path, result_list)
+    path.pop()
+    return result_list
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(4)
+    print(a)
+    
+    p = a.left(a.left(a.root()))
+    q = a.right(a.left(a.root()))
+    r = a.right(q)
+    s = a.right(a.right(a.root()))
+
+    p_list = [p, q, r, s]
+    p_list_copy = deepcopy(p_list)
+    l = lowest_common_ancestor(a, p_list)
+
+    text_list = []
+    for position in p_list_copy:
+        text_list.append(str(position.element()))
+        text_list.append(', ')
+    text_list.pop()
+    text_list.append(' -> ')
+    text_list.append(str(l.element()))
+    print(''.join(text_list))
+```
 
 
 
