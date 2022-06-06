@@ -123,6 +123,8 @@ class LinkedBinaryTree(BinaryTree):
         self._root = None
         self._size = 0
         self._sentinel = self._Node(None, None, None, None)
+
+        # Class members for the explicit iteration logic
         self._preorder_iter = None
         self._preorder_iter_stop = False
         self._preorder_iter_cnt = 0
@@ -246,6 +248,7 @@ class LinkedBinaryTree(BinaryTree):
         # return self.breadthfirst()
         # return self.inorder()
 
+    # [C-8.51] Explicit preorder iteration Logic starts.
     def __next__(self):
         if self._preorder_iter_cnt == self._size-1:
             raise StopIteration
@@ -270,6 +273,7 @@ class LinkedBinaryTree(BinaryTree):
 
     def __iter__(self):
         return self
+    # [C-8.51] Explicit preorder iteration Logic ends.
 
     def preorder(self):
         if not self.is_empty():

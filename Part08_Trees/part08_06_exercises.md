@@ -1117,6 +1117,118 @@ if __name__ == '__main__':
 ```
 
 ### C-8.51 To implement the preorder method of the LinkedBinaryTree class, we relied on the convenience of Python’s generator syntax and the yield statement. Give an alternative implementation of preorder that returns an explicit instance of a nested iterator class. (See Section 2.3.4 for discussion of iterators.)
+```python
+def __next__(self):
+    if self._preorder_iter_cnt == self._size-1:
+        raise StopIteration
+    if self._preorder_iter is None:
+        self._preorder_iter = self.root()
+    else:
+        self._next_preorder(self.root())
+    self._preorder_iter_stop = False
+    return self._preorder_iter
+
+def _next_preorder(self, p):
+    if self._preorder_iter_stop:
+        self._preorder_iter = p
+        self._preorder_iter_cnt += 1
+        return True
+    if p == self._preorder_iter:
+        self._preorder_iter_stop = True
+    if not self.is_leaf(p):
+        for c in self.children(p):
+            if self._next_preorder(c):
+                return True
+
+def __iter__(self):
+    return self
+```
+
+### C-8.52 Algorithm preorder_draw() draws a binary tree T by assigning x- and y-coordinates to each position p such that x(p) is the number of nodes preceding p in the preorder traversal of T and y(p) is the depth of p in T. 
+1. Show that the drawing of T produced by preorder draw has no pairs of crossing edges.
+```python
+from copy import deepcopy
+class BinaryLayout(BinaryEulerTour):
+    def __init__(self, tree):
+        super().__init__(tree)
+        self._count = 0
+        self._x_max = 0
+        self._y_max = 0
+        self._graphic = [[' ']]
+
+    def execute(self):
+        super().execute()
+        str_graphic = self.str_graphic()
+        # print(str_graphic)
+        return str_graphic
+
+    def str_graphic(self):
+        text_list = []
+        for i in self._graphic:
+            text_list.append(''.join(i))
+            text_list.append('\n')
+        result = ''.join(text_list)
+        return result
+
+    def _hook_invisit(self, p, d, path):
+        x_increase = len(str(p.element()))
+        self.x_max_increase(x_increase)
+        self.y_max_increase(d+1)
+        for i in range(x_increase):
+            self._graphic[d+1][self._x_max-i] = str(p.element())[x_increase-1-i]
+        return None
+
+    def x_max_increase(self, n):
+        for row in self._graphic:
+            for i in range(n):
+                row.append(' ')
+        self._x_max += n
+
+    def y_max_increase(self, n):
+        if n < self._y_max:
+            return
+        new_row = [' '] * (self._x_max + 1)
+        for i in range(n - self._y_max):
+            new_row_copy = deepcopy(new_row)
+            self._graphic.append(new_row_copy)
+        self._y_max = n
+```
+2. Redraw the binary tree of Figure 8.22 using preorder draw.
+```python
+c = MutableLinkedBinaryTree()
+root = c.add_root(0)
+l = c.add_left(root, 0)
+ll = c.add_left(l, 0)
+c.add_left(ll, 0)
+llr = c.add_right(ll, 0)
+c.add_left(llr, 0)
+c.add_right(llr, 0)
+c.add_right(l, 0)
+r = c.add_right(root, 0)
+rl = c.add_left(r, 0)
+c.add_right(rl, 0)
+c.add_left(rl, 0)
+c.add_right(r, 0)
+print(c)
+```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_52_draw.png" style="height: 150px;"></img><br/>
+</p>
+
+### C-8.53 Redo the previous problem for the algorithm postorder draw that is similar to preorder draw except that it assigns x(p) to be the number of nodes preceding position p in the postorder traversal.
+* Sol.) Already used in my logic on the point that the member x_max counts the number of previous nodes.
+
+### C-8.54 Design an algorithm for drawing general trees, using a style similar to the inorder traversal approach for drawing binary trees.
+* Sol.) For general trees, _hook_invisit() method for BinaryTree may not work.
+  * Thus, similar method that may work during the for-loop in children() generator must be made.
+  * Before entering the loop, using a parameter (num_children())//2 as the point where the loop pauses and drawing parent may work.
+
+### C-8.55 Exercise P-4.27 described the walk function of the os module. This function performs a traversal of the implicit tree represented by the file system. Read the formal documentation for the function, and in particular its use of an optional Boolean parameter named topdown. Describe how its behavior relates to tree traversal algorithms described in this chapteer.
+* According to the formal documentation, the topdown arg works as follows. 
+  * _If optional arg 'topdown' is true or not specified, the triple for a  directory is generated before the triples for any of its subdirectories (directories are generated top down).  If topdown is false, the triple for a directory is generated after the triples for all of its subdirectories (directories are generated bottom up)._
+* Thus, if topdown is true, the tree traverses in preorder. If not, it traverses in postorder.
+
+### C-8.56 The indented parenthetic representation of a tree T is a variation of the parenthetic representation of T (see Code Fragment 8.25) that uses indentation and line breaks as illustrated in Figure 8.24. Give an algorithm that prints this representation of a tree.
 
 
 

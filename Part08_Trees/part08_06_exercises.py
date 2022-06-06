@@ -487,5 +487,24 @@ if __name__ == '__main__':
     # print(postorder_next(a, b).element())
     # print(inorder_next(a, b).element())
 
-    for i in a:
-        print('ITER -> {}'.format(i.element()))
+    # for i in a:
+    #     print('ITER -> {}'.format(i.element()))
+
+    c = MutableLinkedBinaryTree()
+    root = c.add_root(0)
+    l = c.add_left(root, 0)
+    ll = c.add_left(l, 0)
+    c.add_left(ll, 0)
+    llr = c.add_right(ll, 0)
+    c.add_left(llr, 0)
+    c.add_right(llr, 0)
+    c.add_right(l, 0)
+    r = c.add_right(root, 0)
+    rl = c.add_left(r, 0)
+    c.add_right(rl, 0)
+    c.add_left(rl, 0)
+    c.add_right(r, 0)
+    print(c)
+
+    from os import walk
+
