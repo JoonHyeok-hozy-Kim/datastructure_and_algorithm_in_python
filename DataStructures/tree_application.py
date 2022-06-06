@@ -101,18 +101,25 @@ class ExpressionTree(LinkedBinaryTree):
             self._parenthesize_recur(self.right(p), result)
             result.append(')')
 
-    def evaluate(self):
-        return self._evaluate_recur(self.root())
+    def evaluate(self, dictionary=None):
+        return self._evaluate_recur(self.root(), dictionary)
 
-    def _evaluate_recur(self, p):
+    def _evaluate_recur(self, p, dictionary=None):
         if self.is_leaf(p):
             if isinstance(p.element(), ExpressionTree):
-                return float(p.element().root().element())
-            return float(p.element())
+                result = p.element().root().element()
+            else:
+                result = p.element()
+            if result.isnumeric():
+                return float(result)
+            elif dictionary is not None:
+                return dictionary[result]
+            error_message = 'Unproper element in the expression : {}'.format(result)
+            raise ValueError(error_message)
         else:
             op = p.element()
-            left_val = self._evaluate_recur(self.left(p))
-            right_val = self._evaluate_recur(self.right(p))
+            left_val = self._evaluate_recur(self.left(p), dictionary)
+            right_val = self._evaluate_recur(self.right(p), dictionary)
             # print('[O] {} {} {}'.format(left_val, op, right_val))
             if op == '+':
                 return left_val + right_val

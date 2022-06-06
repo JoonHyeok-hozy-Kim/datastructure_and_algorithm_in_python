@@ -1533,6 +1533,50 @@ if __name__ == '__main__':
     print(et.evaluate())
 ```
 
+### C-8.62 Note that the build expression tree function of the ExpressionTree class is written in such a way that a leaf token can be any string; for example, it parses the expression (a*(b+c)) . However, within the evaluate method, an error would occur when attempting to convert a leaf token to a number. Modify the evaluate method to accept an optional Python dictionary that can be used to map such string variables to numeric values, with a syntax such as T.evaluate({ a :3, b :1, c :5}). In this way, the same algebraic expression can be evaluated using different values.
+```python
+    def evaluate(self, dictionary=None):
+        return self._evaluate_recur(self.root(), dictionary)
+
+    def _evaluate_recur(self, p, dictionary=None):
+        if self.is_leaf(p):
+            if isinstance(p.element(), ExpressionTree):
+                result = p.element().root().element()
+            else:
+                result = p.element()
+            if result.isnumeric():
+                return float(result)
+            elif dictionary is not None:
+                return dictionary[result]
+            error_message = 'Unproper element in the expression : {}'.format(result)
+            raise ValueError(error_message)
+        else:
+            op = p.element()
+            left_val = self._evaluate_recur(self.left(p), dictionary)
+            right_val = self._evaluate_recur(self.right(p), dictionary)
+            # print('[O] {} {} {}'.format(left_val, op, right_val))
+            if op == '+':
+                return left_val + right_val
+            elif op == '-':
+                return left_val - right_val
+            elif op == '*':
+                return left_val * right_val
+            else:
+                if right_val == 0:
+                    # print('Zero-division : {} / {}'.format(left_val, right_val))
+                    return 0
+                return left_val / right_val
+
+if __name__ == '__main__':
+    exp = '((a+b)*(c-d))'
+    from DataStructures.tree_application import build_expression_trees
+    et = build_expression_trees(exp)
+    print(et)
+    print(et.evaluate({'a': 1, 
+                       'b': 2, 
+                       'c': 3, 
+                       'd': 1}))
+```
 
 
 
