@@ -500,6 +500,69 @@ class Diameter(BinaryEulerTour):
             'node2': node2
         }
 
+def lca_by_level_number(T, f_p, f_q):
+    if f_p == f_q:
+        return f_p
+    max_val = max(f_p, f_q)
+    min_val = min(f_p, f_q)
+    if max_val%2 == 0:
+        max_val = (max_val-2)//2
+    else:
+        max_val = (max_val-1)//2
+    return lca_by_level_number(T, max_val, min_val)
+
+
+from DataStructures.tree_application import ExpressionTree
+def build_expression_trees(tokens):
+    S = []
+    tokenized = tokenize(tokens)
+    for t in tokenized:
+        if t in '+-*/':
+            S.append(t)
+        elif t not in '()':
+            S.append(ExpressionTree(t))
+        elif t == ')':
+            right = S.pop()
+            op = S.pop()
+            left = S.pop()
+            S.append(ExpressionTree(op, left, right))
+    return S.pop()
+
+def recursively_build_expression_trees(tokens, tokenized=None, S=None):
+    if tokenized is None:
+        tokenized = tokenize(tokens)
+        S = []
+    if len(tokenized) == 0:
+        return S.pop()
+    token = tokenized.pop(0)
+    if token in '+-*/':
+        S.append(token)
+    elif token not in '()':
+        S.append(ExpressionTree(token))
+    elif token == ')':
+        right = S.pop()
+        op = S.pop()
+        left = S.pop()
+        S.append(ExpressionTree(op, left, right))
+    return recursively_build_expression_trees(tokens, tokenized, S)
+
+def tokenize(raw):
+    result_set = []
+    temp_numeric = []
+    for c in raw:
+        if c.isnumeric():
+            temp_numeric.append(c)
+        else:
+            if len(temp_numeric) > 0:
+                result_set.append(''.join(temp_numeric))
+                temp_numeric = []
+            if c == ' ':
+                pass
+            else:
+                result_set.append(c)
+    return result_set
+
+
 
 if __name__ == '__main__':
     a = LinkedBinaryTree()
@@ -696,30 +759,43 @@ if __name__ == '__main__':
     # text_list.append(str(l.element()))
     # print(''.join(text_list))
 
-    # Test 1
-    d = Diameter(a)
-    d.calculate()
+    # # Test 1
+    # d = Diameter(a)
+    # d.calculate()
+    #
+    # # Test 2
+    # a._delete_subtree(a.left(a.left(a.root())))
+    # a._delete_subtree(a.left(a.left(a.right(a.root()))))
+    # print(a)
+    # d = Diameter(a)
+    # d.calculate()
+    #
+    # # Test 3
+    # b = MutableLinkedBinaryTree()
+    # root = b.add_root(0)
+    # lefty = b.add_left(root, 1)
+    # righty = b.add_right(lefty, 6)
+    # for i in range(4):
+    #     lefty = b.add_left(lefty, i+2)
+    # for i in range(6):
+    #     righty = b.add_right(righty, i+7)
+    # new_righty = b.add_right(root, 13)
+    # for i in range(8):
+    #     new_righty = b.add_right(new_righty, i+14)
+    #     b.add_left(new_righty, (i+1)*(-1))
+    # print(b)
+    # e = Diameter(b)
+    # e.calculate()
 
-    # Test 2
-    a._delete_subtree(a.left(a.left(a.root())))
-    a._delete_subtree(a.left(a.left(a.right(a.root()))))
-    print(a)
-    d = Diameter(a)
-    d.calculate()
 
-    # Test 3
-    b = MutableLinkedBinaryTree()
-    root = b.add_root(0)
-    lefty = b.add_left(root, 1)
-    righty = b.add_right(lefty, 6)
-    for i in range(4):
-        lefty = b.add_left(lefty, i+2)
-    for i in range(6):
-        righty = b.add_right(righty, i+7)
-    new_righty = b.add_right(root, 13)
-    for i in range(8):
-        new_righty = b.add_right(new_righty, i+14)
-        b.add_left(new_righty, (i+1)*(-1))
-    print(b)
-    e = Diameter(b)
-    e.calculate()
+    # root = a.root()
+    # node1 = a.left(a.left(root))
+    # node2 = a.right(a.right(root))
+    # print(a.level_numbering(node1))
+    # print(a.level_numbering(node2))
+    # print(lca_by_level_number(a, a.level_numbering(node1), a.level_numbering(node2)))
+
+    exp = '((1+1)*(6-4))'
+    et = recursively_build_expression_trees(exp)
+    print(et)
+    print(et.evaluate())

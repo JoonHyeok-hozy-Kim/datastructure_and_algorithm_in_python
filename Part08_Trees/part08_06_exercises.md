@@ -1476,6 +1476,63 @@ if __name__ == '__main__':
     e.calculate()
 ```
 
+### C-8.60 Suppose each position p of a binary tree T is labeled with its value f(p) in a level numbering of T. Design a fast method for determining f(a) for the lowest common ancestor (LCA), a, of two positions p and q in T, given f(p) and f(q). You do not need to find position a, just value f(a).
+```python
+def lca_by_level_number(T, f_p, f_q):
+    if f_p == f_q:
+        return f_p
+    max_val = max(f_p, f_q)
+    min_val = min(f_p, f_q)
+    if max_val%2 == 0:
+        max_val = (max_val-2)//2
+    else:
+        max_val = (max_val-1)//2
+    return lca_by_level_number(T, max_val, min_val)
+```
+
+### C-8.61 Give an alternative implementation of the build_expression_tree() method of the ExpressionTree class that relies on recursion to perform an implicit Euler tour of the tree that is being built.
+```python
+def recursively_build_expression_trees(tokens, tokenized=None, S=None):
+    if tokenized is None:
+        tokenized = tokenize(tokens)
+        S = []
+    if len(tokenized) == 0:
+        return S.pop()
+    token = tokenized.pop(0)
+    if token in '+-*/':
+        S.append(token)
+    elif token not in '()':
+        S.append(ExpressionTree(token))
+    elif token == ')':
+        right = S.pop()
+        op = S.pop()
+        left = S.pop()
+        S.append(ExpressionTree(op, left, right))
+    return recursively_build_expression_trees(tokens, tokenized, S)
+
+def tokenize(raw):
+    result_set = []
+    temp_numeric = []
+    for c in raw:
+        if c.isnumeric():
+            temp_numeric.append(c)
+        else:
+            if len(temp_numeric) > 0:
+                result_set.append(''.join(temp_numeric))
+                temp_numeric = []
+            if c == ' ':
+                pass
+            else:
+                result_set.append(c)
+    return result_set
+
+if __name__ == '__main__':
+    exp = '((1+1)*(6-4))'
+    et = recursively_build_expression_trees(exp)
+    print(et)
+    print(et.evaluate())
+```
+
 
 
 

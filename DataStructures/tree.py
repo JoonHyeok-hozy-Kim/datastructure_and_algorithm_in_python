@@ -308,6 +308,13 @@ class LinkedBinaryTree(BinaryTree):
             yield popped
             dq.extend(self.children(popped))
 
+    def level_numbering(self, p):
+        idx = 0
+        for position in self.breadthfirst():
+            if position == p:
+                return idx
+            idx +=1
+
     def inorder(self):
         if not self.is_empty():
             for p in self._subtree_inorder(self.root()):
