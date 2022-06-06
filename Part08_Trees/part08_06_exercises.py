@@ -398,7 +398,7 @@ def _roman_descendants(T, p):
 
 from copy import deepcopy
 def lowest_common_ancestor(T, position_list):
-    path_list = tour_tree(T, position_list, T.root(), [], [])
+    path_list = tour_tree_for_lca(T, position_list, T.root(), [], [])
     min_len = len(path_list[0])
     for path in path_list:
         if min_len > len(path):
@@ -419,7 +419,7 @@ def lowest_common_ancestor(T, position_list):
 
     return ancestor
 
-def tour_tree(T, position_list, p, path, result_list):
+def tour_tree_for_lca(T, position_list, p, path, result_list):
     if len(position_list) == 0:
         return result_list
     path.append(p)
@@ -434,11 +434,71 @@ def tour_tree(T, position_list, p, path, result_list):
     if len(position_list) == 0:
         return result_list
     for c in T.children(p):
-        tour_tree(T, position_list, c, path, result_list)
+        tour_tree_for_lca(T, position_list, c, path, result_list)
     path.pop()
     return result_list
 
 
+class Diameter(BinaryEulerTour):
+
+    def __init__(self, tree):
+        super().__init__(tree)
+
+    def calculate(self):
+        result = self.execute()
+        print('{} - {} : {}'.format(result['node1']['position'].element(),
+                                    result['node2']['position'].element(),
+                                    result['diameter']))
+        return result
+
+    def _hook_postvisit(self, p, d, path, results):
+        parent = {
+            'position': p,
+            'depth': d,
+        }
+        if self.tree().is_leaf(p):
+            return self._partial_diameter(parent, parent, None)
+        else:
+            return self._comparison(parent, results[0], results[1])
+
+    def _comparison(self, parent, left_diameter, right_diameter):
+        nominees = []
+        if left_diameter is not None and right_diameter is not None:
+            nominees.append(left_diameter)
+            nominees.append(right_diameter)
+            nominees.append(self._partial_diameter(parent, left_diameter['node1'], right_diameter['node1']))
+            if right_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node1'], right_diameter['node2']))
+            if left_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node2'], right_diameter['node1']))
+                if right_diameter['node2'] is not None:
+                    nominees.append(self._partial_diameter(parent, left_diameter['node2'], right_diameter['node2']))
+        elif left_diameter is None:
+            nominees.append(right_diameter)
+            nominees.append(self._partial_diameter(parent, right_diameter['node1'], parent))
+            if right_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, right_diameter['node2'], parent))
+        else:
+            nominees.append(left_diameter)
+            nominees.append(self._partial_diameter(parent, left_diameter['node1'], parent))
+            if left_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node2'], parent))
+        cursor = nominees[0]
+        for nominee in nominees:
+            if cursor['diameter'] < nominee['diameter']:
+                cursor = nominee
+        return cursor
+
+    def _partial_diameter(self, parent, node1, node2):
+        if node2 is None:
+            diameter = 0
+        else:
+            diameter = node1['depth'] + node2['depth'] - 2 * parent['depth']
+        return {
+            'diameter': diameter,
+            'node1': node1,
+            'node2': node2
+        }
 
 
 if __name__ == '__main__':
@@ -618,20 +678,48 @@ if __name__ == '__main__':
     # print(a)
     # print(roman_position_tester(a, a.root()))
 
-    p = a.left(a.left(a.root()))
-    q = a.right(a.left(a.root()))
-    r = a.right(q)
-    s = a.right(a.right(a.root()))
+    # p = a.left(a.left(a.root()))
+    # q = a.right(a.left(a.root()))
+    # r = a.right(q)
+    # s = a.right(a.right(a.root()))
+    #
+    # p_list = [p, q, r, s]
+    # p_list_copy = deepcopy(p_list)
+    # l = lowest_common_ancestor(a, p_list)
+    #
+    # text_list = []
+    # for position in p_list_copy:
+    #     text_list.append(str(position.element()))
+    #     text_list.append(', ')
+    # text_list.pop()
+    # text_list.append(' -> ')
+    # text_list.append(str(l.element()))
+    # print(''.join(text_list))
 
-    p_list = [p, q, r, s]
-    p_list_copy = deepcopy(p_list)
-    l = lowest_common_ancestor(a, p_list)
+    # Test 1
+    d = Diameter(a)
+    d.calculate()
 
-    text_list = []
-    for position in p_list_copy:
-        text_list.append(str(position.element()))
-        text_list.append(', ')
-    text_list.pop()
-    text_list.append(' -> ')
-    text_list.append(str(l.element()))
-    print(''.join(text_list))
+    # Test 2
+    a._delete_subtree(a.left(a.left(a.root())))
+    a._delete_subtree(a.left(a.left(a.right(a.root()))))
+    print(a)
+    d = Diameter(a)
+    d.calculate()
+
+    # Test 3
+    b = MutableLinkedBinaryTree()
+    root = b.add_root(0)
+    lefty = b.add_left(root, 1)
+    righty = b.add_right(lefty, 6)
+    for i in range(4):
+        lefty = b.add_left(lefty, i+2)
+    for i in range(6):
+        righty = b.add_right(righty, i+7)
+    new_righty = b.add_right(root, 13)
+    for i in range(8):
+        new_righty = b.add_right(new_righty, i+14)
+        b.add_left(new_righty, (i+1)*(-1))
+    print(b)
+    e = Diameter(b)
+    e.calculate()

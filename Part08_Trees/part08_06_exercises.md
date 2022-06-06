@@ -1378,7 +1378,103 @@ if __name__ == '__main__':
     print(''.join(text_list))
 ```
 
+### C-8.59 Let T be a binary tree with n positions, and, for any position p in T, let dp denote the depth of p in T. The distance between two positions p and q in T is d_p +d_q −2d_a, where a is the lowest common ancestor (LCA) of p and q. The diameter of T is the maximum distance between two positions in T. Describe an efficient algorithm for finding the diameter of T. What is the running time of your algorithm?
+* Sol.) Claimed to be O(n). 
+  * why?) n for traversal. And constant number of operations made during _hook_postvisit() operation.
+```python
+class Diameter(BinaryEulerTour):
 
+    def __init__(self, tree):
+        super().__init__(tree)
+
+    def calculate(self):
+        result = self.execute()
+        print('{} - {} : {}'.format(result['node1']['position'].element(),
+                                    result['node2']['position'].element(),
+                                    result['diameter']))
+        return result
+
+    def _hook_postvisit(self, p, d, path, results):
+        parent = {
+            'position': p,
+            'depth': d,
+        }
+        if self.tree().is_leaf(p):
+            return self._partial_diameter(parent, parent, None)
+        else:
+            return self._comparison(parent, results[0], results[1])
+
+    def _comparison(self, parent, left_diameter, right_diameter):
+        nominees = []
+        if left_diameter is not None and right_diameter is not None:
+            nominees.append(left_diameter)
+            nominees.append(right_diameter)
+            nominees.append(self._partial_diameter(parent, left_diameter['node1'], right_diameter['node1']))
+            if right_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node1'], right_diameter['node2']))
+            if left_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node2'], right_diameter['node1']))
+                if right_diameter['node2'] is not None:
+                    nominees.append(self._partial_diameter(parent, left_diameter['node2'], right_diameter['node2']))
+        elif left_diameter is None:
+            nominees.append(right_diameter)
+            nominees.append(self._partial_diameter(parent, right_diameter['node1'], parent))
+            if right_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, right_diameter['node2'], parent))
+        else:
+            nominees.append(left_diameter)
+            nominees.append(self._partial_diameter(parent, left_diameter['node1'], parent))
+            if left_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node2'], parent))
+        cursor = nominees[0]
+        for nominee in nominees:
+            if cursor['diameter'] < nominee['diameter']:
+                cursor = nominee
+        return cursor
+
+    def _partial_diameter(self, parent, node1, node2):
+        if node2 is None:
+            diameter = 0
+        else:
+            diameter = node1['depth'] + node2['depth'] - 2 * parent['depth']
+        return {
+            'diameter': diameter,
+            'node1': node1,
+            'node2': node2
+        }
+
+if __name__ == '__main__':
+    a = LinkedBinaryTree()
+    a.fill_tree(4)
+    print(a)
+    # Test 1
+    d = Diameter(a)
+    d.calculate()
+
+    # Test 2
+    a._delete_subtree(a.left(a.left(a.root())))
+    a._delete_subtree(a.left(a.left(a.right(a.root()))))
+    print(a)
+    d = Diameter(a)
+    d.calculate()
+
+    # Test 3
+    b = MutableLinkedBinaryTree()
+    root = b.add_root(0)
+    lefty = b.add_left(root, 1)
+    righty = b.add_right(lefty, 6)
+    for i in range(4):
+        lefty = b.add_left(lefty, i+2)
+    for i in range(6):
+        righty = b.add_right(righty, i+7)
+    new_righty = b.add_right(root, 13)
+    for i in range(8):
+        new_righty = b.add_right(new_righty, i+14)
+        b.add_left(new_righty, (i+1)*(-1))
+    print(b)
+    e = Diameter(b)
+    e.calculate()
+```
 
 
 

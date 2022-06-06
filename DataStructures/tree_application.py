@@ -326,3 +326,146 @@ def parenthesis_generalize(T, p, text_list=None):
             parenthesis_generalize(T, T.right(p), text_list)
         text_list.append(')')
     return ''.join(text_list)
+
+
+# Searching Lowest Common Ancestor(LCA)
+from copy import deepcopy
+def lowest_common_ancestor(T, position_list):
+    """
+    Method that searches the Lowest Common Ancestor(LCA)
+    :param T: Target tree
+    :param position_list: list of positions belong to T. Multiple positions more than three are allowed.
+    :return: Position of the LCA
+    """
+    path_list = _tour_tree_for_lca(T, position_list, T.root(), [], [])
+    min_len = len(path_list[0])
+    for path in path_list:
+        if min_len > len(path):
+            min_len = len(path)
+    ancestor = None
+
+    for i in range(min_len):
+        common_flag = True
+        temp = path_list[0][i]
+        for path in path_list:
+            if temp != path[i]:
+                common_flag = False
+                break
+        if common_flag:
+            ancestor = temp
+        else:
+            break
+
+    return ancestor
+
+def _tour_tree_for_lca(T, position_list, p, path, result_list):
+    """
+    Hidden touring method for LCA searching.
+    """
+    if len(position_list) == 0:
+        return result_list
+    path.append(p)
+    for i in range(len(position_list)):
+        if position_list[i] == p:
+            path_copy = []
+            for position in path:
+                path_copy.append(position)
+            result_list.append(path_copy)
+            position_list.pop(i)
+        break
+    if len(position_list) == 0:
+        return result_list
+    for c in T.children(p):
+        _tour_tree_for_lca(T, position_list, c, path, result_list)
+    path.pop()
+    return result_list
+
+
+# Diameter Calculation
+from DataStructures.tree import BinaryEulerTour
+class Diameter(BinaryEulerTour):
+    """
+    Inherit _tour mechanism from BinaryEuler Tour.
+    Put Tree instance when declaring an instance of Diameter class.
+    Run calculate() method to get diameter and the related nodes.
+    """
+    def __init__(self, tree):
+        super().__init__(tree)
+
+    def calculate(self):
+        result = self.execute()
+        print('{} - {} : {}'.format(result['node1']['position'].element(),
+                                    result['node2']['position'].element(),
+                                    result['diameter']))
+        return result
+
+    def _hook_postvisit(self, p, d, path, results):
+        """
+
+        :param p: position
+        :param d: deptn
+        :param path: not used.
+        :param results: _hook_postvisit result of left and right child are saved in the list.
+        :return: _partial_diameter() result.
+        """
+        parent = {
+            'position': p,
+            'depth': d,
+        }
+        if self.tree().is_leaf(p):
+            return self._partial_diameter(parent, parent, None)
+        else:
+            return self._comparison(parent, results[0], results[1])
+
+    def _comparison(self, parent, left_diameter, right_diameter):
+        """
+
+        :param parent: current node.
+        :param left_diameter: _partial_diameter() from left descendants.
+        :param right_diameter: _partial_diameter() from right descendants.
+        :return: maximum _partial_diameter() result.
+        """
+        nominees = []
+        if left_diameter is not None and right_diameter is not None:
+            nominees.append(left_diameter)
+            nominees.append(right_diameter)
+            nominees.append(self._partial_diameter(parent, left_diameter['node1'], right_diameter['node1']))
+            if right_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node1'], right_diameter['node2']))
+            if left_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node2'], right_diameter['node1']))
+                if right_diameter['node2'] is not None:
+                    nominees.append(self._partial_diameter(parent, left_diameter['node2'], right_diameter['node2']))
+        elif left_diameter is None:
+            nominees.append(right_diameter)
+            nominees.append(self._partial_diameter(parent, right_diameter['node1'], parent))
+            if right_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, right_diameter['node2'], parent))
+        else:
+            nominees.append(left_diameter)
+            nominees.append(self._partial_diameter(parent, left_diameter['node1'], parent))
+            if left_diameter['node2'] is not None:
+                nominees.append(self._partial_diameter(parent, left_diameter['node2'], parent))
+        cursor = nominees[0]
+        for nominee in nominees:
+            if cursor['diameter'] < nominee['diameter']:
+                cursor = nominee
+        return cursor
+
+    def _partial_diameter(self, parent, node1, node2):
+        """
+
+        :param parent: parent node.
+        :param node1: one of the left descendants or the parent node itself if parent is leaf.
+        :param node2: one of the right descendants or None if parent is leaf.
+        :return: Dictionary with diameter, node1, node2
+        """
+        if node2 is None:
+            diameter = 0
+        else:
+            diameter = node1['depth'] + node2['depth'] - 2 * parent['depth']
+        return {
+            'diameter': diameter,
+            'node1': node1,
+            'node2': node2
+        }
