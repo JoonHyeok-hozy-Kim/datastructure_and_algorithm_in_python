@@ -18,7 +18,7 @@
   * Must keep track of both an element and its key.
     * Use, _Item class in PriorityQueueBase class to store key and the comparison logic between keys.
 <p>
-    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python#readme">PriorityQueueBase</a>
+    <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py">PriorityQueueBase</a>
 </p>
 
 
