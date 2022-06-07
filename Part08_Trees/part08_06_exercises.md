@@ -1834,6 +1834,72 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_67_image.png" style="height: 300px;"></img><br/>
 </p>
 
+```python
+from DataStructures.tree import MutableLinkedBinaryTree
+class SlicingFloorPlan:
+
+    def __init__(self, basic_width, basic_height):
+        self._tree = MutableLinkedBinaryTree()
+        self._tree.add_root([basic_width, basic_height])
+
+    def tree(self):
+        return self._tree
+
+    def width(self, p):
+        if self.tree().is_leaf(p):
+            return p.element()[0]
+        else:
+            left_width = self.width(self.tree().left(p))
+            right_width = self.width(self.tree().right(p))
+            if p.element() == '|':
+                return left_width + right_width
+            else:
+                return max(left_width, right_width)
+
+    def height(self, p):
+        if self.tree().is_leaf(p):
+            return p.element()[1]
+        else:
+            left_height = self.height(self.tree().left(p))
+            right_height = self.height(self.tree().right(p))
+            if p.element() == '|':
+                return max(left_height, right_height)
+            else:
+                return left_height + right_height
+
+    def horizontal_cut(self, p, upper_height):
+        if p.element()[1] < upper_height:
+            raise ValueError('Cannot slice larger than existing rectangle.')
+
+        cut = self.tree().add_left(p, '-')
+        prev_rectangle = self.tree().delete(p)
+        self.tree().add_left(cut, [prev_rectangle[0], upper_height])
+        self.tree().add_right(cut, [prev_rectangle[0], prev_rectangle[1]-upper_height])
+        return cut
+
+    def vertical_cut(self, p, left_width):
+        if p.element()[0] < left_width:
+            raise ValueError('Cannot slice larger than existing rectangle.')
+
+        cut = self.tree().add_left(p, '|')
+        prev_rectangle = self.tree().delete(p)
+        self.tree().add_left(cut, [left_width, prev_rectangle[1]])
+        self.tree().add_right(cut, [prev_rectangle[0]-left_width, prev_rectangle[1]])
+        return cut
+
+if __name__ == '__main__':
+    s = SlicingFloorPlan(10, 10)
+    print(s.tree())
+    root = s.horizontal_cut(s.tree().root(), 3)
+    print(s.tree())
+    left = s.vertical_cut(s.tree().left(root), 4)
+    print(s.tree())
+    right = s.vertical_cut(s.tree().right(root), 5)
+    print(s.tree())
+    for i in s.tree().preorder():
+        print('{} -> {},{}'.format(i.element(), s.width(i), s.height(i)))
+```
+
 
 
 
