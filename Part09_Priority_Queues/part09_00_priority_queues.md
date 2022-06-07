@@ -21,5 +21,15 @@
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py">PriorityQueueBase</a>
 </p>
 
+### 9.2.2 Implementation with an Unsorted List
+* Use a PositionalList, which is doubly linked list, that elements are not sorted as a space where _Item instances are stored.
+  * Since the list is unsorted,
+    1. add element may take O(1)
+    2. finding minimum key _Item may take O(n) for locating it.
+
+### 9.2.3 Implementation with a Sorted List
+* Right opposite to the Unsorted version,
+  1. add element may take O(n) for locating proper position of the new item in the PositionalList : SORTING
+  2. finding minimum key _Item may take O(1)
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
