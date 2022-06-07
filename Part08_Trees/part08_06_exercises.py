@@ -563,6 +563,95 @@ def tokenize(raw):
     return result_set
 
 
+from copy import deepcopy
+class LinkedPathBinaryTree(LinkedBinaryTree):
+    class _Node:
+        __slots__ = '_element', '_left', '_right'
+
+        def __init__(self, element, left=None, right=None):
+            self._element = element
+            self._left = left
+            self._right = right
+
+    class Position(BinaryTree.Position):
+
+        def __init__(self, container, node, path):
+            self._container = container
+            self._node = node
+            self._path = path
+
+        def element(self):
+            return self._node._element
+
+        def path(self):
+            return self._path
+
+        def __eq__(self, other):
+            return type(self) == type(other) and self._node == other._node
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p not in self._positions:
+            raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_position(self, node, path):
+        p = self.Position(self, node, path)
+        self._positions.append(p)
+        return p
+
+    def _get_position(self, node):
+        for p in self._positions:
+            if p._node == node:
+                return p
+
+    def __init__(self):
+        self._root = None
+        self._size = 0
+        self._positions = []
+
+    def _add_root(self, e):
+        if self.root() is not None:
+            raise ValueError('root already exists.')
+        self._root = self._Node(e, None, None)
+        self._size += 1
+        return self._make_position(self._root, [self._root])
+
+    def _add_left(self, p, e):
+        if self.left(p) is not None:
+            raise ValueError('left already exists.')
+        node = self._Node(e, None, None)
+        path = deepcopy(p.path())
+        path.append(node)
+        parent = self._validate(p)
+        parent._left = node
+        self._size += 1
+        return self._make_position(node, path)
+
+    def _add_right(self, p, e):
+        if self.right(p) is not None:
+            raise ValueError('left already exists.')
+        node = self._Node(e, None, None)
+        path = deepcopy(p.path())
+        path.append(node)
+        parent = self._validate(p)
+        parent._right = node
+        self._size += 1
+        return self._make_position(node, path)
+
+    def root(self):
+        return self._get_position(self._root)
+
+    def left(self, p):
+        node = self._validate(p)
+        return self._get_position(node._left)
+
+    def right(self, p):
+        node = self._validate(p)
+        return self._get_position(node._right)
 
 if __name__ == '__main__':
     a = LinkedBinaryTree()
@@ -803,7 +892,18 @@ if __name__ == '__main__':
     #                    'c': 3,
     #                    'd': 1}))
 
-    exp = '(((5+2)*(8-3))/4)'
-    et = build_expression_trees(exp)
-    print(et, '=', et.evaluate())
-    print(et.postfix_notation())
+    # exp = '(((5+2)*(8-3))/4)'
+    # et = build_expression_trees(exp)
+    # print(et, '=', et.evaluate())
+    # print(et.postfix_notation())
+
+    pt = LinkedPathBinaryTree()
+    root = pt._add_root(0)
+    left = pt._add_left(root, 1)
+    for i in range(5):
+        left = pt._add_left(left, i+2)
+    right = pt._add_right(root, -1)
+    for i in range(5):
+        right = pt._add_right(right, (i+2)*(-1))
+    for i in pt.preorder():
+        print(i.element())

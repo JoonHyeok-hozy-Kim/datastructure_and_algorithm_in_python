@@ -60,3 +60,5 @@ u
 EPart06_Stacks_Queues_and_Deques/part06_00_stacks_queues_and_deques.md,a\8\a89df94313fdf1102940bd616c3b6362e9d615c4
 f
 6Part06_Stacks_Queues_and_Deques/part06_04_exercises.md,4\5\456c3b215b5082fd90b3f34beaf4b0c1c6d06e1d
+]
+-Part07_Linked_LIsts/part07_00_linked_lists.md,2\4\24ed42eeb68c53c41d77710ff4775cd83f04e108

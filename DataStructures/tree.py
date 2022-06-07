@@ -219,24 +219,26 @@ class LinkedBinaryTree(BinaryTree):
         # print('Attach {} <- {}, {}'.format(node._element, t1._root._element, t2._root._element))
         if not t1.is_empty():
             for p in t1.postorder():
-                if p._node._parent == t1._sentinel:
-                    p._node._parent = node
-                if p._node._left == t1._sentinel:
-                    p._node._left = self._sentinel
-                if p._node._right == t1._sentinel:
-                    p._node._right = self._sentinel
+                p_node = t1._validate(p)
+                if p_node._parent == t1._sentinel:
+                    p_node._parent = node
+                if p_node._left == t1._sentinel:
+                    p_node._left = self._sentinel
+                if p_node._right == t1._sentinel:
+                    p_node._right = self._sentinel
             node._left = t1._root
             t1._size = 0
             self._make_position(node._left)
 
         if not t2.is_empty():
             for p in t2.postorder():
-                if p._node._parent == t2._sentinel:
-                    p._node._parent = node
-                if p._node._left == t2._sentinel:
-                    p._node._left = self._sentinel
-                if p._node._right == t2._sentinel:
-                    p._node._right = self._sentinel
+                p_node = t2._validate(p)
+                if p_node._parent == t2._sentinel:
+                    p_node._parent = node
+                if p_node._left == t2._sentinel:
+                    p_node._left = self._sentinel
+                if p_node._right == t2._sentinel:
+                    p_node._right = self._sentinel
             node._right = t2._root
             t2._size = 0
             self._make_position(node._right)
@@ -592,3 +594,107 @@ class ArrayBasedTree:
 
     def f(self, p):
         return self._data.index(p)
+
+
+class LinkedTree(Tree):
+
+    class _Node:
+        __slots__ = '_element', '_parent', '_children'
+
+        def __init__(self, e, parent=None, children=None):
+            self._element = e
+            self._parent = parent
+            if children is None:
+                children = []
+            self._children = children
+
+        def num_children(self):
+            return len(self._children)
+
+    class Position(Tree.Position):
+
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(self) == type(other) and self._node == other._node
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p._node._parent == p._node:
+            raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_position(self, node):
+        return self.Position(self, node)
+
+    def __init__(self):
+        self._size = 0
+        self._root = None
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def root(self):
+        return self._make_position(self._root)
+
+    def num_children(self, p):
+        node = self._validate(p)
+        return node.num_children()
+
+    def parent(self, p):
+        return self._make_position(self._validate(p)._parent)
+
+    def children(self, p):
+        node = self._validate(p)
+        if node.num_children() > 0:
+            for child_node in node._children:
+                yield self._make_position(child_node)
+
+    def is_leaf(self, p):
+        return self.num_children(p) == 0
+
+    def _add_root(self, e):
+        if self._root is not None:
+            raise ValueError('root already exists.')
+        self._root = self._Node(e)
+        self._size += 1
+        return self._make_position(self._root)
+
+    def _add_child(self, p, e, i=None):
+        parent_node = self._validate(p)
+        child_node = self._Node(e, parent_node)
+        if i is None:
+            parent_node._children.append(child_node)
+        else:
+            parent_node._children.insert(i, child_node)
+        self._size += 1
+        return self._make_position(child_node)
+
+    def _delete(self, p):
+        if not self.is_leaf(p):
+            raise ValueError('p is not leaf')
+        node = self._validate(p)
+        for i in range(len(node._parent._children)):
+            if node._parent._children[i] == node:
+                popped = node._parent._children.pop(i)
+                self._size -= 1
+                return popped._element
+
+    def preorder(self):
+        return self._preorder_subtree(self.root())
+
+    def _preorder_subtree(self, p):
+        yield p
+        for other in self.children(p):
+            yield other

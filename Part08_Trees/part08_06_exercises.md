@@ -1606,6 +1606,237 @@ if __name__ == '__main__':
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L530">Array Based Tree</a>
 </p>
 
+### P-8.65 Implement the tree ADT using a linked structure as described in Section 8.3.3. Provide a reasonable set of update methods for your tree.
+```python
+class LinkedTree(Tree):
+
+    class _Node:
+        __slots__ = '_element', '_parent', '_children'
+
+        def __init__(self, e, parent=None, children=None):
+            self._element = e
+            self._parent = parent
+            if children is None:
+                children = []
+            self._children = children
+
+        def num_children(self):
+            return len(self._children)
+
+    class Position(Tree.Position):
+
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(self) == type(other) and self._node == other._node
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p._node._parent == p._node:
+            raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_position(self, node):
+        return self.Position(self, node)
+
+    def __init__(self):
+        self._size = 0
+        self._root = None
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def root(self):
+        return self._make_position(self._root)
+
+    def num_children(self, p):
+        node = self._validate(p)
+        return node.num_children()
+
+    def parent(self, p):
+        return self._make_position(self._validate(p)._parent)
+
+    def children(self, p):
+        node = self._validate(p)
+        if node.num_children() > 0:
+            for child_node in node._children:
+                yield self._make_position(child_node)
+
+    def is_leaf(self, p):
+        return self.num_children(p) == 0
+
+    def _add_root(self, e):
+        if self._root is not None:
+            raise ValueError('root already exists.')
+        self._root = self._Node(e)
+        self._size += 1
+        return self._make_position(self._root)
+
+    def _add_child(self, p, e, i=None):
+        parent_node = self._validate(p)
+        child_node = self._Node(e, parent_node)
+        if i is None:
+            parent_node._children.append(child_node)
+        else:
+            parent_node._children.insert(i, child_node)
+        self._size += 1
+        return self._make_position(child_node)
+
+    def _delete(self, p):
+        if not self.is_leaf(p):
+            raise ValueError('p is not leaf')
+        node = self._validate(p)
+        for i in range(len(node._parent._children)):
+            if node._parent._children[i] == node:
+                popped = node._parent._children.pop(i)
+                self._size -= 1
+                return popped._element
+
+    def preorder(self):
+        return self._preorder_subtree(self.root())
+
+    def _preorder_subtree(self, p):
+        yield p
+        for other in self.children(p):
+            yield other
+```
+
+### P-8.66 The memory usage for the LinkedBinaryTree class can be streamlined by removing the parent reference from each node, and instead having each Position instance keep a member, path, that is a list of nodes representing the entire path from the root to that position. (This generally saves memory because there are typically relatively few stored position instances.) Reimplement the LinkedBinaryTree class using this strategy.
+```python
+from copy import deepcopy
+class LinkedPathBinaryTree(LinkedBinaryTree):
+    class _Node:
+        __slots__ = '_element', '_left', '_right'
+
+        def __init__(self, element, left=None, right=None):
+            self._element = element
+            self._left = left
+            self._right = right
+
+    class Position(BinaryTree.Position):
+
+        def __init__(self, container, node, path):
+            self._container = container
+            self._node = node
+            self._path = path
+
+        def element(self):
+            return self._node._element
+
+        def path(self):
+            return self._path
+
+        def __eq__(self, other):
+            return type(self) == type(other) and self._node == other._node
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p not in self._positions:
+            raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_position(self, node, path):
+        p = self.Position(self, node, path)
+        self._positions.append(p)
+        return p
+
+    def _get_position(self, node):
+        for p in self._positions:
+            if p._node == node:
+                return p
+
+    def __init__(self):
+        self._root = None
+        self._size = 0
+        self._positions = []
+
+    def _add_root(self, e):
+        if self.root() is not None:
+            raise ValueError('root already exists.')
+        self._root = self._Node(e, None, None)
+        self._size += 1
+        return self._make_position(self._root, [self._root])
+
+    def _add_left(self, p, e):
+        if self.left(p) is not None:
+            raise ValueError('left already exists.')
+        node = self._Node(e, None, None)
+        path = deepcopy(p.path())
+        path.append(node)
+        parent = self._validate(p)
+        parent._left = node
+        self._size += 1
+        return self._make_position(node, path)
+
+    def _add_right(self, p, e):
+        if self.right(p) is not None:
+            raise ValueError('left already exists.')
+        node = self._Node(e, None, None)
+        path = deepcopy(p.path())
+        path.append(node)
+        parent = self._validate(p)
+        parent._right = node
+        self._size += 1
+        return self._make_position(node, path)
+
+    def root(self):
+        return self._get_position(self._root)
+
+    def left(self, p):
+        node = self._validate(p)
+        return self._get_position(node._left)
+
+    def right(self, p):
+        node = self._validate(p)
+        return self._get_position(node._right)
+
+if __name__ == '__main__':
+    pt = LinkedPathBinaryTree()
+    root = pt._add_root(0)
+    left = pt._add_left(root, 1)
+    for i in range(5):
+        left = pt._add_left(left, i+2)
+    right = pt._add_right(root, -1)
+    for i in range(5):
+        right = pt._add_right(right, (i+2)*(-1))
+    for i in pt.preorder():
+        print(i.element())
+```
+
+### P-8.67 A slicing floor plan divides a rectangle with horizontal and vertical sides using horizontal and vertical cuts. (See Figure 8.25a.) A slicing floor plan can be represented by a proper binary tree, called a slicing tree, whose internal nodes represent the cuts, and whose external nodes represent the basic rectangles into which the floor plan is decomposed by the cuts. (See Figure 8.25b.) The compaction problem for a slicing floor plan is defined as follows. Assume that each basic rectangle of a slicing floor plan is assigned a minimum width w and a minimum height h. The compaction problem is to find the smallest possible height and width for each rectangle of the slicing floor plan that is compatible with the minimum dimensions of the basic rectangles. Namely, this problem requires the assignment of values h(p) and w(p) to each position p of the slicing tree such that:
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_67_guide.png" style="height: 600px;"></img><br/>
+</p>
+
+#### Design a data structure for slicing floor plans that supports the operations:
+* Create a floor plan consisting of a single basic rectangle.
+* Decompose a basic rectangle by means of a horizontal cut.
+* Decompose a basic rectangle by means of a vertical cut.
+* Assign minimum height and width to a basic rectangle.
+* Draw the slicing tree associated with the floor plan.
+* Compact and draw the floor plan.
+
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/images/08_06_67_image.png" style="height: 300px;"></img><br/>
+</p>
+
+
+
+
 
 
 
