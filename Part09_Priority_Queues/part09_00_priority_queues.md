@@ -66,6 +66,15 @@
 ### 9.3.3 Array-Based Representation of a Complete Binary Tree
 #### Use <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md#832-array-based-representation-of-a-binary-tree">Array-Based Representation</a>
 * Recall that Heap has the data structure of _level numbering_.
-  * Thus, it can be represented by an Array : <a href="">Array Based Tree</a>
+  * Thus, it can be represented by an Array : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/tree.py#L532">Array Based Tree</a>
+    * Advantages of using Array-Based Representation
+      1. Allows us to avoid complexities of a node-based tree structure.
+      2. Simplicity of identifying last position of the tree : last object in self._data
+      3. Dynamic re-size of self._data is O(n) considering the concept of the amortization.
+
+### 9.3.4 Python Heap Implementation
+<a href="">Heap Priority Queue</a>
+
+### 9.3.5 Analysis of a Heap-Based Priority Queue
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
