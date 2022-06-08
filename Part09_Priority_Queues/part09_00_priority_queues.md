@@ -32,4 +32,19 @@
   1. add element may take O(n) for locating proper position of the new item in the PositionalList : SORTING
   2. finding minimum key _Item may take O(1)
 
+## 9.3 Heaps
+* Def.) Heap
+  * A binary tree that stores a collection of items at its positions.
+    * These positions satisfy following two props.
+      1. __Heap Order Property__
+         * In a heap T, for every position p other than the root, the key stored at p is greater than or equal to the key stored at p’s parent.
+      2. __Complete Binary Tree Property__
+         * A heap T with height h is a complete binary tree if levels 0,1,2,...,h− 1 of T have the maximum number of nodes possible
+           * (namely, level i has 2i nodes, for 0 ≤ i ≤ h− 1) 
+         * The remaining nodes at level h reside in the leftmost possible positions at that level.
+         * Recall the concept of <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md#tech-how">_level_numbering_</a>
+
+#### The Height of Heap
+
+
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>

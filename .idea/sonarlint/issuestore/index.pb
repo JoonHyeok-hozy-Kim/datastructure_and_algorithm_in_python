@@ -60,3 +60,11 @@ f
 6Part06_Stacks_Queues_and_Deques/part06_04_exercises.md,4\5\456c3b215b5082fd90b3f34beaf4b0c1c6d06e1d
 ]
 -Part07_Linked_LIsts/part07_00_linked_lists.md,2\4\24ed42eeb68c53c41d77710ff4775cd83f04e108
+Y
+)Part08_Trees/part08_05_expression_tree.py,5\b\5bba89bb7666e9827b040ec93d934edc8140fe33
+`
+0Part08_Trees/part08_04_traversal_applications.py,f\5\f50f771650031a2a340b8d0357a8134b689f4da9
+S
+#Part08_Trees/part08_04_traversal.py,a\1\a17793ac9fc30dc5c53c28b56c30d227b9ceb988
+R
+"DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
