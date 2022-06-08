@@ -12,7 +12,7 @@ class PriorityQueueBase:
             self._value = v
 
         def __lt__(self, other):
-            return self._key > other._key
+            return self._key < other._key
 
     def is_empty(self):
         return len(self) == 0
@@ -86,6 +86,15 @@ class SortedPriorityQueue(PriorityQueueBase):
 
 
 class HeapPriorityQueue(PriorityQueueBase):
+    def __init__(self, contents=()):
+        self._data = [self._Item(k, v) for k, v in contents]
+        if len(self) > 0:
+            self._heapify()
+
+    def _heapify(self):
+        start = self._parent(len(self)-1)
+        for i in range(start, -1, -1):
+            self._downheap(start)
 
     def _parent(self, j):
         return (j-1)//2
@@ -107,7 +116,7 @@ class HeapPriorityQueue(PriorityQueueBase):
 
     def _upheap(self, j):
         parent = self._parent(j)
-        if j > 0 and self._data[j] < self._data[parent]:
+        if j > 0 and self._data[parent] > self._data[j]:
             self._swap(j, parent)
             self._upheap(parent)
 
@@ -117,14 +126,11 @@ class HeapPriorityQueue(PriorityQueueBase):
             small_child = left
             if self._has_right(j):
                 right = self._right(j)
-                if right < left:
+                if self._data[right] < self._data[left]:
                     small_child = right
             if self._data[j] > self._data[small_child]:
                 self._swap(j, small_child)
                 self._downheap(small_child)
-
-    def __init__(self):
-        self._data = []
 
     def __len__(self):
         return len(self._data)

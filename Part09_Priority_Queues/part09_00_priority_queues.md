@@ -100,10 +100,14 @@
   2. Form (2^(h-2)) _[ or (n+1)/4 ]_ heaps with 3 elements : {(n+1)/4} * 2 running time.
   3. Form (2^(h-3)) _[ or (n+1)/8 ]_ heaps with 7 elements : {(n+1)/8} * 3 running time.
   4. ...
-  5. Form one heap with n elements : {1} * log(n) running time.
+  5. Form __one__ heap with n elements : {1} * log(n) running time.
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_03_02_bottom_up_construction_image.png" style="height: 600px;"></img><br/>
 </p>
 
+#### Analysis) Asymptotic Analysis of Bottom-Up Heap Construction
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_03_03_proposition_9_3.png" style="height: 150px;"></img><br/>
+</p>
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
