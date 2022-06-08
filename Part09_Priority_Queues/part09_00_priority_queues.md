@@ -76,5 +76,13 @@
 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L88">Heap Priority Queue</a>
 
 ### 9.3.5 Analysis of a Heap-Based Priority Queue
+* Props.) For a Heap-Based Priority Queue with n nodes and log(n) height (∵ <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_00_priority_queues.md#the-height-of-heap">Proposition 9.2</a>)
+  * Every operation for Heap-Based Priority Queue is either O(1) or O(log(n))
+* Running Time analysis
+  * min : O(1)
+  * remove_min : O(log(n))
+  * add : O(log(n))
+
+### 9.3.6 Bottom-Up Heap Construction
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
