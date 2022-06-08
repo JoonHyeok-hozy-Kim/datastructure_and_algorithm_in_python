@@ -50,5 +50,22 @@
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_03_01_height_of_a_heap.png" style="height: 300px;"></img><br/>
 </p>
 
+### 9.3.2 Implementing a Priority Queue with a Heap
+* How
+  1. Adding an item
+     1. Add an item at the rightmost node at the bottom level
+     2. Perform Up Heap Bubbling
+        * Starting from the newly added node, move upward to the root and swap if _heap order property_ is violated.
+  2. Removing an item
+     1. Remove the item at the root
+     2. Copy the last positional item to the root of the heap.
+     3. Perform Down Heap Bubbling
+        * Starting from the new root, move downward to the end and swap if _heap order property_ is violated.
+          * If target position has two children, perform swap, if needed, with the one with lower key.
+
+### 9.3.3 Array-Based Representation of a Complete Binary Tree
+#### Use <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md#832-array-based-representation-of-a-binary-tree">Array-Based Representation</a>
+* Recall that Heap has the data structure of _level numbering_.
+  * Thus, it can be represented by an Array.
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
