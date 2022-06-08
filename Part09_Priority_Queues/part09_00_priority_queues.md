@@ -106,8 +106,29 @@
 </p>
 
 #### Analysis) Asymptotic Analysis of Bottom-Up Heap Construction
-<p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_03_03_proposition_9_3.png" style="height: 150px;"></img><br/>
-</p>
+* Prop.) Bottom up construction of a heap with n entries takes O(n) time, assuming two keys can be compared in O(1) time.
+
+### 9.3.7 Python’s heapq Module
+* No priority queue class provided by Python.
+* Instead, __heapq__ function allow us to manage Python's List class as a heap.
+  * elements serve as their own key.
+* Functions, where L is a list and e an element.
+  * heappush(L, e)
+    * Push element in O(log(n)) time
+  * heappop(L)
+    * Pop and return the smallest element in O(log(n)) time
+  * heappushpop(L, e)
+    * Push and Pop.
+    * Slightly efficient than independent push and pop operation, on the point that total length of the list is unchanged.
+  * heapreplace(L, e)
+    * Pop and then push.
+  * heapify(L)
+    * transform unordered list to satisfy heap-order property
+  * nlargest(k, iterable)
+    * Produce a list of the k largest values from a given iterable.
+    * O(n+klog(n)) time
+  * nsmallest(k, iterable)
+    * Produce a list of the k smallest values from a given iterable.
+    * O(n+klog(n)) time
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
