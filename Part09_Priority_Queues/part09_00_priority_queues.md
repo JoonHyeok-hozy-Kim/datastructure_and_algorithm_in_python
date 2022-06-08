@@ -47,7 +47,7 @@
 #### The Height of Heap
 * Prop.) 
 <p align="start">
-<img src="" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_03_01_height_of_a_heap.png" style="height: 300px;"></img><br/>
 </p>
 
 
