@@ -66,6 +66,6 @@
 ### 9.3.3 Array-Based Representation of a Complete Binary Tree
 #### Use <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md#832-array-based-representation-of-a-binary-tree">Array-Based Representation</a>
 * Recall that Heap has the data structure of _level numbering_.
-  * Thus, it can be represented by an Array.
+  * Thus, it can be represented by an Array : <a href="">Array Based Tree</a>
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>

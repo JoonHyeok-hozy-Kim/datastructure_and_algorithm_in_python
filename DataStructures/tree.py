@@ -548,13 +548,22 @@ class ArrayBasedTree:
             raise ValueError('p does not belong to this container.')
         if p.element() is None:
             raise ValueError('p is no longer valid.')
-        return p.element()
+        return self._data.index(p)
 
     def __init__(self):
         self._data = []
 
     def __len__(self):
         return len(self._data)
+
+    def __iter__(self):
+        for i in self._data:
+            yield i
+
+    def __str__(self):
+        layout = BinaryLayout(self)
+        layout.execute()
+        return layout.str_graphic()
 
     def is_empty(self):
         return len(self) == 0
@@ -565,35 +574,79 @@ class ArrayBasedTree:
         return self._data[0]
 
     def parent(self, p):
-        idx = self._data.index(p)
-        if i % 2 == 0:
+        idx = self._validate(p)
+        if idx % 2 == 0:
             return self._data[(idx - 2) // 2]
         else:
             return self._data[(idx - 1) // 2]
 
     def left(self, p):
-        idx = self._data.index(p)
-        if len(self) < 2 * idx + 1:
+        idx = self._validate(p)
+        if len(self) <= 2 * idx + 1:
             return None
         else:
             return self._data[2 * idx + 1]
 
     def right(self, p):
-        idx = self._data.index(p)
-        if len(self) < 2 * idx + 2:
+        idx = self._validate(p)
+        if len(self) <= 2 * idx + 2:
             return None
         else:
             return self._data[2 * idx + 2]
 
     def is_leaf(self, p):
-        idx = self._data.index(p)
+        idx = self._validate(p)
         return self._data[2 * idx + 1] is None and self._data[2 * idx + 2] is None
 
     def is_root(self, p):
-        return self._data.index(p) == 0
+        return self._validate(p) == 0
 
     def f(self, p):
-        return self._data.index(p)
+        return self._validate(p)
+
+    def _add_root(self, e):
+        if not self.is_empty():
+            raise ValueError('root already exists.')
+        p = self._make_position(e)
+        self._data.insert(0, p)
+        return p
+
+    def _add_left(self, p, e):
+        idx = self._validate(p)
+        left_idx = 2*idx+1
+        if len(self) >= left_idx+1:
+            if self._data[left_idx] is not None:
+                raise ValueError('left already exists.')
+        while len(self) <= left_idx:
+            self._data.append(None)
+        p = self._make_position(e)
+        self._data[left_idx] = p
+        return p
+
+    def _add_right(self, p, e):
+        idx = self._validate(p)
+        right_idx = 2*idx+2
+        if len(self) >= right_idx+1:
+            if self._data[right_idx] is not None:
+                raise ValueError('right already exists.')
+        while len(self) <= right_idx:
+            self._data.append(None)
+        p = self._make_position(e)
+        self._data[right_idx] = p
+        return p
+
+    def _delete(self, p):
+        idx = self._validate(p)
+        deleted = self._data[idx]
+        self._data[idx] = None
+        return deleted.element()
+
+    def swap(self, p, q):
+        p_idx = self._validate(p)
+        q_idx = self._validate(q)
+        temp = self._data[p_idx]
+        self._data[p_idx] = self._data[q_idx]
+        self._data[q_idx] = temp
 
 
 class LinkedTree(Tree):
