@@ -73,7 +73,7 @@
       3. Dynamic re-size of self._data is O(n) considering the concept of the amortization.
 
 ### 9.3.4 Python Heap Implementation
-<a href="">Heap Priority Queue</a>
+<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L88">Heap Priority Queue</a>
 
 ### 9.3.5 Analysis of a Heap-Based Priority Queue
 
