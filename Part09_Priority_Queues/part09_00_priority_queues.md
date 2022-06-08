@@ -45,6 +45,10 @@
          * Recall the concept of <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part08_Trees/part08_00_trees.md#tech-how">_level_numbering_</a>
 
 #### The Height of Heap
+* Prop.) 
+<p align="start">
+<img src="" style="height: 300px;"></img><br/>
+</p>
 
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
