@@ -84,5 +84,26 @@
   * add : O(log(n))
 
 ### 9.3.6 Bottom-Up Heap Construction
+* Consider the case that arbitrary series of n elements are given.
+  * If each elements are _added_ to a heap priority queue, worst case of Ω(n log(n)) time may take place.
+    * Worst Case : elements are sorted in decreasing order by the keys and every _addition_ incurs _upheap_ operation of O(log(n))
+  * Solution : __Bottom-Up Heap Construction__
+
+#### Tech.) Bottom-Up Heap Construction
+* Condition
+  * n key-value pairs to be stored in a heap are given in advance.
+  * For simplicity, assume a complete binary tree
+    * i.e.) n satisfies the following equation where h denotes the height.
+      * n = 2^h - 1
+* How?
+  1. Make (2^(h-1)) _[ or (n+1)/2 ]_ elementary heaps : {(n+1)/2} * 1 running time.
+  2. Form (2^(h-2)) _[ or (n+1)/4 ]_ heaps with 3 elements : {(n+1)/4} * 2 running time.
+  3. Form (2^(h-3)) _[ or (n+1)/8 ]_ heaps with 7 elements : {(n+1)/8} * 3 running time.
+  4. ...
+  5. Form one heap with n elements : {1} * log(n) running time.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_03_02_bottom_up_construction_image.png" style="height: 600px;"></img><br/>
+</p>
+
 
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
