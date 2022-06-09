@@ -217,7 +217,7 @@ def heap_sort(C):
   * Locator for an element will remain valid as long as that item remains somewhere in the queue.
 
 ### 9.5.2 Implementing an Adaptable Priority Queue
-* <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#157">Adaptable Priority Queue</a>
+* <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L157">Adaptable Priority Queue</a>
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_05_01_adaptable_priority_queue_running_time.png" style="height: 300px;"></img><br/>
 </p>
