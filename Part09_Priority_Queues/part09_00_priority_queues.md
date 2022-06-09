@@ -131,4 +131,96 @@
     * Produce a list of the k smallest values from a given iterable.
     * O(n+klog(n)) time
 
+## 9.4 Sorting with a Priority Queue
+### 9.4.1 Selection-Sort and Insertion-Sort
+#### Selection Sort
+* Analysis
+  * add takes O(1) running time.
+  * return_min takes O(n^2) time.
+```python
+from DataStructures.priority_queues import UnsortedPriorityQueue
+def selection_sort(C):
+    n = len(C)
+    P = UnsortedPriorityQueue()
+    for i in range(n):
+        e = C.delete(C.first())
+        P.add(e, e)
+    while not P.is_empty():
+        (k, v) = P.remove_min()
+        C.add_last(v)
+```
+
+#### Insertion Sort
+* Analysis
+  * add takes O(n^2) running time.
+  * return_min takes O(1) time.
+* Implementation
+  * Assume that the collection C is a PositionalList
+```python
+from DataStructures.priority_queues import SortedPriorityQueue
+def insertion_sort(C):
+    n = len(C)
+    P = SortedPriorityQueue()
+    for i in range(n):
+        e = C.delete(C.first())
+        P.add(e, e)
+    while not P.is_empty():
+        (k, v) = P.remove_min()
+        C.add_last(v)
+```
+
+### 9.4.2 Heap-Sort
+* Analysis
+  * add takes O(nlog(n)) time.
+    * why?)
+      * i-th addition takes O(log(i)) running time.
+      * Summing all the addition, it becomes O(nlog(n))
+  * remove_min takes O(log(n)) time.
+    * why?)
+      * remove the root element in O(1)
+      * replace last position and perform downheap in O(log(n))
+  * cf.) If bottom-up can be applied, it will take O(n) running time.
+  
+#### Implementation
+* Concept) in-place
+  * A sorting algorithm is _in-place_ if it uses only a small amount of memory in addition to the sequence storing the objects to be sorted.
+```python
+from DataStructures.priority_queues import HeapPriorityQueue
+def heap_sort(C):
+    n = len(C)
+    H = HeapPriorityQueue()
+    for i in range(n):
+        e = C.delete(C.first())
+        H.add(e, e)
+    while not H.is_empty():
+        (k, v) = H.remove_min()
+        C.add_last(v)
+```
+
+### 9.5 Adaptable Priority Queues
+* Why needed?
+  * More functions required
+    1. Removing certain elements in the middle of the Priority Queue
+    2. Adding new elements in to the certain position of the Priority Queue
+
+### 9.5.1 Locators
+* Goal
+  * Create a mechanism that prevents the linear search through the entire collection
+
+#### Locator
+* An object that should be provided when invoking _update_ or _remove_ method.
+  * ex.)
+    * P.update(loc, k, v)
+    * P.remove(loc)
+* Different from the Position object on the point that locator does not represent a tangible placement of an element within the sturcture.
+  * Relocation does not directly affect the element.
+  * Locator for an element will remain valid as long as that item remains somewhere in the queue.
+
+### 9.5.2 Implementing an Adaptable Priority Queue
+* <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#157">Adaptable Priority Queue</a>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_05_01_adaptable_priority_queue_running_time.png" style="height: 150px;"></img><br/>
+</p>
+
+
 ## 9.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>

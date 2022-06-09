@@ -70,3 +70,5 @@ R
 "DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
 S
 #Part08_Trees/part08_06_exercises.md,e\9\e9018d9a59bfe145fc1e97837fd9d624ab31f0b3
+]
+-Part09_Priority_Queues/part09_06_exercises.md,c\d\cdd683015c658e42ea0daad48dd29629c0149763

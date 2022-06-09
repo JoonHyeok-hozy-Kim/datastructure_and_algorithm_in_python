@@ -68,18 +68,18 @@ class SortedPriorityQueue(PriorityQueueBase):
         if walk is None:
             self._data.add_first(item)
         else:
-            self._data.add_before(walk, item)
+            self._data.add_after(walk, item)
 
     def min(self):
-        if self.is_empty('Priority queue is empty'):
-            raise Empty()
+        if self.is_empty():
+            raise Empty('Priority queue is empty')
         p = self._data.first()
         item = p.element()
         return (item._key, item._value)
 
     def remove_min(self):
-        if self.is_empty('Priority queue is empty'):
-            raise Empty()
+        if self.is_empty():
+            raise Empty('Priority queue is empty')
         p = self._data.first()
         item = self._data.delete(p)
         return (item._key, item._value)
@@ -90,6 +90,9 @@ class HeapPriorityQueue(PriorityQueueBase):
         self._data = [self._Item(k, v) for k, v in contents]
         if len(self) > 0:
             self._heapify()
+
+    def __len__(self):
+        return len(self._data)
 
     def _heapify(self):
         start = self._parent(len(self)-1)
@@ -132,9 +135,6 @@ class HeapPriorityQueue(PriorityQueueBase):
                 self._swap(j, small_child)
                 self._downheap(small_child)
 
-    def __len__(self):
-        return len(self._data)
-
     def add(self, key, value):
         self._data.append(self._Item(key, value))
         self._upheap(len(self._data)-1)
@@ -152,3 +152,50 @@ class HeapPriorityQueue(PriorityQueueBase):
         item = self._data.pop()
         self._downheap(0)
         return (item._key, item._value)
+
+
+class AdaptableHeapPriorityQueue(HeapPriorityQueue):
+
+    class Locator(HeapPriorityQueue._Item):
+        __slots__ = '_index'
+
+        def __init__(self, k, v, j):
+            super().__init__(k, v)
+            self._index = j
+
+    def _swap(self, i, j):
+        super()._swap(i, j)
+        self._data[i]._index = i
+        self._data[j]._index = j
+
+    def _bubble(self, j):
+        if j > 0 and self._data[j] < self._data[self._parent(j)]:
+            self._upheap(j)
+        else:
+            self._downheap(j)
+
+    def add(self, key, value):
+        token = self.Locator(key, value, len(self._data))
+        self._data.append(token)
+        self._upheap(len(self._data)-1)
+        return token
+
+    def update(self, loc, new_key, new_val):
+        j = loc._index
+        if not (0 <= j < len(self) and self._data[j] == loc):
+            raise ValueError('Invalid Locator')
+        loc._key = new_key
+        loc._value = new_val
+        self._bubble(j)
+
+    def remove(self, loc):
+        j = loc._index
+        if not (0 <= j < len(self) and self._data[j] == loc):
+            raise ValueError('Invalid Locator')
+        if j == len(self)-1:
+            self._data.pop()
+        else:
+            self._swap(j, len(self)-1)
+            self._data.pop()
+            self._bubble(j)
+        return (loc._key, loc._value)
