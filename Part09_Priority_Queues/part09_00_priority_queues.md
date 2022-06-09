@@ -218,8 +218,8 @@ def heap_sort(C):
 
 ### 9.5.2 Implementing an Adaptable Priority Queue
 * <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#157">Adaptable Priority Queue</a>
-<p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_05_01_adaptable_priority_queue_running_time.png" style="height: 150px;"></img><br/>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_05_01_adaptable_priority_queue_running_time.png" style="height: 300px;"></img><br/>
 </p>
 
 
