@@ -266,10 +266,50 @@ if __name__ == '__main__':
 
 ### R-9.21 Show all the steps of the algorithm for removing the entry (16,X) from the heap of Figure 9.1, assuming the entry had been identified with a locator.
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_21_figure_9_1.png" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_21_figure_9_1.png" style="height: 300px;"></img><br/>
 </p>
 
+* Sol.) 
+  1. Swap (16, X) and (13, W)
+  2. Pop (16, X)
+  3. Start upheap from (13, W)
+     1. Swap (13, W) and (15, K) -> Finished.
+
+### R-9.22 Show all the steps of the algorithm for replacing key of entry (5,A) with 18 in the heap of Figure 9.1, assuming the entry had been identified with a locator.
 * Sol.)
+  1. Replace key and the result is (18, A)
+  2. Start downheap from (18, A)
+     1. Swap (18, A) and (9, F)
+     2. Swap (18, A) and (12, H) -> Finished.
+
+### R-9.23 Draw an example of a heap whose keys are all the odd numbers from 1 to 59 (with no repeats), such that the insertion of an entry with key 32 would cause up-heap bubbling to proceed all the way up to a child of the root (replacing that child’s key with 32).
+```python
+from DataStructures.priority_queues import HeapPriorityQueue
+a = HeapPriorityQueue()
+a.add(1, 1)
+l_idx = 3
+r_idx = 33
+h_idx = 0
+while h_idx < 4:
+    for i in range(pow(2, h_idx)):
+        a.add(l_idx, l_idx)
+        l_idx += 2
+    for i in range(pow(2, h_idx)):
+        a.add(r_idx, r_idx)
+        r_idx += 2
+        if r_idx >59:
+            break
+    h_idx += 1
+print(a)
+a.add(32, 32)
+print(a)
+```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_23.png" style="height: 450px;"></img><br/>
+</p>
+
+###
+
 
 
 <p>

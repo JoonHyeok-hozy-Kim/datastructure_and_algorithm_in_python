@@ -14,6 +14,9 @@ class PriorityQueueBase:
         def __lt__(self, other):
             return self._key < other._key
 
+        def __str__(self):
+            return '({}, {})'.format(self._key, self._value)
+
     def is_empty(self):
         return len(self) == 0
 
@@ -94,6 +97,14 @@ class HeapPriorityQueue(PriorityQueueBase):
 
     def __len__(self):
         return len(self._data)
+
+    def __str__(self):
+        from DataStructures.tree import ArrayBasedTree, BinaryLayout
+        a = ArrayBasedTree()
+        for i in self._data:
+            a._data.append(a._make_position(i))
+        b = BinaryLayout(a)
+        return b.execute()
 
     def _heapify(self):
         start = self._parent(len(self)-1)

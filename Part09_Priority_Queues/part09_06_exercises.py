@@ -51,8 +51,25 @@ if __name__ == '__main__':
     # print(postorder(a))
     # print(inorder(a))
 
-    b = heap_sort(k)
-    print(b)
+    a.add(1, 1)
+    l_idx = 3
+    r_idx = 33
+    h_idx = 0
+    while h_idx < 4:
+        for i in range(pow(2, h_idx)):
+            a.add(l_idx, l_idx)
+            l_idx += 2
+        for i in range(pow(2, h_idx)):
+            a.add(r_idx, r_idx)
+            r_idx += 2
+            if r_idx >59:
+                break
+        h_idx += 1
+    print(a)
+    a.add(32, 32)
+    print(a)
+
+
 
 
 

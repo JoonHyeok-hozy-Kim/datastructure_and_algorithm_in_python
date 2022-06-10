@@ -648,7 +648,6 @@ class ArrayBasedTree:
         self._data[p_idx] = self._data[q_idx]
         self._data[q_idx] = temp
 
-
 class LinkedTree(Tree):
 
     class _Node:
