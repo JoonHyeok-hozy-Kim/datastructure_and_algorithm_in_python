@@ -2,9 +2,256 @@
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_00_priority_queues.md">Part 9. Priority Queues</a>
 </p>
 
-### R-9.1 
+### R-9.1 How long would it take to remove the ┌log(n)┑ smallest elements from a heap that contains n entries, using the remove min operation?
+* Sol.) n/2
 
+### R-9.2 Suppose you label each position p of a binary tree T with a key equal to its preorder rank. Under what circumstances is T a heap?
+* Sol.) The binary tree should be in a complete shape or at least has the minimum height.
 
+### R-9.3 What does each remove min call return within the following sequence of priority queue ADT methods: 
+* add(5,A)
+* add(4,B)
+* add(7,F)
+* add(1,D),
+* remove_min( )
+* add(3,J)
+* add(6,L)
+* remove_min( )
+* remove_min( )
+* add(8,G)
+* remove_min( )
+* add(2,H)
+* remove_min( )
+* remove_min( )  
+```python
+from DataStructures.priority_queues import HeapPriorityQueue
+a = HeapPriorityQueue()
+a.add(5, 'A')
+a.add(4, 'B')
+a.add(7, 'F')
+a.add(1, 'D')
+print(a.remove_min())
+a.add(3, 'J')
+a.add(6, 'L')
+print(a.remove_min())
+print(a.remove_min())
+a.add(8, 'G')
+print(a.remove_min())
+a.add(2, 'H')
+print(a.remove_min())
+print(a.remove_min())
+```
+
+### R-9.4 An airport is developing a computer simulation of air-traffic control that handles events such as landings and takeoffs. Each event has a time stamp that denotes the time when the event will occur. The simulation program needs to efficiently perform the following two fundamental operations:
+* Insert an event with a given time stamp (that is, add a future event).
+* Extract the event with smallest time stamp (that is, determine the next event to process).
+#### Which data structure should be used for the above operations? Why?
+* Sol.)
+  * If time stamp is given in the strictly increasing order, queue is idealistic.
+  * If time stamp is given in the strictly decreasing order, stack is idealistic.
+  * If time stamp is given in random order
+    * and the number of the flight is 
+      * small, then LinkedList
+        * If the size of the list is small, traversal that maybe performed for inserting a flight in the middle of the class may not cost that much.
+      * large, PriorityQueue
+        * If the size of the list is huge, instead of traversal that takes O(n) time, priority queue with O(log(n)) time maybe more efficient.
+
+### R-9.5 The min method for the UnsortedPriorityQueue class executes in O(n) time, as analyzed in Table 9.2. Give a simple modification to the class so that min runs in O(1) time. Explain any necessary modifications to other methods of the class.
+* Sol.) If addition sorts data like SortedPriorityQueue, min method may run in O(1) time.
+
+### R-9.6 Can you adapt your solution to the previous problem to make remove min run in O(1) time for the UnsortedPriorityQueue class? Explain your answer.
+* Sol.) If _data is sorted, remove_min is simply popping the very first element. Thus, remove_min() will also run in O(1) running time.
+
+### R-9.7 Illustrate the execution of the selection-sort algorithm on the following input sequence: (22,15,36,44,10,3,9,13,29,25).
+* Sol.)
+  1. Elements simply added at the last position of self._data.
+  2. Loop runs 10 times searching for the minimum element and add it to self._data.
+  3. Return self._data
+
+### R-9.8 Illustrate the execution of the insertion-sort algorithm on the input sequence of the previous problem.
+* Sol.)
+  1. For each addition of the element, loop runs searching for the proper position.
+  2. Return self._data
+
+### R-9.9 Give an example of a worst-case sequence with n elements for insertion-sort, and show that insertion-sort runs in Ω(n2) time on such a sequence.
+* Sol.) If an input sequence is sorted in decreasing order, it may run in Ω(n2) time.
+
+### R-9.10 At which positions of a heap might the third smallest key be stored?
+* Sol.) At the left or right child position of the root. 
+  * i.e.) self._data[1] or self._data[2]
+
+### R-9.11 At which positions of a heap might the largest key be stored?
+* Sol.) One of the leaf positions of the tree. 
+  * i.e.) Between self._data[2^(h-1)] and self.[2^(h)-2] where h is the height of the tree.
+
+### R-9.12 Consider a situation in which a user has numeric keys and wishes to have a priority queue that is maximum-oriented. How could a standard (min-oriented) priority queue be used for such a purpose?
+* Sol.) Consider a logic that all the upheap and downheap's key comparison works in opposite direction.
+```python
+class HeapPriorityQueue(PriorityQueueBase):
+    def __init__(self, contents=(), max_oriented=False):
+        self._data = [self._Item(k, v) for k, v in contents]
+        self._max_oriented = max_oriented  # Added for the max-oriented case
+        if len(self) > 0:
+            self._heapify()
+
+    def __len__(self):
+        return len(self._data)
+
+    def _heapify(self):
+        start = self._parent(len(self)-1)
+        for i in range(start, -1, -1):
+            self._downheap(start)
+
+    def _parent(self, j):
+        return (j-1)//2
+
+    def _left(self, j):
+        return 2*j+1
+
+    def _right(self, j):
+        return 2*j+2
+
+    def _has_left(self, j):
+        return self._left(j) < len(self._data)
+
+    def _has_right(self, j):
+        return self._right(j) < len(self._data)
+
+    def _swap(self, i, j):
+        self._data[i], self._data[j] = self._data[j], self._data[i]
+
+    def _upheap(self, j):
+        parent = self._parent(j)
+        # max-oriented case starts.
+        if self._max_oriented:
+            if j > 0 and self._data[parent] < self._data[j]:
+                self._swap(j, parent)
+                self._upheap(parent)
+        # max-oriented case ends.
+        else:
+            if j > 0 and self._data[parent] > self._data[j]:
+                self._swap(j, parent)
+                self._upheap(parent)
+
+    def _downheap(self, j):
+        if self._has_left(j):
+            left = self._left(j)
+            small_child = left
+            if self._has_right(j):
+                right = self._right(j)
+                if self._data[right] < self._data[left]:
+                    if not self._max_oriented:
+                        small_child = right
+                # max-oriented case starts.
+                else:
+                    if self._max_oriented:
+                        small_child = right
+                # max-oriented case ends.
+            # max-oriented case starts.
+            if self._max_oriented:
+                if self._data[j] < self._data[small_child]:
+                    self._swap(j, small_child)
+                    self._downheap(small_child)
+            # max-oriented case ends.
+            else:
+                if self._data[j] > self._data[small_child]:
+                    self._swap(j, small_child)
+                    self._downheap(small_child)
+
+    def add(self, key, value):
+        self._data.append(self._Item(key, value))
+        self._upheap(len(self._data)-1)
+
+    def min(self):
+        if self.is_empty():
+            raise Empty('Priority Queue is empty')
+        item = self._data[0]
+        return (item._key, item._value)
+
+    def remove_min(self):
+        if self.is_empty():
+            raise Empty('Priority Queue is empty')
+        self._swap(0, len(self)-1)
+        item = self._data.pop()
+        self._downheap(0)
+        return (item._key, item._value)
+```
+
+### R-9.13 Illustrate the execution of the in-place heap-sort algorithm on the following input sequence: (2,5,16,4,10,23,39,18,26,15)
+```python
+from DataStructures.priority_queues import HeapPriorityQueue
+def heap_sort(A):
+    n = len(A)
+    H = HeapPriorityQueue()
+    for i in range(n):
+        popped = A.pop(0)
+        H.add(popped, popped)
+    for i in range(n):
+        A.append(H.remove_min()[0])
+    return A
+if __name__ == '__main__':
+    m = [2,5,16,4,10,23,39,18,26,15]
+    print(m)
+    print(heap_sort(m))
+```
+
+### R-9.14 Let T be a complete binary tree such that position p stores an element with key f(p), where f(p) is the level number of p (see Section 8.3.2). Is tree T a heap? Why or why not?
+* Sol.) No. 
+  * Complete binary tree does share similar data structure with heap.
+  * However, binary tree itself does not support main operations such as upheap and downheap, which allow sustainable level numbering after numerous data updates in the middle of the tree.
+
+### R-9.15 Explain why the description of down-heap bubbling does not consider the case in which position p has a right child but not a left child.
+* Sol.) Array-Based Structure of the heap secures minimum height and left-first add_child system.
+  * We use index as an indicator for the virtual parent-child relation between elements.
+  * Thus, minimum height and left-first add_child system continues even after numerous additions and removals of the elements.
+
+### R-9.16 Is there a heap H storing seven entries with distinct keys such that a preorder traversal of H yields the entries of H in increasing or decreasing order by key? How about an inorder traversal? How about a postorder traversal? If so, give an example; if not, say why.
+* Sol.) No such traversals enables increasing or decreasing order of keys.
+  * This is because the heap is conformed in level-numbering rule, which is breadth-first order of elements.
+
+### R-9.17 Let H be a heap storing 15 entries using the array-based representation of a complete binary tree. What is the sequence of indices of the array that are visited in a preorder traversal of H? What about an inorder traversal of H? What about a postorder traversal of H?
+```python
+def preorder(H, j=0, text_list=[]):
+    text_list.append(str(H._data[j]._key))
+    if H._has_left(j):
+        preorder(H, H._left(j), text_list)
+    if H._has_right(j):
+        preorder(H, H._right(j), text_list)
+    return ' - '.join(text_list)
+
+def postorder(H, j=0, text_list=[]):
+    if H._has_left(j):
+        postorder(H, H._left(j), text_list)
+    if H._has_right(j):
+        postorder(H, H._right(j), text_list)
+    text_list.append(str(H._data[j]._key))
+    return ' - '.join(text_list)
+
+def inorder(H, j=0, text_list=[]):
+    if H._has_left(j):
+        inorder(H, H._left(j), text_list)
+    text_list.append(str(H._data[j]._key))
+    if H._has_right(j):
+        inorder(H, H._right(j), text_list)
+    return ' - '.join(text_list)
+
+if __name__ == '__main__':
+    from DataStructures.priority_queues import HeapPriorityQueue
+    a = HeapPriorityQueue()
+    for i in range(15):
+        a.add(i, i)
+
+    print(preorder(a))
+    print(postorder(a))
+    print(inorder(a))
+```
+
+### R-9.18 Show that the sum
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_18.png" style="height: 100px;"></img><br/>
+</p>
+
+#### which appears in the analysis of heap-sort, is Ω(nlogn).
 
 
 

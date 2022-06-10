@@ -86,8 +86,9 @@ class SortedPriorityQueue(PriorityQueueBase):
 
 
 class HeapPriorityQueue(PriorityQueueBase):
-    def __init__(self, contents=()):
+    def __init__(self, contents=(), max_oriented=False):
         self._data = [self._Item(k, v) for k, v in contents]
+        self._max_oriented = max_oriented  # Added for the max-oriented case
         if len(self) > 0:
             self._heapify()
 
@@ -119,9 +120,16 @@ class HeapPriorityQueue(PriorityQueueBase):
 
     def _upheap(self, j):
         parent = self._parent(j)
-        if j > 0 and self._data[parent] > self._data[j]:
-            self._swap(j, parent)
-            self._upheap(parent)
+        # max-oriented case starts.
+        if self._max_oriented:
+            if j > 0 and self._data[parent] < self._data[j]:
+                self._swap(j, parent)
+                self._upheap(parent)
+        # max-oriented case ends.
+        else:
+            if j > 0 and self._data[parent] > self._data[j]:
+                self._swap(j, parent)
+                self._upheap(parent)
 
     def _downheap(self, j):
         if self._has_left(j):
@@ -130,10 +138,23 @@ class HeapPriorityQueue(PriorityQueueBase):
             if self._has_right(j):
                 right = self._right(j)
                 if self._data[right] < self._data[left]:
-                    small_child = right
-            if self._data[j] > self._data[small_child]:
-                self._swap(j, small_child)
-                self._downheap(small_child)
+                    if not self._max_oriented:
+                        small_child = right
+                # max-oriented case starts.
+                else:
+                    if self._max_oriented:
+                        small_child = right
+                # max-oriented case ends.
+            # max-oriented case starts.
+            if self._max_oriented:
+                if self._data[j] < self._data[small_child]:
+                    self._swap(j, small_child)
+                    self._downheap(small_child)
+            # max-oriented case ends.
+            else:
+                if self._data[j] > self._data[small_child]:
+                    self._swap(j, small_child)
+                    self._downheap(small_child)
 
     def add(self, key, value):
         self._data.append(self._Item(key, value))
