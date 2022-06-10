@@ -252,6 +252,16 @@ if __name__ == '__main__':
 </p>
 
 #### which appears in the analysis of heap-sort, is Ω(nlogn).
+* Sol.) Worst case : Input collection C is in decreasing order.
+  * Recall that ┌log(i)┐ is equal to the height of i-th position.
+    * Since C is in decreasing order, every time i-th element is added to the heap, ┌log(i)┐ upheap operation is performed.
+    * Therefore, the given summation appears.
+  * One can check this by counting the number of upheap operations for each addition.
+
+### R-9.19 Bill claims that a preorder traversal of a heap will list its keys in non-decreasing order. Draw an example of a heap that proves him wrong.
+* Sol.) Check <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md#r-917-let-h-be-a-heap-storing-15-entries-using-the-array-based-representation-of-a-complete-binary-tree-what-is-the-sequence-of-indices-of-the-array-that-are-visited-in-a-preorder-traversal-of-h-what-about-an-inorder-traversal-of-h-what-about-a-postorder-traversal-of-h">R-9.17</a>
+
+
 
 
 

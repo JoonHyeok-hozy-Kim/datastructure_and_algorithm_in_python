@@ -4,9 +4,11 @@ def heap_sort(A):
     H = HeapPriorityQueue()
     for i in range(n):
         popped = A.pop(0)
+        print('[Add] {}'.format(popped))
         H.add(popped, popped)
     for i in range(n):
         A.append(H.remove_min()[0])
+        print('[Remove] {}'.format(A[-1]))
     return A
 
 def preorder(H, j=0, text_list=[]):
@@ -36,16 +38,21 @@ def inorder(H, j=0, text_list=[]):
 
 if __name__ == '__main__':
     from random import randint
-    l = [randint(0, 100) for i in range(10)]
+    size = 16
+    l = [randint(0, 100) for i in range(size)]
+    k = [i for i in range(size, -1, -1)]
+    print(k)
 
     from DataStructures.priority_queues import HeapPriorityQueue
     a = HeapPriorityQueue()
-    for i in range(15):
-        a.add(i, i)
+    # for i in range(15):
+    #     a.add(i, i)
+    # print(preorder(a))
+    # print(postorder(a))
+    # print(inorder(a))
 
-    print(preorder(a))
-    print(postorder(a))
-    print(inorder(a))
+    b = heap_sort(k)
+    print(b)
 
 
 
