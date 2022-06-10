@@ -261,8 +261,15 @@ if __name__ == '__main__':
 ### R-9.19 Bill claims that a preorder traversal of a heap will list its keys in non-decreasing order. Draw an example of a heap that proves him wrong.
 * Sol.) Check <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md#r-917-let-h-be-a-heap-storing-15-entries-using-the-array-based-representation-of-a-complete-binary-tree-what-is-the-sequence-of-indices-of-the-array-that-are-visited-in-a-preorder-traversal-of-h-what-about-an-inorder-traversal-of-h-what-about-a-postorder-traversal-of-h">R-9.17</a>
 
+### R-9.20 Hillary claims that a postorder traversal of a heap will list its keys in non-increasing order. Draw an example of a heap that proves her wrong.
+* Sol.) Check <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md#r-917-let-h-be-a-heap-storing-15-entries-using-the-array-based-representation-of-a-complete-binary-tree-what-is-the-sequence-of-indices-of-the-array-that-are-visited-in-a-preorder-traversal-of-h-what-about-an-inorder-traversal-of-h-what-about-a-postorder-traversal-of-h">R-9.17</a>
 
+### R-9.21 Show all the steps of the algorithm for removing the entry (16,X) from the heap of Figure 9.1, assuming the entry had been identified with a locator.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_21_figure_9_1.png" style="height: 450px;"></img><br/>
+</p>
 
+* Sol.)
 
 
 <p>
