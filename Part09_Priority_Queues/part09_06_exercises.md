@@ -305,7 +305,7 @@ a.add(32, 32)
 print(a)
 ```
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_23.png" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_23.png" style="height: 300px;"></img><br/>
 </p>
 
 ###
