@@ -174,31 +174,102 @@ class LinkedHeapBinaryTree(LinkedBinaryTree):
 
     def __init__(self):
         super().__init__()
-        self._last_node = None
+        self._last_position = None
+        self._max_height = 1
+
+    def last(self):
+        return self._last_position
+
+    def _swap(self, p, q):
+        if self._last_position == p:
+            self._last_position = q
+        elif self._last_position == q:
+            self._last_position = p
+        super()._swap(p, q)
+
+    def _upheap(self, p):
+        while p != self.root():
+            parent = self.parent(p)
+            if p.element() < parent.element():
+                self._swap(p, parent)
+
+    def _downheap(self, p):
+        if len(self) == 0:
+            return
+        while not self.is_leaf(p):
+            if self.left(p) is not None:
+                small_child = self.left(p)
+                if self.right(p) is not None:
+                    right = self.right(p)
+                    if right.element() < small_child.element():
+                        small_child = right
+                # print('[DOWN] {} - {}'.format(p.element(), small_child.element()))
+                if p.element() > small_child.element():
+                    self._swap(p, small_child)
+                else:
+                    return
 
     def add(self, key, value):
-        item = self._Item(key, value)
-        if self._last_node is None:
-            self._last_node = self._add_root(item)
+        new_item = self._Item(key, value)
+        if self._last_position is None:
+            self._last_position = self._add_root(new_item)
+        elif self._size == pow(2, self._max_height)-1:
+            self._last_position = self._add_drill_left(self.root(), new_item)
+            self._max_height += 1
         else:
-            parent = self.parent(self._last_node)
-            if self._last_node == self.left(parent):
-                self._last_node = self._add_right(parent, item)
-            else:
-                pass
+            self._last_position = self._add_next_last_position(self._last_position, new_item)
+        self._upheap(self._last_position)
 
-    def _next_last_position(self, p, up_cnt):
+    def _add_drill_left(self, p, new_item):
+        while not self.is_leaf(p):
+            p = self.left(p)
+        return self._add_left(p, new_item)
+
+    def _add_next_last_position(self, p, new_item):
         parent = self.parent(p)
         if p == self.left(parent):
-            if self.right(parent) is None:
-                return self._add_right(parent, None)
+            if self.is_leaf(p):
+                return self._add_right(parent, new_item)
             else:
-                pass
+                right_sibling = self.right(parent)
+                return self._add_drill_left(right_sibling, new_item)
         else:
-            pass
+            return self._add_next_last_position(parent, new_item)
 
-    def _go_down_left(self, p, up_cnt):
-        pass
+    def remove_min(self):
+        root_copy = self.root()
+        # print('[RM] root : {}'.format(self.root().element()))
+        # print('[RM] last : {}'.format(self.last().element()))
+        self._swap(self.root(), self.last())
+        self._last_position = self._after_remove_last_position(root_copy)
+        deleted = self._delete(root_copy)
+        self._downheap(self.root())
+        return deleted
+
+    def _after_remove_last_position(self, current_last):
+        if current_last == self.root():
+            return None
+        if self._size == pow(2, self._max_height-1):
+            self._max_height -= 1
+            return self._after_remove_drill_right(self.root())
+        parent = self.parent(current_last)
+        if current_last == self.right(parent):
+            if self.is_leaf(current_last):
+                return self.left(parent)
+            else:
+                left_sibling = self.left(parent)
+                return self._after_remove_drill_right(left_sibling)
+        else:
+            return self._after_remove_last_position(parent)
+
+    def _after_remove_drill_right(self, p):
+        while not self.is_leaf(p):
+            if self.right(p) is not None:
+                p = self.right(p)
+            else:
+                break
+        return p
+
 
 if __name__ == '__main__':
     from random import randint
@@ -263,8 +334,26 @@ if __name__ == '__main__':
     # while not x.is_empty():
     #     print(x.remove_min())
 
-    from math import log2
-    print(round(log2(9)))
+    # from math import log2
+    # print(round(log2(9)))
+    # a = LinkedHeapBinaryTree()
+    # for i in range(7):
+    #     print(a.add(i+1, i+1).element())
+    #     print(a)
+
+    a = LinkedHeapBinaryTree()
+    for i in range(14,-1,-1):
+        a.add(i+1, i+1)
+    print(a)
+    for i in range(15):
+        print('REMOVED_MIN : {}'.format(a.remove_min()))
+        print(a)
+    print('root : {}'.format(a.root()))
+    print('last : {}'.format(a.last()))
+
+
+
+
 
 
 

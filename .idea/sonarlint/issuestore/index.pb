@@ -66,9 +66,9 @@ Y
 0Part08_Trees/part08_04_traversal_applications.py,f\5\f50f771650031a2a340b8d0357a8134b689f4da9
 S
 #Part08_Trees/part08_04_traversal.py,a\1\a17793ac9fc30dc5c53c28b56c30d227b9ceb988
-R
-"DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
 S
 #Part08_Trees/part08_06_exercises.md,e\9\e9018d9a59bfe145fc1e97837fd9d624ab31f0b3
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+c
+3Part09_Priority_Queues/part09_00_priority_queues.md,f\f\ff822f188bb9edb67d32ffb33689491d9c33d449

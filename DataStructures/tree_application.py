@@ -488,3 +488,120 @@ class Diameter(BinaryEulerTour):
             'node1': node1,
             'node2': node2
         }
+
+
+# Heap Implementation with LinkedBinaryTree starts.
+from DataStructures.tree import LinkedBinaryTree
+class LinkedHeapBinaryTree(LinkedBinaryTree):
+
+    class _Item:
+        __slots__ = '_key', '_value'
+
+        def __init__(self, key, value):
+            self._key = key
+            self._value = value
+
+        def __lt__(self, other):
+            return self._key < other._key
+
+        def __str__(self):
+            return '({}, {})'.format(self._key, self._value)
+
+    def __init__(self):
+        super().__init__()
+        self._last_position = None
+        self._max_height = 1
+
+    def last(self):
+        return self._last_position
+
+    def _swap(self, p, q):
+        if self._last_position == p:
+            self._last_position = q
+        elif self._last_position == q:
+            self._last_position = p
+        super()._swap(p, q)
+
+    def _upheap(self, p):
+        while p != self.root():
+            parent = self.parent(p)
+            if p.element() < parent.element():
+                self._swap(p, parent)
+
+    def _downheap(self, p):
+        if len(self) == 0:
+            return
+        while not self.is_leaf(p):
+            if self.left(p) is not None:
+                small_child = self.left(p)
+                if self.right(p) is not None:
+                    right = self.right(p)
+                    if right.element() < small_child.element():
+                        small_child = right
+                # print('[DOWN] {} - {}'.format(p.element(), small_child.element()))
+                if p.element() > small_child.element():
+                    self._swap(p, small_child)
+                else:
+                    return
+
+    def add(self, key, value):
+        new_item = self._Item(key, value)
+        if self._last_position is None:
+            self._last_position = self._add_root(new_item)
+        elif self._size == pow(2, self._max_height)-1:
+            self._last_position = self._add_drill_left(self.root(), new_item)
+            self._max_height += 1
+        else:
+            self._last_position = self._add_next_last_position(self._last_position, new_item)
+        self._upheap(self._last_position)
+
+    def _add_drill_left(self, p, new_item):
+        while not self.is_leaf(p):
+            p = self.left(p)
+        return self._add_left(p, new_item)
+
+    def _add_next_last_position(self, p, new_item):
+        parent = self.parent(p)
+        if p == self.left(parent):
+            if self.is_leaf(p):
+                return self._add_right(parent, new_item)
+            else:
+                right_sibling = self.right(parent)
+                return self._add_drill_left(right_sibling, new_item)
+        else:
+            return self._add_next_last_position(parent, new_item)
+
+    def remove_min(self):
+        root_copy = self.root()
+        # print('[RM] root : {}'.format(self.root().element()))
+        # print('[RM] last : {}'.format(self.last().element()))
+        self._swap(self.root(), self.last())
+        self._last_position = self._after_remove_last_position(root_copy)
+        deleted = self._delete(root_copy)
+        self._downheap(self.root())
+        return deleted
+
+    def _after_remove_last_position(self, current_last):
+        if current_last == self.root():
+            return None
+        if self._size == pow(2, self._max_height-1):
+            self._max_height -= 1
+            return self._after_remove_drill_right(self.root())
+        parent = self.parent(current_last)
+        if current_last == self.right(parent):
+            if self.is_leaf(current_last):
+                return self.left(parent)
+            else:
+                left_sibling = self.left(parent)
+                return self._after_remove_drill_right(left_sibling)
+        else:
+            return self._after_remove_last_position(parent)
+
+    def _after_remove_drill_right(self, p):
+        while not self.is_leaf(p):
+            if self.right(p) is not None:
+                p = self.right(p)
+            else:
+                break
+        return p
+# Heap Implementation with LinkedBinaryTree ends.

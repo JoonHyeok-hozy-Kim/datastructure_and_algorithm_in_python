@@ -120,7 +120,6 @@ class LinkedBinaryTree(BinaryTree):
         return self.Position(self, node)
 
     def __init__(self):
-        self._root = None
         self._size = 0
         self._sentinel = self._Node(None, None, None, None)
 
@@ -133,7 +132,7 @@ class LinkedBinaryTree(BinaryTree):
         return self._size
 
     def root(self):
-        return self._make_position(self._root)
+        return self._make_position(self._sentinel._left)
 
     def parent(self, p):
         node = self._validate(p)
@@ -160,10 +159,10 @@ class LinkedBinaryTree(BinaryTree):
     def _add_root(self, e):
         if self.root() is not None:
             raise ValueError('Root already exists.')
-        self._root = self._Node(e, self._sentinel, self._sentinel, self._sentinel)
-        self._sentinel._left = self._root
+        root = self._Node(e, self._sentinel, self._sentinel, self._sentinel)
+        self._sentinel._left = root
         self._size += 1
-        return self._make_position(self._root)
+        return self._make_position(root)
 
     def _add_left(self, p, e):
         node = self._validate(p)
@@ -193,12 +192,11 @@ class LinkedBinaryTree(BinaryTree):
         if self.num_children(p) == 2:
             raise ValueError('p has two children.')
         child = node._left if node._left != self._sentinel else node._right
-        if child is not None:
+        if child != self._sentinel:
             child._parent = node._parent
-        if node == self._root:
-            self._root = child
+        if p == self.root():
+            self._sentinel._left = child
             child._parent = self._sentinel
-            self._sentinel._left = self._root
         else:
             parent = node._parent
             if node == parent._left:
@@ -331,22 +329,24 @@ class LinkedBinaryTree(BinaryTree):
             for right_descendent in self._subtree_inorder(self.right(p)):
                 yield right_descendent
 
-    def fill_tree(self, height):
+    def fill_tree(self, n):
+        from DataStructures.queue import LinkedQueue
+        idx = 0
+        Q = LinkedQueue()
+        Q.enqueue(self._add_root(idx))
+        while idx < n-1:
+            idx += 1
+            dequeued = Q.dequeue()
+            Q.enqueue(self._add_left(dequeued, idx))
+            if idx >= n-1:
+                break
+            idx += 1
+            Q.enqueue(self._add_right(dequeued, idx))
+
+    def fill_tree_height(self, height):
         if not self.is_empty():
             raise ValueError('Tree is not empty.')
-        num_list = [i for i in reversed(range(pow(2, height)-1))]
-        self._fill_recursive(height, num_list)
-
-    def _fill_recursive(self, max_height, val_list, p=None, curr_height=None):
-        if p is None:
-            p = self._add_root(val_list.pop())
-            curr_height = 1
-        if curr_height == max_height:
-            return
-        left_child = self._add_left(p, val_list.pop())
-        self._fill_recursive(max_height, val_list, left_child, curr_height+1)
-        right_child = self._add_right(p, val_list.pop())
-        self._fill_recursive(max_height, val_list, right_child, curr_height+1)
+        self.fill_tree(pow(2, height)-1)
 
     # C-8.38
     def _delete_subtree(self, p):
@@ -359,7 +359,7 @@ class LinkedBinaryTree(BinaryTree):
         p_node = self._validate(p)
         q_node = self._validate(q)
 
-        p_parent_node = self._validate(self.parent(p))
+        p_parent_node = self._sentinel if p == self.root() else self._validate(self.parent(p))
         p_left_flag = False
         if p_parent_node._left == p_node:
             p_left_flag = True
@@ -370,7 +370,7 @@ class LinkedBinaryTree(BinaryTree):
         if self.right(p) is not None:
             p_r_child_node = self._validate(self.right(p))
 
-        q_parent_node = self._validate(self.parent(q))
+        q_parent_node = self._sentinel if q == self.root() else self._validate(self.parent(q))
         q_left_flag = False
         if q_parent_node._left == q_node:
             q_left_flag = True
@@ -381,36 +381,80 @@ class LinkedBinaryTree(BinaryTree):
         if self.right(q) is not None:
             q_r_child_node = self._validate(self.right(q))
 
-        # Parent Shift
-        if p_left_flag:
-            p_parent_node._left = q_node
+        # Case 1. p is Parent, q is child
+        if self.parent(q) == p:
+            q_node._parent = p_parent_node
+            p_node._parent = q_node
+            if p_left_flag:
+                p_parent_node._left = q_node
+            else:
+                p_parent_node._right = q_node
+
+            if p_l_child_node == q_node:
+                q_node._left = p_node
+                q_node._right = p_r_child_node
+                p_r_child_node._parent = q_node
+            elif p_r_child_node == q_node:
+                q_node._left = p_l_child_node
+                q_node._right = p_node
+                p_l_child_node._parent = q_node
+            else:
+                raise ValueError('q is not a child of p')
+            p_node._left = q_l_child_node
+            p_node._right = q_r_child_node
+            q_l_child_node._parent = p_node
+            q_r_child_node._parent = p_node
+
+        # Case 2. q is Parent, p is child
+        elif self.parent(p) == q:
+            p_node._parent = q_parent_node
+            q_node._parent = p_node
+            if q_left_flag:
+                q_parent_node._left = p_node
+            else:
+                q_parent_node._right = p_node
+
+            if q_l_child_node == p_node:
+                p_node._left = q_node
+                p_node._right = q_r_child_node
+                q_r_child_node._parent = p_node
+            elif q_r_child_node == p_node:
+                p_node._left = q_l_child_node
+                p_node._right = q_node
+                q_l_child_node._parent = p_node
+            else:
+                raise ValueError('p is not a child of q')
+            q_node._left = p_l_child_node
+            q_node._right = p_r_child_node
+            p_l_child_node._parent = q_node
+            p_r_child_node._parent = q_node
+
+        # Case 3. Other relations
         else:
-            p_parent_node._right = q_node
-        q_node._parent = p_parent_node
-        self._make_position(p_parent_node)
+            # Parent Shift
+            if p_left_flag:
+                p_parent_node._left = q_node
+            else:
+                p_parent_node._right = q_node
+            q_node._parent = p_parent_node
 
-        if q_left_flag:
-            q_parent_node._left = p_node
-        else:
-            q_parent_node._right = p_node
-        p_node._parent = q_parent_node
-        self._make_position(q_parent_node)
+            if q_left_flag:
+                q_parent_node._left = p_node
+            else:
+                q_parent_node._right = p_node
+            p_node._parent = q_parent_node
 
-        # Left Child Shift
-        p_node._left = q_l_child_node
-        q_node._left = p_l_child_node
-        p_l_child_node._parent = q_node
-        self._make_position(p_l_child_node)
-        q_l_child_node._parent = p_node
-        self._make_position(q_l_child_node)
+            # Left Child Shift
+            p_node._left = q_l_child_node
+            q_node._left = p_l_child_node
+            p_l_child_node._parent = q_node
+            q_l_child_node._parent = p_node
 
-        # Right Child Shift
-        p_node._right = q_r_child_node
-        q_node._right = p_r_child_node
-        p_r_child_node._parent = q_node
-        self._make_position(p_r_child_node)
-        q_r_child_node._parent = p_node
-        self._make_position(q_r_child_node)
+            # Right Child Shift
+            p_node._right = q_r_child_node
+            q_node._right = p_r_child_node
+            p_r_child_node._parent = q_node
+            q_r_child_node._parent = p_node
 
         return [self._make_position(p_node), self._make_position(q_node)]
 
