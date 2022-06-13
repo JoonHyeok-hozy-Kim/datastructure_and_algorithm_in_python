@@ -511,6 +511,7 @@ class StockTrading:
             self._sell.add(price, quantity)
 
 
+
 if __name__ == '__main__':
     from random import randint
     size = 10000
@@ -608,13 +609,23 @@ if __name__ == '__main__':
     # s.sell(90, 7)
     # s.visualize_queues()
 
-    from copy import deepcopy
-    from time import time
-    l_naive = deepcopy(l)
-    t1 = time()
-    heap_sort_naive(l_naive)
-    t2 = time()
-    heap_sort(l)
-    t3 = time()
-    print('[naive   ] {}'.format(t2-t1))
-    print('[in-place] {}'.format(t3-t2))
+    # from copy import deepcopy
+    # from time import time
+    # l_naive = deepcopy(l)
+    # t1 = time()
+    # heap_sort_naive(l_naive)
+    # t2 = time()
+    # heap_sort(l)
+    # t3 = time()
+    # print('[naive   ] {}'.format(t2-t1))
+    # print('[in-place] {}'.format(t3-t2))
+
+    from DataStructures.linked_list import FavoriteListMTF
+    f = FavoriteListMTF()
+    for i in range(10):
+        f.access(i)
+    for i in range(100):
+        f.access(randint(0, 9))
+    t = f.top(5)
+    for i in t:
+        print('val : {}, cnt : {}'.format(i.element()._value, i.element()._count))

@@ -1088,6 +1088,52 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_53.png" style="height: 100px;"></img><br/>
 </p>
 
+### P-9.54 Use the approach of either Exercise C-9.42 or C-9.43 to reimplement the top method of the FavoritesListMTF class from Section 7.6.2. Make sure that results are generated from largest to smallest.
+```python
+def top(self, k):
+    if not 1 <= k <= len(self):
+        raise ValueError('Illegal value for k')
+
+    from DataStructures.priority_queues import HeapPriorityQueue
+    H = HeapPriorityQueue()
+    result_list = []
+    result_list.append(self._data.first())
+    walk = self._data.after(self._data.first())
+    while walk is not None:
+        if walk.element()._count > result_list[0].element()._count:
+            min_val = result_list.pop()
+            result_list.append(walk)
+        else:
+            min_val = walk
+        if len(H) < k-1:
+            H.add(min_val.element()._count, min_val.element()._value)
+        else:
+            H.heappushpop(min_val.element()._count, min_val.element()._value)
+        walk = self._data.after(walk)
+    while not H.is_empty():
+        e = H.remove_min()[1]
+        result_list.insert(1, self._find_position(e))
+    return result_list
+```
+* Test
+```python
+from DataStructures.linked_list import FavoriteListMTF
+from random import randint
+f = FavoriteListMTF()
+for i in range(10):
+    f.access(i)
+for i in range(100):
+    f.access(randint(0, 9))
+t = f.top(5)
+for i in t:
+    print('val : {}, cnt : {}'.format(i.element()._value, i.element()._count))
+```
+
+
+
+
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_00_priority_queues.md">Part 9. Priority Queues</a>

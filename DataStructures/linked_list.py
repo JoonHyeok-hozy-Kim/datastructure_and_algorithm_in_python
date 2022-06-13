@@ -383,19 +383,27 @@ class FavoriteListMTF(FavoriteList):
         if not 1 <= k <= len(self):
             raise ValueError('Illegal value for k')
 
-        temp = PositionalList()
-        for i in self._data:
-            temp.add_last(i)
+        from DataStructures.priority_queues import HeapPriorityQueue
+        H = HeapPriorityQueue()
+        result_list = []
+        result_list.append(self._data.first())
+        walk = self._data.after(self._data.first())
+        while walk is not None:
+            if walk.element()._count > result_list[0].element()._count:
+                min_val = result_list.pop()
+                result_list.append(walk)
+            else:
+                min_val = walk
+            if len(H) < k-1:
+                H.add(min_val.element()._count, min_val.element()._value)
+            else:
+                H.heappushpop(min_val.element()._count, min_val.element()._value)
+            walk = self._data.after(walk)
+        while not H.is_empty():
+            e = H.remove_min()[1]
+            result_list.insert(1, self._find_position(e))
+        return result_list
 
-        for i in range(k):
-            highPos = temp.first()
-            walk = temp.after(highPos)
-            while walk is not None:
-                if walk.element()._count > highPos.element()._count:
-                    highPos = walk
-                walk = temp.after(walk)
-            yield highPos.element()._value
-            temp.delete(highPos)
 
     def purge(self, n):
         if len(self) < n:
