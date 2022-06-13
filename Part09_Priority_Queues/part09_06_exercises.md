@@ -1129,6 +1129,9 @@ for i in t:
     print('val : {}, cnt : {}'.format(i.element()._value, i.element()._count))
 ```
 
+### P-9.55 Write a program that can process a sequence of stock buy and sell orders as described in Exercise C-9.50.
+* Sol.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md#c-950-an-online-computer-system-for-trading-stocks-needs-to-process-orders-of-the-form-buy-100-shares-at-x-each-or-sell-100-shares-at-y-each-a-buy-order-for-x-can-only-be-processed-if-there-is-an-existing-sell-order-with-price-y-such-that-y--x-likewise-a-sell-order-for-y-can-only-be-processed-if-there-is-an-existing-buy-order-with-price-x-such-that-y--x-if-a-buy-or-sell-order-is-entered-but-cannot-be-processed-it-must-wait-for-a-future-order-that-allows-it-to-be-processed-describe-a-scheme-that-allows-buy-and-sell-orders-to-be-entered-in-ologn-time-independent-of-whether-or-not-they-can-be-immediately-processed">Exercise C-9.50</a>
+
 
 
 
