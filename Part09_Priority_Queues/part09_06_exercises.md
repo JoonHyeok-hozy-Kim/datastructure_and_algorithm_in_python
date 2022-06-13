@@ -1132,8 +1132,36 @@ for i in t:
 ### P-9.55 Write a program that can process a sequence of stock buy and sell orders as described in Exercise C-9.50.
 * Sol.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md#c-950-an-online-computer-system-for-trading-stocks-needs-to-process-orders-of-the-form-buy-100-shares-at-x-each-or-sell-100-shares-at-y-each-a-buy-order-for-x-can-only-be-processed-if-there-is-an-existing-sell-order-with-price-y-such-that-y--x-likewise-a-sell-order-for-y-can-only-be-processed-if-there-is-an-existing-buy-order-with-price-x-such-that-y--x-if-a-buy-or-sell-order-is-entered-but-cannot-be-processed-it-must-wait-for-a-future-order-that-allows-it-to-be-processed-describe-a-scheme-that-allows-buy-and-sell-orders-to-be-entered-in-ologn-time-independent-of-whether-or-not-they-can-be-immediately-processed">Exercise C-9.50</a>
 
-
-
+### P-9.56 Let S be a set of n points in the plane with distinct integer x- and y-coordinates. Let T be a complete binary tree storing the points from S at its external nodes, such that the points are ordered left to right by increasing x-coordinates. For each node v in T, let S(v) denote the subset of S consisting of points stored in the subtree rooted at v. For the root r of T, define top(r) to be the point in S = S(r) with maximum y-coordinate. For every other node v, define top(r) to be the point in S with highest y-coordinate in S(v) that is not also the highest y-coordinate in S(u), where u is the parent of v in T (if such a point exists). Such labeling turns T into a priority search tree. Describe a linear-time algorithm for turning T into a priority search tree. Implement this approach.
+```python
+from DataStructures.queue import LinkedQueue
+from DataStructures.tree import MutableLinkedBinaryTree
+def priority_search_tree_builder(S):
+    Q = LinkedQueue()
+    for i in S:
+        new_tree = MutableLinkedBinaryTree()
+        new_tree.add_root(i)
+        Q.enqueue(new_tree)
+    while True:
+        left = Q.dequeue()
+        print('left')
+        print(left)
+        if not Q.is_empty():
+            right = Q.dequeue()
+            print('right')
+            print(right)
+            new_tree = MutableLinkedBinaryTree()
+            if left.root().element()[1] > right.root().element()[1]:
+                root = new_tree.add_root(left.root().element())
+            else:
+                root = new_tree.add_root(right.root().element())
+            new_tree.add_left(root, left)
+            new_tree.add_right(root, right)
+            Q.enqueue(new_tree)
+        else:
+            break
+    return left
+```
 
 
 

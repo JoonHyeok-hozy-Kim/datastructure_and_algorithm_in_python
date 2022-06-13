@@ -511,10 +511,37 @@ class StockTrading:
             self._sell.add(price, quantity)
 
 
+from DataStructures.queue import LinkedQueue
+from DataStructures.tree import MutableLinkedBinaryTree
+def priority_search_tree_builder(S):
+    Q = LinkedQueue()
+    for i in S:
+        new_tree = MutableLinkedBinaryTree()
+        new_tree.add_root(i)
+        Q.enqueue(new_tree)
+    while True:
+        left = Q.dequeue()
+        print('left')
+        print(left)
+        if not Q.is_empty():
+            right = Q.dequeue()
+            print('right')
+            print(right)
+            new_tree = MutableLinkedBinaryTree()
+            if left.root().element()[1] > right.root().element()[1]:
+                root = new_tree.add_root(left.root().element())
+            else:
+                root = new_tree.add_root(right.root().element())
+            new_tree.add_left(root, left)
+            new_tree.add_right(root, right)
+            Q.enqueue(new_tree)
+        else:
+            break
+    return left
 
 if __name__ == '__main__':
     from random import randint
-    size = 10000
+    size = 5
     l = [randint(0, 100) for i in range(size)]
     k = [i for i in range(size, -1, -1)]
     # print(k)
@@ -620,12 +647,15 @@ if __name__ == '__main__':
     # print('[naive   ] {}'.format(t2-t1))
     # print('[in-place] {}'.format(t3-t2))
 
-    from DataStructures.linked_list import FavoriteListMTF
-    f = FavoriteListMTF()
-    for i in range(10):
-        f.access(i)
-    for i in range(100):
-        f.access(randint(0, 9))
-    t = f.top(5)
-    for i in t:
-        print('val : {}, cnt : {}'.format(i.element()._value, i.element()._count))
+    # from DataStructures.linked_list import FavoriteListMTF
+    # f = FavoriteListMTF()
+    # for i in range(10):
+    #     f.access(i)
+    # for i in range(100):
+    #     f.access(randint(0, 9))
+    # t = f.top(5)
+    # for i in t:
+    #     print('val : {}, cnt : {}'.format(i.element()._value, i.element()._count))
+
+    l = [(i, randint(0, 100))  for i in range(size)]
+    priority_search_tree_builder(l)
