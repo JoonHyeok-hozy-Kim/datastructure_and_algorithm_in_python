@@ -4,11 +4,9 @@ def heap_sort_naive(A):
     H = HeapPriorityQueue()
     for i in range(n):
         popped = A.pop(0)
-        print('[Add] {}'.format(popped))
         H.add(popped, popped)
     for i in range(n):
         A.append(H.remove_min()[0])
-        print('[Remove] {}'.format(A[-1]))
     return A
 
 def preorder(H, j=0, text_list=[]):
@@ -382,9 +380,140 @@ def insertion_sort_in_place(A):
         A.append(A.pop(idx))
     return A
 
+
+def heap_sort_min(A):
+    n = len(A)
+    heap_start = 0
+    heap_len = 1
+    for i in range(n):
+        popped = A.pop(n-1)
+        A.insert(0, popped)
+        # print('BEFORE UP : {}'.format(A))
+        _heap_sort_downheap_min(A, heap_len, 0)
+        heap_len += 1
+    heap_len -= 1
+    for i in range(n):
+        current_min_idx = _heap_sort_remove_min(A, heap_len)
+        A.append(A.pop(current_min_idx))
+        heap_len -= 1
+    print(A)
+    return A
+
+def _heap_sort_parent_min(j):
+    return (j-1)//2
+
+def _heap_sort_left_min(n, heap_len, j):
+    idx = j*2+1
+    if n-1 < idx or idx > heap_len-1:
+        return None
+    return idx
+
+def _heap_sort_right_min(n, heap_len, j):
+    idx = j*2+2
+    if n-1 < idx or idx > heap_len-1:
+        return None
+    return idx
+
+def _heap_sort_swap(A, i, j):
+    A[i], A[j] = A[j], A[i]
+
+def _heap_sort_upheap_min(A, j):
+    if j > 0:
+        parent = _heap_sort_parent_min(j)
+        # print('[UP] {} - {}'.format(A[parent], A[j]))
+        if A[parent] > A[j]:
+            _heap_sort_swap(A, parent, j)
+            # print('[UP] swapped : {}'.format(A))
+            _heap_sort_upheap_min(A, parent)
+
+def _heap_sort_downheap_min(A, heap_len, j):
+    left = _heap_sort_left_min(len(A), heap_len, j)
+    if left is not None:
+        small_child = left
+        right = _heap_sort_right_min(len(A), heap_len, j)
+        if right is not None:
+            if A[right] < A[left]:
+                small_child = right
+        # print('[DOWN] {} - {}'.format(A[j], A[big_child]))
+        if A[j] > A[small_child]:
+            _heap_sort_swap(A, j, small_child)
+            # print('[DOWN] swapped : {}'.format(A))
+            _heap_sort_downheap_min(A, heap_len, small_child)
+
+def _heap_sort_remove_min(A, heap_len):
+    last = heap_len -1
+    _heap_sort_swap(A, 0, last)
+    _heap_sort_downheap_min(A, heap_len-1, 0)
+    return last
+
+
+from DataStructures.priority_queues import HeapPriorityQueue, MaxPriorityQueue
+class StockTrading:
+    def __init__(self):
+        self._buy = MaxPriorityQueue()
+        self._sell = HeapPriorityQueue()
+        self._successful_transactions = []
+
+    def visualize_queues(self):
+        print('BUY')
+        print(self._buy)
+        print('SELL')
+        print(self._sell)
+        print('SUCCESS')
+        print(self._successful_transactions)
+        print('-------------------------------')
+
+    def buy(self, price, quantity):
+        while (not self._sell.is_empty()) and quantity > 0:
+            min_sell = self._sell.min()
+            if min_sell[0] <= price:
+                popped = self._sell.remove_min()
+                if popped[1] == quantity:
+                    self._successful_transactions.append(('SELL', popped[0], popped[1]))
+                    self._successful_transactions.append(('BUY', price, quantity))
+                    quantity -= popped[1]
+                else:
+                    self._successful_transactions.append(('SELL', popped[0], min(popped[1], quantity)))
+                    self._successful_transactions.append(('BUY', price, min(popped[1], quantity)))
+
+                    if popped[1] > quantity:
+                        self._sell.add(popped[0], popped[1] - quantity)
+                        quantity = 0
+                    else:
+                        quantity -= popped[1]
+            else:
+                break
+        if quantity > 0:
+            self._buy.add(price, quantity)
+
+
+    def sell(self, price, quantity):
+        while (not self._buy.is_empty()) and quantity > 0:
+            max_buy = self._buy.max()
+            if max_buy[0] >= price:
+                popped = self._buy.remove_max()
+                if popped[1] == quantity:
+                    self._successful_transactions.append(('BUY', popped[0], popped[1]))
+                    self._successful_transactions.append(('SELL', price, quantity))
+                    quantity -= popped[1]
+                else:
+                    self._successful_transactions.append(('BUY', popped[0], min(popped[1], quantity)))
+                    self._successful_transactions.append(('SELL', price, min(popped[1], quantity)))
+
+                    if popped[1] > quantity:
+                        self._buy.add(popped[0], popped[1] - quantity)
+                        quantity = 0
+                    else:
+                        quantity -= popped[1]
+            else:
+                break
+        if quantity > 0:
+            self._sell.add(price, quantity)
+
+
 if __name__ == '__main__':
     from random import randint
-    size = 15
+    size = 10000
     l = [randint(0, 100) for i in range(size)]
     k = [i for i in range(size, -1, -1)]
     # print(k)
@@ -469,9 +598,23 @@ if __name__ == '__main__':
     #     b = last_node_from_binary_string(a)
     #     print(b.element())
 
-    l = [16, 21, 42, 19, 65, 80, 90, 57, 30, 36, 24, 66, 17, 31]
-    print(l)
-    insertion_sort_in_place(l)
-    print(l)
+    # s = StockTrading()
+    # s.buy(100, 5)
+    # s.visualize_queues()
+    # s.sell(120, 3)
+    # s.visualize_queues()
+    # s.buy(130, 4)
+    # s.visualize_queues()
+    # s.sell(90, 7)
+    # s.visualize_queues()
 
-
+    from copy import deepcopy
+    from time import time
+    l_naive = deepcopy(l)
+    t1 = time()
+    heap_sort_naive(l_naive)
+    t2 = time()
+    heap_sort(l)
+    t3 = time()
+    print('[naive   ] {}'.format(t2-t1))
+    print('[in-place] {}'.format(t3-t2))

@@ -906,13 +906,187 @@ def insertion_sort_in_place(A):
 ```
 
 ### C-9.49 Give an alternate description of the in-place heap-sort algorithm using the standard minimum-oriented priority queue (instead of a maximum-oriented one).
+```python
+def heap_sort_min(A):
+    n = len(A)
+    heap_start = 0
+    heap_len = 1
+    for i in range(n):
+        popped = A.pop(n-1)
+        A.insert(0, popped)
+        # print('BEFORE UP : {}'.format(A))
+        _heap_sort_downheap_min(A, heap_len, 0)
+        heap_len += 1
+    heap_len -= 1
+    for i in range(n):
+        current_min_idx = _heap_sort_remove_min(A, heap_len)
+        A.append(A.pop(current_min_idx))
+        heap_len -= 1
+    print(A)
+    return A
+
+def _heap_sort_parent(j):
+    return (j-1)//2
+
+def _heap_sort_left(n, heap_len, j):
+    idx = j*2+1
+    if n-1 < idx or idx > heap_len-1:
+        return None
+    return idx
+
+def _heap_sort_right(n, heap_len, j):
+    idx = j*2+2
+    if n-1 < idx or idx > heap_len-1:
+        return None
+    return idx
+
+def _heap_sort_swap(A, i, j):
+    A[i], A[j] = A[j], A[i]
+
+def _heap_sort_upheap_min(A, j):
+    if j > 0:
+        parent = _heap_sort_parent(j)
+        # print('[UP] {} - {}'.format(A[parent], A[j]))
+        if A[parent] > A[j]:
+            _heap_sort_swap(A, parent, j)
+            # print('[UP] swapped : {}'.format(A))
+            _heap_sort_upheap_min(A, parent)
+
+def _heap_sort_downheap_min(A, heap_len, j):
+    left = _heap_sort_left(len(A), heap_len, j)
+    if left is not None:
+        small_child = left
+        right = _heap_sort_right(len(A), heap_len, j)
+        if right is not None:
+            if A[right] < A[left]:
+                small_child = right
+        # print('[DOWN] {} - {}'.format(A[j], A[big_child]))
+        if A[j] > A[small_child]:
+            _heap_sort_swap(A, j, small_child)
+            # print('[DOWN] swapped : {}'.format(A))
+            _heap_sort_downheap_min(A, heap_len, small_child)
+
+def _heap_sort_remove_min(A, heap_len):
+    last = heap_len -1
+    _heap_sort_swap(A, 0, last)
+    _heap_sort_downheap_min(A, heap_len-1, 0)
+    return last
+
+if __name__ == '__main__':
+    from random import randint
+    size = 15
+    l = [randint(0, 100) for i in range(size)]
+    print(l)
+    heap_sort_min(l)
+```
+
+### C-9.50 An online computer system for trading stocks needs to process orders of the form “buy 100 shares at $x each” or “sell 100 shares at $y each.” A buy order for $x can only be processed if there is an existing sell order with price $y such that y ≤ x. Likewise, a sell order for $y can only be processed if there is an existing buy order with price $x such that y ≤ x. If a buy or sell order is entered but cannot be processed, it must wait for a future order that allows it to be processed. Describe a scheme that allows buy and sell orders to be entered in O(logn) time, independent of whether or not they can be immediately processed.
+```python
+from DataStructures.priority_queues import HeapPriorityQueue, MaxPriorityQueue
+class StockTrading:
+    def __init__(self):
+        self._buy = MaxPriorityQueue()
+        self._sell = HeapPriorityQueue()
+        self._successful_transactions = []
+
+    def visualize_queues(self):
+        print('BUY')
+        print(self._buy)
+        print('SELL')
+        print(self._sell)
+        print('SUCCESS')
+        print(self._successful_transactions)
+        print('-------------------------------')
+
+    def buy(self, price, quantity):
+        while (not self._sell.is_empty()) and quantity > 0:
+            min_sell = self._sell.min()
+            if min_sell[0] <= price:
+                popped = self._sell.remove_min()
+                if popped[1] == quantity:
+                    self._successful_transactions.append(('SELL', popped[0], popped[1]))
+                    self._successful_transactions.append(('BUY', price, quantity))
+                    quantity -= popped[1]
+                else:
+                    self._successful_transactions.append(('SELL', popped[0], min(popped[1], quantity)))
+                    self._successful_transactions.append(('BUY', price, min(popped[1], quantity)))
+
+                    if popped[1] > quantity:
+                        self._sell.add(popped[0], popped[1] - quantity)
+                        quantity = 0
+                    else:
+                        quantity -= popped[1]
+            else:
+                break
+        if quantity > 0:
+            self._buy.add(price, quantity)
 
 
+    def sell(self, price, quantity):
+        while (not self._buy.is_empty()) and quantity > 0:
+            max_buy = self._buy.max()
+            if max_buy[0] >= price:
+                popped = self._buy.remove_max()
+                if popped[1] == quantity:
+                    self._successful_transactions.append(('BUY', popped[0], popped[1]))
+                    self._successful_transactions.append(('SELL', price, quantity))
+                    quantity -= popped[1]
+                else:
+                    self._successful_transactions.append(('BUY', popped[0], min(popped[1], quantity)))
+                    self._successful_transactions.append(('SELL', price, min(popped[1], quantity)))
 
+                    if popped[1] > quantity:
+                        self._buy.add(popped[0], popped[1] - quantity)
+                        quantity = 0
+                    else:
+                        quantity -= popped[1]
+            else:
+                break
+        if quantity > 0:
+            self._sell.add(price, quantity)
 
+if __name__ == '__main__':
+    s = StockTrading()
+    s.buy(100, 5)
+    s.visualize_queues()
+    s.sell(120, 3)
+    s.visualize_queues()
+    s.buy(130, 4)
+    s.visualize_queues()
+    s.sell(90, 7)
+    s.visualize_queues()
+```
 
+### C-9.51 Extend a solution to the previous problem so that users are allowed to update the prices for their buy or sell orders that have yet to be processed.
+* Sol.) Independent adaptable priority queue that inherit from MaxPriorityQueue is needed.
 
+### C-9.52 A group of children want to play a game, called Unmonopoly, where in each turn the player with the most money must give half of his/her money to the player with the least amount of money. What data structure(s) should be used to play this game efficiently? Why?
+* Sol.) Adaptable priority queue that inherit from MaxPriorityQueue is needed.
+  * A player that has the most amount money can be found in O(1) running time.
+  * Update for the player with the least amount of money is capable of.
 
+### P-9.53 Implement the in-place heap-sort algorithm. Experimentally compare its running time with that of the standard heap-sort that is not in-place.
+* Sol.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md#r-925-complete-figure-99-by-showing-all-the-steps-of-the-in-place-heap-sort-algorithm-show-both-the-array-and-the-associated-heap-at-the-end-of-each-step">In-place Heap-Sort</a>
+  * Experiment
+```python
+if __name__ == '__main__':
+    from random import randint
+    from copy import deepcopy
+    from time import time
+    size = 10000
+    l = [randint(0, 100) for i in range(size)]
+    l_naive = deepcopy(l)
+    t1 = time()
+    heap_sort_naive(l_naive)
+    t2 = time()
+    heap_sort(l)
+    t3 = time()
+    print('[naive   ] {}'.format(t2-t1))
+    print('[in-place] {}'.format(t3-t2))
+```
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_53.png" style="height: 100px;"></img><br/>
+</p>
 
 
 <p>

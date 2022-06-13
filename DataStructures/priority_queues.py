@@ -312,3 +312,9 @@ class MaxPriorityQueue(HeapPriorityQueue):
             if self._data[j] < self._data[big_child]:
                 self._swap(j, big_child)
                 self._downheap(big_child)
+
+    def max(self):
+        return self.min()
+
+    def remove_max(self):
+        return self.remove_min()
