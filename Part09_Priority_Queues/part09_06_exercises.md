@@ -751,8 +751,167 @@ if __name__ == '__main__':
 
 ### C-9.37 Give an alternative analysis of bottom-up heap construction by showing the following summation is O(1), for any positive integer h:
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_37.png" style="height: 50px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_37.png" style="height: 100px;"></img><br/>
 </p>
+
+* Sol.) 
+
+### C-9.38 Suppose two binary trees, T1 and T2, hold entries satisfying the heap-order property (but not necessarily the complete binary tree property). Describe a method for combining T1 and T2 into a binary tree T, whose nodes hold the union of the entries in T1 and T2 and also satisfy the heap-order property. Your algorithm should run in time O(h1 + h2) where h1 and h2 are the respective heights of T1 and T2.
+* Sol.)
+  1. Traverse in pre-order T1 until location p whose key is larger than the T2's root location.
+  2. Delete p's subtree and add T2 to that location.
+  3. From the Original position of p, repeat the process of 1 and 2 until no element is left to be deleted.
+
+### C-9.39 Implement a heappushpop method for the HeapPriorityQueue class, with semantics akin to that described for the heapq module in Section 9.3.7.
+```python
+def heappushpop(self, key, value):
+    if key < self.min()[0]:
+        return (key, value)
+    else:
+        popped = self._data[0]
+        self._data[0] = self._Item(key, value)
+        self._downheap(0)
+        return (popped._key, popped._value)
+```
+
+### C-9.40 Implement a heapreplace method for the HeapPriorityQueue class, with semantics akin to that described for the heapq module in Section 9.3.7.
+```python
+def heapreplace(self, key, value):
+    popped = self._data[0]
+    self._data[0] = self._Item(key, value)
+    self._downheap(0)
+    return (popped._key, popped._value)
+```
+
+### C-9.41 Tamarindo Airlines wants to give a first-class upgrade coupon to their top logn frequent flyers, based on the number of miles accumulated, where n is the total number of the airlines’ frequent flyers. The algorithm they currently use, which runs in O(nlogn) time, sorts the flyers by the number of miles flown and then scans the sorted list to pick the top logn flyers. Describe an algorithm that identifies the top logn flyers in O(n) time.
+* Sol.)
+  1. Use __bottom-up construction__ method for making a heap with n flyers.
+     * O(n) running time
+  2. Operate remove_min() log(n) times.
+     * O((log(n))^2) running time
+* Analysis
+  * If n is larger than 9, n is bigger than (logn(n))^2.
+  * Therefore, it can be said that this algorithm runs in O(n) time.
+
+### C-9.42 Explain how the k largest elements from an unordered collection of size n can be found in time O(n+k logn) using a maximum-oriented heap.
+* Sol.)
+  1. Create a maximum-oriented heap with O(n) running time.
+  2. Operate remove_max() for k times which run in klog(n) time.
+
+### C-9.43 Explain how the k largest elements from an unordered collection of size n can be found in time O(nlog k) using O(k) auxiliary space.
+```python
+def k_largest_elements(L, k):
+    result_list = []
+    result_list.append(L[0])
+    if k > 1:
+        H = HeapPriorityQueue()
+        for i in range(len(L)-1):
+            if L[i+1] > result_list[0]:
+                temp = result_list.pop()
+                result_list.append(L[i+1])
+            else:
+                temp = L[i+1]
+            if len(H) < k-1:
+                H.add(temp, temp)
+            else:
+                H.heappushpop(temp, temp)
+        while not H.is_empty():
+            result_list.append(H.remove_min()[0])
+    return result_list
+
+if __name__ == '__main__':
+    from random import randint
+    size = 15
+    l = [randint(0, 100) for i in range(size)]
+    kl = k_largest_elements(l, 5)
+    print(l)
+    print(kl)
+```
+
+### C-9.44 Given a class, PriorityQueue, that implements the minimum-oriented priority queue ADT, provide an implementation of a MaxPriorityQueue class that adapts to provide a maximum-oriented abstraction with methods add, max, and remove max. Your implementation should not make any assumption about the internal workings of the original PriorityQueue class, nor the type of keys that might be used.
+```python
+class MaxPriorityQueue(HeapPriorityQueue):
+    def _upheap(self, j):
+        parent = self._parent(j)
+        if j > 0 and self._data[parent] < self._data[j]:
+            self._swap(j, parent)
+            self._upheap(parent)
+
+    def _downheap(self, j):
+        if self._has_left(j):
+            left = self._left(j)
+            big_child = left
+            if self._has_right(j):
+                right = self._right(j)
+                if self._data[right] > self._data[left]:
+                    big_child = right
+            if self._data[j] < self._data[big_child]:
+                self._swap(j, big_child)
+                self._downheap(big_child)
+
+if __name__ == '__main__':
+    from random import randint
+    size = 15
+    l = [randint(0, 100) for i in range(size)]
+    print(l)
+    l_tuple = [(i, i) for i in l]
+    h = HeapPriorityQueue(l_tuple)
+    print(h)
+    h_max = MaxPriorityQueue(l_tuple)
+    print(h_max)
+```
+
+### C-9.45 Write a key function for non-negative integers that determines order based on the number of 1’s in each integer’s binary expansion.
+```python
+def _binary_exp(self, n, digit):
+    result_list = []
+    if n == 0:
+        result_list.append(str(0))
+    else:
+        while n > 0:
+            result_list.append(str(n % 2))
+            n //= 2
+    for i in range(digit - len(result_list)):
+        result_list.append('0')
+    return ''.join(reversed(result_list))
+```
+
+### C-9.46 Give an alternative implementation of the pq_sort function, from Code Fragment 9.7, that accepts a key function as an optional parameter.
+* Sol.) Key Function?
+
+### C-9.47 Describe an in-place version of the selection-sort algorithm for an array that uses only O(1) space for instance variables in addition to the array.
+```python
+def selection_sort_in_place(A):
+    A.append(A.pop(0))
+    for i in range(len(A)-1):
+        temp = A.pop(0)
+        idx = len(A)-1
+        for j in range(i+1):
+            if temp < A[len(A)-2-j]:
+                idx = len(A)-2-j
+        A.insert(idx, temp)
+    return A
+```
+
+### C-9.48 Assuming the input to the sorting problem is given in an array A, describe how to implement the insertion-sort algorithm using only the array A and at most a constant number of additional variables.
+```python
+def insertion_sort_in_place(A):
+    for i in range(len(A)):
+        idx = 0
+        for j in range(len(A)-i):
+            if A[j] < A[idx]:
+                idx = j
+        A.append(A.pop(idx))
+    return A
+```
+
+### C-9.49 Give an alternate description of the in-place heap-sort algorithm using the standard minimum-oriented priority queue (instead of a maximum-oriented one).
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-from DataStructures.priority_queues import HeapPriorityQueue
+from DataStructures.priority_queues import *
 def heap_sort_naive(A):
     n = len(A)
     H = HeapPriorityQueue()
@@ -325,6 +325,62 @@ def all_entries_less_than(H, key, idx=0, result_list=[]):
             all_entries_less_than(H, key, H._right(idx), result_list)
     return result_list
 
+from math import log2
+def frequent_flyers(L):
+    result_list = []
+    n = len(L)
+    H = HeapPriorityQueue(L)
+    print(H)
+    top_cnt = int(log2(n))
+    for i in range(top_cnt):
+        result_list.append(H.remove_min())
+    return result_list
+
+def k_largest_elements(L, k):
+    result_list = []
+    result_list.append(L[0])
+    if k > 1:
+        H = HeapPriorityQueue()
+        for i in range(len(L)-1):
+            if L[i+1] > result_list[0]:
+                temp = result_list.pop()
+                result_list.append(L[i+1])
+            else:
+                temp = L[i+1]
+            if len(H) < k-1:
+                H.add(temp, temp)
+            else:
+                H.heappushpop(temp, temp)
+        while not H.is_empty():
+            result_list.append(H.remove_min()[0])
+    return result_list
+
+def pq_sort_key(C):
+    n = len(C)
+    P = HeapPriorityQueue()
+    for i in range(n):
+        element = C.delete(C.first())
+        P.add(element._key, element._value)
+
+def selection_sort_in_place(A):
+    A.append(A.pop(0))
+    for i in range(len(A)-1):
+        temp = A.pop(0)
+        idx = len(A)-1
+        for j in range(i+1):
+            if temp < A[len(A)-2-j]:
+                idx = len(A)-2-j
+        A.insert(idx, temp)
+    return A
+
+def insertion_sort_in_place(A):
+    for i in range(len(A)):
+        idx = 0
+        for j in range(len(A)-i):
+            if A[j] < A[idx]:
+                idx = j
+        A.append(A.pop(idx))
+    return A
 
 if __name__ == '__main__':
     from random import randint
@@ -413,10 +469,9 @@ if __name__ == '__main__':
     #     b = last_node_from_binary_string(a)
     #     print(b.element())
 
-    l_item = [(i, i) for i in l]
-    first = l[0]
-    a = HeapPriorityQueue(l_item)
-    print(first, a)
-    ae = all_entries_less_than(a, first)
-    for i in ae:
-        print(i)
+    l = [16, 21, 42, 19, 65, 80, 90, 57, 30, 36, 24, 66, 17, 31]
+    print(l)
+    insertion_sort_in_place(l)
+    print(l)
+
+

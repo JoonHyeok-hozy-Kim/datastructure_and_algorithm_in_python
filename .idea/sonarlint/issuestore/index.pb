@@ -68,5 +68,3 @@ S
 #Part08_Trees/part08_06_exercises.md,e\9\e9018d9a59bfe145fc1e97837fd9d624ab31f0b3
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-c
-3Part09_Priority_Queues/part09_00_priority_queues.md,f\f\ff822f188bb9edb67d32ffb33689491d9c33d449

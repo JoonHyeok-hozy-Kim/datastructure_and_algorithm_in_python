@@ -89,9 +89,8 @@ class SortedPriorityQueue(PriorityQueueBase):
 
 
 class HeapPriorityQueue(PriorityQueueBase):
-    def __init__(self, contents=(), max_oriented=False):
+    def __init__(self, contents=()):
         self._data = [self._Item(k, v) for k, v in contents]
-        self._max_oriented = max_oriented  # Added for the max-oriented case
         if len(self) > 0:
             self._heapify()
 
@@ -131,16 +130,9 @@ class HeapPriorityQueue(PriorityQueueBase):
 
     def _upheap(self, j):
         parent = self._parent(j)
-        # max-oriented case starts.
-        if self._max_oriented:
-            if j > 0 and self._data[parent] < self._data[j]:
-                self._swap(j, parent)
-                self._upheap(parent)
-        # max-oriented case ends.
-        else:
-            if j > 0 and self._data[parent] > self._data[j]:
-                self._swap(j, parent)
-                self._upheap(parent)
+        if j > 0 and self._data[parent] > self._data[j]:
+            self._swap(j, parent)
+            self._upheap(parent)
 
     def _downheap(self, j):
         if self._has_left(j):
@@ -149,23 +141,10 @@ class HeapPriorityQueue(PriorityQueueBase):
             if self._has_right(j):
                 right = self._right(j)
                 if self._data[right] < self._data[left]:
-                    if not self._max_oriented:
-                        small_child = right
-                # max-oriented case starts.
-                else:
-                    if self._max_oriented:
-                        small_child = right
-                # max-oriented case ends.
-            # max-oriented case starts.
-            if self._max_oriented:
-                if self._data[j] < self._data[small_child]:
-                    self._swap(j, small_child)
-                    self._downheap(small_child)
-            # max-oriented case ends.
-            else:
-                if self._data[j] > self._data[small_child]:
-                    self._swap(j, small_child)
-                    self._downheap(small_child)
+                    small_child = right
+            if self._data[j] > self._data[small_child]:
+                self._swap(j, small_child)
+                self._downheap(small_child)
 
     def add(self, key, value):
         self._data.append(self._Item(key, value))
@@ -184,6 +163,21 @@ class HeapPriorityQueue(PriorityQueueBase):
         item = self._data.pop()
         self._downheap(0)
         return (item._key, item._value)
+
+    def heappushpop(self, key, value):
+        if key < self.min()[0]:
+            return (key, value)
+        else:
+            popped = self._data[0]
+            self._data[0] = self._Item(key, value)
+            self._downheap(0)
+            return (popped._key, popped._value)
+
+    def heapreplace(self, key, value):
+        popped = self._data[0]
+        self._data[0] = self._Item(key, value)
+        self._downheap(0)
+        return (popped._key, popped._value)
 
 
 class AdaptableHeapPriorityQueue(HeapPriorityQueue):
@@ -297,3 +291,24 @@ def _heap_sort_remove_max(A, start, heap_len):
     _heap_sort_downheap(A, start, heap_len-1, start)
     return last
 # Heap Sort Family ends.
+
+
+class MaxPriorityQueue(HeapPriorityQueue):
+
+    def _upheap(self, j):
+        parent = self._parent(j)
+        if j > 0 and self._data[parent] < self._data[j]:
+            self._swap(j, parent)
+            self._upheap(parent)
+
+    def _downheap(self, j):
+        if self._has_left(j):
+            left = self._left(j)
+            big_child = left
+            if self._has_right(j):
+                right = self._right(j)
+                if self._data[right] > self._data[left]:
+                    big_child = right
+            if self._data[j] < self._data[big_child]:
+                self._swap(j, big_child)
+                self._downheap(big_child)
