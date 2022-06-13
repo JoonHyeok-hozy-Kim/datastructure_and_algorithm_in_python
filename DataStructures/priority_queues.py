@@ -109,7 +109,7 @@ class HeapPriorityQueue(PriorityQueueBase):
     def _heapify(self):
         start = self._parent(len(self)-1)
         for i in range(start, -1, -1):
-            self._downheap(start)
+            self._downheap(i)
 
     def _parent(self, j):
         return (j-1)//2

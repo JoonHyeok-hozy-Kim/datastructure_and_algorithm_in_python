@@ -700,6 +700,60 @@ if __name__ == '__main__':
         print(b.element())
 ```
 
+### C-9.35 Given a heap T and a key k, give an algorithm to compute all the entries in T having a key less than or equal to k. For example, given the heap of Figure 9.12a and query k = 7, the algorithm should report the entries with keys 2, 4, 5, 6, and 7 (but not necessarily in this order). Your algorithm should run in time proportional to the number of entries returned, and should not modify the heap
+```python
+def all_entries_less_than(H, key, idx=0, result_list=[]):
+    print('cnt')
+    if H._data[idx]._key <= key:
+        result_list.append(H._data[idx])
+        if H._has_left(idx):
+            all_entries_less_than(H, key, H._left(idx), result_list)
+        if H._has_right(idx):
+            all_entries_less_than(H, key, H._right(idx), result_list)
+    return result_list
+
+if __name__ == '__main__':
+    from random import randint
+    size = 15
+    l = [randint(0, 100) for i in range(size)]
+    l_item = [(i, i) for i in l]
+    first = l[0]
+    a = HeapPriorityQueue(l_item)
+    print(first, a)
+    ae = all_entries_less_than(a, first)
+    for i in ae:
+        print(i)
+```
+
+### C-9.36 Provide a justification of the time bounds in Table 9.4.
+* Sol.)
+  * len(P)
+    * len(self._data) runs in O(1)
+  * P.is_empty()
+    * len(self) == 0 runs in O(1)
+  * P.min()
+    * return self._data[0] runs in O(1)
+  * P.add(k,v)
+    * Addition to self._data runs in O(1)
+    * _upheap() for the newly added Locator runs in O(logn)
+  * P.update(loc, k, v)
+    * Since we can directly access locator, specifying the existing locator takes O(1) time.
+    * Updating the key and the value takes O(1)
+    * Bubbling takes maximum of O(logn), which must be upheap or downheap operation of the updated locator.
+  * P.remove(loc)
+    * Swapping the target locator and the last locator of the heap takes O(1) time.
+    * Popping the target locator from self._data takes O(1) time.
+    * Bubbling the swapped previous last locator takes maximum of O(logn) running time.
+  * P.remove_min()
+    * Swapping the first locator and the last locator of the heap takes O(1) time.
+    * Popping the previous first locator from self._data takes O(1) time.
+    * Bubbling the swapped previous last locator takes O(logn) running time.
+
+### C-9.37 Give an alternative analysis of bottom-up heap construction by showing the following summation is O(1), for any positive integer h:
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/images/09_06_37.png" style="height: 50px;"></img><br/>
+</p>
+
 
 
 <p>

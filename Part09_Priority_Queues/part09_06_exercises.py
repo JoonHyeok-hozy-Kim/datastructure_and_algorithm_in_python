@@ -315,10 +315,20 @@ def _decode_binary_string_path(T, s):
             p = T.right(p)
     return p
 
+def all_entries_less_than(H, key, idx=0, result_list=[]):
+    print('cnt')
+    if H._data[idx]._key <= key:
+        result_list.append(H._data[idx])
+        if H._has_left(idx):
+            all_entries_less_than(H, key, H._left(idx), result_list)
+        if H._has_right(idx):
+            all_entries_less_than(H, key, H._right(idx), result_list)
+    return result_list
+
 
 if __name__ == '__main__':
     from random import randint
-    size = 16
+    size = 15
     l = [randint(0, 100) for i in range(size)]
     k = [i for i in range(size, -1, -1)]
     # print(k)
@@ -403,8 +413,10 @@ if __name__ == '__main__':
     #     b = last_node_from_binary_string(a)
     #     print(b.element())
 
-    for i in range(32):
-        a = LinkedBinaryTree()
-        a.fill_tree(i+1)
-        print(a)
-        print(a.last().element())
+    l_item = [(i, i) for i in l]
+    first = l[0]
+    a = HeapPriorityQueue(l_item)
+    print(first, a)
+    ae = all_entries_less_than(a, first)
+    for i in ae:
+        print(i)

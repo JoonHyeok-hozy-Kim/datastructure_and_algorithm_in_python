@@ -52,8 +52,6 @@ o
 ?Part05_Array_Based_Sequences/part05_00_array_based_sequences.md,b\9\b90d6935daf306250bc06cf9478e52cc09de7d15
 U
 %Part04_Recursion/part4_7_exercises.md,d\5\d55576982dae83e5e74bf45a7ad7bccdb92ecae7
-G
-DataStructures/queue.py,9\1\91b53d7ee3ceb99336653ca1c312a8156b2d6358
 u
 EPart06_Stacks_Queues_and_Deques/part06_00_stacks_queues_and_deques.md,a\8\a89df94313fdf1102940bd616c3b6362e9d615c4
 f
@@ -72,5 +70,3 @@ S
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 c
 3Part09_Priority_Queues/part09_00_priority_queues.md,f\f\ff822f188bb9edb67d32ffb33689491d9c33d449
-Y
-)Part09_Priority_Queues/part09_03_heaps.py,6\5\65778ada24705319ab0b6ceab984fa57c7ffef4b
