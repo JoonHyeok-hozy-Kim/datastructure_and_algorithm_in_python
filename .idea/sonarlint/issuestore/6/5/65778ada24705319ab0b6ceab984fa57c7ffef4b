@@ -1,0 +1,13 @@
+
+dpython:S2208"GImport only needed names or import the module and then use its members.(İµŸêıÿÿÿÿ
+dpython:S2208"GImport only needed names or import the module and then use its members.(ˆ¸¤ùÿÿÿÿ
+dpython:S117"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(µş­«
+ipython:S117"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(‡ĞÀÚşÿÿÿÿ
+dpython:S117"MRename this parameter "C" to match the regular expression ^[_a-z][a-z0-9_]*$.(ıÓ¸æ
+Bpython:S1481"%Remove the unused local variable "i".(ñğ‹®úÿÿÿÿ
+dpython:S117!"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(©û¹
+kpython:S117("MRename this parameter "C" to match the regular expression ^[_a-z][a-z0-9_]*$.(¡İ¥Í8ªÏº”0
+Ipython:S1481+"%Remove the unused local variable "i".(ñğ‹®úÿÿÿÿ8ªÏº”0
+;python:S1254"Remove this commented out code.(¥°øÿÿÿÿ
+;python:S125L"Remove this commented out code.(Ğİ²íÿÿÿÿÿ
+6python:S125R"Remove this commented out code.(ôï‰Ç

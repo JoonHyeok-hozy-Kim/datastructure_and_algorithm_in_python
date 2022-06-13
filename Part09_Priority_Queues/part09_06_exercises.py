@@ -270,6 +270,51 @@ class LinkedHeapBinaryTree(LinkedBinaryTree):
                 break
         return p
 
+from math import log2
+def last_node_from_binary_string(T):
+    n = len(T)
+    if n == 1:
+        return T.root()
+    max_height = int(log2(n)) + 1
+    leaf_cnt = n - pow(2, max_height-1) + 1
+    path = _binary_exp(leaf_cnt-1, max_height-1)
+    return _decode_binary_string_path(T, path)
+
+def _binary_exp(n, digit):
+    result_list = []
+    if n == 0:
+        result_list.append(str(0))
+    else:
+        while n > 0:
+            result_list.append(str(n%2))
+            n //= 2
+    for i in range(digit - len(result_list)):
+        result_list.append('0')
+    return ''.join(reversed(result_list))
+
+def _encode_binary_string_path(T, p, path_list=[]):
+    if T.root() == p:
+        return ''.join(reversed(path_list))
+    parent = T.parent(p)
+    if T.left(parent) == p:
+        path_list.append('0')
+    else:
+        path_list.append('1')
+    return _encode_binary_string_path(T, parent, path_list)
+
+def _decode_binary_string_path(T, s):
+    p = T.root()
+    for i in s:
+        if i == '0':
+            if T.left(p) is None:
+                return None
+            p = T.left(p)
+        else:
+            if T.right(p) is None:
+                return None
+            p = T.right(p)
+    return p
+
 
 if __name__ == '__main__':
     from random import randint
@@ -278,8 +323,8 @@ if __name__ == '__main__':
     k = [i for i in range(size, -1, -1)]
     # print(k)
 
-    from DataStructures.priority_queues import HeapPriorityQueue
-    a = HeapPriorityQueue()
+    # from DataStructures.priority_queues import HeapPriorityQueue
+    # a = HeapPriorityQueue()
     # for i in range(15):
     #     a.add(i, i)
     # print(preorder(a))
@@ -341,24 +386,25 @@ if __name__ == '__main__':
     #     print(a.add(i+1, i+1).element())
     #     print(a)
 
-    a = LinkedHeapBinaryTree()
-    for i in range(14,-1,-1):
-        a.add(i+1, i+1)
-    print(a)
-    for i in range(15):
-        print('REMOVED_MIN : {}'.format(a.remove_min()))
+    # a = LinkedHeapBinaryTree()
+    # for i in range(14,-1,-1):
+    #     a.add(i+1, i+1)
+    # print(a)
+    # for i in range(15):
+    #     print('REMOVED_MIN : {}'.format(a.remove_min()))
+    #     print(a)
+    # print('root : {}'.format(a.root()))
+    # print('last : {}'.format(a.last()))
+
+    # for i in range(15):
+    #     a = LinkedBinaryTree()
+    #     a.fill_tree(i+1)
+    #     print(a)
+    #     b = last_node_from_binary_string(a)
+    #     print(b.element())
+
+    for i in range(32):
+        a = LinkedBinaryTree()
+        a.fill_tree(i+1)
         print(a)
-    print('root : {}'.format(a.root()))
-    print('last : {}'.format(a.last()))
-
-
-
-
-
-
-
-
-
-
-
-
+        print(a.last().element())

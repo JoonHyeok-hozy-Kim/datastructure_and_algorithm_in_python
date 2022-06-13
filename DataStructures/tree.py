@@ -458,6 +458,43 @@ class LinkedBinaryTree(BinaryTree):
 
         return [self._make_position(p_node), self._make_position(q_node)]
 
+    # Binary string idea from C-9.34 starts
+    def last(self):
+        from math import log2
+        if len(self) == 1:
+            return self.root()
+        n = len(self)
+        max_height = int(log2(n)) + 1
+        leaf_cnt = n - pow(2, max_height-1) + 1
+        path = self._binary_exp(leaf_cnt-1, max_height-1)
+        return self._decode_binary_string_path(path)
+
+    def _binary_exp(self, n, digit):
+        result_list = []
+        if n == 0:
+            result_list.append(str(0))
+        else:
+            while n > 0:
+                result_list.append(str(n % 2))
+                n //= 2
+        for i in range(digit - len(result_list)):
+            result_list.append('0')
+        return ''.join(reversed(result_list))
+
+    def _decode_binary_string_path(self, s):
+        p = self.root()
+        for i in s:
+            if i == '0':
+                if self.left(p) is None:
+                    return None
+                p = self.left(p)
+            else:
+                if self.right(p) is None:
+                    return None
+                p = self.right(p)
+        return p
+    # Binary string idea from C-9.34 ends
+
 class EulerTour:
 
     def __init__(self, tree):

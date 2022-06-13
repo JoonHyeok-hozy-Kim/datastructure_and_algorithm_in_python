@@ -643,8 +643,62 @@ if __name__ == '__main__':
 ### C-9.33 When using a linked-tree representation for a heap, an alternative method for finding the last node during an insertion in a heap T is to store, in the last node and each leaf node of T, a reference to the leaf node immediately to its right (wrapping to the first node in the next lower level for the rightmost leaf node). Show how to maintain such references in O(1) time per operation of the priority queue ADT assuming that T is implemented with a linked structure.
 * Sol.) One might be able to achieve O(1) running time of getting next right position by doing O(log(n)) operation in-advance in the previous addition.
 
-### 
+### C-9.34 We can represent a path from the root to a given node of a binary tree by means of a binary string, where 0 means “go to the left child” and 1 means “go to the right child.” For example, the path from the root to the node storing (8,W ) in the heap of Figure 9.12a is represented by “101.” Design an O(logn)-time algorithm for finding the last node of a complete binary tree with n nodes, based on the above representation. Show how this algorithm can be used in the implementation of a complete binary tree by means of a linked structure that does not keep a reference to the last node.
+```python
+from math import log2
+def last_node_from_binary_string(T):
+    n = len(T)
+    if n == 1:
+        return T.root()
+    max_height = int(log2(n)) + 1
+    leaf_cnt = n - pow(2, max_height-1) + 1
+    path = _binary_exp(leaf_cnt-1, max_height-1)
+    return _decode_binary_string_path(T, path)
 
+def _binary_exp(n, digit):
+    result_list = []
+    if n == 0:
+        result_list.append(str(0))
+    else:
+        while n > 0:
+            result_list.append(str(n%2))
+            n //= 2
+    for i in range(digit - len(result_list)):
+        result_list.append('0')
+    return ''.join(reversed(result_list))
+
+def _encode_binary_string_path(T, p, path_list=[]):
+    if T.root() == p:
+        return ''.join(reversed(path_list))
+    parent = T.parent(p)
+    if T.left(parent) == p:
+        path_list.append('0')
+    else:
+        path_list.append('1')
+    return _encode_binary_string_path(T, parent, path_list)
+
+def _decode_binary_string_path(T, s):
+    p = T.root()
+    for i in s:
+        if i == '0':
+            if T.left(p) is None:
+                return None
+            p = T.left(p)
+        else:
+            if T.right(p) is None:
+                return None
+            p = T.right(p)
+    return p
+
+
+if __name__ == '__main__':
+    for i in range(32):
+        a = LinkedBinaryTree()
+        a.fill_tree(i+1)
+        print(a)
+        b = last_node_from_binary_string(a)
+        print(b.element())
+```
 
 
 

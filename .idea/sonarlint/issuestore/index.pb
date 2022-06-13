@@ -72,3 +72,5 @@ S
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 c
 3Part09_Priority_Queues/part09_00_priority_queues.md,f\f\ff822f188bb9edb67d32ffb33689491d9c33d449
+Y
+)Part09_Priority_Queues/part09_03_heaps.py,6\5\65778ada24705319ab0b6ceab984fa57c7ffef4b
