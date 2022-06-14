@@ -71,7 +71,7 @@ print('Its number of occurrences is', max_count)
 #### Tech.) MapBase Class
 * We define our own MapBase class, which is itself a subclass of the MutableMapping class
   * Target : Greater code re-use
-* Implementation : <a href="">MapBase Class</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py">MapBase Class</a>
 
 
 ## 10.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md">Exercises</a>
