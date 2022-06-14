@@ -630,6 +630,308 @@ class CPUSchedulingJobs:
         self._memory.show_finished_jobs()
 
 
+from DataStructures.tree import BinaryLayout
+class UnsortedPriorityQueue:
+    class Location:
+        __slots__ = '_key', '_value', '_index', '_parent', '_left', '_right'
+
+        def __init__(self, key, index, parent=None, left=None, right=None):
+            self._key = key
+            self._index = index
+            self._parent = parent
+            self._left = left
+            self._right = right
+
+        def __str__(self):
+            return '[key : {}, idx : {}]'.format(self._key, self._index)
+
+        def index(self):
+            return self._index
+
+    class UnsortedBinaryLayout(BinaryLayout):
+        def __init__(self, tree):
+            super().__init__(tree)
+
+        def _hook_invisit(self, p, d, path):
+            x_increase = len(str(self.tree().value(p)))
+            self.x_max_increase(x_increase)
+            self.y_max_increase(d + 1)
+            for i in range(x_increase):
+                self._graphic[d + 1][self._x_max - i] = str(self.tree().value(p))[x_increase - 1 - i]
+            return None
+
+    def __init__(self):
+        self._data = []
+        self._size = 0
+        self._root = None
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def parent(self, loc):
+        return loc._parent
+
+    def left(self, loc):
+        return loc._left
+
+    def right(self, loc):
+        return loc._right
+
+    def root(self):
+        return self._root
+
+    def num_children(self, loc):
+        n = 0
+        if self.left(loc) is not None:
+            n += 1
+        if self.right(loc) is not None:
+            n += 1
+        return n
+
+    def children(self, loc):
+        if self.left(loc) is not None:
+            yield self.left(loc)
+        if self.right(loc) is not None:
+            yield self.right(loc)
+
+    def is_leaf(self, loc):
+        return self.num_children(loc) == 0
+
+    def __str__(self):
+        B = self.UnsortedBinaryLayout(self)
+        return B.execute()
+
+    def key(self, loc):
+        return loc._key
+
+    def index(self, loc):
+        return loc._index
+
+    def value(self, loc):
+        return self._data[loc._index]
+
+    def _add_left(self, parent_loc, child_loc):
+        left = self.left(parent_loc)
+        if left is not None:
+            raise ValueError('Left is not None.')
+        parent_loc._left = child_loc
+        child_loc._parent = parent_loc
+        return child_loc
+
+    def _add_right(self, parent_loc, child_loc):
+        right = self.right(parent_loc)
+        if right is not None:
+            raise ValueError('Left is not None.')
+        parent_loc._right = child_loc
+        child_loc._parent = parent_loc
+        return child_loc
+
+    def _swap(self, l, m):
+        l_p = l._parent
+        l_l = l._left
+        l_r = l._right
+        m_p = m._parent
+        m_l = m._left
+        m_r = m._right
+
+        if self.parent(l) == m:
+            # Parent Shift
+            l._parent = m_p
+            if m_p is not None:
+                if m_p._left == m:
+                    m_p._left = l
+                else:
+                    m_p._right = l
+            m._parent = l
+
+            # Child Shift
+            if m_l == l:
+                l._left = m
+                l._right = m_r
+                if m_r is not None:
+                    m_r._parent = l
+            else:
+                l._left = m_l
+                if m_l is not None:
+                    m_l._parent = l
+                l._right = m
+            m._left = l_l
+            if l_l is not None:
+                l_l._parent = m
+            m._right = l_r
+            if l_r is not None:
+                l_r._parent = m
+
+        elif self.parent(m) == l:
+            # Parent Shift
+            m._parent = l_p
+            if l_p is not None:
+                if l_p._left == l:
+                    l_p._left = m
+                else:
+                    l_p._right = m
+            l._parent = m
+
+            # Child Shift
+            if l_l == m:
+                m._left = l
+                m._right = l_r
+                if l_r is not None:
+                    l_r._parent = m
+            else:
+                m._left = l_l
+                if l_l is not None:
+                    l_l._parent = m
+                m._right = l
+            l._left = m_l
+            if m_l is not None:
+                m_l._parent = l
+            l._right = m_r
+            if m_r is not None:
+                m_r._parent = l
+
+        else:
+            # Parent Shift
+            l._parent = m_p
+            if m_p is not None:
+                if m_p._left == m:
+                    m_p._left = l
+                else:
+                    m_p._right = l
+            m._parent = l_p
+            if l_p is not None:
+                if l_p._left == l:
+                    l_p._left = m
+                else:
+                    l_p._right = m
+
+            # Child Shift
+            l._left = m_l
+            if m_l is not None:
+                m_l._parent = l
+            l._right = m_r
+            if m_r is not None:
+                m_r._parent = l
+            m._left = l_l
+            if l_l is not None:
+                l_l._parent = m
+            m._right = l_r
+            if l_r is not None:
+                l_r._parent = m
+
+        if self.root() == l:
+            self._root = m
+        elif self.root() == m:
+            self._root = l
+
+    def delete(self, loc):
+        if self.num_children(loc) == 2:
+            raise ValueError('Location has 2 children.')
+        parent = self.parent(loc)
+        child = self.left(loc)
+        if child is None:
+            child = self.right(loc)
+
+        if parent is not None:
+            if parent._left == loc:
+                parent._left = child
+            else:
+                parent._right = child
+        if child is not None:
+            child._parent = parent
+
+        self._size -= 1
+        return self._data.pop(self.index(loc))
+
+    def _binary_exp(self, n, digit):
+        text_list = []
+        while n > 0:
+            text_list.append(str(n%2))
+            n //= 2
+        if len(text_list) < digit:
+            for i in range(digit-len(text_list)):
+                text_list.append('0')
+        return ''.join(reversed(text_list))
+
+    def last(self):
+        from math import log2
+        loc = self.root()
+        if len(self) == 1:
+            return loc
+        height = int(log2(len(self))) + 1
+        leaf_idx = len(self) - pow(2, height-1)
+        binary = self._binary_exp(leaf_idx, height-1)
+        for chr in binary:
+            if chr == '0':
+                loc = self.left(loc)
+            else:
+                loc = self.right(loc)
+        return loc
+
+    def add(self, key, value):
+        new_loc = self.Location(key, len(self))
+        self._data.append(value)
+        if len(self) == 0:
+            self._root = new_loc
+            self._size += 1
+        else:
+            new_loc = self._add_next_position(self.last(), new_loc)
+            self._size += 1
+            new_loc = self._upheap(new_loc)
+        return new_loc
+
+    def _add_next_position(self, last, loc):
+        from math import log2
+        if self._size == pow(2, int(log2(self._size))+1) - 1:
+            target = self._drill_down_left(self.root())
+            return self._add_left(target, loc)
+        else:
+            parent = self.parent(last)
+            if last == self.left(parent):
+                if self.is_leaf(last):
+                    return self._add_right(parent, loc)
+                else:
+                    target = self._drill_down_left(self.right(parent))
+                    return self._add_left(target, loc)
+            else:
+                return self._add_next_position(parent, loc)
+
+    def _drill_down_left(self, loc):
+        while not self.is_leaf(loc):
+            loc = self.left(loc)
+        return loc
+
+    def _upheap(self, loc):
+        parent = self.parent(loc)
+        if parent is not None:
+            if self.key(parent) > self.key(loc):
+                self._swap(parent, loc)
+                self._upheap(loc)
+        return loc
+
+    def _downheap(self, loc):
+        if self.left(loc) is not None:
+            small_child = self.left(loc)
+            right = self.right(loc)
+            if right is not None:
+                if self.key(right) < self.key(small_child):
+                    small_child = right
+            self._swap(loc, small_child)
+            self._downheap(loc)
+        return loc
+
+    def remove_min(self):
+        self._swap(self.root(), self.last())
+        popped = self.delete(self.last())
+        self._downheap(self.root())
+        return popped
+
+
+
+
 if __name__ == '__main__':
     from random import randint
     size = 5
@@ -751,10 +1053,22 @@ if __name__ == '__main__':
     # l = [(i, randint(0, 100))  for i in range(size)]
     # priority_search_tree_builder(l)
 
-    j = CPUSchedulingJobs()
-    l = [randint(-20, 19) for i in range(-20, 20)]
-    for i in range(len(l)):
-        j.add_job('Job_' + str(l[i]) + chr(65+randint(0, 25)),
-                  randint(1, 100),
-                  l[i])
-    j.run()
+    # j = CPUSchedulingJobs()
+    # l = [randint(-20, 19) for i in range(-20, 20)]
+    # for i in range(len(l)):
+    #     j.add_job('Job_' + str(l[i]) + chr(65+randint(0, 25)),
+    #               randint(1, 100),
+    #               l[i])
+    # j.run()
+
+    u = UnsortedPriorityQueue()
+    u.add(0, 'A')
+    u.add(2, 'B')
+    u.add(3, 'C')
+    u.add(-1, 'E')
+    u.add(-2, 'F')
+    u.add(-3, 'G')
+    u.add(-4, 'H')
+    print(u)
+    print(u.remove_min())
+    print(u)
