@@ -3,9 +3,9 @@
 
 <div>
     <p>
-        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
         <br/>
-        → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_5_excercises.md">Exercises</a>    
+        → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_5_excercises.md">Exercises</a>    
     </p>
 </div>
 <div>
