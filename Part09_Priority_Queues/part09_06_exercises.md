@@ -1163,6 +1163,109 @@ def priority_search_tree_builder(S):
     return left
 ```
 
+### P-9.57 One of the main applications of priority queues is in operating systems— for scheduling jobs on a CPU. In this project you are to build a program that schedules simulated CPU jobs. Your program should run in a loop, each iteration of which corresponds to a time slice for the CPU. Each job is assigned a priority, which is an integer between −20 (highest priority) and 19 (lowest priority), inclusive. From among all jobs waiting to be processed in a time slice, the CPU must work on a job with highest priority. In this simulation, each job will also come with a length value, which is an integer between 1 and 100, inclusive, indicating the number of time slices that are needed to process this job. For simplicity, you may assume jobs cannot be interrupted—once it is scheduled on the CPU, a job runs for a number of time slices equal to its length. Your simulator must output the name of the job running on the CPU in each time slice and must process a sequence of commands, one per time slice, each of which is of the form “add job name with length n and priority p” or “no new job this slice”.
+```python
+from DataStructures.queue import LinkedQueue
+class CPUSchedulingJobs:
+
+    class _CPU:
+        __slots__ = '_process'
+
+        def __init__(self):
+            self._process = None
+
+        def get_time_slice(self, time_slice=None):
+            self._process = [time_slice[0], time_slice[1], time_slice[2], 0]
+
+        def operate(self):
+            if self._process is None:
+                print("no new job this slice")
+                return
+            self._process[3] = 1
+            if self._process[3] == 1:
+                print("add job {} with length {} and priority {}".format(self._process[0], self._process[1], self._process[2]))
+            processed = self._process
+            self._process = None
+            return processed
+
+    class _Memory:
+        __slots__ = '_to_do_job_queue', '_finished_job_list', '_priority_min', '_priority_max'
+
+        def __init__(self):
+            self._to_do_job_queue = HeapPriorityQueue()
+            self._finished_job_list = []
+            self._priority_min = -20
+            self._priority_max = 19
+
+        def add_job_to_memory(self, job):
+            if not (self._priority_min <= job._priority <= self._priority_max):
+                raise ValueError('Priority out of available band.')
+            return self._to_do_job_queue.add(job._priority, job)
+
+        def get_to_do_jobs(self):
+            while not self._to_do_job_queue.is_empty():
+                job = self._to_do_job_queue.remove_min()[1]
+                for i in range(job._length):
+                    yield (job._name, job._length, job._priority)
+
+        def get_finished_jobs(self, job):
+            from datetime import datetime
+            finished_job = {'job': job, 'finished_time': datetime.now()}
+            self._finished_job_list.append(finished_job)
+            return finished_job
+
+        def show_finished_jobs(self):
+            for job in self._finished_job_list:
+                print('{} [{}]'.format(job['job'], job['finished_time']))
+
+    class _Job:
+        __slots__ = '_name', '_length', '_priority'
+
+        def __init__(self, name, length, priority=None):
+            self._name = name
+            self._length = length
+            self._priority = priority
+
+        def __str__(self):
+            return "job {} with length {} and priority {}".format(self._name, self._length, self._priority)
+
+    def __init__(self):
+        self._cpu = self._CPU()
+        self._memory = self._Memory()
+
+    def add_job(self, name, length, priority):
+        new_job = self._Job(name, length, priority)
+        return self._memory.add_job_to_memory(new_job)
+
+    def run(self):
+        current_job = None
+        job_time_slice_cnt = 0
+        for process in self._memory.get_to_do_jobs():
+            if (current_job is None) or not (current_job[0], current_job[1], current_job[2] == process[0], process[1], process[2]):
+                current_job = process
+                job_time_slice_cnt = 0
+
+            self._cpu.get_time_slice(process)
+            processed = self._cpu.operate()
+            job_time_slice_cnt += processed[3]
+
+            if job_time_slice_cnt == current_job[1]:
+                self._memory.get_finished_jobs(current_job)
+                current_job = None
+        self._memory.show_finished_jobs()
+
+
+if __name__ == '__main__':
+    from random import randint
+    j = CPUSchedulingJobs()
+    l = [randint(-20, 19) for i in range(-20, 20)]
+    for i in range(len(l)):
+        j.add_job('Job_' + str(l[i]) + chr(65+randint(0, 25)),
+                  randint(1, 100),
+                  l[i])
+    j.run()
+```
+
 
 
 

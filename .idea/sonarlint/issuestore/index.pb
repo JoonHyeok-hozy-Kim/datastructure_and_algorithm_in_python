@@ -68,3 +68,9 @@ S
 #Part08_Trees/part08_06_exercises.md,e\9\e9018d9a59bfe145fc1e97837fd9d624ab31f0b3
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+R
+"DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
+S
+#Part08_Trees/part08_06_exercises.py,7\4\74369c6ea61d00e3ae9e61159631d481bd54ae69
+O
+Part08_Trees/part08_00_trees.md,c\8\c853cd0f75487bebcc784d9e6200d6b962476381

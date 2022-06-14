@@ -1,0 +1,56 @@
+
+Hpython:S1066¸"/Merge this if statement with the enclosing one.(Ìºİñ
+dpython:S2208"GImport only needed names or import the module and then use its members.(İµŸêıÿÿÿÿ
+ipython:S117"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ô¯äÑÿÿÿÿÿ
+dpython:S117"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨Ã¢Ò
+=python:S1481"%Remove the unused local variable "i".(¨êÒ
+jpython:S117«"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÒõÊ¿ıÿÿÿÿ
+jpython:S117»"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(îøë†ùÿÿÿÿ
+jpython:S117¿"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ù˜†çûÿÿÿÿ
+fpython:S117×"NRename this parameter "T1" to match the regular expression ^[_a-z][a-z0-9_]*$.(¹Ó†
+tpython:S117Ø"\Rename this local variable "T1_subtrees" to match the regular expression ^[_a-z][a-z0-9_]*$.(€ûÙ
+fpython:S117×"NRename this parameter "T2" to match the regular expression ^[_a-z][a-z0-9_]*$.(¹Ó†
+tpython:S117Ù"\Rename this local variable "T2_subtrees" to match the regular expression ^[_a-z][a-z0-9_]*$.(±îĞö
+jpython:S117á"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(¾ŒÒñùÿÿÿÿ
+jpython:S117ê"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(™¿¤ˆùÿÿÿÿ
+jpython:S117ù"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(°¶¢©şÿÿÿÿ
+epython:S117…"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(œşñ®
+dpython:S117"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(©¹Q
+jpython:S117­"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÓÎ×Ùıÿÿÿÿ
+jpython:S117¸"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(ğÿü±şÿÿÿÿ
+dpython:S117Á"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(¢Ä§
+jpython:S117Ê"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(œç•ïıÿÿÿÿ
+jpython:S117Ô"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(îøë†ùÿÿÿÿ
+dpython:S117Ø"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(û÷“w
+Cpython:S1481Ş"%Remove the unused local variable "i".(çºíØÿÿÿÿÿ
+jpython:S117ë"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.( ò£®üÿÿÿÿ
+epython:S117û"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(”ò®ù
+epython:S117"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ùÿú°
+epython:S117¦"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(»¡ãÃ
+mpython:S3776Ğ"TRefactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.(ò™óà
+jpython:S117÷"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÜÆ•Ìüÿÿÿÿ
+jpython:S117“"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(ø‹Èüüÿÿÿÿ
+Apython:S108°")Either remove or fill this block of code.(ã‘Û¾
+Hpython:S2638Ù"/Remove parameter path or provide default value.(ª–êë
+<python:S125Ì"Remove this commented out code.(Ññ»Ÿşÿÿÿÿ
+7python:S125Ñ"Remove this commented out code.(ëğ¹½
+<python:S125Ø"Remove this commented out code.(´¬ú“úÿÿÿÿ
+<python:S125à"Remove this commented out code.(ÏõÃ°üÿÿÿÿ
+<python:S125í"Remove this commented out code.(ÏõÃ°üÿÿÿÿ
+7python:S125û"Remove this commented out code.(••†ı
+7python:S125‡"Remove this commented out code.(™œšÜ
+7python:S125"Remove this commented out code.(À•²
+7python:S125§"Remove this commented out code.(ˆ«·¶
+7python:S125®"Remove this commented out code.(Æõß™
+7python:S125º"Remove this commented out code.(Éİ¨‰
+<python:S125¾"Remove this commented out code.(îÌˆÏıÿÿÿÿ
+7python:S125Â"Remove this commented out code.(õÕÀ
+7python:S125Ë"Remove this commented out code.(ŠĞ¶
+7python:S125Ö"Remove this commented out code.(è¤ƒˆ
+7python:S125Ü"Remove this commented out code.(ëÿÅ‡
+7python:S125ß"Remove this commented out code.(ÿñœ
+<python:S125ñ"Remove this commented out code.(øóöëùÿÿÿÿ
+7python:S125÷"Remove this commented out code.(¥¿ÿŒ
+<python:S125¦"Remove this commented out code.(³ ”»üÿÿÿÿ
+7python:S125­"Remove this commented out code.(Áß›Ñ
+7python:S125µ"Remove this commented out code.(¦Å„Á

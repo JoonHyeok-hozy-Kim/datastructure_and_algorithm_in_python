@@ -147,8 +147,10 @@ class HeapPriorityQueue(PriorityQueueBase):
                 self._downheap(small_child)
 
     def add(self, key, value):
-        self._data.append(self._Item(key, value))
+        new_item = self._Item(key, value)
+        self._data.append(new_item)
         self._upheap(len(self._data)-1)
+        return new_item
 
     def min(self):
         if self.is_empty():
