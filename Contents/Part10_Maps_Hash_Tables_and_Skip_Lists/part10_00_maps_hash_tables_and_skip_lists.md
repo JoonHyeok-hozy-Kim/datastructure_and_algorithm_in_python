@@ -18,7 +18,7 @@
 #### Def.) Map
 * Let M a map with following 5 behaviors.
 <p align="center">
-<img src="" style="height: 600px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_01_01_map_behaviors.png" style="height: 600px;"></img><br/>
 </p>
 
 
