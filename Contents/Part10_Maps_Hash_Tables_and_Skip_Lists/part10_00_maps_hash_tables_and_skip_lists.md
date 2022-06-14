@@ -75,7 +75,10 @@ print('Its number of occurrences is', max_count)
 
 ### 10.1.5 Simple Unsorted Map Implementation
 * Implementaion : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L21">UnsortedTableMap</a>
-
+* Analysis
+  * Inefficient with the running time of O(n) for every operations.
+    * why?) self._table is not sorted.
+      * Thus, it may take O(n) traversal in the worst case.
 
 
 ## 10.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md">Exercises</a>
