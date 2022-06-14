@@ -146,7 +146,7 @@ of the function that manages the flow of control at the time it is executed.
 ## 4.3 Recursion Run Amok
 #### In efficient example 1 : Element Uniqueness Problem
 * Recall
-<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md#ex3-element-uniqueness-problem--find-out-whether-all-elements-of-a-series-s-with-the-size-of-n-are-unique">_element uniqueness problem_</a>
+<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md#ex3-element-uniqueness-problem--find-out-whether-all-elements-of-a-series-s-with-the-size-of-n-are-unique">_element uniqueness problem_</a>
   * recursive solution
 ```python
 def unique3(S, start, stop):

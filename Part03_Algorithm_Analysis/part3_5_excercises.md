@@ -1,26 +1,26 @@
 
 <div>
     <p>
-        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
     </p>
 </div>
 
 # 3.5 Excercises
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_1.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_1.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_2.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_2.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_3.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_3.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_4.jpg"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_4.jpg"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_5.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_5.png"></img><br/>
 </p>
 
 * n_log(n) algorithm for check
@@ -35,10 +35,10 @@ def n_log_n(n):
 ```
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_6.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_6.png"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_7.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_7.png"></img><br/>
 </p>
 
 > R-3.23 ~ R-3.27   
@@ -103,10 +103,10 @@ def example5(A, B): # assume that A and B have equal length
 * sol.) O(n^3)
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_8.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_8.png"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_9.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_9.png"></img><br/>
 </p>
 
 > C-3.35
@@ -133,10 +133,10 @@ def c_3_36(A):
 ```
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_10.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_10.png"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_11.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_11.png"></img><br/>
 </p>
 
 > C-3.41. By coupling adjacent elements and compare local min/max
@@ -168,7 +168,7 @@ def c_3_41(A):
 ```
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_12.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_12.png"></img><br/>
 </p>
 
 > C-3.45. Use summation equation as apriori-knowledge.
@@ -185,10 +185,10 @@ def c_3_45(S):
 > A monolithic color of previous sheeps does not guarantee the color of the next sheep.
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_13.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_13.png"></img><br/>
 </p>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.5_sol_14.png"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.5_sol_14.png"></img><br/>
 </p>
 
 > C-3.54
@@ -214,6 +214,6 @@ def c_3_54(S):
 
 <div>
     <p>
-        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
+        Back to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
     </p>
 </div>

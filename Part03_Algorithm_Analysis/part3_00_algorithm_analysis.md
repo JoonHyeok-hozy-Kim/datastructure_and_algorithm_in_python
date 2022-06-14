@@ -55,19 +55,19 @@ elapsed = end_time-start_time
 * Def.) Big-Oh
   * Prop) Provides an asymptotic way of saying that a function is __“less than or equal to”__ another function
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.3.1_1_big_oh.jpg" width="800px" title="Big Oh" alt="Big Oh"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.3.1_1_big_oh.jpg" width="800px" title="Big Oh" alt="Big Oh"></img><br/>
 </p>
 
 * Concept) Big-Omega
   * Prop) Provides an asymptotic way of saying that a function is __“greater than or equal to”__ another function
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.3.1_2_big_omega.jpg" width="800px" title="Big Omega" alt="Big Omega"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.3.1_2_big_omega.jpg" width="800px" title="Big Omega" alt="Big Omega"></img><br/>
 </p>
 
 * Concept) Big-Theta
   * Prop) Two functions grow at the same rate, up to constant factors
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.3.1_3_big_theta.jpg" width="800px" title="Big Theta" alt="Big Theta"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.3.1_3_big_theta.jpg" width="800px" title="Big Theta" alt="Big Theta"></img><br/>
 </p>
 
 ### 3.3.3 Examples of Algorithm Analysis
@@ -79,7 +79,7 @@ elapsed = end_time-start_time
 
 #### Ex.1) Prefix Average Problem
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.3.1_4_prefix_average.jpg" width="800px"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.3.1_4_prefix_average.jpg" width="800px"></img><br/>
 </p>
 
 * Sol.1) Quadratic time Algorithm   
@@ -118,7 +118,7 @@ def prefix_average3(S):
 
 #### Ex.2) Three-Way Set Disjointness
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/images/3.3.1_5_three_way_set_disjointness.jpg" width="800px"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/images/3.3.1_5_three_way_set_disjointness.jpg" width="800px"></img><br/>
 </p>
 
 * Sol.1) Cubic Loop 1
@@ -187,6 +187,6 @@ def unique2(S):
 ## 3.5 Excercises
 <div>
     <p>
-        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part03_Algorithm_Analysis/part3_5_excercises.md">Exercises 3.5</a>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_5_excercises.md">Exercises 3.5</a>
     </p>
 </div>
