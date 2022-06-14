@@ -15,7 +15,11 @@
     2. Map denotes the general notion of the abstract data type.
 
 ### 10.1.1 The Map ADT
-
+#### Def.) Map
+* Let M a map with following 5 behaviors.
+<p align="center">
+<img src="" style="height: 600px;"></img><br/>
+</p>
 
 
 
