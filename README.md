@@ -50,3 +50,10 @@
         → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part09_Priority_Queues/part09_06_exercises.md">Exercises</a>
     </p>
 </div>
+<div>
+    <p>
+        <a href="">Part 10. Maps, Hash Tables, and Skip Lists</a>
+        <br/>
+        → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md">Exercises</a>
+    </p>
+</div>

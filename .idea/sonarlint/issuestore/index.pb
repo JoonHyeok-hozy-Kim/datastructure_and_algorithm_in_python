@@ -66,8 +66,6 @@ S
 #Part08_Trees/part08_04_traversal.py,a\1\a17793ac9fc30dc5c53c28b56c30d227b9ceb988
 S
 #Part08_Trees/part08_06_exercises.md,e\9\e9018d9a59bfe145fc1e97837fd9d624ab31f0b3
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 R
 "DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
 S
