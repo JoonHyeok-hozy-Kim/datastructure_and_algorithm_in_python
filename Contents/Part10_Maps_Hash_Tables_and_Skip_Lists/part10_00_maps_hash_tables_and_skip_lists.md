@@ -73,5 +73,9 @@ print('Its number of occurrences is', max_count)
   * Target : Greater code re-use
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py">MapBase Class</a>
 
+### 10.1.5 Simple Unsorted Map Implementation
+* Implementaion : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L21">UnsortedTableMap</a>
+
+
 
 ## 10.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md">Exercises</a>
