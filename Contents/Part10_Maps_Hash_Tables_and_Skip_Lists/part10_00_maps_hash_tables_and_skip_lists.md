@@ -209,7 +209,7 @@ print(len(m_101))
 ```
 * Ex 2) The MAD Method (Multiply-Add-and-Divide)
   * How?
-    * [(a*i+b) mode p] mod N
+    * [(a*i+b) % p] % N
       * where
         * N : the size of the bucket array
         * p : a prime number larger than N
@@ -316,6 +316,20 @@ print(len(m_101))
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_02_01_efficiency_of_hash_tables.png" style="height: 300px;"></img><br/>
 </p>
+
+### 10.2.4 Python Hash Table Implementation
+* Rules for HashMapBase class
+  1. The bucket array is represented as a Python list, named self. table, with all entries initialized to None.
+  2. We maintain an instance variable self. n that represents the number of distinct items that are currently stored in the hash table.
+  3. If the load factor of the table increases beyond 0.5, we double the size of the   table and rehash all items into the new table.
+  4. We define a hash function utility method that relies on Python’s built-in hash function to produce hash codes for keys, and a randomized Multiply-Add-and-Divide (MAD) formula for the compression function.
+
+#### Tech.) <a href="">HashMapBase</a>
+
+#### Tech.) <a href="">Separate Chaining</a>
+
+#### Tech.) <a href="">Linear Probing</a>
+
 
 
 
