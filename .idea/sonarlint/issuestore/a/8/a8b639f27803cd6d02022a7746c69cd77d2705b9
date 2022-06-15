@@ -1,51 +1,0 @@
-
-ipython:S117"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(Œ·ê›ûÿÿÿÿ
-ipython:S117\"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÖèªÃþÿÿÿÿ
-6python:S125%"Remove this commented out code.(‚›¥Æ
-ipython:S117b"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(÷Øð«ÿÿÿÿÿ
-dpython:S117‹"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(¼Ž¤;
-epython:S117ž"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(¸Ý‰™
-mpython:S3776À"TRefactor this function to reduce its Cognitive Complexity from 24 to the 15 allowed.(Œ£ÂÉ
-Apython:S108Ä")Either remove or fill this block of code.(ã‘Û¾
-Cpython:S1481­"%Remove the unused local variable "i".(úýÐúÿÿÿÿ
-Cpython:S1481³"%Remove the unused local variable "i".(òµÃ¨úÿÿÿÿ
-Cpython:S1481Í"%Remove the unused local variable "i".(¯½å·ýÿÿÿÿ
-Cpython:S1481ß"%Remove the unused local variable "i".(±ÉŒüøÿÿÿÿ
-Cpython:S1481å"%Remove the unused local variable "i".(¡–¸«ùÿÿÿÿ
-mpython:S3776ü"TRefactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed.(ŒüÂ¶
-jpython:S117•"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(÷Ð©ÿÿÿÿÿ
-ppython:S1542•"RRename function "StackScanner" to match the regular expression ^[a-z_][a-z0-9_]*$.(÷Ð©ÿÿÿÿÿ
-Cpython:S1481 "%Remove the unused local variable "i".(ÐÍ©¤úÿÿÿÿ
-Cpython:S1481¢"%Remove the unused local variable "i".(ÐÍ©¤úÿÿÿÿ
-Cpython:S1481¤"%Remove the unused local variable "i".(ÐÍ©¤úÿÿÿÿ
->python:S1481±"%Remove the unused local variable "i".(Œ×”Ý
->python:S1481¶"%Remove the unused local variable "i".(Œ×”Ý
-Rpython:S905ê":Remove or refactor this statement; it has no side effects.(½ìß‹
-<python:S125ë"Remove this commented out code.(î‡¢Ïüÿÿÿÿ
-7python:S125€"Remove this commented out code.(Ê¿ªï
-6python:S125Ž"Remove this commented out code.(ñ”¤
-<python:S125“"Remove this commented out code.(âÐ•Éüÿÿÿÿ
-<python:S125—"Remove this commented out code.(ôñÛÁýÿÿÿÿ
-<python:S125¬"Remove this commented out code.(–á¢£ýÿÿÿÿ
-<python:S125´"Remove this commented out code.(öã’õúÿÿÿÿ
-<python:S125Å"Remove this commented out code.(«¦žÂþÿÿÿÿ
-7python:S125Ü"Remove this commented out code.(ýý À
-7python:S125í"Remove this commented out code.(‡Ñ†ý
-6python:S125÷"Remove this commented out code.(½†×.
-7python:S125€"Remove this commented out code.(ºªî
-7python:S125Œ"Remove this commented out code.(ƒÕÌ›
-7python:S125"Remove this commented out code.(²ƒ›Ô
-7python:S125–"Remove this commented out code.(¡Ú·Ó
-7python:S125 "Remove this commented out code.(Ø¯ðÔ
-<python:S125½"Remove this commented out code.(²Ø¤óýÿÿÿÿ
-<python:S125Æ"Remove this commented out code.(ÑÌìÂùÿÿÿÿ
-<python:S125Ý"Remove this commented out code.(ÑÌìÂùÿÿÿÿ
-<python:S125ä"Remove this commented out code.(¯•óûÿÿÿÿ
-7python:S125í"Remove this commented out code.(ÎÕñ¢
-7python:S125ó"Remove this commented out code.(õˆð
-6python:S125ü"Remove this commented out code.(™Æ†q
-<python:S125ˆ"Remove this commented out code.(—«óäýÿÿÿÿ
-7python:S125Œ"Remove this commented out code.(ÇñŠ¬
-<python:S125"Remove this commented out code.(ÒÝÒÚúÿÿÿÿ
-<python:S125Ÿ"Remove this commented out code.(õËêèùÿÿÿÿ
-<python:S125¦"Remove this commented out code.(„Üí­ûÿÿÿÿ

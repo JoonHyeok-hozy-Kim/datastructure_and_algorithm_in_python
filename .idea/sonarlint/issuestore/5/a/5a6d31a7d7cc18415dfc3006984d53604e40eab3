@@ -1,28 +1,0 @@
-
-Hpython:S1066Œ"/Merge this if statement with the enclosing one.(¥•²Ì
-dpython:S117"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(øÊ¹­
-dpython:S117"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ö½Êã
-ipython:S1178"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(¬‡‰¥úÿÿÿÿ
-=python:S1481V"%Remove the unused local variable "i".(âŞş¾
-Dpython:S1481_",Remove the unused local variable "temp_peg".(³©¨Ğ
-Bpython:S1481o"%Remove the unused local variable "j".(À¯àšıÿÿÿÿ
-Wpython:S3516„"9Refactor this method to not always return the same value.(ÿ¼êşÿÿÿÿ
-epython:S117•"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(‰û¬
-jpython:S117Æ"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(í£É²ÿÿÿÿÿ
-epython:S117Ñ"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(–Ñíö
-ipython:S117Ñ"QRename this parameter "new_S" to match the regular expression ^[_a-z][a-z0-9_]*$.(–Ñíö
-epython:S117Ş"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(ü¿™Û
-Cpython:S1481ù"%Remove the unused local variable "i".(õ˜ÚÁşÿÿÿÿ
-jpython:S117ÿ"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(·‡Ó½ÿÿÿÿÿ
-jpython:S117ÿ"MRename this parameter "U" to match the regular expression ^[_a-z][a-z0-9_]*$.(·‡Ó½ÿÿÿÿÿ
-=python:S1481•"%Remove the unused local variable "i".(À´ñ`
-Cpython:S1481¯"%Remove the unused local variable "i".(ñ ©°ıÿÿÿÿ
-6python:S125³"Remove this commented out code.(š¢£2
-7python:S125»"Remove this commented out code.(Ğ¿ä
-7python:S125¾"Remove this commented out code.(âë™Ü
-<python:S125Ã"Remove this commented out code.(Õª¹’ıÿÿÿÿ
-<python:S125É"Remove this commented out code.(„×÷ùÿÿÿÿ
-<python:S125Ì"Remove this commented out code.(çÛ¯şÿÿÿÿ
-7python:S125Ï"Remove this commented out code.(““Ö¡
-7python:S125Ø"Remove this commented out code.(½¥ä‰
-7python:S125Û"Remove this commented out code.(áâîğ

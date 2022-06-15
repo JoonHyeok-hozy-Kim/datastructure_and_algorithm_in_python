@@ -1,40 +1,0 @@
-
-Mpython:S1066ñ"/Merge this if statement with the enclosing one.(¯©òôøÿÿÿÿ
-Mpython:S1066ò"/Merge this if statement with the enclosing one.(³…ùÿÿÿÿ
-5python:S3626="Remove this redundant return.(ÙãŞŸ
-dpython:S117?"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(°Àæ
-ipython:S117F"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(ºÇâÕùÿÿÿÿ
-Bpython:S1481O"%Remove the unused local variable "k".(‹ÏÊ–ıÿÿÿÿ
-ipython:S117U"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(É×‘³øÿÿÿÿ
-<python:S1481c"%Remove the unused local variable "s".(ä¡¬
-=python:S1481e"%Remove the unused local variable "s".(‚øşã
-=python:S1481n"%Remove the unused local variable "k".(ÒÖŞ×
-=python:S1481q"%Remove the unused local variable "k".(ìşÁ‹
-Bpython:S1481k"%Remove the unused local variable "j".(Ö÷õ˜úÿÿÿÿ
-=python:S1481n"%Remove the unused local variable "i".(ÒÖŞ×
-=python:S1481q"%Remove the unused local variable "i".(ìşÁ‹
-Cpython:S1481‰"%Remove the unused local variable "l".(ôÁ¶—ıÿÿÿÿ
-jpython:S117µ"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(®œ”Äıÿÿÿÿ
-jpython:S117¼"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(´¬Øèÿÿÿÿÿ
-Cpython:S2201½"*The return value of "sorted" must be used.(í¢±¾
-python:S1871Å"cEither merge this branch with the identical one on line "195" or change one of the implementations.(œõˆ•øÿÿÿÿ
-jpython:S117É"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(±ÙÙóÿÿÿÿÿ
-jpython:S117É"MRename this parameter "B" to match the regular expression ^[_a-z][a-z0-9_]*$.(±ÙÙóÿÿÿÿÿ
-jpython:S117Ş"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(Îæ«Âşÿÿÿÿ
-jpython:S117å"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(¸¹„èøÿÿÿÿ
-jpython:S117ï"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(¢èøÿÿÿÿ
-jpython:S117ï"MRename this parameter "B" to match the regular expression ^[_a-z][a-z0-9_]*$.(¢èøÿÿÿÿ
-rpython:S3776ï"TRefactor this function to reduce its Cognitive Complexity from 21 to the 15 allowed.(¢èøÿÿÿÿ
-Cpython:S1481ı"%Remove the unused local variable "i".(ÃæÎ‰úÿÿÿÿ
-jpython:S117Ş"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(³‹‰Éÿÿÿÿÿ
-<python:S125ê"Remove this commented out code.(à«×ïıÿÿÿÿ
-<python:S125ù"Remove this commented out code.(Ü´áÛøÿÿÿÿ
-<python:S125…"Remove this commented out code.(êÄéŸüÿÿÿÿ
-7python:S125—"Remove this commented out code.(æ®¿¨
-6python:S125Â"Remove this commented out code.(Çàä
-<python:S125Å"Remove this commented out code.(¶â¥ùÿÿÿÿ
-7python:S125Ë"Remove this commented out code.(€Ô…Ô
-7python:S125Ò"Remove this commented out code.(§é¡ê
-<python:S125×"Remove this commented out code.(˜‰ô–şÿÿÿÿ
-7python:S125ï"Remove this commented out code.(ó·ØÂ
-Cpython:S125º"Remove this commented out code.(Íûöıúÿÿÿÿ8òî¦ìŒ0

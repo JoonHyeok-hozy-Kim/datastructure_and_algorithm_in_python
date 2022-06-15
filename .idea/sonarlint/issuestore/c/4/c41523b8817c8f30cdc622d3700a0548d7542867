@@ -1,15 +1,0 @@
-
-ipython:S117"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(§Ş§øÿÿÿÿ
-dpython:S117"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(Üÿ¾Â
-dpython:S117"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(á÷¡Ö
-dpython:S117!"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ş»ß¸
-dpython:S117!"MRename this parameter "B" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ş»ß¸
-dpython:S117!"MRename this parameter "C" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ş»ß¸
-ipython:S117*"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(áÊ…İÿÿÿÿÿ
-ipython:S117*"MRename this parameter "B" to match the regular expression ^[_a-z][a-z0-9_]*$.(áÊ…İÿÿÿÿÿ
-ipython:S117*"MRename this parameter "C" to match the regular expression ^[_a-z][a-z0-9_]*$.(áÊ…İÿÿÿÿÿ
-dpython:S1174"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(›Šı
-ipython:S117;"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(‰ÁŒ”ûÿÿÿÿ
-|python:S117<"YRename this local variable "sorted_S" to match the regular expression ^[_a-z][a-z0-9_]*$.(†·ùÿÿÿÿÿ8³¿ğ/
-Bpython:S125\"Remove this commented out code.(™¤ØÏıÿÿÿÿ8ƒÕ®¿ğ/
-Dpython:S1481l"%Remove the unused local variable "j".(åô‰8—ß¯¿ğ/
