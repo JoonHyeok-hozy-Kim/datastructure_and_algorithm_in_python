@@ -216,6 +216,12 @@ print(len(m_101))
         * a, b : integers chosen at random from the interval [0, p-1] with a > 0
 
 ### 10.2.2 Collision-Handling Schemes
+* Recall that the main idea of hash table is to
+  * store each item (k,v) in the “bucket” A[h(k)].
+* However, if there exists distinct keys k_1, and k_2 such that h(k_1) = h(k_2), hash table fails.
+  * A.K.A. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#concept-collision">Collision</a>
+  * Here are some ways to deal with such collisions.
+
 
 
 
