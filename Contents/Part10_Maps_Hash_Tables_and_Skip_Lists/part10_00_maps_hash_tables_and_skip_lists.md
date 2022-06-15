@@ -222,7 +222,7 @@ print(len(m_101))
   * A.K.A. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#concept-collision">Collision</a>
   * Here are some ways to deal with such collisions.
 
-#### Tech.) Seperate Chaining
+#### Tech.) Separate Chaining
 * How?)
   * Have each bucket A[j] store its own secondary container, holding items (k, v) such that h(k) = j
     * Container may be a list instance.
@@ -290,7 +290,32 @@ print(len(m_101))
 
 
 ### 10.2.3 Load Factors, Rehashing, and Efficiency
+* Recall that __load factor__ should be kept below 1 for efficiency.
+  * Desired load Factor
+    * Separate Chaining
+      * λ < 0.9
+    * Open Addressing
+      * In order to prevent clustering, λ < 0.5
 
+* Rehashing
+  * Why doing this?
+    * If an insertion causes the load factor of a hash table to go above the specified threshold, then it is common to resize the table.
+      * Then, load factor will change.
+  * Advantage)
+    * Tend to scatter items throughout the new bucket array.
+  * Desired
+    * At least double the previous size of the bucket array.
+      * Additional advantage)
+        * Amortized cost of rehashing all the entries in the table against the time used to insert them in the first place.
+
+#### Analysis) Efficiency of Hash Tables
+* For a Good Hash table that all entries are uniformly distributed in the N cells of bucket array...
+  * expected number of keys in a bucket is ┌ _n/N_ ┐ = O(1)
+  * Rehashing cost will be O(1) considering the amortization.
+* Worst Case Senario : Every keys are mapped to the same bucket.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_02_01_efficiency_of_hash_tables.png" style="height: 300px;"></img><br/>
+</p>
 
 
 
