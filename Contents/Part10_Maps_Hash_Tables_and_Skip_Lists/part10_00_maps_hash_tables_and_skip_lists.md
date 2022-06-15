@@ -324,11 +324,11 @@ print(len(m_101))
   3. If the load factor of the table increases beyond 0.5, we double the size of the   table and rehash all items into the new table.
   4. We define a hash function utility method that relies on Python’s built-in hash function to produce hash codes for keys, and a randomized Multiply-Add-and-Divide (MAD) formula for the compression function.
 
-#### Tech.) <a href="">HashMapBase</a>
+#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L2">HashMapBase</a>
 
-#### Tech.) <a href="">Separate Chaining</a>
+#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L42">Separate Chaining</a>
 
-#### Tech.) <a href="">Linear Probing</a>
+#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L71">Linear Probing</a>
 
 
 
