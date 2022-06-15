@@ -118,14 +118,106 @@ print('Its number of occurrences is', max_count)
 #### Concept) Collision
 * Def.) If there are two or more keys with the same hash value, then two different items will be mapped to the same bucket in A.
 * Props.)
-  * Best way is to avoid collision if possible.
+  * Best way is to avoid collision as much as possible.
     * Good Hash Functions map keys so as to sufficiently minimize collisions.
   * There are some ways to deal with this.
 
-#### Concept) Hash Codes
+### Concept) Hash Codes
 * Def.) An output integer that is computed by a hash function when an arbitrary key is given.
 * Prop.)
-  * 
+  * Need not be in the range [0,N −1], and may even be negative
+  * Desirable that the set of hash codes assigned to the keys should avoid collisions as much as possible.
+    * If the hash codes cause collisions, then compression function can not avoid them.
+* Applications)
+  1. Bit Representation as an Integer
+     * 32-bit, 64-bit, 
+     * summation
+     * exclusive-or operation
+  2. Polynomial Hash Code
+     * Structure
+       * a polynomial in _a_ that takes the components _(x_0, x_1, ..., x\_(n-1))_ of an object _x_ as its coefficients.
+     * Advantage
+       * Useful for character strings or other variable-length objects like tuples.
+     * Disadvantage
+       * Possibility of periodic bits overflow
+         * why?) Polynomial structure uses multiplication.
+     * Suggestions for the constant _a_
+       * For English,
+         * 33
+         * 37
+         * 39
+         * 41
+  3. Cyclic-Shift Hash Codes
+     * Target)
+       * Replace multiplication of Polynomial with Cyclic shift
+     * Example) 5-bit cyclic shift of the 32-bit value
+```python
+def hash_code(s):
+    mask = (1<<32)-1
+    h = 0
+    for character in s:
+        h = (h<<5&mask)|(h>>27)
+        h += ord(character)
+    return h
+```
+
+#### Tech) Hash Codes in Python
+* hash(x)
+  * The standard mechanism for computing hash codes in Python is a built-in function
+  * Returns an integer value that serves as the hash code for object x
+  * Only immutable data types are deemed hashable in Python
+    * why?) To ensure that a particular object’s hash code remains constant during that object’s lifespan.
+      * why?) A problem could occur if a key were inserted into the hash table, yet a later search were performed for that key based on a different hash code than that which it had when inserted.
+    * ex.)
+      * int, float, tuple, frozenset classes
+    * If called for a mutable instance x, hash(x) returns TypeError
+  * For user-defined classes
+    * Use \_\_hash__ method
+    * Consider the consistency.
+      * i.e.) if "x == y", then "hash(x) == hash(y)"
+
+### Concept) Compression Functions
+* Def.) Computation that maps the integer determined by __hash code__ into the range [0,N −1]
+* Props.)
+  * Good Compression Function : Minimizes the number of collisions for a given set of distinct hash codes.
+* Ex 1) The Division Method
+  * How?)
+    * Map an integer _i_ to _i_ mod _N_
+    * Desirable to use prime number for _N_
+      * why?) Prime number can help compression function spread-out the distribution of hashed values.
+        * If non-prime number is used, there is a possibility of repetition of hash values.
+          * Ex.)
+            * Suppose hash_codes = {200, 205, 210, 215, 220, ..., 600} is inserted in to a bucket array of size 100(_N_)
+              * Then collision takes place at least 3 times for each hash value.
+                * ex.) 205, 305, 405
+            * If _N_ = 101, no collision.
+    * MUST ensure that the probability of two different keys getting hashed to the same bucket is 1/N.
+```python
+a = [200+5*i for i in range(81)]
+m_100 = []
+m_101 = []
+n = 101
+for i in a:
+    mod = i%100
+    if mod not in m_100:
+        m_100.append(mod)
+    mod = i%101
+    if mod not in m_101:
+        m_101.append(mod)
+print(len(m_100))
+print(len(m_101))
+```
+* Ex 2) The MAD Method (Multiply-Add-and-Divide)
+  * How?
+    * [(a*i+b) mode p] mod N
+      * where
+        * N : the size of the bucket array
+        * p : a prime number larger than N
+        * a, b : integers chosen at random from the interval [0, p-1] with a > 0
+
+### 10.2.2 Collision-Handling Schemes
+
+
 
 
 
