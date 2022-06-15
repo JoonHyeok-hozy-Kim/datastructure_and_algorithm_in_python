@@ -222,9 +222,74 @@ print(len(m_101))
   * A.K.A. <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#concept-collision">Collision</a>
   * Here are some ways to deal with such collisions.
 
+#### Tech.) Seperate Chaining
+* How?)
+  * Have each bucket A[j] store its own secondary container, holding items (k, v) such that h(k) = j
+    * Container may be a list instance.
+* Analysis)
+  * Suppose, _n_ items and _N_ bucket array capacity.
+    * Then the expected size of a bucket is _n/N_.
+    * Thus, if given a good hash function, the core map operations run in O(┌ _n/N_ ┐).
+      * Here the ratio, _n/N_ is also known as __load factor__ of a hash table.
+* Advantage
+  * Simple implementation
+* Disadvantage
+  * Auxiliary data structure is required to hold items with colliding keys.
+    * Thus, more space usage!
+
+#### Tech.) Open Addressing
+* Goal)
+  * Do NOT use auxiliary data structure to deal with collisions of keys.
+* Prop.)
+  * Load Factor is always at most 1
+  * Items are stored directly in the cells of the bucket array itself.
+  
+#### Ex 1) Linear Probing
+* How?)
+  1. Insertion
+     * Suppose we try to insert item (k, v) into a bucket A[j]
+       * If A[j] is already occupied, then try A[(j+1) % N].
+       * If A[(j+1) % N] is already occupied, then try A[(j+2) % N].
+       * Continue until an empty bucket is found.
+  2. Deletion
+     * Replace deleted item with a special available marker object.
+       * Why?)
+         * Suppose A[j] was already occupied by k_0 and k_1 was inserted at A[(j+1) % N] with linear probing.
+         * If k_0 item is simply deleted, searching for item in k_1 is impossible.
+           * Why?)
+             * The key k_1 will point A[j] first and then should move 1 cell rightward.
+             * But since A[j] is empty, probing cannot proceed from A[j]
+* Advantage)
+  * Can save space by not adapting other data structures.
+* Disadvantage)
+  * Slow down of search if items are clustered resulting in contiguous runs.
+    
+#### Ex 2) Quadratic Probing
+* How?)
+  * Instead of linearly increasing j+i, quadratically increase it by j+i^2
+    * i.e.) Item (k, v) is inserted at A[(h(k)+f(i)) % N] for i=0,1,2,3, ... where f(i)=i^2
+  * Advantage)
+    * If N is prime number and bucket array is less than half full, it prevents clustering.
+  * Disadvantage)
+    * Secondary Clustering
+      * Even if original hash codes are distributed uniformly, the set of filled array cells has non-uniform pattern
+    * If N is not prime number or bucket array is at least half full, clustering happens.
+
+#### Ex 3) Double Hashing Strategy
+* How?)
+  * Use secondary hash function _h'_.
+    * If the primary hash function _h_ maps some key k to a bucket A[h(k)] that is already occupied
+      * then we iteratively try buckets A[(h(k)+f(i)) % N] for i=0,1,2,3,... where f(i) = i*h'(k)
+    * Common h'
+      * h'(k) = q - (k % q) for some prime number q < N
+
+#### Ex 4) Python dictionary class example
+* It uses pseudo-random number generator.
+  * That is Repeatable
+  * But also Arbitrary
 
 
-
+### 10.2.3 Load Factors, Rehashing, and Efficiency
 
 
 
