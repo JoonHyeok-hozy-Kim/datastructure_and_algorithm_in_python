@@ -32,3 +32,7 @@ G
 DataStructures/array.py,0\d\0d7641f27ffb239413561f2db4896c923c568dc1
 G
 DataStructures/deque.py,6\7\6791dc77be4a111a55086321eb0e6769b4f2de3f
+F
+DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

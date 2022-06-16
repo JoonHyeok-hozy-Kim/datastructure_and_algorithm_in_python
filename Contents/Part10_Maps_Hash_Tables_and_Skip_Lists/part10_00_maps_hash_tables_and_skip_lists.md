@@ -331,6 +331,27 @@ print(len(m_101))
 #### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L71">Linear Probing</a>
 
 
+## 10.3 Sorted Maps
+
+#### Concept) Sorted Map
+* Ideation
+  * Hash Map allows only exact search for the key.
+    * h(k) = j
+  * Considering the fact that keys are unique, they can be sorted and be efficiently searched.
+    * Sorted Map adds following methods for that specific usage.
+      1. M.find_min()
+      2. M.find_max()
+      3. M.find_lt(k) : Return the (key,value) pair with the greatest key that is strictly less than k (or None, if no such item exists).
+      4. M.find_le(k)
+      5. M.find_gt(k)
+      6. M.find_ge(k)
+      7. M.find_range(start, stop) : Iterate all (key,value) pairs with start <= key < stop. If start is None, iteration begins with minimum key; if stop is None, iteration concludes with maximum key.
+      8. iter(M) : Iterate all keys of the map according to their natural order, from smallest to largest.
+      9. reversed(M)
+
+### 10.3.1 Sorted Search Tables
+* 
+
 
 
 ## 10.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md">Exercises</a>
