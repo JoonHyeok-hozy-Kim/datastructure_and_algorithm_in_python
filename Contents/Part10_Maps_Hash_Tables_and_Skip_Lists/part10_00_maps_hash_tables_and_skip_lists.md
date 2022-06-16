@@ -324,18 +324,18 @@ print(len(m_101))
   3. If the load factor of the table increases beyond 0.5, we double the size of the   table and rehash all items into the new table.
   4. We define a hash function utility method that relies on Python’s built-in hash function to produce hash codes for keys, and a randomized Multiply-Add-and-Divide (MAD) formula for the compression function.
 
-#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L2">HashMapBase</a>
+#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/hash_tables.py#L2">HashMapBase</a>
 
-#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L42">Separate Chaining</a>
+#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/hash_tables.py#L42">Separate Chaining</a>
 
-#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/maps.py#L71">Linear Probing</a>
+#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/hash_tables.py#L71">Linear Probing</a>
 
 
 ## 10.3 Sorted Maps
 
 #### Concept) Sorted Map
 * Ideation
-  * Hash Map allows only exact search for the key.
+  * Hash Map allows only __exact search__ for the key.
     * h(k) = j
   * Considering the fact that keys are unique, they can be sorted and be efficiently searched.
     * Sorted Map adds following methods for that specific usage.
@@ -350,7 +350,15 @@ print(len(m_101))
       9. reversed(M)
 
 ### 10.3.1 Sorted Search Tables
-* 
+* Concept
+  * Store the map’s items in an array-based sequence A
+    * Thus, items are in increasing order of their keys, assuming the keys have a naturally defined order.
+
+#### Tech.) Binary Search and Inexact Searches
+* Our previous usage for the binary search was to find exact target
+  * This logic can be used for \_\_contains__ method.
+* Moreover, the gap between _high_ and _low_ parameter can be used for inexact searches.
+
 
 
 
