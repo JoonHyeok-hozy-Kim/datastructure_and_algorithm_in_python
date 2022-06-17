@@ -367,6 +367,22 @@ print(len(m_101))
 </p>
 
 ## 10.4 Skip Lists
+#### Def.) Skip List
+* A skip list S for a map M consists of a series of lists {S0,S1,...,Sh}.
+* Each list Si stores 
+  1. a subset of the items of M sorted by increasing keys
+  2. items with two sentinel keys denoted −∞ and +∞
+     * −∞ is smaller than every possible key that can be inserted in M
+     * +∞ is larger than every possible key that can be inserted in M
+
+#### Props.)
+* List S0 contains __every__ item of the map M (plus sentinels −∞ and +∞)
+* For i = 1,...,h−1, list Si contains (in addition to −∞ and +∞) a randomly generated subset of the items in list Si−1.
+* List Sh contains only −∞ and +∞.
+  * h : the height of skip list S
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_01_skip_list_image.png" style="height: 300px;"></img><br/>
+</p>
 
 
 
