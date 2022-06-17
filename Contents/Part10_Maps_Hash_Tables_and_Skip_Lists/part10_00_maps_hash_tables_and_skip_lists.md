@@ -373,7 +373,8 @@ print(len(m_101))
   1. a subset of the items of M sorted by increasing keys
   2. items with two sentinel keys denoted −∞ and +∞
      * −∞ is smaller than every possible key that can be inserted in M
-     * +∞ is larger than every possible key that can be inserted in M
+     * +∞ is larger than every possible key that can be inserted in M   
+<br>
 
 #### Props.)
 * List _S0_ contains __every__ item of the map _M_ (plus sentinels −∞ and +∞)
@@ -386,14 +387,97 @@ print(len(m_101))
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_01_skip_list_image.png" style="height: 300px;"></img><br/>
 </p>
 
-#### Concept) Randomization in Skip List
+#### Concept) Randomization in the Skip List
 * Recall that "halving the number of items from one list to the next" is achieved by randomly generating the subset of the previous items.
 * Advantage
   * the structures and functions that result are usually simple and efficient
   * Randomization can extend the logarithmic time bound performances to update methods!
     * Recall that <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#1031-sorted-search-tables">Sorted Table Map</a>'s log(n) performance was limited to the searching method by Binary Search Algorithm
+    * The bounds are expected for the skip list, while binary search has a worst-case bound with a sorted table.
+      * i.e.) Search and Update times are O(logn) __on average__ for a Skip List.
+        * The notion of average time complexity used here does NOT depend on the probability distribution of the keys in the input
+        * Instead, it depends on the use of a __random-number generator__ in the implementation of the insertions to help decide where to place the new item.   
+<br>
 
+#### Tech.) Structure of the Skip List
+* levels : positions arranged horizontally
+* towers : positions arranged vertically
+* Methods for traversing the Skip List
+  * Kinds...
+    * next(p) : Return the position following p on the same level.
+    * prev(p) : Return the position preceding p on the same level.
+    * below(p) : Return the position below p in the same tower.
+    * above(p) : Return the position above p in the same tower.
+  * Return None if the position requested does not exist.
+  * Individual traversal methods each take O(1) time
+  * Consider a Skip List as "a collection of h doubly linked lists aligned at towers, which are also doubly linked lists."
 
+### 10.4.1 Search and Update Operations in a Skip List
+#### Tech.) Skip Search
+* How?
+  1. _Drop Down_ unless S.below(p) is None (i.e. at the bottom)
+  2. _Scan Forward_ until S.next(p) <= k
+  3. Return to 1
+* Pseudo-Code for SkipSearch
+```python
+Algorithm SkipSearch(k):
+  Input: A search key k
+  Output: Position p in the bottom list S0 with the largest key such that key(p) ≤ k
+
+  p = start {begin at start position}
+  while below(p) != None do
+  p = below(p) {drop down}
+  while k ≥ key(next(p)) do
+  p = next(p) {scan forward}
+  return p.
+```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_02_skip_search.png" style="height: 300px;"></img><br/>
+</p>
+
+#### Tech.) Insertion in a Skip List
+* How?
+  1. Operate SkipSearch(k)
+     * If SkipSearch(k) is not None, overwrite new value v
+     * Else, proceed with the followings.
+  2. Insert new item (k, v) at the position right next to the position returned by the previous SkipSearch(k)
+  3. Use random-number generator to decide whether to stack additional level of the tower for the key k
+  4. Repeat 3 randomly.
+* Pseudo-Code for SkipSearch
+```python
+Algorithm SkipInsert(k,v):
+  Input: Key k and value v
+  Output: Topmost position of the item inserted in the skip list
+
+  p = SkipSearch(k)
+  q = None {q will represent top node in new item’s tower}
+  i = −1
+  repeat
+    i = i+1
+    if i ≥ h then
+        h = h+1 {add a new level to the skip list}
+        t = next(s)
+        s = insertAfterAbove(None,s,(−∞,None)) {grow leftmost tower}
+        insertAfterAbove(s,t,(+∞,None)) {grow rightmost tower}
+    while above(p) is None do
+        p = prev(p) {scan backward}
+    p = above(p) {jump up to higher level}
+    q = insertAfterAbove(p,q,(k,v)) {increase height of new item’s tower}
+  until coinFlip() == tails
+  n = n+1
+  return q
+```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_03_insertion.png" style="height: 300px;"></img><br/>
+</p>
+
+#### Tech.) Removal in a Skip List
+* How?
+  1. Operate SkipSearch(k)
+
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_03_removal.png" style="height: 300px;"></img><br/>
+</p>
 
 
 
