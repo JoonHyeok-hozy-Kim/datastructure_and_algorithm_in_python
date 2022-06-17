@@ -426,9 +426,9 @@ Algorithm SkipSearch(k):
 
   p = start {begin at start position}
   while below(p) != None do
-  p = below(p) {drop down}
-  while k ≥ key(next(p)) do
-  p = next(p) {scan forward}
+    p = below(p) {drop down}
+    while k ≥ key(next(p)) do
+      p = next(p) {scan forward}
   return p.
 ```
 <p align="start">
@@ -513,9 +513,40 @@ Algorithm SkipInsert(k,v):
 
 #### Tech.) Bounding the Height of a Skip List (Informal but Intuitive Probabilistic Analysis)
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_04_bounding_height.png" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_04_bounding_height.png" style="height: 500px;"></img><br/>
 </p>
 <br>
+
+#### Tech.) Analyzing Search Time in a Skip List
+* Recall that SkipSearch(k) contains two while loops
+  * Outer Loop : Drop Down
+    * The loop repeats h times, which is equal to __log(n)__
+    * Thus, the expected amount of time spent dropping down is O(log(n))
+  * Inner Loop : Scan Forward
+    * Let _n_i_ be the number of keys examined while scanning forward at level _i_
+    * Consider that during the SkipSearch(k) any key additionally examined at the level _i_ cannot also belong to level _i+1_.
+      * Why?) Since we scanned forward, previous keys will not be scanned afterward.
+    * Then, the probability that any key is counted in ni is 1/2.
+    * Therefore, the expected value of _n_i_ is exactly equal to the expected number of times we must flip a fair coin before it comes up heads.
+      * This expected value is 2.
+    * Hence, the expected amount of time spent scanning forward at any level i is O(1).
+  * Therefore, SkipSearch takes O(log(n)) times.   
+<br>
+
+#### Tech.) Space Usage in a Skip List
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_05_space_usage.png" style="height: 450px;"></img><br/>
+</p>
+<br>
+
+#### Summary
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_06_summary.png" style="height: 450px;"></img><br/>
+</p>
+<br>
+
+## 10.5 Sets, Multisets, and Multimaps
+
 
 
 
