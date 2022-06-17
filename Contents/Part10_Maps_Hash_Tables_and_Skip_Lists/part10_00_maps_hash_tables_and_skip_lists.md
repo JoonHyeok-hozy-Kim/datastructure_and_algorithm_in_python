@@ -376,13 +376,22 @@ print(len(m_101))
      * +∞ is larger than every possible key that can be inserted in M
 
 #### Props.)
-* List S0 contains __every__ item of the map M (plus sentinels −∞ and +∞)
-* For i = 1,...,h−1, list Si contains (in addition to −∞ and +∞) a randomly generated subset of the items in list Si−1.
-* List Sh contains only −∞ and +∞.
-  * h : the height of skip list S
+* List _S0_ contains __every__ item of the map _M_ (plus sentinels −∞ and +∞)
+* For _i = 1,...,h−1_, list _Si_ contains (in addition to −∞ and +∞) a __randomly__ generated subset of the items in list _Si−1_.
+* List _Sh_ contains only −∞ and +∞.
+  * _h_ : the height of skip list _S_
+* the _i_-th list _Si_ is expected to have about n/(2^i) items
+  * Thus, the height _h_ of _S_ is log(n)
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_01_skip_list_image.png" style="height: 300px;"></img><br/>
 </p>
+
+#### Concept) Randomization in Skip List
+* Recall that "halving the number of items from one list to the next" is achieved by randomly generating the subset of the previous items.
+* Advantage
+  * the structures and functions that result are usually simple and efficient
+  * Randomization can extend the logarithmic time bound performances to update methods!
+    * Recall that <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#1031-sorted-search-tables">Sorted Table Map</a>'s log(n) performance was limited to the searching method by Binary Search Algorithm
 
 
 
