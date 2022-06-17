@@ -474,10 +474,34 @@ Algorithm SkipInsert(k,v):
 #### Tech.) Removal in a Skip List
 * How?
   1. Operate SkipSearch(k)
-
+     * If the returned p's key is not equal to k, raise KeyError
+     * Else, starting from the bottom remove p and remove all positions above p
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_03_removal.png" style="height: 300px;"></img><br/>
 </p>
+<br>
+
+#### Tech.) Optimizations for the Skip List
+* How?
+  1. Represent a tower as a single object, storing the key-value pair.
+     * Do not let positions store references of the positions above them.
+  2. Make horizontal axes singly linked lists.
+* Why doing this?
+  * Although asymptotic performance of skip list may improve only by more than a constant factor.
+  * However, this improvement is meaningful in the practice.   
+<br>
+
+#### Tech.) Maintaining the Topmost Level
+* Why needed?
+  * Recall that a skip list S must maintain reference to the start position (the topmost, left position in S).
+  * Thus, certain policy is needed when new entry is inserted past the top level of S.
+* Two possible options.
+  1. Restricting the top level, h, to be kept at some fixed value that is a function of n.
+     * Desiderata
+       1. h = max{ 10, 2* ┌log(n)┐ }
+       2. h = 3 * ┌log(n)┐
+  2. Let an insertion continue inserting a new position as long as heads keeps getting returned from the random number generator.
+     * This is applied to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#tech-insertion-in-a-skip-list">SkipInsert</a> above.
 
 
 
