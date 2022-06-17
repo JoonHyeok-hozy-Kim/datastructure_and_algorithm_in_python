@@ -501,7 +501,21 @@ Algorithm SkipInsert(k,v):
        1. h = max{ 10, 2* ┌log(n)┐ }
        2. h = 3 * ┌log(n)┐
   2. Let an insertion continue inserting a new position as long as heads keeps getting returned from the random number generator.
-     * This is applied to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#tech-insertion-in-a-skip-list">SkipInsert</a> above.
+     * This is applied to <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md#tech-insertion-in-a-skip-list">SkipInsert</a> above.   
+<br>
+
+### 10.4.2 Probabilistic Analysis of Skip Lists ★
+* Consider the worst case.
+  * In worst case, the running time of searching and updating may take O(n+h) time.
+    * \_\_getitem__, \_\_setitem__, \_\_delitem__
+  * There is also a possibility that height continues infinitely if the random choice is made to keep raising tower higher when insertion is made.
+  * However, that has very low possibility.
+
+#### Tech.) Bounding the Height of a Skip List (Informal but Intuitive Probabilistic Analysis)
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_04_bounding_height.png" style="height: 450px;"></img><br/>
+</p>
+<br>
 
 
 
