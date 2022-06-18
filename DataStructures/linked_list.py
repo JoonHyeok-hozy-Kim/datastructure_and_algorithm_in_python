@@ -105,6 +105,9 @@ class PositionalList(_DoublyLinkedBase):
         def __ne__(self, other):
             return not (self == other)
 
+        def __hash__(self):
+            return id(self._node)
+
     def __init__(self):
         super().__init__()
         self._iter_cursor = self._header

@@ -92,6 +92,87 @@ class UnsortedTableMap(MapBase):
         return result
 ```
 
+### R-10.6 Which of the hash table collision-handling schemes could tolerate a load factor above 1 and which could not?
+* Sol.)
+  * Seperate Chaning tolerates its load factor to be above 1.
+  * Open Addressing's load factor is at most 1.
+
+### R-10.7 Our Position classes for lists and trees support the eq method so that two distinct position instances are considered equivalent if they refer to the same underlying node in a structure. For positions to be allowed as keys in a hash table, there must be a definition for the hash method that is consistent with this notion of equivalence. Provide such a hash method.
+* Sol.) Use the id of the position's node as hash value.
+```python
+from DataStructures.linked_list import _DoublyLinkedBase
+class PositionalList(_DoublyLinkedBase):
+
+    class Position:
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(other) == type(self) and other._node ==  self._node
+
+        def __ne__(self, other):
+            return not (self == other)
+
+        def __hash__(self):
+            return id(self._node)
+```
+```python
+if __name__ == '__main__':
+    from DataStructures.hash_tables import ChainHashMap
+    from DataStructures.linked_list import PositionalList
+    l = PositionalList()
+    for i in range(5):
+        l.add_last(i)
+
+    # Insert elements of l into a with positions as keys
+    a = ChainHashMap()
+    walk = l.first()
+    while walk is not None:
+        a[walk] = walk.element()
+        walk = l.after(walk)
+
+    # Insert elements of l into b with positions as keys
+    b = ChainHashMap()
+    walk = l.first()
+    while walk is not None:
+        b[walk] = walk.element()
+        walk = l.after(walk)
+
+    print('a == b : {}'.format(a == b))
+
+    # Make another Positional list with identical values
+    m = PositionalList()
+    for i in range(5):
+        m.add_last(i)
+
+    # Insert elements of m into c with positions as keys
+    c = ChainHashMap()
+    walk = m.first()
+    while walk is not None:
+        c[walk] = walk.element()
+        walk = m.after(walk)
+
+    print('a == c : {}'.format(a == c))
+
+    # Change l
+    l.add_last(99)
+
+    # Insert elements of l' into d with positions as keys
+    d = ChainHashMap()
+    walk = l.first()
+    while walk is not None:
+        d[walk] = walk.element()
+        walk = l.after(walk)
+
+    print('a == d : {}'.format(a == c))
+```
+
+
+
 
 
 <p>

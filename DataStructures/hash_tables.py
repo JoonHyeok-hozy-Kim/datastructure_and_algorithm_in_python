@@ -5,7 +5,7 @@ class HashMapBase(MapBase):
 
     def __init__(self, cap=11, p=109345121):
         self._table = cap * [None]
-        self._n = 0                             # number of entires in the map
+        self._n = 0                             # number of entries in the map
         self._prime = p                         # prime for MAD compression
         self._scale = 1 + randrange(p-1)        # scale from 1 to p-1 for MAD
         self._shift = randrange(p)              # shift from 0 to p-1 for MAD

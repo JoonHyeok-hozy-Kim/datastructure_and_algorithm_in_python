@@ -290,6 +290,11 @@ print(len(m_101))
 
 
 ### 10.2.3 Load Factors, Rehashing, and Efficiency
+* Def.) Load Factor
+  * Let
+    * n : the number of items in the map
+    * N : the number of buckets in the bucket array A
+  * Then, _load factor_ = n/N
 * Recall that __load factor__ should be kept below 1 for efficiency.
   * Desired load Factor
     * Separate Chaining

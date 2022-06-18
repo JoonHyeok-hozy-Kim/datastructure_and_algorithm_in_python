@@ -26,7 +26,7 @@ class MapBase(MutableMapping):
 from DataStructures.linked_list import PositionalList
 class UnsortedTableMap(MapBase):
     def __init__(self):
-        self._table = []
+        self._table = PositionalList()
 
     def __getitem__(self, k):
         for item in self._table:
@@ -35,17 +35,22 @@ class UnsortedTableMap(MapBase):
         raise KeyError('Key Error : {}'.format(repr(k)))
 
     def __setitem__(self, k, v):
-        for item in self._table:
-            if k == item._key:
-                item._value = v
+        walk = self._table.first()
+        while walk is not None:
+            if walk.element()._key == k:
+                walk.element()._value = v
                 return
-        self._table.append(self._Item(k, v))
+            walk = self._table.after(walk)
+        self._table.add_last(self._Item(k, v))
 
     def __delitem__(self, k):
-        for i in range(len(self._table)):
-            if k == self._table[i]._key:
-                self._table.pop(i)
+        walk = self._table.first()
+        while walk is not None:
+            print('IN DEL, walk : {}'.format(str(walk.element())))
+            if walk.element()._key == k:
+                self._table.delete(walk)
                 return
+            walk = self._table.after(walk)
         raise KeyError('Key Error : {}'.format(repr(k)))
 
     def __len__(self):
@@ -57,10 +62,10 @@ class UnsortedTableMap(MapBase):
 
     def items(self):
         result = []
-        idx = 0
-        for k in self:
-            result.append((k, self._table[idx]))
-            idx += 1
+        walk = self._table.first()
+        while walk is not None:
+            result.append((walk.element()._key, walk.element()._value))
+            walk = self._table.after(walk)
         return result
 
 
