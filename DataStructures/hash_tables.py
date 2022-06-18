@@ -110,3 +110,20 @@ class ProbeHashMap(HashMapBase):
         for j in range(len(self._table)):
             if not self._is_available(j):
                 yield self._table[j]._key
+
+
+class QuadraticProbeHashMap(ProbeHashMap):
+    def _find_slot(self, j, k):
+        firstAvail = None
+        idx = 0
+        while True:
+            if self._is_available(j):
+                if firstAvail is None:
+                    firstAvail = j
+                if self._table[j] is None:
+                    return (False, firstAvail)
+            elif k == self._table[j]._key:
+                return (True, j)
+            idx += 1
+            j = (j+pow(idx, 2)) % len(self._table)
+

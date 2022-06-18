@@ -130,6 +130,71 @@ def hashed_id_tester(A):
             result_map[A[idx]] = new_hash_id
     return (True, result_map)
 
+
+from DataStructures.hash_tables import HashMapBase
+class CollsionHashMap(HashMapBase):
+    def _hash_function(self, k):
+        return (3*k+5)%11
+
+class CollsionProbeHashMap(CollsionHashMap):
+    _AVAIL = object()       # sentinel marks locations of previous deletions
+
+    def _is_available(self, j):
+        return self._table[j] is None or self._table[j] is CollsionProbeHashMap._AVAIL
+
+    def _find_slot(self, j, k):
+        firstAvail = None
+        while True:
+            if self._is_available(j):
+                if firstAvail is None:
+                    firstAvail = j
+                if self._table[j] is None:
+                    return (False, firstAvail)
+            elif k == self._table[j]._key:
+                return (True, j)
+            j = (j+1) % len(self._table)
+
+    def _bucket_getitem(self, j, k):
+        found, s = self._find_slot(j, k)
+        if not found:
+            raise KeyError('Key Error: ' + repr(k))
+        return self._table[s]._value
+
+    def _bucket_setitem(self, j, k, v):
+        found, s = self._find_slot(j, k)
+        if not found:
+            self._table[s] = self._Item(k, v)
+            self._n += 1
+        else:
+            self._table[s]._value = v
+
+    def _bucket_delitem(self, j, k):
+        found, s = self._find_slot(j, k)
+        if not found:
+            raise KeyError('Key Error: ' + repr(k))
+        self._table[s] = CollsionProbeHashMap._AVAIL
+
+    def __iter__(self):
+        for j in range(len(self._table)):
+            if not self._is_available(j):
+                yield self._table[j]._key
+
+
+class CollsionQuadraticProbeHashMap(CollsionProbeHashMap):
+    def _find_slot(self, j, k):
+        firstAvail = None
+        idx = 0
+        while True:
+            if self._is_available(j):
+                if firstAvail is None:
+                    firstAvail = j
+                if self._table[j] is None:
+                    return (False, firstAvail)
+            elif k == self._table[j]._key:
+                return (True, j)
+            idx += 1
+            j = (j+pow(idx, 2)) % len(self._table)
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -207,7 +272,47 @@ if __name__ == '__main__':
     #     hashed_id = vehicle_id_hash_function(id)
     #     print('id : {}, hashed : {}'.format(id, hashed_id))
 
-    a = random_id_generator(20)
-    # a = generate_all_id()
-    test = hashed_id_tester(a)
-    print(test[0])
+    # a = random_id_generator(20)
+    # # a = generate_all_id()
+    # test = hashed_id_tester(a)
+    # print(test[0])
+
+    # l = (12, 44, 13, 88, 23, 94, 11, 39, 20, 16, 5)
+    # separate_chained = []
+    # for i in l:
+    #     hash_code = (3*i+5)%11
+    #     insert_flag = False
+    #     for bucket in separate_chained:
+    #         if bucket[0] == hash_code:
+    #             bucket[1].append(i)
+    #             insert_flag = True
+    #             break
+    #     if not insert_flag:
+    #         separate_chained.append((hash_code, [i]))
+    # for bucket in separate_chained:
+    #     print(bucket)
+
+    from DataStructures.hash_tables import ProbeHashMap, QuadraticProbeHashMap
+    l = (12, 44, 13, 88, 23, 94, 11, 39, 20, 16, 5)
+    p = CollsionProbeHashMap()
+    for i in l:
+        p[i] = i
+    text_list = ['---------------------Linear Probing----------------------\n']
+    for item in p._table:
+        if item is None:
+            text_list.append('-')
+        else:
+            text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
+    print(' '.join(text_list))
+
+    p = CollsionQuadraticProbeHashMap()
+    for i in l:
+        p[i] = i
+    text_list = ['---------------------Quadratic Probing----------------------\n']
+    for item in p._table:
+        if item is None:
+            text_list.append('-')
+        else:
+            text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
+    print(' '.join(text_list))
+
