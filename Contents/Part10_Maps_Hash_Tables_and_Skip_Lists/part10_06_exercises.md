@@ -171,7 +171,85 @@ if __name__ == '__main__':
     print('a == d : {}'.format(a == c))
 ```
 
+### R-10.8 What would be a good hash code for a vehicle identification number that is a string of numbers and letters of the form “9X9XX99X9XX999999,” where a “9” represents a digit and an “X” represents a letter?
+* Sol.) Use ord function to make characters in to numbers and concatenate every number in str form. Finally make them int form and return the result.
+```python
+def vehicle_id_hash_function(S):
+    FORMAT = '9X9XX99X9XX999999'
+    text_num = []
+    if len(S) != len(FORMAT):
+        raise ValueError('Invalid id : Length')
+    for i in range(len(FORMAT)):
+        if FORMAT[i].isnumeric() != S[i].isnumeric():
+            raise ValueError('Invalid id : Format')
+        if S[i].isnumeric():
+            text_num.append(str(S[i]))
+        else:
+            text_num.append(str(ord(S[i])))
+    return int(''.join(text_num))
 
+from random import randint
+def random_id_generator(n=None):
+    FORMAT = '9X9XX99X9XX999999'
+    result_list = []
+    if n is None:
+        n = 1
+
+    for i in range(n):
+        temp_list = []
+        for char in FORMAT:
+            if char.isnumeric():
+                temp_list.append(str(randint(0,9)))
+            else:
+                temp_list.append(chr(65+randint(0, 25)))
+        result_list.append(''.join(temp_list))
+    return result_list
+
+
+def generate_all_id(idx=0, current_num=0, temp_list=[], result_list=[]):
+    FORMAT = '9X9XX99X9XX999999'
+    if len(temp_list) == len(FORMAT):
+        new_id = ''.join(temp_list)
+        print(new_id)
+        result_list.append(new_id)
+        return result_list
+
+    if FORMAT[idx].isnumeric():
+        if current_num > 9:
+            return result_list
+        else:
+            temp_list.append(str(current_num))
+            generate_all_id(idx+1, 0, temp_list, result_list)
+            temp_list.pop()
+            return generate_all_id(idx, current_num+1, temp_list, result_list)
+    else:
+        if current_num > 25:
+            return result_list
+        else:
+            temp_list.append(chr(current_num+65))
+            generate_all_id(idx+1, 0, temp_list, result_list)
+            temp_list.pop()
+            return generate_all_id(idx, current_num+1, temp_list, result_list)
+
+from DataStructures.hash_tables import ChainHashMap
+def hashed_id_tester(A):
+    result_map = ChainHashMap()
+    # result_map = {(A[0], vehicle_id_hash_function(A[0]))}
+    for idx in range(len(A)):
+        new_hash_id = vehicle_id_hash_function(A[idx])
+        if A[idx] in result_map:
+            if new_hash_id != result_map[A[idx]]:
+                return (False, (A[idx], new_hash_id, result_map[A[idx]]))
+        else:
+            result_map[A[idx]] = new_hash_id
+    return (True, result_map)
+
+if __name__ == '__main__':
+    a = random_id_generator(20)
+    # a = generate_all_id()
+    test = hashed_id_tester(a)
+    print(test[0])
+```
 
 
 
