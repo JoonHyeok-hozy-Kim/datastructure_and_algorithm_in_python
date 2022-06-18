@@ -139,22 +139,23 @@ class PositionalList(_DoublyLinkedBase):
         return self._make_poistion(target_node._next)
 
     # [C-7.35] Formal Iteration Definition
-    def __next__(self):
-        self._iter_cursor = self._iter_cursor._next
-        if self._iter_cursor != self._trailer:
-            return self._iter_cursor._element
-        else:
-            raise StopIteration()
-
-    def __iter__(self):
-        return self
+    # def __next__(self):
+    #     self._iter_cursor = self._iter_cursor._next
+    #     if self._iter_cursor != self._trailer:
+    #         return self._iter_cursor._element
+    #     else:
+    #         self._iter_cursor = self._header
+    #         raise StopIteration()
+    #
+    # def __iter__(self):
+    #     return self
 
     # # Python's Iteration Generator Syntax
-    # def __iter__(self):
-    #     cursor = self.first()
-    #     while cursor is not None:
-    #         yield cursor.element()
-    #         cursor = self.after(cursor)
+    def __iter__(self):
+        cursor = self.first()
+        while cursor is not None:
+            yield cursor.element()
+            cursor = self.after(cursor)
 
     def _insert_between(self, e, predecessor, successor):
         node = super()._insert_between(e, predecessor, successor)

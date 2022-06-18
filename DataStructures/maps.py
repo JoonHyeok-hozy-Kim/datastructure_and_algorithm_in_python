@@ -1,4 +1,6 @@
 from collections import MutableMapping
+
+
 class MapBase(MutableMapping):
 
     class _Item:
@@ -17,7 +19,11 @@ class MapBase(MutableMapping):
         def __lt__(self, other):
             return self._key < other._key
 
+        def str(self):
+            return '({}, {})'.format(self._key, self._value)
 
+
+from DataStructures.linked_list import PositionalList
 class UnsortedTableMap(MapBase):
     def __init__(self):
         self._table = []
@@ -48,6 +54,14 @@ class UnsortedTableMap(MapBase):
     def __iter__(self):
         for item in self._table:
             yield item._key
+
+    def items(self):
+        result = []
+        idx = 0
+        for k in self:
+            result.append((k, self._table[idx]))
+            idx += 1
+        return result
 
 
 class MultiMap:
