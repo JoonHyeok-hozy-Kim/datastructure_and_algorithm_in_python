@@ -48,3 +48,41 @@ class UnsortedTableMap(MapBase):
     def __iter__(self):
         for item in self._table:
             yield item._key
+
+
+class MultiMap:
+    _MapType = dict
+
+    def __init__(self):
+        self._map = self._MapType()
+        self._n = 0
+
+    def __iter__(self):
+        for k, secondary in self._map.items():
+            for v in secondary:
+                yield (k, v)
+
+    def add(self, k, v):
+        container = self._map.setdefault(k, [])
+        container.append(v)
+        self._n += 1
+
+    def pop(self, k):
+        secondary = self._map[k]
+        v = secondary.pop()
+        if len(secondary) == 0:
+            del self._map[k]
+        self._n -= 1
+        return (k, v)
+
+    def find(self, k):
+        """ Return arbitrary (k, v) pair with given key (or raise KeyError)"""
+        secondary = self._map[k]
+        return (k, secondary[0])
+
+    def find_all(self, k):
+        """ Generate iteration of all (k, v) pairs with given key """
+        secondary = self._map[k]
+        for v in secondary:
+            yield (k, v)
+

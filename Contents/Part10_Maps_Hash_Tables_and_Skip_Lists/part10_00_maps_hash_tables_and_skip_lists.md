@@ -546,7 +546,107 @@ Algorithm SkipInsert(k,v):
 <br>
 
 ## 10.5 Sets, Multisets, and Multimaps
+#### Concept) Set
+* Definition and Props.)
+  * An unordered collection of elements, without duplicates
+  * Typically supports efficient membership tests.
+  * Elements of a set are like keys of a map without any auxiliary values
 
+#### Concept) Multiset
+* A set-like container that allows duplicates
+
+#### Concept) Multimap
+* A map such that a same key can be mapped to multiple values.
+
+### 10.5.1 The Set ADT
+* Python's Built-in Classes
+  * frozenset (immutable) 
+    * collections.Set
+  * set
+    * collections.MutableSet
+* Methods
+  * S.add(e)
+  * S.discard(e)
+  * e in S : Return True if the set contains element e. (cf. \_\_contains__ method)
+  * len(S)
+  * iter(S)
+  * S.remove(e) : Remove element e from the set. If the set does not contain e, raise a KeyError.
+  * S.pop() : Remove and return an arbitrary element from the set. If the set is empty, raise a KeyError.
+  * S.clear : Remove all elements from the set.
+  * S == T : Return True if sets S and T have identical contents.
+  * S != T
+  * S <= T : Return True if set S is a subset of set T.
+  * S < T : Return True if set S is a proper subset of set T.
+  * S >= T
+  * S > T
+  * S.isdisjoint(T) : Return True if sets S and T have no common elements.
+  * S | T : Return a new set representing the union of sets S and T.
+  * S |= T : Update set S to be the union of S and set T.
+  * S & T: Return a new set representing the intersection of sets S and T.
+  * S &= T: Update set S to be the intersection of S and set T.
+  * S ˆ T: Return a new set representing the symmetric difference of sets S and T, that is, a set of elements that are in precisely one of S or T.
+  * S ˆ= T: Update set S to become the symmetric difference of itself and set T.
+  * S − T: Return a new set containing elements in S but not T.
+  * S −= T: Update set S to remove all common elements with set T.
+
+### 10.5.2 Python’s MutableSet Abstract Base Class
+#### Concept) MutableSet
+* Python's Built-in Class : collections.MutableSet
+* Prop.) Template Method Pattern
+  * MutableSet base class do NOT provide five core behaviors,
+    1. add
+    2. discard
+    3. \_\_contains__
+    4. \_\_len__
+    5. \_\_iter__
+  * why?)
+    * The concrete methods of the MutableSet class rely on the presumed abstract methods that will subsequently be provided by a subclass.
+
+#### Sample Implementation of some behaviors
+* S < T : Return True if set S is a proper subset of set T.
+```python
+def __lt__(self, other):
+    if len(self) < len(other):
+        return False
+    for e in self:
+        if e not in other:
+            return False
+    return True
+```
+* S | T : Return a new set representing the union of sets S and T.
+```python
+def __or__(self, other):
+    result = type(self)()
+    for e in self:
+        result.add(e)
+    for e in other:
+        result.add(e)
+    return result
+```
+* S |= T : Update set S to be the union of S and set T.
+  * Recall in-place property for update operation.
+```python
+def __ior__(self, other):
+    for e in other:
+        self.add(e)
+    return self
+```
+
+### 10.5.3 Implementing Sets, Multisets, and Multimaps
+#### Sets
+* Even though any data structure used to implement a map can be modified to implement the set ADT, implement independent one.
+  * why?) 
+    * Existing ADTs have _Item subclass which stores key and value, which is a waste of memory.
+
+#### Multisets
+* Use a map in which the map key is a (distinct) element of the multiset, and the associated value is a count of the number of occurrences of that element within the multiset.
+* Python's Built-in Class
+  * collections.Counter
+    * Functions
+      * most_common(n) : Return a list of the n most common elements
+
+#### Multimaps
+* Use a standard map in which the value associated with a key is itself a container class storing any number of associated values.
 
 
 
