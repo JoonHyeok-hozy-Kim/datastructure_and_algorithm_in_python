@@ -132,15 +132,15 @@ def hashed_id_tester(A):
 
 
 from DataStructures.hash_tables import HashMapBase
-class CollsionHashMap(HashMapBase):
+class CollisionHashMap(HashMapBase):
     def _hash_function(self, k):
         return (3*k+5)%11
 
-class CollsionProbeHashMap(CollsionHashMap):
+class CollisionProbeHashMap(CollisionHashMap):
     _AVAIL = object()       # sentinel marks locations of previous deletions
 
     def _is_available(self, j):
-        return self._table[j] is None or self._table[j] is CollsionProbeHashMap._AVAIL
+        return self._table[j] is None or self._table[j] is CollisionProbeHashMap._AVAIL
 
     def _find_slot(self, j, k):
         firstAvail = None
@@ -172,7 +172,7 @@ class CollsionProbeHashMap(CollsionHashMap):
         found, s = self._find_slot(j, k)
         if not found:
             raise KeyError('Key Error: ' + repr(k))
-        self._table[s] = CollsionProbeHashMap._AVAIL
+        self._table[s] = CollisionProbeHashMap._AVAIL
 
     def __iter__(self):
         for j in range(len(self._table)):
@@ -180,7 +180,7 @@ class CollsionProbeHashMap(CollsionHashMap):
                 yield self._table[j]._key
 
 
-class CollsionQuadraticProbeHashMap(CollsionProbeHashMap):
+class CollisionQuadraticProbeHashMap(CollisionProbeHashMap):
     def _find_slot(self, j, k):
         firstAvail = None
         idx = 0
@@ -194,6 +194,28 @@ class CollsionQuadraticProbeHashMap(CollsionProbeHashMap):
                 return (True, j)
             idx += 1
             j = (j+pow(idx, 2)) % len(self._table)
+
+
+class CollisionDoubleHashMap(CollisionProbeHashMap):
+
+    def _double_hash(self, j, k, i):
+        q = 7  # Set arbitrarily
+        double_hash_formula = (q - (k % q)) * i
+        return (j + double_hash_formula) % len(self._table)
+
+    def _find_slot(self, j, k):
+        firstAvail = None
+        idx = 0
+        while True:
+            if self._is_available(j):
+                if firstAvail is None:
+                    firstAvail = j
+                if self._table[j] is None:
+                    return (False, firstAvail)
+            elif k == self._table[j]._key:
+                return (True, j)
+            idx += 1
+            j = self._double_hash(j, k, idx)
 
 if __name__ == '__main__':
     pass
@@ -294,7 +316,7 @@ if __name__ == '__main__':
 
     from DataStructures.hash_tables import ProbeHashMap, QuadraticProbeHashMap
     l = (12, 44, 13, 88, 23, 94, 11, 39, 20, 16, 5)
-    p = CollsionProbeHashMap()
+    p = CollisionProbeHashMap()
     for i in l:
         p[i] = i
     text_list = ['---------------------Linear Probing----------------------\n']
@@ -305,7 +327,18 @@ if __name__ == '__main__':
             text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
     print(' '.join(text_list))
 
-    p = CollsionQuadraticProbeHashMap()
+    # p = CollisionQuadraticProbeHashMap()
+    # for i in l:
+    #     p[i] = i
+    # text_list = ['---------------------Quadratic Probing----------------------\n']
+    # for item in p._table:
+    #     if item is None:
+    #         text_list.append('-')
+    #     else:
+    #         text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
+    # print(' '.join(text_list))
+
+    p = CollisionDoubleHashMap()
     for i in l:
         p[i] = i
     text_list = ['---------------------Quadratic Probing----------------------\n']

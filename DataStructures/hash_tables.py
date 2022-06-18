@@ -127,3 +127,26 @@ class QuadraticProbeHashMap(ProbeHashMap):
             idx += 1
             j = (j+pow(idx, 2)) % len(self._table)
 
+
+class DoubleHashMap(ProbeHashMap):
+
+    def _double_hash(self, j, k, i):
+        q = 7   # Set arbitrarily
+        double_hash_formula = (q - (k % q)) * i
+        return (j + double_hash_formula) % len(self._table)
+
+    def _find_slot(self, j, k):
+        firstAvail = None
+        idx = 0
+        while True:
+            if self._is_available(j):
+                if firstAvail is None:
+                    firstAvail = j
+                if self._table[j] is None:
+                    return (False, firstAvail)
+            elif k == self._table[j]._key:
+                return (True, j)
+            idx += 1
+            j = self._double_hash(j, k, idx)
+
+
