@@ -575,7 +575,7 @@ def _find_index(self, k, high, low):
 </p>
 * Sol.)
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_06_23.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_06_23.png" style="height: 150px;"></img><br/>
 </p>
 
 ```python
@@ -587,7 +587,6 @@ def coin_flip():
         cnt += 1
         coin = randint(0, 1)
     return cnt
-
 ```
 
 
