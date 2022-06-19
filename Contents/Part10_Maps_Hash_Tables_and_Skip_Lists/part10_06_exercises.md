@@ -607,6 +607,18 @@ Algorithm SkipDelete(k):
     return
 ```
 
+### R-10.25 Give a concrete implementation of the pop method, in the context of a MutableSet abstract base class, that relies only on the five core set behaviors described in Section 10.5.2.
+```python
+def pop(self):
+    if len(self) == 0:
+        raise KeyError
+    v = None
+    for e in self:
+        if e is not None:
+            v = e
+    self.discard(v)
+    return v
+```
 
 
 

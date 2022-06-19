@@ -406,5 +406,13 @@ if __name__ == '__main__':
     #     text_list.append('\n')
     # print(''.join(text_list))
 
-    print(coin_flip())
-
+    from DataStructures.sets import HozyMutableSet
+    h = HozyMutableSet()
+    for i in range(5):
+        h.add(i)
+    k = HozyMutableSet()
+    for i in range(1,9):
+        k.add(i)
+    print(h)
+    h |= k
+    print(h)
