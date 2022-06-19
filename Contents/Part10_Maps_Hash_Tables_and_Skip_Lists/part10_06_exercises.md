@@ -589,6 +589,23 @@ def coin_flip():
     return cnt
 ```
 
+### R-10.24 Give a pseudo-code description of the delitem map operation when using a skip list.
+```python
+Algorithm SkipDelete(k):
+    Input: Key k
+    Output: None
+
+    p = start {begin at start position}
+    while below(p) != None do
+        p = below(p) {drop down}
+        while k >= key(next(p)) do
+            p = next(p) {scan forward}
+        if k == key(p):
+            below_p = below(p)
+            deleteItem(p)
+            p = below_p
+    return
+```
 
 
 
