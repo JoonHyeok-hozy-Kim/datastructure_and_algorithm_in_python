@@ -3,12 +3,13 @@ from random import randrange
 
 class HashMapBase(MapBase):
 
-    def __init__(self, cap=11, p=109345121):
+    def __init__(self, cap=11, p=109345121, load_factor=0.5):
         self._table = cap * [None]
         self._n = 0                             # number of entries in the map
         self._prime = p                         # prime for MAD compression
         self._scale = 1 + randrange(p-1)        # scale from 1 to p-1 for MAD
         self._shift = randrange(p)              # shift from 0 to p-1 for MAD
+        self._load_factor = load_factor         # user-defined load_factor setting by R-10.15
 
     def _hash_function(self, k):
         return (hash(k) * self._scale + self._shift) % self._prime % len(self._table)
@@ -23,8 +24,11 @@ class HashMapBase(MapBase):
     def __setitem__(self, k, v):
         j = self._hash_function(k)
         self._bucket_setitem(j, k, v)
-        if self._n > len(self._table) // 2:
-            self._resize(2 * len(self._table) - 1)
+
+        # load_factor customization by R-10.15
+        reversed_load_factor = int(pow(self._load_factor, -1))
+        if self._n > len(self._table) // reversed_load_factor:
+            self._resize(reversed_load_factor * len(self._table) - 1)
 
     def __delitem__(self, k):
         j = self._hash_function(k)

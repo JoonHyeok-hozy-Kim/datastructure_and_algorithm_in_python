@@ -441,8 +441,94 @@ if __name__ == '__main__':
     print(' '.join(text_list))
 ```
 
+### R-10.13 What is the worst-case time for putting n entries in an initially empty hash table, with collisions resolved by chaining? What is the best case?
+* Sol.)
+  * Worst Case
+    * Regarding the amortization of resizing, O(n^2) running time is expected.
+      * why?) Consider the case that every entry share the same key.
+        * Then i-th insertion may traverse (i-1) element in the target bucket's container.
+        * Sum of such insertions may be n(n+1)/2
+  * Best Case
+    * If every element have distinctive keys, insertion may run in O(n) time.
+
+### R-10.14 Show the result of rehashing the hash table shown in Figure 10.6 into a table of size 19 using the new hash function h(k) = 3k mod 17.
+```python
+from DataStructures.hash_tables import HashMapBase
+class CollisionHashMapNew(HashMapBase):
+    def _hash_function(self, k):
+        return (3*k) % 17
 
 
+class CollisionChainHashMapNew(CollisionHashMapNew):
+
+    def _bucket_getitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        return bucket[k]
+
+    def _bucket_setitem(self, j, k, v):
+        if self._table[j] is None:
+            self._table[j] = UnsortedTableMap()
+        oldsize = len(self._table[j])
+        self._table[j][k] = v
+        if len(self._table[j]) > oldsize:
+            self._n += 1
+
+    def _bucket_delitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        del bucket[k]
+
+    def __iter__(self):
+        for bucket in self._table:
+            if bucket is not None:
+                for key in bucket:
+                    yield key
+
+if __name__ == '__main__':
+    r = CollisionChainHashMapNew(cap=17)
+    l = [54, 28, 41, 18, 10, 36, 25, 38, 12, 90]
+    for i in l:
+        r[i] = i
+    text_list = []
+    for container in r._table:
+        if container is None:
+            text_list.append('-')
+        else:
+            for item in container._table:
+                text_list.append('({}, {})'.format(item._key, item._value))
+        text_list.append('\n')
+    print(''.join(text_list))
+```
+
+### R-10.15 Our HashMapBase class maintains a load factor λ ≤ 0.5. Reimplement that class to allow the user to specify the maximum load, and adjust the concrete subclasses accordingly.
+* Sol.) Get load_factor as an input parameter for __init__ method.
+  * Use reversed number of this load_factor for resizing.
+```python
+class HashMapBase(MapBase):
+
+    def __init__(self, cap=11, p=109345121, load_factor=0.5):
+        # skip
+        self._load_factor = load_factor         # user-defined load_factor setting by R-10.15
+
+    # skip
+
+    def __setitem__(self, k, v):
+        j = self._hash_function(k)
+        self._bucket_setitem(j, k, v)
+
+        # load_factor customization by R-10.15
+        reversed_load_factor = int(pow(self._load_factor, -1))
+        if self._n > len(self._table) // reversed_load_factor:
+            self._resize(reversed_load_factor * len(self._table) - 1)
+    
+    # skip
+```
+
+### R-10.16 Give a pseudo-code description of an insertion into a hash table that uses quadratic probing to resolve collisions, assuming we also use the trick of replacing deleted entries with a special “deactivated entry” object.
+* Sol.) Already implemented in <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md#r-1011-show-the-result-of-exercise-r-109-assuming-collisions-are-handled-by-quadratic-probing-up-to-the-point-where-the-method-fails">R-10.11</a>
 
 
 

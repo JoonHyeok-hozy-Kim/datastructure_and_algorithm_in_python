@@ -217,6 +217,41 @@ class CollisionDoubleHashMap(CollisionProbeHashMap):
             idx += 1
             j = self._double_hash(j, k, idx)
 
+
+from DataStructures.hash_tables import HashMapBase
+class CollisionHashMapNew(HashMapBase):
+    def _hash_function(self, k):
+        return (3*k) % 17
+
+
+class CollisionChainHashMapNew(CollisionHashMapNew):
+
+    def _bucket_getitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        return bucket[k]
+
+    def _bucket_setitem(self, j, k, v):
+        if self._table[j] is None:
+            self._table[j] = UnsortedTableMap()
+        oldsize = len(self._table[j])
+        self._table[j][k] = v
+        if len(self._table[j]) > oldsize:
+            self._n += 1
+
+    def _bucket_delitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        del bucket[k]
+
+    def __iter__(self):
+        for bucket in self._table:
+            if bucket is not None:
+                for key in bucket:
+                    yield key
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -314,18 +349,17 @@ if __name__ == '__main__':
     # for bucket in separate_chained:
     #     print(bucket)
 
-    from DataStructures.hash_tables import ProbeHashMap, QuadraticProbeHashMap
-    l = (12, 44, 13, 88, 23, 94, 11, 39, 20, 16, 5)
-    p = CollisionProbeHashMap()
-    for i in l:
-        p[i] = i
-    text_list = ['---------------------Linear Probing----------------------\n']
-    for item in p._table:
-        if item is None:
-            text_list.append('-')
-        else:
-            text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
-    print(' '.join(text_list))
+    # l = (12, 44, 13, 88, 23, 94, 11, 39, 20, 16, 5)
+    # p = CollisionProbeHashMap()
+    # for i in l:
+    #     p[i] = i
+    # text_list = ['---------------------Linear Probing----------------------\n']
+    # for item in p._table:
+    #     if item is None:
+    #         text_list.append('-')
+    #     else:
+    #         text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
+    # print(' '.join(text_list))
 
     # p = CollisionQuadraticProbeHashMap()
     # for i in l:
@@ -338,14 +372,28 @@ if __name__ == '__main__':
     #         text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
     # print(' '.join(text_list))
 
-    p = CollisionDoubleHashMap()
+    # p = CollisionDoubleHashMap()
+    # for i in l:
+    #     p[i] = i
+    # text_list = ['---------------------Quadratic Probing----------------------\n']
+    # for item in p._table:
+    #     if item is None:
+    #         text_list.append('-')
+    #     else:
+    #         text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
+    # print(' '.join(text_list))
+
+    r = CollisionChainHashMapNew(cap=17, load_factor=0.2)
+    l = [54, 28, 41, 18, 10, 36, 25, 38, 12, 90]
     for i in l:
-        p[i] = i
-    text_list = ['---------------------Quadratic Probing----------------------\n']
-    for item in p._table:
-        if item is None:
+        r[i] = i
+    text_list = []
+    for container in r._table:
+        if container is None:
             text_list.append('-')
         else:
-            text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
-    print(' '.join(text_list))
+            for item in container._table:
+                text_list.append('({}, {})'.format(item._key, item._value))
+        text_list.append('\n')
+    print(''.join(text_list))
 
