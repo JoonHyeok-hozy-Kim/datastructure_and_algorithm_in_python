@@ -252,6 +252,15 @@ class CollisionChainHashMapNew(CollisionHashMapNew):
                 for key in bucket:
                     yield key
 
+from random import randint
+def coin_flip():
+    cnt = -1
+    coin = 0
+    while coin == 0:
+        cnt += 1
+        coin = randint(0, 1)
+    return cnt
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -383,17 +392,19 @@ if __name__ == '__main__':
     #         text_list.append('(h : {}, k : {}, v : {})'.format( (3*item._key+5)%11, item._key, item._value))
     # print(' '.join(text_list))
 
-    r = CollisionChainHashMapNew(cap=17, load_factor=0.2)
-    l = [54, 28, 41, 18, 10, 36, 25, 38, 12, 90]
-    for i in l:
-        r[i] = i
-    text_list = []
-    for container in r._table:
-        if container is None:
-            text_list.append('-')
-        else:
-            for item in container._table:
-                text_list.append('({}, {})'.format(item._key, item._value))
-        text_list.append('\n')
-    print(''.join(text_list))
+    # r = CollisionChainHashMapNew(cap=17, load_factor=0.2)
+    # l = [54, 28, 41, 18, 10, 36, 25, 38, 12, 90]
+    # for i in l:
+    #     r[i] = i
+    # text_list = []
+    # for container in r._table:
+    #     if container is None:
+    #         text_list.append('-')
+    #     else:
+    #         for item in container._table:
+    #             text_list.append('({}, {})'.format(item._key, item._value))
+    #     text_list.append('\n')
+    # print(''.join(text_list))
+
+    print(coin_flip())
 
