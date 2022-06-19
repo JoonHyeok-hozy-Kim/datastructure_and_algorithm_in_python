@@ -530,6 +530,48 @@ class HashMapBase(MapBase):
 ### R-10.16 Give a pseudo-code description of an insertion into a hash table that uses quadratic probing to resolve collisions, assuming we also use the trick of replacing deleted entries with a special “deactivated entry” object.
 * Sol.) Already implemented in <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md#r-1011-show-the-result-of-exercise-r-109-assuming-collisions-are-handled-by-quadratic-probing-up-to-the-point-where-the-method-fails">R-10.11</a>
 
+### R-10.17 Modify our ProbeHashMap to use quadratic probing.
+* Sol.) Already implemented in <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md#r-1011-show-the-result-of-exercise-r-109-assuming-collisions-are-handled-by-quadratic-probing-up-to-the-point-where-the-method-fails">R-10.11</a>
+
+### R-10.18 Explain why a hash table is not suited to implement a sorted map.
+* Sol.)
+  * Since hash function only cares the 1 to 1 relation between keys and integers, size comparison of keys is not consistent with the size comparison of hash codes.
+  * Thus, the sequence that items are located in the bucket array of hash table is not consistent with the order of size of elements.
+  * Recall that increasing order of keys is the key factor that allows indexing of elements.
+  * Hash function cannot support such operations.
+
+### R-10.19 Describe how a sorted list implemented as a doubly linked list could be used to implement the sorted map ADT.
+* Sol.) If each position in the doubly linked list contains item instance with key and value, it can perfectly perform like a sorted map.
+
+### R-10.20 What is the worst-case asymptotic running time for performing n deletions from a SortedTableMap instance that initially contains 2n entries?
+* Sol.)
+  * It will take O(log(n)) running time for finding the index of the target item.
+  * Considering the fact that SortedMap uses array as its data_table, it will take O(n) time for swapping all the elements after the target item.
+  * Therefore, n deletions may take O(n^2 log(2)) running time in the worst case.
+
+### R-10.21 Consider the following variant of the find index method from Code Fragment 10.8, in the context of the SortedTableMap class:
+```python
+def _find_index(self, k, high, low):
+    if high < low:
+        return high + 1
+    else:
+        mid = (low + high) // 2
+        if self._table[mid]._key < k:
+            return self._find_index(k, mid+1, high)
+        else:
+            return self._find_index(k, low, mid-1)
+```
+#### Does this always produce the same result as the original version? Justify your answer.
+* Sol.) No.
+  * When "self._table[mid]._key == k" is satisfied, _find_index method will not return the index of mid.
+  * Thus, in most cases, the method will return wrong indecies.
+
+### R-10.22 What is the expected running time of the methods for maintaining a maxima set if we insert n pairs such that each pair has lower cost and performance than one before it? What is contained in the sorted map at the end of this series of operations? What if each pair had a lower cost and higher performance than the one before it?
+
+
+
+
+
 
 
 
