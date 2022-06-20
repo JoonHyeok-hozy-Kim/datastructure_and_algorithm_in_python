@@ -893,8 +893,10 @@ class HashTableBase(HashMapBase):
             self._table[h] = self._Item(k, v, h)
 ```
 
-### 
-
+### C-10.35 Describe how to perform a removal from a hash table that uses linear probing to resolve collisions where we do not use a special marker to represent deleted elements. That is, we must rearrange the contents so that it appears that the removed entry was never inserted in the first place
+* Sol.) Suppose we make an entry of list that contains the removed hash_codes.
+  * Each time _find_slot method runs, if the newly computed hash_code is bigger than k elements in the removed list, deduct k from the result calculated hash_code.
+  * It will make hash_code shift k slots so that the removed space will be considered counting space.
 
 
 <p>
