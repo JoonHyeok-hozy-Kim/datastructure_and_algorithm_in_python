@@ -42,6 +42,10 @@ class HashMapBase(MapBase):
         for (k, v) in old:
             self[k] = v
 
+    def setdefault(self, k, d):
+        j = self._hash_function(k)
+        return self._bucket_setdefault(j, k, d)
+
 
 class ChainHashMap(HashMapBase):
 
@@ -114,6 +118,14 @@ class ProbeHashMap(HashMapBase):
         for j in range(len(self._table)):
             if not self._is_available(j):
                 yield self._table[j]._key
+
+    def _bucket_setdefault(self, j, k, d):
+        found, s = self._find_slot(j, k)
+        if found:
+            return self._table[s]._value
+        else:
+            self._table[s] = self._Item(k, d)
+            return d
 
 
 class QuadraticProbeHashMap(ProbeHashMap):

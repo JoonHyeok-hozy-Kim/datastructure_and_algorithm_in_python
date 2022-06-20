@@ -407,12 +407,34 @@ if __name__ == '__main__':
     # print(''.join(text_list))
 
     from DataStructures.sets import HozyMutableSet
-    h = HozyMutableSet()
+    # h = HozyMutableSet()
+    # for i in range(5):
+    #     h.add(i)
+    # k = HozyMutableSet()
+    # for i in range(1,9):
+    #     k.add(i)
+    # print(h)
+    # h |= k
+    # print(h)
+
+    from DataStructures.maps import UnsortedTableMap
+    # a = UnsortedTableMap()
+    # for i in range(5):
+    #     a[i] = i
+    # print('SET DEFAULT')
+    # for i in range(7):
+    #     a.setdefault(i, 'a')
+    #
+    # for k in a:
+    #     print(a[k])
+
+    from DataStructures.hash_tables import ProbeHashMap
+    a = ProbeHashMap()
     for i in range(5):
-        h.add(i)
-    k = HozyMutableSet()
-    for i in range(1,9):
-        k.add(i)
-    print(h)
-    h |= k
-    print(h)
+        a[i] = chr(i+65)
+
+    for i in range(7):
+        a.setdefault(i, 'a')
+
+    for i in a:
+        print(i, a[i])

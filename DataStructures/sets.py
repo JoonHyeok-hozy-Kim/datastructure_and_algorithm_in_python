@@ -19,15 +19,6 @@ class HozyMutableSet(MutableSet):
     def __len__(self):
         return len(self._table)
 
-    def __str__(self):
-        text_list = ['{']
-        for e in self._table:
-            text_list.append(str(e))
-            text_list.append(', ')
-        text_list.pop()
-        text_list.append('}')
-        return ''.join(text_list)
-
     def add(self, e):
         self._table.add_last(e)
 
@@ -38,6 +29,15 @@ class HozyMutableSet(MutableSet):
                 self._table.delete(walk)
                 return
             walk = self._table.after(walk)
+
+    def __str__(self):
+        text_list = ['{']
+        for e in self._table:
+            text_list.append(str(e))
+            text_list.append(', ')
+        text_list.pop()
+        text_list.append('}')
+        return ''.join(text_list)
 
     def __lt__(self, other):
         if len(self) >= len(other):
@@ -69,5 +69,16 @@ class HozyMutableSet(MutableSet):
                 v = e
         self.discard(v)
         return v
+
+    def isdisjoint(self, other):
+        if len(self) < len(other):
+            for e in self:
+                if e in other:
+                    return False
+        else:
+            for e in other:
+                if e in self:
+                    return False
+        return True
 
 

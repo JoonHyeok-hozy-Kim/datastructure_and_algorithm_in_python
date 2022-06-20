@@ -620,6 +620,86 @@ def pop(self):
     return v
 ```
 
+### R-10.26 Give a concrete implementation of the isdisjoint method in the context of the MutableSet abstract base class, relying only on the five primary abstract methods of that class. Your algorithm should run in O(min(n,m)) where n and m denote the respective cardinalities of the two sets.
+```python
+def isdisjoint(self, other):
+    if len(self) < len(other):
+        for e in self:
+            if e in other:
+                return False
+    else:
+        for e in other:
+            if e in self:
+                return False
+    return True
+```
+
+### R-10.27 What abstraction would you use to manage a database of friends’ birthdays in order to support efficient queries such as “find all friends whose birthday is today” and “find the friend who will be the next to celebrate a birthday”?
+* Sol.) Sorted map with birthday as key that uses separate chaining for collisions.
+  * It supports multiple friends with identical birthdays.
+  * \_\_eq__ and \_\_gt__ method will support the given operations.
+
+### C-10.28 On page 406 of Section 10.1.3, we give an implementation of the method setdefault as it might appear in the MutableMapping abstract base class. While that method accomplishes the goal in a general fashion, its efficiency is less than ideal. In particular, when the key is new, there will be a failed search due to the initial use of getitem , and then a subsequent insertion via setitem . For a concrete implementation, such as the UnsortedTableMap, this is twice the work because a complete scan of the table will take place during the failed getitem , and then another complete scan of the table takes place due to the implementation of setitem . A better solution is for the UnsortedTableMap class to override setdefault to provide a direct solution that performs a single search. Give such an implementation of UnsortedTableMap.setdefault.
+* Implementation
+```python
+def setdefault(self, k, d):
+    walk = self._table.first()
+    while walk is not None:
+        if walk.element()._key == k:
+            return walk.element()._value
+        walk = self._table.after(walk)
+    self._table.add_last(self._Item(k, d))
+    return d
+```
+* Test
+```python
+from DataStructures.maps import UnsortedTableMap
+a = UnsortedTableMap()
+for i in range(5):
+    a[i] = i
+print('SET DEFAULT')
+for i in range(7):
+    a.setdefault(i, 'a')
+
+for k in a:
+    print(a[k])
+```
+
+### C-10.29 Repeat Exercise C-10.28 for the ProbeHashMap class.
+* Implementation
+```python
+class HashMapBase(MapBase):
+    # Skip
+    def setdefault(self, k, d):
+        j = self._hash_function(k)
+        return self._bucket_setdefault(j, k, d)
+
+class ProbeHashMap(HashMapBase):
+    # Skip
+    def _bucket_setdefault(self, j, k, d):
+        found, s = self._find_slot(j, k)
+        if found:
+            return self._table[s]._value
+        else:
+            self._table[s] = self._Item(k, d)
+            return d
+```
+* Test
+```python
+from DataStructures.hash_tables import ProbeHashMap
+a = ProbeHashMap()
+for i in range(5):
+    a[i] = chr(i+65)
+
+for i in range(7):
+    a.setdefault(i, 'a')
+
+for i in a:
+    print(i, a[i])
+```
+
+
+
 
 
 

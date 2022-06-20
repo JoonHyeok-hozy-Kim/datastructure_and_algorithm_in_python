@@ -46,7 +46,6 @@ class UnsortedTableMap(MapBase):
     def __delitem__(self, k):
         walk = self._table.first()
         while walk is not None:
-            print('IN DEL, walk : {}'.format(str(walk.element())))
             if walk.element()._key == k:
                 self._table.delete(walk)
                 return
@@ -67,6 +66,16 @@ class UnsortedTableMap(MapBase):
             result.append((walk.element()._key, walk.element()._value))
             walk = self._table.after(walk)
         return result
+
+    def setdefault(self, k, d):
+        walk = self._table.first()
+        while walk is not None:
+            if walk.element()._key == k:
+                return walk.element()._value
+            walk = self._table.after(walk)
+        self._table.add_last(self._Item(k, d))
+        return d
+
 
 
 class MultiMap:
