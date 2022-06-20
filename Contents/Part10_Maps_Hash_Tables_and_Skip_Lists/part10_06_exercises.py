@@ -37,7 +37,6 @@ class UnsortedTableMap(MapBase):
     def __delitem__(self, k):
         walk = self._table.first()
         while walk is not None:
-            print('IN DEL, walk : {}'.format(str(walk.element())))
             if walk.element()._key == k:
                 self._table.delete(walk)
                 return
@@ -261,6 +260,125 @@ def coin_flip():
         coin = randint(0, 1)
     return cnt
 
+def sieve_algorithm(M):
+    l = [True for i in range(2*M)]
+    l[0] = False
+    i = 2
+    while True:
+        if pow(i, 2) > 2*M:
+            return l
+        j = 2
+        while i*j <= 2*M:
+            l[i*j-1] = False
+            j += 1
+        i += 1
+
+from random import randint
+from time import time
+def load_factor_tester(data_type_set, sample_size):
+    load_factor_set = [(i+1)/10 for i in range(9)]
+    print('[load_factor_set] : {}'.format(load_factor_set))
+    num = randint(0, 3)
+    random_key_set = [num]
+    for i in range(sample_size-1):
+        num += randint(1, 3)
+        random_key_set.append(num)
+    print('[random_key_set] : {}'.format(random_key_set))
+    print('----------- Report -----------')
+
+    for data_type in data_type_set:
+        print('Data Type : {}'.format(str(data_type)))
+
+        for load_factor in load_factor_set:
+            print('\t[load_factor : {}]'.format(str(load_factor)))
+            object = data_type(load_factor=load_factor)
+
+            # __setitem_ test
+            t1 = time()
+            for key in random_key_set:
+                object[key] = key
+            t2 = time()
+            print('\t\t- set  : {}'.format(t2-t1))
+
+            # __iter__ test
+            t1 = time()
+            for key in random_key_set:
+                # print(key, object[key])
+                object[key]
+            t2 = time()
+            print('\t\t- iter : {}'.format(t2-t1))
+
+            # __delitem test
+            t1 = time()
+            for key in random_key_set:
+                del object[key]
+            t2 = time()
+            print('\t\t- del : {}'.format(t2-t1))
+        print()
+
+
+class OptimizedChainHashMap(CollisionHashMap):
+
+    def _bucket_getitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        if type(bucket) == self._Item:
+            return bucket._value
+        return bucket[k]
+
+    def _bucket_setitem(self, j, k, v):
+        if self._table[j] is None:
+            self._table[j] = self._Item(k, v)
+            self._n += 1
+        else:
+            if type(self._table[j]) == self._Item:
+                if self._table[j]._key == k:
+                    self._table[j]._value = v
+                else:
+                    item = self._table[j]
+                    self._table[j] = UnsortedTableMap()
+                    self._table[j][item._key] = item._value
+                    self._table[j][k] = v
+                    self._n += 1
+            else:
+                old_size = len(self._table)
+                self._table[j][k] = v
+                if old_size < len(self._table):
+                    self._n += 1
+
+    def _bucket_delitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        if type(bucket) == self._Item:
+            self._table[j] = None
+        else:
+            if len(bucket) == 2:
+                for key in bucket:
+                    if key != k:
+                        new_item = self._Item(key, bucket[key])
+                        break
+                self._table[j] = new_item
+            else:
+                del bucket[k]
+
+    def __iter__(self):
+        for bucket in self._table:
+            if bucket is not None:
+                if type(bucket) == self._Item:
+                    yield bucket._key
+                else:
+                    for key in bucket:
+                        yield key
+
+    def _bucket_setdefault(self, j, k, d):
+        if self._table[j] is not None:
+            return self._table[j].setdefault(k, d)
+        else:
+            self._bucket_setitem(j, k, d)
+            return d
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -406,7 +524,7 @@ if __name__ == '__main__':
     #     text_list.append('\n')
     # print(''.join(text_list))
 
-    from DataStructures.sets import HozyMutableSet
+    # from DataStructures.sets import HozyMutableSet
     # h = HozyMutableSet()
     # for i in range(5):
     #     h.add(i)
@@ -417,7 +535,7 @@ if __name__ == '__main__':
     # h |= k
     # print(h)
 
-    from DataStructures.maps import UnsortedTableMap
+    # from DataStructures.maps import UnsortedTableMap
     # a = UnsortedTableMap()
     # for i in range(5):
     #     a[i] = i
@@ -428,13 +546,53 @@ if __name__ == '__main__':
     # for k in a:
     #     print(a[k])
 
-    from DataStructures.hash_tables import ProbeHashMap
-    a = ProbeHashMap()
+    # from DataStructures.hash_tables import ProbeHashMap
+    # a = ProbeHashMap()
+    # for i in range(5):
+    #     a[i] = chr(i+65)
+    #
+    # for i in range(7):
+    #     a.setdefault(i, 'a')
+    #
+    # for i in a:
+    #     print(i, a[i])
+
+    # from DataStructures.hash_tables import ChainHashMap
+    # a = ChainHashMap()
+    # for i in range(5):
+    #     a[i] = chr(i+65)
+    #
+    # for i in range(7):
+    #     print(a.setdefault(i, 'a'))
+    #
+    # for i in a:
+    #     print(i, a[i])
+
+    # a = sieve_algorithm(50)
+    # idx = 1
+    # for i in a:
+    #     if i:
+    #         print(idx)
+    #     idx += 1
+
+    # from DataStructures.hash_tables import *
+    # data_types = [ChainHashMap, ProbeHashMap]
+    # load_factor_tester(data_types, 1000)
+
+    c = ChainHashMap()
+    # for i in range(23):
+    #     c[i] = i
+    # for i in range(2):
+    #     c[i] = chr(i+65)
+    # print(c._table)
+    # for i in range(23):
+    #     print(i, c[i])
+    # for i in range(23):
+    #     del c[i]
+    #     print(c._table)
+    for i in range(3):
+        c[i] = i
     for i in range(5):
-        a[i] = chr(i+65)
-
-    for i in range(7):
-        a.setdefault(i, 'a')
-
-    for i in a:
-        print(i, a[i])
+        print('default', i, c.setdefault(i, 'A'))
+    for i in c:
+        print(i, c[i])

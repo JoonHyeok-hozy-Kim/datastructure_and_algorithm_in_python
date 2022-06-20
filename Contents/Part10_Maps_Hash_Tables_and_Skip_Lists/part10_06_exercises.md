@@ -514,14 +514,14 @@ class HashMapBase(MapBase):
         self._load_factor = load_factor         # user-defined load_factor setting by R-10.15
 
     # skip
-
+    
     def __setitem__(self, k, v):
         j = self._hash_function(k)
         self._bucket_setitem(j, k, v)
 
         # load_factor customization by R-10.15
-        reversed_load_factor = int(pow(self._load_factor, -1))
-        if self._n > len(self._table) // reversed_load_factor:
+        reversed_load_factor = int(pow(self._load_factor, -1)) if int(pow(self._load_factor, -1)) > 1 else 2
+        if self._n > len(self._table) * self._load_factor:
             self._resize(reversed_load_factor * len(self._table) - 1)
     
     # skip
@@ -698,8 +698,202 @@ for i in a:
     print(i, a[i])
 ```
 
+### C-10.30 Repeat Exercise C-10.28 for the ChainHashMap class.
+* Implementation
+```python
+class ChainHashMap(HashMapBase):
+    # Skip
+    def _bucket_setdefault(self, j, k, d):
+        if self._table[j] is not None:
+            return self._table[j].setdefault(k, d)
+        else:
+            self._bucket_setitem(j, k, d)
+            return d
+```
+* Test
+```python
+from DataStructures.hash_tables import ChainHashMap
+a = ChainHashMap()
+for i in range(5):
+    a[i] = chr(i+65)
 
+for i in range(7):
+    print(a.setdefault(i, 'a'))
 
+for i in a:
+    print(i, a[i])
+```
+
+### C-10.31 For an ideal compression function, the capacity of the bucket array for a hash table should be a prime number. Therefore, we consider the problem of locating a prime number in a range [M,2M]. Implement a method for finding such a prime by using the __sieve algorithm__. In this algorithm, we allocate a 2M cell Boolean array A, such that cell i is associated with the integer i. We then initialize the array cells to all be “true” and we “mark off” all the cells that are multiples of 2, 3, 5, 7, and so on. This process can stop after it reaches a number larger than √(2M). (Hint: Consider a bootstrapping method for finding the primes up to √(2M).)
+```python
+def sieve_algorithm(M):
+    l = [True for i in range(2*M)]
+    l[0] = False
+    i = 2
+    while True:
+        if pow(i, 2) > 2*M:
+            return l
+        j = 2
+        while i*j <= 2*M:
+            l[i*j-1] = False
+            j += 1
+        i += 1
+
+if __name__ == '__main__':
+    a = sieve_algorithm(50)
+    idx = 1
+    for i in a:
+        if i:
+            print(idx)
+        idx += 1
+```
+
+### C-10.32 Perform experiments on our ChainHashMap and ProbeHashMap classes to measure its efficiency using random key sets and varying limits on the load factor (see Exercise R-10.15).
+```python
+from random import randint
+from time import time
+def load_factor_tester(data_type_set, sample_size):
+    load_factor_set = [(i+1)/10 for i in range(9)]
+    print('[load_factor_set] : {}'.format(load_factor_set))
+    num = randint(0, 3)
+    random_key_set = [num]
+    for i in range(sample_size-1):
+        num += randint(1, 3)
+        random_key_set.append(num)
+    print('[random_key_set] : {}'.format(random_key_set))
+    print('----------- Report -----------')
+
+    for data_type in data_type_set:
+        print('Data Type : {}'.format(str(data_type)))
+
+        for load_factor in load_factor_set:
+            print('\t[load_factor : {}]'.format(str(load_factor)))
+            object = data_type(load_factor=load_factor)
+
+            # __setitem_ test
+            t1 = time()
+            for key in random_key_set:
+                object[key] = key
+            t2 = time()
+            print('\t\t- set  : {}'.format(t2-t1))
+
+            # __iter__ test
+            t1 = time()
+            for key in random_key_set:
+                # print(key, object[key])
+                object[key]
+            t2 = time()
+            print('\t\t- iter : {}'.format(t2-t1))
+
+            # __delitem test
+            t1 = time()
+            for key in random_key_set:
+                del object[key]
+            t2 = time()
+            print('\t\t- del : {}'.format(t2-t1))
+        print()
+
+if __name__ == '__main__':
+    from DataStructures.hash_tables import *
+    data_types = [ChainHashMap, ProbeHashMap]
+    load_factor_tester(data_types, 1000)
+```
+
+### C-10.33 Our implementation of separate chaining in ChainHashMap conserves memory by representing empty buckets in the table as None, rather than as empty instances of a secondary structure. Because many of these buckets will hold a single item, a better optimization is to have those slots of the table directly reference the Item instance, and to reserve use of secondary containers for buckets that have two or more items. Modify our implementation to provide this additional optimization.
+```python
+class OptimizedChainHashMap(HashMapBase):
+
+    def _bucket_getitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        if type(bucket) == self._Item:
+            return bucket._value
+        return bucket[k]
+
+    def _bucket_setitem(self, j, k, v):
+        if self._table[j] is None:
+            self._table[j] = self._Item(k, v)
+            self._n += 1
+        else:
+            if type(self._table[j]) == self._Item:
+                if self._table[j]._key == k:
+                    self._table[j]._value = v
+                else:
+                    item = self._table[j]
+                    self._table[j] = UnsortedTableMap()
+                    self._table[j][item._key] = item._value
+                    self._table[j][k] = v
+                    self._n += 1
+            else:
+                old_size = len(self._table)
+                self._table[j][k] = v
+                if old_size < len(self._table):
+                    self._n += 1
+
+    def _bucket_delitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        if type(bucket) == self._Item:
+            self._table[j] = None
+        else:
+            if len(bucket) == 2:
+                for key in bucket:
+                    if key != k:
+                        new_item = self._Item(key, bucket[key])
+                        break
+                self._table[j] = new_item
+            else:
+                del bucket[k]
+
+    def __iter__(self):
+        for bucket in self._table:
+            if bucket is not None:
+                if type(bucket) == self._Item:
+                    yield bucket._key
+                else:
+                    for key in bucket:
+                        yield key
+
+    def _bucket_setdefault(self, j, k, d):
+        if self._table[j] is not None:
+            if type(self._table[j]) == self._Item:
+                if self._table[j]._key == k:
+                    return self._table[j]._value
+                else:
+                    item = self._table[j]
+                    self._table[j] = UnsortedTableMap()
+                    self._table[j][item._key] = item._value
+                    self._table[j][k] = d
+                    self._n += 1
+            else:
+                return self._table[j].setdefault(k, d)
+        else:
+            self._bucket_setitem(j, k, d)
+            return d
+```
+
+### C-10.34 Computing a hash code can be expensive, especially for lengthy keys. In our hash table implementations, we compute the hash code when first inserting an item, and recompute each item’s hash code each time we resize our table. Python’s dict class makes an interesting trade-off. The hash code is computed once, when an item is inserted, and the hash code is stored as an extra field of the item composite, so that it need not be recomputed. Reimplement our HashTableBase class to use such an approach.
+```python
+class HashTableBase(HashMapBase):
+
+    class _Item(MapBase._Item):
+        def __init__(self, k, v, h=None):
+            super().__init__(k, v)
+            self._hash_code = h
+
+    ### Assume that hash_code is inserted into _Item instance in __setitem__ method
+
+    def _resize(self, c):
+        old = list(self.items())
+        self._table = c * [None]
+        self._n = 0
+        for (k, v, h) in old:
+            self._table[h] = self._Item(k, v, h)
+```
+
+### 
 
 
 

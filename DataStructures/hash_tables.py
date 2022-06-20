@@ -26,8 +26,8 @@ class HashMapBase(MapBase):
         self._bucket_setitem(j, k, v)
 
         # load_factor customization by R-10.15
-        reversed_load_factor = int(pow(self._load_factor, -1))
-        if self._n > len(self._table) // reversed_load_factor:
+        reversed_load_factor = int(pow(self._load_factor, -1)) if int(pow(self._load_factor, -1)) > 1 else 2
+        if self._n > len(self._table) * self._load_factor:
             self._resize(reversed_load_factor * len(self._table) - 1)
 
     def __delitem__(self, k):
@@ -166,3 +166,92 @@ class DoubleHashMap(ProbeHashMap):
             j = self._double_hash(j, k, idx)
 
 
+
+class OptimizedChainHashMap(HashMapBase):
+
+    def _bucket_getitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        if type(bucket) == self._Item:
+            return bucket._value
+        return bucket[k]
+
+    def _bucket_setitem(self, j, k, v):
+        if self._table[j] is None:
+            self._table[j] = self._Item(k, v)
+            self._n += 1
+        else:
+            if type(self._table[j]) == self._Item:
+                if self._table[j]._key == k:
+                    self._table[j]._value = v
+                else:
+                    item = self._table[j]
+                    self._table[j] = UnsortedTableMap()
+                    self._table[j][item._key] = item._value
+                    self._table[j][k] = v
+                    self._n += 1
+            else:
+                old_size = len(self._table)
+                self._table[j][k] = v
+                if old_size < len(self._table):
+                    self._n += 1
+
+    def _bucket_delitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        if type(bucket) == self._Item:
+            self._table[j] = None
+        else:
+            if len(bucket) == 2:
+                for key in bucket:
+                    if key != k:
+                        new_item = self._Item(key, bucket[key])
+                        break
+                self._table[j] = new_item
+            else:
+                del bucket[k]
+
+    def __iter__(self):
+        for bucket in self._table:
+            if bucket is not None:
+                if type(bucket) == self._Item:
+                    yield bucket._key
+                else:
+                    for key in bucket:
+                        yield key
+
+    def _bucket_setdefault(self, j, k, d):
+        if self._table[j] is not None:
+            if type(self._table[j]) == self._Item:
+                if self._table[j]._key == k:
+                    return self._table[j]._value
+                else:
+                    item = self._table[j]
+                    self._table[j] = UnsortedTableMap()
+                    self._table[j][item._key] = item._value
+                    self._table[j][k] = d
+                    self._n += 1
+            else:
+                return self._table[j].setdefault(k, d)
+        else:
+            self._bucket_setitem(j, k, d)
+            return d
+
+
+class HashTableBase(HashMapBase):
+
+    class _Item(MapBase._Item):
+        def __init__(self, k, v, h=None):
+            super().__init__(k, v)
+            self._hash_code = h
+
+    ### Assume that hash_code is inserted into _Item instance in __setitem__ method
+
+    def _resize(self, c):
+        old = list(self.items())
+        self._table = c * [None]
+        self._n = 0
+        for (k, v, h) in old:
+            self._table[h] = self._Item(k, v, h)
