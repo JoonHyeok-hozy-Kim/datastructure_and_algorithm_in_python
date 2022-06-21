@@ -941,6 +941,55 @@ class ProbeHashMap(HashMapBase):
             j = (j+self._linear_unit) % len(self._table)
 ```
 
+### C-10.38 Design a variation of binary search for performing the multimap operation find all(k) implemented with a sorted search table that includes duplicates, and show that it runs in time O(s+logn), where n is the number of elements in the dictionary and s is the number of items with given key k.
+* Implementation : Used SortedTableMap as the _map member in order to take advantage of binary search for keys.
+```python
+from DataStructures.sorted_maps import SortedTableMap
+from DataStructures.maps import MultiMap
+class SortedMultiMap(MultiMap):
+
+    def __init__(self):
+        self._map = SortedTableMap()
+        self._n = 0
+
+    def __iter__(self):
+        for k, secondary in self._map.items():
+            for v in secondary:
+                yield (k, v)
+
+    def add(self, k, v):
+        container = self._map.setdefault(k, [])
+        container.append(v)
+        self._n += 1
+
+    def pop(self, k):
+        secondary = self._map[k]
+        v = secondary.pop()
+        if len(secondary) == 0:
+            del self._map[k]
+        self._n -= 1
+        return (k, v)
+
+    def find(self, k):
+        """ Return arbitrary (k, v) pair with given key (or raise KeyError)"""
+        secondary = self._map[k]
+        return (k, secondary[0])
+
+    def find_all(self, k):
+        """ Generate iteration of all (k, v) pairs with given key """
+        secondary = self._map[k]
+        for v in secondary:
+            yield (k, v)
+```
+* Test
+```python
+a = SortedMultiMap()
+for i in range(5):
+    for j in range(5):
+        a.add(i, j)
+for v in a.find_all(3):
+    print(v)
+```
 
 
 

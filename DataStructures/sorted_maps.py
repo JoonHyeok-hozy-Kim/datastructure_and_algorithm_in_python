@@ -36,7 +36,7 @@ class SortedTableMap(MapBase):
 
     def __setitem__(self, k, v):
         j = self._find_index(k, 0, len(self)-1)
-        if j < len(self) and self._table[j] == k:
+        if j < len(self) and self._table[j]._key == k:
             self._table[j]._value = v
         else:
             self._table.insert(j, self._Item(k, v))
@@ -104,3 +104,11 @@ class SortedTableMap(MapBase):
         while j < len(self) and (self._table[j]._key < stop):
             yield (self._table[j]._key, self._table[j]._value)
             j += 1
+
+    def setdefault(self, k, d):
+        j = self._find_index(k, 0, len(self)-1)
+        if j < len(self) and self._table[j]._key == k:
+            return self._table[j]._value
+        else:
+            self._table.insert(j, self._Item(k, d))
+            return d

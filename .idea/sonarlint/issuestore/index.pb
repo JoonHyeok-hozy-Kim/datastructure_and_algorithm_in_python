@@ -44,5 +44,3 @@ F
 DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
 h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
-M
-DataStructures/sorted_maps.py,a\c\ac58950667d0605f7f3024f1d6a80e4f09e304be

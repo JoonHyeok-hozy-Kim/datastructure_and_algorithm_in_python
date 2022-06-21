@@ -438,6 +438,45 @@ class CustomProbeHashMap(CollisionHashMap):
             self._table[s] = self._Item(k, d)
             return d
 
+from DataStructures.sorted_maps import SortedTableMap
+from DataStructures.maps import MultiMap
+class SortedMultiMap(MultiMap):
+
+    def __init__(self):
+        self._map = SortedTableMap()
+        self._n = 0
+
+    def __iter__(self):
+        for k, secondary in self._map.items():
+            for v in secondary:
+                yield (k, v)
+
+    def add(self, k, v):
+        container = self._map.setdefault(k, [])
+        container.append(v)
+        self._n += 1
+
+    def pop(self, k):
+        secondary = self._map[k]
+        v = secondary.pop()
+        if len(secondary) == 0:
+            del self._map[k]
+        self._n -= 1
+        return (k, v)
+
+    def find(self, k):
+        """ Return arbitrary (k, v) pair with given key (or raise KeyError)"""
+        secondary = self._map[k]
+        return (k, secondary[0])
+
+    def find_all(self, k):
+        """ Generate iteration of all (k, v) pairs with given key """
+        secondary = self._map[k]
+        for v in secondary:
+            yield (k, v)
+
+
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -668,9 +707,16 @@ if __name__ == '__main__':
     #
     # print(-1%7)
 
-    from DataStructures.hash_tables import ProbeHashMap, MapBase
-    a = CustomProbeHashMap(3)
-    for i in range(200):
-        a[i] = i
-    for i in range(200):
-        print(a[i])
+    # from DataStructures.hash_tables import ProbeHashMap, MapBase
+    # a = CustomProbeHashMap(3)
+    # for i in range(200):
+    #     a[i] = i
+    # for i in range(200):
+    #     print(a[i])
+
+    a = SortedMultiMap()
+    for i in range(5):
+        for j in range(5):
+            a.add(i, j)
+    for v in a.find_all(3):
+        print(v)
