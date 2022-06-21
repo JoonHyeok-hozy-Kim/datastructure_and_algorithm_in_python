@@ -898,6 +898,14 @@ class HashTableBase(HashMapBase):
   * Each time _find_slot method runs, if the newly computed hash_code is bigger than k elements in the removed list, deduct k from the result calculated hash_code.
   * It will make hash_code shift k slots so that the removed space will be considered counting space.
 
+### C-10.36 The quadratic probing strategy has a clustering problem related to the way it looks for open slots. Namely, when a collision occurs at bucket h(k), it checks buckets A[(h(k) +i^2) mod N], for i = 1,2,...,N −1.
+#### a. Show that i^2 mod N will assume at most (N + 1)/2 distinct values, for N prime, as i ranges from 1 to N − 1. As a part of this justification, note that i^2 mod N = (N−i)^2 mod N for all i.
+* Sol.)
+
+#### A better strategy is to choose a prime N such that N mod 4 = 3 and then to check the buckets A[(h(k) ± i^2) mod N] as i ranges from 1 to (N − 1)/2, alternating between plus and minus. Show that this alternate version is guaranteed to check every bucket in A.
+* Sol.)
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md">Part 10. Maps, Hash Tables, and Skip Lists</a>
