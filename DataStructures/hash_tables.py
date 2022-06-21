@@ -79,6 +79,12 @@ class ChainHashMap(HashMapBase):
 class ProbeHashMap(HashMapBase):
     _AVAIL = object()       # sentinel marks locations of previous deletions
 
+    def __init__(self, linear_unit=1):
+        super().__init__()
+        if linear_unit >= len(self._table):
+            raise ValueError('Linear unit cannot be larger than the capacity.')
+        self._linear_unit = linear_unit
+
     def _is_available(self, j):
         return self._table[j] is None or self._table[j] is ProbeHashMap._AVAIL
 
@@ -92,7 +98,7 @@ class ProbeHashMap(HashMapBase):
                     return (False, firstAvail)
             elif k == self._table[j]._key:
                 return (True, j)
-            j = (j+1) % len(self._table)
+            j = (j+self._linear_unit) % len(self._table)
 
     def _bucket_getitem(self, j, k):
         found, s = self._find_slot(j, k)

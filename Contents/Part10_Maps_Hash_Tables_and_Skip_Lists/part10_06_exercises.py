@@ -379,6 +379,65 @@ class OptimizedChainHashMap(CollisionHashMap):
             self._bucket_setitem(j, k, d)
             return d
 
+
+class CustomProbeHashMap(CollisionHashMap):
+    _AVAIL = object()       # sentinel marks locations of previous deletions
+
+    def __init__(self, linear_unit=1):
+        super().__init__()
+        if linear_unit >= len(self._table):
+            raise ValueError('Linear unit cannot be larger than the capacity.')
+        self._linear_unit = linear_unit
+
+    def _is_available(self, j):
+        return self._table[j] is None or self._table[j] is ProbeHashMap._AVAIL
+
+    def _find_slot(self, j, k):
+        firstAvail = None
+        while True:
+            if self._is_available(j):
+                if firstAvail is None:
+                    firstAvail = j
+                if self._table[j] is None:
+                    return (False, firstAvail)
+            elif k == self._table[j]._key:
+                return (True, j)
+            j = (j+self._linear_unit) % len(self._table)
+
+    def _bucket_getitem(self, j, k):
+        found, s = self._find_slot(j, k)
+        if not found:
+            raise KeyError('Key Error: ' + repr(k))
+        return self._table[s]._value
+
+    def _bucket_setitem(self, j, k, v):
+        found, s = self._find_slot(j, k)
+        print('j : {}, s : {}, k :{}'.format(j, s, k))
+        if not found:
+            self._table[s] = self._Item(k, v)
+            self._n += 1
+        else:
+            self._table[s]._value = v
+
+    def _bucket_delitem(self, j, k):
+        found, s = self._find_slot(j, k)
+        if not found:
+            raise KeyError('Key Error: ' + repr(k))
+        self._table[s] = ProbeHashMap._AVAIL
+
+    def __iter__(self):
+        for j in range(len(self._table)):
+            if not self._is_available(j):
+                yield self._table[j]._key
+
+    def _bucket_setdefault(self, j, k, d):
+        found, s = self._find_slot(j, k)
+        if found:
+            return self._table[s]._value
+        else:
+            self._table[s] = self._Item(k, d)
+            return d
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -579,20 +638,39 @@ if __name__ == '__main__':
     # data_types = [ChainHashMap, ProbeHashMap]
     # load_factor_tester(data_types, 1000)
 
-    c = ChainHashMap()
-    # for i in range(23):
+    # c = ChainHashMap()
+    # # for i in range(23):
+    # #     c[i] = i
+    # # for i in range(2):
+    # #     c[i] = chr(i+65)
+    # # print(c._table)
+    # # for i in range(23):
+    # #     print(i, c[i])
+    # # for i in range(23):
+    # #     del c[i]
+    # #     print(c._table)
+    # for i in range(3):
     #     c[i] = i
-    # for i in range(2):
-    #     c[i] = chr(i+65)
-    # print(c._table)
-    # for i in range(23):
+    # for i in range(5):
+    #     print('default', i, c.setdefault(i, 'A'))
+    # for i in c:
     #     print(i, c[i])
-    # for i in range(23):
-    #     del c[i]
-    #     print(c._table)
-    for i in range(3):
-        c[i] = i
-    for i in range(5):
-        print('default', i, c.setdefault(i, 'A'))
-    for i in c:
-        print(i, c[i])
+
+    # a = sieve_algorithm(100)
+    # idx = 1
+    # target_primes = []
+    # for i in a:
+    #     if i:
+    #         if idx%4 == 3:
+    #             target_primes.append(idx)
+    #     idx += 1
+    # print(target_primes)
+    #
+    # print(-1%7)
+
+    from DataStructures.hash_tables import ProbeHashMap, MapBase
+    a = CustomProbeHashMap(3)
+    for i in range(200):
+        a[i] = i
+    for i in range(200):
+        print(a[i])

@@ -901,9 +901,47 @@ class HashTableBase(HashMapBase):
 ### C-10.36 The quadratic probing strategy has a clustering problem related to the way it looks for open slots. Namely, when a collision occurs at bucket h(k), it checks buckets A[(h(k) +i^2) mod N], for i = 1,2,...,N −1.
 #### a. Show that i^2 mod N will assume at most (N + 1)/2 distinct values, for N prime, as i ranges from 1 to N − 1. As a part of this justification, note that i^2 mod N = (N−i)^2 mod N for all i.
 * Sol.)
+  * Firstly, consider that "(N-i)^2 = N^2 - 2iN + i^2 = N(N-2i) + i^2"
+  * Thus, (N-i)^2 mod N = i^2 mod N. (A)
+  * Let k an integer such that k = N//2.
+  * Then, by (A), we may assume that pair of integers {j , N-j} share identical value of i^2 mod N where j = 1, 2, ... k
+  * Thus, if N is even then it may have N/2 distinct values of i^2 mod N and (N+1)/2 for odd case.
+  * Therefore, i^2 mod N has at most (N+1)/2 distinct values.
 
-#### A better strategy is to choose a prime N such that N mod 4 = 3 and then to check the buckets A[(h(k) ± i^2) mod N] as i ranges from 1 to (N − 1)/2, alternating between plus and minus. Show that this alternate version is guaranteed to check every bucket in A.
+#### b. A better strategy is to choose a prime N such that N mod 4 = 3 and then to check the buckets A[(h(k) ± i^2) mod N] as i ranges from 1 to (N − 1)/2, alternating between plus and minus. Show that this alternate version is guaranteed to check every bucket in A.
 * Sol.)
+  * Recall that i^2 mod N can have at most (N+1)/2 distinct values.
+  * By limiting N into a prime number such that N%4 == 3, N is guaranteed to be an odd number.
+  * By the property proven in the problem a, there will be (N-1)/2 distinct values of i^2 mod N.
+  * The rest can be achieved by reversing the sign like N-i^2 mod N.
+
+### C-10.37 Refactor our ProbeHashMap design so that the sequence of secondary probes for collision resolution can be more easily customized. Demonstrate your new framework by providing separate concrete subclasses for linear probing and quadratic probing.
+```python
+class ProbeHashMap(HashMapBase):
+    _AVAIL = object()       # sentinel marks locations of previous deletions
+
+    def __init__(self, linear_unit=1):
+        super().__init__()
+        if linear_unit >= len(self._table):
+            raise ValueError('Linear unit cannot be larger than the capacity.')
+        self._linear_unit = linear_unit
+
+    # skip
+
+    def _find_slot(self, j, k):
+        firstAvail = None
+        while True:
+            if self._is_available(j):
+                if firstAvail is None:
+                    firstAvail = j
+                if self._table[j] is None:
+                    return (False, firstAvail)
+            elif k == self._table[j]._key:
+                return (True, j)
+            j = (j+self._linear_unit) % len(self._table)
+```
+
+
 
 
 
