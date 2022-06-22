@@ -90,3 +90,10 @@ class HozyMutableSet(MutableSet):
             if e not in self:
                 result.add(e)
         return result
+
+    def __and__(self, other):
+        result = type(self)()
+        for e in self:
+            if e in other:
+                result.add(e)
+        return result

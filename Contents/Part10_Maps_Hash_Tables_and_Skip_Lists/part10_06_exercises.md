@@ -1114,6 +1114,31 @@ c = a^b
 print(c)
 ```
 
+### C-10.47 In the context of the MutableSet abstract base class, describe a concrete implementation of the and method, which supports the syntax S&T for computing the intersection of two existing sets
+* Implementation
+```python
+def __and__(self, other):
+  result = type(self)()
+  for e in self:
+      if e in other:
+          result.add(e)
+  return result
+```
+* Test
+```python
+from DataStructures.sets import HozyMutableSet
+a = HozyMutableSet()
+b = HozyMutableSet()
+for i in range(10):
+    a.add(i)
+for i in range(10):
+    b.add(i+5)
+c = a&b
+print(c)
+```
+
+
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md">Part 10. Maps, Hash Tables, and Skip Lists</a>

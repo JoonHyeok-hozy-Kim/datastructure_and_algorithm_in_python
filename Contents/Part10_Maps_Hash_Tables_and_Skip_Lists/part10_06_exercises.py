@@ -807,7 +807,7 @@ if __name__ == '__main__':
         a.add(i)
     for i in range(10):
         b.add(i+5)
-    c = a^b
+    c = a&b
     print(c)
 
 
