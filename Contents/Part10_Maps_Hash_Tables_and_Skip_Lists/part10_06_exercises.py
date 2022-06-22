@@ -594,6 +594,20 @@ def polynomial_hash_code(S, a):
         indeterminate *= a
     return sum % m
 
+def phone_number_genertor(digit=10, i=0, temp_list=[], result_list=[], max_num=None):
+    if max_num is not None:
+        if len(result_list) >= max_num:
+            return result_list
+    if digit == i:
+        num = ''.join(temp_list)
+        result_list.append(num)
+        return result_list
+    for j in range(10):
+        temp_list.append(str(j))
+        phone_number_genertor(digit, i+1, temp_list, result_list, max_num)
+        temp_list.pop()
+    return result_list
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -883,16 +897,30 @@ if __name__ == '__main__':
     # c = a&b
     # print(c)
 
-    l = 'erform a comparative analysis that studies the collision rates for various hash codes for character strings, such as various polynomial hash codes for different values of the parameter a. Use a hash table to determine collisions, but only count collisions where different strings map to the same hash code (not if they map to the same location in this hash table). Test these hash codes on text files found on the Internet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae aliquet lorem. Aliquam sed enim neque. Maecenas imperdiet lorem est, eget efficitur lorem suscipit sed. Praesent blandit ut quam a tempor. Curabitur faucibus, ipsum eget laoreet facilisis, augue ipsum blandit ligula, in ullamcorper est quam sed elit. Proin sit amet sapien nisi. Fusce interdum suscipit erat dapibus laoreet. Sed sodales elit nec nibh faucibus, et bibendum magna dictum. Curabitur non libero libero. Vivamus ullamcorper arcu sed bibendum fringilla. Aliquam erat volutpat. Pellentesque suscipit eu nisi tempus convallis. Sed imperdiet sapien id aliquet imperdiet. Ut non est quis sem scelerisque dictum vitae ac erat. Suspendisse at justo magna. Nulla facilisi. Etiam efficitur ut nulla in molestie. Curabitur convallis erat vitae varius eleifend. Sed placerat lorem nunc, ac cursus magna semper at. Vestibulum sit amet dui sit amet risus malesuada facilisis eu eu lectus. Morbi ornare quis arcu et congue. Phasellus sed suscipit dolor. Aenean euismod finibus velit et dignissim. Maecenas accumsan risus et mi feugiat ullamcorper. Morbi eu vehicula enim. Sed nec ipsum imperdiet nibh pharetra rhoncus. Morbi mauris dui, sollicitudin at fringilla nec, finibus ac lorem. Fusce bibendum, quam eget bibendum egestas, mi nisi varius diam, a sodales enim metus in dolor. Proin nibh nibh, fermentum quis viverra consequat, maximus at velit. Aliquam fringilla, purus vitae fermentum commodo, felis urna consequat tortor, eu sodales ex sapien vel eros. Praesent suscipit tincidunt arcu, eget egestas nibh ultricies non. Cras suscipit posuere turpis, at bibendum ligula varius quis. Donec in ipsum non erat elementum iaculis. Integer tincidunt mollis sem ac egestas. Quisque ac dui id est ultricies egestas. Phasellus et purus arcu. Maecenas eleifend consectetur massa, eu faucibus felis faucibus ac. Sed at metus tempor, vestibulum urna in, mattis arcu. Curabitur porta fermentum purus, quis elementum quam dapibus nec. Nullam mattis, ex at bibendum accumsan, leo nulla eleifend neque, ac imperdiet nunc tellus sit amet velit. Duis tristique sapien id diam gravida iaculis. In maximus mattis enim nec auctor. Integer interdum, neque et hendrerit iaculis, ex nisl varius mauris, dictum vehicula velit lacus et sapien. Ut at aliquam magna. Maecenas in sapien in risus fermentum auctor. Etiam finibus eget erat a feugiat. Cras nec tempor felis, sit amet lacinia arcu. Vestibulum augue sem, mollis sed mollis vitae, commodo eu sapien. Fusce cursus pulvinar pulvinar. Phasellus pulvinar felis at erat lobortis porta. Suspendisse pulvinar ex nunc, vitae ornare turpis pellentesque ut. Integer feugiat felis non sodales euismod. Vivamus facilisis iaculis dui a dignissim. Phasellus semper aliquam enim at ultrices. Aliquam erat volutpat. Pellentesque mattis dui eu leo pulvinar, ut scelerisque mi mattis.'
-    invert_text = invert_text(l)
-    for i in range(40):
+    # l = 'erform a comparative analysis that studies the collision rates for various hash codes for character strings, such as various polynomial hash codes for different values of the parameter a. Use a hash table to determine collisions, but only count collisions where different strings map to the same hash code (not if they map to the same location in this hash table). Test these hash codes on text files found on the Internet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae aliquet lorem. Aliquam sed enim neque. Maecenas imperdiet lorem est, eget efficitur lorem suscipit sed. Praesent blandit ut quam a tempor. Curabitur faucibus, ipsum eget laoreet facilisis, augue ipsum blandit ligula, in ullamcorper est quam sed elit. Proin sit amet sapien nisi. Fusce interdum suscipit erat dapibus laoreet. Sed sodales elit nec nibh faucibus, et bibendum magna dictum. Curabitur non libero libero. Vivamus ullamcorper arcu sed bibendum fringilla. Aliquam erat volutpat. Pellentesque suscipit eu nisi tempus convallis. Sed imperdiet sapien id aliquet imperdiet. Ut non est quis sem scelerisque dictum vitae ac erat. Suspendisse at justo magna. Nulla facilisi. Etiam efficitur ut nulla in molestie. Curabitur convallis erat vitae varius eleifend. Sed placerat lorem nunc, ac cursus magna semper at. Vestibulum sit amet dui sit amet risus malesuada facilisis eu eu lectus. Morbi ornare quis arcu et congue. Phasellus sed suscipit dolor. Aenean euismod finibus velit et dignissim. Maecenas accumsan risus et mi feugiat ullamcorper. Morbi eu vehicula enim. Sed nec ipsum imperdiet nibh pharetra rhoncus. Morbi mauris dui, sollicitudin at fringilla nec, finibus ac lorem. Fusce bibendum, quam eget bibendum egestas, mi nisi varius diam, a sodales enim metus in dolor. Proin nibh nibh, fermentum quis viverra consequat, maximus at velit. Aliquam fringilla, purus vitae fermentum commodo, felis urna consequat tortor, eu sodales ex sapien vel eros. Praesent suscipit tincidunt arcu, eget egestas nibh ultricies non. Cras suscipit posuere turpis, at bibendum ligula varius quis. Donec in ipsum non erat elementum iaculis. Integer tincidunt mollis sem ac egestas. Quisque ac dui id est ultricies egestas. Phasellus et purus arcu. Maecenas eleifend consectetur massa, eu faucibus felis faucibus ac. Sed at metus tempor, vestibulum urna in, mattis arcu. Curabitur porta fermentum purus, quis elementum quam dapibus nec. Nullam mattis, ex at bibendum accumsan, leo nulla eleifend neque, ac imperdiet nunc tellus sit amet velit. Duis tristique sapien id diam gravida iaculis. In maximus mattis enim nec auctor. Integer interdum, neque et hendrerit iaculis, ex nisl varius mauris, dictum vehicula velit lacus et sapien. Ut at aliquam magna. Maecenas in sapien in risus fermentum auctor. Etiam finibus eget erat a feugiat. Cras nec tempor felis, sit amet lacinia arcu. Vestibulum augue sem, mollis sed mollis vitae, commodo eu sapien. Fusce cursus pulvinar pulvinar. Phasellus pulvinar felis at erat lobortis porta. Suspendisse pulvinar ex nunc, vitae ornare turpis pellentesque ut. Integer feugiat felis non sodales euismod. Vivamus facilisis iaculis dui a dignissim. Phasellus semper aliquam enim at ultrices. Aliquam erat volutpat. Pellentesque mattis dui eu leo pulvinar, ut scelerisque mi mattis.'
+    # invert_text = invert_text(l)
+    # for i in range(40):
+    #     cnt = 0
+    #     set = []
+    #     for key in invert_text:
+    #         hash_code = polynomial_hash_code(key, i+2)
+    #         if hash_code in set:
+    #             cnt += 1
+    #         else:
+    #             set.append(hash_code)
+    #     print('indeterminate : {}, crash : {}'.format(i+2, cnt))
+
+    ps = phone_number_genertor(digit=10, max_num=10000)
+
+    for i in range(2, 40, 3):
         cnt = 0
         set = []
-        for key in invert_text:
-            hash_code = polynomial_hash_code(key, i+2)
+        for phone_num in ps:
+            hash_code = polynomial_hash_code(phone_num, i+2)
             if hash_code in set:
                 cnt += 1
             else:
                 set.append(hash_code)
         print('indeterminate : {}, crash : {}'.format(i+2, cnt))
+
 

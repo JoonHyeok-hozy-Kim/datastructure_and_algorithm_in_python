@@ -1250,6 +1250,46 @@ if __name__ == '__main__':
         print('indeterminate : {}, crash : {}'.format(i+2, cnt))
 ```
 
+### P-10.51 Perform a comparative analysis as in the previous exercise, but for 10-digit telephone numbers instead of character strings.
+```python
+def polynomial_hash_code(S, a):
+    sum = 0
+    indeterminate = 1
+    m = pow(10, 9) + 7
+    for c in S:
+        sum += ord(c) * indeterminate
+        # print('{} {} {}'.format(ord(c), indeterminate, sum))
+        indeterminate *= a
+    return sum % m
+
+def phone_number_genertor(digit=10, i=0, temp_list=[], result_list=[], max_num=None):
+    if max_num is not None:
+        if len(result_list) >= max_num:
+            return result_list
+    if digit == i:
+        num = ''.join(temp_list)
+        result_list.append(num)
+        return result_list
+    for j in range(10):
+        temp_list.append(str(j))
+        phone_number_genertor(digit, i+1, temp_list, result_list, max_num)
+        temp_list.pop()
+    return result_list
+
+if __name__ == '__main__':
+    ps = phone_number_genertor(digit=10, max_num=10000)
+
+    for i in range(2, 40, 3):
+        cnt = 0
+        set = []
+        for phone_num in ps:
+            hash_code = polynomial_hash_code(phone_num, i+2)
+            if hash_code in set:
+                cnt += 1
+            else:
+                set.append(hash_code)
+        print('indeterminate : {}, crash : {}'.format(i+2, cnt))
+```
 
 
 
