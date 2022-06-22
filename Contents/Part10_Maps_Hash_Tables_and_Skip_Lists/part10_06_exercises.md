@@ -991,6 +991,99 @@ for v in a.find_all(3):
     print(v)
 ```
 
+### C-10.39 Although keys in a map are distinct, the binary search algorithm can be applied in a more general setting in which an array stores possibly duplicative elements in non-decreasing order. Consider the goal of identifying the index of the leftmost element with key greater than or equal to given k. Does the find index method as given in Code Fragment 10.8 guarantee such a result? Does the find index method as given in Exercise R-10.21 guarantee such a result? Justify your answers.
+* Sol.) If duplicated values are in a set, O(log(n)) performance of binary search is not guaranteed.
+  * Since we are targeting the leftmost element of the duplicated value, if the "mid" value came to be the rightmost element during the binary search, it will incur traversing all the way to the leftmost position.
+
+### C-10.40 Suppose we are given two sorted search tables S and T, each with n entries (with S and T being implemented with arrays). Describe an O(log2 n)-time algorithm for finding the kth smallest key in the union of the keys from S and T (assuming no duplicates).
+```python
+def double_binary_search(S, T, k):
+    s_idx = 0
+    t_idx = 0
+    while k > 0:
+        if S._table[s_idx]._key > T._table[t_idx]._key:
+            result = (S, S._table[s_idx]._key)
+            t_idx += 1
+        else:
+            result = (T, T._table[t_idx]._key)
+            s_idx += 1
+        k -= 1
+        print(result)
+    return result
+
+if __name__ == '__main__':
+    from DataStructures.sorted_maps import SortedTableMap
+    s = SortedTableMap()
+    for i in range(5):
+        s[2*i+1] = i
+    t = SortedTableMap()
+    for i in range(5):
+        t[2*i] = i
+    double_binary_search(s, t, 5)
+```
+
+### C-10.41 Give an O(logn)-time solution for the previous problem.
+* Sol.)
+
+### C-10.42 Suppose that each row of an n×n array A consists of 1’s and 0’s such that, in any row of A, all the 1’s come before any 0’s in that row. Assuming A is already in memory, describe a method running in O(nlogn) time (not O(n2) time!) for counting the number of 1’s in A.
+```python
+def n_by_n_one_counter(A):
+    cnt = 0
+    for array in A:
+        low = 0
+        high = len(array)-1
+        while True:
+            mid = (low + high) // 2
+            # print('{} // low : {}, mid : {}, high : {}'.format(array, low, mid, high))
+            if array[low] == array[high] == 0:
+                # print('ADD 0')
+                break
+            if array[low] == array[high] == 1:
+                # print('ADD {} '.format(high - low + 1))
+                cnt += high - low + 1
+                break
+            if array[mid] == 0:
+                if array[mid+1] == 1:
+                    cnt += len(array) - (mid + 1)
+                    # print('ADD {} '.format(len(array) - (mid + 1)))
+                    break
+                else:
+                    low = mid
+            elif array[mid] == 1:
+                if array[mid-1] == 0:
+                    cnt += len(array) - mid
+                    # print('ADD {} '.format(len(array) - mid))
+                    break
+                else:
+                    high = mid
+    return cnt
+
+if __name__ == '__main__':
+    matrix = []
+    row_num = 5
+    col_num = 10
+    for i in range(row_num):
+        array = []
+        rand = randint(0, col_num)
+        for j in range(rand):
+            array.append(0)
+        for k in range(col_num-rand):
+            array.append(1)
+        matrix.append(array)
+    for array in matrix:
+        print(array)
+
+    cnt = n_by_n_one_counter(matrix)
+    print(cnt)
+```
+
+### C-10.43 Given a collection C of n cost-performance pairs (c, p), describe an algorithm for finding the maxima pairs of C in O(nlogn) time.
+
+
+### C-10.44 Show that the methods above(p) and prev(p) are not actually needed to efficiently implement a map using a skip list. That is, we can implement insertions and deletions in a skip list using a strictly top-down, scan-forward approach, without ever using the above or prev methods. (Hint: In the insertion algorithm, first repeatedly flip the coin to determine the level where you should start inserting the new entry.)
+* Implementation <a href="">Skip List</a>
+
+
 
 
 

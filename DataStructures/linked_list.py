@@ -121,25 +121,25 @@ class PositionalList(_DoublyLinkedBase):
             raise ValueError('p is no longer valid.')
         return p._node
 
-    def _make_poistion(self, node):
+    def _make_position(self, node):
         if node == self._header or node == self._trailer:
             return None
         else:
             return self.Position(self, node)
 
     def first(self):
-        return self._make_poistion(self._header._next)
+        return self._make_position(self._header._next)
 
     def last(self):
-        return self._make_poistion(self._trailer._prev)
+        return self._make_position(self._trailer._prev)
 
     def before(self, p):
         target_node = self._validate(p)
-        return self._make_poistion(target_node._prev)
+        return self._make_position(target_node._prev)
 
     def after(self, p):
         target_node = self._validate(p)
-        return self._make_poistion(target_node._next)
+        return self._make_position(target_node._next)
 
     # [C-7.35] Formal Iteration Definition
     # def __next__(self):
@@ -162,7 +162,7 @@ class PositionalList(_DoublyLinkedBase):
 
     def _insert_between(self, e, predecessor, successor):
         node = super()._insert_between(e, predecessor, successor)
-        return self._make_poistion(node)
+        return self._make_position(node)
 
     def add_first(self, e):
         return self._insert_between(e, self._header, self._header._next)
@@ -198,7 +198,7 @@ class PositionalList(_DoublyLinkedBase):
         if text_list is None and cursor is None:
             text_list = ['[']
             cursor = self.first()
-        if cursor is self.after(self.last()):
+        if cursor is None:
             text_list.pop()
             text_list.append(']')
             return ''.join(text_list)

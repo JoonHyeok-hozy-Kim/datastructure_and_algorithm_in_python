@@ -1,0 +1,5 @@
+
+dpython:S11927"LDefine a constant instead of duplicating this literal 'Key Error: ' 6 times.(¬åÊŠ
+wpython:S117\"[Rename this local variable "firstAvail" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö„Ñ†ÿÿÿÿÿ
+xpython:S117‹"[Rename this local variable "firstAvail" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö„Ñ†ÿÿÿÿÿ
+xpython:S117¡"[Rename this local variable "firstAvail" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö„Ñ†ÿÿÿÿÿ

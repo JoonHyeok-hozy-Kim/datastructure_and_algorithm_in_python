@@ -40,7 +40,11 @@ x
 HContents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_03_sorted_maps.py,6\e\6e133bb57f3840def0ea64f7d51c75daf7f8c903
 l
 <Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
-F
-DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
 h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
+D
+Contents/__init__.py,9\0\902432221285a39997d6be1a526d2b3e5a4fbb4f
+F
+DataStructures/sets.py,4\3\4387a28919a7ab6b82d73c0673d63ae6aaec1177
+M
+DataStructures/hash_tables.py,6\1\6130cd6748f83cb379a95b1c966c3c0d08cde4ba

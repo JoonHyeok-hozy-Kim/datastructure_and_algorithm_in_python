@@ -475,6 +475,50 @@ class SortedMultiMap(MultiMap):
         for v in secondary:
             yield (k, v)
 
+def double_binary_search(S, T, k):
+    s_idx = 0
+    t_idx = 0
+    while k > 0:
+        if S._table[s_idx]._key > T._table[t_idx]._key:
+            result = (S, S._table[s_idx]._key)
+            t_idx += 1
+        else:
+            result = (T, T._table[t_idx]._key)
+            s_idx += 1
+        k -= 1
+        print(result)
+    return result
+
+def n_by_n_one_counter(A):
+    cnt = 0
+    for array in A:
+        low = 0
+        high = len(array)-1
+        while True:
+            mid = (low + high) // 2
+            # print('{} // low : {}, mid : {}, high : {}'.format(array, low, mid, high))
+            if array[low] == array[high] == 0:
+                # print('ADD 0')
+                break
+            if array[low] == array[high] == 1:
+                # print('ADD {} '.format(high - low + 1))
+                cnt += high - low + 1
+                break
+            if array[mid] == 0:
+                if array[mid+1] == 1:
+                    cnt += len(array) - (mid + 1)
+                    # print('ADD {} '.format(len(array) - (mid + 1)))
+                    break
+                else:
+                    low = mid
+            elif array[mid] == 1:
+                if array[mid-1] == 0:
+                    cnt += len(array) - mid
+                    # print('ADD {} '.format(len(array) - mid))
+                    break
+                else:
+                    high = mid
+    return cnt
 
 
 if __name__ == '__main__':
@@ -714,9 +758,49 @@ if __name__ == '__main__':
     # for i in range(200):
     #     print(a[i])
 
-    a = SortedMultiMap()
-    for i in range(5):
-        for j in range(5):
-            a.add(i, j)
-    for v in a.find_all(3):
-        print(v)
+    # a = SortedMultiMap()
+    # for i in range(5):
+    #     for j in range(5):
+    #         a.add(i, j)
+    # for v in a.find_all(3):
+    #     print(v)
+
+    # from DataStructures.sorted_maps import SortedTableMap
+    # s = SortedTableMap()
+    # for i in range(5):
+    #     s[2*i+1] = i
+    # t = SortedTableMap()
+    # for i in range(5):
+    #     t[2*i] = i
+    # double_binary_search(s, t, 5)
+
+    # matrix = []
+    # row_num = 5
+    # col_num = 10
+    # for i in range(row_num):
+    #     array = []
+    #     rand = randint(0, col_num)
+    #     for j in range(rand):
+    #         array.append(0)
+    #     for k in range(col_num-rand):
+    #         array.append(1)
+    #     matrix.append(array)
+    # for array in matrix:
+    #     print(array)
+    #
+    # cnt = n_by_n_one_counter(matrix)
+    # print(cnt)
+
+    from DataStructures.skip_lists import HozySkipList, PositionalNextBelowList
+
+
+    a = HozySkipList()
+
+    for i in range(32):
+        a.skip_insert(i+1, i+1)
+    print(a)
+
+    a.skip_delete(15)
+    print(a)
+
+
