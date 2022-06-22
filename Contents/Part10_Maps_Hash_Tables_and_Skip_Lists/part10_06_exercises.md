@@ -1137,6 +1137,83 @@ c = a&b
 print(c)
 ```
 
+### C-10.48 An inverted file is a critical data structure for implementing a search engine or the index of a book. Given a document D, which can be viewed as an unordered, numbered list of words, an inverted file is an ordered list of words, L, such that, for each word w in L, we store the indices of the places in D where w appears. Design an efficient algorithm for constructing L from D.
+```python
+from DataStructures.maps import UnsortedTableMap
+class UnsortedListTableMap(UnsortedTableMap):
+
+    def __setitem__(self, k, v):
+        walk = self._table.first()
+        while walk is not None:
+            if walk.element()._key == k:
+                new_list = []
+                for e in walk.element()._value:
+                    new_list.append(e)
+                new_list.append(v)
+                walk.element()._value = new_list
+                return
+            walk = self._table.after(walk)
+        if isinstance(v, list):
+            self._table.add_last(self._Item(k, v))
+        else:
+            self._table.add_last(self._Item(k, [v]))
+
+    def items(self):
+        result = []
+        walk = self._table.first()
+        while walk is not None:
+            result.append((walk.element()._key, walk.element()._value))
+            walk = self._table.after(walk)
+        return result
+
+from DataStructures.hash_tables import ChainHashMap
+class InvertedTextHashMap(ChainHashMap):
+
+    def _bucket_getitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        return bucket[k]
+
+    def _bucket_setitem(self, j, k, v):
+        if self._table[j] is None:
+            self._table[j] = UnsortedListTableMap()
+        oldsize = len(self._table[j])
+        self._table[j][k] = v
+        if len(self._table[j]) > oldsize:
+            self._n += 1
+
+    def _bucket_delitem(self, j, k):
+        bucket = self._table[j]
+        if bucket is None:
+            raise KeyError('Key Error: ' + repr(k))
+        del bucket[k]
+
+    def __iter__(self):
+        for bucket in self._table:
+            if bucket is not None:
+                for key in bucket:
+                    yield key
+
+
+def invert_text(T):
+    raw_word_list = T.split(' ')
+    s = InvertedTextHashMap()
+    for i in range(len(raw_word_list)):
+        s[raw_word_list[i]] = i
+    return s
+
+if __name__ == '__main__':
+    l = 'Lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida congue odio, vel sollicitudin neque sagittis nec. Integer iaculis consectetur ornare. Mauris aliquet ante eu ante aliquet, eu facilisis mauris auctor. Suspendisse rhoncus, mi a ornare iaculis, ipsum urna auctor ex, viverra aliquam felis elit elementum eros. Morbi tincidunt ligula pharetra pretium malesuada. Aenean vel fermentum est. Morbi non risus sed velit mattis imperdiet. Phasellus ut erat ut elit mattis commodo quis et lacus. Praesent velit urna, dapibus nec purus sit amet, tristique fermentum lacus. Donec efficitur nisi sed ante tempor finibus. Praesent vel ultrices neque, sed consectetur leo. Mauris congue vestibulum vulputate. Duis sit amet consequat nisi. In quam nisi, sollicitudin id tincidunt et, convallis non arcu. Etiam ac elementum enim. In convallis, lorem in efficitur tempor, orci metus porttitor massa, ac porttitor nisl elit sit amet lacus.'
+    i = invert_text(l)
+    for key in i:
+        print(key, i[key])
+
+    l_s = l.split(' ')
+    print(l_s[24], l_s[26], l_s[90])
+```
+
+### C-10.49 Python’s collections module provides an OrderedDict class that is unrelated to our sorted map abstraction. An OrderedDict is a subclass of the standard hash-based dict class that retains the expected O(1) performance for the primary map operations, but that also guarantees that the iter method reports items of the map according to first-in, first-out (FIFO) order. That is, the key that has been in the dictionary the longest is reported first. (The order is unaffected when the value for an existing key is overwritten.) Describe an algorithmic approach for achieving such performance.
 
 
 
