@@ -581,8 +581,18 @@ def invert_text(T):
     raw_word_list = T.split(' ')
     s = InvertedTextHashMap()
     for i in range(len(raw_word_list)):
-        s[raw_word_list[i]] = i
+        s[raw_word_list[i].lower()] = i
     return s
+
+def polynomial_hash_code(S, a):
+    sum = 0
+    indeterminate = 1
+    m = pow(10, 9) + 7
+    for c in S:
+        sum += ord(c) * indeterminate
+        # print('{} {} {}'.format(ord(c), indeterminate, sum))
+        indeterminate *= a
+    return sum % m
 
 if __name__ == '__main__':
     pass
@@ -873,10 +883,16 @@ if __name__ == '__main__':
     # c = a&b
     # print(c)
 
-    l = 'Lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida congue odio, vel sollicitudin neque sagittis nec. Integer iaculis consectetur ornare. Mauris aliquet ante eu ante aliquet, eu facilisis mauris auctor. Suspendisse rhoncus, mi a ornare iaculis, ipsum urna auctor ex, viverra aliquam felis elit elementum eros. Morbi tincidunt ligula pharetra pretium malesuada. Aenean vel fermentum est. Morbi non risus sed velit mattis imperdiet. Phasellus ut erat ut elit mattis commodo quis et lacus. Praesent velit urna, dapibus nec purus sit amet, tristique fermentum lacus. Donec efficitur nisi sed ante tempor finibus. Praesent vel ultrices neque, sed consectetur leo. Mauris congue vestibulum vulputate. Duis sit amet consequat nisi. In quam nisi, sollicitudin id tincidunt et, convallis non arcu. Etiam ac elementum enim. In convallis, lorem in efficitur tempor, orci metus porttitor massa, ac porttitor nisl elit sit amet lacus.'
-    i = invert_text(l)
-    for key in i:
-        print(key, i[key])
+    l = 'erform a comparative analysis that studies the collision rates for various hash codes for character strings, such as various polynomial hash codes for different values of the parameter a. Use a hash table to determine collisions, but only count collisions where different strings map to the same hash code (not if they map to the same location in this hash table). Test these hash codes on text files found on the Internet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae aliquet lorem. Aliquam sed enim neque. Maecenas imperdiet lorem est, eget efficitur lorem suscipit sed. Praesent blandit ut quam a tempor. Curabitur faucibus, ipsum eget laoreet facilisis, augue ipsum blandit ligula, in ullamcorper est quam sed elit. Proin sit amet sapien nisi. Fusce interdum suscipit erat dapibus laoreet. Sed sodales elit nec nibh faucibus, et bibendum magna dictum. Curabitur non libero libero. Vivamus ullamcorper arcu sed bibendum fringilla. Aliquam erat volutpat. Pellentesque suscipit eu nisi tempus convallis. Sed imperdiet sapien id aliquet imperdiet. Ut non est quis sem scelerisque dictum vitae ac erat. Suspendisse at justo magna. Nulla facilisi. Etiam efficitur ut nulla in molestie. Curabitur convallis erat vitae varius eleifend. Sed placerat lorem nunc, ac cursus magna semper at. Vestibulum sit amet dui sit amet risus malesuada facilisis eu eu lectus. Morbi ornare quis arcu et congue. Phasellus sed suscipit dolor. Aenean euismod finibus velit et dignissim. Maecenas accumsan risus et mi feugiat ullamcorper. Morbi eu vehicula enim. Sed nec ipsum imperdiet nibh pharetra rhoncus. Morbi mauris dui, sollicitudin at fringilla nec, finibus ac lorem. Fusce bibendum, quam eget bibendum egestas, mi nisi varius diam, a sodales enim metus in dolor. Proin nibh nibh, fermentum quis viverra consequat, maximus at velit. Aliquam fringilla, purus vitae fermentum commodo, felis urna consequat tortor, eu sodales ex sapien vel eros. Praesent suscipit tincidunt arcu, eget egestas nibh ultricies non. Cras suscipit posuere turpis, at bibendum ligula varius quis. Donec in ipsum non erat elementum iaculis. Integer tincidunt mollis sem ac egestas. Quisque ac dui id est ultricies egestas. Phasellus et purus arcu. Maecenas eleifend consectetur massa, eu faucibus felis faucibus ac. Sed at metus tempor, vestibulum urna in, mattis arcu. Curabitur porta fermentum purus, quis elementum quam dapibus nec. Nullam mattis, ex at bibendum accumsan, leo nulla eleifend neque, ac imperdiet nunc tellus sit amet velit. Duis tristique sapien id diam gravida iaculis. In maximus mattis enim nec auctor. Integer interdum, neque et hendrerit iaculis, ex nisl varius mauris, dictum vehicula velit lacus et sapien. Ut at aliquam magna. Maecenas in sapien in risus fermentum auctor. Etiam finibus eget erat a feugiat. Cras nec tempor felis, sit amet lacinia arcu. Vestibulum augue sem, mollis sed mollis vitae, commodo eu sapien. Fusce cursus pulvinar pulvinar. Phasellus pulvinar felis at erat lobortis porta. Suspendisse pulvinar ex nunc, vitae ornare turpis pellentesque ut. Integer feugiat felis non sodales euismod. Vivamus facilisis iaculis dui a dignissim. Phasellus semper aliquam enim at ultrices. Aliquam erat volutpat. Pellentesque mattis dui eu leo pulvinar, ut scelerisque mi mattis.'
+    invert_text = invert_text(l)
+    for i in range(40):
+        cnt = 0
+        set = []
+        for key in invert_text:
+            hash_code = polynomial_hash_code(key, i+2)
+            if hash_code in set:
+                cnt += 1
+            else:
+                set.append(hash_code)
+        print('indeterminate : {}, crash : {}'.format(i+2, cnt))
 
-    l_s = l.split(' ')
-    print(l_s[24], l_s[26], l_s[90])
