@@ -81,4 +81,12 @@ class HozyMutableSet(MutableSet):
                     return False
         return True
 
-
+    def __xor__(self, other):
+        result = type(self)()
+        for e in self:
+            if e not in other:
+                result.add(e)
+        for e in other:
+            if e not in self:
+                result.add(e)
+        return result

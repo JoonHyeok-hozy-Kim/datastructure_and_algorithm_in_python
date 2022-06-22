@@ -1078,13 +1078,41 @@ if __name__ == '__main__':
 ```
 
 ### C-10.43 Given a collection C of n cost-performance pairs (c, p), describe an algorithm for finding the maxima pairs of C in O(nlogn) time.
-
+* Sol.) One might achieve O(nlog(n)) running time by using SkipList.
+  * Putting c as the key and p as the value of the _Item instance, one can search and replace non-maxima elements in O(log(n)).
+  * Thus, the total running time will be O(nlog(n)).
 
 ### C-10.44 Show that the methods above(p) and prev(p) are not actually needed to efficiently implement a map using a skip list. That is, we can implement insertions and deletions in a skip list using a strictly top-down, scan-forward approach, without ever using the above or prev methods. (Hint: In the insertion algorithm, first repeatedly flip the coin to determine the level where you should start inserting the new entry.)
-* Implementation <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/skip_lists.py#L100">Skip List</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/skip_lists.py#L100">Skip List</a>
 
+### C-10.45 Describe how to modify a skip-list representation so that index-based operations, such as retrieving the item at index j, can be performed in O(logn) expected time.
+* Sol.) By making _Items with index as the key and storing data in the SkipList, the search operation of i-th data will take O(log(n)).
 
-
+### C-10.46 For sets S and T, the syntax SˆT returns a new set that is the symmetric difference, that is, a set of elements that are in precisely one of S or T. This syntax is supported by the special xor method. Provide an implementation of that method in the context of the MutableSet abstract base class, relying only on the five primary abstract methods of that class.
+* Implementation
+```python
+def __xor__(self, other):
+    result = type(self)()
+    for e in self:
+        if e not in other:
+            result.add(e)
+    for e in other:
+        if e not in self:
+            result.add(e)
+    return result
+```
+* Test
+```python
+from DataStructures.sets import HozyMutableSet
+a = HozyMutableSet()
+b = HozyMutableSet()
+for i in range(10):
+    a.add(i)
+for i in range(10):
+    b.add(i+5)
+c = a^b
+print(c)
+```
 
 
 <p>

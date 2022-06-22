@@ -44,7 +44,5 @@ h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
 D
 Contents/__init__.py,9\0\902432221285a39997d6be1a526d2b3e5a4fbb4f
-F
-DataStructures/sets.py,4\3\4387a28919a7ab6b82d73c0673d63ae6aaec1177
 M
 DataStructures/hash_tables.py,6\1\6130cd6748f83cb379a95b1c966c3c0d08cde4ba

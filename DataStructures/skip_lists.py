@@ -233,4 +233,3 @@ class HozySkipList:
                 # print('→', walk_node.item())
             if self.next_node(walk_node).item()._key == k:
                 level.delete_node_after(walk_node)
-

@@ -791,16 +791,23 @@ if __name__ == '__main__':
     # cnt = n_by_n_one_counter(matrix)
     # print(cnt)
 
-    from DataStructures.skip_lists import HozySkipList, PositionalNextBelowList
+    # from DataStructures.skip_lists import HozySkipList, PositionalNextBelowList
+    #
+    # a = HozySkipList()
+    #
+    # for i in range(32):
+    #     j = randint(0, 100)
+    #     a.skip_insert(j, j)
+    #     print(a)
 
-
-    a = HozySkipList()
-
-    for i in range(32):
-        a.skip_insert(i+1, i+1)
-    print(a)
-
-    a.skip_delete(15)
-    print(a)
+    from DataStructures.sets import HozyMutableSet
+    a = HozyMutableSet()
+    b = HozyMutableSet()
+    for i in range(10):
+        a.add(i)
+    for i in range(10):
+        b.add(i+5)
+    c = a^b
+    print(c)
 
 
