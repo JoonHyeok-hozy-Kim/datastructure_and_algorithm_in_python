@@ -39,8 +39,11 @@
     3. greater than : go right(p)
 
 #### Analysis) Binary Tree Searching
-* O(log(n)) Running Time
-  * The worst case running time will be O(h) where h denotes the height of the tree.
+* Worst Case O(h) Running Time where h denotes the height of the tree.
+  * The worst case running time will be O(h).
+  * Recall that minimum value of h for a binary tree with n elements is equal to ┌log(n+1)┐-1.
+    * It is also possible that h = n : the worst case that every node has only one child.
+    * Thus, we cannot guarantee the performance of O(log(n)) unless continuous re-balancing is made.
 
 ### 11.1.3 Insertions and Deletions
 #### Tech.) Insertion
@@ -73,6 +76,9 @@
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_01_05_binary_search_tree_performance.png" style="height: 300px;"></img><br/>
 </p>
+
+* Why O(h) not O(log(n))?
+  * Review : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#analysis-binary-tree-searching">O(h) Worst Case</a>
 
 
 
