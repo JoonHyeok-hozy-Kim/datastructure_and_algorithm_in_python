@@ -141,7 +141,7 @@ class CollisionProbeHashMap(CollisionHashMap):
     def _is_available(self, j):
         return self._table[j] is None or self._table[j] is CollisionProbeHashMap._AVAIL
 
-    def _find_slot(self, j, k):
+    def _find_key(self, j, k):
         firstAvail = None
         while True:
             if self._is_available(j):
@@ -154,13 +154,13 @@ class CollisionProbeHashMap(CollisionHashMap):
             j = (j+1) % len(self._table)
 
     def _bucket_getitem(self, j, k):
-        found, s = self._find_slot(j, k)
+        found, s = self._find_key(j, k)
         if not found:
             raise KeyError('Key Error: ' + repr(k))
         return self._table[s]._value
 
     def _bucket_setitem(self, j, k, v):
-        found, s = self._find_slot(j, k)
+        found, s = self._find_key(j, k)
         if not found:
             self._table[s] = self._Item(k, v)
             self._n += 1
@@ -168,7 +168,7 @@ class CollisionProbeHashMap(CollisionHashMap):
             self._table[s]._value = v
 
     def _bucket_delitem(self, j, k):
-        found, s = self._find_slot(j, k)
+        found, s = self._find_key(j, k)
         if not found:
             raise KeyError('Key Error: ' + repr(k))
         self._table[s] = CollisionProbeHashMap._AVAIL
@@ -180,7 +180,7 @@ class CollisionProbeHashMap(CollisionHashMap):
 
 
 class CollisionQuadraticProbeHashMap(CollisionProbeHashMap):
-    def _find_slot(self, j, k):
+    def _find_key(self, j, k):
         firstAvail = None
         idx = 0
         while True:
@@ -202,7 +202,7 @@ class CollisionDoubleHashMap(CollisionProbeHashMap):
         double_hash_formula = (q - (k % q)) * i
         return (j + double_hash_formula) % len(self._table)
 
-    def _find_slot(self, j, k):
+    def _find_key(self, j, k):
         firstAvail = None
         idx = 0
         while True:
@@ -608,6 +608,94 @@ def phone_number_genertor(digit=10, i=0, temp_list=[], result_list=[], max_num=N
         temp_list.pop()
     return result_list
 
+
+from DataStructures.hash_tables import ProbeHashMap
+class OrderDict(ProbeHashMap):
+    class _Item(ProbeHashMap._Item):
+        __slots__ = '_key', '_value', '_next_key', '_prev_key'
+
+        def __init__(self, key, value, next_key=None, prev_key=None):
+            super().__init__(key, value)
+            self._next_key = next_key
+            self._prev_key = prev_key
+
+        def next(self):
+            return self._next
+
+    def __init__(self, linear_unit=1):
+        super().__init__(linear_unit=linear_unit)
+        self._first_key = None
+        self._last_key = None
+
+    def get_slot(self, k):
+        found, s = self._find_slot(self._hash_function(k), k)
+        if not found:
+            raise ValueError('In get_slot, slot not found')
+        return s
+
+    def _bucket_setitem(self, j, k, v):
+        # print('In _bucket_setitem, j {}, k {}, v {}'.format(j, k, v))
+        found, s = self._find_slot(j, k)
+        if not found:
+            self._table[s] = self._Item(k, v, self._last_key, None)
+            if self._first_key is None:
+                self._first_key = k
+            if self._last_key is not None:
+                last_found, last_slot = self._find_slot(self._hash_function(self._last_key), self._last_key)
+                if last_found:
+                    last_item = self._table[self.get_slot(self._last_key)]
+                    last_item._next_key = k
+            self._last_key = k
+            self._n += 1
+        else:
+            curr = self._table[s]
+            prev_slot = self.get_slot(curr._prev_key)
+            next_slot = self.get_slot(curr._next_key)
+            if self._first_key == k:
+                self._first_key = curr._next_key
+            elif self._last_key != k:
+                self._table[prev_slot]._next_key = curr._next_key
+                self._table[next_slot]._prev_key = curr._prev_key
+            curr._prev_key = self._last_key
+            last_item = self._table[self.get_slot(self._last_key)]
+            last_item._next_key = k
+            self._last_key = k
+            self._table[s]._value = v
+
+    def _bucket_delitem(self, j, k):
+        found, s = self._find_slot(j, k)
+        if not found:
+            raise KeyError('Key Error: ' + repr(k))
+        self._table[s] = ProbeHashMap._AVAIL
+
+    def __iter__(self):
+        k = self._first_key
+        while True:
+            found, s = self._find_slot(self._hash_function(k), k)
+            yield self._table[s]._key
+            if self._last_key == k:
+                break
+            k = self._table[s]._next_key
+
+    def items(self):
+        k = self._first_key
+        result = []
+        while True:
+            s = self.get_slot(k)
+            result.append(self._table[s])
+            if self._last_key == k:
+                break
+            k = self._table[s]._next_key
+        return result
+
+    def _resize(self, c):
+        old = self.items()
+        self._table = c * [None]
+        self._n = 0
+        for item in old:
+            self[item._key] = item._value
+
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -910,17 +998,25 @@ if __name__ == '__main__':
     #             set.append(hash_code)
     #     print('indeterminate : {}, crash : {}'.format(i+2, cnt))
 
-    ps = phone_number_genertor(digit=10, max_num=10000)
+    # ps = phone_number_genertor(digit=10, max_num=10000)
+    #
+    # for i in range(2, 40, 3):
+    #     cnt = 0
+    #     set = []
+    #     for phone_num in ps:
+    #         hash_code = polynomial_hash_code(phone_num, i+2)
+    #         if hash_code in set:
+    #             cnt += 1
+    #         else:
+    #             set.append(hash_code)
+    #     print('indeterminate : {}, crash : {}'.format(i+2, cnt))
 
-    for i in range(2, 40, 3):
-        cnt = 0
-        set = []
-        for phone_num in ps:
-            hash_code = polynomial_hash_code(phone_num, i+2)
-            if hash_code in set:
-                cnt += 1
-            else:
-                set.append(hash_code)
-        print('indeterminate : {}, crash : {}'.format(i+2, cnt))
+    # o = ProbeHashMap()
+    o = OrderDict()
+    for i in range(100):
+        o[i] = chr(91+i)
+    for key in o:
+        print(key, o[key])
+
 
 
