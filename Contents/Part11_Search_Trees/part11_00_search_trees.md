@@ -67,7 +67,7 @@
 #### Tech.) Multiple Inheritance
 * Inherit both from LinkedBinaryTree class and MapBase class
 
-#### Implementation : <a href="">Binary Search Tree</a>
+#### Tech.) Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees.py">Binary Search Tree</a>
 
 ### 11.1.5  Performance of a Binary Search Tree
 <p align="start">
