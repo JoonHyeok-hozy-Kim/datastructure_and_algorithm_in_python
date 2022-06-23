@@ -64,7 +64,8 @@
       * Since that sibling may be positioned at the right most leaf of p's left subtree, Binary Tree structure will continue after the swap.
   
 ### 11.1.4 Python Implementation
-
+#### Tech.) Multiple Inheritance
+* Inherit both from LinkedBinaryTree class and MapBase class
 
 
 
