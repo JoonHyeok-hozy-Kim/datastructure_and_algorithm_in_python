@@ -59,8 +59,8 @@
 </div>
 <div>
     <p>
-        <a href="">Part 11. Search Trees</a>
+        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md">Part 11. Search Trees</a>
         <br/>
-        → <a href="">Exercises</a>
+        → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
     </p>
 </div>
