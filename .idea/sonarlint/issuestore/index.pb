@@ -32,8 +32,6 @@ G
 DataStructures/array.py,0\d\0d7641f27ffb239413561f2db4896c923c568dc1
 G
 DataStructures/deque.py,6\7\6791dc77be4a111a55086321eb0e6769b4f2de3f
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 x
 HContents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_02_hash_tables.py,3\c\3c7216d2028c7845953a8af250c350cbcccfce77
 x
@@ -42,8 +40,6 @@ l
 <Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
 h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
-D
-Contents/__init__.py,9\0\902432221285a39997d6be1a526d2b3e5a4fbb4f
 Œ
 \Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md,c\6\c685779da586aaefd6cde8a6bb5bee891522eaaa
 F
