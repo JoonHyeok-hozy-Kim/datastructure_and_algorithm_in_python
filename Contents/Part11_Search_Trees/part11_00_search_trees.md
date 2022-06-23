@@ -17,6 +17,57 @@
 
 ### 11.1.1 Navigating a Binary Search Tree
 #### Prop.) An <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part08_Trees/part08_00_trees.md#843-inorder-traversal-of-a-binary-tree">inorder traversal</a> of a binary search tree visits positions in increasing order of their keys.
+<br>
+
+#### Tech.) Navigating Binary Search Tree
+* How?)
+  * Use inorder traversal
+    * The traversal will be executed in linear time.
+  * Methods
+    * first() : Return the position containing the least key, or None if the tree is empty.
+      * Find the deepest left child of the root.
+    * last() : Return the position containing the greatest key, or None if empty tree.
+      * Find the deepest right child of the root.
+    * before(p) : Return the position containing the greatest key that is less than that of position p (i.e., the position that would be visited immediately before p in an inorder traversal), or None if p is the first position.
+    * after(p) : Return the position containing the least key that is greater than that of position p (i.e., the position that would be visited immediately after p in an inorder traversal), or None if p is the last position.
+
+### 11.1.2 Searches
+* How?)
+  * At each position p, it is asked whether the desired key k is less than, equal to, or greater than the key stored at position p, which we denote as p.key( ).
+    1. less than : go left(p)
+    2. equal to : search ended.
+    3. greater than : go right(p)
+
+#### Analysis) Binary Tree Searching
+* O(log(n)) Running Time
+  * The worst case running time will be O(h) where h denotes the height of the tree.
+
+### 11.1.3 Insertions and Deletions
+#### Tech.) Insertion
+* Syntax : M[k] = v
+  * Case 1. If M[k] already exists, 
+    1. Search p such that p.key() == k 
+    2. Update the value into v.
+  * Case 2. If M[k] does not exists,
+    1. Search p such that p.key() is closest to k.
+    2. If k is less than p.key() add left child, else add right child.
+
+#### Tech.) Deletion
+* Syntax : del M[k]
+  * Case 1. If p such that p.key() == k has no child,
+    * Delete p.
+  * Case 2. If p such that p.key() == k has one child,
+    * Replace p with the child.
+  * Case 3. If p such that p.key() == k has two children,
+    * Find a sibling that has the greatest key and strictly less than k.
+    * Replace p with that sibling.
+      * Since that sibling may be positioned at the right most leaf of p's left subtree, Binary Tree structure will continue after the swap.
+  
+### 11.1.4 Python Implementation
+
+
+
+
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
