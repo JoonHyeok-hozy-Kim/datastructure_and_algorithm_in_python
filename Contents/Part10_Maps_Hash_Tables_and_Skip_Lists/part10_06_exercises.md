@@ -1391,6 +1391,93 @@ if __name__ == '__main__':
 ### P-10.53 Design a Python class that implements the skip-list data structure. Use this class to create a complete implementation of the sorted map ADT.
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/skip_lists.py">Skip List</a>
 
+### P-10.54 Extend the previous project by providing a graphical animation of the skip-list operations. Visualize how entries move up the skip list during insertions and are linked out of the skip list during removals. Also, in a search operation, visualize the scan-forward and drop-down actions.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/skip_lists.py">Skip List</a>
+
+### P-10.55 Write a spell-checker class that stores a lexicon of words, W, in a Python set, and implements a method, check(s), which performs a spell check on the string s with respect to the set of words, W. If s is in W, then the call to check(s) returns a list containing only s, as it is assumed to be spelled correctly in this case. If s is not in W, then the call to check(s) returns a list of every word in W that might be a correct spelling of s. Your program should be able to handle all the common ways that s might be a misspelling of a word in W, including swapping adjacent characters in a word, inserting a single character in between two adjacent characters in a word, deleting a single character from a word, and replacing a character in a word with another character. For an extra challenge, consider phonetic substitutions as well.
+```python
+from DataStructures.sets import HozyMutableSet
+from copy import deepcopy
+class SpellChecker:
+
+    def __init__(self):
+        self._W = HozyMutableSet()
+
+    def set_words(self, A):
+        for word in A:
+            self._W.add(word)
+        return self._W
+
+    def check(self, s):
+        if s in self._W:
+            return [s]
+        else:
+            result = []
+            for word in self._W:
+                check = self._swap_adjacent_characters(word, s)
+                if check is not None:
+                    result.append(word)
+                    continue
+                check = self._insert_character_in_between(word, s)
+                if check is not None:
+                    result.append(word)
+                    continue
+                check = self._delete_single_character(word, s)
+                if check is not None:
+                    result.append(word)
+                    continue
+                check = self._replace_character(word, s)
+                if check is not None:
+                    result.append(word)
+            return result
+
+    def _swap_adjacent_characters(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)-1):
+            w_copy = deepcopy(w_list)
+            w_copy.insert(i+1, w_copy.pop(i))
+            if ''.join(w_copy) == s:
+                return w
+
+    def _insert_character_in_between(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)-1):
+            for j in range(26):
+                w_list.insert(i+1, chr(j+97))
+                if ''.join(w_list) == s:
+                    return w
+                w_list.pop(i+1)
+
+    def _delete_single_character(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)):
+            popped = w_list.pop(i)
+            if ''.join(w_list) == s:
+                return w
+            w_list.insert(i, popped)
+
+    def _replace_character(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)):
+            popped = w_list.pop(i)
+            for j in range(26):
+                w_list.insert(i, chr(j+97))
+                if ''.join(w_list) == s:
+                    return w
+                w_list.pop(i)
+            w_list.insert(i, popped)
+
+if __name__ == '__main__':
+    a = SpellChecker()
+    words = ['cat', 'pat', 'mate', 'lat', 'cap', 'pal', 'gate', 'ate']
+    print(a.set_words(words))
+    check = a.check('amte')
+    print(check)
+```
+
+
+
+
 
 
 <p>

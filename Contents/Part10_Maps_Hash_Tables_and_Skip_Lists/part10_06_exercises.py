@@ -696,6 +696,77 @@ class OrderDict(ProbeHashMap):
             self[item._key] = item._value
 
 
+from DataStructures.sets import HozyMutableSet
+from copy import deepcopy
+class SpellChecker:
+
+    def __init__(self):
+        self._W = HozyMutableSet()
+
+    def set_words(self, A):
+        for word in A:
+            self._W.add(word)
+        return self._W
+
+    def check(self, s):
+        if s in self._W:
+            return [s]
+        else:
+            result = []
+            for word in self._W:
+                check = self._swap_adjacent_characters(word, s)
+                if check is not None:
+                    result.append(word)
+                    continue
+                check = self._insert_character_in_between(word, s)
+                if check is not None:
+                    result.append(word)
+                    continue
+                check = self._delete_single_character(word, s)
+                if check is not None:
+                    result.append(word)
+                    continue
+                check = self._replace_character(word, s)
+                if check is not None:
+                    result.append(word)
+            return result
+
+    def _swap_adjacent_characters(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)-1):
+            w_copy = deepcopy(w_list)
+            w_copy.insert(i+1, w_copy.pop(i))
+            if ''.join(w_copy) == s:
+                return w
+
+    def _insert_character_in_between(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)-1):
+            for j in range(26):
+                w_list.insert(i+1, chr(j+97))
+                if ''.join(w_list) == s:
+                    return w
+                w_list.pop(i+1)
+
+    def _delete_single_character(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)):
+            popped = w_list.pop(i)
+            if ''.join(w_list) == s:
+                return w
+            w_list.insert(i, popped)
+
+    def _replace_character(self, w, s):
+        w_list = list(w)
+        for i in range(len(w_list)):
+            popped = w_list.pop(i)
+            for j in range(26):
+                w_list.insert(i, chr(j+97))
+                if ''.join(w_list) == s:
+                    return w
+                w_list.pop(i)
+            w_list.insert(i, popped)
+
 if __name__ == '__main__':
     pass
     # a = UnsortedTableMap()
@@ -1011,12 +1082,15 @@ if __name__ == '__main__':
     #             set.append(hash_code)
     #     print('indeterminate : {}, crash : {}'.format(i+2, cnt))
 
-    # o = ProbeHashMap()
-    o = OrderDict()
-    for i in range(100):
-        o[i] = chr(91+i)
-    for key in o:
-        print(key, o[key])
+    # # o = ProbeHashMap()
+    # o = OrderDict()
+    # for i in range(100):
+    #     o[i] = chr(91+i)
+    # for key in o:
+    #     print(key, o[key])
 
-
-
+    a = SpellChecker()
+    words = ['cat', 'pat', 'mate', 'lat', 'cap', 'pal', 'gate', 'ate']
+    print(a.set_words(words))
+    check = a.check('amte')
+    print(check)
