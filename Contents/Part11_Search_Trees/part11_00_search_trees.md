@@ -118,13 +118,23 @@ Algorithm restructure(x):
 ```
 * Case 1. Single rotation : Since b is the child of the root node, a single rotation can achieve restructuring.
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_02_trinode_restructuring_single_rotation.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_02_trinode_restructuring_single_rotation.png" style="height: 450px;"></img><br/>
 </p>
 
 * Case 2. Double rotation : Since b is the grandchild of the root node, double rotation can achieve restructuring.
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_03_trinode_restructuring_double_rotation.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_03_trinode_restructuring_double_rotation.png" style="height: 450px;"></img><br/>
 </p>
+
+### 11.2.1 Python Framework for Balancing Search Trees
+* Our Binary Search Trees' Hierarchy
+  * TreeMap implemented hooks for the rebalaning operations.
+  * Each Subclass of TreeMap will perform its own rebalancing techniques.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_04_hierarchy_for_the_search_trees_to_be_developed.png" style="height: 450px;"></img><br/>
+</p>
+
+
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
