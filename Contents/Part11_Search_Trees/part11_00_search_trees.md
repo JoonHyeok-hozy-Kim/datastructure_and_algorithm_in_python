@@ -123,7 +123,7 @@ Algorithm restructure(x):
 
 * Case 2. Double rotation : Since b is the grandchild of the root node, double rotation can achieve restructuring.
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_02_trinode_restructuring_double_rotation.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_03_trinode_restructuring_double_rotation.png" style="height: 300px;"></img><br/>
 </p>
 
 
