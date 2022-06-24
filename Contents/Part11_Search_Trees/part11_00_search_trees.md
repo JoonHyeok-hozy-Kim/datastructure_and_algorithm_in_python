@@ -80,6 +80,51 @@
 * Why O(h) not O(log(n))?
   * Review : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#analysis-binary-tree-searching">O(h) Worst Case</a>
 
+## 11.2 Balanced Search Trees
+* Why Doing This?)
+  * Recall that the performance of search tree is O(h) where h is the height of the tree.
+  * Thus, the smaller the height is, the more efficient the performance of the search tree will be.
+  * Therefore, we need to make trees as balanced as possible.
+
+#### Tech.) Rotation
+* Visualization
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_01_rotation_image.png" style="height: 300px;"></img><br/>
+</p>
+
+* Prop)
+  * Swap between a parent and its child with maintaining the binary search tree property
+  * Running time is O(1)
+    * why?)
+      * a constant number of parent-child relationships are modified.
+  * Why helpful?)
+    * Regarding the image above, through the rotation, the depth of the subtree T1 decrease, maintaining the property of the binary tree.
+    * This may be helpful to enhance the balance of a tree.
+
+#### Tech.) Trinode Restructuring
+* Def.)
+  * For a position x, its parent y, and its grandparent z
+  * Restructure the subtree rooted at z in order to reduce the overall path length to x and its subtrees.
+* Pseudo Code
+```python
+Algorithm restructure(x):
+    Input : A position x of a binary search tree T that has both a parent y and a grandparent z.
+    Output : Tree T after a trinode restructuring (which corresponds to a single or double rotation) involving positions x, y, and z
+
+1. Let (a, b, c) be a left-to-right (inorder) listing of the positions x, y, and z, and let (T1,T2,T3,T4) be a left-to-right (inorder) listing of the four subtrees of x, y, and z not rooted at x, y, or z.
+2. Replace the subtree rooted at z with a new subtree rooted at b.
+3. Let a be the left child of b and let T1 and T2 be the left and right subtrees of a, respectively.
+4. Let c be the right child of b and let T3 and T4 be the left and right subtrees of c, respectively.
+```
+* Case 1. Single rotation : Since b is the child of the root node, a single rotation can achieve restructuring.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_02_trinode_restructuring_single_rotation.png" style="height: 300px;"></img><br/>
+</p>
+
+* Case 2. Double rotation : Since b is the grandchild of the root node, double rotation can achieve restructuring.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_02_trinode_restructuring_double_rotation.png" style="height: 300px;"></img><br/>
+</p>
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
