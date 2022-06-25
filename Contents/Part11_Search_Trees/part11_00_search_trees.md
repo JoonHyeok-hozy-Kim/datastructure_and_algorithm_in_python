@@ -158,7 +158,7 @@ Algorithm restructure(x):
         4. k-th : n(k) = 1 + n(k-2) + n(k-1) : Finbonacci Progression
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_02_avl_tree_justification.png" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_02_avl_tree_justification.png" style="height: 500px;"></img><br/>
 </p>
 
 
