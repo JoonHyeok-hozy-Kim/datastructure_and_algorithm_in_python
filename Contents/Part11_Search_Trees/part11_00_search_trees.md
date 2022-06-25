@@ -173,16 +173,32 @@ Algorithm restructure(x):
 ### 11.3.1 Update Operations
 #### Insertion)
 * How?)
-  * Key : Find root three nodes of unbalanced subtree to operate <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#tech-trinode-restructuring">Trinode Restructuring</a>
-    1. Suppose the binary tree T was balanced at first.
-    2. Then when the position p was added to T, it becomes unbalanced.
-    3. Starting from p, go up and find the position z that the unbalancedness of subtree started.
-       * i.e.) z is the root of the Unbalanced subtree.
-    4. Let y the child of z that the height is larger than its sibling.
-    5. Let x the child of y that the height is larger than its sibling. (x can be p or not.)
-    6. Perform Trinode Restructuring with x, y, z.
-
-## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
+  1. Suppose the binary tree T was balanced at first.
+  2. Then when the position p is added to T, it becomes unbalanced.
+  3. Starting from p, go up and find the position z that the unbalancedness of descendents starts.
+  4. Let y the child of z that the height is larger than its sibling.
+  5. Let x the child of y that the height is larger than its sibling. 
+     * x can be p or the ancestor of p.
+  6. Perform Trinode Restructuring with x, y, z.
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_04_insertion.png" style="width: 300px;"></img><br/>
 </p>
+
+#### Deletion)
+* How?)
+  1. Delete the target position p.
+  2. Starting from p, go up and find position z that the unbalancedness of descendents starts.
+  3. Let y the child of z that the height is larger than its sibling.
+     * In this case, y cannot be the ancestor of p.
+     * Consider that p is deleted!
+  4. Let x the child of y that the height is larger than its sibling.
+     * Again, x cannot be the ancestor of p.
+  5. Perform Trinode Restructuring with x, y, z.
+  6. Go up from y, the new root, and repeat 2-5 going all the way to the root until every node is balanced.
+
+#### Analysis) Performance of AVL Tree
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_05_avl_tree_performance.png" style="width: 400px;"></img><br/>
+</p>
+
+## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
