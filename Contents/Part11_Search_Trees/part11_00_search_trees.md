@@ -161,11 +161,20 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_02_avl_tree_justification_.png" style="height: 500px;"></img><br/>
 </p>
 
-<p align="start">
+<p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_03_pf1.png" style="width: 800px;"></img><br/>
 </p>
-<p align="start">
+<p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_03_pf2.png" style="width: 800px;"></img><br/>
 </p>
+
+* Thus, search operation may run in O(h) < O(log(n)).
+
+### 11.3.1 Update Operations
+#### Insertion)
+* How?)
+  * Key : Find tree nodes to operate <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#tech-trinode-restructuring">Trinode Restructuring</a>
+    1. Let p the new node that will be added.
+       * Then the binary tree 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
