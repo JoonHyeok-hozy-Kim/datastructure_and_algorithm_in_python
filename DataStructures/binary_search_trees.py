@@ -268,7 +268,7 @@ class AVLTreeMap(TreeMap):
         self._rebalance(p)
 
 
-class SplayTree(TreeMap):
+class SplayTreeMap(TreeMap):
 
     def _splay(self, p):
         while p != self.root():

@@ -256,9 +256,62 @@ Algorithm restructure(x):
 
 
 ### 11.4.3 Python Implementation
-* Implementation : <a href="">Splay Tree</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees.py#L271">Splay Tree</a>
 
 ### 11.4.4 Amortized Analysis of Splaying ★
+#### Analysis) Running Time in General
+* Suppose a position p has depth d.
+  * Then splaying p consists of a sequence of └d/2┘ zig-zigs and/or zig-zags, plus one final zig if d is odd.
+    * Single **zig-zig**, **zig-zag**, or **zig** runs in O(1) time.
+      * why?)
+        * Only constant number of nodes are modified.
+    * Thus, splaying of p runs in O(d) time where d is the depth of p.
+
+#### Analysis) Worst Case Time
+* In the worst case, the overall running time of a search, insertion, or deletion in a splay tree of height h is O(h).
+  * Consider the case that every node has one child except one leaf node.
+  * However, Splay Tree works in O(log(n)) in amortized sense.
+
+#### Amortized Performance of Splay Trees
+* Prop.) The time for performing a search, insertion, or deletion is proportional to the time for the associated splaying
+  * Operations other than splaying are constant.
+  * Thus, running time of Splaying will show the running time of all the operations.
+
+* Settings.)
+  * T : the splay tree
+  * n : the number of nodes
+  * w : a node of T
+  * n(w) : the number of nodes in the subtree rooted at w
+  * r(w) : the rank of w, which is equal to log(w).
+    * i.e.) r(w) = log(w)
+    * Then, r(n) = log(n) = max{ rank(w) for any w in T }
+  * r(T) : the sum of the ranks of all the nodes of T
+  * substep : single zig / zig-zig / zig-zag operation in a splaying
+  * r'(w) : the rank of w after a splaying **substep**
+
+* Cyber Dollar Accounting for Amortized Analysis
+  * Suppose a certain number of cyber-dollars must be paid for splaying operation
+    * Rules
+      1. If the payment is equal to the splaying work, then we use it all to pay for the splaying.
+      2. If the payment is greater than the splaying work, we deposit the excess in the accounts of several nodes.
+      3. If the payment is less than the splaying work, we make withdrawals from the accounts of several nodes to cover the deficiency.
+    * Invariant
+      * Before and after a splaying, each node w of T has r(w) cyber-dollars in its account.
+
+* Props.)
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_05_prop_11_3.png" style="height: 150px;"></img><br/>
+</p>
+
+* Justification
+1. zig-zig case
+
+
+2. zig-zag case
+
+
+3. zig case
+
 
 
 
