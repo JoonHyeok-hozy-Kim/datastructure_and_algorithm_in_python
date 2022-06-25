@@ -173,8 +173,16 @@ Algorithm restructure(x):
 ### 11.3.1 Update Operations
 #### Insertion)
 * How?)
-  * Key : Find tree nodes to operate <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#tech-trinode-restructuring">Trinode Restructuring</a>
-    1. Let p the new node that will be added.
-       * Then the binary tree 
+  * Key : Find root three nodes of unbalanced subtree to operate <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#tech-trinode-restructuring">Trinode Restructuring</a>
+    1. Suppose the binary tree T was balanced at first.
+    2. Then when the position p was added to T, it becomes unbalanced.
+    3. Starting from p, go up and find the position z that the unbalancedness of subtree started.
+       * i.e.) z is the root of the Unbalanced subtree.
+    4. Let y the child of z that the height is larger than its sibling.
+    5. Let x the child of y that the height is larger than its sibling. (x can be p or not.)
+    6. Perform Trinode Restructuring with x, y, z.
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_04_insertion.png" style="width: 300px;"></img><br/>
+</p>
