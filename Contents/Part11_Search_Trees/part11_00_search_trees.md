@@ -212,16 +212,34 @@ Algorithm restructure(x):
 1. zig-zig
    * Formation
      * The node x and its parent y are both left children or both right children.
-   * Resturcturing
-     * We promote x, making y a child of x and z a child of y, while maintaining the inorder relationships of the nodes in T.
-<p align="start">
+   * Restructuring
+     * Promote x, making y a child of x and z a child of y, while maintaining the inorder relationships of the nodes in T.
+<p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_01_zig_zig.png" style="height: 300px;"></img><br/>
 </p>
 
 2. zig-zag
-   * 
+   * Formation
+     * One of x and y is a left child and the other is a right child.
+   * Restructuring
+     * Promote x by making x have y and z as its children, while maintaining the inorder relationships of the nodes in T.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_02_zig_zag.png" style="height: 300px;"></img><br/>
+</p>
+
 3. zig
-   * 
+   * Formation
+     * x does not have a grandparent.
+   * Restructuring
+     * Perform a single rotation to promote x over y, making y a child of x, while maintaining the relative inorder relationships of the nodes in T.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_03_zig.png" style="height: 300px;"></img><br/>
+</p>
+
+
+
+
+
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
