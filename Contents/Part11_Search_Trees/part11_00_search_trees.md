@@ -202,6 +202,26 @@ Algorithm restructure(x):
 </p>
 
 ### 11.3.2 Python Implementation
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees.py#L218">AVL Tree</a>
+
+## 11.4 Splay Trees
+### 11.4.1 Splaying
+#### Concept) Splay
+* Given a node x of a binary search tree T, we splay x by moving x to the root of T through a sequence of **restructurings**.
+* 3 cases for Restructuring
+1. zig-zig
+   * Formation
+     * The node x and its parent y are both left children or both right children.
+   * Resturcturing
+     * We promote x, making y a child of x and z a child of y, while maintaining the inorder relationships of the nodes in T.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_01_zig_zig.png" style="height: 300px;"></img><br/>
+</p>
+
+2. zig-zag
+   * 
+3. zig
+   * 
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
