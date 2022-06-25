@@ -305,13 +305,19 @@ Algorithm restructure(x):
 
 * Justification
 1. zig-zig case
-
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_05_prop_11_3_case1.png" style="width: 800px;"></img><br/>
+</p>
 
 2. zig-zag case
-
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_05_prop_11_3_case2.png" style="width: 800px;"></img><br/>
+</p>
 
 3. zig case
-
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_05_prop_11_3_case3.png" style="width: 800px;"></img><br/>
+</p>
 
 
 
