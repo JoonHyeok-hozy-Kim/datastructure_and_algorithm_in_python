@@ -134,6 +134,18 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_02_04_hierarchy_for_the_search_trees_to_be_developed.png" style="height: 450px;"></img><br/>
 </p>
 
+## 11.3 AVL Trees
+#### Concept) Height-Balance Property
+* For every position p of T, the heights of the children of p differ by at most 1.
+
+#### Concept) AVL Tree
+* Any binary search tree T that satisfies the height-balance property.
+* Named after its inventors : Adel’son-Vel’skii and Landis
+
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_01_avl_tree_image.png" style="height: 450px;"></img><br/>
+</p>
+
 
 
 

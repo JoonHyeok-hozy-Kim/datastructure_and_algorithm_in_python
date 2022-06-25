@@ -1,0 +1,58 @@
+
+fpython:S1192Ÿ"MDefine a constant instead of duplicating this literal 'Key Error: ' 11 times.(¬åÊŠ
+Mpython:S1066×"/Merge this if statement with the enclosing one.(”ÐÉîýÿÿÿÿ
+dpython:S117"MRename this parameter "M" to match the regular expression ^[_a-z][a-z0-9_]*$.(¾¶°
+Hpython:S1481"+Remove the unused local variable "pop_key".(î×õßüÿÿÿÿ
+dpython:S117	"MRename this parameter "M" to match the regular expression ^[_a-z][a-z0-9_]*$.(ªÃµÐ
+dpython:S117>"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(Âþ½˜
+Bpython:S1481S"%Remove the unused local variable "i".(ñð‹®úÿÿÿÿ
+zpython:S5717^"]Change this default value to "None" and initialize this parameter inside the function/method.(µÉ»êýÿÿÿÿ
+zpython:S5717^"]Change this default value to "None" and initialize this parameter inside the function/method.(µÉ»êýÿÿÿÿ
+cpython:S117x"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ó“ó
+;python:S125z"Remove this commented out code.(—€ó·üÿÿÿÿ
+xpython:S117‘"[Rename this local variable "firstAvail" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö„Ñ†ÿÿÿÿÿ
+xpython:S117¸"[Rename this local variable "firstAvail" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö„Ñ†ÿÿÿÿÿ
+xpython:S117Î"[Rename this local variable "firstAvail" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö„Ñ†ÿÿÿÿÿ
+epython:S117‡"MRename this parameter "M" to match the regular expression ^[_a-z][a-z0-9_]*$.(§„€
+Cpython:S1481ˆ"%Remove the unused local variable "i".(Ä„ÇÅýÿÿÿÿ
+>python:S1481›"%Remove the unused local variable "i".(£¸ÿ¸
+Dpython:S5806¦"+Rename this variable; it shadows a builtin.(×ºõ©
+xpython:S117Œ"[Rename this local variable "firstAvail" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö„Ñ†ÿÿÿÿÿ
+jpython:S117Þ"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(®¨ÜÆûÿÿÿÿ
+jpython:S117Þ"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(®¨ÜÆûÿÿÿÿ
+jpython:S117ì"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(‡•œ¶úÿÿÿÿ
+rpython:S3776ì"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(‡•œ¶úÿÿÿÿ
+jpython:S117Ä"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(×±öÀûÿÿÿÿ
+epython:S117Ë"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ÉÃý
+Ipython:S5806Ì"+Rename this variable; it shadows a builtin.(§Öºþüÿÿÿÿ
+vpython:S5717Õ"]Change this default value to "None" and initialize this parameter inside the function/method.(ý™Žî
+vpython:S5717Õ"]Change this default value to "None" and initialize this parameter inside the function/method.(ý™Žî
+epython:S117Â"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÏÏøÃ
+rpython:S3776Ç"TRefactor this function to reduce its Cognitive Complexity from 16 to the 15 allowed.(¿·ëØûÿÿÿÿ
+5python:S2772ƒ"Remove this unneeded "pass".(ã‘Û¾
+7python:S125„"Remove this commented out code.(þ™„¾
+<python:S125‹"Remove this commented out code.(ØÚÄûÿÿÿÿ
+<python:S125Æ"Remove this commented out code.(ÒÞéóùÿÿÿÿ
+<python:S125Ï"Remove this commented out code.(”¹Þšøÿÿÿÿ
+<python:S125Ô"Remove this commented out code.(Ùçéïøÿÿÿÿ
+<python:S125ã"Remove this commented out code.(Ùçéïøÿÿÿÿ
+7python:S125ï"Remove this commented out code.(ù³ñæ
+<python:S125ú"Remove this commented out code.(®É§ïþÿÿÿÿ
+6python:S125…"Remove this commented out code.(­©É+
+7python:S125“"Remove this commented out code.(®«ÆÅ
+<python:S125ž"Remove this commented out code.(‰°Ú½þÿÿÿÿ
+<python:S125©"Remove this commented out code.(—ÏÌ¼úÿÿÿÿ
+7python:S125´"Remove this commented out code.(“äô€
+<python:S125¿"Remove this commented out code.(ýšôÃùÿÿÿÿ
+7python:S125Æ"Remove this commented out code.(ÿ×ú…
+7python:S125Ê"Remove this commented out code.(Â÷‚¨
+<python:S125Ü"Remove this commented out code.(æôÅÛùÿÿÿÿ
+7python:S125è"Remove this commented out code.(ÅðâÜ
+7python:S125ï"Remove this commented out code.(ÿÈ®‡
+<python:S125ö"Remove this commented out code.(»Ûë üÿÿÿÿ
+<python:S125ÿ"Remove this commented out code.(Ûï‘Ýüÿÿÿÿ
+<python:S125"Remove this commented out code.(Ö€âÿÿÿÿÿ
+7python:S125™"Remove this commented out code.(®«ÆÅ
+7python:S125£"Remove this commented out code.(¢“Ãæ
+7python:S125°"Remove this commented out code.(¡—ú—
+<python:S125½"Remove this commented out code.(”ª°æúÿÿÿÿ
