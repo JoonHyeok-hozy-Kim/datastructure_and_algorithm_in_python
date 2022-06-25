@@ -197,8 +197,11 @@ Algorithm restructure(x):
   6. Go up from y, the new root, and repeat 2-5 going all the way to the root until every node is balanced.
 
 #### Analysis) Performance of AVL Tree
-<p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_05_avl_tree_performance.png" style="width: 400px;"></img><br/>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_05_avl_tree_performance.png" style="width: 450px;"></img><br/>
 </p>
+
+### 11.3.2 Python Implementation
+
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>

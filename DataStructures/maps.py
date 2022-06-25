@@ -19,9 +19,8 @@ class MapBase(MutableMapping):
         def __lt__(self, other):
             return self._key < other._key
 
-        def str(self):
+        def __str__(self):
             return '({}, {})'.format(self._key, self._value)
-
 
 from DataStructures.linked_list import PositionalList
 class UnsortedTableMap(MapBase):

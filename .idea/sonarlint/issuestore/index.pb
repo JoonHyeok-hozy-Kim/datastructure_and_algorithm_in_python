@@ -44,8 +44,6 @@ M
 DataStructures/sorted_maps.py,a\c\ac58950667d0605f7f3024f1d6a80e4f09e304be
 Q
 !DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
-F
-DataStructures/maps.py,f\2\f23bc2e4726a63dd108e4eed46d674953ea0f833
 L
 DataStructures/skip_lists.py,8\d\8d116a60c1245732956804dfe2be3e427c7dc279
 M
