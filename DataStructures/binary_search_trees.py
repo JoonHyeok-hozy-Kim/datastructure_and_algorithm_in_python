@@ -141,9 +141,7 @@ class TreeMap(LinkedBinaryTree, MapBase):
                 walk = self.after(walk)
 
     def delete(self, p):
-        """
-        Remove item in the given position p
-        """
+        """ Remove item in the given position p """
         self._validate(p)
         if self.left(p) and self.right(p):
             replacement = self._subtree_last_position(self.left(p))
@@ -176,9 +174,7 @@ class TreeMap(LinkedBinaryTree, MapBase):
         pass
 
     def _relink(self, parent, child, make_left_child):
-        """
-        Relink parent node with child node (we allow child to be None).
-        """
+        """ Relink parent node with child node (we allow child to be None). """
         if make_left_child:
             parent._left = child
         else:
@@ -203,7 +199,7 @@ class TreeMap(LinkedBinaryTree, MapBase):
             self._relink(y, x._left, False)
             self._relink(x, y, True)
 
-    def _resturcture(self, x):
+    def _restructure(self, x):
         y = self.parent(x)
         z = self.parent(y)
         if (x == self.left(y)) == (y == self.left(z)):
@@ -255,7 +251,7 @@ class AVLTreeMap(TreeMap):
             old_node = self._validate(p)
             old_height = old_node._height
             if not self._is_balanced(p):
-                p = self._resturcture(self._tall_grandchild(p))
+                p = self._restructure(self._tall_grandchild(p))
                 self._recompute_height(self.left(p))
                 self._recompute_height(self.right(p))
             self._recompute_height(p)
@@ -271,3 +267,32 @@ class AVLTreeMap(TreeMap):
     def _rebalance_delete(self, p):
         self._rebalance(p)
 
+
+class SplayTree(TreeMap):
+
+    def _splay(self, p):
+        while p != self.root():
+            parent = self.parent(p)
+            grand = self.parent(parent)
+
+            if grand is None:
+                # zig case
+                self._rotate(p)
+            elif ((parent == self.left(grand)) == (p == self.left(parent))):
+                # zig-zig case
+                self._rotate(parent)
+                self._rotate(p)
+            else:
+                # zig-zag case
+                self._rotate(p)
+                self._rotate(p)
+
+    def _rebalance_insert(self, p):
+        self._splay(p)
+
+    def _rebalance_delete(self, p):
+        if p is not None:
+            self._splay(p)
+
+    def _rebalance_access(self, p):
+        self._splay(p)

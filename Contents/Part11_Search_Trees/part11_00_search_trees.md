@@ -237,16 +237,28 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_03_zig.png" style="height: 300px;"></img><br/>
 </p>
 
-#### Splay Simulation
+#### Tech.) Splay Simulation
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_04_splay_simulation.png" style="height: 500px;"></img><br/>
 </p>
 
 ## 11.4.2 When to Splay
+#### Search : searching for key k
+1. If k is found, splay k.
+2. If k is not found, splay the leaf position that the unsuccessful search ended.
+
+#### Insert : inserting key k
+* Splay the newly inserted key k.
+
+#### Delete : deleting key k
+* Splay the parent position of k.
+* Delete the position k.
 
 
+### 11.4.3 Python Implementation
+* Implementation : <a href="">Splay Tree</a>
 
-
+### 11.4.4 Amortized Analysis of Splaying ★
 
 
 
