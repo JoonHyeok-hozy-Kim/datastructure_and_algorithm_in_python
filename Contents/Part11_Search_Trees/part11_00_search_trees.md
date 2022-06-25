@@ -208,7 +208,9 @@ Algorithm restructure(x):
 ### 11.4.1 Splaying
 #### Concept) Splay
 * Given a node x of a binary search tree T, we splay x by moving x to the root of T through a sequence of **restructurings**.
-* 3 cases for Restructuring
+
+* A **splaying** step consists of repeating these restructurings at x until x becomes the root of T.
+  * 3 cases for Restructuring
 1. zig-zig
    * Formation
      * The node x and its parent y are both left children or both right children.
