@@ -139,14 +139,27 @@ Algorithm restructure(x):
 * For every position p of T, the heights of the children of p differ by at most 1.
 
 #### Concept) AVL Tree
-* Any binary search tree T that satisfies the height-balance property.
-* Named after its inventors : Adel’son-Vel’skii and Landis
+* Def.)
+  * Any binary search tree T that satisfies the height-balance property.
+  * Named after its inventors : Adel’son-Vel’skii and Landis
 
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_01_avl_tree_image.png" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_01_avl_tree_image.png" style="height: 300px;"></img><br/>
 </p>
 
+* Props.)
+  * Subtrees of an AVL tree are AVL trees as well.
+  * The height of an AVL tree storing n entries is O(log(n)).
+    * Justification
+      * Let n(h) the minimum number of nodes for an AVL tree with the height h.
+        1. n(1) = 1
+        2. n(2) = 2
+        3. n(3) = 4
+        4. k-th : n(k) = 1 + n(k-2) + n(k-1) : Finbonacci Progression
 
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_03_02_avl_tree_justification.png" style="height: 450px;"></img><br/>
+</p>
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
