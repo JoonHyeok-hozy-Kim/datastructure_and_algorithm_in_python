@@ -40,8 +40,6 @@ l
 <Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
 h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
-M
-DataStructures/sorted_maps.py,a\c\ac58950667d0605f7f3024f1d6a80e4f09e304be
 Q
 !DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
 L

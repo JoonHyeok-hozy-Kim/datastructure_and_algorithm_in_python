@@ -378,16 +378,19 @@ Algorithm restructure(x):
   * w is a d-node : w has d children
   * Tree T is ordered.
 * If T has following properties, T is a Multiway Search Tree
-  1. Each internal node of T has at least two children. That is, each internal node is a d-node such that d ≥ 2.
-  2. Each internal d-node w of T with children c_1,...,c_d stores an ordered set of (d−1) key-value pairs (k_1,v_1),..., (k_(d−1),v_(d−1)), where k_1 ≤···≤ k_(d−1).
-  3. Let us conventionally define k_0 = −∞ and k_d = +∞. For each item (k,v) stored at a node in the subtree of w rooted at c_i, i = 1,...,d, we have that k_(i−1) ≤ k ≤ k_i.
-  
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_00_definition.png" style="height: 150px;"></img><br/>
+</p>
+
+ 
 #### Props.)
 * The external nodes of a multiway search do not store any data and serve only as “placeholders.”
   * Thus, external nodes can be represented by None references
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_01_multiway_search_tree_image.png" style="width: 600px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_01_multiway_search_tree_image.png" style="width: 500px;"></img><br/>
 </p>
+
+
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
