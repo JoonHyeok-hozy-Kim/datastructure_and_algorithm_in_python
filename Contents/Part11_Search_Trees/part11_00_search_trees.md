@@ -324,4 +324,38 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_05_prop_11_4_and_pf.png" style="width: 900px;"></img><br/>
 </p>
 
+* Interpretation
+  * 3(r(t)−r(x)) + 2
+    * Payment enough for maintaining the invariant.
+  * d
+    * Payment for the entire splaying work of the target node x
+  * Running time of Splaying is O(log(n))
+    * why?)
+      * Since the size of T is equal to n, r(t) = r(n) = log(n)
+      * Thus, total payment made for the splaying is O(log(n)) cyber-dollars.
+
+
+#### Analysis) Insertion in Amortized sense
+* Situation
+  * Inserting node w into a splay tree with n keys
+* Analysis
+  * Assumptions
+    * Let w_0, w_1, w_2, ... , w_d be the ancestors of w.
+      * where w_0 = w.
+      * Then w_i is the parent of w_(i-1)
+    * Let n(w_i) the size of w_i and n'(w_i) the size of w_i after the insertion.
+    * Let r(w_i) the rank of w_i and r'(w_i) the rank of w_i after the insertion.
+  * Derivation
+    * Then n'(w_i) =  n(w_i) + 1
+    * Consider that n(w_i) + 1 <= n(w_(i+1)). (∵ Subtree rooted from the sibling of w_(i+1).)
+      * Thus, r'(w_i) = log( n'(w_i) ) = log( n(w_i) + 1 ) <= log( n(w_(i+1)) ) = r( w_(i+1) ).
+    * Hence, the total variation of r(T) caused by insertion goes,
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_06_insertion.png" style="height: 100px;"></img><br/>
+</p>
+
+#### Analysis) Deletion in Amortized sense
+
+
+
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
