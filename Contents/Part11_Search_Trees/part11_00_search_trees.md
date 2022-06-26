@@ -338,7 +338,8 @@ Algorithm restructure(x):
 #### Analysis) Insertion in Amortized sense
 * Situation
   * Inserting node w into a splay tree with n keys
-* Analysis
+* Result : Insertion runs in O(log(n)) time.
+* Proof
   * Assumptions
     * Let w_0, w_1, w_2, ... , w_d be the ancestors of w.
       * where w_0 = w.
@@ -350,12 +351,23 @@ Algorithm restructure(x):
     * Consider that n(w_i) + 1 <= n(w_(i+1)). (∵ Subtree rooted from the sibling of w_(i+1).)
       * Thus, r'(w_i) = log( n'(w_i) ) = log( n(w_i) + 1 ) <= log( n(w_(i+1)) ) = r( w_(i+1) ).
     * Hence, the total variation of r(T) caused by insertion goes,
-<p align="start">
+<p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_06_insertion.png" style="height: 100px;"></img><br/>
 </p>
 
 #### Analysis) Deletion in Amortized sense
+* The total variation of r(T) caused by the deletion is negative.
+  * why?)
+    * When deleting a node w from a splay tree with n keys, the ranks of all the ancestors of w are decreased.
+* Therefore, no payment is needed for maintaining the invariant when a node is deleted.
 
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_07_prop_11_5.png" style="width: 900px;"></img><br/>
+</p>
 
+#### Concept) Static Optimality
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_04_08_prop_11_6.png" style="width: 900px;"></img><br/>
+</p>
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
