@@ -441,8 +441,27 @@ Algorithm restructure(x):
   * By <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#prop-117-an-n-item-multiway-search-tree-has-n1-external-nodes">Prop. 11.7</a> the number of external nodes is equal to (n+1)
   * Thus, 2^h <= (n+1) <= 4^h.
     * We can derive the give inequality.
-  
 
+
+#### Tech.) Insertion for (2,4) Tree
+* Target : Insert (k, v) into T.
+* How?)
+  1. Search k in T. Consider the case that the search was unsuccessful.
+  2. Let
+     * z : the node that unsuccessful search ended.
+     * w : the parent of z
+  3. Insert new item y to the left of w.
+  4. If the size of w becomes 5 (i.e. overflows), perform split as follows.
+     * Replace w with w' and w''
+       * w' : 3-node with children c_1, c_2, c_3 storing keys k_1, k_2
+       * w'' : 2-node with children c_4, c_5 storing keys k_4
+     * If w is the root of T, create a new root node u.
+       * Let u be the parent of w
+     * Insert key k_3 into u and make w' and w'' children of u.
+       * Then  if w was child i-th of u, then w' and w'' become children i-th and (i+1)-th of u, respectively.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_03_2,4tree_insertion.png" style="width: 900px;"></img><br/>
+</p>
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
