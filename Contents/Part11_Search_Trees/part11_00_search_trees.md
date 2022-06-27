@@ -378,10 +378,9 @@ Algorithm restructure(x):
   * w is a d-node : w has d children
   * Tree T is ordered.
 * If T has following properties, T is a Multiway Search Tree
-<p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_00_definition.png" style="height: 150px;"></img><br/>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_00_definition.png" style="height: 200px;"></img><br/>
 </p>
-
  
 #### Props.)
 * The external nodes of a multiway search do not store any data and serve only as “placeholders.”
@@ -389,6 +388,29 @@ Algorithm restructure(x):
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_01_multiway_search_tree_image.png" style="width: 500px;"></img><br/>
 </p>
+
+#### Prop.) An n-item multiway search tree has n+1 external nodes.
+* pf.) <a href="">C-11.52</a>
+
+#### Tech.) Searching in a Multiway Tree
+* Start from the root of the tree T.
+  * At a d-node w, compare key k with the keys (k_1, k_2, ... , k_(d-1)) stored at w.
+    * If k = k_i, search is successful.
+    * Else, search in the child c_i of w such that k_(i-1) < k < k_i
+
+#### Tech.) Data Structures for Representing Multiway Search Trees
+* Use General Tree data structure.
+  * Recall that each node has more than 2 children.
+* At each node, use SortedTableMap for an entity that stores keys.
+  * why?)
+    * We should compare the size of the keys during operations.
+* Each item _i_ should have a key _k_i_ and an element that is the pair of (_v_i, c_i_)
+  * _v_i_ : value that matches the key _k_i_
+  * _c_i_ : the reference to the child _c_i_ such that _k\_(i-1) < k < k\_i_
+
+
+
+
 
 
 
