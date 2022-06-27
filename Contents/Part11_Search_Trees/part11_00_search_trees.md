@@ -389,7 +389,7 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_01_multiway_search_tree_image.png" style="width: 500px;"></img><br/>
 </p>
 
-#### Prop.) An n-item multiway search tree has n+1 external nodes.
+#### Prop. 11.7) An n-item multiway search tree has n+1 external nodes.
 * pf.) <a href="">C-11.52</a>
 
 #### Tech.) Searching in a Multiway Tree
@@ -401,17 +401,46 @@ Algorithm restructure(x):
 #### Tech.) Data Structures for Representing Multiway Search Trees
 * Use General Tree data structure.
   * Recall that each node has more than 2 children.
-* At each node, use SortedTableMap for an entity that stores keys.
+* At each node, use SortedTableMap as a secondary map that stores keys.
   * why?)
     * We should compare the size of the keys during operations.
+    * Bootstrapping Technique
+      * Using a simple solution to a problem to create a new, more advanced solution.
 * Each item _i_ should have a key _k_i_ and an element that is the pair of (_v_i, c_i_)
   * _v_i_ : value that matches the key _k_i_
   * _c_i_ : the reference to the child _c_i_ such that _k\_(i-1) < k < k\_i_
 
+#### Analysis) Running Time of Search
+* Conclusion : O(h)
+  * Item search in each d-node is O(log(d))
+    * why?)
+      * We used sortedmap as a container for each node.
+      * Using binary search, it takes O(log(d)) running time for searching target item.
+  * Letting d_max the maximum value of d in T, search time in T is O(h*log(d_max)).
+  * Regarding d_max as a constant, the running time is O(h)
 
+### 11.5.2 (2,4)-Tree Operations
+#### Def.) (2,4)-Tree
+1. Size Property: Every internal node has at most four children.
+   * This property guarantees O(1) running time for searching an item in a node regardless of the data type.
+     * i.e.) d_max = 4
+     * Thus, unordered list or array can also be used for the secondary map.
+2. Depth Property: All the external nodes have the same depth.
 
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_02_2,4tree_prop_11_8.png" style="width: 500px;"></img><br/>
+</p>
 
-
+* pf) 
+  * Consider two cases that can be the bounds.
+    * Case1) Every node has 2 items.
+      * Then the minimum number of external nodes in T is 2^h
+    * Case2) Every node has 4 items.
+      * Then the maximum number of external nodes in T is 4^h
+  * By <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#prop-an-n-item-multiway-search-tree-has-n1-external-nodes">Prop. 11.7</a> the number of external nodes is equal to (n+1)
+  * Thus, 2^h <= (n+1) <= 4^h.
+    * We can derive the give inequality.
+  
 
 
 
