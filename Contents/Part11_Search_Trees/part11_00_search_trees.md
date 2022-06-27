@@ -427,8 +427,9 @@ Algorithm restructure(x):
      * Thus, unordered list or array can also be used for the secondary map.
 2. Depth Property: All the external nodes have the same depth.
 
+<br>
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_02_2,4tree_prop_11_8.png" style="width: 500px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_02_2,4tree_prop_11_8.png" style="height: 200px;"></img><br/>
 </p>
 
 * pf) 
@@ -437,7 +438,7 @@ Algorithm restructure(x):
       * Then the minimum number of external nodes in T is 2^h
     * Case2) Every node has 4 items.
       * Then the maximum number of external nodes in T is 4^h
-  * By <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#prop-an-n-item-multiway-search-tree-has-n1-external-nodes">Prop. 11.7</a> the number of external nodes is equal to (n+1)
+  * By <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#prop-117-an-n-item-multiway-search-tree-has-n1-external-nodes">Prop. 11.7</a> the number of external nodes is equal to (n+1)
   * Thus, 2^h <= (n+1) <= 4^h.
     * We can derive the give inequality.
   
