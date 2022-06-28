@@ -492,14 +492,19 @@ Algorithm restructure(x):
               2. If w has only one sibling, or if both immediate siblings of w are 2-nodes
                  * Perform **fusion**
                    * Fusion
-                     1. merge w with a sibling
+                     1. Merge w with a sibling
                      2. Create a new node w'
-                     3. move a key from the parent u of w to w'
+                     3. Move a key from the parent u of w to w'
+                     4. If another underflow is incurred by the previous fusion, perform Transfer or Fusion repeatedly.
+                     
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_04_2,4tree_insert_delete_image.png" style="width: 100%;"></img><br/>
 </p>
 
-
+#### Analysis) Performance of (2,4) Trees
+* The height of a (2,4) tree storing n entries is O(logn) (∵ <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#def-24-tree">Prop.</a>)
+* A split, transfer, or fusion operation takes O(1) time.
+* A search, insertion, or removal of an entry visits O(logn) nodes.
 
 
 
