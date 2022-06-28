@@ -496,7 +496,7 @@ Algorithm restructure(x):
                      2. Create a new node w'
                      3. move a key from the parent u of w to w'
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_04_2,4tree_insert_delete_image.png" style="width: 900px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_04_2,4tree_insert_delete_image.png" style="width: 100%;"></img><br/>
 </p>
 
 
