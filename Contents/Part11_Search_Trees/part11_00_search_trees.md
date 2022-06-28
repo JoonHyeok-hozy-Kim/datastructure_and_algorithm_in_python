@@ -502,11 +502,21 @@ Algorithm restructure(x):
 </p>
 
 #### Analysis) Performance of (2,4) Trees
-* The height of a (2,4) tree storing n entries is O(logn) (∵ <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#def-24-tree">Prop.</a>)
+* The height of a (2,4) tree storing n entries is O(log(n)) (∵ <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#def-24-tree">Prop.</a>)
 * A split, transfer, or fusion operation takes O(1) time.
-* A search, insertion, or removal of an entry visits O(logn) nodes.
+* A search, insertion, or removal of an entry visits O(log(n)) nodes.
 
 
+## 11.6 Red-Black Trees
+#### Def.) Red-Black Tree
+* A binary search tree with nodes colored red and black in a way that satisfies the following properties:
+  * Root Property: The root is black.
+  * Red Property: The children of a red node (if any) are black.
+  * Depth Property: All nodes with zero or one child have the same **black depth**
+    * **black depth** : the number of black ancestors. (Recall that a node is its own ancestor).
 
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_05_red_black_tree_image.png" style="height: 300px;"></img><br/>
+</p>
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
