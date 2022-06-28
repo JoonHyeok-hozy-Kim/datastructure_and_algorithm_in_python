@@ -451,7 +451,7 @@ Algorithm restructure(x):
      * z : the node that unsuccessful search ended.
      * w : the parent of z
   3. Insert new item y to the left of w.
-  4. If the size of w becomes 5 (i.e. overflows), perform split as follows.
+  4. If the size of w becomes 5 (i.e. **overflows**), perform split as follows.
      * Replace w with w' and w''
        * w' : 3-node with children c_1, c_2, c_3 storing keys k_1, k_2
        * w'' : 2-node with children c_4, c_5 storing keys k_4
@@ -462,6 +462,46 @@ Algorithm restructure(x):
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_03_2,4tree_insertion.png" style="width: 900px;"></img><br/>
 </p>
+
+#### Analysis) Analysis of Insertion in a (2,4) Tree
+* Conclusion : O(log(n))
+  * why?)
+    * Insertion of an item to the node is O(1)
+      * Recall that d_max is limited to 4.
+    * Since the height of the tree is O(log(n)), the number of cascading split operations is bounded O(log(n)) time.
+
+#### Tech.) Deletion
+* Target : Removing the item (k, v) in the tree T.
+* How?
+  * We can only delete items at a node w whose children are all the external nodes.
+    * If (k, v) is in w, simply remove it.
+    * Else, put z the node that has only internal node children and contains (k, v).
+      * Put (k, v) (k_i, v_i) where (k, v) is the i-th item of z.
+      * Then swap (k_i, v_i) with appropriate item in w as follows.
+        1. We find the rightmost internal node w in the subtree rooted at the i-th child of z, noting that the children of node w are all external nodes.
+        2. We swap the item (k_i, v_i) at z with the last item of w.
+        3. If (k_i, v_i) is in w, remove it.
+        4. Deal with the possible **underflow** in w as follows.
+           * If the number of items in w was 2 before the removal, underflow of w will take place.
+              1. Check whether an immediate sibling of w is a 3-node or a 4-node.
+                 * Perform **transfer** operation to that sibling s.
+                   * Transfer
+                     1. Move a child of s to w
+                     2. Move a key of s to the parent u of w and s
+                     3. Move a key of u to w
+              2. If w has only one sibling, or if both immediate siblings of w are 2-nodes
+                 * Perform **fusion**
+                   * Fusion
+                     1. merge w with a sibling
+                     2. Create a new node w'
+                     3. move a key from the parent u of w to w'
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_04_2,4tree_insert_delete_image.png" style="width: 900px;"></img><br/>
+</p>
+
+
+
+
 
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
