@@ -605,5 +605,42 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_05_insertion_simulation.png" style="width: 100%;"></img><br/>
 </p>
 
+#### Tech.) Deletion
+* Target : Delete Item (k, v)
+* Rule
+  * Consider that we can delete only the node that has at most one child.
+    * Thus, if we need to remove an internal node, we should swap it with the rightmost item in the left subtree of the target node and then perform removal at the leaf.
+* How?
+  * Under the assumption that target deleting node has at most one child...
+    * If the target node is red
+      1. Delete target node
+      2. Promote the child node.
+    * Else if the target node is black,
+      * If the target node has the only child and the child is red,
+        * Remove the target black node
+        * Promote the child node and change into black.
+      * Else if the target node is the leaf black node...
+        * Consider the more generalized settings below...
+
+#### Tech.) Generalization for the Black Leaf Deletion
+* Settings
+  * Let
+    * z : the parent of the removed black leaf
+    * T_heavy : the sibling subtree of the removed black leaf
+      * Exactly one more black depth compared to T_light (Consider the existence of y)
+    * y : the root of T_heavy
+    * T_light : the empty subtree of the removed black leaf
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_06_deletion_setting.png" style="height: 300px;"></img><br/>
+</p>
+
+* Case 1: Node y Is Black and Has a Red Child x.
+* Case 2: Node y Is Black and Both Children of y Are Black (or None).
+* Case 3: Node y Is Red.
+
+
+
+
+
 
 ## 11.7 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Exercises</a>
