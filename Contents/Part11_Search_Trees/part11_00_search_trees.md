@@ -637,11 +637,28 @@ Algorithm restructure(x):
 * Case 1: Node y Is Black and Has a Red Child x.
   * Perform **Trinode Restructuring.**
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_07_deletion_case1.png" style="width: 900px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_07_deletion_case1.png" style="width: 800px;"></img><br/>
 </p>
 
 * Case 2: Node y Is Black and Both Children of y Are Black (or None).
+  * Perform **Recoloring.**
+    1. Color y red.
+    2. If z is red, color z black.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_07_deletion_case2.png" style="width: 800px;"></img><br/>
+</p>
+
 * Case 3: Node y Is Red.
+  * Perform rotation about y and z, and then recolor y black and z red.
+  * Now, the new z must be in Case 1 or Case 2.
+    * Why?)
+      * Recall that T_heavy is one black depth more than T_light.
+      * Since y is red, children of y must be black.
+      * Hence, one of the children of y that is newly linked to z' will be black, which incur unbalancedness of subtree of z'.
+  * Thus, perform the correspondent treatment at z's subtree.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_07_deletion_case3.png" style="width: 800px;"></img><br/>
+</p>
 
 
 
