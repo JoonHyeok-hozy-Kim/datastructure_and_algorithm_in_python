@@ -627,7 +627,7 @@ Algorithm restructure(x):
   * Let
     * z : the parent of the removed black leaf
     * T_heavy : the sibling subtree of the removed black leaf
-      * Exactly one more black depth compared to T_light (Consider the existence of y)
+      * Exactly one more black depth compared to T_light (due to the deletion of the black leaf in T_light)
     * y : the root of T_heavy
     * T_light : the empty subtree of the removed black leaf
 <p align="center">
@@ -635,6 +635,11 @@ Algorithm restructure(x):
 </p>
 
 * Case 1: Node y Is Black and Has a Red Child x.
+  * Perform **Trinode Restructuring.**
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_07_deletion_case1.png" style="width: 900px;"></img><br/>
+</p>
+
 * Case 2: Node y Is Black and Both Children of y Are Black (or None).
 * Case 3: Node y Is Red.
 
