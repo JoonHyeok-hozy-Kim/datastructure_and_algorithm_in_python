@@ -528,8 +528,21 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_01_red_black_and_24.png" style="height: 300px;"></img><br/>
 </p>
 
+* How to make Red-Black Tree from (2,4) Tree
+1. If w is a 2-node, then keep the (black) children of w as is.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_02_24_redblack_2node.png" style="height: 100px;"></img><br/>
+</p>
 
+2. If w is a 3-node, then create a new red node y, give w’s last two (black) children to y, and make the first child of w and y be the two children of w.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_02_24_redblack_3node.png" style="height: 100px;"></img><br/>
+</p>
 
+3. If w is a 4-node, then create two new red nodes y and z, give w’s first two (black) children to y, give w’s last two (black) children to z, and make y and z be the two children of w.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_02_24_redblack_4node.png" style="height: 100px;"></img><br/>
+</p>
 
 
 
