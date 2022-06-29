@@ -660,6 +660,10 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_07_deletion_case3.png" style="width: 800px;"></img><br/>
 </p>
 
+#### Tech.) Simulation of Deletions
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_08_deletion_simulation.png" style="width: 100%;"></img><br/>
+</p>
 
 
 
