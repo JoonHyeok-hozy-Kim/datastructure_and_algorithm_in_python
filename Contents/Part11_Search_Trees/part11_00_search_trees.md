@@ -371,7 +371,7 @@ Algorithm restructure(x):
 </p>
 
 ## 11.5 (2,4) Trees (Multiway Search Tree)
-### 11.5.1 Multiway Search Trees (<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Supplementary</a>) 
+### 11.5.1 Multiway Search Trees (<a href="https://yoongrammer.tistory.com/73">Supplementary</a>) 
 #### Def.) of a Multiway Search Tree
 * Assumptions
   * w : a node of an ordered tree
@@ -440,7 +440,7 @@ Algorithm restructure(x):
       * Then the maximum number of external nodes in T is 4^h
   * By <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#prop-117-an-n-item-multiway-search-tree-has-n1-external-nodes">Prop. 11.7</a> the number of external nodes is equal to (n+1)
   * Thus, 2^h <= (n+1) <= 4^h.
-    * We can derive the give inequality.
+    * We can derive the given inequality.
 
 
 #### Tech.) Insertion for (2,4) Tree
@@ -473,10 +473,10 @@ Algorithm restructure(x):
 #### Tech.) Deletion
 * Target : Removing the item (k, v) in the tree T.
 * How?
-  * We can only delete items at a node w whose children are all the external nodes.
+  * We can only delete items at a node w whose children are all the external nodes. (To keep the Depth Property)
     * If (k, v) is in w, simply remove it.
     * Else, put z the node that has only internal node children and contains (k, v).
-      * Put (k, v) (k_i, v_i) where (k, v) is the i-th item of z.
+      * Put (k, v) = (k_i, v_i) where (k, v) is the i-th item of z.
       * Then swap (k_i, v_i) with appropriate item in w as follows.
         1. We find the rightmost internal node w in the subtree rooted at the i-th child of z, noting that the children of node w are all external nodes.
         2. We swap the item (k_i, v_i) at z with the last item of w.
@@ -492,7 +492,7 @@ Algorithm restructure(x):
               2. If w has only one sibling, or if both immediate siblings of w are 2-nodes
                  * Perform **fusion**
                    * Fusion
-                     1. Merge w with a sibling
+                     1. Merge w with the sibling
                      2. Create a new node w'
                      3. Move a key from the parent u of w to w'
                      4. If another underflow is incurred by the previous fusion, perform Transfer or Fusion repeatedly.
@@ -549,6 +549,18 @@ Algorithm restructure(x):
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_03_redblack_height.png" style="height: 100px;"></img><br/>
 </p>
+
+* pf.)
+  * Let
+    * d : the common black depth of all nodes of T having zero or one child.
+    * T' : (2,4) Tree associated with T
+    * h' : the height of T'
+  * Then d = h'.
+    1. d = h' =< log(n+1)-1 (Recall that depth = height-1)
+       * By the Red Property of Red-Black Tree, h <= 2d.
+       * Thus, h <= 2log(n+1)-2
+    2. By <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part08_Trees/part08_00_trees.md#props-binary-tree">Prop. 8.8</a>
+       * h >= log(n+1)-1
 
 
 

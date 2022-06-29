@@ -24,8 +24,6 @@ E
 .XXXX_NOTE/gre_hackers_verbal/HWs/220314_HW.txt,9\1\91f974be1050ecc8ab7f44a84a50cd3fff5643e0
 ^
 .XXXX_NOTE/gre_hackers_verbal/HWs/220316_HW.txt,6\7\673e0dd25d0ee5a28737ac8d12dd6c8683f687d9
-R
-"DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
 G
 DataStructures/queue.py,9\1\91b53d7ee3ceb99336653ca1c312a8156b2d6358
 G
