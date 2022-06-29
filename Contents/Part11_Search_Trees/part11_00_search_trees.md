@@ -665,6 +665,18 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_08_deletion_simulation.png" style="width: 100%;"></img><br/>
 </p>
 
+#### Analysis) Performance of Red-Black Trees
+* Asymptotic performance is identical to that of an AVL Tree or a (2,4) Tree.
+* An insertion or deletion requires only a constant number of restructuring operations.
+* Insertion
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_09_analysis_insertion.png" style="width: 800px;"></img><br/>
+</p>
+
+* Deletion
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_07_deletion_case3.png" style="width: 800px;"></img><br/>
+</p>
 
 
 
