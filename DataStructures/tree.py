@@ -744,6 +744,18 @@ class LinkedTree(Tree):
         def num_children(self):
             return len(self._children)
 
+        def first_child(self):
+            if self.num_children() == 0:
+                return None
+            else:
+                return self._children[0]
+
+        def last_child(self):
+            if self.num_children() == 0:
+                return None
+            else:
+                return self._children[-1]
+
     class Position(Tree.Position):
 
         def __init__(self, container, node):
@@ -775,6 +787,10 @@ class LinkedTree(Tree):
     def __len__(self):
         return self._size
 
+    def __str__(self):
+        layout = GeneralTreeLayout(self)
+        return layout.execute()
+
     def is_empty(self):
         return len(self) == 0
 
@@ -793,6 +809,14 @@ class LinkedTree(Tree):
         if node.num_children() > 0:
             for child_node in node._children:
                 yield self._make_position(child_node)
+
+    def first_child(self, p):
+        node = self._validate(p)
+        return self._make_position(node.first_child())
+
+    def last_child(self, p):
+        node = self._validate(p)
+        return self._make_position(node.last_child())
 
     def is_leaf(self, p):
         return self.num_children(p) == 0
@@ -831,3 +855,97 @@ class LinkedTree(Tree):
         yield p
         for other in self.children(p):
             yield other
+
+
+class GeneralEulerTour(EulerTour):
+    def _tour(self, p, d, path):
+        num_child = self.tree().num_children(p)
+        result = [None] * num_child
+        self._hook_previsit(p, d, path)
+
+        if num_child == 0:
+            # When no child
+            self._hook_invisit(p, d, path)
+        else:
+            # When have children
+            child_idx = 0
+            mid = (self.tree().num_children(p)-1)// 2
+            for child in self.tree().children(p):
+                path.append(child_idx)
+                result[child_idx] = self._tour(child, d+1, path)
+
+                if child_idx == mid:
+                    self._hook_invisit(p, d, path)
+
+                child_idx += 1
+
+        answer = self._hook_postvisit(p, d, path, result)
+        return answer
+
+    def _hook_invisit(self, p, d, path):
+        pass
+
+
+class GeneralTreeLayout(GeneralEulerTour):
+    def __init__(self, tree):
+        super().__init__(tree)
+        self._count = 0
+        self._x_max = 0
+        self._y_max = 0
+        self._graphic = [[' ']]
+
+    def execute(self):
+        super().execute()
+        str_graphic = self.str_graphic()
+        # print(str_graphic)
+        return str_graphic
+
+    def str_graphic(self):
+        text_list = []
+        for i in self._graphic:
+            text_list.append(''.join(i))
+            text_list.append('\n')
+        result = ''.join(text_list)
+        return result
+
+    def _hook_invisit(self, p, d, path):
+        self.y_max_increase(d+1)
+
+        # Parenthesis Open if first_child
+        parent = self.tree().parent(p) if p != self.tree().root() else None
+        if parent is not None and p == self.tree().first_child(parent):
+            # Open Parenthesis
+            self.x_max_increase(1)
+            self._graphic[d+1][self._x_max] = '('
+
+        x_increase = len(str(p.element()))
+        self.x_max_increase(x_increase)
+        for i in range(x_increase):
+            self._graphic[d+1][self._x_max-i] = str(p.element())[x_increase-1-i]
+
+        if parent is not None and p == self.tree().last_child(parent):
+            # Close Parenthesis
+            self.x_max_increase(2)
+            self._graphic[d+1][self._x_max-1] = ')'
+            self._graphic[d+1][self._x_max] = ' '
+        else:
+            # Space added
+            self.x_max_increase(1)
+            self._graphic[d+1][self._x_max] = ' '
+        return None
+
+
+    def x_max_increase(self, n):
+        for row in self._graphic:
+            for i in range(n):
+                row.append(' ')
+        self._x_max += n
+
+    def y_max_increase(self, n):
+        if n < self._y_max:
+            return
+        new_row = [' '] * (self._x_max + 1)
+        for i in range(n - self._y_max):
+            new_row_copy = deepcopy(new_row)
+            self._graphic.append(new_row_copy)
+        self._y_max = n
