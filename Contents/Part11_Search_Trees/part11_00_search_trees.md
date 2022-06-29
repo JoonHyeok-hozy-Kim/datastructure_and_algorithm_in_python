@@ -562,7 +562,31 @@ Algorithm restructure(x):
     2. By <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part08_Trees/part08_00_trees.md#props-binary-tree">Prop. 8.8</a>
        * h >= log(n+1)-1
 
+### 11.6.1 Red-Black Tree Operations
+#### Tech.) Insertion
+* Target : Insert k-value pair (k, v)
+* How?
+  * Perform binary search for k until we reach a null subtree.
+  * Introduce new leaf x storing item (k, v) to that null subtree.
+  * Case
+    * If x is root, color x black!
+    * Else, color x red!
+      * This may violate the Red Property.
+      * **Double Red Violation**
+        * Let y the parent of x and z the parent of y.
+        * Consider the case that y is red.
+        * Then by the Red Prop., z must be black.
+        * We denote this the Double Red Violation.
+        
+#### Sol.) Solution for **Double Red Violation** in each cases
+* Case 1: The Sibling s of y Is Black (or None).
+  * Perform <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#tech-trinode-restructuring">Trinode Restructuring</a> 
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_04_double_red_sol1.png" style="height: 450px;"></img><br/>
+</p>
 
+
+* Case 2: The Sibling s of y Is Red.
 
 
 
