@@ -519,8 +519,14 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_05_05_red_black_tree_image.png" style="height: 300px;"></img><br/>
 </p>
 
-#### Prop.) Red-Black Tree vs <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#def-24-tree">(2,4) Tree</a>
-
+#### Prop.) Red-Black Tree vs (2,4) Tree
+* How to make (2,4) Tree from Red-Black Tree
+  * Merge every red node w into its parent.
+  * Store the entry from w at its parent
+  * Children of w become the ordered children of w' parent.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_01_red_black_and_24.png" style="height: 300px;"></img><br/>
+</p>
 
 
 
