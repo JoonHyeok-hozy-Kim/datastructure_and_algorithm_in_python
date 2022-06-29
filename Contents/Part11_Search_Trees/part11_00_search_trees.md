@@ -600,9 +600,9 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_04_double_red_sol2.png" style="height: 450px;"></img><br/>
 </p>
 
-#### Simulation of Insertions
+#### Tech.) Simulation of Insertions
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_04_double_red_sol3.png" style="width: 900px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_05_insertion_simulation.png" style="width: 100%;"></img><br/>
 </p>
 
 
