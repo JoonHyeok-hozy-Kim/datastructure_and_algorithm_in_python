@@ -544,6 +544,14 @@ Algorithm restructure(x):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_02_24_redblack_4node.png" style="height: 100px;"></img><br/>
 </p>
 
+#### Analysis) The Height of Red-Black Tree
+* Let T be a red-black tree storing n entries, and let h be the height of T. We justify this proposition by establishing the following fact:
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_03_redblack_height.png" style="height: 100px;"></img><br/>
+</p>
+
+
+
 
 
 
