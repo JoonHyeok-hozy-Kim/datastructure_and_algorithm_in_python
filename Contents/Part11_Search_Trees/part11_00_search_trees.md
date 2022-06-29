@@ -581,12 +581,24 @@ Algorithm restructure(x):
 #### Sol.) Solution for **Double Red Violation** in each cases
 * Case 1: The Sibling s of y Is Black (or None).
   * Perform <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md#tech-trinode-restructuring">Trinode Restructuring</a> 
+  * In (2,4) Tree's perspective, it is similar to adding item to a 3-node.
+    * We can simply add item and make 4-node.
+    * All that we need is restructuring the 4-node into a balanced position.
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_04_double_red_sol1.png" style="height: 450px;"></img><br/>
 </p>
 
-
 * Case 2: The Sibling s of y Is Red.
+  * In (2,4) Tree's perspective it is similar to overflow : adding item to a 4-node.
+  * Perform **Recoloring**.
+    * Change color of s and y into Black.
+    * Unless z is root, change z into Red.
+      * If z is not root, the Black Depth Property continues by changing the color.
+      * If z is root, the black depth increases.
+  * If **Recoloring** incurs **Double Red Violation** above, continue going up T until **Double Red Violation** is finally fixed.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_06_04_double_red_sol2.png" style="height: 450px;"></img><br/>
+</p>
 
 
 
