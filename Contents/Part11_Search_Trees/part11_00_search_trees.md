@@ -371,7 +371,7 @@ Algorithm restructure(x):
 </p>
 
 ## 11.5 (2,4) Trees (Multiway Search Tree)
-### 11.5.1 Multiway Search Trees
+### 11.5.1 Multiway Search Trees (<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md">Supplementary</a>) 
 #### Def.) of a Multiway Search Tree
 * Assumptions
   * w : a node of an ordered tree
