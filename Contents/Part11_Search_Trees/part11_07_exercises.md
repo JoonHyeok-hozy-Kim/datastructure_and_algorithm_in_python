@@ -182,8 +182,13 @@ c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.
 
 * Sol.) No. The depth property of (2,4) tree is violated.
 
+### R-11.17 R-11.17 An alternative way of performing a split at a node w in a (2,4) tree is to partition w into w' and w'', with w' being a 2-node and w'' a 3-node. Which of the keys k1, k2, k3, or k4 do we store at w’s parent? Why?
+* Sol.) k2 should be the parent. By definition, the parent key should be larger than k1 and must be the minimum value among k2 ~ k4.
 
-
+### R-11.18 Dr. Amongus claims that a (2,4) tree storing a set of entries will always have the same structure, regardless of the order in which the entries are inserted. Show that he is wrong.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_18.png" style="width: 700px"></img><br/>
+</p>
 
 
 
