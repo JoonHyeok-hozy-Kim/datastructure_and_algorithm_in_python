@@ -211,7 +211,7 @@ for i in range(4):
 a. Draw a (2,4) tree storing K as its keys using the fewest number of nodes.
 b. Draw a (2,4) tree storing K as its keys using the maximum number of nodes.
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_19.png" style="height: 500px"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_20.png" style="height: 500px"></img><br/>
 </p>
 
 
