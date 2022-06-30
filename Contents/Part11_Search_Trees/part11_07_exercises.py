@@ -55,17 +55,47 @@ if __name__ == '__main__':
     #     print(b)
     #     print('-----------------------------------')
 
-    from DataStructures.binary_search_trees import AVLTreeMap
-    a = AVLTreeMap()
-    a[62] = 62
-    a[44] = 44
-    a[78] = 78
-    a[17] = 17
-    a[50] = 50
-    a[88] = 88
-    a[48] = 48
-    a[54] = 54
-    print(a)
-    # a[52] = 52
-    del a[62]
-    print(a)
+    # from DataStructures.binary_search_trees import AVLTreeMap
+    # a = AVLTreeMap()
+    # a[62] = 62
+    # a[44] = 44
+    # a[78] = 78
+    # a[17] = 17
+    # a[50] = 50
+    # a[88] = 88
+    # a[48] = 48
+    # a[54] = 54
+    # print(a)
+    # # a[52] = 52
+    # del a[62]
+    # print(a)
+
+    """
+    a. Insert keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.  
+    b. Search for keys 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, in this order.  
+    c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.  
+    """
+
+    from DataStructures.binary_search_trees import SplayTreeMap
+    a = SplayTreeMap()
+    insert_seq = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18,]
+    search_seq = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19,]
+    delete_seq = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18,]
+
+    for i in insert_seq:
+        print('Insert {}'.format(i))
+        a[i] = i
+        print(a)
+
+    for i in search_seq:
+        print('Search {}'.format(i))
+        try:
+            print(a[i])
+        except:
+            pass
+        print(a)
+
+    for i in delete_seq:
+        print('Delete {}'.format(i))
+        del a[i]
+        print(a)

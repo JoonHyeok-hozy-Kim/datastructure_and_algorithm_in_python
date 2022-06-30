@@ -154,7 +154,23 @@ print(a)
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_12.png" style="height: 500px;"></img><br/>
 </p>
 
+### R-11.13 The rules for a deletion in an AVL tree specifically require that when the two subtrees of the node denoted as y have equal height, child x should be chosen to be “aligned” with y (so that x and y are both left children or both right children). To better understand this requirement, repeat Exercise R-11.11 assuming we picked the misaligned choice of x. Why might there be a problem in restoring the AVL property with that choice?
+* Sol.) R-11.11 is solved with unaligned case.
 
+### R-11.14 Perform the following sequence of operations in an initially empty splay tree and draw the tree after each set of operations.
+a. Insert keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.  
+b. Search for keys 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, in this order.  
+c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.  
+* Sol.)
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_14_insertion.png" style="height: 500px;"></img><br/>
+</p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_14_search.png" style="height: 500px;"></img><br/>
+</p>
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_14_deletion.png" style="height: 500px;"></img><br/>
+</p>
 
 
 
