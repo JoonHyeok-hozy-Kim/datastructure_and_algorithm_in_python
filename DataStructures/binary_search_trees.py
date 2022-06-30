@@ -297,3 +297,121 @@ class SplayTreeMap(TreeMap):
     def _rebalance_access(self, p):
         self._splay(p)
 
+
+class RedBlackTreeMap(TreeMap):
+
+    class _Node(TreeMap._Node):
+        __slots__ = '_red'
+
+        def __init__(self, element, parent=None, left=None, right=None):
+            super().__init__(element, parent, left, right)
+            self._red = True    # Set True by default.
+
+    # ------------------------- positional-based utility methods -------------------------
+    # we consider a nonexistent child to be trivially black
+    def _set_red(self, p): p._node._red = True
+    def _set_black(self, p): p._node._red = False
+    def _set_color(self, p, make_red): p._node._red = make_red
+    def _is_red(self, p): return p is not None and p._node._red
+    def _is_red_leaf(self, p): return self._is_red(p) and self.is_leaf(p)
+
+    def _get_red_child(self, p):
+        for child in self.children(p):
+            if self._is_red(child):
+                return child
+        return None
+
+    # ------------------------- support for insertions -------------------------
+    def _rebalance_insert(self, p):
+        self._resolve_red(p)
+
+    def _resolve_red(self, p):
+        if self.is_root(p):
+            self._set_black(p)
+        else:
+            parent = self.parent(p)
+            if self._is_red(parent):                    # Double Red Violation
+                uncle = self.sibling(parent)
+                if not self._is_red(uncle):             # Case 1 : Trinode Restructuring
+                    # print('Double Red : Restructuring Required')
+                    # print(self)
+                    # print('Restructure at {}'.format(p.element()))
+                    middle = self._restructure(p)
+                    self._set_black(middle)
+                    self._set_red(self.left(middle))
+                    self._set_red(self.right(middle))
+                else:                                   # Case 2 : Recoloring
+                    # print('Double Red : Recoloring Required')
+                    # print(self)
+                    self._set_black(parent)
+                    self._set_black(uncle)
+                    grand_parent = self.parent(parent)
+                    self._set_red(grand_parent)
+                    self._resolve_red(grand_parent)
+
+    def _rebalance_delete(self, p):
+        if len(self) == 1:
+            self._set_black(self.root())
+        elif p is not None:
+            n = self.num_children(p)
+            if n == 1:                                  # Deficit takes place. Deal with cases in _fix_deficit()
+                c = next(self.children(p))
+                if not self._is_red_leaf(c):
+                    self._fix_deficit(p, c)
+            elif n == 2:                                # Promote child and set black.
+                if self._is_red_leaf(self.left(p)):
+                    self._set_black(self.left(p))
+                else:
+                    self._set_black(self.right(p))
+
+    def _fix_deficit(self, z, y):
+        """
+        :param z: the parent of the deleted node
+        :param y: the sibling of the deleted node
+        """
+        if not self._is_red(y):                         # y is black : Case 1 or Case 2
+            x = self._get_red_child(y)
+            if x is not None:                           # Case 1 : y has a red child.
+                old_color = self._is_red(z)
+                middle = self._restructure(x)
+                self._set_color(middle, old_color)
+                self._set_black(self.left(middle))
+                self._set_black(self.right(middle))
+
+            else:                                       # Case 2 : y's children are black or None
+                self._set_red(y)
+                if self._is_red(z):                     # Total black depth of z's subtree does not change.
+                    self._set_black(z)
+
+                elif z != self.root():                  # Recur Upward!
+                    self._fix_deficit(self.parent(z), self.sibling(z))
+
+        else:                                           # Case 3 : Node y is red.
+            self._rotate(y)
+            self._set_black(y)
+            self._set_red(z)
+            if z == self.right(y):
+                self._fix_deficit(z, self.left(z))
+            else:
+                self._fix_deficit(z, self.right(z))
+
+    def __str__(self):
+        layout = RedBlackTreeMapLayout(self)
+        return layout.execute()
+
+from DataStructures.tree import BinaryLayout
+class RedBlackTreeMapLayout(BinaryLayout):
+    def _hook_invisit(self, p, d, path):
+        item_text = []
+        if p._node._red:
+            item_text.append('R')
+        else:
+            item_text.append('B')
+        item_text.append(str(p.element()))
+        item_str = ''.join(item_text)
+        x_increase = len(item_str)
+        self.x_max_increase(x_increase)
+        self.y_max_increase(d+1)
+        for i in range(x_increase):
+            self._graphic[d+1][self._x_max-i] = item_str[x_increase-1-i]
+        return None

@@ -56,3 +56,11 @@ X
 (Contents/Part11_Search_Trees/__init__.py,9\c\9c3e37fe63e192ce802793b9f393b188add16344
 Œ
 \Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md,c\6\c685779da586aaefd6cde8a6bb5bee891522eaaa
+F
+DataStructures/maps.py,f\2\f23bc2e4726a63dd108e4eed46d674953ea0f833
+c
+3Contents/Part11_Search_Trees/part11_03_avl_trees.py,4\d\4db66e8e7ec55db976cc9524fa80429c475fd009
+D
+Contents/__init__.py,9\0\902432221285a39997d6be1a526d2b3e5a4fbb4f
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
