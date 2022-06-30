@@ -204,9 +204,15 @@ for i in range(4):
 ```
 * Corresponding (2,4) Trees.
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_19.png" style="width: 100%x"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_19.png" style="width: 100%"></img><br/>
 </p>
 
+### R-11.20 Consider the set of keys K = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}.
+a. Draw a (2,4) tree storing K as its keys using the fewest number of nodes.
+b. Draw a (2,4) tree storing K as its keys using the maximum number of nodes.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_19.png" style="height: 500px"></img><br/>
+</p>
 
 
 
