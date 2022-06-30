@@ -251,6 +251,8 @@ class AVLTreeMap(TreeMap):
             old_node = self._validate(p)
             old_height = old_node._height
             if not self._is_balanced(p):
+                print(self)
+                print('-> Restructuring at {}'.format(p.element()))
                 p = self._restructure(self._tall_grandchild(p))
                 self._recompute_height(self.left(p))
                 self._recompute_height(self.right(p))
