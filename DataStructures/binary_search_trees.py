@@ -40,14 +40,14 @@ class TreeMap(LinkedBinaryTree, MapBase):
     def _subtree_first_position(self, p):
         """Return Position of first item in subtree rooted at p."""
         walk = p
-        if self.left(walk) is not None:
+        while self.left(walk) is not None:
             walk = self.left(walk)
         return walk
 
     def _subtree_last_position(self, p):
         """Return Position of last item in subtree rooted at p."""
         walk = p
-        if self.right(walk) is not None:
+        while self.right(walk) is not None:
             walk = self.right(walk)
         return walk
 

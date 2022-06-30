@@ -119,10 +119,34 @@ print(a)
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_08.png" style="height: 200px;"></img><br/>
 </p>
 
+### R-11.9 Draw the AVL tree resulting from the removal of the entry with key 62 from the AVL tree of Figure 11.14b.
+```python
+from DataStructures.binary_search_trees import AVLTreeMap
+a = AVLTreeMap()
+a[62] = 62
+a[44] = 44
+a[78] = 78
+a[17] = 17
+a[50] = 50
+a[88] = 88
+a[48] = 48
+a[54] = 54
+print(a)
+del a[62]
+print(a)
+```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_09.png" style="height: 200px;"></img><br/>
+</p>
 
+### R-11.10 Explain why performing a rotation in an n-node binary tree when using the array-based representation of Section 8.3.2 takes Ω(n) time.
+* Sol.) Whenever a position change of a node takes place, indices after that node should all be shifted.
 
-
-
+### R-11.11 Give a schematic figure, in the style of Figure 11.13, showing the heights of subtrees during a deletion operation in an AVL tree that triggers a trinode restructuring for the case in which the two children of the node denoted as y start with equal heights. What is the net effect of the height of the rebalanced subtree due to the deletion operation?
+* Sol.)
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_11.png" style="height: 500px;"></img><br/>
+</p>
 
 
 

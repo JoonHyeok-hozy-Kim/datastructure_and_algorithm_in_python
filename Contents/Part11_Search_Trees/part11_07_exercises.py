@@ -66,5 +66,6 @@ if __name__ == '__main__':
     a[48] = 48
     a[54] = 54
     print(a)
-    a[52] = 52
+    # a[52] = 52
+    del a[62]
     print(a)
