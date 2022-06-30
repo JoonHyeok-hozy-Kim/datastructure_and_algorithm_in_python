@@ -214,7 +214,12 @@ b. Draw a (2,4) tree storing K as its keys using the maximum number of nodes.
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_20.png" style="height: 500px"></img><br/>
 </p>
 
-
+### R-11.21 Consider the sequence of keys (5,16,22,45,2,10,18,30,50,12,1). Draw the result of inserting entries with these keys (in the given order) into
+a. An initially empty (2,4) tree.
+b. An initially empty red-black tree.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_21.png" style="height: 500px"></img><br/>
+</p>
 
 
 
