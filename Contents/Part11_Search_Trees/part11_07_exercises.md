@@ -172,6 +172,19 @@ c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_14_deletion.png" style="width: 100%;"></img><br/>
 </p>
 
+### R-11.15 What does a splay tree look like if its entries are accessed in increasing order by their keys?
+* Sol.) Worst case scenario which the height of the tree is equal to n.
+
+### R-11.16 Is the search tree of Figure 11.23(a) a (2,4) tree? Why or why not?
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_16.png" style="height: 400px"></img><br/>
+</p>
+
+* Sol.) No. The depth property of (2,4) tree is violated.
+
+
+
+
 
 
 ### C-11.52
