@@ -10,16 +10,32 @@ class TreeMap(LinkedBinaryTree, MapBase):
         def value(self):
             return self.element()._value
 
+    """Due to Python's limit on recursions, replaced with while loop logic below"""
+    # def _subtree_search(self, p, k):
+    #     if k == p.key():
+    #         return p
+    #     elif k < p.key():
+    #         if self.left(p) is not None:
+    #             return self._subtree_search(self.left(p), k)
+    #     else:
+    #         if self.right(p) is not None:
+    #             return self._subtree_search(self.right(p), k)
+    #     return p
+
     def _subtree_search(self, p, k):
-        if k == p.key():
-            return p
-        elif k < p.key():
-            if self.left(p) is not None:
-                return self._subtree_search(self.left(p), k)
-        else:
-            if self.right(p) is not None:
-                return self._subtree_search(self.right(p), k)
-        return p
+        while p is not None:
+            if k == p.key():
+                return p
+            elif k < p.key():
+                if self.left(p) is not None:
+                    p = self.left(p)
+                else:
+                    return p
+            else:
+                if self.right(p) is not None:
+                    p = self.right(p)
+                else:
+                    return p
 
     def _subtree_first_position(self, p):
         """Return Position of first item in subtree rooted at p."""
@@ -251,8 +267,8 @@ class AVLTreeMap(TreeMap):
             old_node = self._validate(p)
             old_height = old_node._height
             if not self._is_balanced(p):
-                print(self)
-                print('-> Restructuring at {}'.format(p.element()))
+                # print(self)
+                # print('-> Restructuring at {}'.format(p.element()))
                 p = self._restructure(self._tall_grandchild(p))
                 self._recompute_height(self.left(p))
                 self._recompute_height(self.right(p))

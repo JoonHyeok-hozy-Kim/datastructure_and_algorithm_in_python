@@ -72,6 +72,41 @@ for i in range(7):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_05_image.png" style="height: 500px;"></img><br/>
 </p>
 
+### R-11.6 Our implementation of the TreeMap. subtree search utility, from Code Fragment 11.4, relies on recursion. For a large unbalanced tree, Python’s default limit on recursive depth may be prohibitive. Give an alternative implementation of that method that does not rely on the use of recursion.
+```python
+def _subtree_search(self, p, k):
+    while p is not None:
+        if k == p.key():
+            return p
+        elif k < p.key():
+            if self.left(p) is not None:
+                p = self.left(p)
+            else:
+                return p
+        else:
+            if self.right(p) is not None:
+                p = self.right(p)
+            else:
+                return p
+```
+
+### R-11.7 Do the trinode restructurings in Figures 11.12 and 11.14 result in single or double rotations?
+* Sol.) Figure 11.12 result in double rotation while Figure 11.14 incurs single one.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_07_figure_12.png" style="height: 200px;"></img><br/>
+</p>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_07_figure_14.png" style="height: 200px;"></img><br/>
+</p>
+
+
+
+
+
+
+
+
+
 
 
 
