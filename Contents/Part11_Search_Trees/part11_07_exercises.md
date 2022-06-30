@@ -148,8 +148,11 @@ print(a)
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_11.png" style="height: 500px;"></img><br/>
 </p>
 
-
-
+### R-11.12 Repeat the previous problem, considering the case in which y’s children start with different heights.
+* Sol.)
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_12.png" style="height: 500px;"></img><br/>
+</p>
 
 
 
