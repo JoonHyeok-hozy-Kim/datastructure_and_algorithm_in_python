@@ -99,6 +99,26 @@ def _subtree_search(self, p, k):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_07_figure_14.png" style="height: 200px;"></img><br/>
 </p>
 
+### R-11.8 Draw the AVL tree resulting from the insertion of an entry with key 52 into the AVL tree of Figure 11.14b.
+```python
+from DataStructures.binary_search_trees import AVLTreeMap
+a = AVLTreeMap()
+a[62] = 62
+a[44] = 44
+a[78] = 78
+a[17] = 17
+a[50] = 50
+a[88] = 88
+a[48] = 48
+a[54] = 54
+print(a)
+a[52] = 52
+print(a)
+```
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_08.png" style="height: 100px;"></img><br/>
+</p>
+
 
 
 
