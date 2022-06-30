@@ -190,6 +190,26 @@ c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_18.png" style="width: 700px"></img><br/>
 </p>
 
+### R-11.19 Draw four different red-black trees that correspond to the same (2,4) tree.
+* Sol.) Random RedBlackTree with size 9.
+```python
+from DataStructures.binary_search_trees import RedBlackTreeMap
+from random import randint
+for i in range(4):
+    a = RedBlackTreeMap()
+    for j in range(9):
+        rand = randint(1, 99)
+        a[rand] = rand
+    print(a)
+```
+* Corresponding (2,4) Trees.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_19.png" style="width: 100%x"></img><br/>
+</p>
+
+
+
+
 
 
 ### C-11.52

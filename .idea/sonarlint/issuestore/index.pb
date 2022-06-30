@@ -64,3 +64,5 @@ c
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 M
 DataStructures/sorted_maps.py,a\c\ac58950667d0605f7f3024f1d6a80e4f09e304be
+h
+8Contents/Part11_Search_Trees/part11_06_red_black_tree.py,8\0\80f7007b98a97c324e34782b03529ec5afaf2b3b

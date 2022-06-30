@@ -70,32 +70,42 @@ if __name__ == '__main__':
     # del a[62]
     # print(a)
 
-    """
-    a. Insert keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.  
-    b. Search for keys 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, in this order.  
-    c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.  
-    """
+    # """
+    # a. Insert keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.
+    # b. Search for keys 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, in this order.
+    # c. Delete keys 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, in this order.
+    # """
+    #
+    # from DataStructures.binary_search_trees import SplayTreeMap
+    # a = SplayTreeMap()
+    # insert_seq = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18,]
+    # search_seq = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19,]
+    # delete_seq = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18,]
+    #
+    # for i in insert_seq:
+    #     print('Insert {}'.format(i))
+    #     a[i] = i
+    #     print(a)
+    #
+    # for i in search_seq:
+    #     print('Search {}'.format(i))
+    #     try:
+    #         print(a[i])
+    #     except:
+    #         pass
+    #     print(a)
+    #
+    # for i in delete_seq:
+    #     print('Delete {}'.format(i))
+    #     del a[i]
+    #     print(a)
 
-    from DataStructures.binary_search_trees import SplayTreeMap
-    a = SplayTreeMap()
-    insert_seq = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18,]
-    search_seq = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19,]
-    delete_seq = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18,]
-
-    for i in insert_seq:
-        print('Insert {}'.format(i))
-        a[i] = i
-        print(a)
-
-    for i in search_seq:
-        print('Search {}'.format(i))
-        try:
-            print(a[i])
-        except:
-            pass
-        print(a)
-
-    for i in delete_seq:
-        print('Delete {}'.format(i))
-        del a[i]
+    from DataStructures.binary_search_trees import RedBlackTreeMap
+    from random import randint
+    for i in range(4):
+        print('RedBlack #{}'.format(i+1))
+        a = RedBlackTreeMap()
+        for j in range(9):
+            rand = randint(1, 99)
+            a[rand] = rand
         print(a)
