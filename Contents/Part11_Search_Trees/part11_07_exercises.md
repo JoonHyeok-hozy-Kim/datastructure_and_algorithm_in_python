@@ -221,6 +221,50 @@ b. An initially empty red-black tree.
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_21.png" style="height: 500px"></img><br/>
 </p>
 
+### R-11.22 For the following statements about red-black trees, provide a justification for each true statement and a counterexample for each false one.
+1. A subtree of a red-black tree is itself a red-black tree.
+   * False. Any Subtree of the root of a red-black tree has the root with red.
+2. A node that does not have a sibling is red.
+   * True. If certain node does not have a sibling, the black depth cannot be kept.
+   * Assume that the root is not counted.
+3. There is a unique (2,4) tree associated with a given red-black tree.
+   * True. (2,4) and red-black tree may be in 1-1 relationship.
+4. There is a unique red-black tree associated with a given (2,4) tree.
+   * False. 
+     * Counter-ex.)
+       * Consider a (2,4) tree with only 3-node root node.
+       * red-black representation of that tree can be two cases.
+         * Root node with one left child.
+         * Root node with one right child.
+
+### R-11.23 Explain why you would get the same output in an inorder listing of the entries in a binary search tree, T, independent of whether T is maintained to be an AVL tree, splay tree, or red-black tree.
+* Sol.) Every binary search tree maintains the inorder increasing structure because it should perform "binary" searching operation.
+
+### R-11.24 Consider a tree T storing 100,000 entries. What is the worst-case height of T in the following cases?
+1. T is a binary search tree.
+   * 100,000
+2. T is an AVL tree.
+   * log(100,000) = 17
+3. T is a splay tree.
+   * 100,000
+4. T is a (2,4) tree.
+   * log(100,000) = 17
+5. T is a red-black tree.
+   * log(100,000) = 17
+
+### R-11.25 Draw an example of a red-black tree that is not an AVL tree.
+```python
+from DataStructures.binary_search_trees import RedBlackTreeMap
+a = RedBlackTreeMap()
+seq = [10, 1, 15, 12, 19, 11, 13, 18, 20]
+for i in seq:
+    a[i] = i
+print(a)
+```
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_25.png" style="height: 150px"></img><br/>
+</p>
+
 
 
 ### C-11.52

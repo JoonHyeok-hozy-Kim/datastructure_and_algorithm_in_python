@@ -101,11 +101,22 @@ if __name__ == '__main__':
     #     print(a)
 
     from DataStructures.binary_search_trees import RedBlackTreeMap
-    from random import randint
-    for i in range(4):
-        print('RedBlack #{}'.format(i+1))
-        a = RedBlackTreeMap()
-        for j in range(9):
-            rand = randint(1, 99)
-            a[rand] = rand
-        print(a)
+    # from random import randint
+    # for i in range(4):
+    #     print('RedBlack #{}'.format(i+1))
+    #     a = RedBlackTreeMap()
+    #     for j in range(9):
+    #         rand = randint(1, 99)
+    #         a[rand] = rand
+    #     print(a)
+
+    a = RedBlackTreeMap()
+    # seq = (5,16,22,45,2,10,18,30,50,12,1)
+    # for i in seq:
+    #     a[i] = i
+    # print(a)
+
+    seq = [10, 1, 15, 12, 19, 11, 13, 18, 20]
+    for i in seq:
+        a[i] = i
+    print(a)
