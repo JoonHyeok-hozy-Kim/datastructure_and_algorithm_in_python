@@ -100,23 +100,65 @@ if __name__ == '__main__':
     #     del a[i]
     #     print(a)
 
-    from DataStructures.binary_search_trees import RedBlackTreeMap
-    # from random import randint
-    # for i in range(4):
-    #     print('RedBlack #{}'.format(i+1))
-    #     a = RedBlackTreeMap()
-    #     for j in range(9):
-    #         rand = randint(1, 99)
-    #         a[rand] = rand
-    #     print(a)
-
-    a = RedBlackTreeMap()
-    # seq = (5,16,22,45,2,10,18,30,50,12,1)
+    # from DataStructures.binary_search_trees import RedBlackTreeMap
+    # # from random import randint
+    # # for i in range(4):
+    # #     print('RedBlack #{}'.format(i+1))
+    # #     a = RedBlackTreeMap()
+    # #     for j in range(9):
+    # #         rand = randint(1, 99)
+    # #         a[rand] = rand
+    # #     print(a)
+    #
+    # a = RedBlackTreeMap()
+    # # seq = (5,16,22,45,2,10,18,30,50,12,1)
+    # # for i in seq:
+    # #     a[i] = i
+    # # print(a)
+    #
+    # seq = [10, 1, 15, 12, 19, 11, 13, 18, 20]
     # for i in seq:
     #     a[i] = i
     # print(a)
 
-    seq = [10, 1, 15, 12, 19, 11, 13, 18, 20]
-    for i in seq:
+    # from DataStructures.binary_search_trees import SplayTreeMap
+    # a = SplayTreeMap()
+    # seq = [i for i in range(10)]
+    # for i in seq:
+    #     a[i*2] = i*2
+    #     print(a)
+    # for i in seq:
+    #     a[i*2+1] = i*2+1
+    #     print(a)
+    # a[10]
+    # print(a)
+
+    # from DataStructures.binary_search_trees import AVLTreeMap
+    # from random import randint
+    # a = AVLTreeMap()
+    # for i in range(10):
+    #     num = randint(1, 99)
+    #     print('Insert {}'.format(num))
+    #     a.setdefault(num, num)
+    #     print(a)
+
+    from DataStructures.binary_search_trees import TreeMap
+    from copy import deepcopy
+    a = TreeMap()
+    for i in range(3):
         a[i] = i
     print(a)
+
+    b = deepcopy(a)
+    b._rotate(b.right(b.right(b.root())))
+    print(b)
+
+    c = deepcopy(a)
+    c._rotate(c.right(c.root()))
+    print(c)
+
+    c._rotate(c.right(c.root()))
+    print(c)
+
+    c._rotate(c.left(c.left(c.root())))
+    print(c)

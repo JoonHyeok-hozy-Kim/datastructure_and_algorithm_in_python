@@ -226,6 +226,26 @@ class TreeMap(LinkedBinaryTree, MapBase):
             self._rotate(x)
             return x
 
+    def setdefault(self, k, d):
+        if self.is_empty():
+            return self._add_root(self._Item(k, d))
+        walk = self.root()
+        leaf = None
+        while leaf is None:
+            if k == walk.key():
+                return walk.value()
+            elif k > walk.key():
+                if self.right(walk) is not None:
+                    walk = self.right(walk)
+                else:
+                    leaf = self._add_right(walk, self._Item(k, d))
+            else:
+                if self.left(walk) is not None:
+                    walk = self.left(walk)
+                else:
+                    leaf = self._add_left(walk, self._Item(k, d))
+        self._rebalance_insert(leaf)
+
 
 class AVLTreeMap(TreeMap):
 

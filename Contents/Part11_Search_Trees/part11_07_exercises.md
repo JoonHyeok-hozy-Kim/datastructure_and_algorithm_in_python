@@ -265,6 +265,92 @@ print(a)
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_07_25.png" style="height: 150px"></img><br/>
 </p>
 
+### R-11.26 Let T be a red-black tree and let p be the position of the parent of the original node that is deleted by the standard search tree deletion algorithm. Prove that if p has zero children, the removed node was a red leaf.
+* pf.)
+  * Suppose not, i.e., the removed node was not red leaf.
+  * The possible case is that the removed is black or not-leaf red node.
+    * Case 1) The removed is black.
+      * In this case p must be black.
+      * Due to previous re-coloring and restructuring, the case that a red node has black only child must have been corrected. (Black Deficit)
+      * Thus, the restructuring or recoloring must have been operated to p, which means that p must have two children. --- (X)
+    * Case 2) The removed is not-leaf red.
+      * In this case, the removed can have only one child at most and this child will be promoted after the removal.
+      * Thus, p will have at least one promoted child after the removal. --- (X)
+
+### R-11.27 Let T be a red-black tree and let p be the position of the parent of the original node that is deleted by the standard search tree deletion algorithm. Prove that if p has one child, the deletion has caused a black deficit at p, except for the case when the one remaining child is a red leaf.
+* Check Case 2 explained in R-11.26.
+
+### R-11.28 Let T be a red-black tree and let p be the position of the parent of the original node that is deleted by the standard search tree deletion algorithm. Prove that if p has two children, the removed node was black and had one red child.
+* Check Case 1 explained in R-11.26.
+
+### C-11.29 Explain how to use an AVL tree or a red-black tree to sort n comparable elements in O(nlogn) time in the worst case.
+* Sol.) Inserting n elements into AVL or red-black tree may run in O(log(n)) time each which will be O(nlog(n)).
+  * Then by traversing in inorder, we can get ordered series in O(n).
+
+### C-11.30 Can we use a splay tree to sort n comparable elements in O(nlogn) time in the worst case? Why or why not?
+* Sol.) Probably not. Even though search and update operation in splay tree may show amortized O(log(n)), its worst case can be O(n).
+  * Consider the case when the elements are given in non-decreasing order.
+  * The splaying may not take place during the insertion : O(n^2)
+  * Traversing the tree will take O(n)
+
+### C-11.31 Repeat Exercise C-10.28 for the TreeMap class.
+```python
+def setdefault(self, k, d):
+    if self.is_empty():
+        return self._add_root(self._Item(k, d))
+    walk = self.root()
+    leaf = None
+    while leaf is None:
+        if k == walk.key():
+            return walk.value()
+        elif k > walk.key():
+            if self.right(walk) is not None:
+                walk = self.right(walk)
+            else:
+                leaf = self._add_right(walk, self._Item(k, d))
+        else:
+            if self.left(walk) is not None:
+                walk = self.left(walk)
+            else:
+                leaf = self._add_left(walk, self._Item(k, d))
+    self._rebalance_insert(leaf)
+```
+
+### C-11.32 Show that any n-node binary tree can be converted to any other n-node binary tree using O(n) rotations.
+* Sol.) Every form that certain shape of binary tree can be reduced into basic 5 forms of binary trees with three nodes.
+```python
+from DataStructures.binary_search_trees import TreeMap
+from copy import deepcopy
+a = TreeMap()
+for i in range(3):
+    a[i] = i
+print(a)
+
+b = deepcopy(a)
+b._rotate(b.right(b.right(b.root())))
+print(b)
+
+c = deepcopy(a)
+c._rotate(c.right(c.root()))
+print(c)
+
+c._rotate(c.right(c.root()))
+print(c)
+
+c._rotate(c.left(c.left(c.root())))
+print(c)
+```
+
+### C-11.33 For a key k that is not found in binary search tree T, prove that both the greatest key less than k and the least key greater than k lie on the path traced by the search for k.
+* Sol.) Each time that searching algorithm passes a node, it sets the local upper or lower bound of the key if the target key is not equal to the key in the node.
+  * If the target key is less than the key in the node, that node's key becomes the possible upper bound.
+  * Likewise, when the target key is bigger than the node's key, it becomes the lower bound.
+  * Thus, as the search goes on and the depth of the node goes deeper, the range that covers the target key narrows.
+
+### C-11.34 In Section 11.1.2 we claim that the find range method of a binary search tree executes in O(s+h) time where s is the number of items found within the range and h is the height of the tree. Our implementation, in Code Fragment 11.6 begins by searching for the starting key, and then repeatedly calling the after method until reaching the end of the range. Each call to after is guaranteed to run in O(h) time. This suggests a weaker O(sh) bound for find range, since it involves O(s) calls to after. Prove that this implementation achieves the stronger O(s+h) bound.
+
+
+
 
 
 ### C-11.52
