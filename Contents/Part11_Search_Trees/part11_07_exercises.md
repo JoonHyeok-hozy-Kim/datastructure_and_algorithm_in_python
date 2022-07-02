@@ -422,24 +422,23 @@ print(a)
 </p>
 
 ### C-11.40 In our AVL implementation, each node stores the height of its subtree, which is an arbitrarily large integer. The space usage for an AVL tree can be reduced by instead storing the balance factor of a node, which is defined as the height of its left subtree minus the height of its right subtree. Thus, the balance factor of a node is always equal to −1, 0, or 1, except during an insertion or removal, when it may become temporarily equal to −2 or +2. Reimplement the AVLTreeMap class storing balance factors rather than subtree heights.
-* Implementation : <a href="">AVLBalanceTreeMap</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees_applications.py#L4">AVLBalanceTreeMap</a>
 
 ### C-11.41 If we maintain a reference to the position of the leftmost node of a binary search tree, then operation find min can be performed in O(1) time. Describe how the implementation of the other map methods need to be modified to maintain a reference to the leftmost position.
 * Sol.) Recall that the greatest value less than and the smallest value greater than the target insertion key are in the path during the search.
   * Therefore, during the insertion operation if the keys are saved in an array during the search and when the unsuccessful search is done, we can find out the keys that are the greatest value less than and the smallest value greater than the target insertion key.
   * The former will be saved in the new node while the latter's min will be updated into the new node.
-* Implementation : <a href="">TreeMapBeforeAfter</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees_applications.py#L59">TreeMapBeforeAfter</a>
 
 ### C-11.42 If the approach described in the previous problem were implemented as part of the TreeMap class, what additional modifications (if any) would be necessary to a subclass such as AVLTreeMap in order to accurately maintain the reference to the leftmost position?
 * Sol.) Since above property is applicable to every binary search tree, no additional treatment might be needed.
-* Implementation : <a href="">AVLBalanceTreeMapBeforeAfter</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees_applications.py#L153">AVLBalanceTreeMapBeforeAfter</a>
 
 ### C-11.43 Describe a modification to the binary search tree implementation having worst-case O(1)-time performance for methods after(p) and before(p) without adversely affecting the asymptotics of any other methods.
 * Sol.) If each node contains _prev and _next property which can be updated by the operation described in C-11.41, O(1) running time for after(p) and before(p) might be possible.
 
 ### C-11.44 If the approach described in the previous problem were implemented as part of the TreeMap class, what additional modifications (if any) would be necessary to a subclass such as AVLTreeMap in order to maintain the efficiency?
 * Sol.) Again as long as the data structure is a binary search tree, no modification may be required.
-  * Implementation
 
 ### C-11.45 For a standard binary search tree, Table 11.1 claims O(h)-time performance for the delete(p) method. Explain why delete(p) would run in O(1) time if given a solution to Exercise C-11.43.
 * Sol.) The main reason that delete(p) method took O(h) running time was due to the specific case that the root element is being deleted.
