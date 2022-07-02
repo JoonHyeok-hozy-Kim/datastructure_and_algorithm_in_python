@@ -447,7 +447,46 @@ print(a)
 
 ### C-11.46 Describe a modification to the binary search tree data structure that would support the following two index-based operations for a sorted map in O(h) time, where h is the height of the tree.
 #### at_index(i): Return the position p of the item at index i of a sorted map.
+* Sol.) Simplest way must be searching the key of i-th element in the sorted map in O(h) and searching the position of that key in the binary search tree in O(h)
+  * If binary search tree's subtree's roots are perfectly synchronized with the (log+high)//2 index, we may be able to derive one to one relation between the position and the index.
 #### index_of(p): Return the index i of the item at position p of a sorted map.
+* Sol.) Just the opposite of at_index(i).
+
+### C-11.47 Draw a splay tree, T1, together with the sequence of updates that produced it, and a red-black tree, T2, on the same set of ten entries, such that a preorder traversal of T1 would be the same as a preorder traversal of T2.
+```python
+from DataStructures.binary_search_trees import SplayTreeMap, RedBlackTreeMap
+from random import randint
+t1 = SplayTreeMap()
+t2 = RedBlackTreeMap()
+seq = [randint(0,1000) for i in range(10)]
+for i in seq:
+    t1[i] = i
+    t2[i] = i
+t1_inorder = ['Splay Tree inorder    : ']
+t2_inorder = ['RedBlack Tree inorder : ']
+for t1_walk in t1.inorder():
+    t1_inorder.append(str(t1_walk.element()))
+    t1_inorder.append(' -> ')
+for t2_walk in t2.inorder():
+    t2_inorder.append(str(t2_walk.element()))
+    t2_inorder.append(' -> ')
+print('Splay Tree')
+print(t1)
+print(''.join(t1_inorder))
+print('---------------------------------------------------')
+print('RedBlack Tree')
+print(t2)
+print(''.join(t2_inorder))
+```
+
+### C-11.48 Show that the nodes that become temporarily unbalanced in an AVL tree during an insertion may be nonconsecutive on the path from the newly inserted node to the root.
+* Sol.) Consider the case of _restructure() that rotates twice.
+  * During the first rotation, the parent of the inserted node will be disconnected from the grandparent, which can be seen as non-consecutiveness.
+
+### C-11.49 Show that at most one node in an AVL tree becomes temporarily unbalanced after the immediate deletion of a node as part of the standard \_\_delitem__ map operation.
+
+
+
 
 
 

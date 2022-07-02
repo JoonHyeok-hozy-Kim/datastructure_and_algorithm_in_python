@@ -192,17 +192,41 @@ if __name__ == '__main__':
     # del a[50]
     # print(a)
 
-    from DataStructures.binary_search_trees_applications import TreeMapBeforeAfter, AVLBalanceTreeMapInitial, AVLBalanceTreeMap
+    # from DataStructures.binary_search_trees_applications import TreeMapBeforeAfter, AVLBalanceTreeMapInitial, AVLBalanceTreeMap
+    # from random import randint
+    # # a = TreeMapBeforeAfter()
+    # a = AVLBalanceTreeMap()
+    # seq = [randint(0, 99) for i in range(10)]
+    # # seq = [i for i in range(10)]
+    # for i in seq:
+    #     print('Insert : {}'.format(i))
+    #     a[i] = i
+    #     print(a)
+    # for j in seq:
+    #     print('Delete : {}'.format(j))
+    #     del a[j]
+    #     print(a)
+
+    from DataStructures.binary_search_trees import SplayTreeMap, RedBlackTreeMap
     from random import randint
-    # a = TreeMapBeforeAfter()
-    a = AVLBalanceTreeMap()
-    seq = [randint(0, 99) for i in range(10)]
-    # seq = [i for i in range(10)]
+    t1 = SplayTreeMap()
+    t2 = RedBlackTreeMap()
+    seq = [randint(0,1000) for i in range(10)]
     for i in seq:
-        print('Insert : {}'.format(i))
-        a[i] = i
-        print(a)
-    for j in seq:
-        print('Delete : {}'.format(j))
-        del a[j]
-        print(a)
+        t1[i] = i
+        t2[i] = i
+    t1_inorder = ['Splay Tree inorder    : ']
+    t2_inorder = ['RedBlack Tree inorder : ']
+    for t1_walk in t1.inorder():
+        t1_inorder.append(str(t1_walk.element()))
+        t1_inorder.append(' -> ')
+    for t2_walk in t2.inorder():
+        t2_inorder.append(str(t2_walk.element()))
+        t2_inorder.append(' -> ')
+    print('Splay Tree')
+    print(t1)
+    print(''.join(t1_inorder))
+    print('---------------------------------------------------')
+    print('RedBlack Tree')
+    print(t2)
+    print(''.join(t2_inorder))
