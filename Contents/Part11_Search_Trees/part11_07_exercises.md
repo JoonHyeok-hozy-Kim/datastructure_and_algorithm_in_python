@@ -348,6 +348,73 @@ print(c)
   * Thus, as the search goes on and the depth of the node goes deeper, the range that covers the target key narrows.
 
 ### C-11.34 In Section 11.1.2 we claim that the find range method of a binary search tree executes in O(s+h) time where s is the number of items found within the range and h is the height of the tree. Our implementation, in Code Fragment 11.6 begins by searching for the starting key, and then repeatedly calling the after method until reaching the end of the range. Each call to after is guaranteed to run in O(h) time. This suggests a weaker O(sh) bound for find range, since it involves O(s) calls to after. Prove that this implementation achieves the stronger O(s+h) bound.
+* Sol.) The only case that after() method runs in O(h) is when it is called at the last position of the left subtree of the root.
+  * Other than that specific case, after() method runs less than O(h).
+  * Thus, it is reliable to say that the algorithm runs in O(s+h) time.
+
+### C-11.35 Describe how to perform an operation remove range(start, stop) that removes all the items whose keys fall within range(start, stop) in a sorted map that is implemented with a binary search tree T, and show that this method runs in time O(s + h), where s is the number of items removed and h is the height of T.
+* Implementation
+```python
+def remove_range(self, start, stop):
+    if not self.is_empty():
+        if start is None:
+            p = self.first()
+        else:
+            p = self.find_position(start)
+            if p.key() < start:
+                p = self.after(p)
+
+        while p is not None and (stop is None or p.key() < stop):
+            after = self.after(p)
+            self.delete(p)
+            p = after
+```
+* Test
+```python
+from DataStructures.binary_search_trees import TreeMap
+a = TreeMap()
+for i in range(10):
+    a[i] = i
+print(a)
+a.remove_range(3, 7)
+print(a)
+```
+* Analysis : The algorithm is almost identical to find_range()
+  * The only difference is that it runs delete() method instead of yield command.
+  * Recall that delete() method's worst case is O(h) only when the deleting target node is the root.
+  * Considering the point that the target node shift to the "after" node, the occasion that O(h) delete() happens is once at most.
+  * Thus, it can be said that it runs in O(s+h) time.
+
+### C-11.36 Repeat the previous problem using an AVL tree, achieving a running time of O(slog n). Why doesn't the solution to the previous problem trivially result in an O(s+logn) algorithm for AVL trees?
+* Justification : Not like TreeMap that does not care about the structure of the tree, AVL Tree continuously restructure after the deletion, which runs in log(n) time.
+  * Thus, for every s deletion, the O(log(n)) restructuring is operated.
+  * Therefore, it runs in O(slog(n))
+```python
+from DataStructures.binary_search_trees import AVLTreeMap
+a = AVLTreeMap()
+for i in range(10):
+    a[i] = i
+print(a)
+a.remove_range(3, 7)
+print(a)
+```
+
+### C-11.37 Suppose we wish to support a new method count range(start, stop) that determines how many keys of a sorted map fall in the specified range. We could clearly implement this in O(s+h) time by adapting our approach to find range. Describe how to modify the search tree structure to support O(h) worst-case time for count range.
+* Sol.) Instead of the yield command we can simply count.
+
+### C-11.38 If the approach described in the previous problem were implemented as part of the TreeMap class, what additional modifications (if any) would be necessary to a subclass such as AVLTreeMap in order to maintain support for the new method?
+```python
+from DataStructures.binary_search_trees import AVLTreeMap
+a = AVLTreeMap()
+seq = [44, 17, 62, 32, 50, 78, 48, 54]
+for i in seq:
+    a[i] = i
+print(a)
+print('------------------------------------------------')
+del a[32]
+print(a)
+```
+
 
 
 

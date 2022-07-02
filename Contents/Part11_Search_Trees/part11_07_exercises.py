@@ -142,23 +142,49 @@ if __name__ == '__main__':
     #     a.setdefault(num, num)
     #     print(a)
 
-    from DataStructures.binary_search_trees import TreeMap
-    from copy import deepcopy
-    a = TreeMap()
-    for i in range(3):
+    # from DataStructures.binary_search_trees import TreeMap
+    # from copy import deepcopy
+    # a = TreeMap()
+    # for i in range(3):
+    #     a[i] = i
+    # print(a)
+    #
+    # b = deepcopy(a)
+    # b._rotate(b.right(b.right(b.root())))
+    # print(b)
+    #
+    # c = deepcopy(a)
+    # c._rotate(c.right(c.root()))
+    # print(c)
+    #
+    # c._rotate(c.right(c.root()))
+    # print(c)
+    #
+    # c._rotate(c.left(c.left(c.root())))
+    # print(c)
+
+    # from DataStructures.binary_search_trees import TreeMap
+    # a = TreeMap()
+    # for i in range(10):
+    #     a[i] = i
+    # print(a)
+    # a.remove_range(3, 7)
+    # print(a)
+
+    # from DataStructures.binary_search_trees import AVLTreeMap
+    # a = AVLTreeMap()
+    # for i in range(10):
+    #     a[i] = i
+    # print(a)
+    # a.remove_range(3, 7)
+    # print(a)
+
+    from DataStructures.binary_search_trees import AVLTreeMap
+    a = AVLTreeMap()
+    seq = [44, 17, 62, 32, 50, 78, 48, 54]
+    for i in seq:
         a[i] = i
     print(a)
-
-    b = deepcopy(a)
-    b._rotate(b.right(b.right(b.root())))
-    print(b)
-
-    c = deepcopy(a)
-    c._rotate(c.right(c.root()))
-    print(c)
-
-    c._rotate(c.right(c.root()))
-    print(c)
-
-    c._rotate(c.left(c.left(c.root())))
-    print(c)
+    print('------------------------------------------------')
+    del a[32]
+    print(a)

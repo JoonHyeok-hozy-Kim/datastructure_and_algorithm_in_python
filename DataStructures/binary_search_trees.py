@@ -246,6 +246,20 @@ class TreeMap(LinkedBinaryTree, MapBase):
                     leaf = self._add_left(walk, self._Item(k, d))
         self._rebalance_insert(leaf)
 
+    def remove_range(self, start, stop):
+        if not self.is_empty():
+            if start is None:
+                p = self.first()
+            else:
+                p = self.find_position(start)
+                if p.key() < start:
+                    p = self.after(p)
+
+            while p is not None and (stop is None or p.key() < stop):
+                after = self.after(p)
+                self.delete(p)
+                p = after
+
 
 class AVLTreeMap(TreeMap):
 
@@ -287,11 +301,11 @@ class AVLTreeMap(TreeMap):
             old_node = self._validate(p)
             old_height = old_node._height
             if not self._is_balanced(p):
-                # print(self)
-                # print('-> Restructuring at {}'.format(p.element()))
                 p = self._restructure(self._tall_grandchild(p))
                 self._recompute_height(self.left(p))
                 self._recompute_height(self.right(p))
+            print(self)
+            print('-> Restructuring at {}'.format(p.element()))
             self._recompute_height(p)
             new_node = self._validate(p)
             if new_node._height == old_height:
