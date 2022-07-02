@@ -179,12 +179,30 @@ if __name__ == '__main__':
     # a.remove_range(3, 7)
     # print(a)
 
-    from DataStructures.binary_search_trees import AVLTreeMap
-    a = AVLTreeMap()
-    seq = [44, 17, 62, 32, 50, 78, 48, 54]
+    # from DataStructures.binary_search_trees import AVLTreeMap, AVLBalanceTreeMap
+    # # a = AVLTreeMap()
+    # a = AVLBalanceTreeMap()
+    # seq = [44, 17, 62, 32, 50, 78, 48, 54]
+    # for i in seq:
+    #     a[i] = i
+    #     print(a)
+    # print('------------------------------------------------')
+    # del a[32]
+    # print(a)
+    # del a[50]
+    # print(a)
+
+    from DataStructures.binary_search_trees_applications import TreeMapBeforeAfter, AVLBalanceTreeMapInitial, AVLBalanceTreeMap
+    from random import randint
+    # a = TreeMapBeforeAfter()
+    a = AVLBalanceTreeMap()
+    seq = [randint(0, 99) for i in range(10)]
+    # seq = [i for i in range(10)]
     for i in seq:
+        print('Insert : {}'.format(i))
         a[i] = i
-    print(a)
-    print('------------------------------------------------')
-    del a[32]
-    print(a)
+        print(a)
+    for j in seq:
+        print('Delete : {}'.format(j))
+        del a[j]
+        print(a)
