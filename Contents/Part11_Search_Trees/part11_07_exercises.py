@@ -1,3 +1,52 @@
+from DataStructures.binary_search_trees import RedBlackTreeMap
+def red_black_join(T, U):
+    t_walk = T.root()
+    while T.right(t_walk) is not None:
+        t_walk = T.right(t_walk)
+    mid = t_walk.element()
+    T.delete(t_walk)
+    new_tree = RedBlackTreeMap()
+    new_tree[mid._key] = mid._value
+    new_tree.root()._node._left = T.root()._node
+    new_tree.root()._node._right = U.root()._node
+    return new_tree
+
+def red_black_split(T, k):
+    T1 = RedBlackTreeMap()
+    T2 = RedBlackTreeMap()
+    p = T.root()
+    if k == p.key():
+        T1._sentinel._left = p._node._left
+        T2._sentinel._left = p._node._right
+    else:
+        g, s, t = greatest_min_smallest_max(T, T.root(), k)
+        if k < p.key():
+            s._left = t._right
+            T1._sentinel._left = T.root()._node
+
+        else:
+            g._right = t._left
+
+
+def greatest_min_smallest_max(T, p, k):
+    greatest_min = None
+    smallest_max = None
+    target_node = None
+    while p is not None:
+        if k == p.key():
+            target_node = p._node
+        elif k < p.key():
+            if smallest_max is None or smallest_max._element._key > p.key():
+                smallest_max = p._node
+            if T.left(p) is not None:
+                p = T.left(p)
+        else:
+            if greatest_min is None or greatest_min._element._key < p.key():
+                greatest_min = p._node
+            if T.right(p) is not None:
+                p = T.right(p)
+    return greatest_min, smallest_max, target_node
+
 
 
 
@@ -207,26 +256,68 @@ if __name__ == '__main__':
     #     del a[j]
     #     print(a)
 
-    from DataStructures.binary_search_trees import SplayTreeMap, RedBlackTreeMap
-    from random import randint
-    t1 = SplayTreeMap()
-    t2 = RedBlackTreeMap()
-    seq = [randint(0,1000) for i in range(10)]
-    for i in seq:
-        t1[i] = i
-        t2[i] = i
-    t1_inorder = ['Splay Tree inorder    : ']
-    t2_inorder = ['RedBlack Tree inorder : ']
-    for t1_walk in t1.inorder():
-        t1_inorder.append(str(t1_walk.element()))
-        t1_inorder.append(' -> ')
-    for t2_walk in t2.inorder():
-        t2_inorder.append(str(t2_walk.element()))
-        t2_inorder.append(' -> ')
-    print('Splay Tree')
-    print(t1)
-    print(''.join(t1_inorder))
-    print('---------------------------------------------------')
-    print('RedBlack Tree')
-    print(t2)
-    print(''.join(t2_inorder))
+    # from DataStructures.binary_search_trees import SplayTreeMap, RedBlackTreeMap
+    # from random import randint
+    # t1 = SplayTreeMap()
+    # t2 = RedBlackTreeMap()
+    # seq = [randint(0,1000) for i in range(10)]
+    # for i in seq:
+    #     t1[i] = i
+    #     t2[i] = i
+    # t1_inorder = ['Splay Tree inorder    : ']
+    # t2_inorder = ['RedBlack Tree inorder : ']
+    # for t1_walk in t1.inorder():
+    #     t1_inorder.append(str(t1_walk.element()))
+    #     t1_inorder.append(' -> ')
+    # for t2_walk in t2.inorder():
+    #     t2_inorder.append(str(t2_walk.element()))
+    #     t2_inorder.append(' -> ')
+    # print('Splay Tree')
+    # print(t1)
+    # print(''.join(t1_inorder))
+    # print('---------------------------------------------------')
+    # print('RedBlack Tree')
+    # print(t2)
+    # print(''.join(t2_inorder))
+
+    # from DataStructures.binary_search_trees import RedBlackTreeMap
+    # T = RedBlackTreeMap()
+    # U = RedBlackTreeMap()
+    # m = 10
+    # n = 12
+    # cnt = 0
+    # for i in range(m):
+    #     cnt += 1
+    #     T[cnt] = cnt
+    # for i in range(n):
+    #     cnt += 1
+    #     U[cnt] = cnt
+    # print(T)
+    # print(U)
+    #
+    # V = red_black_join(T, U)
+    # v_root = V.root()
+    # print(v_root.element())
+    # print(V.left(v_root).element())
+    # print(V.right(v_root).element())
+
+    # from random import randint
+    # T = RedBlackTreeMap()
+    # n = 10
+    # k = randint(0, n-1)
+    # for i in range(10):
+    #     T[i] = i
+    # print(k)
+    # print(T)
+    # T1, T2 = red_black_split(T, k)
+    # print(T1.root().element())
+    # print(T2.root().element())
+
+    T = RedBlackTreeMap()
+    for i in range(16):
+        T[i] = i
+    print(T)
+    g, s = greatest_min_smallest_max(T, T.root(), 8)
+    print(g,s)
+    print(g._element) if g is not None else print(None)
+    print(s._element) if s is not None else print(None)

@@ -484,6 +484,74 @@ print(''.join(t2_inorder))
   * During the first rotation, the parent of the inserted node will be disconnected from the grandparent, which can be seen as non-consecutiveness.
 
 ### C-11.49 Show that at most one node in an AVL tree becomes temporarily unbalanced after the immediate deletion of a node as part of the standard \_\_delitem__ map operation.
+* Sol.) Just before the deletion was made, the AVL must have been keeping the property that every child's height may differ by one.
+  * Thus, in the case that two children have the same height, the parent must be balanced even after the deletion.
+  * If the parent was unbalanced in the first place, there can be two possibilities.
+  * One is that the deletion makes the parent balance by decreasing the height of a children that was higher than its sibling.
+  * The other must be that the lower one becomes more lower due to the deletion and here comes the un-balancedness.
+
+### C-11.50 Let T and U be (2,4) trees storing n and m entries, respectively, such that all the entries in T have keys less than the keys of all the entries in U. Describe an O(logn+logm)-time method for joining T and U into a single tree that stores all the entries in T and U.
+* Sol.) Get the largest from T or the smallest key from U which will take O(logn) or O(lonm).
+  * Then put that value as the root of the new (2,4) tree which is in 2-node form.
+  * Put T and U under the new root.
+
+### C-11.51 Repeat the previous problem for red-black trees T and U.
+```python
+from DataStructures.binary_search_trees import RedBlackTreeMap
+def red_black_join(T, U):
+    t_walk = T.root()
+    while T.right(t_walk) is not None:
+        t_walk = T.right(t_walk)
+    mid = t_walk.element()
+    T.delete(t_walk)
+    new_tree = RedBlackTreeMap()
+    new_tree[mid._key] = mid._value
+    new_tree.root()._node._left = T.root()._node
+    new_tree.root()._node._right = U.root()._node
+    return new_tree
+
+if __name__ == '__main__':
+    T = RedBlackTreeMap()
+    U = RedBlackTreeMap()
+    m = 10
+    n = 12
+    cnt = 0
+    for i in range(m):
+        cnt += 1
+        T[cnt] = cnt
+    for i in range(n):
+        cnt += 1
+        U[cnt] = cnt
+    print(T)
+    print(U)
+
+    V = red_black_join(T, U)
+    v_root = V.root()
+    print(v_root.element())
+    print(V.left(v_root).element())
+    print(V.right(v_root).element())
+```
+
+### C-11.52 Justify Proposition 11.7.
+* Justification
+  * Consider the case that the total height is 2.
+  * Assume that d-nodes that have external nodes have (d-1) elements each.
+  * Thus, for each node, there will be one more external node than its respective elements. (A)
+  * Suppose that there are f such nodes with external nodes.
+  * Then their parents must have (f-1) elements.
+  * By (A) the number of external nodes minus the number of elements in the nodes with external nodes is equal to 1 times the number of nodes that have external nodes, which is f.
+  * Thus, if we deduct the number of (f-1) elements from the remaining f, only one will left, which means that the number of external nodes is bigger by one than the total number of elements in a multiway search tree.
+  * This property can be applied to the tree with height higher than 2.
+
+### C-11.53 The Boolean indicator used to mark nodes in a red-black tree as being “red” or “black” is not strictly needed when we have distinct keys. Describe a scheme for implementing a red-black tree without adding any extra space to standard binary search tree nodes.
+* Sol.) Maybe the tree itself can have a map that contains the keys that are black nodes.
+  * Whenever recognition of the color of a node is needed, we can check that map.
+
+### C-11.54 Let T be a red-black tree storing n entries, and let k be the key of an entry in T. Show how to construct from T, in O(logn) time, two red-black trees T' and T'', such that T' contains all the keys of T less than k, and T'' contains all the keys of T greater than k. This operation destroys T.
+
+
+
+
 
 
 
