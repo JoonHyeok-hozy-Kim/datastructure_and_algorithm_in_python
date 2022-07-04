@@ -58,8 +58,6 @@ c
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 h
 8Contents/Part11_Search_Trees/part11_06_red_black_tree.py,8\0\80f7007b98a97c324e34782b03529ec5afaf2b3b
-V
-&DataStructures/multiway_search_tree.py,0\1\0177051c4891b42084d4086988e323d1cc80fe98
 G
 DataStructures/stack.py,0\3\033d662c2c9f5d0fe34677c166a75983f114811e
 G

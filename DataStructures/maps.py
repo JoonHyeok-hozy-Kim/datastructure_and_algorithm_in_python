@@ -113,3 +113,6 @@ class MultiMap:
         for v in secondary:
             yield (k, v)
 
+
+class Map:
+    pass
