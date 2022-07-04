@@ -548,9 +548,118 @@ if __name__ == '__main__':
   * Whenever recognition of the color of a node is needed, we can check that map.
 
 ### C-11.54 Let T be a red-black tree storing n entries, and let k be the key of an entry in T. Show how to construct from T, in O(logn) time, two red-black trees T' and T'', such that T' contains all the keys of T less than k, and T'' contains all the keys of T greater than k. This operation destroys T.
+```python
+def red_black_split(T, k):
+    T1 = RedBlackTreeMap()
+    T2 = RedBlackTreeMap()
+    p = T.root()
+    if k == p.key():
+        T1._sentinel._left = p._node._left
+        T2._sentinel._left = p._node._right
+    else:
+        node_set = _get_greatest_smallest_nodes(T, k)
+        target_position = T._make_position(node_set['target_node'])
+        if k < p.key():
+            if node_set['min_node'] is None:
+                parent = T.parent(target_position)
+                minor_subtree_root_node = target_position._node._right
+                target_position._node._right = T._sentinel
+                new_tree = T.split_subtree(target_position)
+                parent._node._left = minor_subtree_root_node
+
+            else:
+                node_set['greater_min']._left = target_position._node._right
+                node_set['min_node']._right = target_position._node._left
+                if node_set['min_node']._parent != node_set['greater_min']:
+                    node_set['min_node']._parent._left = node_set['greater_min']
+                else:
+                    node_set['min_node']._parent._left = T._sentinel
+
+                new_tree = RedBlackTreeMap()
+                temp = T._make_position(node_set['min_node'])
+                new_tree._size = T._modify_sentinel(temp, T._sentinel, new_tree._sentinel)
+
+        else:
+            if node_set['max_node'] is None:
+                parent = T.parent(target_position)
+                minor_subtree_root_node = target_position._node._left
+                target_position._node._left = T._sentinel
+                new_tree = T.split_subtree(target_position)
+                parent._node._right = minor_subtree_root_node
+
+            else:
+                node_set['smaller_max']._right = target_position._node._left
+                node_set['max_node']._left = target_position._node._right
+                if node_set['max_node']._parent._right != node_set['smaller_max']:
+                    node_set['max_node']._parent._right = node_set['smaller_max']
+                else:
+                    node_set['max_node']._parent._left = T._sentinel
+
+                new_tree = RedBlackTreeMap()
+                temp = T._make_position(node_set['max_node'])
+                new_tree._size = T._modify_sentinel(temp, T._sentinel, new_tree._sentinel)
+
+    return T, new_tree
 
 
+def _get_greatest_smallest_nodes(T, k):
+    max_node = None
+    greater_min = None
+    min_node = None
+    smaller_max = None
+    target_node = None
+    p = T.root()
+    if not k == p.key():
+        while not T.is_leaf(p):
+            if k < p.key():
+                if max_node is None or p.key() > max_node._element._key:
+                    max_node = p._node
+                if greater_min is None or p.key() < greater_min._element._key:
+                    greater_min = p._node
+                if T.left(p) is not None:
+                    p = T.left(p)
+            elif k > p.key():
+                if min_node is None or p.key() > min_node._element._key:
+                    min_node = p._node
+                if smaller_max is None or p.key() < smaller_max._element._key:
+                    smaller_max = p._node
+                if T.right(p) is not None:
+                    p = T.right(p)
+            else:
+                break
+    if k == p.key():
+        target_node = p._node
+    return {
+        'max_node' : max_node,
+        'greater_min' : greater_min,
+        'min_node' : min_node,
+        'smaller_max' : smaller_max,
+        'target_node' : target_node,
+    }
 
+if __name__ == '__main__':
+    T = RedBlackTreeMap()
+    for i in range(30):
+        T[i] = i
+    print(T)
+    T1, T2 = red_black_split(T, 5)
+    print(T1)
+    print(T2)
+```
+
+### C-11.55 Show that the nodes of any AVL tree T can be colored “red” and “black” so that T becomes a red-black tree.
+* Sol.) Since AVL Tree keeps the height balance property the depth of the external node may differ at most by one.
+  * Furthermore, since AVL tree is a binary tree, each node has at most two children.
+  * Thus, consider the external nodes of AVL tree that has the greatest depths.
+  * By merging these external nodes into their parents, parents may become 3-node or 4-node of (2,4) tree.
+  * In other words, AVL tree can be seen as a (2,4) tree.
+  * Therefore, it can also be converted into Red-Black tree.
+
+### C-11.56 The standard splaying step requires two passes, one downward pass to find the node x to splay, followed by an upward pass to splay the node x. Describe a method for splaying and searching for x in one downward pass. Each substep now requires that you consider the next two nodes in the path down to x, with a possible zig substep performed at the end. Describe how to perform the zig-zig, zig-zag, and zig steps.
+* Sol.) Top-Down Splay Tree
+  * How to?
+    * <a href="https://www.csee.umbc.edu/courses/undergraduate/341/fall02/Lectures/Splay/TopDownSplay.ppt">Explanation</a> 
+  * Implementation : <a href="">SplayTreeMapTopDown</a> 
 
 
 

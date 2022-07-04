@@ -203,3 +203,114 @@ class AVLBalanceTreeMapBeforeAfter(TreeMapBeforeAfter):
 
     def _rebalance_delete(self, p):
         self._rebalance(p)
+
+
+from DataStructures.tree import LinkedBinaryTree
+class SplayTreeMapTopDown(TreeMap):
+
+    def _zig_zig_rotate_node(self, x):
+        y = x._parent
+        if x == y._left:
+            self._relink(y, x._right, True)
+            self._relink(x, y, False)
+        else:
+            self._relink(y, x._left, False)
+            self._relink(x, y, True)
+
+        return x
+
+    def _splay_search(self, p, k):
+        l_subtree = LinkedBinaryTree()
+        l_subtree._size = 1
+        l_subtree_target = None
+        r_subtree = LinkedBinaryTree()
+        r_subtree._size = 1
+        r_subtree_target = None
+
+        print('Loop starts!')
+        while p is not None:
+            p._node._parent = None
+            self._root = p._node
+
+            if k == p.key():
+
+                if l_subtree._root is not None:
+                    l_subtree_target._right = p._node._left
+                    if p._node._left is not None:
+                        p._node._left._parent = l_subtree_target
+                    l_subtree._root._parent = p._node
+                    p._node._left = l_subtree._root
+
+                if r_subtree._root is not None:
+                    r_subtree_target._left = p._node._right
+                    if p._node._right is not None:
+                        p._node._right._parent = r_subtree_target
+                    r_subtree._root._parent = p._node
+                    p._node._right = r_subtree._root
+                break
+
+            elif k < p.key():
+                child = self.left(p)
+                zig_flag = True
+                move_node = p._node
+                if not self.is_leaf(child):
+                    if k < child.key() and self.left(child) is not None:
+                        # Zig-Zig Case
+                        # print('[r_subtree] Zig-Zig')
+                        zig_flag = False
+                        grand_child = self.left(child)
+
+                        p._node._left._left = None
+                        move_node = self._zig_zig_rotate_node(p._node._left)
+                        p = grand_child
+
+                if zig_flag:
+                    # Zig Case
+                    # print('[r_subtree] Zig')
+                    p._node._left = None
+                    move_node = p._node
+                    p = child
+
+                # print('move_node : {}'.format(move_node._element))
+                if r_subtree.root() is None:
+                    r_subtree._root = move_node
+                else:
+                    r_subtree_target._left = move_node
+                    move_node._parent = r_subtree_target
+                r_subtree_target = move_node
+
+                # print('r_subtree')
+                # print(r_subtree)
+
+            else:
+                child = self.right(p)
+                zig_flag = True
+
+                if not self.is_leaf(child):
+                    if k > child.key() and self.right(child) is not None:
+                        # Zig-Zig Case
+                        # print('[l_subtree] Zig-Zig')
+                        zig_flag = False
+                        grand_child = self.right(child)
+
+                        p._node._right._right = None
+                        move_node = self._zig_zig_rotate_node(p._node._right)
+                        p = grand_child
+
+                if zig_flag:
+                    # Zig Case
+                    # print('[l_subtree] Zig')
+                    p._node._right = None
+                    move_node = p._node
+                    p = child
+
+                # print('move_node : {}'.format(move_node._element))
+                if l_subtree.root() is None:
+                    l_subtree._root = move_node
+                else:
+                    l_subtree_target._right = move_node
+                    move_node._parent = l_subtree_target
+                l_subtree_target = move_node
+                #
+                # print('l_subtree')
+                # print(l_subtree)

@@ -19,37 +19,85 @@ def red_black_split(T, k):
         T1._sentinel._left = p._node._left
         T2._sentinel._left = p._node._right
     else:
-        g, s, t = greatest_min_smallest_max(T, T.root(), k)
+        node_set = _get_greatest_smallest_nodes(T, k)
+        target_position = T._make_position(node_set['target_node'])
         if k < p.key():
-            s._left = t._right
-            T1._sentinel._left = T.root()._node
+            if node_set['min_node'] is None:
+                parent = T.parent(target_position)
+                minor_subtree_root_node = target_position._node._right
+                target_position._node._right = T._sentinel
+                new_tree = T.split_subtree(target_position)
+                parent._node._left = minor_subtree_root_node
+
+            else:
+                node_set['greater_min']._left = target_position._node._right
+                node_set['min_node']._right = target_position._node._left
+                if node_set['min_node']._parent != node_set['greater_min']:
+                    node_set['min_node']._parent._left = node_set['greater_min']
+                else:
+                    node_set['min_node']._parent._left = T._sentinel
+
+                new_tree = RedBlackTreeMap()
+                temp = T._make_position(node_set['min_node'])
+                new_tree._size = T._modify_sentinel(temp, T._sentinel, new_tree._sentinel)
 
         else:
-            g._right = t._left
+            if node_set['max_node'] is None:
+                parent = T.parent(target_position)
+                minor_subtree_root_node = target_position._node._left
+                target_position._node._left = T._sentinel
+                new_tree = T.split_subtree(target_position)
+                parent._node._right = minor_subtree_root_node
+
+            else:
+                node_set['smaller_max']._right = target_position._node._left
+                node_set['max_node']._left = target_position._node._right
+                if node_set['max_node']._parent._right != node_set['smaller_max']:
+                    node_set['max_node']._parent._right = node_set['smaller_max']
+                else:
+                    node_set['max_node']._parent._left = T._sentinel
+
+                new_tree = RedBlackTreeMap()
+                temp = T._make_position(node_set['max_node'])
+                new_tree._size = T._modify_sentinel(temp, T._sentinel, new_tree._sentinel)
+
+    return T, new_tree
 
 
-def greatest_min_smallest_max(T, p, k):
-    greatest_min = None
-    smallest_max = None
+def _get_greatest_smallest_nodes(T, k):
+    max_node = None
+    greater_min = None
+    min_node = None
+    smaller_max = None
     target_node = None
-    while p is not None:
-        if k == p.key():
-            target_node = p._node
-        elif k < p.key():
-            if smallest_max is None or smallest_max._element._key > p.key():
-                smallest_max = p._node
-            if T.left(p) is not None:
-                p = T.left(p)
-        else:
-            if greatest_min is None or greatest_min._element._key < p.key():
-                greatest_min = p._node
-            if T.right(p) is not None:
-                p = T.right(p)
-    return greatest_min, smallest_max, target_node
-
-
-
-
+    p = T.root()
+    if not k == p.key():
+        while not T.is_leaf(p):
+            if k < p.key():
+                if max_node is None or p.key() > max_node._element._key:
+                    max_node = p._node
+                if greater_min is None or p.key() < greater_min._element._key:
+                    greater_min = p._node
+                if T.left(p) is not None:
+                    p = T.left(p)
+            elif k > p.key():
+                if min_node is None or p.key() > min_node._element._key:
+                    min_node = p._node
+                if smaller_max is None or p.key() < smaller_max._element._key:
+                    smaller_max = p._node
+                if T.right(p) is not None:
+                    p = T.right(p)
+            else:
+                break
+    if k == p.key():
+        target_node = p._node
+    return {
+        'max_node' : max_node,
+        'greater_min' : greater_min,
+        'min_node' : min_node,
+        'smaller_max' : smaller_max,
+        'target_node' : target_node,
+    }
 
 if __name__ == '__main__':
     pass
@@ -313,11 +361,49 @@ if __name__ == '__main__':
     # print(T1.root().element())
     # print(T2.root().element())
 
-    T = RedBlackTreeMap()
-    for i in range(16):
-        T[i] = i
-    print(T)
-    g, s = greatest_min_smallest_max(T, T.root(), 8)
-    print(g,s)
-    print(g._element) if g is not None else print(None)
-    print(s._element) if s is not None else print(None)
+    # T = RedBlackTreeMap()
+    # for i in range(30):
+    #     T[i] = i
+    # print(T)
+    # T1, T2 = red_black_split(T, 5)
+    # print(T1)
+    # print(T2)
+
+    # from DataStructures.binary_search_trees import AVLTreeMap, RedBlackTreeMap
+    # a = AVLTreeMap()
+    # b = RedBlackTreeMap()
+    # for i in range(23):
+    #     a[i] = i
+    #     b[i] = i
+    # print(a)
+    # print(b)
+
+    # from DataStructures.binary_search_trees import *
+    # from random import randint
+    # a = TreeMap()
+    # b = AVLTreeMap()
+    # c = SplayTreeMap()
+    # d = RedBlackTreeMap()
+    # for i in range(10):
+    #     n = randint(0,100)
+    #     a[n] = n
+    #     b[n] = n
+    #     c[n] = n
+    #     d[n] = n
+    # print(a)
+    # print(b)
+    # print(c)
+    # print(d)
+
+    from DataStructures.binary_search_trees_applications import SplayTreeMapTopDown
+    a = SplayTreeMapTopDown()
+    seq = [100, 99, 98, 30, 66, 31, 32, 33]
+    cnt = 0
+    for i in seq:
+        a[i] = chr(cnt+65)
+        cnt += 1
+    a[34] = 'X'
+    print(a)
+    a._splay_search(a.root(), 34)
+    print(a)
+

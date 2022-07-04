@@ -605,3 +605,451 @@ class LinkedHeapBinaryTree(LinkedBinaryTree):
                 break
         return p
 # Heap Implementation with LinkedBinaryTree ends.
+
+
+from tree import BinaryTree
+class LinkedBinaryTreeSentinel(BinaryTree):
+    class _Node:
+        __slots__ = '_element', '_parent', '_left', '_right'
+
+        def __init__(self, element, parent=None, left=None, right=None):
+            self._element = element
+            self._parent = parent
+            self._left = left
+            self._right = right
+
+    class Position(BinaryTree.Position):
+
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(self) == type(other) and self._node == other._node
+
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be a proper Position type.')
+        if p._container is not self:
+            raise ValueError('p does not belong to this container.')
+        if p._node._parent == p._node:
+            raise ValueError('p is no longer valid.')
+        return p._node
+
+    def _make_position(self, node):
+        if node == self._sentinel or node is None:
+            return None
+        return self.Position(self, node)
+
+    def __init__(self):
+        self._size = 0
+        self._sentinel = self._Node(None, None, None, None)
+
+        # Class members for the explicit iteration logic
+        self._preorder_iter = None
+        self._preorder_iter_stop = False
+        self._preorder_iter_cnt = 0
+
+    def __len__(self):
+        return self._size
+
+    def root(self):
+        return self._make_position(self._sentinel._left)
+
+    def parent(self, p):
+        node = self._validate(p)
+        return self._make_position(node._parent)
+
+    def left(self, p):
+        node = self._validate(p)
+        return self._make_position(node._left)
+
+    def right(self, p):
+        node = self._validate(p)
+        return self._make_position(node._right)
+
+    ''' Implemented in BinaryTree class by R-8.10 '''
+    ''' Method overriding due to sentinel '''
+    def num_children(self, p):
+        result = 0
+        if self.left(p) is not None:
+            result += 1
+        if self.right(p) is not None:
+            result += 1
+        return result
+
+    def _add_root(self, e):
+        if self.root() is not None:
+            raise ValueError('Root already exists.')
+        root = self._Node(e, self._sentinel, self._sentinel, self._sentinel)
+        self._sentinel._left = root
+        self._size += 1
+        return self._make_position(root)
+
+    def _add_left(self, p, e):
+        node = self._validate(p)
+        if node._left != self._sentinel:
+            raise ValueError('Left already exists.')
+        node._left = self._Node(e, node, self._sentinel, self._sentinel)
+        self._size += 1
+        return self._make_position(node._left)
+
+    def _add_right(self, p, e):
+        node = self._validate(p)
+        if node._right != self._sentinel:
+            raise ValueError('Right already exists.')
+        node._right = self._Node(e, node, self._sentinel, self._sentinel)
+        self._size += 1
+        return self._make_position(node._right)
+
+    def _replace(self, p, e):
+        node = self._validate(p)
+        old = node._element
+        node._element = e
+        self._make_position(node)
+        return old
+
+    def _delete(self, p):
+        node = self._validate(p)
+        if self.num_children(p) == 2:
+            raise ValueError('p has two children.')
+        child = node._left if node._left != self._sentinel else node._right
+        if child != self._sentinel:
+            child._parent = node._parent
+        if p == self.root():
+            self._sentinel._left = child
+            child._parent = self._sentinel
+        else:
+            parent = node._parent
+            if node == parent._left:
+                parent._left = child
+            else:
+                parent._right = child
+        self._size -= 1
+        node._parent = node
+        return node._element
+
+    def _attach(self, p, t1, t2):
+        node = self._validate(p)
+        if not self.is_leaf(p):
+            raise ValueError('Position must be a leaf.')
+        if not (type(self) == type(t1) == type(t2) or (t1 is None and type(self) == type(t2)) or (t2 is None and type(self) == type(t1))):
+            raise TypeError('Tree types must match.')
+        if t1 is not None:
+            self._size += len(t1)
+        if t2 is not None:
+            self._size += len(t2)
+        # print('Attach {} <- {}, {}'.format(node._element, t1._root._element, t2._root._element))
+        if t1 is not None and not t1.is_empty():
+            for p in t1.postorder():
+                p_node = t1._validate(p)
+                if p_node._parent == t1._sentinel:
+                    p_node._parent = node
+                if p_node._left == t1._sentinel:
+                    p_node._left = self._sentinel
+                if p_node._right == t1._sentinel:
+                    p_node._right = self._sentinel
+            node._left = t1.root()._node
+            t1._size = 0
+            self._make_position(node._left)
+
+        if t2 is not None and not t2.is_empty():
+            for p in t2.postorder():
+                p_node = t2._validate(p)
+                if p_node._parent == t2._sentinel:
+                    p_node._parent = node
+                if p_node._left == t2._sentinel:
+                    p_node._left = self._sentinel
+                if p_node._right == t2._sentinel:
+                    p_node._right = self._sentinel
+            node._right = t2.root()._node
+            t2._size = 0
+            self._make_position(node._right)
+
+    # Choose traversal type
+    def positions(self):
+        return self.preorder()
+        # return self.postorder()
+        # return self.breadthfirst()
+        # return self.inorder()
+
+    # [C-8.51] Explicit preorder iteration Logic starts.
+    def __next__(self):
+        if self._preorder_iter_cnt == self._size-1:
+            raise StopIteration
+        if self._preorder_iter is None:
+            self._preorder_iter = self.root()
+        else:
+            self._next_preorder(self.root())
+        self._preorder_iter_stop = False
+        return self._preorder_iter
+
+    def _next_preorder(self, p):
+        if self._preorder_iter_stop:
+            self._preorder_iter = p
+            self._preorder_iter_cnt += 1
+            return True
+        if p == self._preorder_iter:
+            self._preorder_iter_stop = True
+        if not self.is_leaf(p):
+            for c in self.children(p):
+                if self._next_preorder(c):
+                    return True
+
+    def __iter__(self):
+        return self
+    # [C-8.51] Explicit preorder iteration Logic ends.
+
+    def preorder(self):
+        if not self.is_empty():
+            for p in self._subtree_preorder(self.root()):
+                yield p
+
+    def _subtree_preorder(self, p):
+        yield p
+        for c in self.children(p):
+            for other in self._subtree_preorder(c):
+                yield other
+
+    def postorder(self):
+        if not self.is_empty():
+            for p in self._subtree_postorder(self.root()):
+                yield p
+
+    def _subtree_postorder(self, p):
+        for c in self.children(p):
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p
+
+    def breadthfirst(self, p=None):
+        from collections import deque
+        dq = deque()
+        if p is None:
+            p = self.root()
+        dq.append(p)
+        while len(dq) > 0:
+            popped = dq.popleft()
+            yield popped
+            dq.extend(self.children(popped))
+
+    def level_numbering(self, p):
+        idx = 0
+        for position in self.breadthfirst():
+            if position == p:
+                return idx
+            idx +=1
+
+    def inorder(self):
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+
+    def _subtree_inorder(self, p):
+        if self.left(p) is not None:
+            for left_descendent in self._subtree_inorder(self.left(p)):
+                yield left_descendent
+        yield p
+        if self.right(p) is not None:
+            for right_descendent in self._subtree_inorder(self.right(p)):
+                yield right_descendent
+
+    def fill_tree(self, n):
+        from DataStructures.queue import LinkedQueue
+        idx = 0
+        Q = LinkedQueue()
+        Q.enqueue(self._add_root(idx))
+        while idx < n-1:
+            idx += 1
+            dequeued = Q.dequeue()
+            Q.enqueue(self._add_left(dequeued, idx))
+            if idx >= n-1:
+                break
+            idx += 1
+            Q.enqueue(self._add_right(dequeued, idx))
+
+    def fill_tree_height(self, height):
+        if not self.is_empty():
+            raise ValueError('Tree is not empty.')
+        self.fill_tree(pow(2, height)-1)
+
+    # C-8.38
+    def _delete_subtree(self, p):
+        self._validate(p)
+        for descendant in self._subtree_postorder(p):
+            self._delete(descendant)
+
+    # C-8.39
+    def _swap(self, p, q):
+        p_node = self._validate(p)
+        q_node = self._validate(q)
+
+        p_parent_node = self._sentinel if p == self.root() else self._validate(self.parent(p))
+        p_left_flag = False
+        if p_parent_node._left == p_node:
+            p_left_flag = True
+        p_l_child_node = self._sentinel
+        p_r_child_node = self._sentinel
+        if self.left(p) is not None:
+            p_l_child_node = self._validate(self.left(p))
+        if self.right(p) is not None:
+            p_r_child_node = self._validate(self.right(p))
+
+        q_parent_node = self._sentinel if q == self.root() else self._validate(self.parent(q))
+        q_left_flag = False
+        if q_parent_node._left == q_node:
+            q_left_flag = True
+        q_l_child_node = self._sentinel
+        q_r_child_node = self._sentinel
+        if self.left(q) is not None:
+            q_l_child_node = self._validate(self.left(q))
+        if self.right(q) is not None:
+            q_r_child_node = self._validate(self.right(q))
+
+        # Case 1. p is Parent, q is child
+        if self.parent(q) == p:
+            q_node._parent = p_parent_node
+            p_node._parent = q_node
+            if p_left_flag:
+                p_parent_node._left = q_node
+            else:
+                p_parent_node._right = q_node
+
+            if p_l_child_node == q_node:
+                q_node._left = p_node
+                q_node._right = p_r_child_node
+                p_r_child_node._parent = q_node
+            elif p_r_child_node == q_node:
+                q_node._left = p_l_child_node
+                q_node._right = p_node
+                p_l_child_node._parent = q_node
+            else:
+                raise ValueError('q is not a child of p')
+            p_node._left = q_l_child_node
+            p_node._right = q_r_child_node
+            q_l_child_node._parent = p_node
+            q_r_child_node._parent = p_node
+
+        # Case 2. q is Parent, p is child
+        elif self.parent(p) == q:
+            p_node._parent = q_parent_node
+            q_node._parent = p_node
+            if q_left_flag:
+                q_parent_node._left = p_node
+            else:
+                q_parent_node._right = p_node
+
+            if q_l_child_node == p_node:
+                p_node._left = q_node
+                p_node._right = q_r_child_node
+                q_r_child_node._parent = p_node
+            elif q_r_child_node == p_node:
+                p_node._left = q_l_child_node
+                p_node._right = q_node
+                q_l_child_node._parent = p_node
+            else:
+                raise ValueError('p is not a child of q')
+            q_node._left = p_l_child_node
+            q_node._right = p_r_child_node
+            p_l_child_node._parent = q_node
+            p_r_child_node._parent = q_node
+
+        # Case 3. Other relations
+        else:
+            # Parent Shift
+            if p_left_flag:
+                p_parent_node._left = q_node
+            else:
+                p_parent_node._right = q_node
+            q_node._parent = p_parent_node
+
+            if q_left_flag:
+                q_parent_node._left = p_node
+            else:
+                q_parent_node._right = p_node
+            p_node._parent = q_parent_node
+
+            # Left Child Shift
+            p_node._left = q_l_child_node
+            q_node._left = p_l_child_node
+            p_l_child_node._parent = q_node
+            q_l_child_node._parent = p_node
+
+            # Right Child Shift
+            p_node._right = q_r_child_node
+            q_node._right = p_r_child_node
+            p_r_child_node._parent = q_node
+            q_r_child_node._parent = p_node
+
+        return [self._make_position(p_node), self._make_position(q_node)]
+
+    # Binary string idea from C-9.34 starts
+    def last(self):
+        from math import log2
+        if len(self) == 1:
+            return self.root()
+        n = len(self)
+        max_height = int(log2(n)) + 1
+        leaf_cnt = n - pow(2, max_height-1) + 1
+        path = self._binary_exp(leaf_cnt-1, max_height-1)
+        return self._decode_binary_string_path(path)
+
+    def _binary_exp(self, n, digit):
+        result_list = []
+        if n == 0:
+            result_list.append(str(0))
+        else:
+            while n > 0:
+                result_list.append(str(n % 2))
+                n //= 2
+        for i in range(digit - len(result_list)):
+            result_list.append('0')
+        return ''.join(reversed(result_list))
+
+    def _decode_binary_string_path(self, s):
+        p = self.root()
+        for i in s:
+            if i == '0':
+                if self.left(p) is None:
+                    return None
+                p = self.left(p)
+            else:
+                if self.right(p) is None:
+                    return None
+                p = self.right(p)
+        return p
+    # Binary string idea from C-9.34 ends
+
+    def split_subtree(self, p):
+        target_node = p._node
+        parent_node = self._validate(self.parent(p))
+        new_subtree = type(self)()
+        new_subtree._size = self._modify_sentinel(p, self._sentinel, new_subtree._sentinel)
+
+        if parent_node._left == target_node:
+            parent_node._left = self._sentinel
+        else:
+            parent_node._right = self._sentinel
+
+        return new_subtree
+
+    def _modify_sentinel(self, p, old_sentinel, new_sentinel, init=True):
+        size = 0
+        if p._node._left == old_sentinel:
+            p._node._left = new_sentinel
+            if p._node._right == old_sentinel:
+                p._node._right = new_sentinel
+                return 1
+        elif p._node._right == old_sentinel:
+            p._node._right = new_sentinel
+        if self.left(p) is not None:
+            size += self._modify_sentinel(self.left(p), old_sentinel, new_sentinel, False)
+        if self.right(p) is not None:
+            size += self._modify_sentinel(self.right(p), old_sentinel, new_sentinel, False)
+        if init:
+            p._node._parent = new_sentinel
+            new_sentinel._left = p._node
+        return size + 1

@@ -83,6 +83,7 @@ class BinaryTree(Tree):
         layout.execute()
         return layout.str_graphic()
 
+
 class LinkedBinaryTree(BinaryTree):
     class _Node:
         __slots__ = '_element', '_parent', '_left', '_right'
@@ -115,13 +116,13 @@ class LinkedBinaryTree(BinaryTree):
         return p._node
 
     def _make_position(self, node):
-        if node == self._sentinel or node is None:
+        if node is None:
             return None
         return self.Position(self, node)
 
     def __init__(self):
         self._size = 0
-        self._sentinel = self._Node(None, None, None, None)
+        self._root = None
 
         # Class members for the explicit iteration logic
         self._preorder_iter = None
@@ -132,7 +133,7 @@ class LinkedBinaryTree(BinaryTree):
         return self._size
 
     def root(self):
-        return self._make_position(self._sentinel._left)
+        return self._make_position(self._root)
 
     def parent(self, p):
         node = self._validate(p)
@@ -159,24 +160,24 @@ class LinkedBinaryTree(BinaryTree):
     def _add_root(self, e):
         if self.root() is not None:
             raise ValueError('Root already exists.')
-        root = self._Node(e, self._sentinel, self._sentinel, self._sentinel)
-        self._sentinel._left = root
+        root = self._Node(e, None, None, None)
+        self._root = root
         self._size += 1
         return self._make_position(root)
 
     def _add_left(self, p, e):
         node = self._validate(p)
-        if node._left != self._sentinel:
+        if node._left is not None:
             raise ValueError('Left already exists.')
-        node._left = self._Node(e, node, self._sentinel, self._sentinel)
+        node._left = self._Node(e, node, None, None)
         self._size += 1
         return self._make_position(node._left)
 
     def _add_right(self, p, e):
         node = self._validate(p)
-        if node._right != self._sentinel:
+        if node._right is not None:
             raise ValueError('Right already exists.')
-        node._right = self._Node(e, node, self._sentinel, self._sentinel)
+        node._right = self._Node(e, node, None, None)
         self._size += 1
         return self._make_position(node._right)
 
@@ -191,12 +192,12 @@ class LinkedBinaryTree(BinaryTree):
         node = self._validate(p)
         if self.num_children(p) == 2:
             raise ValueError('p has two children.')
-        child = node._left if node._left != self._sentinel else node._right
-        if child != self._sentinel:
+        child = node._left if node._left is not None else node._right
+        if child is not None:
             child._parent = node._parent
         if p == self.root():
-            self._sentinel._left = child
-            child._parent = self._sentinel
+            self._root = child
+            child._parent = None
         else:
             parent = node._parent
             if node == parent._left:
@@ -211,33 +212,36 @@ class LinkedBinaryTree(BinaryTree):
         node = self._validate(p)
         if not self.is_leaf(p):
             raise ValueError('Position must be a leaf.')
-        if not type(self) == type(t1) == type(t2):
+        if not (type(self) == type(t1) == type(t2) or (t1 is None and type(self) == type(t2)) or (t2 is None and type(self) == type(t1))):
             raise TypeError('Tree types must match.')
-        self._size += len(t1) + len(t2)
+        if t1 is not None:
+            self._size += len(t1)
+        if t2 is not None:
+            self._size += len(t2)
         # print('Attach {} <- {}, {}'.format(node._element, t1._root._element, t2._root._element))
-        if not t1.is_empty():
+        if t1 is not None and not t1.is_empty():
             for p in t1.postorder():
                 p_node = t1._validate(p)
-                if p_node._parent == t1._sentinel:
+                if p_node._parent is None:
                     p_node._parent = node
-                if p_node._left == t1._sentinel:
-                    p_node._left = self._sentinel
-                if p_node._right == t1._sentinel:
-                    p_node._right = self._sentinel
-            node._left = t1._root
+                if p_node._left is None:
+                    p_node._left = None
+                if p_node._right is None:
+                    p_node._right = None
+            node._left = t1.root()._node
             t1._size = 0
             self._make_position(node._left)
 
-        if not t2.is_empty():
+        if t2 is not None and not t2.is_empty():
             for p in t2.postorder():
                 p_node = t2._validate(p)
-                if p_node._parent == t2._sentinel:
+                if p_node._parent is None:
                     p_node._parent = node
-                if p_node._left == t2._sentinel:
-                    p_node._left = self._sentinel
-                if p_node._right == t2._sentinel:
-                    p_node._right = self._sentinel
-            node._right = t2._root
+                if p_node._left is None:
+                    p_node._left = None
+                if p_node._right is None:
+                    p_node._right = None
+            node._right = t2.root()._node
             t2._size = 0
             self._make_position(node._right)
 
@@ -359,23 +363,23 @@ class LinkedBinaryTree(BinaryTree):
         p_node = self._validate(p)
         q_node = self._validate(q)
 
-        p_parent_node = self._sentinel if p == self.root() else self._validate(self.parent(p))
+        p_parent_node = None if p == self.root() else self._validate(self.parent(p))
         p_left_flag = False
         if p_parent_node._left == p_node:
             p_left_flag = True
-        p_l_child_node = self._sentinel
-        p_r_child_node = self._sentinel
+        p_l_child_node = None
+        p_r_child_node = None
         if self.left(p) is not None:
             p_l_child_node = self._validate(self.left(p))
         if self.right(p) is not None:
             p_r_child_node = self._validate(self.right(p))
 
-        q_parent_node = self._sentinel if q == self.root() else self._validate(self.parent(q))
+        q_parent_node = None if q == self.root() else self._validate(self.parent(q))
         q_left_flag = False
         if q_parent_node._left == q_node:
             q_left_flag = True
-        q_l_child_node = self._sentinel
-        q_r_child_node = self._sentinel
+        q_l_child_node = None
+        q_r_child_node = None
         if self.left(q) is not None:
             q_l_child_node = self._validate(self.left(q))
         if self.right(q) is not None:
@@ -494,6 +498,33 @@ class LinkedBinaryTree(BinaryTree):
                 p = self.right(p)
         return p
     # Binary string idea from C-9.34 ends
+
+    def split_subtree(self, p):
+        target_node = p._node
+        parent_node = self._validate(self.parent(p))
+        new_subtree = type(self)()
+        new_subtree._size = self._modify_sentinel(p, new_subtree)
+
+        if parent_node._left == target_node:
+            parent_node._left = None
+        else:
+            parent_node._right = None
+
+        return new_subtree
+
+    def _modify_sentinel(self, p, new_tree, init=True):
+        size = 0
+        if p._node._left is None and p._node._right is None:
+            return 1
+        if self.left(p) is not None:
+            size += self._modify_sentinel(self.left(p), False)
+        if self.right(p) is not None:
+            size += self._modify_sentinel(self.right(p), False)
+        if init:
+            p._node._parent = None
+            new_tree._root = p._node
+        return size + 1
+
 
 class EulerTour:
 
