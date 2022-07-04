@@ -676,10 +676,61 @@ print(a)
 ```
 
 ### C-11.57 Consider a variation of splay trees, called half-splay trees, where splaying a node at depth d stops as soon as the node reaches depth └d/2┘. Perform an amortized analysis of half-splay trees.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees_applications.py#338">HalfSplayTreeMap</a> 
+* Test
+```python
+from DataStructures.binary_search_trees_applications import SplayTreeMap, SplayTreeMapTopDown, HalfSplayTreeMap
+splays = [
+    ('SplayTreeMap', SplayTreeMap()),
+    ('SplayTreeMapTopDown', SplayTreeMapTopDown()),
+    ('HalfSplayTreeMap', HalfSplayTreeMap())
+]
+seq = [100, 99, 98, 30, 66, 31, 32, 33]
+cnt = 0
+for i in seq:
+    for tree in splays:
+        tree[1][i] = chr(cnt+65)
+    cnt += 1
+for tree in splays:
+    print(tree[0])
+    print(tree[1])
+print('===============================================================')
+for tree in splays:
+    print(tree[0])
+    print('100 : {}'.format(tree[1][100]))
+    print(tree[1])
+```
+* Amortized analysis.
+  * The running time of the operation will be identically O(log(n)) on the point that only change is the saving on the cyber dollar by scalar scale.
 
 
+### C-11.58 Describe a sequence of accesses to an n-node splay tree T, where n is odd, that results in T consisting of a single chain of nodes such that the path down T alternates between left children and right children.
+* Sol.)
+  * In case n is even, we can achieve such T with series of insert as follows.
+    1. Repeating increasing and decreasing with the absolute value increasing.
+    2. Repeating decreasing and increasing with the absolute value increasing.
+```python
+from DataStructures.binary_search_trees_applications import SplayTreeMap
+
+seq1 = [
+    100, 105, 95, 110, 90, 115
+]
+a = SplayTreeMap()
+for i in seq1:
+    a[i] = i
+print(a)
 
 
+seq2 = [
+    100, 95, 105, 90, 110, 85
+]
+a = SplayTreeMap()
+for i in seq2:
+    a[i] = i
+print(a)
+```
+
+### C-11.59 As a positional structure, our TreeMap implementation has a subtle flaw. A position instance p associated with an key-value pair (k,v) should remain valid as long as that item remains in the map. In particular, that position should be unaffected by calls to insert or delete other items in the collection. Our algorithm for deleting an item from a binary search tree may fail to provide such a guarantee, in particular because of our rule for using the inorder predecessor of a key as a replacement when deleting a key that is located in a node with two children. Given an explicit series of Python commands that demonstrates such a flaw.
 
 
 
