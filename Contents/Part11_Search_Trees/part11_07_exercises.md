@@ -731,7 +731,24 @@ print(a)
 ```
 
 ### C-11.59 As a positional structure, our TreeMap implementation has a subtle flaw. A position instance p associated with an key-value pair (k,v) should remain valid as long as that item remains in the map. In particular, that position should be unaffected by calls to insert or delete other items in the collection. Our algorithm for deleting an item from a binary search tree may fail to provide such a guarantee, in particular because of our rule for using the inorder predecessor of a key as a replacement when deleting a key that is located in a node with two children. Given an explicit series of Python commands that demonstrates such a flaw.
+```python
+from DataStructures.binary_search_trees import TreeMap
+from random import randint
+a = TreeMap()
+seq = [
+    8, 3, 7, 1, 12, -5, 9, 2, 4, 7.5
+]
+for i in seq:
+    a[i] = i
+print(a)
+last = a._subtree_last_position(a.left(a.root()))
+last._node._element = 'BUG'
+del a[8]
+print(a)
+```
 
+### C-11.60 How might the TreeMap implementation be changed to avoid the flaw described in the previous problem?
+* Sol.) Add validation for the form of the item which must be in (key, value) form.
 
 
 

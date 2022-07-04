@@ -171,7 +171,6 @@ class TreeMap(LinkedBinaryTree, MapBase):
         if not self.is_empty():
             p = self._subtree_search(self.root(), k)
             if p.key() == k:
-                parent = self.parent(p)
                 self.delete(p)
                 return
             self._rebalance_access(p)

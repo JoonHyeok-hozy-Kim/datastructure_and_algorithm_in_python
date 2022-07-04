@@ -428,21 +428,35 @@ if __name__ == '__main__':
     #     print('100 : {}'.format(tree[1][100]))
     #     print(tree[1])
 
-    from DataStructures.binary_search_trees_applications import SplayTreeMap
+    # from DataStructures.binary_search_trees_applications import SplayTreeMap
+    #
+    # seq1 = [
+    #     100, 105, 95, 110, 90, 115
+    # ]
+    # a = SplayTreeMap()
+    # for i in seq1:
+    #     a[i] = i
+    # print(a)
+    #
+    #
+    # seq2 = [
+    #     100, 95, 105, 90, 110, 85
+    # ]
+    # a = SplayTreeMap()
+    # for i in seq2:
+    #     a[i] = i
+    # print(a)
 
-    seq1 = [
-        100, 105, 95, 110, 90, 115
+    from DataStructures.binary_search_trees import TreeMap
+    from random import randint
+    a = TreeMap()
+    seq = [
+        8, 3, 7, 1, 12, -5, 9, 2, 4, 7.5
     ]
-    a = SplayTreeMap()
-    for i in seq1:
+    for i in seq:
         a[i] = i
     print(a)
-
-
-    seq2 = [
-        100, 95, 105, 90, 110, 85
-    ]
-    a = SplayTreeMap()
-    for i in seq2:
-        a[i] = i
+    last = a._subtree_last_position(a.left(a.root()))
+    last._node._element = 'BUG'
+    del a[8]
     print(a)
