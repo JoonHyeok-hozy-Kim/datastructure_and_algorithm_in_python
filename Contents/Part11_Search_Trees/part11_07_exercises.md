@@ -787,7 +787,7 @@ for tree in trees:
     # print(tree[1])
 ```
 
-### 
+### P-11.62 Redo the previous exercise, including an implementation of skip lists. (See <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md#p-1053-design-a-python-class-that-implements-the-skip-list-data-structure-use-this-class-to-create-a-complete-implementation-of-the-sorted-map-adt">Exercise P-10.53.</a>)
 * Result
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_08_62.png" style="height: 100px;"></img><br/>
