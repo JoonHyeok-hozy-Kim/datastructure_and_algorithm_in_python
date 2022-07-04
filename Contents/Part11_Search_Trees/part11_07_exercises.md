@@ -751,6 +751,42 @@ print(a)
 * Sol.) Add validation for the form of the item which must be in (key, value) form.
 
 
+###
+* Result
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/images/11_08_61.png" style="height: 100px;"></img><br/>
+</p>
+
+* Test Source
+```python
+from DataStructures.binary_search_trees import AVLTreeMap, SplayTreeMap, RedBlackTreeMap
+from random import randint
+from time import time
+trees = [
+    ['AVLTreeMap', AVLTreeMap(), None, None],
+    ['SplayTreeMap', SplayTreeMap(), None, None],
+    ['RedBlackTreeMap', RedBlackTreeMap(), None, None],
+]
+sample_size = 100000
+seq = [randint(0, sample_size*100) for i in range(sample_size)]
+search_times = sample_size//2
+search_target = [randint(0, sample_size-1) for i in range(search_times)]
+for tree in trees:
+    start = time()
+    for num in seq:
+        tree[1][num] = num
+    end = time()
+    tree[2] = end - start
+
+    start = time()
+    for idx in search_target:
+        tree[1][seq[idx]]
+    end = time()
+    tree[3] = end - start
+    print('{:15s} : [Insert] {:2.2f} [Search] {:2.2f}'.format(tree[0], tree[2], tree[3]))
+    # print(tree[1])
+```
+
 
 
 <p>

@@ -62,8 +62,6 @@ h
 8Contents/Part11_Search_Trees/part11_06_red_black_tree.py,8\0\80f7007b98a97c324e34782b03529ec5afaf2b3b
 V
 &DataStructures/multiway_search_tree.py,0\1\0177051c4891b42084d4086988e323d1cc80fe98
-f
-6Contents/Part11_Search_Trees/part11_00_search_trees.md,a\e\aeeea89e85817f8c95a31ca9635806aecfa296ae
 G
 DataStructures/stack.py,0\3\033d662c2c9f5d0fe34677c166a75983f114811e
 G
