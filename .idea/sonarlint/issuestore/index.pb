@@ -38,8 +38,6 @@ h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
 Q
 !DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
-L
-DataStructures/skip_lists.py,8\d\8d116a60c1245732956804dfe2be3e427c7dc279
 M
 DataStructures/linked_list.py,7\1\7188819b1898161ec3c55a91200f6bd9ec381d5e
 M

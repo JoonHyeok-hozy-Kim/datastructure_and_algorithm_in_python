@@ -470,7 +470,7 @@ if __name__ == '__main__':
         ['SplayTreeMap', SplayTreeMap(), None, None],
         ['RedBlackTreeMap', RedBlackTreeMap(), None, None],
     ]
-    sample_size = 100000
+    sample_size = 20000
     seq = [randint(0, sample_size*100) for i in range(sample_size)]
     search_times = sample_size//2
     search_target = [randint(0, sample_size-1) for i in range(search_times)]
@@ -488,3 +488,17 @@ if __name__ == '__main__':
         tree[3] = end - start
         print('{:15s} : [Insert] {:2.2f} [Search] {:2.2f}'.format(tree[0], tree[2], tree[3]))
         # print(tree[1])
+
+    from DataStructures.skip_lists import HozySkipList
+    h = HozySkipList()
+    start = time()
+    for num in seq:
+        h.skip_insert(num, num)
+    end = time()
+    t1 = end - start
+    start = time()
+    for idx in search_target:
+        h.skip_search(seq[idx])
+    end = time()
+    t2 = end - start
+    print('{:15s} : [Insert] {:2.2f} [Search] {:2.2f}'.format('HozySkipList', t1, t2))
