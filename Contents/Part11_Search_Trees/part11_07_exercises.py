@@ -395,15 +395,35 @@ if __name__ == '__main__':
     # print(c)
     # print(d)
 
-    from DataStructures.binary_search_trees_applications import SplayTreeMapTopDown
-    a = SplayTreeMapTopDown()
+    # from DataStructures.binary_search_trees_applications import SplayTreeMapTopDown
+    # a = SplayTreeMapTopDown()
+    # seq = [100, 99, 98, 30, 66, 31, 32, 33]
+    # cnt = 0
+    # for i in seq:
+    #     a[i] = chr(cnt+65)
+    #     cnt += 1
+    # a[34] = 'X'
+    # print(a)
+    # print(a[34])
+    # print(a)
+
+    from DataStructures.binary_search_trees_applications import SplayTreeMap, SplayTreeMapTopDown, HalfSplayTreeMap
+    splays = [
+        ('SplayTreeMap', SplayTreeMap()),
+        ('SplayTreeMapTopDown', SplayTreeMapTopDown()),
+        ('HalfSplayTreeMap', HalfSplayTreeMap())
+    ]
     seq = [100, 99, 98, 30, 66, 31, 32, 33]
     cnt = 0
     for i in seq:
-        a[i] = chr(cnt+65)
+        for tree in splays:
+            tree[1][i] = chr(cnt+65)
         cnt += 1
-    a[34] = 'X'
-    print(a)
-    a._splay_search(a.root(), 34)
-    print(a)
-
+    for tree in splays:
+        print(tree[0])
+        print(tree[1])
+    print('===============================================================')
+    for tree in splays:
+        print(tree[0])
+        print('100 : {}'.format(tree[1][100]))
+        print(tree[1])

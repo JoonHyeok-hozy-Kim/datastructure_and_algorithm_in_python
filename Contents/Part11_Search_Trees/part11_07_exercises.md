@@ -660,6 +660,22 @@ if __name__ == '__main__':
   * How to?
     * <a href="https://www.csee.umbc.edu/courses/undergraduate/341/fall02/Lectures/Splay/TopDownSplay.ppt">Explanation</a> 
   * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/binary_search_trees_applications.py#L209">SplayTreeMapTopDown</a> 
+  * Test
+```python
+from DataStructures.binary_search_trees_applications import SplayTreeMapTopDown
+a = SplayTreeMapTopDown()
+seq = [100, 99, 98, 30, 66, 31, 32, 33]
+cnt = 0
+for i in seq:
+    a[i] = chr(cnt+65)
+    cnt += 1
+a[34] = 'X'
+print(a)
+a._splay_search(a.root(), 34)
+print(a)
+```
+
+### C-11.57 Consider a variation of splay trees, called half-splay trees, where splaying a node at depth d stops as soon as the node reaches depth └d/2┘. Perform an amortized analysis of half-splay trees.
 
 
 
@@ -667,7 +683,7 @@ if __name__ == '__main__':
 
 
 
-### C-11.52
+
 
 <p>
     <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md">Part 11. Search Trees</a>

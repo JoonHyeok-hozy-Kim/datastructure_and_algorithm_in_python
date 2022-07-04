@@ -205,19 +205,18 @@ class AVLBalanceTreeMapBeforeAfter(TreeMapBeforeAfter):
         self._rebalance(p)
 
 
+from DataStructures.binary_search_trees import SplayTreeMap
 from DataStructures.tree import LinkedBinaryTree
-class SplayTreeMapTopDown(TreeMap):
+class SplayTreeMapTopDown(SplayTreeMap):
 
-    def _zig_zig_rotate_node(self, x):
-        y = x._parent
-        if x == y._left:
-            self._relink(y, x._right, True)
-            self._relink(x, y, False)
+    def __getitem__(self, k):
+        if self.is_empty():
+            raise KeyError('Key Error : ', repr(k))
         else:
-            self._relink(y, x._left, False)
-            self._relink(x, y, True)
-
-        return x
+            p = self._splay_search(self.root(), k)
+            if k != p.key():
+                raise KeyError('Key Error : ', repr(k))
+            return p.value()
 
     def _splay_search(self, p, k):
         l_subtree = LinkedBinaryTree()
@@ -227,8 +226,8 @@ class SplayTreeMapTopDown(TreeMap):
         r_subtree._size = 1
         r_subtree_target = None
 
-        print('Loop starts!')
         while p is not None:
+            # print('p : {}'.format(p.element()))
             p._node._parent = None
             self._root = p._node
 
@@ -247,9 +246,15 @@ class SplayTreeMapTopDown(TreeMap):
                         p._node._right._parent = r_subtree_target
                     r_subtree._root._parent = p._node
                     p._node._right = r_subtree._root
-                break
 
-            elif k < p.key():
+                # print('l_subtree')
+                # print(l_subtree if l_subtree._root is not None else None)
+                # print('r_subtree')
+                # print(r_subtree if r_subtree._root is not None else None)
+
+                return p
+
+            elif k < p.key() and self.left(p) is not None:
                 child = self.left(p)
                 zig_flag = True
                 move_node = p._node
@@ -280,9 +285,9 @@ class SplayTreeMapTopDown(TreeMap):
                 r_subtree_target = move_node
 
                 # print('r_subtree')
-                # print(r_subtree)
+                # print(r_subtree if r_subtree._root is not None else None)
 
-            else:
+            elif k > p.key() and self.right(p) is not None:
                 child = self.right(p)
                 zig_flag = True
 
@@ -311,6 +316,69 @@ class SplayTreeMapTopDown(TreeMap):
                     l_subtree_target._right = move_node
                     move_node._parent = l_subtree_target
                 l_subtree_target = move_node
-                #
+
                 # print('l_subtree')
-                # print(l_subtree)
+                # print(l_subtree if l_subtree._root is not None else None)
+
+            else:
+                return p
+
+    def _zig_zig_rotate_node(self, x):
+        y = x._parent
+        if x == y._left:
+            self._relink(y, x._right, True)
+            self._relink(x, y, False)
+        else:
+            self._relink(y, x._left, False)
+            self._relink(x, y, True)
+
+        return x
+
+from DataStructures.binary_search_trees import SplayTreeMap
+class HalfSplayTreeMap(SplayTreeMap):
+
+    def _subtree_search_depth(self, p, k):
+        depth = -1
+        while p is not None:
+            depth += 1
+            if k == p.key():
+                return (p, depth)
+            elif k < p.key():
+                if self.left(p) is not None:
+                    p = self.left(p)
+                else:
+                    return (p, depth)
+            else:
+                if self.right(p) is not None:
+                    p = self.right(p)
+                else:
+                    return (p, depth)
+
+    def __getitem__(self, k):
+        if self.is_empty():
+            raise KeyError('Key Error : ', repr(k))
+        else:
+            p, d = self._subtree_search_depth(self.root(), k)
+            self._splay_half(p, d)
+            if k != p.key():
+                raise KeyError('Key Error : ', repr(k))
+            return p.value()
+
+    def _splay_half(self, p, d):
+        d //= 2
+        while d > 0:
+            d -= 2
+            parent = self.parent(p)
+            grand = self.parent(parent)
+
+            if grand is None:
+                # zig case
+                self._rotate(p)
+            elif ((parent == self.left(grand)) == (p == self.left(parent))):
+                # zig-zig case
+                self._rotate(parent)
+                self._rotate(p)
+            else:
+                # zig-zag case
+                self._rotate(p)
+                self._rotate(p)
