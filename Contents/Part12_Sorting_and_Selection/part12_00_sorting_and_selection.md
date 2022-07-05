@@ -55,4 +55,14 @@
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_01_merge_sort_graphic.png" style="width: 100%;"></img><br/>
 </p>
 
+#### Prop.) Running time of Merge-sort
+* The merge-sort tree associated with an execution of merge-sort on a sequence of size n has height ┌log(n)┐.
+
+
+### 12.2.2 Array-Based Implementation of Merge-Sort
+
+
+
+
+
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
