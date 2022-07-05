@@ -8,7 +8,7 @@
 ## 12.1 Why Study Sorting Algorithms?
 #### Concept) Python's natural order definition using < operator.
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_01_01_python_operator.png" style="height: 200px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_01_01_python_operator.png" style="height: 100px;"></img><br/>
 </p>
 
 #### Concept) Sorting Algorithms that we already handled
@@ -52,7 +52,7 @@
 
 * How?
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_01_merge_sort_graphic.png" style="height: 450px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_01_merge_sort_graphic.png" style="width: 100%;"></img><br/>
 </p>
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
