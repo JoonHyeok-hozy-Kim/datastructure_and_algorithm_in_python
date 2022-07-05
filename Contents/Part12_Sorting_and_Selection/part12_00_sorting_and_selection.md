@@ -55,15 +55,50 @@
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_01_merge_sort_graphic.png" style="width: 100%;"></img><br/>
 </p>
 
-#### Prop.) Running time of Merge-sort
+#### Prop.) The height of the Merge-sort tree
 * The merge-sort tree associated with an execution of merge-sort on a sequence of size n has height ┌log(n)┐.
+  * Justification
+    * <a href="">Exercise R-12.1</a>
 
 
 ### 12.2.2 Array-Based Implementation of Merge-Sort
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/merge_sort.py#L15">Array-Based Merge-Sort</a>
 
 
+### 12.2.3 The Running Time of Merge-Sort
+* Analysis
+  1. Running times of operations in a node.
+     1. Divide : Running time of halving S into S1 and S1 is O(1).
+     2. Merging : Running time of merge() method is O(n1+n2) where n1 and n2 denote the length of S1 and S2.
+     3. If the depth of node v is i, the size of the sequence handled by the recursive call associated with v is equal to O(n/2^i).
+        * Thus, the time spent at node v is O(n/2^i).  ---> (A)
+  2. The number of nodes at depth i is equal to 2^i.  ---> (B)
+  3. By (A) and (B), the overall time spent at depth i is O( 2^i * (n/2^i) ) = O(n)
+  4. Recall that the height of a merge sort tree is ┌log(n)┐.
+  5. Therefore, the running time of merge sort is O(nlog(n))
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_02_merge_sort_running_time.png" style="height: 500px;"></img><br/>
+</p>
 
+### 12.2.4 Merge-Sort and Recurrence Equations
+* An alternative way to justify that the running time of the merge-sort is O(nlog(n)).
 
+#### Recurrence Equation (Recurrence Relation)
+* Let t(n) denote the worst-case running time of merge-sort on an input sequence of size n.
+  * Consider the case that n is a power of 2.
+* Then
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_03_recurrence_equation.png" style="height: 100px;"></img><br/>
+</p>
+
+* By applying the definition of a recurrence equation, we may obtain the following.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_03_recurrence_equation_2.png" style="height: 100px;"></img><br/>
+</p>
+
+* It can be generalized into as follows.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_03_recurrence_equation_3.png" style="height: 100px;"></img><br/>
+</p>
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
