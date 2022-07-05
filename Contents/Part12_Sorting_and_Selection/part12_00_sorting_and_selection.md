@@ -101,4 +101,11 @@
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_03_recurrence_equation_3.png" style="height: 100px;"></img><br/>
 </p>
 
+* Since our merge-sort operation's recursive call ends when external nodes have one elements each, it can be said that the operation ends when n = 2^i where i is the depth of the merge-sort tree.
+* Thus, by putting log(n) into i, we may obtain the following.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_03_recurrence_equation_4.png" style="height: 200px;"></img><br/>
+</p>
+
+
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
