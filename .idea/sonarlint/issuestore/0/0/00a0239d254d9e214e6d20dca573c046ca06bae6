@@ -1,0 +1,16 @@
+
+epython:S1192g"MDefine a constant instead of duplicating this literal 'Key Error : ' 7 times.(•¸Žã
+Mpython:S1066†"/Merge this if statement with the enclosing one.(ïŸµþøÿÿÿÿ
+Hpython:S1066§"/Merge this if statement with the enclosing one.(©¡‹ã
+Fpython:S3985")Remove this unused private '_Node' class.(­³‡úÿÿÿÿ
+@python:S2638"#Add a default value to parameter p.(ˆ£Âèüÿÿÿÿ
+lpython:S3776N"TRefactor this function to reduce its Cognitive Complexity from 21 to the 15 allowed.(šÖÙ©
+Cpython:S5806i"+Rename this variable; it shadows a builtin.(†×çû
+Cpython:S5806w"+Rename this variable; it shadows a builtin.(†×çû
+Dpython:S5806"+Rename this variable; it shadows a builtin.(†×çû
+Gpython:S3985œ")Remove this unused private '_Node' class.(áÕºýÿÿÿÿ
+Apython:S2638£"#Add a default value to parameter p.(ˆ£Âèüÿÿÿÿ
+mpython:S3776Ý"TRefactor this function to reduce its Cognitive Complexity from 52 to the 15 allowed.(«±ç
+Cpython:S125ú"Remove this commented out code.(ÛÑ¹íøÿÿÿÿ8¹õ¾Ïœ0
+>python:S125Ÿ"Remove this commented out code.(ƒ´ã½8¨ð¿Ïœ0
+Cpython:S125À"Remove this commented out code.(ÛÑ¹íøÿÿÿÿ8Ø÷ÀÏœ0

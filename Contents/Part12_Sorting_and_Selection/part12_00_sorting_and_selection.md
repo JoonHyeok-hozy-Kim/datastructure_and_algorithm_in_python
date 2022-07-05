@@ -31,5 +31,28 @@
 * Radix-sort
 
 
+## 12.2 Merge-Sort
+### 12.2.1 Divide-and-Conquer
+* Structure
+  1. **Divide**
+     * If the input size is smaller than a certain threshold (say, one or two elements), solve the problem directly using a straightforward method and return the solution so obtained. 
+     * Otherwise, divide the input data into two or more disjoint subsets.
+  2. **Conquer**
+     * Recursively solve the subproblems associated with the subsets.
+  3. **Combine**
+     * Take the solutions to the subproblems and merge them into a solution to the original problem
+
+* Settings
+  * ┌x┐ 
+    * the ceiling of x
+    * the smallest integer k such that k >= x 
+  * └x┘
+    * the floor of x
+    * the largest integer m such that m <= x
+
+* How?
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_02_01_merge_sort_graphic.png" style="height: 450px;"></img><br/>
+</p>
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
