@@ -74,3 +74,7 @@ b
 2DataStructures/binary_search_trees_applications.py,0\0\00a0239d254d9e214e6d20dca573c046ca06bae6
 U
 %DataStructures/binary_search_trees.py,3\e\3e4bf4de0c6ebba11160bbf449901bf7ff12add6
+F
+DataStructures/maps.py,f\2\f23bc2e4726a63dd108e4eed46d674953ea0f833
+V
+&DataStructures/multiway_search_tree.py,0\1\0177051c4891b42084d4086988e323d1cc80fe98

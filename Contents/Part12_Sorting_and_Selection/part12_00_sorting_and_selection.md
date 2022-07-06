@@ -118,8 +118,24 @@
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/merge_sort.py#L90">A Bottom-Up (Nonrecursive) Merge-Sort</a>
 
 
+## 12.3 Quick-Sort
+#### Tech.) High-Level Description of Quick-Sort
+* How?
+  * Recursive approach
+  * Divide-and-conquer technique
+    1. Divide S into subsequences
+       1. If len(S) <= 1, return.
+       2. Select a specific item x as pivot.
+       3. Commonly choose the last item in S as x
+       4. Remove all the elements from S and put them into three sequences:
+          * L : storing the elements in S less than x
+          * E : storing the elements in S equal to x
+          * G : storing the elements in S greater than x
+    2. Conquer: Recursively sort sequences L and G.
+    3. Combine: Put back the elements into S in order by first inserting the elements of L, then those of E, and finally those of G.
 
-
+#### Tech.) Performing Quick-Sort on General Sequences
+* Implementation : 
 
 
 
