@@ -208,5 +208,26 @@
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/quick_sort.py#L32">In-Place Quick-Sort</a>
 
 
+#### Tech.) Median-of-Three Heuristic for Pivot Selection
+* How?
+  * From each input array, consider the front, middle, and tail of it and choose the median of them as the pivot.
+* Advantage
+  * Requires lower overhead than using random number generator for randomized pivot selection.
+
+
+#### Tech.) Hybrid Approaches
+* How?
+  * Use divide-and-conquer algorithm until the subsequence falls below some threshold (perhaps 50 elements).
+  * Then use insertion sort for the rest of the subsequences.
+* Advantage
+  * Divide-and-conquer algorithm have good performance for large data sets.
+  * However, it's required overhead is too costly for the small data sets.
+  * Thus, simple sorting algorithms such as insertion sort is faster for small data sets.
+  * Therefore, it is wise to take hybrid method of both of them.
+
+
+### 12.4 Studying Sorting through an Algorithmic Lens
+
+
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
