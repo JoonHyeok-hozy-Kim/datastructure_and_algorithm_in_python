@@ -135,9 +135,65 @@
     3. Combine: Put back the elements into S in order by first inserting the elements of L, then those of E, and finally those of G.
 
 #### Tech.) Performing Quick-Sort on General Sequences
-* Implementation : 
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/quick_sort.py#L4">Quick Sort</a>
 
+#### Analysis) Running Time of Quick-Sort
+* Conclusion
+  * the overall running time of quick-sort is O(n*h)
+* Justification
+  * Dividing step and final concatenation runs in linear time : O(n)
+    * Let
+      * v : a node
+      * s(v) : the input size of v
+      * Then, the time spent for dividing and concatenating is proportional to s(v)
+  * Height does matter.
+    * Let
+      * i : the depth of a quick-sort tree
+      * s_i : the input size with depth i
+      * Then s_0 = n
+      * s_i < s_(i-1)
+        * why?
+          * At least one element, the pivot, will go to set E and will not go down to children node.
+      * Thus, the height of the tree h matters.
+  * Therefore, the overall running time of quick-sort is O(n*h)
+    * Worst case : O(n^2)
+      * When the given sequence is already sorted.
+    * Other than the worst case : O(n log(n))
+      * Ideal Case : Each node is split perfectly by the pivot.
+      * Generally, even one-fourth / three-fourth split may obtain O(n log(n)) running time.
 
+    
+### 12.3.1 Randomized Quick-Sort
+* Why doing this?
+  * Recall that ideal running time of quick-sort can be achieved if the pivots always divide the sequence in a reasonably balanced manner.
+  * Picking pivots at random may approximately let pivots to the middle of the set elements.
+
+#### Concept) Picking Pivots at Random
+* How?
+  * Pick an element of S at random as the pivot
+    * Rather than fixing the position of the pivot at the starting or the ending point of a sequence.
+
+#### Prop.) The expected running time of randomized quick-sort on a sequence S of size n is O(n log(n)).
+* Justification
+  * It is known that if pivot lays at spot between 1/4 and 3/4 of the sequence the quick sort tree is balanced and O(n log(n)) is possible.
+    * i.e.) L and G have size at least n/4 and at most 3n/4 each.
+  * Then the probability that a random pivot may be good is 1/2.
+    * why?)
+      * There are n/2 good choices for the pivot that satisfies the sizes of L and G between n/4 to 3n/4.
+  * Analysis on the expected time spent working on all the subproblems for nodes in _size group i_
+    * Concept) _size group i_
+      * For a node v in a tree T, v is in _size group i_ if the size of v's subproblem is between n*(3/4)^(i+1) and n*(3/4)^i.
+    * By the linearity of expectation, the expected time of all these subproblems is the sum of the expected times for each.
+      * Some of these subproblems may make good call while others make bad calls.
+      * Since the probability of making good call is 1/2, the expected number of consecutive calls that should be made before getting a good call is 2.
+      * Thus, for any element x in the input list, the expected number of nodes in _size group i_ containing x in their subproblem is 2.
+      * Hence, the expected total size of all the subproblems in the _size group i_ is 2n.
+      * Since non-recursive operations in subproblems are proportional to the sizes of the nodes, they run in O(n). ---> (A)
+  * The number of size groups is log_(4/3)n.
+    * why?)
+      * Consider the height of a tree that is divided in to 1/4 and 3/4.
+    * Thus, the number of size groups is O(log(n))
+  * Therefore, by (A) and (B) the total expected running time of randomized quick-sort is O(n log(n)).
 
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
