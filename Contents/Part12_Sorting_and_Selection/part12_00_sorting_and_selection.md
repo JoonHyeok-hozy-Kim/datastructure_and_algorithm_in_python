@@ -199,5 +199,14 @@
 </p>
 
 
+### 12.3.2 Additional Optimizations for Quick-Sort
+#### Tech.) In-Place Quick-Sort Algorithm
+* Target
+  * Using minimum memory.
+  * Recall that our previous quick-sort uses additional three containers.
+    * Instead, we can save memory by recursively swapping the elements in the input list.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/quick_sort.py#L32">In-Place Quick-Sort</a>
+
+
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
