@@ -194,6 +194,10 @@
       * Consider the height of a tree that is divided in to 1/4 and 3/4.
     * Thus, the number of size groups is O(log(n))
   * Therefore, by (A) and (B) the total expected running time of randomized quick-sort is O(n log(n)).
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_03_01_randomized_quick_sort.png" style="height: 600px;"></img><br/>
+</p>
+
 
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
