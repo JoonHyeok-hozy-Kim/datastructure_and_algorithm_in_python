@@ -299,6 +299,42 @@ Algorithm bucketSort(S):
 </p>
 
 
+## 12.5 Comparing Sorting Algorithms
+#### Sorting Algorithms that we covered
+1. O(n^2) sorting algorithms
+   1. Selection Sort
+      * Poorest performance
+   2. Insertion Sort
+      * Efficient for length less than 50 or already almost sorted sequence.
+      * Number of inversion increases drastically if the number of elements is bigger than 50.
+2. O(n log(n)) sorting algorithms
+   1. Heap Sort
+      * Advantage
+        * Can easily be made to execute in-place
+        * A natural choice on small- and medium-sized sequences, when input data can fit into main memory. 
+      * Disadvantage
+        * Tends to be outperformed by both quick-sort and merge-sort on larger sequences. 
+        * A standard heap-sort does not provide a stable sort, because of the swapping of elements.
+   2. Merge Sort
+      * Advantage
+        * O(nlogn) time in the worst case
+        * An excellent algorithm for situations where the input is stratified across various levels of the computer’s memory hierarchy (e.g., cache, main memory, external memory).
+      * Disadvantage
+        * Difficult to make merge-sort run in-place for arrays
+   3. Quick Sort
+      * Advantage
+        * Expected O(n log(n)) performance
+        * in-memory sorting algorithm
+      * Disadvantage
+        * Does not naturally provide a stable sort, due to the swapping of elements during the partitioning step.
+        * Worst case O(n^2) running time.
+3. Linear time sorting algorithms
+   1. Bucket Sort
+      * Suitable for entries with small integer keys
+      * Runs in O(d(n+N)) time
+   2. Radix Sort
+      * Suitable for entries with character strings, or d-tuples of keys from a discrete range
+      * Runs in O(d(n+N)) time
 
 
 
