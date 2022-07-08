@@ -293,6 +293,11 @@ Algorithm bucketSort(S):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_04_02_radix_1.png" style="width: 90%;"></img><br/>
 </p>
 
+* Performance
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_04_02_radix_2.png" style="width: 90%;"></img><br/>
+</p>
+
 
 
 
