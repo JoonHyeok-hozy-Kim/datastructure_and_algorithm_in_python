@@ -226,7 +226,76 @@
   * Therefore, it is wise to take hybrid method of both of them.
 
 
-### 12.4 Studying Sorting through an Algorithmic Lens
+## 12.4 Studying Sorting through an Algorithmic Lens
+### 12.4.1 Lower Bound for Sorting
+#### Q.) Can we sort faster than O(n log(n))?
+* Answer
+  * If the computational primitive used by a sorting algorithm is the
+comparison of two elements, this is in fact the best we can do.
+  * Comparison-based sorting has an Ω(n log(n)) worst-case lower bound on its running time.
+* Justification
+  1. Each time a sorting algorithm compares two elements x_i and x_j (x_i < x_j ?), there are two results : yes or no.
+     * This can be depicted with the decision tree.
+     * Then this tree represents all the possible sequences of comparisons.
+  2. Each possible initial order, or the permutation of the items, has unique decision tree.
+  3. By 1 and 2, there can be n! external nodes for the decision trees Ts.
+     * Considering that n! >= (n/2)^(n/2)
+     * log(n!) >= log((n/2)^(n/2)) >= (n/2)*(log(n/2))
+     * Therefore, Ω(n log(n)).
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_04_01_lower_bound.png" style="height: 600px;"></img><br/>
+</p>
+
+### 12.4.2 Linear-Time Sorting: Bucket-Sort and Radix-Sort
+#### Tech.) Bucket-Sort
+* How?
+  1. Let 
+     * S : a sequence of n integers in the range [0, N-1] for some integer N >= 2.
+     * B[k] : a bucket with the key k where 0 <= k <= N-1.
+  2. For each integer k, remove from S and insert into the bucket B[k].
+  3. For each bucket B[k], remove element and insert into S again.
+* Performance
+  * Running Time : O(n+N)
+    * This is the linear running time!
+  * However, if N is too big, i.e. the range of integers is too wide, the performance will drop sharply.
+* Prop.
+  * This algorithm also work for the repeated keys and derive non-decreasing order result.
+* Psuedo Code
+```python
+Algorithm bucketSort(S):
+  Input: Sequence S of entries with integer keys in the range [0,N−1]
+  Output: Sequence S sorted in nondecreasing order of the keys
+  
+    let B be an array of N sequences, each of which is initially empty
+    for each entry e in S do
+        k = the key of e
+        remove e from S and insert it at the end of bucket (sequence) B[k]
+    for i = 0 to N−1 do
+        for each entry e in sequence B[i] do
+            remove e from B[i] and insert it at the end of S
+```
+
+#### Tech.) Stable Sorting
+* Concept) Stability
+  * For any i and j such that (k_i, v_i) precedes (k_j, v_j) in the initial sequence,
+  * if (k_i, v_i) still precedes (k_j, v_j) after the sorting
+  * the sorting algorithm is stable.
+* Prop.) The stability of the previous bucket sort.
+  * Recall that each element is inserted at the end of the bucket and removed from the beginning.
+  * As long as this sequence is kept, the stability is guaranteed.
+
+#### Tech.) Radix-Sort
+* Target : Lexicographical sorting of multi-length elements.
+* How?
+  * Sort from the last key to the first.
+  * Check the example below.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_04_02_radix_1.png" style="width: 90%;"></img><br/>
+</p>
+
+
+
+
 
 
 
