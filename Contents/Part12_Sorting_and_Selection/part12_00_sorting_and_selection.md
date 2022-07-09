@@ -361,10 +361,10 @@ if __name__ == '__main__':
 
 #### Tech.) Decorate-Sort-Undecorate Design Pattern
 * Steps
-1. Each element of the list is temporarily replaced with a “decorated” version that includes the result of the key function applied to the element.
-2. The list is sorted based upon the natural order of the keys.
-3. The decorated elements are replaced by the original elements.
-
+  1. Each element of the list is temporarily replaced with a “decorated” version that includes the result of the key function applied to the element.
+  2. The list is sorted based upon the natural order of the keys.
+  3. The decorated elements are replaced by the original elements.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/merge_sort.py#L103">Decorated Merge Sort</a>
 
 
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
