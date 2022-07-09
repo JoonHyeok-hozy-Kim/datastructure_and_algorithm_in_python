@@ -367,4 +367,29 @@ if __name__ == '__main__':
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/merge_sort.py#L103">Decorated Merge Sort</a>
 
 
+## 12.7 Selection
+* Target
+  * Identifying a single element in terms of its rank relative to
+the sorted order of the entire set
+
+#### Concept) Defining the Selection Problem
+* Def.) Selection Problem
+  * the general order-statistic problem of selecting the k-th smallest element from an unsorted collection of n comparable elements
+
+* Prop.)
+  * Comparison sorting algorithms can achieve O(n log(n)) running time.
+  * However, in some cases O(n) time is also possible.
+    * ex.) k=1 or k=n
+
+#### Tech.) 12.7.1 Prune-and-Search (decrease-and-conquer.)
+* How?
+  * Prune away a fraction of the n objects and recursively solving the smaller problem. 
+  * When we finally reduced the problem to one defined on a constant-sized collection of objects, we then solve the problem using some brute-force method. 
+  * Returning back from all the recursive calls completes the construction. 
+  * In some cases, we can avoid using recursion, in which case we simply iterate the prune-and-search reduction step until we can apply a brute-force method and stop. 
+    * ex.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part04_Recursion/part4_00_recursion.md#413-binary-search">the binary search method</a>
+
+
+
+
 ## 12.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md">Exercises</a>
