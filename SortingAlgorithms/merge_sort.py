@@ -98,3 +98,16 @@ def merge_sort_bottom_up(S):
     if S is not src:
         S[0:n] = src[0:n]
 # Bottom-Up Merge-Sort ends
+
+
+# decorated_merge_sort using a key starts.
+from DataStructures.priority_queues import PriorityQueueBase
+def decorated_merge_sort(data, key=None):
+    if key is not None:
+        for j in range(len(data)):
+            data[j] = PriorityQueueBase._Item(key(data[j]), data[j])
+    merge_sort_array(data)
+    if key is not None:
+        for j in range(len(data)):
+            data[j] = data[j]._value
+# decorated_merge_sort using a key ends.
