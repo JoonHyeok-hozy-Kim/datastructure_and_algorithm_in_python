@@ -389,6 +389,57 @@ the sorted order of the entire set
   * In some cases, we can avoid using recursion, in which case we simply iterate the prune-and-search reduction step until we can apply a brute-force method and stop. 
     * ex.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part04_Recursion/part4_00_recursion.md#413-binary-search">the binary search method</a>
 
+### 12.7.2 Randomized Quick-Select
+* Performance
+  * Runs in O(n) expected time
+  * Runs in O(n^2) time in the worst case
+* Implementation
+```python
+def quick_select(S, k):
+    if len(S) == 1:
+        return S[0]
+    pivot = random.choice(S)
+    L = [x for x in S if x < pivot]
+    E = [x for x in S if x == pivot]
+    G = [x for x in S if x > pivot]
+    if k <= len(L):
+        return quick_select(L, k)
+    elif k <= len(L) + len(E):
+        return pivot
+    else:
+        j = k - (len(L) + len(E))
+        return quick_select(G, j)
+```
+
+### 12.7.3 Analyzing Randomized Quick-Select
+* Recall the linearity of expectation
+  * E(X+Y) = E(X) + E(Y)
+  * E(cX) = c * E(X)
+* Derivation
+  1. Let t(n) be the running time of randomized quick-select on a sequence of size n.
+  2. Since t(n) depends on random variable, we can bound it with E(t(n)).
+  3. Recall that partition is good if each size of L and G is at most 3n/4.
+  4. Suppose g(n) consecutive call were made before such good partition is made.
+  5. Then we may derive,
+     * t(n) <= b * n * g(n) + t(3n/4)
+       * where b >= 1
+  6. We can get the expected values as follows.
+     * E[t(n)] <= E[b * n * g(n) + t(3n/4)] = bnE[g(n)] + E[t(3n/4)]
+  7. Recall that the probability of making good decision was 1/2.
+     * The probability of falling between 1/4 ~ 3/4.
+     * Thus, probability of being bad, will be 1/2 as well and the number of occasion such bad partition is 2.
+     * Hence, E[g(n)] = 2
+     * Therefore, E[t(n)] <= 2bn + E[t(3n/4)]
+  8. By iteratively applying this inequality we may obtain the following.
+     * E[t(n)] <= E[t((3/4)^2n)] + 2bn(3/4)n + 2bn
+  9. Putting E[t(n)] = T(n) we can obtain the following.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_07_01_quick_selection.png" style="height: 150px;"></img><br/>
+</p>
+
+  10. Therefore, T(n) = O(n)
+
+
 
 
 
