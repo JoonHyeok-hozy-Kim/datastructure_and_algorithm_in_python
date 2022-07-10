@@ -29,8 +29,9 @@ def quick_sort(S):
         S.enqueue(G.dequeue())
 
 
-def inplace_quick_sort(S, a, b):
-
+def inplace_quick_sort(S, a=0, b=None):
+    if b is None:
+        b = len(S)-1
     if a >= b: return
     pivot = S[b]
     left = a
@@ -44,3 +45,7 @@ def inplace_quick_sort(S, a, b):
         if left <= right:
             S[left], S[right] = S[right], S[left]
             left, right = left + 1, right - 1
+
+    S[left], S[b] = S[b], S[left]
+    inplace_quick_sort(S, a, left-1)
+    inplace_quick_sort(S, left+1, b)
