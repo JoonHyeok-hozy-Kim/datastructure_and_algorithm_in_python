@@ -28,4 +28,12 @@ def sorted_union(A, B):
 if __name__ == '__main__':
     a = [1,2,3,4,5,6]
     b = [3,6,9,12]
-    print(sorted_union(a, b))
+    # print(sorted_union(a, b))
+
+    from random import randint
+    from SortingAlgorithms.quick_sort import inplace_quick_sort
+    c = [1,2,2,3,2]
+    c = [1,2]
+    print(c)
+    inplace_quick_sort(c)
+    print(c)

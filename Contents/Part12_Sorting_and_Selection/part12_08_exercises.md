@@ -86,6 +86,18 @@ def sorted_union(A, B):
   * When an element is equal to pivot, the operation of shifting left or right is skipped until left and right positions cross.
   * When all elements are equal, the algorithm will run in O(n log(n)) time, with the perfectly balanced quick-sort tree.
 
+### R-12.12 If the outermost while loop of our implementation of inplace quick sort (line 7 of Code Fragment 12.6) were changed to use condition left < right (rather than left <= right), there would be a flaw. Explain the flaw and give a specific input sequence on which such an implementation fails.
+* Sol.)
+  * When the subsequence has two elements, the problem pops out.
+  * Since the equality of left and right can not go into the while loop, left will remain pivot-1.
+  * Thus, no matter what value is contained in S[0] and S[pivot], they will swap the value.
+    * In case S[0] < S[pivot], it is fault.
+
+### 
+
+### 
+
+
 
 
 
