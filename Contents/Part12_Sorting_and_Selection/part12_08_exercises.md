@@ -99,8 +99,40 @@ def sorted_union(A, B):
   * Again when the subsequence is reduced to the length 2, the first and the second element will be swapped regardless of the size.
 
 ### R-12.14 Following our analysis of randomized quick-sort in Section 12.3.1, show that the probability that a given input element x belongs to more than 2logn subproblems in size group i is at most 1/n2.
-* pass...
+* Sol.) If an element belongs to every subproblem it should be the minimum or the maximum value of the sequence.
+  * Even so, it may belong to at most log(n) subproblems.
+  * Theoretically, if an element belongs to the 2*log(n) subproblems, it should be simultaneously the minumum and the maximum value of the sequence.
 
+### R-12.15 Of the n! possible inputs to a given comparison-based sorting algorithm, what is the absolute maximum number of inputs that could be correctly sorted with just n comparisons?
+* Sol.) Among all the inner nodes in a comparison-based sorting tree, if at most one node's sequence is reversed, the total comparison may be equal to n.
+  * Since the number of inner nodes is 2^(n-1)-1, there are 2^(n-1)-1 such cases among n!.
+
+### R-12.16 Jonathan has a comparison-based sorting algorithm that sorts the first k elements of a sequence of size n in O(n) time. Give a big-Oh characterization of the biggest that k can be?
+
+### R-12.17 Is the bucket-sort algorithm in-place? Why or why not?
+* Sol.) No. It uses additional container, the bucket, that temporarily stores elements.
+
+### R-12.18 Describe a radix-sort method for lexicographically sorting a sequence S of triplets (k,l,m), where k, l, and m are integers in the range [0,N −1], for some N ≥ 2. How could this scheme be extended to sequences of d-tuples (k1,k2,...,kd ), where each ki is an integer in the range [0,N −1]?
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/linear_time_sort.py#L41">Radix Sort</a>
+* Test
+```python
+if __name__ == '__main__':
+    from SortingAlgorithms.linear_time_sort import radix_sort
+    c = []
+    from copy import deepcopy
+    for i in range(5):
+        d = [5-i, None, None]
+        for j in range(5):
+            d_1 = deepcopy(d)
+            d_1[1] = 5-j
+            for k in range(5):
+                d_2 = deepcopy(d_1)
+                d_2[2] = 5-k
+                c.append(d_2)
+    print(c)
+    radix_sort(c, 3)
+    print(c)
+```
 
 
 
