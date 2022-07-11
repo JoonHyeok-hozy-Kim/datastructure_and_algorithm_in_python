@@ -93,11 +93,13 @@ def sorted_union(A, B):
   * Thus, no matter what value is contained in S[0] and S[pivot], they will swap the value.
     * In case S[0] < S[pivot], it is fault.
 
-### 
+### R-12.13 If the conditional at line 14 of our inplace quick sort implementation of Code Fragment 12.6 were changed to use condition left < right (rather than left <= right), there would be a flaw. Explain the flaw and give a specific input sequence on which such an implementation fails.
+* Sol.)
+  * Similar to R-12.12, when left and right are referenced to the same index, if the operator is < instead of <=, left and right will not cross.
+  * Again when the subsequence is reduced to the length 2, the first and the second element will be swapped regardless of the size.
 
-### 
-
-
+### R-12.14 Following our analysis of randomized quick-sort in Section 12.3.1, show that the probability that a given input element x belongs to more than 2logn subproblems in size group i is at most 1/n2.
+* pass...
 
 
 

@@ -175,7 +175,7 @@
 
 #### Prop.) The expected running time of randomized quick-sort on a sequence S of size n is O(n log(n)).
 * Justification
-  * It is known that if pivot lays at spot between 1/4 and 3/4 of the sequence the quick sort tree is balanced and O(n log(n)) is possible.
+  * It is known that if pivot lays at spot between 1/4 and 3/4 of the sequence, the quick sort tree is balanced and O(n log(n)) is possible.
     * i.e.) L and G have size at least n/4 and at most 3n/4 each.
   * Then the probability that a random pivot may be good is 1/2.
     * why?)
