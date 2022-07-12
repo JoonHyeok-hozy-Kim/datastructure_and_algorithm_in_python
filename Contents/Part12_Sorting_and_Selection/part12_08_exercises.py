@@ -40,9 +40,40 @@ def in_place_sort_zero_one(S):
             end -= 1
     return S
 
+def is_sorted(S):
+    temp_max = None
+    for i in S:
+        temp_max = i if temp_max is None else max(temp_max, i)
+        if temp_max != i:
+            return False
+    return True
 
+from DataStructures.priority_queues import HeapPriorityQueue
+def duplicate_remover_with_heap(S):
+    H = HeapPriorityQueue()
+    temp_max = None
+    cnt = 0
+    for i in range(len(S)):
+        e = S[i]
+        S[i] = None
+        H.add(e, e)
+    while not H.is_empty():
+        if temp_max is None:
+            temp_max = H.remove_min()[0]
+            S[cnt] = temp_max
+            cnt += 1
+        else:
+            temp = H.remove_min()[0]
+            if temp > temp_max:
+                S[cnt] = temp
+                temp_max = temp
+                cnt += 1
+    for i in range(len(S)-cnt):
+        S.pop()
+    return S
 
 if __name__ == '__main__':
+    from random import randint
     pass
     # a = [1,2,3,4,5,6]
     # b = [3,6,9,12]
@@ -93,10 +124,28 @@ if __name__ == '__main__':
     # radix_sort(c, 3)
     # print(c)
 
-    from random import randint
-    a = [randint(0, 1) for i in range(10)]
-    # a = [0 for i in range(10)]
-    # a = [1 for i in range(10)]
+    # a = [randint(0, 1) for i in range(10)]
+    # # a = [0 for i in range(10)]
+    # # a = [1 for i in range(10)]
+    # print(a)
+    # print(is_sorted(a))
+    # in_place_sort_zero_one(a)
+    # print(a)
+    # print(is_sorted(a))
+
+    # b = [1,3, 3, 2, 2, 1, 7, 5, 4]
+    # duplicate_remover_with_heap(b)
+    # print(b)
+
+    from DataStructures.linked_list import PositionalList
+    a = PositionalList()
+    b = PositionalList()
+    b.add_last(-0.5)
+    b.add_last(-1)
+    for i in range(5):
+        a.add_last(2*i)
+        b.add_last(2*i+1)
+        b.add_last(2*i+1.5)
+    a.merge(b)
     print(a)
-    in_place_sort_zero_one(a)
-    print(a)
+    print(b)

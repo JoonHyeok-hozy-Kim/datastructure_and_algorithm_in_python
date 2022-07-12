@@ -194,13 +194,127 @@ if __name__ == '__main__':
 
 ### C-12.25 Linda claims to have an algorithm that takes an input sequence S and produces an output sequence T that is a sorting of the n elements in S.
 1. Give an algorithm, is sorted, that tests in O(n) time if T is sorted.
+```python
+def is_sorted(S):
+    temp_max = None
+    for i in S:
+        temp_max = i if temp_max is None else max(temp_max, i)
+        if temp_max != i:
+            return False
+    return True
+```
 2. Explain why the algorithm is sorted is not sufficient to prove a particular output T to Linda’s algorithm is a sorting of S.
+   * Sol.) For some elements such as characters, the comparison rule between such elements is not fixed. 
 3. Describe what additional information Linda’s algorithm could output so that her algorithm’s correctness could be established on any given S and T in O(n) time.
-* Sol.) 
+   * Sol.) If a table that fixes such rule is provided, any type of sequence may be provable.
+
+### C-12.26 Describe and analyze an efficient method for removing all duplicates from a collection A of n elements.
+* Sol.) An algorithm that uses HeapSort that may run in O(n log(n)).
+```python
+from DataStructures.priority_queues import HeapPriorityQueue
+def duplicate_remover_with_heap(S):
+    H = HeapPriorityQueue()
+    temp_max = None
+    cnt = 0
+    for i in range(len(S)):
+        e = S[i]
+        S[i] = None
+        H.add(e, e)
+    while not H.is_empty():
+        if temp_max is None:
+            temp_max = H.remove_min()[0]
+            S[cnt] = temp_max
+            cnt += 1
+        else:
+            temp = H.remove_min()[0]
+            if temp > temp_max:
+                S[cnt] = temp
+                temp_max = temp
+                cnt += 1
+    for i in range(len(S)-cnt):
+        S.pop()
+    return S
+```
+
+### C-12.27 Augment the PositionalList class (see Section 7.4) to support a method named merge with the following behavior. If A and B are PositionalList instances whose elements are sorted, the syntax A.merge(B)should merge all elements of B into A so that A remains sorted and B becomes empty. Your implementation must accomplish the merge by relinking existing nodes; you are not to create any new nodes.
+* Implementation
+```python
+class PoistionalList(_DoublyLinkedBase):
+    
+    # Skip
+  
+    def merge(self, other):
+        """ C-12.27 If A and B are PositionalList instances whose elements are sorted,
+            the syntax A.merge(B)should merge all elements of B into A
+            so that A remains sorted and B becomes empty."""
+        if type(self) != type(other):
+            raise TypeError('Merge applicable only to PositionalList.')
+        self_walk = self.first()
+        other_walk = other.first()
+
+        while not other.is_empty() and self_walk.element() >= other_walk.element():
+            next_other_walk = other.after(other_walk)
+            self._insert_node_before(self_walk, other_walk._node)
+            other._size -= 1
+            other_walk = next_other_walk
+
+        while not other.is_empty() and self_walk is not None:
+            next_other_walk = other.after(other_walk)
+            if self_walk.element() <= other_walk.element():
+                self_walk = self.after(self_walk)
+            else:
+                self._insert_node_before(self_walk, other_walk._node)
+                other._size -= 1
+                other_walk = next_other_walk
+
+        while not other.is_empty():
+            self._insert_node_after(self.last(), other_walk._node)
+            other._size -= 1
+            other_walk = next_other_walk
 
 
+    def _insert_node_before(self, p, node):
+        node._prev._next = node._next
+        node._next._prev = node._prev
 
+        p_node = self._validate(p)
+        p_node._prev._next = node
+        node._prev = p_node._prev
+        p_node._prev = node
+        node._next = p_node
 
+        self._size += 1
+        return self._make_position(node)
+
+    def _insert_node_after(self, p, node):
+        node._prev._next = node._next
+        node._next._prev = node._prev
+
+        p_node = self._validate(p)
+        p_node._next._prev = node
+        node._next = p_node._next
+        p_node._next = node
+        node._prev = p_node
+
+        self._size += 1
+        return self._make_position(node)
+```
+* Test
+```python
+if __name__ == '__main__':
+    from DataStructures.linked_list import PositionalList
+    a = PositionalList()
+    b = PositionalList()
+    b.add_last(-0.5)
+    b.add_last(-1)
+    for i in range(5):
+        a.add_last(2*i)
+        b.add_last(2*i+1)
+        b.add_last(2*i+1.5)
+    a.merge(b)
+    print(a)
+    print(b)
+```
 
 
 
