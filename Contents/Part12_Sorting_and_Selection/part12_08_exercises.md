@@ -134,6 +134,72 @@ if __name__ == '__main__':
     print(c)
 ```
 
+### R-12.19 Suppose S is a sequence of n values, each equal to 0 or 1. How long will it take to sort S with the merge-sort algorithm? What about quick-sort?
+* Sol.) Both merge and quick sort may take O(n log(n)) time.
+
+### R-12.20 Suppose S is a sequence of n values, each equal to 0 or 1. How long will it take to sort S stably with the bucket-sort algorithm?
+* Sol.) Since possible keys are only 0 and 1, it will take O(n) time.
+
+### R-12.21 Given a sequence S of n values, each equal to 0 or 1, describe an in-place method for sorting S.
+```python
+def in_place_sort_zero_one(S):
+    start = 0
+    end = len(S)-1
+    while (start < end):
+        while S[start] == 0 and start < len(S)-1:
+            start += 1
+        while S[end] == 1 and end > 0:
+            end -= 1
+        if start < end:
+            S[start] = 0
+            S[end] = 1
+            start += 1
+            end -= 1
+    return S
+
+if __name__ == '__main__':
+    from random import randint
+    a = [randint(0, 1) for i in range(10)]
+    # a = [0 for i in range(10)]
+    # a = [1 for i in range(10)]
+    print(a)
+    in_place_sort_zero_one(a)
+    print(a)
+```
+
+### R-12.22 Give an example input list that requires merge-sort and heap-sort to take O(nlog n) time to sort, but insertion-sort runs in O(n) time. What if you reverse this list?
+* Sol.) 
+  * A sequence of increasing order may run in O(n) time for an insertion sort algorithm that uses Sorted Priority Queue as a container and appending keys at the end of it.
+    * This sequence will run in O(n log(n)) time for merge sort algorithm.
+    * If the sequence is reversed, i.e. being in decreasing order, it may run in O(n^2) time for the insertion sort algorithm.
+
+### R-12.23 What is the best algorithm for sorting each of the following: general comparable objects, long character strings, 32-bit integers, double-precision floating-point numbers, and bytes? Justify your answer.
+* Sol.
+  * general comparable objects
+    * Depending on the size of object, if the size is smaller than 50, use insertion sort. If not, use comparison based sortings.
+  * long character strings
+    * Using the hash function that converts each character into a key, radix sort may be a good choice.
+  * 32-bit integers
+    * Considering the range between elements, bucket sort may work poorly for this case.
+  * double-precision floating-point numbers
+    * Can be considered as an application of the long character strings case.
+  * bytes
+
+### R-12.24 Show that the worst-case running time of quick-select on an n-element sequence is Ω(n^2).
+* Sol.) Consider the case that the pivot is always the first element of the subproblem sequence.
+  * And the given input sequence is in decreasing order.
+  * Then in every subproblem, all the elements except for the pivot will go to G.
+  * Moreover, the height of the quick-sort tree will be n.
+  * Therefore, it may be O(n^2) running time total.
+
+### C-12.25 Linda claims to have an algorithm that takes an input sequence S and produces an output sequence T that is a sorting of the n elements in S.
+1. Give an algorithm, is sorted, that tests in O(n) time if T is sorted.
+2. Explain why the algorithm is sorted is not sufficient to prove a particular output T to Linda’s algorithm is a sorting of S.
+3. Describe what additional information Linda’s algorithm could output so that her algorithm’s correctness could be established on any given S and T in O(n) time.
+* Sol.) 
+
+
+
 
 
 

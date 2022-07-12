@@ -25,9 +25,25 @@ def sorted_union(A, B):
     return result
 
 
+def in_place_sort_zero_one(S):
+    start = 0
+    end = len(S)-1
+    while (start < end):
+        while S[start] == 0 and start < len(S)-1:
+            start += 1
+        while S[end] == 1 and end > 0:
+            end -= 1
+        if start < end:
+            S[start] = 0
+            S[end] = 1
+            start += 1
+            end -= 1
+    return S
+
 
 
 if __name__ == '__main__':
+    pass
     # a = [1,2,3,4,5,6]
     # b = [3,6,9,12]
     # # print(sorted_union(a, b))
@@ -41,8 +57,8 @@ if __name__ == '__main__':
     # print(c)
 
 
-    from SortingAlgorithms.linear_time_sort import bucket_sort
-    from random import randint
+    # from SortingAlgorithms.linear_time_sort import bucket_sort
+    # from random import randint
     # b = [randint(0, 99) for i in range(10)]
     # print(b)
     # bucket_sort(b)
@@ -53,26 +69,34 @@ if __name__ == '__main__':
     # a = [(4, 3), (2, 1), (5, 5), (4, 4), (2, 5), (1, 0), (4, 5), (2, 2), (1, 2), (2, 2)]
     # print(a)
 
-    from SortingAlgorithms.linear_time_sort import _bucket_sort_for_radix, radix_sort
-    # _bucket_sort_for_radix(a, 1)
-    # print(a)
-    # _bucket_sort_for_radix(a, 0)
-    # print(a)
-    # radix_sort(a, 2)
-    # print(a)
+    # from SortingAlgorithms.linear_time_sort import _bucket_sort_for_radix, radix_sort
+    # # _bucket_sort_for_radix(a, 1)
+    # # print(a)
+    # # _bucket_sort_for_radix(a, 0)
+    # # print(a)
+    # # radix_sort(a, 2)
+    # # print(a)
+    #
+    # c = []
+    # from copy import deepcopy
+    # for i in range(5):
+    #     d = [5-i, None, None]
+    #     for j in range(5):
+    #         d_1 = deepcopy(d)
+    #         d_1[1] = 5-j
+    #         for k in range(5):
+    #             d_2 = deepcopy(d_1)
+    #             d_2[2] = 5-k
+    #             c.append(d_2)
+    #
+    # print(c)
+    # radix_sort(c, 3)
+    # print(c)
 
-    c = []
-    from copy import deepcopy
-    for i in range(5):
-        d = [5-i, None, None]
-        for j in range(5):
-            d_1 = deepcopy(d)
-            d_1[1] = 5-j
-            for k in range(5):
-                d_2 = deepcopy(d_1)
-                d_2[2] = 5-k
-                c.append(d_2)
-
-    print(c)
-    radix_sort(c, 3)
-    print(c)
+    from random import randint
+    a = [randint(0, 1) for i in range(10)]
+    # a = [0 for i in range(10)]
+    # a = [1 for i in range(10)]
+    print(a)
+    in_place_sort_zero_one(a)
+    print(a)
