@@ -313,6 +313,61 @@ class PositionalList(_DoublyLinkedBase):
 
         return
 
+    def merge(self, other):
+        """ C-12.27 If A and B are PositionalList instances whose elements are sorted,
+            the syntax A.merge(B)should merge all elements of B into A
+            so that A remains sorted and B becomes empty."""
+        if type(self) != type(other):
+            raise TypeError('Merge applicable only to PositionalList.')
+        self_walk = self.first()
+        other_walk = other.first()
+
+        while not other.is_empty() and self_walk.element() >= other_walk.element():
+            next_other_walk = other.after(other_walk)
+            self._insert_node_before(self_walk, other_walk._node)
+            other._size -= 1
+            other_walk = next_other_walk
+
+        while not other.is_empty() and self_walk is not None:
+            next_other_walk = other.after(other_walk)
+            if self_walk.element() <= other_walk.element():
+                self_walk = self.after(self_walk)
+            else:
+                self._insert_node_before(self_walk, other_walk._node)
+                other._size -= 1
+                other_walk = next_other_walk
+
+        while not other.is_empty():
+            self._insert_node_after(self.last(), other_walk._node)
+            other._size -= 1
+            other_walk = next_other_walk
+
+
+    def _insert_node_before(self, p, node):
+        node._prev._next = node._next
+        node._next._prev = node._prev
+
+        p_node = self._validate(p)
+        p_node._prev._next = node
+        node._prev = p_node._prev
+        p_node._prev = node
+        node._next = p_node
+
+        self._size += 1
+        return self._make_position(node)
+
+    def _insert_node_after(self, p, node):
+        node._prev._next = node._next
+        node._next._prev = node._prev
+
+        p_node = self._validate(p)
+        p_node._next._prev = node
+        node._next = p_node._next
+        p_node._next = node
+        node._prev = p_node
+
+        self._size += 1
+        return self._make_position(node)
 
 
 class FavoriteList:
