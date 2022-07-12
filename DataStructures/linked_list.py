@@ -369,6 +369,18 @@ class PositionalList(_DoublyLinkedBase):
         self._size += 1
         return self._make_position(node)
 
+    def sort(self, start=None, end=None):
+        """ Uses insertion-sort algorithm """
+        point = self.first()
+        while point is not None:
+            walk = point
+            while walk is not None and self.before(walk) is not None:
+                if walk.element() < self.before(walk).element():
+                    self.swap(walk, self.before(walk))
+                else:
+                    break
+            point = self.after(point)
+
 
 class FavoriteList:
     class Item:
