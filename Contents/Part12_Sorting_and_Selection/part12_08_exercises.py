@@ -137,15 +137,33 @@ if __name__ == '__main__':
     # duplicate_remover_with_heap(b)
     # print(b)
 
+    # from DataStructures.linked_list import PositionalList
+    # a = PositionalList()
+    # b = PositionalList()
+    # b.add_last(-0.5)
+    # b.add_last(-1)
+    # for i in range(5):
+    #     a.add_last(2*i)
+    #     b.add_last(2*i+1)
+    #     b.add_last(2*i+1.5)
+    # a.merge(b)
+    # print(a)
+    # print(b)
+
     from DataStructures.linked_list import PositionalList
-    a = PositionalList()
+    from copy import deepcopy
+    a = [28, 95, 18, 51, 51, 52, 79, 81, 87, 59]
+
+
+
     b = PositionalList()
-    b.add_last(-0.5)
-    b.add_last(-1)
-    for i in range(5):
-        a.add_last(2*i)
-        b.add_last(2*i+1)
-        b.add_last(2*i+1.5)
-    a.merge(b)
-    print(a)
+    for i in a:
+        b.add_last(i)
     print(b)
+    b.sort()
+    print(b)
+
+    # from SortingAlgorithms.quick_sort import inplace_quick_sort
+    # print(a)
+    # inplace_quick_sort(a)
+    # print(a)

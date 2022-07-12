@@ -316,6 +316,21 @@ if __name__ == '__main__':
     print(b)
 ```
 
+### C-12.28 Augment the PositionalList class (see Section 7.4) to support a method named sort that sorts the elements of a list by relinking existing nodes; you are not to create any new nodes. You may use your choice of sorting algorithm.
+```python
+def sort(self, start=None, end=None):
+    """ Uses insertion-sort algorithm """
+    point = self.first()
+    while point is not None:
+        walk = point
+        while walk is not None and self.before(walk) is not None:
+            if walk.element() < self.before(walk).element():
+                self.swap(walk, self.before(walk))
+            else:
+                break
+        point = self.after(point)
+```
+
 
 
 <p>
