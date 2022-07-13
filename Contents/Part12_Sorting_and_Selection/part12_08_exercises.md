@@ -332,7 +332,7 @@ def sort(self, start=None, end=None):
 ```
 
 ### C-12.29 Implement a bottom-up merge-sort for a collection of items by placing each item in its own queue, and then repeatedly merging pairs of queues until all items are sorted within a single queue.
-* Implemenation and Test
+* Implementation and Test
 ```python
 from DataStructures.queue import LinkedQueue
 def bottom_up_merge_sort(S):
@@ -357,6 +357,7 @@ def bottom_up_merge_sort(S):
     return Q
 
 if __name__ == '__main__':
+    from random import randint
     a = [randint(0,100) for i in range(10)]
     print(a)
     q = bottom_up_merge_sort(a)
@@ -365,10 +366,68 @@ if __name__ == '__main__':
 ```
 
 ### C-12.30 Modify our in-place quick-sort implementation of Code Fragment 12.6 to be a randomized version of the algorithm, as discussed in Section 12.3.1.
+```python
+from random import randint
+def inplace_quick_sort(S, a=0, b=None):
+    if b is None:
+        b = len(S)-1
+    if a >= b: return
 
+    # Random pivot selection
+    p = randint(a, b)
+    S[p], S[b] = S[b], S[p]
 
+    pivot = S[b]
+    left = a
+    right = b-1
+    # print('[Initial] pivot : {}, {}'.format(pivot, S))
+    while left <= right:
+        # print(' -> left : {}'.format(S[left]), end='')
+        while left <= right and S[left] < pivot:
+            left += 1
+        #     print(' -> {}'.format(S[left]), end='')
+        # print('\n -> right : {}'.format(S[right]), end='')
+        while left <= right and pivot < S[right]:
+            right -= 1
+            # print(' -> {}'.format(S[right]), end='')
 
+        if left <= right:
+            S[left], S[right] = S[right], S[left]
+            left, right = left + 1, right - 1
+            # print('\n[After swap 1] {}'.format(S))
+            # print(' left : {}, right : {}'.format(S[left], S[right]))
 
+    S[left], S[b] = S[b], S[left]
+    # print('\n[After swap 2] {}'.format(S))
+
+    # if a < left-1:
+    #     print('\n[Recursion 1] {} ~ {}'.format(S[a], S[left-1]))
+    # else:
+    #     print('[Recursion 1] RETURN')
+    inplace_quick_sort(S, a, left-1)
+    # if left+1 < b:
+    #     print('\n[Recursion 2] {} ~ {}'.format(S[left+1], S[b]))
+    # else:
+    #     print('[Recursion 2] RETURN')
+    inplace_quick_sort(S, left+1, b)
+
+if __name__ == '__main__':
+    from SortingAlgorithms.quick_sort import inplace_quick_sort
+    a = [randint(0, 100) for i in range(10)]
+    print(a)
+    inplace_quick_sort(a)
+    print(a)
+```
+
+### C-12.31 Consider a version of deterministic quick-sort where we pick as our pivot the median of the d last elements in the input sequence of n elements, for a fixed, constant odd number d ≥ 3. What is the asymptotic worst-case running time of quick-sort in this case?
+* Sol.) O( (n+d) log(n) )
+
+### C-12.32 Another way to analyze randomized quick-sort is to use a recurrence equation. In this case, we let T(n) denote the expected running time of randomized quick-sort, and we observe that, because of the worst-case partitions for good and bad splits, we can write
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_08_31.png" style="height: 300px;"></img><br/>
+</p>
+
+* Sol.) 
 
 
 <p>
