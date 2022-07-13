@@ -331,6 +331,44 @@ def sort(self, start=None, end=None):
         point = self.after(point)
 ```
 
+### C-12.29 Implement a bottom-up merge-sort for a collection of items by placing each item in its own queue, and then repeatedly merging pairs of queues until all items are sorted within a single queue.
+* Implemenation and Test
+```python
+from DataStructures.queue import LinkedQueue
+def bottom_up_merge_sort(S):
+    Q = LinkedQueue()
+    if len(S) == 1:
+        Q.enqueue(S[0])
+    else:
+        mid = len(S)//2
+        Q1 = bottom_up_merge_sort(S[:mid])
+        Q2 = bottom_up_merge_sort(S[mid:])
+        while not (Q1.is_empty() and Q2.is_empty()):
+            if Q2.is_empty():
+                while not Q1.is_empty():
+                    Q.enqueue(Q1.dequeue())
+            elif Q1.is_empty():
+                while not Q2.is_empty():
+                    Q.enqueue(Q2.dequeue())
+            elif Q1.first() < Q2.first():
+                Q.enqueue(Q1.dequeue())
+            else:
+                Q.enqueue(Q2.dequeue())
+    return Q
+
+if __name__ == '__main__':
+    a = [randint(0,100) for i in range(10)]
+    print(a)
+    q = bottom_up_merge_sort(a)
+    while not q.is_empty():
+        print(q.dequeue(), end=', ')
+```
+
+### C-12.30 Modify our in-place quick-sort implementation of Code Fragment 12.6 to be a randomized version of the algorithm, as discussed in Section 12.3.1.
+
+
+
+
 
 
 <p>

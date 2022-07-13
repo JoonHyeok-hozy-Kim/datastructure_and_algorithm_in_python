@@ -72,6 +72,30 @@ def duplicate_remover_with_heap(S):
         S.pop()
     return S
 
+
+from DataStructures.queue import LinkedQueue
+def bottom_up_merge_sort(S):
+    Q = LinkedQueue()
+    if len(S) == 1:
+        Q.enqueue(S[0])
+    else:
+        mid = len(S)//2
+        Q1 = bottom_up_merge_sort(S[:mid])
+        Q2 = bottom_up_merge_sort(S[mid:])
+        while not (Q1.is_empty() and Q2.is_empty()):
+            if Q2.is_empty():
+                while not Q1.is_empty():
+                    Q.enqueue(Q1.dequeue())
+            elif Q1.is_empty():
+                while not Q2.is_empty():
+                    Q.enqueue(Q2.dequeue())
+            elif Q1.first() < Q2.first():
+                Q.enqueue(Q1.dequeue())
+            else:
+                Q.enqueue(Q2.dequeue())
+    return Q
+
+
 if __name__ == '__main__':
     from random import randint
     pass
@@ -150,20 +174,33 @@ if __name__ == '__main__':
     # print(a)
     # print(b)
 
-    from DataStructures.linked_list import PositionalList
-    from copy import deepcopy
-    a = [28, 95, 18, 51, 51, 52, 79, 81, 87, 59]
+    # from DataStructures.linked_list import PositionalList
+    # from copy import deepcopy
+    # a = [28, 95, 18, 51, 51, 52, 79, 81, 87, 59]
+    #
+    #
+    #
+    # b = PositionalList()
+    # for i in a:
+    #     b.add_last(i)
+    # print(b)
+    # b.sort()
+    # print(b)
+    #
+    # # from SortingAlgorithms.quick_sort import inplace_quick_sort
+    # # print(a)
+    # # inplace_quick_sort(a)
+    # # print(a)
 
 
-
-    b = PositionalList()
-    for i in a:
-        b.add_last(i)
-    print(b)
-    b.sort()
-    print(b)
-
-    # from SortingAlgorithms.quick_sort import inplace_quick_sort
+    # a = [randint(0,100) for i in range(10)]
     # print(a)
-    # inplace_quick_sort(a)
-    # print(a)
+    # q = bottom_up_merge_sort(a)
+    # while not q.is_empty():
+    #     print(q.dequeue(), end=', ')
+
+    from SortingAlgorithms.quick_sort import inplace_quick_sort
+    a = [randint(0, 100) for i in range(10)]
+    print(a)
+    inplace_quick_sort(a)
+    print(a)
