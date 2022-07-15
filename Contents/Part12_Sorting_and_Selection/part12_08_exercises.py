@@ -96,6 +96,151 @@ def bottom_up_merge_sort(S):
     return Q
 
 
+def in_place_equal_considered(S):
+    n = len(S)
+    if n == 1:
+        return S
+    p = n-1
+    while True:
+        k = p
+        while k > 0 and S[k-1] > S[p] and S[k-1] <= S[k]:
+            k -= 1
+        j = k
+        if j > 0:
+            while j > 0 and S[j-1] == S[p]:
+                j -= 1
+        i = j
+        if i > 0:
+            while i > 0 and S[i-1] < S[p] and S[i-1] <= S[i]:
+                i -= 1
+
+        # print('{} [i:{}, j:{}, k:{}]'.format(S, i, j, k))
+
+        if i == 0:
+            temp = S[p]
+            l = n-1
+            while l > k:
+                S[l] = S[l-1]
+                l -= 1
+            S[k] = temp
+            return
+
+        else:
+            temp = S[i-1]
+            l = i-1
+            while l < j-1:
+                S[l] = S[l+1]
+                l += 1
+            S[j-1] = S[p]
+            S[p] = temp
+
+
+from SortingAlgorithms.quick_sort import inplace_quick_sort
+def election_winner(S):
+    race = [[S[0], 0], [None, None]]
+    inplace_quick_sort(S)
+    for i in S:
+        if i == race[0][0]:
+            race[0][1] += 1
+        else:
+            if race[1][0] is None:
+                race[1][0] = i
+                race[1][1] = 1
+            elif race[1][0] == i:
+                race[1][1] += 1
+
+                if race[0][1] < race[1][1]:
+                    race[0][0] = race[1][0]
+                    race[0][1] = race[1][1]
+                    race[1][0] = None
+                    race[1][1] = None
+            else:
+                race[1][0] = i
+                race[1][1] = 1
+
+    return race[0][0] if (race[1][1] is None or race[0][1] > race[1][1]) else None
+
+
+def candidate_known_election_winner(S, k):
+    candidates = [[None, None] for i in range(k)]
+    for e in S:
+        for i in range(k):
+            if candidates[i][0] is None:
+                candidates[i][0] = e
+                candidates[i][1] = 0
+                break
+            elif candidates[i][0] == e:
+                candidates[i][1] += 1
+                if candidates[i][1] > candidates[0][1]:
+                    candidates[0], candidates[i] = candidates[i], candidates[0]
+    # print(candidates)
+    return candidates[0][0]
+
+
+def k_less_than_n_election_winner(S):
+    candidates = []
+    leader = None
+    for e in S:
+        if len(candidates) < e:
+            for i in range(len(candidates), e):
+                candidates.append([i, 1])
+        else:
+            candidates[e-1][1] += 1
+    print(candidates)
+    for c in range(len(candidates)):
+        if leader is None:
+            leader = c
+        else:
+            if candidates[c][1] > candidates[leader][1]:
+                leader = c
+    return leader+1
+
+
+from SortingAlgorithms.quick_sort import inplace_quick_sort
+def sequence_elements_comparison(S, T):
+    inplace_quick_sort(S)
+    inplace_quick_sort(T)
+    s_i = 0
+    t_i = 0
+    while s_i < len(S) and t_i < len(T):
+        target = T[t_i]
+
+        if S[s_i] == T[t_i]:
+            while s_i < len(S) and S[s_i] == target:
+                s_i += 1
+        else:
+            return False
+        while t_i < len(T) and T[t_i] == target:
+            t_i += 1
+
+    return True if s_i == len(S) and t_i == len(T) else False
+
+
+def squared_range_sorting(S):
+    n = len(S)
+    buckets = [[] for i in range(n)]
+    for e in S:
+        root = int(pow(e, .5))
+        # print('e : {}, root : {}'.format(e, root))
+        idx = 0
+        if len(buckets[root]) == 0:
+            buckets[root].append(e)
+        else:
+            for i in buckets[root]:
+                if i < e:
+                    idx += 1
+                else:
+                    break
+            buckets[root].insert(idx, e)
+        # print(buckets)
+    result = []
+    for bucket in buckets:
+        result.extend(bucket)
+    return result
+
+
+
+
 if __name__ == '__main__':
     from random import randint
     pass
@@ -200,7 +345,43 @@ if __name__ == '__main__':
     #     print(q.dequeue(), end=', ')
 
     from SortingAlgorithms.quick_sort import inplace_quick_sort
-    a = [randint(0, 100) for i in range(10)]
+    # a = [randint(0, 100) for i in range(10)]
+    # print(a)
+    # inplace_quick_sort(a)
+    # print(a)
+
+
+    # from random import randint
+    # a = [randint(1,7) for i in range(10)]
+    # print(a)
+    # in_place_equal_considered(a)
+    # print(a)
+
+    # from random import randint
+    # a = [randint(0,5) for i in range(1000)]
+    # print(a)
+    # w = election_winner(a)
+    # print(w)
+
+    # from random import randint
+    # a = [randint(1,5) for i in range(1000)]
+    # print(a)
+    # w = candidate_known_election_winner(a, 4)
+    # print(w)
+
+    # from random import randint
+    # a = [randint(1,5) for i in range(10)]
+    # print(a)
+    # w = k_less_than_n_election_winner(a)
+    # print(w)
+
+    # s = [5,1,2,3,4,4,4,4,4,8]
+    # t = [1,1,2,3,4,5,1,2,3]
+    # print(sequence_elements_comparison(s, t))
+
+    from random import randint
+    n = 10
+    a = [randint(0, n*n-1) for i in range(n)]
     print(a)
-    inplace_quick_sort(a)
-    print(a)
+    s_a = squared_range_sorting(a)
+    print(s_a)

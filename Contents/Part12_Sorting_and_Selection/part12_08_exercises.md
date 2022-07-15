@@ -424,10 +424,207 @@ if __name__ == '__main__':
 
 ### C-12.32 Another way to analyze randomized quick-sort is to use a recurrence equation. In this case, we let T(n) denote the expected running time of randomized quick-sort, and we observe that, because of the worst-case partitions for good and bad splits, we can write
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_08_31.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/images/12_08_31.png" style="height: 200px;"></img><br/>
 </p>
 
-* Sol.) 
+### C-12.33 Our high-level description of quick-sort describes partitioning the elements into three sets L, E, and G, having keys less than, equal to, or greater than the pivot, respectively. However, our in-place quick-sort implementation of Code Fragment 12.6 does not gather all elements equal to the pivot into a set E. An alternative strategy for an in-place, three-way partition is as follows. Loop through the elements from left to right maintaining indices i, j, and k and the invariant that all elements of slice S[0:i] are strictly less than the pivot, all elements of slice S[i:j] are equal to the pivot, and all elements of slice S[j:k] are strictly greater than the pivot; elements of S[k:n] are yet unclassified. In each pass of the loop, classify one additional element, performing a constant number of swaps as needed. Implement an in-place quick-sort using this strategy.
+```python
+def in_place_equal_considered(S):
+    n = len(S)
+    if n == 1:
+        return S
+    p = n-1
+    while True:
+        k = p
+        while k > 0 and S[k-1] > S[p] and S[k-1] <= S[k]:
+            k -= 1
+        j = k
+        if j > 0:
+            while j > 0 and S[j-1] == S[p]:
+                j -= 1
+        i = j
+        if i > 0:
+            while i > 0 and S[i-1] < S[p] and S[i-1] <= S[i]:
+                i -= 1
+
+        # print('{} [i:{}, j:{}, k:{}]'.format(S, i, j, k))
+
+        if i == 0:
+            temp = S[p]
+            l = n-1
+            while l > k:
+                S[l] = S[l-1]
+                l -= 1
+            S[k] = temp
+            return
+
+        else:
+            temp = S[i-1]
+            l = i-1
+            while l < j-1:
+                S[l] = S[l+1]
+                l += 1
+            S[j-1] = S[p]
+            S[p] = temp
+
+if __name__ == '__main__':
+    from random import randint
+    a = [randint(1,7) for i in range(10)]
+    print(a)
+    in_place_equal_considered(a)
+    print(a)
+```
+
+### C-12.34 Suppose we are given an n-element sequence S such that each element in S represents a different vote for president, where each vote is given as an integer representing a particular candidate, yet the integers may be arbitrarily large (even if the number of candidates is not). Design an O(nlogn)-time algorithm to see who wins the election S represents, assuming the candidate with the most votes wins.
+```python
+from SortingAlgorithms.quick_sort import inplace_quick_sort
+def election_winner(S):
+    race = [[S[0], 0], [None, None]]
+    inplace_quick_sort(S)
+    for i in S:
+        if i == race[0][0]:
+            race[0][1] += 1
+        else:
+            if race[1][0] is None:
+                race[1][0] = i
+                race[1][1] = 1
+            elif race[1][0] == i:
+                race[1][1] += 1
+
+                if race[0][1] < race[1][1]:
+                    race[0][0] = race[1][0]
+                    race[0][1] = race[1][1]
+                    race[1][0] = None
+                    race[1][1] = None
+            else:
+                race[1][0] = i
+                race[1][1] = 1
+
+    return race[0][0] if (race[1][1] is None or race[0][1] > race[1][1]) else None
+
+if __name__ == '__main__':
+    from random import randint
+    a = [randint(0,5) for i in range(1000)]
+    print(a)
+    w = election_winner(a)
+    print(w)
+```
+
+### C-12.35 Consider the voting problem from Exercise C-12.34, but now suppose that we know the number k < n of candidates running, even though the integer IDs for those candidates can be arbitrarily large. Describe an O(nlogk)-time algorithm for determining who wins the election.
+```python
+def candidate_known_election_winner(S, k):
+    candidates = [[None, None] for i in range(k)]
+    for e in S:
+        for i in range(k):
+            if candidates[i][0] is None:
+                candidates[i][0] = e
+                candidates[i][1] = 0
+                break
+            elif candidates[i][0] == e:
+                candidates[i][1] += 1
+                if candidates[i][1] > candidates[0][1]:
+                    candidates[0], candidates[i] = candidates[i], candidates[0]
+    # print(candidates)
+    return candidates[0][0]
+
+if __name__ == '__main__':
+    from random import randint
+    a = [randint(1,5) for i in range(1000)]
+    print(a)
+    w = candidate_known_election_winner(a, 4)
+    print(w)
+```
+
+### C-12.36 Consider the voting problem from Exercise C-12.34, but now suppose the integers 1 to k are used to identify k < n candidates. Design an O(n)-time algorithm to determine who wins the election.
+```python
+def k_less_than_n_election_winner(S):
+    candidates = []
+    leader = None
+    for e in S:
+        if len(candidates) < e:
+            for i in range(len(candidates), e):
+                candidates.append([i, 1])
+        else:
+            candidates[e-1][1] += 1
+    # print(candidates)
+    for c in range(len(candidates)):
+        if leader is None:
+            leader = c
+        else:
+            if candidates[c][1] > candidates[leader][1]:
+                leader = c
+    return leader+1
+
+if __name__ == '__main__':
+    from random import randint
+    a = [randint(1,5) for i in range(10)]
+    print(a)
+    w = k_less_than_n_election_winner(a)
+    print(w)
+```
+
+### C-12.37 Show that any comparison-based sorting algorithm can be made to be stable without affecting its asymptotic running time.
+* Sol.)
+  * Suppose not, i.e., there exists elements k_1 and k_2 in a sequence initially sorted by a comparison based sorting algorithm and k_1 preceded k_2.
+  * However, after an additional identical comparison sorting, k_1 ended up positioned somewhere after k_2.
+  * By the definitions of comparison sorting algorithms, k_1 < k_2 considering the initial sorted sequence.
+  * Then by the second sorting, k_1 > k_2. ---> Contradiction.
+
+### C-12.38 Suppose we are given two sequences A and B of n elements, possibly containing duplicates, on which a total order relation is defined. Describe an efficient algorithm for determining if A and B contain the same set of elements. What is the running time of this method?
+```python
+from SortingAlgorithms.quick_sort import inplace_quick_sort
+def sequence_elements_comparison(S, T):
+    inplace_quick_sort(S)
+    inplace_quick_sort(T)
+    s_i = 0
+    t_i = 0
+    while s_i < len(S) and t_i < len(T):
+        target = T[t_i]
+
+        if S[s_i] == T[t_i]:
+            while s_i < len(S) and S[s_i] == target:
+                s_i += 1
+        else:
+            return False
+        while t_i < len(T) and T[t_i] == target:
+            t_i += 1
+
+    return True if s_i == len(S) and t_i == len(T) else False
+```
+
+### C-12.39 Given an array A of n integers in the range [0,n^2 − 1], describe a simple method for sorting A in O(n) time.
+```python
+def squared_range_sorting(S):
+    n = len(S)
+    buckets = [[] for i in range(n)]
+    for e in S:
+        root = int(pow(e, .5))
+        # print('e : {}, root : {}'.format(e, root))
+        idx = 0
+        if len(buckets[root]) == 0:
+            buckets[root].append(e)
+        else:
+            for i in buckets[root]:
+                if i < e:
+                    idx += 1
+                else:
+                    break
+            buckets[root].insert(idx, e)
+        # print(buckets)
+    result = []
+    for bucket in buckets:
+        result.extend(bucket)
+    return result
+
+if __name__ == '__main__':
+    from random import randint
+    n = 10
+    a = [randint(0, n*n-1) for i in range(n)]
+    print(a)
+    s_a = squared_range_sorting(a)
+    print(s_a)
+```
+
 
 
 <p>
