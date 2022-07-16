@@ -74,3 +74,30 @@ def inplace_quick_sort(S, a=0, b=None):
     inplace_quick_sort(S, left+1, b)
 
 
+def quick_sort_sequences_by_key_k(seq_set, k):
+    # Length Validation
+    for seq in seq_set:
+        if len(seq)-1 < k:
+            raise KeyError('seq element length error.')
+
+    if len(seq_set) == 1:
+        return seq_set
+
+    pivot_val = seq_set[0][k]
+    L, E, G = [], [], []
+    while len(seq_set) > 0:
+        popped = seq_set.pop()
+        if popped[k] < pivot_val:
+            L.append(popped)
+        elif popped[k] == pivot_val:
+            E.append(popped)
+        else:
+            G.append(popped)
+
+    L = quick_sort_sequences_by_key_k(L, k) if len(L) > 1 else L
+    G = quick_sort_sequences_by_key_k(G, k) if len(G) > 1 else G
+
+    seq_set.extend(L)
+    seq_set.extend(E)
+    seq_set.extend(G)
+    return seq_set
