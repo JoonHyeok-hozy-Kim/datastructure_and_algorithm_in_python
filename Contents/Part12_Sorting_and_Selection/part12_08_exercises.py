@@ -239,6 +239,95 @@ def squared_range_sorting(S):
     return result
 
 
+def sort_sequences(seq_set, N):
+    buckets = [[i, []] for i in range(N)]
+    for j in range(len(seq_set)):
+        for k in range(len(seq_set[j])):
+            val = seq_set[j][k]
+            buckets[val][1].append(j)
+        seq_set[j] = []
+
+    for bucket in buckets:
+        for j in bucket[1]:
+            seq_set[j].append(bucket[0])
+    return seq_set
+
+
+def repeated_element_finder(S):
+    if len(S) == 1:
+        return None
+    return _merge_sort_application(S)[1]
+
+def _merge_sort_application(S):
+    if len(S) == 1:
+        return S, None
+
+    mid = len(S)//2
+    # print('S[:mid] : {}\nS[mid:] : {}'.format(S[:mid], S[mid:]))
+    S1, r1 = _merge_sort_application(S[:mid])
+    S2, r2 = _merge_sort_application(S[mid:])
+
+    # print('r1 : {}, S1 : {}\nr2 : {}, S2 : {}'.format(r1, S1, r2, S2))
+    if r1 is not None:
+        return S, r1
+    elif r2 is not None:
+        return S, r2
+    else:
+        return _merge_sequences(S1, S2)
+
+def _merge_sequences(S1, S2):
+    temp = []
+    i1 = 0
+    i2 = 0
+    while i1 < len(S1) and i2 < len(S2):
+        v1, v2 = S1[i1], S2[i2]
+        if v1 == v2:
+            return temp, v1
+        elif v1 < v2:
+            temp.append(v1)
+            i1 += 1
+        else:
+            temp.append(v2)
+            i2 += 1
+
+    if i1 < len(S1):
+        temp.extend(S1[i1:])
+    if i2 < len(S2):
+        temp.extend(S2[i2:])
+
+    return temp, None
+
+
+from SortingAlgorithms.quick_sort import quick_sort_sequences_by_key_k
+def inversion_counter(S):
+    result = 0
+    new_S = [[S[i], i] for i in range(len(S))]
+    quick_sort_sequences_by_key_k(new_S, 0)
+    for i in range(len(new_S)):
+        if new_S[i][1] < i:
+            result += i - new_S[i][1]
+    return result
+
+def get_inversion_pairs(S):
+    inversion_partners = []
+    pair_result = []
+    new_S = [[S[i], i] for i in range(len(S))]
+    quick_sort_sequences_by_key_k(new_S, 0)
+    for i in range(len(new_S)):
+        if new_S[i][1] > i:
+            inversion_partners.append([new_S[i][0], new_S[i][1]-i])
+    for i in range(len(new_S)):
+        if new_S[i][1] < i:
+            for partner in inversion_partners:
+                if partner[1] > 0 and partner[0] < new_S[i][0]:
+                    pair_result.append([new_S[i][0], partner[0]])
+                    partner[1] -= 1
+    return pair_result
+
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -344,7 +433,7 @@ if __name__ == '__main__':
     # while not q.is_empty():
     #     print(q.dequeue(), end=', ')
 
-    from SortingAlgorithms.quick_sort import inplace_quick_sort
+    # from SortingAlgorithms.quick_sort import inplace_quick_sort
     # a = [randint(0, 100) for i in range(10)]
     # print(a)
     # inplace_quick_sort(a)
@@ -379,9 +468,34 @@ if __name__ == '__main__':
     # t = [1,1,2,3,4,5,1,2,3]
     # print(sequence_elements_comparison(s, t))
 
-    from random import randint
-    n = 10
-    a = [randint(0, n*n-1) for i in range(n)]
-    print(a)
-    s_a = squared_range_sorting(a)
-    print(s_a)
+    # from random import randint
+    # n = 10
+    # a = [randint(0, n*n-1) for i in range(n)]
+    # print(a)
+    # s_a = squared_range_sorting(a)
+    # print(s_a)
+
+    # from random import randint
+    # N = 10
+    # k = 5
+    # seq_set = [[randint(0, N-1) for i in range(randint(1, N-1))] for j in range(k)]
+    # print(seq_set)
+    # sort_sequences(seq_set, N)
+    # print(seq_set)
+
+    # from random import randint
+    # n = 100
+    # a = [randint(0, n) for i in range(n//10)]
+    # print(a)
+    # print(repeated_element_finder(a))
+
+    # n = 100
+    # a = [randint(0, n) for i in range(n//10)]
+    # print(a)
+    # print(inversion_counter(a))
+
+
+    n = 100
+    a = [randint(0, n) for i in range(n//10)]
+    a_p = get_inversion_pairs(a)
+    print(a_p)

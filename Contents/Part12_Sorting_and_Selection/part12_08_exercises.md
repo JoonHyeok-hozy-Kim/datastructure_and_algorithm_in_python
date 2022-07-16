@@ -625,6 +625,134 @@ if __name__ == '__main__':
     print(s_a)
 ```
 
+### C-12.40 Let S1,S2,...,Sk be k different sequences whose elements have integer keys in the range [0,N −1], for some parameter N ≥ 2. Describe an algorithm that produces k respective sorted sequences in O(n+N) time, were n denotes the sum of the sizes of those sequences.
+```python
+def sort_sequences(seq_set, N):
+    buckets = [[i, []] for i in range(N)]
+    for j in range(len(seq_set)):
+        for k in range(len(seq_set[j])):
+            val = seq_set[j][k]
+            buckets[val][1].append(j)
+        seq_set[j] = []
+
+    for bucket in buckets:
+        for j in bucket[1]:
+            seq_set[j].append(bucket[0])
+    return seq_set
+
+if __name__ == '__main__':
+    from random import randint
+    N = 10
+    k = 5
+    seq_set = [[randint(0, N-1) for i in range(randint(1, N-1))] for j in range(k)]
+    print(seq_set)
+    sort_sequences(seq_set, N)
+    print(seq_set)
+```
+
+### C-12.41 Given a sequence S of n elements, on which a total order relation is defined, describe an efficient method for determining whether there are two equal elements in S. What is the running time of your method?
+```python
+def repeated_element_finder(S):
+    if len(S) == 1:
+        return None
+    return _merge_sort_application(S)[1]
+
+def _merge_sort_application(S):
+    if len(S) == 1:
+        return S, None
+
+    mid = len(S)//2
+    # print('S[:mid] : {}\nS[mid:] : {}'.format(S[:mid], S[mid:]))
+    S1, r1 = _merge_sort_application(S[:mid])
+    S2, r2 = _merge_sort_application(S[mid:])
+
+    # print('r1 : {}, S1 : {}\nr2 : {}, S2 : {}'.format(r1, S1, r2, S2))
+    if r1 is not None:
+        return S, r1
+    elif r2 is not None:
+        return S, r2
+    else:
+        return _merge_sequences(S1, S2)
+
+def _merge_sequences(S1, S2):
+    temp = []
+    i1 = 0
+    i2 = 0
+    while i1 < len(S1) and i2 < len(S2):
+        v1, v2 = S1[i1], S2[i2]
+        if v1 == v2:
+            return temp, v1
+        elif v1 < v2:
+            temp.append(v1)
+            i1 += 1
+        else:
+            temp.append(v2)
+            i2 += 1
+
+    if i1 < len(S1):
+        temp.extend(S1[i1:])
+    if i2 < len(S2):
+        temp.extend(S2[i2:])
+
+    return temp, None
+
+if __name__ == '__main__':
+    from random import randint
+    n = 100
+    a = [randint(0, n) for i in range(n//10)]
+    print(a)
+    print(repeated_element_finder(a))
+```
+
+### C-12.42 Let S be a sequence of n elements on which a total order relation is defined. Recall that an inversion in S is a pair of elements x and y such that x appears before y in S but x > y. Describe an algorithm running in O(nlog n) time for determining the number of inversions in S.
+```python
+from SortingAlgorithms.quick_sort import quick_sort_sequences_by_key_k
+def inversion_counter(S):
+    result = 0
+    new_S = [[S[i], i] for i in range(len(S))]
+    quick_sort_sequences_by_key_k(new_S, 0)
+    for i in range(len(new_S)):
+        if new_S[i][1] < i:
+            result += i - new_S[i][1]
+    return result
+
+if __name__ == '__main__':
+    a = [3,4,6,1,2,7]
+    print(inversion_counter(a))
+```
+
+### C-12.43 Let S be a sequence of n integers. Describe a method for printing out all the pairs of inversions in S in O(n+k) time, where k is the number of such inversions.
+```python
+def get_inversion_pairs(S):
+    inversion_partners = []
+    pair_result = []
+    new_S = [[S[i], i] for i in range(len(S))]
+    quick_sort_sequences_by_key_k(new_S, 0)
+    for i in range(len(new_S)):
+        if new_S[i][1] > i:
+            inversion_partners.append([new_S[i][0], new_S[i][1]-i])
+    for i in range(len(new_S)):
+        if new_S[i][1] < i:
+            for partner in inversion_partners:
+                if partner[1] > 0 and partner[0] < new_S[i][0]:
+                    pair_result.append([new_S[i][0], partner[0]])
+                    partner[1] -= 1
+    return pair_result
+
+if __name__ == '__main__':
+    from random import randint
+    n = 100
+    a = [randint(0, n) for i in range(n//10)]
+    a_p = get_inversion_pairs(a)
+    print(a_p)
+```
+
+### C-12.44 Let S be a random permutation of n distinct integers. Argue that the expected running time of insertion-sort on S is Ω(n2). (Hint: Note that half of the elements ranked in the top half of a sorted version of S are expected to be in the first half of S.)
+
+
+
+
+
 
 
 <p>
