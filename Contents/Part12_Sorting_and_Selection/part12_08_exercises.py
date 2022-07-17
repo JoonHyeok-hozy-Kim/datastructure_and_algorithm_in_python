@@ -341,7 +341,93 @@ def close_elements_to_median(S):
     return S[start:end]
 
 
+from random import choice
+def quick_select_space_efficient(S, k):
+    if len(S) == 1:
+        return S[0]
+    pivot = choice(S)
 
+    cnt_list = [0, 0, 0]
+    for x in S:
+        if x < pivot:
+            cnt_list[0] += 1
+        elif x == pivot:
+            cnt_list[1] += 1
+        else:
+            cnt_list[2] += 1
+
+    L = [None] * cnt_list[0] if cnt_list[0] > 0 else []
+    E = [None] * cnt_list[1] if cnt_list[1] > 0 else []
+    G = [None] * cnt_list[2] if cnt_list[2] > 0 else []
+
+    for x in S:
+        if x < pivot:
+            L[len(L)-cnt_list[0]] = x
+            cnt_list[0] -= 1
+        elif x == pivot:
+            E[len(E)-cnt_list[1]] = x
+            cnt_list[1] -= 1
+        else:
+            G[len(G)-cnt_list[2]] = x
+            cnt_list[2] -= 1
+
+    if k <= len(L):
+        return quick_select_space_efficient(L, k)
+    elif k <= len(L) + len(E):
+        return pivot
+    else:
+        j = k - (len(L) + len(E))
+        return quick_select_space_efficient(G, j)
+
+
+from random import randint
+def inplace_quick_select(S, k, a=0, b=None):
+    if b is None:
+        b = len(S)-1
+    if a >= b: return
+
+    # Random pivot selection
+    p = randint(a, b)
+    S[p], S[b] = S[b], S[p]
+
+    pivot = S[b]
+    left = a
+    right = b-1
+    # print('[Initial] pivot : {}, {}'.format(pivot, S))
+    while left <= right:
+        # print(' -> left : {}'.format(S[left]), end='')
+        while left <= right and S[left] < pivot:
+            left += 1
+        #     print(' -> {}'.format(S[left]), end='')
+        # print('\n -> right : {}'.format(S[right]), end='')
+        while left <= right and pivot < S[right]:
+            right -= 1
+            # print(' -> {}'.format(S[right]), end='')
+
+        if left <= right:
+            S[left], S[right] = S[right], S[left]
+            left, right = left + 1, right - 1
+            # print('\n[After swap 1] {}'.format(S))
+            # print(' left : {}, right : {}'.format(S[left], S[right]))
+
+    S[left], S[b] = S[b], S[left]
+    # print('\n[After swap 2] {}'.format(S))
+
+    # if a < left-1:
+    #     print('\n[Recursion 1] {} ~ {}'.format(S[a], S[left-1]))
+    # else:
+    #     print('[Recursion 1] RETURN')
+
+    if k == left-1:
+        return S[k]
+    elif k < left:
+        return inplace_quick_select(S, k, a, left-1)
+    # if left+1 < b:
+    #     print('\n[Recursion 2] {} ~ {}'.format(S[left+1], S[b]))
+    # else:
+    #     print('[Recursion 2] RETURN')
+    else:
+        return inplace_quick_select(S, k, left+1, b)
 
 
 if __name__ == '__main__':
@@ -514,9 +600,22 @@ if __name__ == '__main__':
     # a_p = get_inversion_pairs(a)
     # print(a_p)
 
+    # from random import randint
+    # n = 100
+    # a = [randint(1,n) for i in range(n//10)]
+    # print(a)
+    # b = close_elements_to_median(a)
+    # print(b)
+
+    # from random import randint
+    # a = [randint(0,100) for i in range(10)]
+    # print(a)
+    # b= quick_select_space_efficient(a, 3)
+    # print(b)
+
     from random import randint
-    n = 100
-    a = [randint(1,n) for i in range(n//10)]
+    a = [randint(0, 100) for i in range(10)]
     print(a)
-    b = close_elements_to_median(a)
+    b = inplace_quick_select(a, 3)
+    print(a)
     print(b)

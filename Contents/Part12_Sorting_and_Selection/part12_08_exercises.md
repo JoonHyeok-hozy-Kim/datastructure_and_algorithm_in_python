@@ -780,7 +780,68 @@ if __name__ == '__main__':
     print(b)
 ```
 
-### 
+### C-12.47 Bob has a set A of n nuts and a set B of n bolts, such that each nut in A has a unique matching bolt in B. Unfortunately, the nuts in A all look the same, and the bolts in B all look the same as well. The only kind of a comparison that Bob can make is to take a nut-bolt pair (a,b), such that a is in A and b is in B, and test it to see if the threads of a are larger, smaller, or a perfect match with the threads of b. Describe and analyze an efficient algorithm for Bob to match up all of his nuts and bolts.
+* Sol.) Quick sort can be applied to this problem.
+  * Just like choosing pivot, we may choose a nut.
+  * Then partition bolts in three groups.
+    * A group containing bolts smaller than pivot nut.
+    * A group containing bolts bigger than pivot nut.
+    * One single bolt that fits the pivot nut.
+  * Choose next pivot nut and test it with the previously pair-found bolt.
+  * If the pivot nut is smaller than the previous bolt, examine the bolts in the smaller group.
+  * Else, examine the bigger group.
+
+### C-12.48 Our quick-select implementation can be made more space-efficient by initially computing only the counts for sets L, E, and G, creating only the new subset that will be needed for recursion. Implement such a version.
+```python
+from random import choice
+def quick_select_space_efficient(S, k):
+    if len(S) == 1:
+        return S[0]
+    pivot = choice(S)
+
+    cnt_list = [0, 0, 0]
+    for x in S:
+        if x < pivot:
+            cnt_list[0] += 1
+        elif x == pivot:
+            cnt_list[1] += 1
+        else:
+            cnt_list[2] += 1
+
+    L = [None] * cnt_list[0] if cnt_list[0] > 0 else []
+    E = [None] * cnt_list[1] if cnt_list[1] > 0 else []
+    G = [None] * cnt_list[2] if cnt_list[2] > 0 else []
+
+    for x in S:
+        if x < pivot:
+            L[len(L)-cnt_list[0]] = x
+            cnt_list[0] -= 1
+        elif x == pivot:
+            E[len(E)-cnt_list[1]] = x
+            cnt_list[1] -= 1
+        else:
+            G[len(G)-cnt_list[2]] = x
+            cnt_list[2] -= 1
+
+    if k <= len(L):
+        return quick_select_space_efficient(L, k)
+    elif k <= len(L) + len(E):
+        return pivot
+    else:
+        j = k - (len(L) + len(E))
+        return quick_select_space_efficient(G, j)
+
+if __name__ == '__main__':
+    from random import randint
+    a = [randint(0,100) for i in range(10)]
+    print(a)
+    b= quick_select_space_efficient(a, 3)
+    print(b)
+```
+
+### C-12.49 Describe an in-place version of the quick-select algorithm in pseudo-code, assuming that you are allowed to modify the order of elements.
+
+
 
 
 
