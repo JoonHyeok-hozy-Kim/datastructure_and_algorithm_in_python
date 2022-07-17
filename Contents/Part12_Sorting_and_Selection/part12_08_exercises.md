@@ -723,6 +723,7 @@ if __name__ == '__main__':
 
 ### C-12.43 Let S be a sequence of n integers. Describe a method for printing out all the pairs of inversions in S in O(n+k) time, where k is the number of such inversions.
 ```python
+from SortingAlgorithms.quick_sort import quick_sort_sequences_by_key_k
 def get_inversion_pairs(S):
     inversion_partners = []
     pair_result = []
@@ -748,9 +749,38 @@ if __name__ == '__main__':
 ```
 
 ### C-12.44 Let S be a random permutation of n distinct integers. Argue that the expected running time of insertion-sort on S is Ω(n2). (Hint: Note that half of the elements ranked in the top half of a sorted version of S are expected to be in the first half of S.)
+* TBS
 
+### C-12.45 Let A and B be two sequences of n integers each. Given an integer m, describe an O(nlogn)-time algorithm for determining if there is an integer a in A and an integer b in B such that m = a+b.
+* TBS
 
+### C-12.46 Given a set of n integers, describe and analyze a fast method for finding The ┌logn┐ integers closest to the median.
+```python
+from SortingAlgorithms.quick_sort import inplace_quick_sort
+import math
+def close_elements_to_median(S):
+    inplace_quick_sort(S)
+    n = int(math.log2(len(S)))
+    mid = len(S)//2
+    start = mid
+    end = mid+1
+    for i in range(n):
+        if S[mid] - S[start-1] < S[end] - S[mid]:
+            start -= 1
+        else:
+            end += 1
+    return S[start:end]
 
+if __name__ == '__main__':
+    from random import randint
+    n = 100
+    a = [randint(1,n) for i in range(n//10)]
+    print(a)
+    b = close_elements_to_median(a)
+    print(b)
+```
+
+### 
 
 
 

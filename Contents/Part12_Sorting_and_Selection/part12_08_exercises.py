@@ -325,6 +325,20 @@ def get_inversion_pairs(S):
     return pair_result
 
 
+from SortingAlgorithms.quick_sort import inplace_quick_sort
+import math
+def close_elements_to_median(S):
+    inplace_quick_sort(S)
+    n = int(math.log2(len(S)))
+    mid = len(S)//2
+    start = mid
+    end = mid+1
+    for i in range(n):
+        if S[mid] - S[start-1] < S[end] - S[mid]:
+            start -= 1
+        else:
+            end += 1
+    return S[start:end]
 
 
 
@@ -495,7 +509,14 @@ if __name__ == '__main__':
     # print(inversion_counter(a))
 
 
+    # n = 100
+    # a = [randint(0, n) for i in range(n//10)]
+    # a_p = get_inversion_pairs(a)
+    # print(a_p)
+
+    from random import randint
     n = 100
-    a = [randint(0, n) for i in range(n//10)]
-    a_p = get_inversion_pairs(a)
-    print(a_p)
+    a = [randint(1,n) for i in range(n//10)]
+    print(a)
+    b = close_elements_to_median(a)
+    print(b)
