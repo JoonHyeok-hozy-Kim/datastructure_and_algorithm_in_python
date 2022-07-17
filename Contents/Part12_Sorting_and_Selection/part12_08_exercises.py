@@ -393,39 +393,22 @@ def inplace_quick_select(S, k, a=0, b=None):
     pivot = S[b]
     left = a
     right = b-1
-    # print('[Initial] pivot : {}, {}'.format(pivot, S))
     while left <= right:
-        # print(' -> left : {}'.format(S[left]), end='')
         while left <= right and S[left] < pivot:
             left += 1
-        #     print(' -> {}'.format(S[left]), end='')
-        # print('\n -> right : {}'.format(S[right]), end='')
         while left <= right and pivot < S[right]:
             right -= 1
-            # print(' -> {}'.format(S[right]), end='')
 
         if left <= right:
             S[left], S[right] = S[right], S[left]
             left, right = left + 1, right - 1
-            # print('\n[After swap 1] {}'.format(S))
-            # print(' left : {}, right : {}'.format(S[left], S[right]))
 
     S[left], S[b] = S[b], S[left]
-    # print('\n[After swap 2] {}'.format(S))
 
-    # if a < left-1:
-    #     print('\n[Recursion 1] {} ~ {}'.format(S[a], S[left-1]))
-    # else:
-    #     print('[Recursion 1] RETURN')
-
-    if k == left-1:
+    if k == left:
         return S[k]
     elif k < left:
         return inplace_quick_select(S, k, a, left-1)
-    # if left+1 < b:
-    #     print('\n[Recursion 2] {} ~ {}'.format(S[left+1], S[b]))
-    # else:
-    #     print('[Recursion 2] RETURN')
     else:
         return inplace_quick_select(S, k, left+1, b)
 
@@ -616,6 +599,6 @@ if __name__ == '__main__':
     from random import randint
     a = [randint(0, 100) for i in range(10)]
     print(a)
-    b = inplace_quick_select(a, 3)
+    b = inplace_quick_select(a, 6)
     print(a)
     print(b)

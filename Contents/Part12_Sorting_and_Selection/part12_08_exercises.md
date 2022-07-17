@@ -840,7 +840,47 @@ if __name__ == '__main__':
 ```
 
 ### C-12.49 Describe an in-place version of the quick-select algorithm in pseudo-code, assuming that you are allowed to modify the order of elements.
+```python
+from random import randint
+def inplace_quick_select(S, k, a=0, b=None):
+    if b is None:
+        b = len(S)-1
+    if a >= b: return
 
+    # Random pivot selection
+    p = randint(a, b)
+    S[p], S[b] = S[b], S[p]
+
+    pivot = S[b]
+    left = a
+    right = b-1
+    while left <= right:
+        while left <= right and S[left] < pivot:
+            left += 1
+        while left <= right and pivot < S[right]:
+            right -= 1
+
+        if left <= right:
+            S[left], S[right] = S[right], S[left]
+            left, right = left + 1, right - 1
+
+    S[left], S[b] = S[b], S[left]
+
+    if k == left:
+        return S[k]
+    elif k < left:
+        return inplace_quick_select(S, k, a, left-1)
+    else:
+        return inplace_quick_select(S, k, left+1, b)
+
+if __name__ == '__main__':
+    from random import randint
+    a = [randint(0, 100) for i in range(10)]
+    print(a)
+    b = inplace_quick_select(a, 6)
+    print(a)
+    print(b)
+```
 
 
 
