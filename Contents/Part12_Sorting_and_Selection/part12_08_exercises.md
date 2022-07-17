@@ -882,7 +882,16 @@ if __name__ == '__main__':
     print(b)
 ```
 
+### C-12.50 Show how to use a deterministic O(n)-time selection algorithm to sort a sequence of n elements in O(nlog n) worst-case time.
+* Sol.) If the deterministic O(n)-time is allowed to modify the sequence, by selecting the first and the last element, it can sort the sequence in O(nlogn).
 
+### C-12.51 Given an unsorted sequence S of n comparable elements, and an integer k, give an O(n logk) expected-time algorithm for finding the O(k) elements that have rank ┌n/k┐, 2┌n/k┐, 3┌n/k┐, and so on.
+* Sol.) In-place quick select algorithm implemented in C-12.49 returns such partition of a sequence.
+
+### C-12.52 Space aliens have given us a function, alien split, that can take a sequence S of n integers and partition S in O(n) time into sequences S1,S2,...,Sk of size at most ┌n/k┐ each, such that the elements in Si are less than or equal to every element in S(i+1), for i = 1,2,...,k −1, for a fixed number, k < n. Show how to use alien split to sort S in O(nlog n/logk) time.
+* TBS
+
+### C-12.53 Read documenation of the reverse keyword parameter of Python’s sorting functions, and describe how the decorate-sort-undecorate paradigm could be used to implement it, without assuming anything about the key type.
 
 
 

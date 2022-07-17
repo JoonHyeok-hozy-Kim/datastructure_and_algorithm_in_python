@@ -82,3 +82,23 @@ a
 1Contents/Part12_Sorting_and_Selection/__init__.py,e\6\e6287d452e46f5177a31869f20481d6c6937588c
 O
 SortingAlgorithms/merge_sort.py,9\2\928cb04a8226e622ea702dd5815d2d54405414b7
+m
+=Contents/Part12_Sorting_and_Selection/part12_03_quick_sort.py,4\3\4383714cfb057c1b929e8e4fe15ee34aad4b1834
+f
+6Contents/Part11_Search_Trees/part11_00_search_trees.md,a\e\aeeea89e85817f8c95a31ca9635806aecfa296ae
+F
+DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
+c
+3Contents/Part11_Search_Trees/part11_07_exercises.md,5\2\52bf1f65eea6acc7cac509d5a85a1a3f9b4c2502
+c
+3Contents/Part11_Search_Trees/part11_07_exercises.py,5\6\56fddf2a3e3f5093ac265f3eb6d0ffad2951b407
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+x
+HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4fcb92e812d63c0199ad00450c9a16a577ce817e
+O
+SortingAlgorithms/quick_sort.py,6\0\60ec3447d2f727cbfce62c6f36ca27b71a8c0429
+l
+<Contents/Part12_Sorting_and_Selection/part12_08_exercises.md,1\6\16d09fd7615093cfdb6cd85154fe2a9ff5a65509
+l
+<Contents/Part12_Sorting_and_Selection/part12_08_exercises.py,2\6\262297a0311980a33ae6eec090f90f59441d1af9

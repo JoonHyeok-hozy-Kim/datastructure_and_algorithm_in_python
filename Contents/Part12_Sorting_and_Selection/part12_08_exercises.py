@@ -602,3 +602,5 @@ if __name__ == '__main__':
     b = inplace_quick_select(a, 6)
     print(a)
     print(b)
+
+    a.reverse()

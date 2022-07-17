@@ -1,0 +1,57 @@
+
+ipython:S117"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(²Î€´ÿÿÿÿÿ
+ipython:S117"MRename this parameter "B" to match the regular expression ^[_a-z][a-z0-9_]*$.(²Î€´ÿÿÿÿÿ
+ipython:S117"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(„óÙüÿÿÿÿ
+ipython:S117+"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ñİ„”ıÿÿÿÿ
+ipython:S1174"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(üÿ¬¸ùÿÿÿÿ
+dpython:S117M"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(Š¬½¢
+lpython:S3776M"TRefactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.(Š¬½¢
+ipython:S117c"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(¬×Ú²øÿÿÿÿ
+qpython:S3776c"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(¬×Ú²øÿÿÿÿ
+dpython:S117‹"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(æöx
+|python:S1871"cEither merge this branch with the identical one on line "147" or change one of the implementations.(ô­Í–
+epython:S117¤"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(³ª•
+Cpython:S1481¥"%Remove the unused local variable "i".(èİ£Ÿÿÿÿÿÿ
+jpython:S117´"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(­ŠÁøşÿÿÿÿ
+jpython:S117È"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ù—¢ßıÿÿÿÿ
+jpython:S117È"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ù—¢ßıÿÿÿÿ
+jpython:S117Û"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(‘†Ø®ùÿÿÿÿ
+=python:S1481İ"%Remove the unused local variable "i".(Ã”àb
+epython:S117ò"MRename this parameter "N" to match the regular expression ^[_a-z][a-z0-9_]*$.(‘‚¿ó
+jpython:S117€"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(¿ñûóùÿÿÿÿ
+jpython:S117…"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(–§…ÿÿÿÿÿ
+kpython:S117–"NRename this parameter "S1" to match the regular expression ^[_a-z][a-z0-9_]*$.(š­‹Øşÿÿÿÿ
+kpython:S117–"NRename this parameter "S2" to match the regular expression ^[_a-z][a-z0-9_]*$.(š­‹Øşÿÿÿÿ
+jpython:S117®"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(‚óÂšşÿÿÿÿ
+spython:S117°"VRename this local variable "new_S" to match the regular expression ^[_a-z][a-z0-9_]*$.(ôû†üÿÿÿÿ
+epython:S117·"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(£¾¦
+spython:S117º"VRename this local variable "new_S" to match the regular expression ^[_a-z][a-z0-9_]*$.(ôû†üÿÿÿÿ
+jpython:S117Ê"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(€™­Äşÿÿÿÿ
+Cpython:S1481Ğ"%Remove the unused local variable "i".(ñğ‹®úÿÿÿÿ
+dpython:S117Ù"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(€ÍÜJ
+lpython:S3776Ù"TRefactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed.(€ÍÜJ
+jpython:S117€"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(²»ñÙøÿÿÿÿ
+<python:S2772¢"Remove this unneeded "pass".(ã‘Û¾8ËÄÖŞ 0
+>python:S125£"Remove this commented out code.(Éîï‘8ÌÄÖŞ 0
+>python:S125°"Remove this commented out code.(ò°”’8ÌÄÖŞ 0
+Cpython:S125¸"Remove this commented out code.(°¾öƒıÿÿÿÿ8ÌÄÖŞ 0
+Cpython:S125¼"Remove this commented out code.(³–á¯üÿÿÿÿ8ÍÄÖŞ 0
+>python:S125Ô"Remove this commented out code.(Ÿñ’­8ÍÄÖŞ 0
+=python:S125İ"Remove this commented out code.(û®œ)8ÍÄÖŞ 0
+Cpython:S125á"Remove this commented out code.(Ü†Îºúÿÿÿÿ8ÍÄÖŞ 0
+Cpython:S125î"Remove this commented out code.(Ü†Îºúÿÿÿÿ8ÎÄÖŞ 0
+Cpython:S125"Remove this commented out code.(îı÷ıÿÿÿÿ8ÎÄÖŞ 0
+Cpython:S125‡"Remove this commented out code.(ú”ñıÿÿÿÿ8ÎÄÖŞ 0
+Cpython:S125"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ÏÄÖŞ 0
+Cpython:S125”"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ÏÄÖŞ 0
+Cpython:S125š"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ÏÄÖŞ 0
+Cpython:S125 "Remove this commented out code.(Á§³Ûıÿÿÿÿ8ĞÄÖŞ 0
+Cpython:S125¦"Remove this commented out code.(ß“Äûÿÿÿÿ8ĞÄÖŞ 0
+Cpython:S125ª"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ĞÄÖŞ 0
+Cpython:S125±"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ĞÄÖŞ 0
+Cpython:S125¹"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ÑÄÖŞ 0
+Cpython:S125¿"Remove this commented out code.(× ƒùüÿÿÿÿ8ÑÄÖŞ 0
+Cpython:S125Å"Remove this commented out code.(× ƒùüÿÿÿÿ8ÑÄÖŞ 0
+Cpython:S125Ê"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ÑÄÖŞ 0
+Cpython:S125Ñ"Remove this commented out code.(Á§³Ûıÿÿÿÿ8ÒÄÖŞ 0
+Epython:S1481Ø"%Remove the unused local variable "i".(³Ùäœ8ÒÄÖŞ 0
