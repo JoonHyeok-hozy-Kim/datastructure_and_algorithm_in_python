@@ -264,6 +264,31 @@ def _compute_kmp_fail(P):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_03_03_matrix_chain_2.png" style="height: 100px;"></img><br/>
 </p>
 
+#### Implementation
+```python
+def matrix_chain(d):
+    """
+    :param d: a list of n+1 numbers such that size of kth matrix is d[k]-by-d[k+1].
+    :return: n-by-n table such that N[i][j] represents the minimum number of multiplications needed to compute the product of Ai through Aj inclusive.
+    """
+    n = len(d)-1
+    N = [[0]*n for i in range(n)]
+
+    for b in range(n):
+        for i in range(n-b):
+            j = i+b
+            if i != j:
+                N[i][j] = min(N[i][k] + N[k+1][j] + d[i]*d[k+1]*d[j+1] for k in range(i, j))
+    return N
+```
+
+### 13.3.2 DNA and Text Sequence Alignment
+
+
+
+
+
+
 
 
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
