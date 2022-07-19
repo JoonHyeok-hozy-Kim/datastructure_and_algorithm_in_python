@@ -69,15 +69,58 @@ def find_brute(T, P):
          1. If c is not contained anywhere in P, then shift P completely past T[i] (for it cannot match any character in P). 
          2. Otherwise, shift P until an occurrence of character c in P gets aligned with T[i].
 
-
+#### Description by image
+1. Simple Case
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_01_boyer_moore_image_1.png" style="width: 100%;"></img><br/>
 </p>
-
+    
+2. More complicated case with mismatch
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_01_boyer_moore_image_2.png" style="width: 100%;"></img><br/>
 </p>
 
+#### Inner function : last(c)
+* What is this?
+  * If c is in P, last(c) is the index of the last (rightmost) occurrence of c in P.
+  * Otherwise, we conventionally define last(c) = −1.
+* How?
+  * Use hash table to represent th last function.
+    * Then the space usage will be proportional to the number of distinct alphabet symbols, or the size of Σ, which is the fixed number.
+    * Thus, the running time of last() function will be O(m) where m denotes the size of P.
+
+#### Implementation
+```python
+def find_boyer_moore(T, P):
+    """ Return the lowest index of T at which substring P begins (or else -1). """
+    n, m = len(T), len(P)
+    if m == 0:
+        return 0
+    last = {}
+    for k in range(m):
+        last[P[k]] = k
+    i = m-1
+    k = m-1
+    while i < n:
+        if T[i] == P[k]:
+            if k == 0:
+                return i
+            i -= 1
+            k -= 1
+        else:
+            j = last.get(T[i], -1)
+            i += m - min(k, j+1)    # min(k, j+1) : The minimum of
+                                    #               (1) k   : m - 1 - (the number of matches in the previous search)
+                                    #               (2) j+1 : (the index of the last position that T[i] is contained in P) + 1
+
+            k = m-1                 # Initialize k
+
+    return -1
+```
+#### Simulation
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_01_boyer_moore_image_3.png" style="width: 100%;"></img><br/>
+</p>
 
 
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
