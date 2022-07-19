@@ -1,0 +1,21 @@
+
+npython:S1192s"VDefine a constant instead of duplicating this literal 'p is no longer valid.' 3 times.(‘ê»Ü
+~python:S1192"aDefine a constant instead of duplicating this literal 'Must be implemented by subclass.' 7 times.(≤◊´œˇˇˇˇˇ
+python:S1192o"bDefine a constant instead of duplicating this literal 'p must be a proper Position type.' 3 times.(ÌÇ…ﬂ¸ˇˇˇˇ
+}python:S1192q"eDefine a constant instead of duplicating this literal 'p does not belong to this container.' 3 times.(‡°Ë◊
+Mpython:S1066⁄"/Merge this if statement with the enclosing one.(≥Öè“˛ˇˇˇˇ
+Hpython:S1066Ê"/Merge this if statement with the enclosing one.(ﬂµ≥ª
+]python:S5712"@Return "NotImplemented" instead of raising "NotImplementedError"(≤◊´œˇˇˇˇˇ
+Bpython:S1481M"%Remove the unused local variable "c".(ú˙áÁ˘ˇˇˇˇ
+rpython:S3776”"TRefactor this function to reduce its Cognitive Complexity from 33 to the 15 allowed.(‚π¡â˘ˇˇˇˇ
+7python:S125˚"Remove this commented out code.(ÆÑ´ˇ
+mpython:S3776Í"TRefactor this function to reduce its Cognitive Complexity from 31 to the 15 allowed.(ﬂßùØ
+Cpython:S1481‰"%Remove the unused local variable "i".(πæΩà˝ˇˇˇˇ
+qpython:S1186Æ"YAdd a nested comment explaining why this method is empty, or complete the implementation.(Â«…i
+rpython:S1186±"YAdd a nested comment explaining why this method is empty, or complete the implementation.(ÊÇ˛Ï
+rpython:S1186√"YAdd a nested comment explaining why this method is empty, or complete the implementation.(˙ˇ‹
+Cpython:S1481Á"%Remove the unused local variable "i".(ÒãÆ˙ˇˇˇˇ
+>python:S1481Ô"%Remove the unused local variable "i".(‹‡º–
+rpython:S1186î"YAdd a nested comment explaining why this method is empty, or complete the implementation.(˙ˇ‹
+Cpython:S1481À"%Remove the unused local variable "i".(ÒãÆ˙ˇˇˇˇ
+>python:S1481”"%Remove the unused local variable "i".(‹‡º–

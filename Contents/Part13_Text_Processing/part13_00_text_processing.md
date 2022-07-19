@@ -235,6 +235,12 @@ def _compute_kmp_fail(P):
 </p>
 
 
+## 13.3 Dynamic Programming
+### 13.3.1 Matrix Chain-Product
+* Consider calculating a chain of matrix products.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_03_03_matrix_chain_1.png" style="height: 100px;"></img><br/>
+</p>
 
 
 
