@@ -122,5 +122,42 @@ def find_boyer_moore(T, P):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_01_boyer_moore_image_3.png" style="width: 100%;"></img><br/>
 </p>
 
+#### Analysis) Performance
+* Worst-Case Running Time : O(nm + |Σ|)
+  * Why?
+    * last function takes O(m+|Σ|) time.
+    * actual search : O(nm)
+  * Worst-Case Scenario
+    * T = "aaaaaaaaaaaaa"
+    * P = "baaaa"
+  * Advantage
+    * Often able to skip large portions of text.
+      * which means less comparison operation -> less time spent for the search.
+    * Experimental evidence on English text shows that the average number of comparisons done per character is 0.24 for a five-character pattern string.
+
+
+### 13.2.3 The Knuth-Morris-Pratt Algorithm
+* Goal
+  * Take advantage of the matched record information that we obtained during the search before mismatch was found!
+  * Achieve asymptotically optimal O(n+m) running time.
+* How?
+  * Precompute self-overlaps between portions of the pattern.
+  * Thus, we immediately know the maximum amount to shift the pattern before continuing the search when a mismatch occurs at one location.
+
+#### Concept) Failure Function
+* Purpose
+  * Indicate the proper shift of P upon a failed comparison
+  * Returns the number of how many of the immediately preceding characters can be reused to restart the pattern.
+* Def.) **Failure Function f(k)**
+  * the length of the longest prefix of P that is a suffix of P[1:k+1]
+  * Note that P[0] is excluded since we will shift at least one unit.
+* Ex.) Simulation and the Failure Function
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_02_kmp_ex1.png" style="width: 100%;"></img><br/>
+</p>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_02_kmp_ex2.png" style="height: 100px;"></img><br/>
+</p>
+
 
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
