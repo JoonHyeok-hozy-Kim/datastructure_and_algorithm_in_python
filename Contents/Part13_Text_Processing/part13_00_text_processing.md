@@ -159,5 +159,83 @@ def find_boyer_moore(T, P):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_02_kmp_ex2.png" style="height: 100px;"></img><br/>
 </p>
 
+#### Implementation
+```python
+def find_kmp(T, P):
+    """ Return the lowest index of T at which substring P begins (or else -1). """
+    n, m = len(T), len(P)
+    if m == 0:
+        return 0
+    fail = _compute_kmp_fail(P)
+    j = 0
+    k = 0
+    while j < n:
+        if T[j] == P[k]:
+            if k == m-1:
+                return j-m+1
+            j += 1
+            k += 1
+        elif k > 0:
+            k = fail[k-1]
+        else:
+            j += 1
+    return -1
+
+
+def _compute_kmp_fail(P):
+    m = len(P)
+    fail = [0] * m
+    j = 1
+    k = 0
+    while j < m:
+        if P[j] == P[k]:
+            fail[j] = k+1
+            j += 1
+            k += 1
+        elif k > 0:
+            k = fail[k-1]
+        else:
+            j += 1
+    return fail
+```
+
+#### Analysis) Performance
+* Conclusion
+  * The Knuth-Morris-Pratt algorithm performs pattern matching on a text string of length n and a pattern string of length m in O(n+m) time.
+* Justification
+  1. while-loop of **find_kmp()**
+     * Conclusion : total number of iterations is 2n.
+     * Analysis
+       * Let s = j-k
+         * Then s is the total amount by which the pattern P has been shifted with respect to the text T.
+       * There are 3 cases in every loop.
+         1. T[j] == P[k]
+            * Δs = 0
+              * why?
+                * j and k increase simultaneously.
+         2. T[j] != P[k] and k > 0
+            * Δs is at least 1.
+              * why?
+                * j does not change.
+                * Depending on the value fail[k], Δk may vary.
+         3. T[j] != P[k] and k == 0
+            * Δs = 1
+              * why?
+                * j increase by 1.
+                * k does not change.
+       * Thus, at each iteration of the loop, either j or s increases by at least 1.
+       * Hence, the total number of iterations of the while loop in the KMP pattern-matching algorithm is at most **2n**.
+  2. Failure Function
+     * It simply runs in O(m) time.
+  3. Therefore, O(n+m) running time.
+
+* Simulation
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_03_kmp_simulation.png" style="width: 100%;"></img><br/>
+</p>
+
+
+
+
 
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
