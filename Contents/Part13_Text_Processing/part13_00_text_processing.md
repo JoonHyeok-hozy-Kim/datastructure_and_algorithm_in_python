@@ -70,8 +70,13 @@ def find_brute(T, P):
          2. Otherwise, shift P until an occurrence of character c in P gets aligned with T[i].
 
 
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_01_boyer_moore_image_1.png" style="width: 100%;"></img><br/>
+</p>
 
-
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_02_01_boyer_moore_image_2.png" style="width: 100%;"></img><br/>
+</p>
 
 
 
