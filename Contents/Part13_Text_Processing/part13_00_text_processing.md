@@ -242,6 +242,28 @@ def _compute_kmp_fail(P):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_03_03_matrix_chain_1.png" style="height: 100px;"></img><br/>
 </p>
 
+* Prop.) Parenthesizing may change the performance of products while not altering the result.
+  * ex.)
+    * Let 
+      * B : 2 x 10 matrix
+      * C : 10 x 50 matrix
+      * D : 50 x 20 matrix
+    * Then
+      1. (B·C)·D requires 2·10·20 + 10·50·20 = 10400 multiplications
+      2. B·(C·D) requires 2·10·50 + 2·50·20 = 3000 multiplications
+      
+#### Tech.) Find an optimal parenthesizing for chain of products.
+1. Split problems into **subproblems**.
+   * Put i, j where 0 < i <= j < n.
+   * Let N_(i,j) : the minimum number of multiplications needed to compute this subexpression.
+     * Then N_(0,(n-1)) denotes the whole problem.
+2. Characterize the optimal solutions for the subproblems.
+   * We may divide into subproblems by finding an optimal k such that
+     * (Ai···Ak)·(Ak+1···Aj), for some k ∈ {i,i + 1,..., j −1}
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_03_03_matrix_chain_2.png" style="height: 100px;"></img><br/>
+</p>
+
 
 
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
