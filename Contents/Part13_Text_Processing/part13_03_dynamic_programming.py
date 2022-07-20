@@ -23,6 +23,19 @@ def print_matrix(N):
 
 if __name__ == '__main__':
 
-    d = [3, 5, 6, 2, 20, 30, 50]
-    m = matrix_chain(d)
-    print_matrix(m)
+    # d = [3, 5, 6, 2, 20, 30, 50]
+    # m = matrix_chain(d)
+    # print_matrix(m)
+
+
+    from TextProcessingAlgorithms.longest_common_sequence import LCS
+    X = "GTTCCTAATA"
+    Y = "CGATAATTGAGA"
+
+    L = LCS(X, Y)
+    for row in L:
+        for e in row:
+            print("{}".format(e), end=" ")
+        print()
+
+

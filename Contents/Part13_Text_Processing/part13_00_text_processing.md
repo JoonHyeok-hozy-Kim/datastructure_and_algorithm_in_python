@@ -236,6 +236,16 @@ def _compute_kmp_fail(P):
 
 
 ## 13.3 Dynamic Programming
+#### Concept) Properties needed for applying a **Dynamic Programming Solution**
+1. Simple Subproblems
+   * There has to be some way of repeatedly breaking the global optimization problem into subproblems. 
+   * Moreover, there should be a way to parameterize subproblems with just a few indices, like i, j, k, and so on.
+2. Subproblem Optimization
+   * An optimal solution to the global problem must be a composition of optimal subproblem solutions.
+3. Subproblem Overlap
+   * Optimal solutions to unrelated subproblems can contain subproblems in common.
+
+
 ### 13.3.1 Matrix Chain-Product
 * Consider calculating a chain of matrix products.
 <p align="start">
