@@ -363,7 +363,7 @@ def LCS_solution(X, Y):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_04_01_huffman.png" style="width: 100%;"></img><br/>
 </p>
 
-* Implementation : <a href="">Huffman Code</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/TextProcessingAlgorithms/huffman.py">Huffman Code</a>
 
 
 
