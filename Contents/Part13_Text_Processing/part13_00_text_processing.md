@@ -342,7 +342,7 @@ def LCS_solution(X, Y):
 * What is this?
   * Encode a string of alphabets into a small binary string Y
 
-#### Tech.) Huffman Code
+### 13.4.1 The Huffman Coding Algorithm
 * Goal
   * Use fixed-length binary strings to encode characters
   * Save space over a fixed-length encoding by using short code-word strings to encode high-frequency characters and long code-word strings to encode low-frequency characters.
@@ -365,7 +365,20 @@ def LCS_solution(X, Y):
 
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/TextProcessingAlgorithms/huffman.py">Huffman Code</a>
 
+* Analysis
+  * Running Time
+    * Huffman’s algorithm constructs an optimal prefix code for a string of length n with d distinct characters in O(n + d*log(d)) time.
+      * where d is the distinct number of alphabets in the string.
+  * Justification
+    1. while-loop : O(log(d)) 
+      * why?
+        * We used priority queue represented with heap ordered by the frequency.
+    2. Each iteration takes two nodes out of Q and adds one in (d-1) time.
 
+### 13.4.2 The Greedy Method
+#### Concept) Greedy-Choice property.
+* a global optimal condition can be reached by a series of locally optimal choices
+* choices that are each the current best from among the possibilities available at the time)
 
 
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
