@@ -20,6 +20,12 @@ class PriorityQueueBase:
     def is_empty(self):
         return len(self) == 0
 
+    def key(self):
+        return self._key
+
+    def value(self):
+        return self._value
+
 
 from DataStructures.linked_list import PositionalList
 class UnsortedPriorityQueue(PriorityQueueBase):

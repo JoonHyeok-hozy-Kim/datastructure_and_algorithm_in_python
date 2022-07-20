@@ -36,8 +36,6 @@ l
 <Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
 h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
-Q
-!DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
 M
 DataStructures/linked_list.py,7\1\7188819b1898161ec3c55a91200f6bd9ec381d5e
 M
@@ -94,5 +92,13 @@ l
 <Contents/Part12_Sorting_and_Selection/part12_08_exercises.md,1\6\16d09fd7615093cfdb6cd85154fe2a9ff5a65509
 f
 6Contents/Part11_Search_Trees/part11_00_search_trees.md,a\e\aeeea89e85817f8c95a31ca9635806aecfa296ae
-F
-DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
+x
+HContents/Part13_Text_Processing/part13_02_pattern_matching_algorithms.py,4\9\49e952357db392aad7a54a60927e1832185188bf
+c
+3Contents/Part11_Search_Trees/part11_07_exercises.md,5\2\52bf1f65eea6acc7cac509d5a85a1a3f9b4c2502
+c
+3TextProcessingAlgorithms/longest_common_sequence.py,6\6\664f20ac28666236fde08ddd34bcf97f81c02a02
+m
+=Contents/Part12_Sorting_and_Selection/part12_02_merge_sort.py,b\0\b0f2d32e3744aca7ed0c7092dbbe50356363d3f5
+^
+.TextProcessingAlgorithms/knuth_morris_pratt.py,c\0\c0a4fc1b2ecf8f92470195a1a550cbc47ae9df78

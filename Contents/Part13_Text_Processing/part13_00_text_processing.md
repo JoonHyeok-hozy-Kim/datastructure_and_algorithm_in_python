@@ -338,9 +338,32 @@ def LCS_solution(X, Y):
 
 ## 13.4 Text Compression and the Greedy Method
 
+#### Concept) Text Compression
+* What is this?
+  * Encode a string of alphabets into a small binary string Y
 
+#### Tech.) Huffman Code
+* Goal
+  * Use fixed-length binary strings to encode characters
+  * Save space over a fixed-length encoding by using short code-word strings to encode high-frequency characters and long code-word strings to encode low-frequency characters.
+  * Use a variable-length encoding specifically optimized for a given string X over any alphabet.
 
+* How?
+  1. Convert each character in X to a variable-length code-word
+  2. Concatenate all these code-words in order to produce the encoding Y for X
+     * In order to avoid ambiguities, we insist that no code-word in our encoding be a prefix of another code-word in our encoding. 
+     * Such a code is called a prefix code, and it simplifies the decoding of Y to retrieve X
+  3. Use Binary Tree for the representation of the string X.
+     * Each edge in T represents a bit in a code-word, with an edge to a left child representing a “0” and an edge to a right child representing a “1.”
+     * Each leaf v is associated with a specific character, and the code-word for that character is defined by the sequence of bits associated with the edges in the path from the root of T to v.
+     * Each leaf v has a frequency, f(v), which is simply the frequency in X of the character associated with v.
 
+* Ex.) string X = "a fast runner need never be afraid of the dark"
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_04_01_huffman.png" style="width: 100%;"></img><br/>
+</p>
+
+* Implementation : <a href="">Huffman Code</a>
 
 
 
