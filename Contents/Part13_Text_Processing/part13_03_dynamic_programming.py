@@ -28,14 +28,29 @@ if __name__ == '__main__':
     # print_matrix(m)
 
 
-    from TextProcessingAlgorithms.longest_common_sequence import LCS
-    X = "GTTCCTAATA"
-    Y = "CGATAATTGAGA"
+    from TextProcessingAlgorithms.longest_common_sequence import LCS, LCS_solution, LCS_solution_wrong
+    from random import randint, choice
+    from time import time
+    alpha_set = ('A', 'C', 'T', 'G')
+    times = []
+    n = 10
+    X = [choice(alpha_set) for i in range(n)]
+    Y = [choice(alpha_set) for i in range(n)]
 
+    print(X)
+    print(Y)
+
+    times.append(time())
     L = LCS(X, Y)
-    for row in L:
-        for e in row:
-            print("{}".format(e), end=" ")
-        print()
+    D = LCS_solution(X, Y)
+    times.append(time())
+    print(D)
 
+    times.append(time())
+    D = LCS_solution_wrong(X, Y)
+    times.append(time())
+    print(D)
 
+    for i in range(len(times)):
+        if i%2 == 1:
+            print('{}-th : {}'.format(i//2, times[i] - times[i-1]))

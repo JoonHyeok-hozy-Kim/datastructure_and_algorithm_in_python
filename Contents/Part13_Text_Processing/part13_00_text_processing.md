@@ -293,6 +293,50 @@ def matrix_chain(d):
 ```
 
 ### 13.3.2 DNA and Text Sequence Alignment
+#### Concept) Subsequence
+* Def.
+  * Given a string X = x_0 x_1 x_2 ··· x_(n−1), a subsequence of X is any string that is of the form x_(i1) x_(i2) ··· x_(ik) 
+    * where i_j < i_(j+1); that is, it is a sequence of characters that are   not necessarily contiguous but are nevertheless taken in order from X.
+* ex.)
+  * "AAAG" is a subsequence of the string "CGATAATTGAGA"
+  
+#### Concept) Longest Common Sequence (LCS)
+  * For strings X and Y, LCS is the longest string S that is a subsequence of both X and Y
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_03_04_lcs_1.png" style="height: 300px;"></img><br/>
+</p>
+
+#### Implementation
+```python
+def LCS(X, Y):
+    n, m = len(X), len(Y)
+    L = [[0] * (m+1) for k in range(n+1)]
+    for j in range(n):
+        for k in range(m):
+            if X[j] == Y[k]:
+                L[j+1][k+1] = 1 + L[j][k]
+            else:
+                L[j+1][k+1] = max(L[j][k+1], L[j+1][k])
+    return L
+
+
+def LCS_solution(X, Y):
+    solution = []
+    j, k = len(X), len(Y)
+    L = LCS(X, Y)
+    while L[j][k] > 0:
+        if X[j-1] == Y[k-1]:
+            solution.append(X[j-1])
+            j -= 1
+            k -= 1
+        elif L[j-1][k] >= L[j][k-1]:
+            j -= 1
+        else:
+            k -= 1
+    return ''.join(reversed(solution))
+```
+
+## 13.4 Text Compression and the Greedy Method
 
 
 
