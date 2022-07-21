@@ -400,29 +400,55 @@ def LCS_solution(X, Y):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_05_01_trie_example.png" style="width: 100%;"></img><br/>
 </p>
 
-* Props.)
+* Basic Props.)
   * No string in S is a prefix of another string.
     * i.e.) Each string of S is uniquely associated with a leaf of T.
     * We can always satisfy this assumption by adding a special character that is not in the original alphabet Σ at the end of each string.
   * An internal node in a standard trie T can have anywhere between 1 and |Σ| children.
   * A path from the root of T to an internal node v at depth k corresponds to a k-character prefix X[0:k] of a string X of S.
 
+<br> 
+
+#### Prop.) A standard trie storing a collection S of s strings of total length n from an alphabet Σ has the following properties:
+* The height of T is equal to the length of the longest string in S.
+* Every internal node of T has at most |Σ| children.
+* T has s leaves
+* The number of nodes of T is at most n+1.
+  * Worst Case
+    * No two strings share a common nonempty prefix
+    * i.e.) all internal nodes have one child.
 
 
+#### Tech.) Trie as a set or map whose keys are the strings of S.
+* How?
+  * We perform a search in T for a string X by tracing down from the root the path indicated by the characters in X.
+  * If this path can be traced and terminates at a leaf node, then we know X is a key in the map.
+* Performance
+  * The running time of the search for a string of length m is O(m·|Σ|)
+    * why?)
+      * We visit at most (m+1) nodes of T and we spend O(|Σ|) time at each node determining the child having the subsequent character as a label.
+      * O(|Σ|) upper bound
+        * Recall that every node has at most |Σ| children.
+        * O(log|Σ|) or expected O(1) are also available
+          1. O(log|Σ|)
+             * by mapping characters to children using a secondary search table or hash table at eachnode
+          2. expected O(1)
+             * by using a direct lookup table of size |Σ| at each node, if |Σ| is sufficiently small
+        * Thus, we typically expect a search for a string of length m to run in O(m) time.
 
+#### Tech.) Word Matching
+* Concept Desc.
+  * Word matching differs from standard pattern matching because the pattern cannot match an arbitrary substring of the text—only one of its words.
+  * To accomplish this, each word of the original document must be added to the trie.
+* How?
+  * Use an incremental algorithm that inserts the strings one at a time.
+  * To insert a string X into the current trie T, we trace the path associated with X in T, creating a new chain of nodes to store the remaining characters of X when we get stuck.
+  * The running time to insert X with length m is similar to a search, with worst-case O(m·|Σ|) performance, or expected O(m) if using secondary hash tables at each node.
+  * Thus, constructing the entire trie for set S takes expected **O(n)** time, where n is the total length of the strings of S.
 
-
-
-
-
-
-
-
-
-
-
-
-
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_05_02_trie_example.png" style="width: 100%;"></img><br/>
+</p>
 
 
 
