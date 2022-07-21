@@ -451,6 +451,25 @@ def LCS_solution(X, Y):
 </p>
 
 
+### 13.5.2 Compressed Tries
+#### Def.) Compressed Tries
+* A trie that ensures that each internal node in the trie has at least two children.
+* It enforces this rule by compressing chains of single-child nodes into individual edges.
+
+#### Concept) Redundancy
+* For a standard trie T, an internal node v of T is redundant if v has one child and is not the root.
+* A chain of k ≥ 2 edges, (v_0,v_1)(v_1,v_2)···(v_(k−1),v_k), is redundant if:
+  * v_i is redundant for i = 1,...,k−1.
+  * v_0 and v_k are not redundant.
+* Treatment
+  * We can transform T into a compressed trie as follows.
+    1. Replace each redundant chain (v_0,v_1)···(v_(k−1),v_k) of k ≥ 2 edges into a single edge (v_0,v_k)
+    2. Relabel v_k with the concatenation of the labels of nodes v_1,...,v_k.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_05_03_compressed_trie_image.png" style="width: 100%;"></img><br/>
+</p>
+
 
 
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
