@@ -381,4 +381,50 @@ def LCS_solution(X, Y):
 * choices that are each the current best from among the possibilities available at the time)
 
 
+
+## 13.5 Tries
+#### Concept) Trie
+* a tree-based data structure for storing strings in order to support fast pattern matching.
+* The primary query operations that tries support are pattern matching and prefix matching.
+  * The latter operation involves being given a string X, and looking for all the strings in S that contain X as a prefix.
+
+### 13.5.1 Standard Tries
+* Def.)
+  * Let S be a set of s strings from alphabet Σ such that no string in S is a prefix of another string.
+  * A standard trie for S is an **ordered tree** T with the following properties.
+    * Each node of T, except the root, is labeled with a character of Σ.
+    * The children of an internal node of T have distinct labels.
+    * T has s leaves, each associated with a string of S, such that the concatenation of the labels of the nodes on the path from the root to a leaf v of T yields the string of S associated with v.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_05_01_trie_example.png" style="width: 100%;"></img><br/>
+</p>
+
+* Props.)
+  * No string in S is a prefix of another string.
+    * i.e.) Each string of S is uniquely associated with a leaf of T.
+    * We can always satisfy this assumption by adding a special character that is not in the original alphabet Σ at the end of each string.
+  * An internal node in a standard trie T can have anywhere between 1 and |Σ| children.
+  * A path from the root of T to an internal node v at depth k corresponds to a k-character prefix X[0:k] of a string X of S.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 13.6 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md">Exercises</a>
