@@ -436,6 +436,9 @@ Algorithm SkipSearch(k):
       p = next(p) {scan forward}
   return p.
 ```
+
+#### Tech.) <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/skip_lists.py#L100">Hozy Skiplist</a> Implemented
+
 <p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/images/10_04_02_skip_search.png" style="height: 300px;"></img><br/>
 </p>
