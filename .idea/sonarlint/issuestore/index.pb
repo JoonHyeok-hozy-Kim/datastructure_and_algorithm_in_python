@@ -106,3 +106,5 @@ S
 \Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md,c\6\c685779da586aaefd6cde8a6bb5bee891522eaaa
 F
 DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
+
+OContents/Part13_Text_Processing/part13_04_text_compression_and_greedy_method.py,2\f\2f516e50e4487503c07af05d154473fb499bc412
