@@ -98,8 +98,6 @@ c
 3TextProcessingAlgorithms/longest_common_sequence.py,6\6\664f20ac28666236fde08ddd34bcf97f81c02a02
 m
 =Contents/Part12_Sorting_and_Selection/part12_02_merge_sort.py,b\0\b0f2d32e3744aca7ed0c7092dbbe50356363d3f5
-^
-.TextProcessingAlgorithms/knuth_morris_pratt.py,c\0\c0a4fc1b2ecf8f92470195a1a550cbc47ae9df78
 S
 #TextProcessingAlgorithms/huffman.py,3\8\38fef4a9c0e8ac42be1ddc9a2cfd6198f52197cf
 Œ
