@@ -466,9 +466,59 @@ def LCS_solution(X, Y):
     1. Replace each redundant chain (v_0,v_1)···(v_(k−1),v_k) of k ≥ 2 edges into a single edge (v_0,v_k)
     2. Relabel v_k with the concatenation of the labels of nodes v_1,...,v_k.
 
+#### Props.) A compressed trie storing a collection S of s strings from an alphabet of size d has the following properties:
+* Every internal node of T has at least two children and most d children.
+* T has s leaves nodes.
+* The number of nodes of T is O(s).
+
+#### Prop.) Advantage of the Compressed Trie
+  * The number of nodes of the compressed trie is proportional to the number of strings and not to their total length
+  * A compressed trie is truly advantageous only when it is used as an auxiliary index structure over a collection of strings already stored in a primary structure.
+    * Notation
+      * Let the collection S of strings is an array of strings S[0], S[1], ..., S[s− 1].
+      * Represent X by a combination of three integers (i, j : k), such that X = S[i][ j : k];
+        * X is the slice of S[i] consisting of the characters from the j th up to but not including the kth.
+
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_05_03_compressed_trie_image.png" style="width: 100%;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_05_03_compressed_trie_notation.png" style="width: 100%;"></img><br/>
 </p>
+
+
+### 13.5.3 Suffix Tries
+* Def.)
+  * Tries is for the case when the strings in the collection S are all the suffixes of a string X.
+* How?
+  * The label of each vertex is a pair (j,k) indicating the string X[ j : k].
+  * To satisfy the rule that no suffix of X is a prefix of another suffix, we can add a special character, denoted with $, that is not in the original alphabet Σ at the end of X (and thus to every suffix). 
+    * That is, if string X has length n, we build a trie for the set of n strings X[ j:n], for j = 0,...,n−1.
+* Advantage
+  * Saving Space
+* Prop.) 
+  * The compact representation of a suffix trie T for a string X of length n uses O(n) space.
+
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_05_04_suffix_tries.png" style="width: 100%;"></img><br/>
+</p>
+
+
+#### Tech.) Using a Suffix Trie
+* The suffix trie T for a string X can be used to efficiently perform pattern-matching queries on text X.
+* We can determine whether a pattern P is a substring of X by trying to trace a path associated with P in T.
+* P is a substring of X if and only if such a path can be traced.
+  * If node v has label (j,k) and Y is the string of length y associated with the path from the root to v (included), then X[k−y:k] = Y.
+
+
+### 13.5.4 Search Engine Indexing
+#### Concept) Inverted Files
+* Def.)
+  * A dictionary storing key-value pairs (w,L)
+    * where where w is a word and L is a collection of pages containing word w
+    * The keys (words) in this dictionary are called index terms and should be a set of vocabulary entries and proper nouns as large as possible.
+    * The elements in this dictionary are called occurrence lists and should cover as many Web pages as possible.
+* How to implement
+  1. An array storing the occurrence lists of the terms (in no particular order).
+  2. A compressed trie for the set of index terms, where each leaf stores the index of the occurrence list of the associated term.
 
 
 
