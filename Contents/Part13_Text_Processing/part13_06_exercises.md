@@ -51,11 +51,14 @@ if __name__ == '__main__':
 ```
 
 ### R-13.3 Draw a figure illustrating the comparisons done by brute-force pattern matching for the text "aaabaadaabaaa" and pattern "aabaaa".
-<p align="center">
+<p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_03.png" style="height: 500px;"></img><br/>
 </p>
 
-
+### R-13.4 Repeat the previous problem for the Boyer-Moore algorithm, not counting the comparisons made to compute the last(c) function.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_04.png" style="height: 500px;"></img><br/>
+</p>
 
 
 
