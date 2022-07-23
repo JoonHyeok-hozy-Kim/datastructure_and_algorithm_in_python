@@ -65,6 +65,102 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_05.png" style="height: 600px;"></img><br/>
 </p>
 
+### R-13.6 Compute a map representing the last function used in the Boyer-Moore pattern-matching algorithm for characters in the pattern string: 
+#### "the quick brown fox jumped over a lazy cat".
+```python
+p = "the quick brown fox jumped over a lazy cat"
+last = {}
+for i in range(len(p)):
+    last[p[i]] = i
+for c in last:
+    print('{} : {}'.format(c, last[c]))
+```
+* Result
+  * t : 41
+  * h : 1
+  * e : 29
+  * q : 4
+  * u : 21
+  * i : 6
+  * c : 39
+  * k : 8
+  * b : 10
+  * r : 30
+  * o : 27
+  * w : 13
+  * n : 14
+  * f : 16
+  * x : 18
+  * j : 20
+  * m : 22
+  * p : 23
+  * d : 25
+  * v : 28
+  * a : 40
+  * l : 34
+  * z : 36
+  * y : 37
+
+### R-13.7 Compute a table representing the Knuth-Morris-Pratt failure function for the pattern string "cgtacgttcgtac".
+```python
+from TextProcessingAlgorithms.knuth_morris_pratt import _compute_kmp_fail
+p = "cgtacgttcgtac"
+a = _compute_kmp_fail(p)
+print(a)
+```
+* Result
+  * [0, 0, 0, 0, 1, 2, 3, 0, 1, 2, 3, 4, 5]
+
+### R-13.8 What is the best way to multiply a chain of matrices with dimensions that are 10×5, 5×2, 2×20, 20×12, 12×4, and 4×60? Show your work.
+* By slightly modifying the given code, we can obtain the path as follows.
+  * Naming the series of matrices A, B, C, D, E, F, G, the algorithm resulted in the following most efficient product sequence.
+    * ((A·B)((((C·D)·E)·F)))·G
+```python
+def efficient_matrix_product_order(d):
+    n = len(d)-1
+    N = []
+    for i in range(n):
+        temp = [[0,''] for i in range(n)]
+        N.append(temp)
+
+    for b in range(n):
+        for i in range(n-b):
+            j = i+b
+            if i != j:
+                min_val = None
+                for k in range(i, j):
+                    if min_val is None:
+                        min_val = N[i][k][0] + N[k+1][j][0] + d[i] * d[k+1] * d[j+1]
+                        temp_path = [N[i][k][1], N[k+1][j][1], '({}, {}, {})'.format(i, k + 1, j + 1)]
+                    else:
+                        if N[i][k][0] + N[k+1][j][0] + d[i] * d[k+1] * d[j+1] < min_val:
+                            min_val = N[i][k][0] + N[k+1][j][0] + d[i] * d[k+1] * d[j+1]
+                            temp_path = [N[i][k][1], N[k+1][j][1], '({}, {}, {})'.format(i, k + 1, j + 1)]
+
+                N[i][j][0] = min_val
+                N[i][j][1] = ''.join(temp_path)
+    return N
+
+if __name__ == '__main__':
+    d = [10, 5, 2, 20, 12,4, 60]
+    N = efficient_matrix_product_order(d)
+    for row in N:
+        for e in row:
+            print('{}'.format(e), end=' ')
+        print()
+```
+
+### R-13.9 In Figure 13.8, we illustrate that GTTTAA is a longest common subsequence for the given strings X and Y. However, that answer is not unique. Give another common subsequence of X and Y having length six.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_09.png" style="height: 300px;"></img><br/>
+</p>
+
+* Sol.)
+
+
+
+
+
 
 
 <p>
