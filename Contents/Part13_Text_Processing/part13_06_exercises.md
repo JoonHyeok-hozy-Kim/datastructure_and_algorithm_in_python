@@ -414,6 +414,78 @@ def count_kmp(T, P):
 ```
 
 ### C-13.22 Give a justification of why the compute_kmp_fail function (Code Fragment 13.4) runs in O(m) time on a pattern of length m.
+* Justification
+  1. fail array creation in O(m) time.
+  2. while-loop runs in O(m) time.
+     * Operations in each loop run in O(1) time.
+
+
+### C-13.23 Let T be a text of length n, and let P be a pattern of length m. Describe an O(n+m)-time method for finding the longest prefix of P that is a substring of T.
+* Sol.) Applying the KMP we can get the following.
+```python
+from TextProcessingAlgorithms.knuth_morris_pratt import _compute_kmp_fail
+def longest_prefix_kmp(T, P):
+    n, m = len(T), len(P)
+    if m == 0:
+        return None
+    fail = _compute_kmp_fail(P)
+    j = 0
+    k = 0
+    cnt = 0
+    while j < n:
+        if T[j] == P[k]:
+            if k == m - 1:
+                k += 1
+                cnt = max(cnt, k)
+                break
+            # print('k : {}, cnt : {}, P[k] : {}'.format(k, cnt, P[k]))
+            j += 1
+            k += 1
+            cnt = max(cnt, k)
+        elif k > 0:
+            k = fail[k - 1]
+        else:
+            j += 1
+
+    return P[:cnt]
+
+if __name__ == '__main__':
+    t = "asdfasfqwertysfdasdqwertyufa"
+    p = "qwertyu"
+    print(longest_prefix_kmp(t, p))
+```
+
+### C-13.24 Say that a pattern P of length m is a circular substring of a text T of length n > m if P is a (normal) substring of T, or if P is equal to the concatenation of a suffix of T and a prefix of T, that is, if there is an index 0 ≤ k < m, such that P = T[n−m+k :n]+T [0:k]. Give an O(n+m)-time algorithm for determining whether P is a circular substring of T.
+* Sol.) Again applying the KMP...
+```python
+from TextProcessingAlgorithms.knuth_morris_pratt import _compute_kmp_fail
+def circular_substring_kmp(T, P):
+    n, m = len(T), len(P)
+    if m == 0:
+        return None
+    fail = _compute_kmp_fail(P)
+    j = 0
+    k = 0
+    while j < n+m:
+        if T[j%n] == P[k]:
+            if k == m-1:
+                return T[j-m+1:j+1] if j < n else T[j-m+1:] + T[0:j%n+1]
+            j += 1
+            k += 1
+        elif k > 0:
+            k = fail[k-1]
+        else:
+            j += 1
+    return None
+
+if __name__ == '__main__':
+    t = "abcdefasdfasfdawexxxx"
+    p = "exxxxabc"
+    print(circular_substring_kmp(t, p))
+```
+
+
+
 
 
 

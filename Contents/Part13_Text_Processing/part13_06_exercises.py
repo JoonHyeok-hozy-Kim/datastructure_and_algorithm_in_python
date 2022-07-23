@@ -96,7 +96,54 @@ def LCS_solution_ver3(X, Y):
             k -= 1
     return ''.join(reversed(solution))
 
+from TextProcessingAlgorithms.knuth_morris_pratt import _compute_kmp_fail
+def longest_prefix_kmp(T, P):
+    n, m = len(T), len(P)
+    if m == 0:
+        return None
+    fail = _compute_kmp_fail(P)
+    j = 0
+    k = 0
+    cnt = 0
+    while j < n:
+        if T[j] == P[k]:
+            if k == m - 1:
+                k += 1
+                cnt = max(cnt, k)
+                break
+            # print('k : {}, cnt : {}, P[k] : {}'.format(k, cnt, P[k]))
+            j += 1
+            k += 1
+            cnt = max(cnt, k)
+        elif k > 0:
+            k = fail[k - 1]
+        else:
+            j += 1
 
+    return P[:cnt]
+
+
+from TextProcessingAlgorithms.knuth_morris_pratt import _compute_kmp_fail
+def circular_substring_kmp(T, P):
+    n, m = len(T), len(P)
+    if m == 0:
+        return None
+    fail = _compute_kmp_fail(P)
+    j = 0
+    k = 0
+    while j < n+m:
+        if T[j%n] == P[k]:
+            print('{}'.format(P[k]))
+            if k == m-1:
+                print(j)
+                return T[j-m+1:j+1] if j < n else T[j-m+1:] + T[0:j%n+1]
+            j += 1
+            k += 1
+        elif k > 0:
+            k = fail[k-1]
+        else:
+            j += 1
+    return None
 
 
 if __name__ == '__main__':
@@ -151,14 +198,22 @@ if __name__ == '__main__':
     # from TextProcessingAlgorithms.knuth_morris_pratt import rfind_kmp
     # print(rfind_kmp(t, p))
 
-    t = "abababaabaaaabacc"
-    p = "ab"
+    # t = "abababaabaaaabacc"
+    # p = "ab"
+    #
+    # from TextProcessingAlgorithms.brute_force import count_brute
+    # print(count_brute(t, p))
+    #
+    # from TextProcessingAlgorithms.boyer_moore import count_boyer_moore
+    # print(count_boyer_moore(t, p))
+    #
+    # from TextProcessingAlgorithms.knuth_morris_pratt import count_kmp
+    # print(count_kmp(t, p))
 
-    from TextProcessingAlgorithms.brute_force import count_brute
-    print(count_brute(t, p))
+    # t = "asdfasfqwertysfdasdqwertyufa"
+    # p = "qwertyu"
+    # print(longest_prefix_kmp(t, p))
 
-    from TextProcessingAlgorithms.boyer_moore import count_boyer_moore
-    print(count_boyer_moore(t, p))
-
-    from TextProcessingAlgorithms.knuth_morris_pratt import count_kmp
-    print(count_kmp(t, p))
+    # t = "abcdefasdfasfdawexxxx"
+    # p = "exxxxabc"
+    # print(circular_substring_kmp(t, p))
