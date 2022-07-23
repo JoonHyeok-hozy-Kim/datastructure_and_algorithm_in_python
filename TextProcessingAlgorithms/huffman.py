@@ -23,3 +23,27 @@ def huffman(X):
 
     f, T = Q.remove_min()
     return T
+
+
+def huffman_with_frequency_array(X):
+    D = {}
+    Q = HeapPriorityQueue()
+    for c in X:
+        cnt = D.get(c, 0)
+        D[c] = cnt + 1
+
+    for d in D:
+        T = MutableLinkedBinaryTree()
+        T.add_root(d)
+        Q.add(D[d], T)
+
+    while len(Q) > 1:
+        f1, T1 = Q.remove_min()
+        f2, T2 = Q.remove_min()
+        T = MutableLinkedBinaryTree()
+        root = T.add_root(f1 + f2)
+        T._attach(root, T1, T2)
+        Q.add(f1 + f2, T)
+
+    f, T = Q.remove_min()
+    return {'frequency_array': D, 'tree': T}
