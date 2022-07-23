@@ -39,29 +39,106 @@ def efficient_matrix_product_order(d):
     return N
 
 
+def LCS(X, Y):
+    n, m = len(X), len(Y)
+    L = [[0] * (m+1) for k in range(n+1)]
+    for j in range(n):
+        for k in range(m):
+            if X[j] == Y[k]:
+                L[j+1][k+1] = 1 + L[j][k]
+            else:
+                L[j+1][k+1] = max(L[j][k+1], L[j+1][k])
+    return L
+
+
+def LCS_solution(X, Y):
+    solution = []
+    j, k = len(X), len(Y)
+    L = LCS(X, Y)
+    while L[j][k] > 0:
+        if X[j-1] == Y[k-1]:
+            solution.append(X[j-1])
+            j -= 1
+            k -= 1
+        elif L[j-1][k] >= L[j][k-1]:
+            j -= 1
+        else:
+            k -= 1
+    return ''.join(reversed(solution))
+
+def LCS_solution_ver2(X, Y):
+    solution = []
+    j, k = len(X), len(Y)
+    L = LCS(X, Y)
+    while L[j][k] > 0:
+        if X[j-1] == Y[k-1]:
+            solution.append(X[j-1])
+            j -= 1
+            k -= 1
+        elif L[j-1][k] > L[j][k-1]:
+            j -= 1
+        else:
+            k -= 1
+    return ''.join(reversed(solution))
+
+def LCS_solution_ver3(X, Y):
+    solution = []
+    j, k = len(X), len(Y)
+    L = LCS(X, Y)
+    while L[j][k] > 0:
+        if X[j-1] == Y[k-1]:
+            solution.append(X[j-1])
+            j -= 1
+            k -= 1
+        elif L[j-1][k] <= L[j][k-1]:
+            j -= 1
+        else:
+            k -= 1
+    return ''.join(reversed(solution))
+
+
+
 
 if __name__ == '__main__':
-    # x = "aaabbaaa"
-    # print(prefix_suffix_compare(x))
+    pass
+    # # x = "aaabbaaa"
+    # # print(prefix_suffix_compare(x))
+    # #
+    # # y = "cgtacgttcgtacg"
+    # # print(prefix_suffix_compare(y))
     #
-    # y = "cgtacgttcgtacg"
-    # print(prefix_suffix_compare(y))
+    # # p = "the quick brown fox jumped over a lazy cat"
+    # # last = {}
+    # # for i in range(len(p)):
+    # #     last[p[i]] = i
+    # # for c in last:
+    # #     print('{} : {}'.format(c, last[c]))
+    #
+    # # from TextProcessingAlgorithms.knuth_morris_pratt import _compute_kmp_fail
+    # # p = "cgtacgttcgtac"
+    # # a = _compute_kmp_fail(p)
+    # # print(a)
+    #
+    # d = [10, 5, 2, 20, 12,4, 60]
+    # N = efficient_matrix_product_order(d)
+    # for row in N:
+    #     for e in row:
+    #         print('{}'.format(e), end=' ')
+    #     print()
 
-    # p = "the quick brown fox jumped over a lazy cat"
-    # last = {}
-    # for i in range(len(p)):
-    #     last[p[i]] = i
-    # for c in last:
-    #     print('{} : {}'.format(c, last[c]))
+    # x = "GTTCCTAATA"
+    # y = "CAGATAATTGAG"
+    # print(LCS_solution(x,y))
+    # print(LCS_solution_ver2(x,y))
 
-    # from TextProcessingAlgorithms.knuth_morris_pratt import _compute_kmp_fail
-    # p = "cgtacgttcgtac"
-    # a = _compute_kmp_fail(p)
-    # print(a)
+    # x = "skullandbones"
+    # y = "lullabybabies"
+    # print(LCS_solution(x, y))
+    # print(LCS_solution_ver2(x, y))
 
-    d = [10, 5, 2, 20, 12,4, 60]
-    N = efficient_matrix_product_order(d)
-    for row in N:
-        for e in row:
-            print('{}'.format(e), end=' ')
-        print()
+    from TextProcessingAlgorithms.huffman import huffman_with_frequency_array
+    a = "dogs do not spot hot pots or cats"
+    result = huffman_with_frequency_array(a)
+    for e in result['frequency_array']:
+        print('{} : {}'.format(e, result['frequency_array'][e]))
+    print(result['tree'])

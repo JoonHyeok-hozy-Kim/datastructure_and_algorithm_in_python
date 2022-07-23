@@ -155,11 +155,92 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_09.png" style="height: 300px;"></img><br/>
 </p>
 
-* Sol.)
+* Sol.) CTAATA
+```python
+def LCS(X, Y):
+    n, m = len(X), len(Y)
+    L = [[0] * (m+1) for k in range(n+1)]
+    for j in range(n):
+        for k in range(m):
+            if X[j] == Y[k]:
+                L[j+1][k+1] = 1 + L[j][k]
+            else:
+                L[j+1][k+1] = max(L[j][k+1], L[j+1][k])
+    return L
+
+def LCS_solution_ver2(X, Y):
+    solution = []
+    j, k = len(X), len(Y)
+    L = LCS(X, Y)
+    while L[j][k] > 0:
+        if X[j-1] == Y[k-1]:
+            solution.append(X[j-1])
+            j -= 1
+            k -= 1
+        elif L[j-1][k] > L[j][k-1]:  # changed the comparison operator from >= to >.
+            j -= 1
+        else:
+            k -= 1
+    return ''.join(reversed(solution))
+
+if __name__ == '__main__':
+    x = "GTTCCTAATA"
+    y = "CAGATAATTGAG"
+    print(LCS_solution_ver2(x,y))
+```
+
+### R-13.10 Show the longest common subsequence array L for the two strings:
+#### X = "skullandbones"
+#### Y = "lullabybabies"
+### What is a longest common subsequence between these strings?
+* Sol.) ullabes
+```python
+def LCS(X, Y):
+    n, m = len(X), len(Y)
+    L = [[0] * (m+1) for k in range(n+1)]
+    for j in range(n):
+        for k in range(m):
+            if X[j] == Y[k]:
+                L[j+1][k+1] = 1 + L[j][k]
+            else:
+                L[j+1][k+1] = max(L[j][k+1], L[j+1][k])
+    return L
 
 
+def LCS_solution(X, Y):
+    solution = []
+    j, k = len(X), len(Y)
+    L = LCS(X, Y)
+    while L[j][k] > 0:
+        if X[j-1] == Y[k-1]:
+            solution.append(X[j-1])
+            j -= 1
+            k -= 1
+        elif L[j-1][k] >= L[j][k-1]:
+            j -= 1
+        else:
+            k -= 1
+    return ''.join(reversed(solution))
 
+if __name__ == '__main__':
+    x = "skullandbones"
+    y = "lullabybabies"
+    print(LCS_solution(x, y))
+```
 
+### R-13.11 Draw the frequency array and Huffman tree for the following string:
+#### "dogs do not spot hot pots or cats".
+```python
+from TextProcessingAlgorithms.huffman import huffman_with_frequency_array
+a = "dogs do not spot hot pots or cats"
+result = huffman_with_frequency_array(a)
+for e in result['frequency_array']:
+    print('{} : {}'.format(e, result['frequency_array'][e]))
+print(result['tree'])
+```
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_11.png" style="height: 500px;"></img><br/>
+</p>
 
 
 
