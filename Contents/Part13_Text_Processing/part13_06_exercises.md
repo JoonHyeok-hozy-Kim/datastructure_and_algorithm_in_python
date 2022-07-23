@@ -238,9 +238,22 @@ for e in result['frequency_array']:
     print('{} : {}'.format(e, result['frequency_array'][e]))
 print(result['tree'])
 ```
-<p align="center">
+* Sol.)
+<p align="start">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_11.png" style="height: 500px;"></img><br/>
 </p>
+
+### R-13.12 Draw a standard trie for the following set of strings:
+#### { abab, baba, ccccc, bbaaaa, caa, bbaacc, cbcc, cbca }
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_12.png" style="height: 500px;"></img><br/>
+</p>
+
+### R-13.13 Draw a compressed trie for the strings given in the previous problem.
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_13.png" style="height: 400px;"></img><br/>
+</p>
+
 
 
 
