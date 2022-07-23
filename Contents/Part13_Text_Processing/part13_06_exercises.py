@@ -143,10 +143,22 @@ if __name__ == '__main__':
     #     print('{} : {}'.format(e, result['frequency_array'][e]))
     # print(result['tree'])
 
-    from TextProcessingAlgorithms.boyer_moore import rfind_boyer_moore
-    t = "aaaabceeeee"
-    p = "abc"
-    print(rfind_boyer_moore(t, p))
+    # from TextProcessingAlgorithms.boyer_moore import rfind_boyer_moore
+    # t = "aaaabceeeee"
+    # p = "abc"
+    # print(rfind_boyer_moore(t, p))
+    #
+    # from TextProcessingAlgorithms.knuth_morris_pratt import rfind_kmp
+    # print(rfind_kmp(t, p))
 
-    from TextProcessingAlgorithms.knuth_morris_pratt import rfind_kmp
-    print(rfind_kmp(t, p))
+    t = "abababaabaaaabacc"
+    p = "ab"
+
+    from TextProcessingAlgorithms.brute_force import count_brute
+    print(count_brute(t, p))
+
+    from TextProcessingAlgorithms.boyer_moore import count_boyer_moore
+    print(count_boyer_moore(t, p))
+
+    from TextProcessingAlgorithms.knuth_morris_pratt import count_kmp
+    print(count_kmp(t, p))

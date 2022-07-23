@@ -267,7 +267,7 @@ print(result['tree'])
 ### C-13.16 Adapt the brute-force pattern-matching algorithm in order to implement a function, rfind brute(T,P), that returns the index at which the rightmost occurrence of pattern P within text T, if any.
 ```python
 def rfind_brute(T, P):
-    """ Return the lowest index of T at which substring P begins (or else -1). """
+    """ Return the highest index of T at which substring P begins (or else -1). """
     n, m = len(T), len(P)
     for i in range(n-m+1):
         k = 0
@@ -331,11 +331,89 @@ def rfind_kmp(T, P):
 ```
 
 ### C-13.19 The count method of Python’s str class reports the maximum number of nonoverlapping occurrences of a pattern within a string. For example, the call abababa .count( aba ) returns 2 (not 3). Adapt the brute-force pattern-matching algorithm to implement a function, count brute(T,P), with similar outcome.
+```python
+def count_brute(T, P):
+    """ Return the maximum number of nonoverlapping occurrences of a P within T """
+    n, m = len(T), len(P)
+    cnt = 0
+    continue_cnt = 0
+    for i in range(n-m+1):
+        if continue_cnt > 0:
+            # print('Continue i : {}'.format(i))
+            continue_cnt -= 1
+            continue
+        k = 0
+        while k < m and T[i+k] == P[k]:
+            k += 1
+        if k == m and i+k < n-1:
+            # print('counted at i : {}, i+k : {}, T[i: i+k] : {}'.format(i, i+k, T[i: i+k]))
+            cnt += 1
+            continue_cnt = m-1
+    return cnt
+```
 
+### C-13.20 Redo the previous problem, adapting the Boyer-Moore pattern-matching algorithm in order to implement a function count boyer moore(T,P).
+```python
+def count_boyer_moore(T, P):
+    """ Return the maximum number of nonoverlapping occurrences of a P within T """
+    n, m = len(T), len(P)
+    cnt = 0
+    if m == 0:
+        return 0
+    last = {}
+    for k in range(m):
+        last[P[k]] = k
+    i = m-1
+    k = m-1
+    while 0 <= i < n:
+        # print('T[{}] : {}, P[{}] : {}'.format(i, T[i], k, P[k]))
+        if T[i] == P[k]:
+            if k == 0:
+                # print('T[{}:{}] : {}'.format(i, i+m, T[i:i+m]))
+                cnt += 1
+                k = m-1
+                i += m*2-1
+                continue
+            i -= 1
+            k -= 1
+        else:
+            j = last.get(T[i], -1)
+            i += m - min(k, j+1)
+            k = m-1                 
 
+    return cnt
+```
 
+### C-13.21 Redo Exercise C-13.19, adapting the Knuth-Morris-Pratt pattern-matching algorithm appropriately to implement a function count kmp(T,P).
+```python
+def count_kmp(T, P):
+    """ Return the maximum number of nonoverlapping occurrences of a P within T """
+    n, m = len(T), len(P)
+    cnt = 0
+    if m == 0:
+        return 0
+    fail = _compute_kmp_fail(P)
+    j = 0
+    k = 0
+    while j < n:
+        # print('T[{}] : {}, P[{}] : {}'.format(j, T[j], k, P[k]))
+        if T[j] == P[k]:
+            if k == m-1:
+                # print('T[{}:{}] : {}'.format(j-m+1, j+1, T[j-m+1:j+1]))
+                cnt += 1
+                j += m-2
+                k = 0
+                continue
+            j += 1
+            k += 1
+        elif k > 0:
+            k = fail[k-1]
+        else:
+            j += 1
+    return cnt
+```
 
-
+### C-13.22 Give a justification of why the compute_kmp_fail function (Code Fragment 13.4) runs in O(m) time on a pattern of length m.
 
 
 
