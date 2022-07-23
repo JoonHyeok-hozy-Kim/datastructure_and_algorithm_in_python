@@ -254,6 +254,90 @@ print(result['tree'])
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_13.png" style="height: 400px;"></img><br/>
 </p>
 
+### R-13.14 Draw the compact representation of the suffix trie for the string:
+#### "minimize minime"
+
+### C-13.15 Describe an example of a text T of length n and a pattern P of length m such that force the brute-force pattern-matching algorithm achieves a running time that is Ω(nm).
+* Sol.) Consider the case that any character in P is contained in T.
+  * ex.
+    * P = "abc"
+    * T = "defgh"
+    * Then, the outer while-loop runs (5-3) times and inner for-loop runs 3 times.
+
+### C-13.16 Adapt the brute-force pattern-matching algorithm in order to implement a function, rfind brute(T,P), that returns the index at which the rightmost occurrence of pattern P within text T, if any.
+```python
+def rfind_brute(T, P):
+    """ Return the lowest index of T at which substring P begins (or else -1). """
+    n, m = len(T), len(P)
+    for i in range(n-m+1):
+        k = 0
+        while k < m and T[i+k] == P[k]:
+            k += 1
+        if k == m:
+            return i+m-1
+    return -1
+```
+
+### C-13.17 Redo the previous problem, adapting the Boyer-Moore pattern-matching algorithm appropriately to implement a function rfind boyer moore(T,P).
+```python
+def rfind_boyer_moore(T, P):
+    """ Return the highest index of T at which substring P begins (or else -1). """
+    n, m = len(T), len(P)
+    if m == 0:
+        return 0
+    last = {}
+    for k in range(m):
+        last[P[k]] = k
+    i = m-1
+    k = m-1
+    while i < n:
+        if T[i] == P[k]:
+            if k == 0:
+                return i+m-1
+            i -= 1
+            k -= 1
+        else:
+            j = last.get(T[i], -1)
+            i += m - min(k, j+1)    # min(k, j+1) : The minimum of
+                                    #               (1) k   : m - 1 - (the number of matches in the previous search)
+                                    #               (2) j+1 : (the index of the last position that T[i] is contained in P) + 1
+
+            k = m-1                 # Initialize k
+
+    return -1
+```
+
+### C-13.18 Redo Exercise C-13.16, adapting the Knuth-Morris-Pratt pattern-matching algorithm appropriately to implement a function rfind kmp(T,P).
+```python
+def rfind_kmp(T, P):
+    """ Return the highest index of T at which substring P begins (or else -1). """
+    n, m = len(T), len(P)
+    if m == 0:
+        return 0
+    fail = _compute_kmp_fail(P)
+    j = 0
+    k = 0
+    while j < n:
+        if T[j] == P[k]:
+            if k == m-1:
+                return j
+            j += 1
+            k += 1
+        elif k > 0:
+            k = fail[k-1]
+        else:
+            j += 1
+    return -1
+```
+
+### C-13.19 The count method of Python’s str class reports the maximum number of nonoverlapping occurrences of a pattern within a string. For example, the call abababa .count( aba ) returns 2 (not 3). Adapt the brute-force pattern-matching algorithm to implement a function, count brute(T,P), with similar outcome.
+
+
+
+
+
+
+
 
 
 

@@ -136,9 +136,17 @@ if __name__ == '__main__':
     # print(LCS_solution(x, y))
     # print(LCS_solution_ver2(x, y))
 
-    from TextProcessingAlgorithms.huffman import huffman_with_frequency_array
-    a = "dogs do not spot hot pots or cats"
-    result = huffman_with_frequency_array(a)
-    for e in result['frequency_array']:
-        print('{} : {}'.format(e, result['frequency_array'][e]))
-    print(result['tree'])
+    # from TextProcessingAlgorithms.huffman import huffman_with_frequency_array
+    # a = "dogs do not spot hot pots or cats"
+    # result = huffman_with_frequency_array(a)
+    # for e in result['frequency_array']:
+    #     print('{} : {}'.format(e, result['frequency_array'][e]))
+    # print(result['tree'])
+
+    from TextProcessingAlgorithms.boyer_moore import rfind_boyer_moore
+    t = "aaaabceeeee"
+    p = "abc"
+    print(rfind_boyer_moore(t, p))
+
+    from TextProcessingAlgorithms.knuth_morris_pratt import rfind_kmp
+    print(rfind_kmp(t, p))
