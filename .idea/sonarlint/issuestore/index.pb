@@ -104,3 +104,5 @@ F
 DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
 
 OContents/Part13_Text_Processing/part13_04_text_compression_and_greedy_method.py,2\f\2f516e50e4487503c07af05d154473fb499bc412
+Q
+!DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0

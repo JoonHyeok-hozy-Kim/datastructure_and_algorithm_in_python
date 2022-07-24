@@ -484,8 +484,10 @@ if __name__ == '__main__':
     print(circular_substring_kmp(t, p))
 ```
 
-
-
+### C-13.25 The Knuth-Morris-Pratt pattern-matching algorithm can be modified to run faster on binary strings by redefining the failure function as:
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_25.png" style="height: 500px;"></img><br/>
+</p>
 
 
 
