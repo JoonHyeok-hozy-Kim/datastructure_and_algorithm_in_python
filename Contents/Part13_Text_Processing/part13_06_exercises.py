@@ -146,6 +146,90 @@ def circular_substring_kmp(T, P):
     return None
 
 
+def find_boyer_moore_x_kmp(T, P):
+    """ Return the lowest index of T at which substring P begins (or else -1). """
+    n, m = len(T), len(P)
+    if m == 0:
+        return -1
+    fail = _compute_kmp_fail_backward(P)
+
+    i = m-1
+    k = m-1
+    check_start = -1
+    while i < n:
+        if T[i] == P[k]:
+            check_start = i if check_start < i else check_start
+            if k == 0:
+                return i
+            i -= 1
+            k -= 1
+        elif k < m-1:
+            k = fail[k+1]
+        else:
+            if check_start > 0:
+                i = check_start + 1
+                check_start = -1
+            else:
+                i += 1
+
+    return -1
+
+
+def _compute_kmp_fail_backward(P):
+    m = len(P)
+    fail = [m-1] * m
+    k = m-1
+    j = m-2
+    while j >= 0:
+        if P[j] == P[k]:
+            fail[j] = k-1
+            j -= 1
+            k -= 1
+        elif k < m-1:
+            k = fail[k+1]
+        else:
+            j -= 1
+    return fail
+
+
+
+
+def efficient_matrix_product_order_text(d):
+    n = len(d)-1
+    N = []
+    for i in range(n):
+        temp = [[0,[]] for i in range(n)]
+        N.append(temp)
+
+    for b in range(n):
+        for i in range(n-b):
+            j = i+b
+            if i != j:
+                min_val = None
+                for k in range(i, j):
+                    if min_val is None:
+                        min_val = N[i][k][0] + N[k+1][j][0] + d[i] * d[k+1] * d[j+1]
+                        temp_path = []
+                        temp_path.extend(N[i][k][1])
+                        temp_path.extend(N[k+1][j][1])
+                        temp_path.append([i, k+1, j+1])
+                    else:
+                        if N[i][k][0] + N[k+1][j][0] + d[i] * d[k+1] * d[j+1] < min_val:
+                            min_val = N[i][k][0] + N[k+1][j][0] + d[i] * d[k+1] * d[j+1]
+                            temp_path = []
+                            temp_path.extend(N[i][k][1])
+                            temp_path.extend(N[k+1][j][1])
+                            temp_path.append([i, k+1, j+1])
+
+                N[i][j][0] = min_val
+                N[i][j][1] = temp_path
+
+    array_format = N[0][-1][1]
+    for arr in array_format:
+        print(arr)
+
+    return N[0][-1][1]
+
 if __name__ == '__main__':
     pass
     # # x = "aaabbaaa"
@@ -217,3 +301,15 @@ if __name__ == '__main__':
     # t = "abcdefasdfasfdawexxxx"
     # p = "exxxxabc"
     # print(circular_substring_kmp(t, p))
+
+
+    # from TextProcessingAlgorithms.boyer_moore import find_boyer_moore, _compute_kmp_fail_backward
+    # from TextProcessingAlgorithms.knuth_morris_pratt import find_kmp, _compute_kmp_fail
+    # from time import time
+    #
+    # a = "amalgamation"
+    # print(_compute_kmp_fail(a))
+
+
+    d = [10, 5, 2, 20, 12,4, 60]
+    N = efficient_matrix_product_order_text(d)

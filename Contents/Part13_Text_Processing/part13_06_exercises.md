@@ -489,6 +489,14 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/images/13_06_25.png" style="height: 500px;"></img><br/>
 </p>
 
+### C-13.26 Modify the simplified Boyer-Moore algorithm presented in this chapter using ideas from the KMP algorithm so that it runs in O(n+m) time.
+<a href="https://dl.acm.org/doi/pdf/10.1145/359146.359148">Reference</a>
+
+### C-13.27 Design an efficient algorithm for the matrix chain multiplication problem that outputs a fully parenthesized expression for how to multiply the matrices in the chain using the minimum number of operations.
+
+
+
+
 
 
 
