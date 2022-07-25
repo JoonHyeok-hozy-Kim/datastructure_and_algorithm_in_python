@@ -81,8 +81,6 @@ l
 <Contents/Part12_Sorting_and_Selection/part12_08_exercises.py,2\6\262297a0311980a33ae6eec090f90f59441d1af9
 m
 =Contents/Part12_Sorting_and_Selection/part12_03_quick_sort.py,4\3\4383714cfb057c1b929e8e4fe15ee34aad4b1834
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 l
 <Contents/Part12_Sorting_and_Selection/part12_08_exercises.md,1\6\16d09fd7615093cfdb6cd85154fe2a9ff5a65509
 f
