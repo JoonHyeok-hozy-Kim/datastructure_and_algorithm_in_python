@@ -1,39 +1,0 @@
-
-ipython:S117"MRename this parameter "X" to match the regular expression ^[_a-z][a-z0-9_]*$.(Úäî—ÿÿÿÿÿ
-qpython:S3776"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(´¨œžþÿÿÿÿ
-Bpython:S1481"%Remove the unused local variable "i".(­ ÊÍüÿÿÿÿ
-zpython:S1871""bEither merge this branch with the identical one on line "30" or change one of the implementations.(—ÂÏÏ
-ipython:S117*"MRename this parameter "X" to match the regular expression ^[_a-z][a-z0-9_]*$.(«ÝßÑúÿÿÿÿ
-ipython:S117*"MRename this parameter "Y" to match the regular expression ^[_a-z][a-z0-9_]*$.(«ÝßÑúÿÿÿÿ
-fpython:S1542*"IRename function "LCS" to match the regular expression ^[a-z_][a-z0-9_]*$.(«ÝßÑúÿÿÿÿ
-Bpython:S1481,"%Remove the unused local variable "k".(âÔéìúÿÿÿÿ
-ipython:S1176"MRename this parameter "X" to match the regular expression ^[_a-z][a-z0-9_]*$.(²ó¹«þÿÿÿÿ
-ipython:S1176"MRename this parameter "Y" to match the regular expression ^[_a-z][a-z0-9_]*$.(²ó¹«þÿÿÿÿ
-opython:S15426"RRename function "LCS_solution" to match the regular expression ^[a-z_][a-z0-9_]*$.(²ó¹«þÿÿÿÿ
-ipython:S117E"MRename this parameter "X" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÁŽçÐûÿÿÿÿ
-ipython:S117E"MRename this parameter "Y" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÁŽçÐûÿÿÿÿ
-tpython:S1542E"WRename function "LCS_solution_ver2" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÁŽçÐûÿÿÿÿ
-ipython:S117T"MRename this parameter "X" to match the regular expression ^[_a-z][a-z0-9_]*$.(°ÌÛˆþÿÿÿÿ
-ipython:S117T"MRename this parameter "Y" to match the regular expression ^[_a-z][a-z0-9_]*$.(°ÌÛˆþÿÿÿÿ
-tpython:S1542T"WRename function "LCS_solution_ver3" to match the regular expression ^[a-z_][a-z0-9_]*$.(°ÌÛˆþÿÿÿÿ
-ipython:S117d"MRename this parameter "P" to match the regular expression ^[_a-z][a-z0-9_]*$.(âôðƒúÿÿÿÿ
-ipython:S117d"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(âôðƒúÿÿÿÿ
-cpython:S117"MRename this parameter "P" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ÿî„X
-cpython:S117"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ÿî„X
-jpython:S117•"MRename this parameter "P" to match the regular expression ^[_a-z][a-z0-9_]*$.(ØÆ›ÿþÿÿÿÿ
-jpython:S117•"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(ØÆ›ÿþÿÿÿÿ
-rpython:S3776•"TRefactor this function to reduce its Cognitive Complexity from 16 to the 15 allowed.(ØÆ›ÿþÿÿÿÿ
-jpython:S117²"MRename this parameter "P" to match the regular expression ^[_a-z][a-z0-9_]*$.(™õ†®øÿÿÿÿ
-mpython:S3776Å"TRefactor this function to reduce its Cognitive Complexity from 24 to the 15 allowed.(úÑÈø
-Cpython:S1481É"%Remove the unused local variable "i".(ØÙÁÆøÿÿÿÿ
-|python:S1871Ú"cEither merge this branch with the identical one on line "211" or change one of the implementations.(—ÂÏÏ
-5python:S2772ê"Remove this unneeded "pass".(ã‘Û¾
-<python:S125ë"Remove this commented out code.(àÚ£Óûÿÿÿÿ
-7python:S125„"Remove this commented out code.(ñ¦éË
-<python:S125‰"Remove this commented out code.(íå¯ýÿÿÿÿ
-<python:S125Ž"Remove this commented out code.(í”§¬ûÿÿÿÿ
-7python:S125•"Remove this commented out code.(óã¢»
-7python:S125"Remove this commented out code.(ÅÊ£Î
-7python:S125©"Remove this commented out code.(¢‰¾³
-<python:S125­"Remove this commented out code.(ÀÇÝÐþÿÿÿÿ
-<python:S125²"Remove this commented out code.(Š¥þÂþÿÿÿÿ
