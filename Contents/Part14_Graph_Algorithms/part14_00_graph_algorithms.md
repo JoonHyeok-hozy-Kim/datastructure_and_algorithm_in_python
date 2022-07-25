@@ -200,10 +200,54 @@
       * We need to search edges whose endpoint is v.
 
 
+### 14.2.2 Adjacency List Structure
+#### Tech) Structure
+* V : the collection of vertices.
+  * Represented by a PositionalList of vertices.
+  * Each element v maintains a direct reference to its I(v) below.
+* For each vertex v, we maintain a collection I(v), called the incidence collection of v, whose entries are edges incident to v.
+  * In the case of a directed graph, outgoing and incoming edges can be respectively stored in two separate collections, I_out(v) and I_in(v).
+  * Traditionally, I(v) for a vertex v is a list.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_02_03_adjacency_list_image.png" style="width: 100%;"></img><br/>
+</p>
+
+#### Analysis) Advantage of Adjacency List
+* incident_edges(v) can be directly called from the vertex v
+  * the iteration may run in O(deg(v)) times.
+
+#### Analysis) Performance of the Adjacency List Structure
+* For n vertices and m edges...
+  * Space Usage : O(m+n)
+    * why?
+      1. n vertices take O(n) space.
+      2. m vertices may be contained in vertices constant times. (Recall that n*(n-1) for directed graph and n*(n-1)/2 for undirected graph.)
+  * incident_edges(v) in O(deg(v)) time.
+    * Justified above.
+  * degree(v) trivially in O(1) time.
+  * get_edge(u, v) in O( min{deg(u), deg(v)} ) time.
+    * By choosing a vertex with smaller I() we can reduce the running time.
 
 
+### 14.2.3 Adjacency Map Structure
+#### Tech.) Structure
+* Use a hash-based map to implement I(v) for each vertex v.
+* Let the **opposite endpoint** of each incident edge serve as a key in the map.
 
 
+#### Analysis) Performance of the Adjacency List Structure
+* For n vertices and m edges...
+  * Space Usage : O(m+n)
+    * why?
+      * I(v) uses O(deg(v)) space for each vertex v, as with the adjacency list.
+  * get_edge(u,v) in expected O(1) time 
+    * why?
+      * We can search for vertex u as a key in I(v) in O(1) time with hash-based map.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_02_04_adjacency_map_image.png" style="width: 100%;"></img><br/>
+</p>
 
 
 
