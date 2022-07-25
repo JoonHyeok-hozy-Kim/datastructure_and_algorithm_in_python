@@ -145,7 +145,7 @@
 
 
 ## 14.2 Data Structures for Graphs
-#### Tech.) 4 ways to maintain collection of vertices in a graph
+#### Tech.) Comparing 4 ways to maintain collection of vertices in a graph
 1. Edge List
    * Maintain an unordered list of all edges.
    * No efficient way to locate a particular edge (u, v)
@@ -164,8 +164,46 @@
    * Each entry is dedicated to storing a reference to the edge (u,v) for a particular pair of vertices u and v.
      * If no such edge exists, the entry will be None.
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_01_02_comparison_between_various_graph_maintanence.png" style="width: 100%;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_02_02_edge_list_image.png" style="width: 100%;"></img><br/>
 </p>
+
+### 14.2.1 Edge List Structure
+#### Tech) Structure
+* V : an unordered list that stores all vertex objects
+  * The vertex object for a vertex v storing element x has instance variables for:
+    * A reference to element x, to support the element() method.
+    * A reference to the position of the vertex instance in the listV, thereby allowing v to be efficiently removed from V if it were removed from the graph.
+* E : an unordered list that stores all edge objects
+  * The edge object for an edge e storing element x has instance variables for:
+    * A reference to element x, to support the element( ) method.
+    * References to the vertex objects associated with the endpoint vertices of e. 
+        * These allow the edge instance to provide constant-time support for methods endpoints( ) and opposite(v).
+    * A reference to the position of the edge instance in list E, thereby allowing e to be efficiently removed from E if it were removed from the graph.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_02_01_comparison_between_various_graph_maintanence.png" style="width: 100%;"></img><br/>
+</p>
+
+#### Analysis) Performance
+* For n vertices and m edges...
+  * Space Usage trivially O(m+n)
+  * vertex_count and edge_count trivially O(1)
+  * Edge related operations : O(m)
+    * get edge(u,v), degree(v), and incident edges(v).
+    * Must run through all the elements in E in order to search the target edge.
+  * insert_vertex() and insert_edge in O(1)
+    * Simply appending element to V and E respectively.
+  * remove_edge(e) in O(1)
+    * Simply removing an edge.
+  * remove_vertext(v) in O(m)
+    * why?)
+      * We need to search edges whose endpoint is v.
+
+
+
+
+
+
 
 
 
