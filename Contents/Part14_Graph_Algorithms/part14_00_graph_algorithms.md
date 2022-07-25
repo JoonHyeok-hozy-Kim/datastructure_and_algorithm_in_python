@@ -144,5 +144,29 @@
 
 
 
+## 14.2 Data Structures for Graphs
+#### Tech.) 4 ways to maintain collection of vertices in a graph
+1. Edge List
+   * Maintain an unordered list of all edges.
+   * No efficient way to locate a particular edge (u, v)
+   * No efficient way to locate the set of all edges incident to  a vertex v.
+2. Adjacency List
+   * Maintain a separate list for each vertex containing those edges that are incident to the vertex.
+   * The complete set of edges can be determined by taking the union of the smaller sets.
+   * Efficient in finding all edges incident to a given vertex.
+3. Adjacency Map
+   * Similar to Adjacency List.
+   * Use Map as a container instead of the list.
+   * Allows O(1) expected time access to a specific edge (u, v).
+4. Adjacency Matrix
+   * Maintain an n X n matrix, for a graph with n vertices.
+   * Provides worst-case O(1) access to a specific edge (u,v)
+   * Each entry is dedicated to storing a reference to the edge (u,v) for a particular pair of vertices u and v.
+     * If no such edge exists, the entry will be None.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_01_02_comparison_between_various_graph_maintanence.png" style="width: 100%;"></img><br/>
+</p>
+
+
 
 ## 14.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md">Exercises</a>
