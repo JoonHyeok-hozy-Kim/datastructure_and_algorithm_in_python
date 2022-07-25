@@ -276,7 +276,20 @@
 
 
 ### 14.2.5 Python Implementation
-
+* Structure
+  * A variant of the **adjacency map**
+    * For each vertex v, we use a Python dictionary to represent the secondary incidence map I(v).
+    * However, we do not explicitly maintain lists V and E.
+      * The list V is replaced by a top-level dictionary D that maps each vertex v to its incidence map I(v).
+        * By doing this we need not maintain references to those incidence maps as part of the vertex structures.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graphs.py#L37">Graph</a>
+* Analysis
+  * Some of the worst-case running time bounds for the graph ADT operations become expected bounds.
+    * ex.) edges()
+      * It may run in O(n+m) time.
+      * why?)
+        * We might have to go through all the vertices in order to find the union of all the edges.
+        * Moreover, some vertices may not even incident with an edge.
 
 
 ## 14.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md">Exercises</a>
