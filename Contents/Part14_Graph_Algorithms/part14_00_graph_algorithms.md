@@ -250,5 +250,33 @@
 </p>
 
 
+### 14.2.4 Adjacency Matrix Structure
+#### Tech) Structure
+* Augments the edge list structure with a matrix A (a.k.a. 2 dimensional array)
+  * It allows us to locate an edge between a given pair of vertices in worst-case constant time.
+  * For u and v with index i and j respectively, the cell A[i, j] holds a reference to the edge (u,v), if it exists.
+    * A[i, j] = None if there is no such edge
+    * A is symmetric if graph G is undirected, i.e., A[i, j] == A[j, i]
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_02_05_adjacency_matrix_image.png" style="width: 100%;"></img><br/>
+</p>
+
+#### Analysis) Advantages and Disadvantage of the Adjacency Matrix Structure
+* Advantage
+  * Any edge (u,v) can be accessed in worst-case O(1) time
+    * Still, to find the edges incident to vertex v, we must presumably examine all n entries in the row associated with v.
+* Disadvantage
+  * Adding or removing vertices from a graph is problematic, as the matrix must be resized.
+  * O(n2) space usage.
+    * Recall O(m+n) for others.
+  * Most real-world graphs are sparse.
+    * which means that most of the elements of the matrix A will be None.
+    * Very inefficient.
+
+
+### 14.2.5 Python Implementation
+
+
 
 ## 14.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md">Exercises</a>
