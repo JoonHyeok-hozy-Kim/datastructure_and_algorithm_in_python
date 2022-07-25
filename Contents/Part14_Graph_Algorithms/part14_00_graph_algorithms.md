@@ -120,6 +120,29 @@
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_01_01_graph_prop_4.png" style="width: 100%;"></img><br/>
 </p>
 
+### 14.1.1 The Graph ADT
+#### Tech) Data types in a Graph
+* Vertex
+  * methods
+    * element() : retrieve the stored element
+* Edge
+    * element() : retrieve the stored element
+    * endpoints() : Return a tuple (u,v) such that vertex u is the origin of the edge and vertex v is the destination; for an undirected graph, the orientation is arbitrary.
+    * opposite(v) : Assuming vertex v is one endpoint of the edge (either origin or destination), return the other endpoint.
+* Graph
+  * vertex count( ): Return the number of vertices of the graph.
+  * vertices( ): Return an iteration of all the vertices of the graph.
+  * edge_count( ): Return the number of edges of the graph.
+  * edges( ): Return an iteration of all the edges of the graph.
+  * get_edge(u,v): Return the edge from vertex u to vertex v, if one exists; otherwise return None. For an undirected graph, there is no difference between get edge(u,v) and get edge(v,u).
+  * degree(v, out=True): For an undirected graph, return the number of edges incident to vertex v. For a directed graph, return the number of outgoing (resp. incoming) edges incident to vertex v, as designated by the optional parameter.
+  * incident_edges(v, out=True): Return an iteration of all edges incident to vertex v. In the case of a directed graph, report outgoing edges by default; report incoming edges if the optional parameter is set to False.
+  * insert_vertex(x=None): Create and return a new Vertex storing element x.
+  * insert_edge(u, v, x=None): Create and return a new Edge from vertex u to vertex v, storing element x (None by default).
+  * remove_vertex(v): Remove vertex v and all its incident edges from the graph.
+  * remove_edge(e): Remove edge e from the graph.
+
+
 
 
 ## 14.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md">Exercises</a>
