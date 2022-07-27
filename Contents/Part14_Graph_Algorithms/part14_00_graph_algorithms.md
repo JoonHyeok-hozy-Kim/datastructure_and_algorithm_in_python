@@ -292,4 +292,123 @@
         * Moreover, some vertices may not even incident with an edge.
 
 
+## 14.3 Graph Traversals
+#### Def.) Traversal
+* A systematic procedure for exploring a graph by examining all of its vertices and edges.
+
+#### Concept) Problems related to Reachability
+* Computing a path from vertex u to vertex v, or reporting that no such path exists.
+* Given a start vertex s of G, computing, for every vertex v of G, a path with the minimum number of edges between s and v, or reporting that no such path exists.
+* Testing whether G is connected.
+* Computing a spanning tree of G, if G is connected.
+* Computing the connected components of G.
+* Computing a cycle in G, or reporting that G has no cycles.
+
+#### Concept) Problems related to Reachability in a Directed Graph G
+* Computing a directed path from vertex u to vertex v, or reporting that no such path exists.
+* Finding all the vertices of G that are reachable from a given vertex s.
+* Determine whether G is acyclic.
+* Determine whether G is strongly connected.
+
+
+### 14.3.1 Depth-First Search (DFS)
+* How?
+  1. We begin at a specific starting vertex s in G, which we initialize by fixing one end of our string to s and painting s as “visited.”
+     * Let u denote the current vertex. For now, u = s.
+  2. We then traverse G by considering an (arbitrary) edge (u,v) incident to the current vertex u.
+  3. If (u,v) leads to an unvisited vertex v, then we unroll our string, and go to v.
+     * Else if the edge (u,v) leads us to a vertex v that is already visited, we ignore that edge.
+  4. Eventually, we will get to a “dead end,” that is, a current vertex v such that all the edges incident to v lead to vertices already visited.
+  5. Go back to previous vertex and repeat from 2.
+  6. The process terminates when our backtracking leads us back to the start vertex s, and there are no more unexplored edges incident to s.
+
+#### Tech.) Pseudo Code for DFS
+```python
+Algorithm DFS(G, u):
+    Input : A graph G and a vertex u of G
+    Output : A collection of vertices reachable from u with their discovery edges
+    for each outgoing edge e = (u,v) of u do
+        if vertex v has not been visited then
+            Mark vertex v as visited (via edge e)
+            Recursively call DFS(G, v)
+```
+
+#### Tech.) Depth-First Search Tree : Classifying Graph Edges with DFS
+* Props.)
+  * Rooted at a starting vertex s
+* Concepts)
+  * Discovery Edge or Tree Edge
+    * An edge e = (u,v) that is used to discover a new vertex v during the DFS algorithm
+  * Nontree Edge
+    * All edges that are not Tree Edges
+    * They take us to a previously visited vertex.
+  * Back / Forward / Cross Edge
+    * Back Edge : Connects a vertex to an ancestor in the DFS tree
+    * Forward Edge : Connects a vertex to a descendant in the DFS tree
+    * Cross Edge : Connects a vertex to a vertex that is neither its ancestor nor its descendant.
+
+
+#### Props.) Properties of a Depth-First Search
+* Prop.) Let G be an undirected graph on which a DFS traversal starting at a vertex s has been performed. 
+  * Then the traversal visits all vertices in the connected component of s, and the discovery edges form a spanning tree of the connected component of s.
+    * Justification
+      * Suppose there is at least one vertex w in s’s connected component not visited.
+      * Let v be the first unvisited vertex on some path from s to w.
+        * Then we may have v = w.
+      * Since v is the first unvisited vertex on this path, it has a neighbor u that was visited.
+      * But when we visited u, we must have considered the edge (u,v).
+      * Hence, it cannot be correct that v is unvisited. ---> (X)
+      * Therefore, there are no unvisited vertices in s’s connected component.
+
+* Prop.) In DFS, the discovery edges form a connected subgraph without cycles, hence a tree.
+  * Justification
+    * We only follow a discovery edge when we go to an unvisited vertex, we will never form a cycle with such edges.
+
+* Prop.) For a directed graph G, Depth-first search on G starting at a vertex s visits all the vertices of G that are reachable from s. 
+  * Justification
+    * Let V_s be the subset of vertices of G visited by DFS starting at vertex s.
+    * We want to show that V_s contains s and every vertex reachable from s belongs to V_s.
+    * Suppose now, for the sake of a contradiction, that there is a vertex w reachable from s that is not in V_s.
+    * Consider a directed path from s to w, and let (u,v) be the first edge on such a path taking us out of V_s. 
+      * i.e., u is in V_s but v is not in V_s.
+    * When DFS reaches u, it explores all the outgoing edges of u, and thus must reach also vertex v via edge (u,v).
+    * Hence, v should be in V_s. ---> (X)
+    * Therefore, V_s must contain every vertex reachable from s.
+
+* Prop.) DFS tree contains directed paths from s to every vertex reachable from s.
+  * Justification
+    * Let u and v, vertices reachable from s and they are outpoints of an edge e.
+    * u must have previously been discovered, there exists a path from s to u.
+    * By appending the edge (u,v) to that path, we have a directed path from s to v.
+
+* Prop.) A cycle in G, consisting of the discovery edges from u to v, also contains the back edge (u,v).
+  * Justification
+    * Back edges always connect a vertex v to a previously visited vertex u
+
+
+#### Analysis) Running Time of Depth-First Search
+* Let
+  * n_s : the number of vertices reachable from a vertex s
+  * m_s : the number of incident edges to those vertices
+* Then the DFS starting from s runs in O(n_s + m_s) time.
+* Under the assumption that the following conditions are satisfied.
+  1. The graph is represented by a data structure such that creating and iterating through the incident_edges(v) takes O(deg(v)) time, and the e.opposite(v) method takes O(1) time.
+     * Applicable : Adjacency List
+     * Not Applicable : Adjacency Matrix
+  2. We have a way to “mark” a vertex or edge as explored, and to test if a vertex or edge has been explored in O(1) time.
+
+
+#### Analysis) Running Time of DFS applications
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_03_04_dfs_applicaiton_running_time.png" style="width: 100%;"></img><br/>
+</p>
+
+
+
+
+
+
+
+
+
 ## 14.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md">Exercises</a>

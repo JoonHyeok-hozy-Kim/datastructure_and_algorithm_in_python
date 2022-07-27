@@ -113,3 +113,5 @@ p
 @Contents/Part13_Text_Processing/part13_03_dynamic_programming.py,d\0\d0f3cdce7b7fdc8fef666585440e4bd27d5c59d1
 W
 'TextProcessingAlgorithms/boyer_moore.py,8\9\89ccd23569530b128903c5bacee30ad784c035b8
+f
+6Contents/Part13_Text_Processing/part13_06_exercises.md,d\0\d01a335ed420228a2454ff8ca2365cec5cd7c4ff
