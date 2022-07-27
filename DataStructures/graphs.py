@@ -12,6 +12,9 @@ class Vertex:
     def __hash__(self):             # will allow vertex to be a map/set key
         return hash(id(self))
 
+    def __str__(self):
+        return '({})'.format(self.element())
+
 
 class Edge:
     __slots__ = '_origin', '_destination', '_element'
@@ -32,6 +35,9 @@ class Edge:
 
     def __hash__(self):
         return hash((self._origin, self._destination))
+
+    def __str__(self):
+        return '{} - {}'.format(self._origin, self._destination)
 
 
 class Graph:
@@ -82,18 +88,3 @@ class Graph:
         e = Edge(u, v, x)
         self._outgoing[u][v] = e
         self._incoming[v][u] = e
-
-
-def DFS(g, u, discovered):
-    """ Perform DFS of the undiscovered portion of Graph g starting at Vertex u.
-
-    :param g: the target graph to perform DFS
-    :param u: the starting vertex
-    :param discovered: a dictionary mapping each vertex to the edge that was used to discover it during the DFS
-    """
-    print(u.element())
-    for e in g.incident_edges(u):
-        v = e.opposite(u)
-        if v not in discovered:
-            discovered[v] = e
-            DFS(g, v, discovered)
