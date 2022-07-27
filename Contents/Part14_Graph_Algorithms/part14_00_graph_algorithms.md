@@ -405,7 +405,56 @@ Algorithm DFS(G, u):
 
 
 ### 14.3.2 DFS Implementation and Extensions
-* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graphs.py#L87">DFS</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py">DFS</a>
+
+#### Concept) The existences of the dictionary, **discovered**, as an input parameter for DFS
+* Purpose
+  1. Internally, the dictionary provides a mechanism for recognizing visited vertices, as they will appear as keys in the dictionary.
+  2. Externally, the DFS function augments this dictionary as it proceeds, and thus the values within the dictionary are the DFS tree edges at the conclusion of the process.
+* Drawback
+  * The dictionary data type that we used may run in **expected** O(1) time for a search, discovered[v] = e
+    * Rather than the worst-case time.
+    * It can be a violation to the property that we defined before. (Check the <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#analysis-running-time-of-depth-first-search">Assumption</a>)
+
+
+#### Tech.) Reconstructing a Path from u to v
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L17">construct_path(u, v, discovered)</a>
+* Performance
+  * Running time proportional to the length of the path
+    * Thus, it runs in O(n) time.
+
+
+#### Tech.) Testing the Connectivity of a Undirected Graph
+* How?
+  1. Choose an arbitrary vertex as a start.
+  2. Operate DFS search.
+  3. Compare len(discovered) and the number of vertices.
+* Result
+  * If len(discovered) == len(g._outgoing), then g is connected.
+  * Else, g is not connected.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L17">is_connected?</a>
+
+
+#### Tech.) Testing the Strong Connectivity of a Directed Graph
+* How?
+  * Choose an arbitrary vertex as a start.
+  * Operate DFS search.
+    * If there exists a vertex that is not visited, this graph is not strongly connected.
+  * Now we have to check whether s is reachable from all other vertices.
+    * With the DFS method, loop through all incoming edges to the current vertex.
+      * This will run in O(m+n) time.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L38">is_connected?</a>
+
+
+#### Tech.) Computing all Connected Components
+* Target
+  * For a not connected graph, we will identify 
+    * all of the connected components of an undirected graph
+    * the strongly connected components of a directed graph.
+* How?
+  * If an initial call to DFS fails to reach all vertices of a graph, we can restart a new call to DFS at one of those unvisited vertices.
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L65">DFS_complete</a>
+
 
 
 

@@ -115,3 +115,7 @@ W
 'TextProcessingAlgorithms/boyer_moore.py,8\9\89ccd23569530b128903c5bacee30ad784c035b8
 f
 6Contents/Part13_Text_Processing/part13_06_exercises.md,d\0\d01a335ed420228a2454ff8ca2365cec5cd7c4ff
+c
+3Contents/Part11_Search_Trees/part11_07_exercises.py,5\6\56fddf2a3e3f5093ac265f3eb6d0ffad2951b407
+x
+HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4fcb92e812d63c0199ad00450c9a16a577ce817e
