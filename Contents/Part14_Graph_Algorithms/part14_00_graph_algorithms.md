@@ -443,7 +443,7 @@ Algorithm DFS(G, u):
   * Now we have to check whether s is reachable from all other vertices.
     * With the DFS method, loop through all incoming edges to the current vertex.
       * This will run in O(m+n) time.
-* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L38">is_connected?</a>
+* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L38">is_connected for indirect graph</a>
 
 
 #### Tech.) Computing all Connected Components
@@ -454,9 +454,32 @@ Algorithm DFS(G, u):
 * How?
   * If an initial call to DFS fails to reach all vertices of a graph, we can restart a new call to DFS at one of those unvisited vertices.
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L65">DFS_complete</a>
+* Performance
+  * The total time spent by a call to DFS complete is **O(n+m)**.
+    * Why?)
+      * Recall that single DFS starting from s runs in O(n_s + m_s) time.
+        * n_s : the number of reachable vertices
+        * m_s : the number of incident edges to those vertices
+      * If certain vertex is already discovered during the previous DFS, a DFS starting from it will be skipped!
+
+
+#### Tech.) Detecting Cycles with DFS
+* Prop.) For both undirected and directed graphs, a cycle exists if and only if a back edge exists relative to the DFS traversal of that graph.
 
 
 
+### 14.3.3 Breadth-First Search
+#### Tech.) Structure
+* How?
+  * A BFS proceeds in rounds and subdivides the vertices into levels.
+    1. BFS starts at vertex s, which is at level 0.
+    2. In the first round, we paint as “visited,” all vertices adjacent to the start vertex s.
+       * These adjacent vertices are actually level 1 but not being painted.
+    3. In the second round, we allow all explorers to go two steps (i.e., edges) away from the starting vertex.
+       * Assign these vertices to level 2 and mark them as visited.
+    4. Continue this process until no new vertices are found in a level.
+
+#### Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_bfs.py">BFS</a>
 
 
 
