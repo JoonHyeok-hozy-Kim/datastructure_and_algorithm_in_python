@@ -481,6 +481,22 @@ Algorithm DFS(G, u):
 
 #### Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_bfs.py">BFS</a>
 
+#### Analysis) Performance of BFS
+* The running time of BFS is O(n + m)
+  * More specifically, in O(n_s + m_s) time
+    * n_s : the number of vertices reachable from vertex s
+    * ms ≤ m : the number of incident edges to those vertices.
+
+#### Props.)
+* Prop.) For BFS on an undirected graph, all nontree edges are cross edges.
+* Prop.) For BFS on a directed graph, all nontree edges are either back edges or cross edges
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_03_05_bfs_prop_1.png" style="width: 100%;"></img><br/>
+</p>
+
+* Prop.) Let G be a graph with n vertices and m edges represented with the adjacency list structure. A BFS traversal of G takes O(n+m) time.
+
 
 
 
