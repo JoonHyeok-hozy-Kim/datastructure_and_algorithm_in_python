@@ -406,8 +406,8 @@ Algorithm DFS(G, u):
 
 
 ### 14.3.2 DFS Implementation and Extensions
-* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py">DFS</a>
-[DFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py)
+* Implementation : [DFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py)
+
 
 #### Concept) The existences of the dictionary, **discovered**, as an input parameter for DFS
 * Purpose
@@ -420,7 +420,7 @@ Algorithm DFS(G, u):
 
 
 #### Tech.) Reconstructing a Path from u to v
-* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L17">construct_path(u, v, discovered)</a>
+* Implementation : [construct_path(u, v, discovered)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L17)
 * Performance
   * Running time proportional to the length of the path
     * Thus, it runs in O(n) time.
@@ -434,7 +434,7 @@ Algorithm DFS(G, u):
 * Result
   * If len(discovered) == len(g._outgoing), then g is connected.
   * Else, g is not connected.
-* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L17">is_connected?</a>
+* Implementation : [is_connected?](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L17)
 
 
 #### Tech.) Testing the Strong Connectivity of a Directed Graph
@@ -445,7 +445,7 @@ Algorithm DFS(G, u):
   * Now we have to check whether s is reachable from all other vertices.
     * With the DFS method, loop through all incoming edges to the current vertex.
       * This will run in O(m+n) time.
-* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L38">is_connected for indirect graph</a>
+* Implementation : [is_connected for indirect graph](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L38)
 
 
 #### Tech.) Computing all Connected Components
@@ -455,7 +455,7 @@ Algorithm DFS(G, u):
     * the strongly connected components of a directed graph.
 * How?
   * If an initial call to DFS fails to reach all vertices of a graph, we can restart a new call to DFS at one of those unvisited vertices.
-* Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py#L65">DFS_complete</a>
+* Implementation : [DFS_complete](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L65)
 * Performance
   * The total time spent by a call to DFS complete is **O(n+m)**.
     * Why?)
