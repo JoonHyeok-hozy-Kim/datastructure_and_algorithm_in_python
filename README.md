@@ -1,13 +1,10 @@
 # Index
 > Punctuality as First Priority.
 
-<div>
-    <p>
-        <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md">Part 3. Algorithm Analysis</a>
-        <br/>
-        → <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_5_excercises.md">Exercises</a>    
-    </p>
-</div>
+[Part 3. Algorithm Analysis](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_00_algorithm_analysis.md)   
+→ [Exercises](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part03_Algorithm_Analysis/part3_5_excercises.md)
+
+
 <div>
     <p>
         <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part04_Recursion/part4_00_recursion.md">Part 4. Recursion</a>
