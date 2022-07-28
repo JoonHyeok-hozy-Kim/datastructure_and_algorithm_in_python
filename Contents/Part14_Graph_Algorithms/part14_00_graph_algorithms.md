@@ -533,7 +533,7 @@ Algorithm DFS(G, u):
 
 * Prop.)
 <p align="start">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_04_03_floyd_warshal_prop.png" style="height: 300px;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_04_03_floyd_warshal_prop.png" style="width: 100%"></img><br/>
 </p>
 
 #### Floyd-Warshall algorithm Simulation
