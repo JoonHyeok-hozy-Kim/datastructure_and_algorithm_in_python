@@ -499,5 +499,27 @@ Algorithm DFS(G, u):
 
 
 
+## 14.4 Transitive Closure
+* Idea
+  * In certain applications, we may wish to answer many reachability queries more efficiently.
+  * It may be worthwhile to precompute a more convenient representation of a graph.
+
+#### Def.) Transitive Closure
+* The transitive closure of a directed graph G is itself a directed graph G∗ such that the vertices of G∗ are the same as the vertices of G , and G∗ has an edge (u,v), whenever G has a directed path from u to v (including the case where (u,v) is an edge of the original G).
+* Prop.)
+  * If a graph is represented as an adjacency list or adjacency map, we can compute its transitive closure in O(n(n+m)) time.
+    * By making use of n graph traversals, one from each starting vertex.
+  * We want to figure out alternative and more efficient techniques for computing the transitive closure.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_04_01_transitive_closure_prop.png" style="width: 100%;"></img><br/>
+</p>
+
+
+
+
+
+
+
 
 ## 14.8 <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md">Exercises</a>
