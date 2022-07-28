@@ -142,7 +142,7 @@
   * remove_vertex(v): Remove vertex v and all its incident edges from the graph.
   * remove_edge(e): Remove edge e from the graph.
 
-
+---
 
 ## 14.2 Data Structures for Graphs
 #### Tech.) Comparing 4 ways to maintain collection of vertices in a graph
@@ -291,6 +291,7 @@
         * We might have to go through all the vertices in order to find the union of all the edges.
         * Moreover, some vertices may not even incident with an edge.
 
+---
 
 ## 14.3 Graph Traversals
 #### Def.) Traversal
@@ -406,6 +407,7 @@ Algorithm DFS(G, u):
 
 ### 14.3.2 DFS Implementation and Extensions
 * Implementation : <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/graph_dfs.py">DFS</a>
+[DFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py)
 
 #### Concept) The existences of the dictionary, **discovered**, as an input parameter for DFS
 * Purpose
@@ -563,9 +565,9 @@ Algorithm DFS(G, u):
     * Faster in practice because there are relatively few low-level operations hidden within the asymptotic notation
     * Well suited for the use of an adjacency matrix
   * Disadvantage
-    * Repeated calls to DFS results in better asymptotic performance when the graph is sparse and represented using an adjacency list or adjacency map.
+    * Repeated calls to DFS results in better asymptotic performance when the graph is sparse and represented using an adjacency list or adjacency map.
 
-
+#### Python Implementation : 
 
 
 
