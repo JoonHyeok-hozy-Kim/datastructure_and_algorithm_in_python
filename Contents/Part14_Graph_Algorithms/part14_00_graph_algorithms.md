@@ -497,7 +497,7 @@ Algorithm DFS(G, u):
 
 * Prop.) Let G be a graph with n vertices and m edges represented with the adjacency list structure. A BFS traversal of G takes O(n+m) time.
 
-
+---
 
 ## 14.4 Transitive Closure
 * Idea
@@ -557,7 +557,13 @@ Algorithm DFS(G, u):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_04_04_floyd_warshal_simulation_v5.png" style="height: 300px;"></img><br/>
 </p>
 
-
+* Pros and Cons of Floyd-Warshall algorithm
+  * Advantage
+    * Easier to implement than DFS
+    * Faster in practice because there are relatively few low-level operations hidden within the asymptotic notation
+    * Well suited for the use of an adjacency matrix
+  * Disadvantage
+    * Repeated calls to DFS results in better asymptotic performance when the graph is sparse and represented using an adjacency list or adjacency map.
 
 
 
