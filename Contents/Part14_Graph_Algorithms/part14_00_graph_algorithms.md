@@ -521,8 +521,17 @@ Algorithm DFS(G, u):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_04_02_floyd_warshal_pseudo_code.png" style="heigth: 400px;"></img><br/>
 </p>
 
+* Performance
+  * Assume that get_edge and insert_edge of G run in O(1) times.
+  * Floyd-Warshall algorithm runs in O(n^3) time.
+    * why?
+      * Outer for-loop runs in O(n) time.
+      * Inner for-loop for i and j runs in O(n) time respectively.
 
-
+* Prop.)
+<p align="start">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_04_03_floyd_warshal_prop.png" style="width: 100%;"></img><br/>
+</p>
 
 
 
