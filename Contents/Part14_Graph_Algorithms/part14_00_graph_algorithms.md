@@ -416,7 +416,7 @@ Algorithm DFS(G, u):
 * Drawback
   * The dictionary data type that we used may run in **expected** O(1) time for a search, discovered[v] = e
     * Rather than the worst-case time.
-    * It can be a violation to the property that we defined before. (Check the <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#analysis-running-time-of-depth-first-search">Assumption</a>)
+    * It can be a violation to the property that we defined before. (Check the [Assumption](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#analysis-running-time-of-depth-first-search))
 
 
 #### Tech.) Reconstructing a Path from u to v
@@ -567,7 +567,7 @@ Algorithm DFS(G, u):
   * Disadvantage
     * Repeated calls to DFS results in better asymptotic performance when the graph is sparse and represented using an adjacency list or adjacency map.
 
-#### Python Implementation : 
+#### Python Implementation : [Floyd-Warshall Algorithm]()
 
 
 
