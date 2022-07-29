@@ -119,3 +119,6 @@ c
 3Contents/Part11_Search_Trees/part11_07_exercises.py,5\6\56fddf2a3e3f5093ac265f3eb6d0ffad2951b407
 x
 HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4fcb92e812d63c0199ad00450c9a16a577ce817e
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

@@ -569,6 +569,40 @@ Algorithm DFS(G, u):
 
 #### Python Implementation : [Floyd-Warshall Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/transitive_closure.py)
 
+---
+
+## 14.5 Directed Acyclic Graphs
+#### Def.) Directed Acyclic Graph (DAG)
+  * A Directed graph without directed cycles are encountered in many applications
+
+### 14.5.1 Topological Ordering
+#### Def.) Topological Ordering
+* For a directed graph G with n vertices
+  * A topological ordering of G is an ordering v1,...,vn of the vertices of G such that for every edge (vi,vj) of G , it is the case that i < j.
+  * i.e., an ordering such that any directed path in G traverses vertices in increasing order.
+
+#### Props.)
+* Prop.) A directed graph may have more than one topological ordering.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_05_01_multiple_topological_ordering_in_one_graph.png" style="width: 100%;"></img><br/>
+</p>
+
+* Prop.)
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_05_02_topological_ordering_prop.png" style="width: 100%;"></img><br/>
+</p>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_05_03_topological_ordering_prop_pf.png" style="width: 100%;"></img><br/>
+</p>
+
+
+
+
+
+
+
+
 
 
 
