@@ -640,6 +640,8 @@ if __name__ == '__main__':
 </p>
 
 ---
+<br>
+
 
 ## 14.6 Shortest Paths
 * We want to consider the case tha each edge has different value and path finding algorithms that take it into account.
@@ -651,6 +653,47 @@ if __name__ == '__main__':
 #### Concept) Defining Shortest Paths in a Weighted Graph
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_06_01_definitions_for_weighted_graphs.png" style="width: 100%;"></img><br/>
+</p>
+
+#### Notation) d(u,v) = ∞
+* There is no path at all from u to v in G.
+
+#### Prop.) If there is a cycle in G whose total weight is negative, the distance from u to v may not be defined.
+* ex.) Let the weight of edge as the cost spent for moving from one airport to another.
+  * If someone else pays not charges for the trip from JFK to LAX, we cannot define the cheapest root.
+    * why?
+      * One may infinitely reduce cost by continuously oscillate between JFK and LAX.
+
+
+### 14.6.2 Dijkstra’s Algorithm
+* Concepts)
+  * We will apply greedy method pattern to the single-source-shortest path problem.
+    * by performing a “weighted” breadth-first search starting at the source vertex s.
+  * We can use the greedy method to develop an algorithm that iteratively grows a “cloud” of vertices out of s, with the vertices entering the cloud in order of their distances from s.
+    * in each iteration, the next vertex chosen pis the vertex outside the cloud that is closest to s.
+  * The algorithm terminates when no more vertices are outside the cloud (or when those outside the cloud are not connected to those within the cloud), at which point we have a shortest path from s to every vertex of G that is reachable from s.
+
+
+#### Concept) Edge Relaxation
+* For a graph G, starting vertex s
+  * Let
+    * D[v]
+      * the distance in G from s to a vertex v
+      * always store the length of the best path we have found so far from s to v
+      * Initially,
+        * D[s] = 0
+        * D[v] = ∞ for each v != s
+    * C
+      * the cloud of vertices
+  * At each iteration of the algorithm, 
+    1. Select a vertex u not in C with smallest D[u] label, 
+    2. Pull u into C
+    3. Update the label D[v] of each vertex v that is adjacent to u and is outside of C
+       * Reflect the fact that there may be a new and better way to get to v via u.
+       * This update operation is known as a **relaxation** procedure
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_06_02_edge_relaxation.png" style="height : 150px;"></img><br/>
 </p>
 
 
