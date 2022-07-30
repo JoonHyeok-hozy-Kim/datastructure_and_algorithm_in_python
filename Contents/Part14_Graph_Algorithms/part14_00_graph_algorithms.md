@@ -639,6 +639,19 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_05_05_topological_sorting_test.png" style="height : 300px;"></img><br/>
 </p>
 
+---
+
+## 14.6 Shortest Paths
+* We want to consider the case tha each edge has different value and path finding algorithms that take it into account.
+
+### 14.6.1 Weighted Graphs
+* Def.) A weighted graph is a graph that has a numeric (for example, integer) label w(e) associated with each edge e, called the weight of edge e.
+  * For e = (u,v), we let notation w(u,v) = w(e).
+
+#### Concept) Defining Shortest Paths in a Weighted Graph
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_06_01_definitions_for_weighted_graphs.png" style="width: 100%;"></img><br/>
+</p>
 
 
 
