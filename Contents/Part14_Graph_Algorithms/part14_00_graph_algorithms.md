@@ -598,8 +598,11 @@ Algorithm DFS(G, u):
 
 
 #### Tech.) Topological Sorting
-* Implementation : [Topological Sorting]()
-
+* Implementation : [Topological Sorting](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/topological_sort.py)
+* Performance
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_05_04_topological_sorting_performance.png" style="width: 100%;"></img><br/>
+</p>
 
 
 
