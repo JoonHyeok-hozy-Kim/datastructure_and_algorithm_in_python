@@ -37,7 +37,7 @@ class Edge:
         return hash((self._origin, self._destination))
 
     def __str__(self):
-        return '{} - {}'.format(self._origin, self._destination)
+        return '{} -> {}'.format(self._origin, self._destination)
 
 
 class Graph:

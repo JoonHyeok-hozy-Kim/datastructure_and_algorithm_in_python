@@ -118,3 +118,15 @@ c
 ,Contents/Part14_Graph_Algorithms/__init__.py,8\d\8d5c3ac505f84698876fd0b5b04877a65cbda74d
 U
 %GraphAlgorithms/transitive_closure.py,0\2\027880b77345799c9ff5bf84ba360f7f9108d92b
+u
+EContents/Part14_Graph_Algorithms/part14_05_directed_acyclic_graphs.py,1\e\1eae73627b83b41362c805574777f8b1aa347373
+U
+%SortingAlgorithms/topological_sort.py,9\9\9928e13986e0f2bae41f5ecaac2b372f74bb5f08
+w
+GContents/Part14_Graph_Algorithms/part14_02_datastructures_for_graphs.py,2\f\2fd90a4afd609d9966139477625d82014f9c49d3
+l
+<Contents/Part13_Text_Processing/part13_00_text_processing.md,b\8\b85b340414adc1518c54ebc13348abdbbdc91282
+g
+7Contents/Part14_Graph_Algorithms/part14_08_exercises.md,4\2\420711ddb149e8373375e82b3784e32423fbbd56
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

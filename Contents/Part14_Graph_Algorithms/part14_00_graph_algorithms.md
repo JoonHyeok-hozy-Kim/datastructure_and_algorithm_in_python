@@ -768,7 +768,7 @@ Algorithm ShortestPath(G, s):
 * Conclusion
   1. AdaptablePriorityQueue : O(n^2 log(n))
      * why?
-       * O( (n+m)*log(n) ) runs in O(n^2 log(2)) in worst case
+       * O( (n+m)*log(n) ) runs in O(n^2 log(n)) in worst case
   2. UnsortedPriorityQueue : O(n^2)
      * why?
        * Likewise, O( n^2 + m ) runs in O(n^2) in worst case
@@ -776,9 +776,34 @@ Algorithm ShortestPath(G, s):
 <br>
 
 #### Analysis) Comparing the Two Implementations
+* Key : the number of edges in a graph
+  * When the number of edges in the graph is small [AdaptablePriorityQueue](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L191) is preferred.
+  * When the number of edges in the graph is small [UnsortedPriorityQueue](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L265) is preferred.
+* why?
+  * Recall that the running time was
+    * AdaptablePriorityQueue : O( (n+m)*log(n) )
+    * UnsortedPriorityQueue : O(n^2)
+  * Thus,
+    * if m < (n^2)/log(n) : AdaptablePriorityQueue is better.
+    * else : UnsortedPriorityQueue is better.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_06_03_dijkstra_implementation_prop.png" style="height : 150px;"></img><br/>
+</p>
 
 
+#### Tech.) Dijkstra's Algorithm with Fibonacci heap
+* It runs in O(m + nlog(n)) time.
 
+#### Tech.) Implementation : [Dijkstra’s Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/shortest_paths.py#L5)
+* Returns a map such that
+  * key : vertex
+  * value : distance from starting vertex to the key vertex
+
+#### Tech.) Shortest-Path Tree
+* Returns a map such that
+  * key : vertex
+  * value : incoming edge of the key vertex which is on the shortest path from the starting vertex
 
 
 
