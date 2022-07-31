@@ -674,9 +674,6 @@ if __name__ == '__main__':
     * in each iteration, the next vertex chosen pis the vertex outside the cloud that is closest to s.
   * The algorithm terminates when no more vertices are outside the cloud (or when those outside the cloud are not connected to those within the cloud), at which point we have a shortest path from s to every vertex of G that is reachable from s.
 
-<p align="center">
-<img src="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#/media/File:Dijkstra_Animation.gif" style="height : 200px;"></img><br/>
-</p>
 
 #### Concept) Edge Relaxation
 * For a graph G, starting vertex s
@@ -751,7 +748,7 @@ Algorithm ShortestPath(G, s):
     * G : a graph G with n vertices and m edges
     * The edge weights can be added and compared in constant time.
 * Choosing priority_queue Q data structure
-  1. AdaptablePriorityQueue
+  1. [AdaptablePriorityQueue](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L191)
      * Advantage
        * O(log(n)) time remove_min() operation.
          * Thus, n calls to the remove_min : O(n log(n))
@@ -759,8 +756,8 @@ Algorithm ShortestPath(G, s):
        * O(log(n)) time for following operations
          1. Initial n insertions to Q : O(n log(n))
          2. m calls to update method : O(m log(n))
-       
-  2. UnsortedPriorityQueue
+
+  2. [UnsortedPriorityQueue](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L265)
      * Advantage
        * Under the assumption that Q supports location-aware entries...
          1. Initial n insertions to Q : O(n)
@@ -775,6 +772,13 @@ Algorithm ShortestPath(G, s):
   2. UnsortedPriorityQueue : O(n^2)
      * why?
        * Likewise, O( n^2 + m ) runs in O(n^2) in worst case
+
+<br>
+
+#### Analysis) Comparing the Two Implementations
+
+
+
 
 
 

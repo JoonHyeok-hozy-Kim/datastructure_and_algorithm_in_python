@@ -29,12 +29,8 @@ x
 HContents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_02_hash_tables.py,3\c\3c7216d2028c7845953a8af250c350cbcccfce77
 x
 HContents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_03_sorted_maps.py,6\e\6e133bb57f3840def0ea64f7d51c75daf7f8c903
-l
-<Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
 h
 8Contents/Part03_Algorithm_Analysis/part3_5_excercises.md,9\e\9e9ad5f0bef4cd2472900c926b1651033afc35bf
-M
-DataStructures/linked_list.py,7\1\7188819b1898161ec3c55a91200f6bd9ec381d5e
 M
 DataStructures/hash_tables.py,6\1\6130cd6748f83cb379a95b1c966c3c0d08cde4ba
 F
@@ -115,8 +111,6 @@ f
 6Contents/Part13_Text_Processing/part13_06_exercises.md,d\0\d01a335ed420228a2454ff8ca2365cec5cd7c4ff
 c
 3Contents/Part11_Search_Trees/part11_07_exercises.py,5\6\56fddf2a3e3f5093ac265f3eb6d0ffad2951b407
-x
-HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4fcb92e812d63c0199ad00450c9a16a577ce817e
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
