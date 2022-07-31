@@ -674,6 +674,9 @@ if __name__ == '__main__':
     * in each iteration, the next vertex chosen pis the vertex outside the cloud that is closest to s.
   * The algorithm terminates when no more vertices are outside the cloud (or when those outside the cloud are not connected to those within the cloud), at which point we have a shortest path from s to every vertex of G that is reachable from s.
 
+<p align="center">
+<img src="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#/media/File:Dijkstra_Animation.gif" style="height : 200px;"></img><br/>
+</p>
 
 #### Concept) Edge Relaxation
 * For a graph G, starting vertex s
@@ -739,6 +742,8 @@ Algorithm ShortestPath(G, s):
     * Therefore,
       * D[z] ≤ D[y] = d(s,y) ≤ d(s,y) +d(y,z) = d(s,z) ---> (X)
 
+
+<br>
 
 #### Analysis) The Running Time of Dijkstra’s Algorithm
 * Assumptions
