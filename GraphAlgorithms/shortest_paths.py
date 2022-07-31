@@ -18,8 +18,7 @@ def dijkstra_shortest_path_lengths(g, s):
     pq_locator = {}
 
     for v in g.vertices():
-        if v == s:
-        #if v in s:
+        if v is s:
             d[v] = 0                # d of s, the starting vertex of the path, initialized to 0
         else:
             d[v] = float('inf')     # ds of rest vertices initialized to the positive infinite
@@ -39,3 +38,22 @@ def dijkstra_shortest_path_lengths(g, s):
                 pq.update(pq_locator[v], d[v], v)
 
     return cloud
+
+
+def shortest_path_tree(g, s, d):
+    """ Reconstruct shortest-path tree rooted at vertex s, given distance map d.
+
+    :param g: the graph
+    :param s: starting vertex
+    :param d: distance map
+    :return: tree in map data structure
+    """
+    tree = {}
+    for v in d:
+        if v is not s:
+            for e in g.incident_edges(v, False):        # Consider INCOMING edges
+                u = e.opposite(v)
+                weight = e.element()
+                if d[v] == d[u] + weight:
+                    tree[v] = e
+    return tree
