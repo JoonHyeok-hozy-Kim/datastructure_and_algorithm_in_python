@@ -21,7 +21,7 @@
 * Bubble-sort (see Exercise C-7.38)
   * <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part07_Linked_LIsts/part07_08_exercises.md#c-738-there-is-a-simple-but-inefficient-algorithm-called-bubble-sort-for-sorting-a-list-l-of-n-comparable-elements-this-algorithm-scans-the-list-n1-times-where-in-each-scan-the-algorithm-compares-the-current-element-with-the-next-one-and-swaps-them-if-they-are-out-of-order-implement-a-bubble-sort-function-that-takes-a-positional-list-l-as-a-parameter-what-is-the-running-time-of-this-algorithm-assuming-the-positional-list-is-implemented-with-a-doubly-linked-list">Exercise C-7.38 Bubble-sort for Array</a> 
 * Heap-sort (see Section 9.4.2)
-  * <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part09_Priority_Queues/part09_00_priority_queues.md#942-heap-sort">9.4.2 Heap-sort for Array</a> 
+  * [9.4.2 Heap-sort for Array](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/SortingAlgorithms/heap_sort.py)
 
 
 #### Concept) Sorting Algorithms that we will deal with in this chapter.
