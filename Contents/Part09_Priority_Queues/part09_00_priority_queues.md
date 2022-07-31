@@ -72,8 +72,7 @@
       2. Simplicity of identifying last position of the tree : last object in self._data
       3. Dynamic re-size of self._data is O(n) considering the concept of the amortization.
 
-### 9.3.4 Python Heap Implementation
-<a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L88">Heap Priority Queue</a>
+### 9.3.4 Python Heap Implementation : [HeapPriorityQueue](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/DataStructures/priority_queues.py#L97)
 
 ### 9.3.5 Analysis of a Heap-Based Priority Queue
 * Props.) For a Heap-Based Priority Queue with n nodes and log(n) height (∵ <a href="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part09_Priority_Queues/part09_00_priority_queues.md#the-height-of-heap">Proposition 9.2</a>)
