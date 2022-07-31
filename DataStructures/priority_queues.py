@@ -262,4 +262,47 @@ class MaxPriorityQueue(HeapPriorityQueue):
         return self.remove_min()
 
 
-class LocationAwareUnsortedPriorityQueue:
+class LocationAwareUnsortedPriorityQueue(PriorityQueueBase):
+
+    class Locator(PriorityQueueBase._Item):
+        __slots__ = '_index'
+
+        def __init__(self, k, v, j):
+            super().__init__(k, v)
+            self._index = j
+
+    def _find_min_idx(self):
+        if self.is_empty():
+            raise Empty('Priority queue is empty')
+        min_idx = None
+        for i in range(len(self)):
+            min_idx = i if (min_idx is None or self._data[i] < self._data[min_idx]) else min_idx
+        return min_idx
+
+    def __init__(self):
+        self._data = []
+
+    def __len__(self):
+        return len(self._data)
+
+    def add(self, key, value):
+        token = self.Locator(key, value, len(self._data))
+        self._data.append(token)
+        return token
+
+    def min(self):
+        return self._data[self._find_min_idx()]
+
+    def remove_min(self):
+        loc = self._data.remove(self._find_min_idx())
+        return (loc._key, loc._value)
+
+    def update(self, loc, new_key, new_val):
+        j = loc._index
+        self._data[j]._key = new_key
+        self._data[j]._value = new_val
+
+    def remove(self, loc):
+        j = loc._index
+        removed_loc = self._data.remove(j)
+        return (removed_loc._key, removed_loc._value)
