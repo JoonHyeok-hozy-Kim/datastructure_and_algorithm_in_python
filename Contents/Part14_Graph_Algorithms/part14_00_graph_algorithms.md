@@ -655,8 +655,9 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_06_01_definitions_for_weighted_graphs.png" style="width: 100%;"></img><br/>
 </p>
 
-#### Notation) d(u,v) = ∞
-* There is no path at all from u to v in G.
+#### Notation) d(u,v)
+* the distance between u and v
+* "d(u,v) = ∞" : There is no path at all from u to v in G.
 
 #### Prop.) If there is a cycle in G whose total weight is negative, the distance from u to v may not be defined.
 * ex.) Let the weight of edge as the cost spent for moving from one airport to another.
@@ -696,8 +697,79 @@ if __name__ == '__main__':
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_06_02_edge_relaxation.png" style="height : 150px;"></img><br/>
 </p>
 
+* Pseudo Code
+```python
+Algorithm ShortestPath(G, s):
+  Input: A weighted graph G with nonnegative edge weights, and a distinguished   vertex s of G.
+  Output: The length of a shortest path from s to v for each vertex v of G.
+  
+  Initialize D[s] = 0 and D[v] = ∞ for each vertex v != s.
+  Let a priority queue Q contain all the vertices of G using the D labels as keys.
+  while Q is not empty do
+    {pull a new vertex u into the cloud}
+    u = value returned by Q.remove_min()
+    for each vertex v adjacent to u such that v is in Q do
+      {perform the relaxation procedure on edge (u,v)}
+      if D[u] + w(u,v) < D[v] then
+        D[v] = D[u] + w(u,v)
+        Change to D[v] the key of vertex v in Q.
+  return the label D[v] of each vertex v
+```
+
+<br>
+
+#### Prop.) In Dijkstra’s algorithm, whenever a vertex v is pulled into the cloud, the label D[v] is equal to d(s,v), the length of a shortest path from s to v.
+* Justification : Proof by contradiction
+  * Suppose that D[v] > d(s,v) for some vertex v in V.
+    * i.e.) D[v] calculated by Dijkstra's algorithm is not the shortest path!
+    * Let z be _the first vertex_ the algorithm pulled into the cloud C such that D[z] > d(s,z).
+  * Then there is a shortest path P from s to z (for otherwise d(s,z) = ∞ = D[z]).
+    * Let us therefore consider the moment when z is pulled into C.
+    * Let y be the first vertex of P (when going from s to z) that is not in C at this moment.
+    * Let x be the predecessor of y in path P.
+      * By our choice of y, that x is already inC at this point.
+      * D[x] = d(s,x), since z is _the first incorrect vertex._
+        * Then, D[y] ≤ D[x] +w(x,y) = d(s,x) + w(x,y).
+    * But since y is the next vertex on the shortest path from s to z, this implies that
+      * D[y] = d(s,y).
+    * But we are now at the moment when we are picking z, not y, to join C; hence,
+      * D[z] ≤ D[y].
+    * Since y is on the shortest path from s to z,
+      * d(s,y) + d(y,z) = d(s,z).
+    * Therefore,
+      * D[z] ≤ D[y] = d(s,y) ≤ d(s,y) +d(y,z) = d(s,z) ---> (X)
 
 
+#### Analysis) The Running Time of Dijkstra’s Algorithm
+* Assumptions
+  * Let 
+    * G : a graph G with n vertices and m edges
+    * The edge weights can be added and compared in constant time.
+* Choosing priority_queue Q data structure
+  1. AdaptablePriorityQueue
+     * Advantage
+       * O(log(n)) time remove_min() operation.
+         * Thus, n calls to the remove_min : O(n log(n))
+     * Disadvantage
+       * O(log(n)) time for following operations
+         1. Initial n insertions to Q : O(n log(n))
+         2. m calls to update method : O(m log(n))
+       
+  2. UnsortedPriorityQueue
+     * Advantage
+       * Under the assumption that Q supports location-aware entries...
+         1. Initial n insertions to Q : O(n)
+         2. m calls to update method : O(m)
+     * Disadvantage
+       * O(n) time remove_min() operation.
+         * Thus, n calls to the remove_min : O(n^2)
+* Conclusion
+  1. AdaptablePriorityQueue : O(n^2 log(n))
+     * why?
+       * O( (n+m)*log(n) ) runs in O(n^2 log(2)) in worst case
+  2. UnsortedPriorityQueue : O(n^2)
+     * why?
+       * Likewise, O( n^2 + m ) runs in O(n^2) in worst case
 
 
 

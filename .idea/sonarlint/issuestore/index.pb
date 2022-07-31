@@ -99,8 +99,6 @@ F
 DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
 
 OContents/Part13_Text_Processing/part13_04_text_compression_and_greedy_method.py,2\f\2f516e50e4487503c07af05d154473fb499bc412
-Q
-!DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
 ^
 .TextProcessingAlgorithms/knuth_morris_pratt.py,c\0\c0a4fc1b2ecf8f92470195a1a550cbc47ae9df78
 f
@@ -124,3 +122,5 @@ HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 \
 ,Contents/Part14_Graph_Algorithms/__init__.py,8\d\8d5c3ac505f84698876fd0b5b04877a65cbda74d
+U
+%GraphAlgorithms/transitive_closure.py,0\2\027880b77345799c9ff5bf84ba360f7f9108d92b
