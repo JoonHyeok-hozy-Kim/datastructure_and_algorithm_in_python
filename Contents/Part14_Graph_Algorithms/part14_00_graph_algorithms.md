@@ -406,7 +406,7 @@ Algorithm DFS(G, u):
 
 
 ### 14.3.2 DFS Implementation and Extensions
-* Implementation : [DFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/depth_first_search.py)
+* Implementation : [Depth First Search (DFS)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/depth_first_search.py)
 
 
 #### Concept) The existences of the dictionary, **discovered**, as an input parameter for DFS
@@ -481,7 +481,7 @@ Algorithm DFS(G, u):
        * Assign these vertices to level 2 and mark them as visited.
     4. Continue this process until no new vertices are found in a level.
 
-#### Implementation : [BFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/breadth_first_search.py)
+#### Implementation : [Breadth First Search (BFS)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/breadth_first_search.py)
 
 #### Analysis) Performance of BFS
 * The running time of BFS is O(n + m)
