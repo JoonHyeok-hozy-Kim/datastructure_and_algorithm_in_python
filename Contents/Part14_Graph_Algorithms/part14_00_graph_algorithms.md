@@ -817,16 +817,27 @@ Algorithm ShortestPath(G, s):
     * We are interested instead in finding a tree T that contains all the vertices of G and has the minimum total weight over all such trees.
       * Rather than computing a shortest-path tree from some particular vertex v
 
+<br>
+
 #### Def.) Problem Definition
 * Given an undirected, weighted graph G, we are interested in finding a tree T that contains all the vertices in G and minimizes the sum
 <p align="center">
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_01_min_spanning_tree_def.png" style="height : 100px;"></img><br/>
 </p>
 
+* A tree, such as this, that contains every vertex of a connected graph G is said to be a **spanning tree**   
+* The problem of computing a spanning tree T with smallest total weight is known as the **minimum spanning tree (or MST)** problem.
+* In order to simplify the description of the algorithms, we assume, in the following, that the input graph G is undirected.
 
+<br>
 
-
-
+#### Concept) A Crucial Fact about Minimum Spanning Trees
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_02_min_spanning_tree_crucial_fact.png" style="width : 100%;"></img><br/>
+</p>
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_03_min_spanning_tree_crucial_fact_image.png" style="height : 500px;"></img><br/>
+</p>
 
 
 
