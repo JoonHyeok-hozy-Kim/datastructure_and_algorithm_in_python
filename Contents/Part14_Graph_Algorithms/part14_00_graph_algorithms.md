@@ -806,6 +806,48 @@ Algorithm ShortestPath(G, s):
   * value : incoming edge of the key vertex which is on the shortest path from the starting vertex
 
 
+## 14.7 Minimum Spanning Trees
+* Goal for the Minimum Spanning Tree
+  * Computers connection example
+    * Suppose we wish to connect all the computers in a new office building using **the least** amount of cable.
+    * We can model this problem using an undirected, weighted graph G whose 
+      * vertices represent the computers, and whose 
+      * edges represent all the possible pairs (u,v) of computers
+      * the weight w(u,v) of edge (u,v) is equal to the amount of cable needed to connect computer u to computer v
+    * We are interested instead in finding a tree T that contains all the vertices of G and has the minimum total weight over all such trees.
+      * Rather than computing a shortest-path tree from some particular vertex v
+
+#### Def.) Problem Definition
+* Given an undirected, weighted graph G, we are interested in finding a tree T that contains all the vertices in G and minimizes the sum
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_01_min_spanning_tree_def.png" style="height : 100px;"></img><br/>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 14.8 [Exercises](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md)
