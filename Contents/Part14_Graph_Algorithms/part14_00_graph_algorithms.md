@@ -879,23 +879,63 @@ Algorithm PrimJarnik(G):
   return the tree T
 ```
 
-#### Analysis) Performance of the Prim-Jarnik Algorithm
+#### Analysis) Performance of Prim-Jarnik Algorithm
 * Similar to Dijkstra's Algorithm
   * Heap-based priority queue implementation : O( (m+n)*log(n) )
   * Unsorted priority queue implementation : O(n^2)
 
-#### Tech.) Implementation : [Prim-Jarnik Algorithm]()
+#### Tech.) Implementation : [Prim-Jarnik Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/minimum_spanning_tree.py)
 
+<br>
 
+### 14.7.2 Kruskal’s Algorithm
+* Idea
+  * Recall that Prim-Jarn´ık algorithm builds the MST by growing a single tree until it spans the graph
+  * On the other hand, Kruskal’s algorithm maintains a **forest** of clusters, repeatedly merging pairs of clusters until a single cluster spans the graph.
+* How?
+  1. Initially, each vertex is by itself in a singleton cluster
+  2. The algorithm then considers each edge in turn, ordered by increasing weight.
+  3. If an edge e connects two different clusters, then e is added to the set of edges of the minimum spanning tree.
+     * Also, the two clusters connected by e are merged into a single cluster.
+     * On the other hand, if e connects two vertices that are already in the same cluster, then e is discarded.
+  4. Once the algorithm has added enough edges to form a spanning tree, it terminates and outputs this tree as the minimum spanning tree.
 
+* Pseudo Code
+```python
+Algorithm Kruskal(G):
+  Input: A simple connected weighted graph G with n vertices and m edges
+  Output: A minimum spanning tree T for G
+  
+  for each vertex v in G do
+    Define an elementary cluster C(v) = {v}.
 
+  Initialize a priority_queue Q to contain all edges in G, using the weights as keys.
+  T = ∅     {T will ultimately contain the edges of the MST}
+  while T has fewer than n−1 edges do
+    (u,v) = value returned by Q.remove min()
+    Let C(u) be the cluster containing u, and let C(v) be the cluster containing v.
+    if C(u) != C(v) then
+      Add edge (u,v) to T.
+      Merge C(u) and C(v) into one cluster.
+  return tree T
+```
 
-
-
-
-
-
-
+#### Analysis) Performance of Kruskal’s Algorithm
+* Conclusion : O(m log(n)) time.
+* How?
+  * Consider the following two points
+    1. Ordering the edges
+       * If the priority queue is Heap Priority Queue : O(m log(m)) time.
+         * Considering the fact that m = n^2, O(m log(m)) = O(m log(n))
+    2. Cluster Management
+       * We must be able to find the clusters for vertices u and v that are endpoints of an edge e, to test whether those two clusters are distinct. 
+         * If so, we should merge those two clusters into one.
+       * Thus, we should consider the find operation and the union operation.
+         * This will be covered as the next material : [disjoint partitions]()
+         * There will be 2m find operations and n-1 union operations.
+         * Simple union find structure can perform them in O(m+n log(n)) time.
+  
+#### Tech.) Implementation : [Kruskal’s Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/minimum_spanning_tree.py#L39)
 
 
 

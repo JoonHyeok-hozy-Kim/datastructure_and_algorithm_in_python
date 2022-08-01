@@ -1,6 +1,6 @@
+from DataStructures.priority_queues import HeapPriorityQueue, AdaptableHeapPriorityQueue
 
 
-from DataStructures.priority_queues import AdaptableHeapPriorityQueue
 def MST_PrimJarnik(g):
     """ Compute a minimum spanning tree of weighted graph g.
 
@@ -34,4 +34,34 @@ def MST_PrimJarnik(g):
                 if weight < d[v]:
                     d[v] = weight
                     pq.update(pq_locator[v], d[v], (v, link))
+    return tree
+
+
+
+def MST_Kruskal(g):
+    """ Compute a minimum spanning tree of a graph using Kruskal s algorithm.
+
+    :param g: The elements of the graph s edges are assumed to be weights.
+    :return: a list of edges that comprise the MST.
+    """
+    tree = []
+    pq = HeapPriorityQueue()
+    forest = Partition()        # Check disjoint partitions!
+    position = {}
+
+    for v in g.vertices():
+        position[v] = forest.make_group(v)
+
+    for e in g.edges():
+        pq.add(e.element(), e)
+
+    size = g.vertex_count()
+    while len(tree) != size-1 and not pq.is_empty():
+        weight, edge = pq.remove_min()
+        u, v = edge.endpoints()
+        a = forest.find(position[u])
+        b = forest.find(position[v])
+        if a != b:
+            tree.append(edge)
+            forest.union(a, b)
     return tree
