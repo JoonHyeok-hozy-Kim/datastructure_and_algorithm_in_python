@@ -116,8 +116,6 @@ c
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 \
 ,Contents/Part14_Graph_Algorithms/__init__.py,8\d\8d5c3ac505f84698876fd0b5b04877a65cbda74d
-U
-%GraphAlgorithms/transitive_closure.py,0\2\027880b77345799c9ff5bf84ba360f7f9108d92b
 u
 EContents/Part14_Graph_Algorithms/part14_05_directed_acyclic_graphs.py,1\e\1eae73627b83b41362c805574777f8b1aa347373
 U

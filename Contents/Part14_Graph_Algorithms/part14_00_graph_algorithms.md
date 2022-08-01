@@ -481,7 +481,7 @@ Algorithm DFS(G, u):
        * Assign these vertices to level 2 and mark them as visited.
     4. Continue this process until no new vertices are found in a level.
 
-#### Implementation : [BFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_bfs.py)
+#### Implementation : [BFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/breadth_first_search.py)
 
 #### Analysis) Performance of BFS
 * The running time of BFS is O(n + m)
