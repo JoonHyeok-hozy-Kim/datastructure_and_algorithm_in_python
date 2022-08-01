@@ -406,7 +406,7 @@ Algorithm DFS(G, u):
 
 
 ### 14.3.2 DFS Implementation and Extensions
-* Implementation : [DFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py)
+* Implementation : [DFS](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/depth_first_search.py)
 
 
 #### Concept) The existences of the dictionary, **discovered**, as an input parameter for DFS
@@ -420,7 +420,7 @@ Algorithm DFS(G, u):
 
 
 #### Tech.) Reconstructing a Path from u to v
-* Implementation : [construct_path(u, v, discovered)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L17)
+* Implementation : [construct_path(u, v, discovered)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/depth_first_search.py#L17)
 * Performance
   * Running time proportional to the length of the path
     * Thus, it runs in O(n) time.
@@ -434,7 +434,7 @@ Algorithm DFS(G, u):
 * Result
   * If len(discovered) == len(g._outgoing), then g is connected.
   * Else, g is not connected.
-* Implementation : [is_connected?](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L17)
+* Implementation : [is_connected?](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/depth_first_search.py#L17)
 
 
 #### Tech.) Testing the Strong Connectivity of a Directed Graph
@@ -445,7 +445,7 @@ Algorithm DFS(G, u):
   * Now we have to check whether s is reachable from all other vertices.
     * With the DFS method, loop through all incoming edges to the current vertex.
       * This will run in O(m+n) time.
-* Implementation : [is_connected for indirect graph](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L38)
+* Implementation : [is_connected for indirect graph](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/depth_first_search.py#L38)
 
 
 #### Tech.) Computing all Connected Components
@@ -455,7 +455,7 @@ Algorithm DFS(G, u):
     * the strongly connected components of a directed graph.
 * How?
   * If an initial call to DFS fails to reach all vertices of a graph, we can restart a new call to DFS at one of those unvisited vertices.
-* Implementation : [DFS_complete](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/graph_dfs.py#L65)
+* Implementation : [DFS_complete](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/depth_first_search.py#L65)
 * Performance
   * The total time spent by a call to DFS complete is **O(n+m)**.
     * Why?)
@@ -847,13 +847,44 @@ Algorithm ShortestPath(G, s):
   1. We begin with some vertex s, defining the initial “cloud” of vertices C.
   2. In each iteration, we choose a minimum-weight edge e = (u,v), connecting a vertex u in the cloud C to a vertex v outside of C.
      * Why it works?
-       * Consider the [fact](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#concept-a-crucial-fact-about-minimum-spanning-trees).
+       * Consider the [above crucial fact](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#concept-a-crucial-fact-about-minimum-spanning-trees).
        * By always choosing the smallest-weight edge joining a vertex inside C to one outside C, we are assured of always adding a valid edge to the MST.
   3. The vertex v is then brought into the cloud C.
   4. Repeat the above process until a spanning tree is formed.
 
+* Pseudo Code
+```python
+Algorithm PrimJarnik(G):
+  Input: An undirected, weighted, connected graph G with n vertices and m edges
+  Output: A minimum spanning tree T for G
+  
+  Pick any vertex s of G
+  D[s] = 0
+  for each vertex v != s do
+    D[v] = ∞
 
+  Initialize T = ∅.
+  Initialize a priority queue Q with an entry (D[v],(v,None)) for each vertex v,
+  where D[v] is the key in the priority queue, and (v,None) is the associated value.
 
+  while Q is not empty do
+    (u,e) = value returned by Q.remove min()
+    Connect vertex u to T using edge e if e is not None (Consider the case of s)
+    for each edge e` = (u,v) such that v is in Q do
+      {check if edge (u,v) better connects v to T}
+      if w(u,v) < D[v] then
+        D[v] = w(u,v)
+        Change the key of vertex v in Q to D[v].
+        Change the value of vertex v in Q to (v,e`).
+  return the tree T
+```
+
+#### Analysis) Performance of the Prim-Jarnik Algorithm
+* Similar to Dijkstra's Algorithm
+  * Heap-based priority queue implementation : O( (m+n)*log(n) )
+  * Unsorted priority queue implementation : O(n^2)
+
+#### Tech.) Implementation : [Prim-Jarnik Algorithm]()
 
 
 
