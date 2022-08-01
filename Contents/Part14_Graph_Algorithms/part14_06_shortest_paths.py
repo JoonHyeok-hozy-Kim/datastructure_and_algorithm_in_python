@@ -51,7 +51,7 @@ if __name__ == '__main__':
         v = v_dict[e[1]]
         g.insert_edge(u, v, e[2])
 
-    from GraphAlgorithms.graph_dfs import DFS, construct_path
+    from GraphAlgorithms.depth_first_search import DFS, construct_path
     d = {}
     DFS(g, v_dict['BOS'], d)
     path_dfs = construct_path(v_dict['BOS'], v_dict['LAX'], d)
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     for v in path_dfs:
         print(v)
 
-    from GraphAlgorithms.graph_bfs import BFS
+    from GraphAlgorithms.breadth_first_search import BFS
     b = {}
     BFS(g, v_dict['BOS'], b)
     path_bfs = construct_path(v_dict['BOS'], v_dict['LAX'], b)
