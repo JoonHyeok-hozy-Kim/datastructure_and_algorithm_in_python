@@ -847,7 +847,7 @@ Algorithm ShortestPath(G, s):
   1. We begin with some vertex s, defining the initial “cloud” of vertices C.
   2. In each iteration, we choose a minimum-weight edge e = (u,v), connecting a vertex u in the cloud C to a vertex v outside of C.
      * Why it works?
-       * Consider the [fact](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#concept-a-crucial-fact-about-minimum-spanning-trees).
+       * Consider the [fact](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#concept)-a-crucial-fact-about-minimum-spanning-trees).
        * By always choosing the smallest-weight edge joining a vertex inside C to one outside C, we are assured of always adding a valid edge to the MST.
   3. The vertex v is then brought into the cloud C.
   4. Repeat the above process until a spanning tree is formed.
