@@ -984,7 +984,7 @@ Algorithm Kruskal(G):
     2. parent : refers to its parent node
   * By convention, if p is the root of its tree, we set p’s parent reference to itself.
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_06_tree_implementation_image.png" style="width : 100%;"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_06_tree_implementation_image.png" style="height : 300px;"></img><br/>
 </p>
 
 
