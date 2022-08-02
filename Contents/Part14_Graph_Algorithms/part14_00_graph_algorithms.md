@@ -935,9 +935,57 @@ Algorithm Kruskal(G):
          * There will be 2m find operations and n-1 union operations.
          * Simple union find structure can perform them in O(m+n log(n)) time.
   
-#### Tech.) Implementation : [Kruskal’s Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/minimum_spanning_tree.py#L39)
+#### Tech.) Implementation : [Kruskal’s Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/GraphAlgorithms/minimum_spanning_tree.py#L41)
 
+<br><br>
 
+### 14.7.3 Disjoint Partitions and Union-Find Structures
+* Target
+  * a data structure for managing a partition of elements into a collection of disjoint sets.
+  * an element belongs to one and only one of these sets
+  * We do not expect to be able to iterate through the contents.
+  * We will refer to the clusters of our partition as **groups**.
+  * To differentiate between one group and another, we assume that at any point in time, each group has a designated entry that we refer to as the leader of the group.
+
+<br>
+
+#### Concept) Partition ADT
+* Methods
+  * make_group(x) : Create a singleton group containing new element x and return the position storing x.
+  * union(p, q) : Merge the groups containing positions p and q.
+  * find(p) : Return the position of the leader of the group containing position p.
+
+<br>
+
+#### Concept) Sequence Implementation
+* The sequence for a group A stores element positions.
+* Position object stores following variables
+  1. element : references its associated element x and allows the execution of an element() method in O(1) time.
+  2. group : references the sequence storing p, since this sequence is representing the group containing p’s element.
+* Let first position in a sequence to serve as the leader.
+
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_04_sequence_implementation_image.png" style="height : 400px;"></img><br/>
+</p>
+
+#### Prop.) When using the above sequence-based partition implementation, performing a series of k make group, union, and find operations on an initially empty partition involving at most n elements takes O(k+nlog(n)) time.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_05_partition_prop.png" style="width : 100%;"></img><br/>
+</p>
+
+<br>
+
+#### Tech.) A Tree-Based Partition Implementation
+* Concept
+  * a collection of trees to store the n elements, where each tree is associated with a different group.
+  * We implement each tree with a linked data structure whose nodes are themselves the group position objects.
+  * Each position p as being a node having instance variables as follows
+    1. element : refers to its element x
+    2. parent : refers to its parent node
+  * By convention, if p is the root of its tree, we set p’s parent reference to itself.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_06_tree_implementation_image.png" style="width : 100%;"></img><br/>
+</p>
 
 
 

@@ -1,0 +1,9 @@
+
+Lpython:S10666"/Merge this if statement with the enclosing one.(Æ×ÇÀúÿÿÿÿ
+dpython:S117"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(‹‹­
+Bpython:S1481"%Remove the unused local variable "i".(ñğ‹®úÿÿÿÿ
+Bpython:S1481"%Remove the unused local variable "i".(ñğ‹®úÿÿÿÿ
+ipython:S117$"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(•¡¬‘úÿÿÿÿ
+ipython:S117'"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(·Ô»ùÿÿÿÿ
+cpython:S1170"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(„º(
+ipython:S117>"MRename this parameter "A" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÅíÚ‚ıÿÿÿÿ

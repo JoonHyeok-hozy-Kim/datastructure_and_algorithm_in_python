@@ -128,3 +128,9 @@ g
 7Contents/Part14_Graph_Algorithms/part14_08_exercises.md,4\2\420711ddb149e8373375e82b3784e32423fbbd56
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+Q
+!DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
+l
+<Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
+N
+SortingAlgorithms/heap_sort.py,d\4\d4437c1d92c57c1145b71cd6502b209e5e9e85d3
