@@ -37,7 +37,7 @@ def MST_PrimJarnik(g):
     return tree
 
 
-
+from DataStructures.partition import TreePartition as Partition
 def MST_Kruskal(g):
     """ Compute a minimum spanning tree of a graph using Kruskal s algorithm.
 

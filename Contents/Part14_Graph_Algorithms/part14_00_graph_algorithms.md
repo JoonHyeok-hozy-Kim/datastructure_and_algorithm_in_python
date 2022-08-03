@@ -987,9 +987,29 @@ Algorithm Kruskal(G):
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_06_tree_implementation_image.png" style="height : 300px;"></img><br/>
 </p>
 
+* union operation
+  * The groups union can be implemented by making one group a subtree of the other group.
+  * Heuristic to make the data structure run faster after union
+    1. Union-by-size
+       * With each position p, store the number of elements in the subtree rooted at p.
+       * In a union operation, make the root of the smaller group become a child of the other root, and update the size field of the larger root.
+    2. Path Compression
+       * In a find operation, for each position q that the find visits, reset the parent of q to the root.
 
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_07_path_compression.png" style="height : 300px;"></img><br/>
+</p>
 
+* Performance
+  * find(p) : O(n)
+    * by walking up from position p to the root of its tree, which takes O(n) time in the worst case.
+  * union(p,q) : O(1)
+    * by making one of the trees a subtree of the other.
 
+#### Prop.) When using the tree-based partition representation with both union-by-size and path compression, performing a series of k make group, union, and find operations on an initially empty partition involving at most n elements takes O(k log* n) time.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_07_08_log_starpng.png" style="height : 150px;"></img><br/>
+</p>
 
 
 ## 14.8 [Exercises](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md)
