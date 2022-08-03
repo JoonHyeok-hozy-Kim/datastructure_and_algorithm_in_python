@@ -106,6 +106,9 @@ class LinkedBinaryTree(BinaryTree):
         def __eq__(self, other):
             return type(self) == type(other) and self._node == other._node
 
+        def __hash__(self):
+            return hash(id(self))
+
     def _validate(self, p):
         if not isinstance(p, self.Position):
             raise TypeError('p must be a proper Position type.')
