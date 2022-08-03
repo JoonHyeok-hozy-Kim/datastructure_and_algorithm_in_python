@@ -64,6 +64,28 @@ for v in g.vertices():
 </p>
 
 
+### R-14.5 Draw a simple, connected, directed graph with 8 vertices and 16 edges such that the in-degree and out-degree of each vertex is 2. Show that there is a single (nonsimple) cycle that includes all the edges of your graph, that is, you can trace all the edges in their respective directions without ever lifting your pencil. (Such a cycle is called an Euler tour.)
+* Sol.
+```python
+from DataStructures.graphs import Graph
+g = Graph(True)
+v = []
+for i in range(8):
+    v.append(g.insert_vertex(i))
+for i in range(8):
+    g.insert_edge(v[i], v[(i+1)%8])
+    g.insert_edge(v[(i+1)%8], v[i])
+for v in g.vertices():
+    print('{} / out_degree : {} / in_degree : {}'.format(v, g.degree(v), g.degree(v, False)))
+for v in g.vertices():
+    print('{} : '.format(v), end="")
+    for e in g.incident_edges(v):
+        print(e, end=", ")
+    print()
+```
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_05_sol.png" style="height : 150px;"></img><br/>
+</p>
 
 
 
