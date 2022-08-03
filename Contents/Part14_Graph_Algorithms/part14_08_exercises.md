@@ -127,11 +127,96 @@ def insert_edge(u, v, x):
 ### R-14.10 Can edge list E be omitted from the adjacency list representation while still achieving the time bounds given in Table 14.3? Why or why not?
 * Sol.) No. We may not be able to achieve O(m) time remove_edge, since we have to search all the vertices if E is omitted.
 
-### 
+### R-14.11 Would you use the adjacency matrix structure or the adjacency list structure in each of the following cases? Justify your choice.
+#### a. The graph has 10,000 vertices and 20,000 edges, and it is important to use as little space as possible.
+* Sol.) Adjacency list may be appropriate. Edges are sparse and takes relatively little space compared to adjacency matrix.
+#### b. The graph has 10,000 vertices and 20,000,000 edges, and it is important to use as little space as possible.
+* Sol.) Adjacency matrix can be considered. 
+  * Edges are quite densely populated. 
+  * 10,000 vertices will generate 100,000,000 spaces for matrix and about 20% are being used.
+#### c. You need to answer the query get edge(u,v) as fast as possible, no matter how much space you use.
+* Sol.) Adjacency matrix is highly recommended. 
+  * O(1) time is always guaranteed.
+
+### R-14.12 Explain why the DFS traversal runs in O(n^2) time on an n-vertex simple graph that is represented with the adjacency matrix structure.
+* Sol.) Adjacency matrix structure's incident_edges() method runs in O(n) time.
+  * Thus, for each vertex on the path, the DFS will traverse through n elements in each row of the matrix.
+  * Therefore, it runs in O(n^2) time.
+
+### R-14.13 In order to verify that all of its nontree edges are back edges, redraw the graph from Figure 14.8b so that the DFS tree edges are drawn with solid lines and oriented downward, as in a standard portrayal of a tree, and with all nontree edges drawn using dashed lines.
+* Sol.)
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_13_sol.png" style="height : 200px;"></img><br/>
+</p>
+
+### R-14.14 A simple undirected graph is complete if it contains an edge between every pair of distinct vertices. What does a depth-first search tree of a complete graph look like?
+* Sol.) The DFS will be finished without running any loop. In other words, every vertex will have at most one parent and at most one child.
+
+### R-14.15 Recalling the definition of a complete graph from Exercise R-14.14, what does a breadth-first search tree of a complete graph look like?
+* Sol.) One vertex will be the only ancestor of every other vertices and these vertices will be leaves.
+
+### R-14.16 Let G be an undirected graph whose vertices are the integers 1 through 8, and let the adjacent vertices of each vertex be given by the table below:
 
 
+### R-14.17 Draw the transitive closure of the directed graph shown in Figure 14.2.
 
 
+### R-14.18 If the vertices of the graph from Figure 14.11 are numbered as (v1 = JFK, v2 = LAX, v3 = MIA, v4 = BOS, v5 = ORD, v6 = SFO, v7 = DFW), in what order would edges be added to the transitive closure during the Floyd-Warshall algorithm?
+* Sol.) 
+  1. v3 - v6
+  2. v3 - v7
+  3. v4 - v6
+  4. v4 - v7
+  5. v3 - v5
+  6. v1 - v2
+  7. v1 - v5
+  8. v2 - v4
+  9. v2 - v6
+  10. v4 - v5
+  11. v5 - v6
+
+### R-14.19 How many edges are in the transitive closure of a graph that consists of a simple directed path of n vertices?
+* Sol) N = (n-1) + (n-2) + (n-3) + ... + 2 + 1 = (n-1)*n / 2
+
+
+### R-14.20 Given an n-node complete binary tree T, rooted at a given position, consider a directed graph G having the nodes of T as its vertices. For each parent-child pair in T, create a directed edge in G from the parent to the child. Show that the transitive closure of G has O(nlogn) edges.
+* Sol.)
+* Test)
+```python
+from DataStructures.tree import BinaryEulerTour
+from DataStructures.graphs import Graph
+class TreeGraphTransform(BinaryEulerTour):
+    def __init__(self, tree):
+        super().__init__(tree)
+        self._graph = Graph()
+        self._v = {}
+
+    def execute(self):
+        if len(self.tree()) > 0:
+            self._tour(self._tree.root(), 0, [])
+            return self._graph
+
+    def _hook_previsit(self, p, d, path):
+        e = p.element()
+        self._v[e] = self._graph.insert_vertex(e)
+        # print('In previsit : {}'.format(e))
+        parent = self._tree.parent(p)
+        if parent is not None:
+            # print('{} - {}'.format(parent.element(), e))
+            self._graph.insert_edge(self._v[parent.element()], self._v[e])
+
+if __name__ == '__main__':
+    from DataStructures.tree import LinkedBinaryTree
+    t = LinkedBinaryTree()
+    t.fill_tree_height(4)
+    print(t)
+    transform = TreeGraphTransform(t)
+    g = transform.execute()
+
+    from GraphAlgorithms.transitive_closure import floyd_warshall
+    c = floyd_warshall(g)
+    print(len(c.edges()))
+```
 
 
 

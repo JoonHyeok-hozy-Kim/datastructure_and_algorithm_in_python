@@ -1,26 +1,0 @@
-
-<python:S1481"%Remove the unused local variable "i".(¨êÒ
-Dpython:S2638,",Remove parameter e or provide default value.(§Œãš
-;python:S125T"Remove this commented out code.(¥Ÿ¦úûÿÿÿÿ
-lpython:S3776k"TRefactor this function to reduce its Cognitive Complexity from 16 to the 15 allowed.(©Şí·
-Apython:S108®")Either remove or fill this block of code.(ã‘Û¾
-epython:S117ï"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(››Å½
-epython:S117‚"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÛÏ…é
-epython:S117‘"MRename this parameter "S" to match the regular expression ^[_a-z][a-z0-9_]*$.(¼ø³
-epython:S117¢"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(ñÙ Ç
-jpython:S117¨"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(ùˆÃ«ıÿÿÿÿ
-epython:S117®"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Š€‰Ç
-fpython:S117¼"NRename this parameter "T1" to match the regular expression ^[_a-z][a-z0-9_]*$.(¹Ó†
-tpython:S117½"\Rename this local variable "T1_subtrees" to match the regular expression ^[_a-z][a-z0-9_]*$.(€ûÙ
-fpython:S117¼"NRename this parameter "T2" to match the regular expression ^[_a-z][a-z0-9_]*$.(¹Ó†
-tpython:S117¾"\Rename this local variable "T2_subtrees" to match the regular expression ^[_a-z][a-z0-9_]*$.(±îĞö
-jpython:S117Æ"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(¾ŒÒñùÿÿÿÿ
-jpython:S117Ï"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(™¿¤ˆùÿÿÿÿ
-epython:S117à"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ùÿú°
-dpython:S117ü"MRename this parameter "T" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ú…˜Y
-mpython:S3776·"TRefactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.(ò™óà
->python:S125À"Remove this commented out code.(º¹Ì¾8÷Î¿À•0
-ypython:S3776ß"TRefactor this function to reduce its Cognitive Complexity from 33 to the 15 allowed.(â¹Á‰ùÿÿÿÿ8”­€°œ0
->python:S125‡"Remove this commented out code.(®„«ÿ8•­€°œ0
-tpython:S3776ö"TRefactor this function to reduce its Cognitive Complexity from 31 to the 15 allowed.(ß§¯8•­€°œ0
-Jpython:S1481ğ"%Remove the unused local variable "i".(¹¾½ˆıÿÿÿÿ8•­€°œ0

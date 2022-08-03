@@ -53,8 +53,6 @@ n
 >Contents/Part11_Search_Trees/part11_04_multiway_search_tree.py,1\9\19eefa5d325e6f36999346563f5e9bf0ece5a76f
 M
 DataStructures/sorted_maps.py,a\c\ac58950667d0605f7f3024f1d6a80e4f09e304be
-R
-"DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
 D
 Contents/__init__.py,9\0\902432221285a39997d6be1a526d2b3e5a4fbb4f
 L
@@ -91,8 +89,6 @@ m
 =Contents/Part12_Sorting_and_Selection/part12_02_merge_sort.py,b\0\b0f2d32e3744aca7ed0c7092dbbe50356363d3f5
 Œ
 \Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md,c\6\c685779da586aaefd6cde8a6bb5bee891522eaaa
-F
-DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
 
 OContents/Part13_Text_Processing/part13_04_text_compression_and_greedy_method.py,2\f\2f516e50e4487503c07af05d154473fb499bc412
 ^
@@ -134,7 +130,5 @@ N
 SortingAlgorithms/heap_sort.py,d\4\d4437c1d92c57c1145b71cd6502b209e5e9e85d3
 Q
 !GraphAlgorithms/shortest_paths.py,5\a\5aa82a6a1aa4561532c23a1c594639f7c4ae46cc
-U
-%GraphAlgorithms/transitive_closure.py,0\2\027880b77345799c9ff5bf84ba360f7f9108d92b
 W
 'GraphAlgorithms/breadth_first_search.py,8\4\84c2023c72fc870b8484d4cada3ccb101cc200d7
