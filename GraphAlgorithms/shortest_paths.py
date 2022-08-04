@@ -40,7 +40,7 @@ def dijkstra_shortest_path_lengths(g, s):
     return cloud
 
 
-def shortest_path_tree(g, s, d):
+def shortest_path_tree(g, s, d=None):
     """ Reconstruct shortest-path tree rooted at vertex s, given distance map d.
 
     :param g: the graph
@@ -49,6 +49,12 @@ def shortest_path_tree(g, s, d):
     :return: tree in map data structure
     """
     tree = {}
+
+    if d is None:
+        d = dijkstra_shortest_path_lengths(g, s)
+
+    print(d)
+
     for v in d:
         if v is not s:
             for e in g.incident_edges(v, False):        # Consider INCOMING edges
