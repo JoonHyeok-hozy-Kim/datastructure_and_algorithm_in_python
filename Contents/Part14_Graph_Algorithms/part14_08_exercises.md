@@ -307,8 +307,8 @@ for vertex in cloud:
 ```
 * Sol.)
 <div>
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_hand_sol.png" style="float : left; width : 35%"></img>
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_simulator_result.png" style="float : right; width : 35%"></img>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_hand_sol.png" style="float : left; width : 45%"></img>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_simulator_result.png" style="float : right; width : 45%"></img>
 </div>
 
 
