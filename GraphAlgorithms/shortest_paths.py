@@ -40,6 +40,7 @@ def dijkstra_shortest_path_lengths(g, s):
     return cloud
 
 
+from GraphAlgorithms.depth_first_search import is_connected
 def shortest_path_tree(g, s, d=None):
     """ Reconstruct shortest-path tree rooted at vertex s, given distance map d.
 
@@ -48,11 +49,13 @@ def shortest_path_tree(g, s, d=None):
     :param d: distance map
     :return: tree in map data structure
     """
+    if not is_connected(g, s):
+        raise ValueError('s not connected!')
     tree = {}
 
     if d is None:
         d = dijkstra_shortest_path_lengths(g, s)
-        
+
     for v in d:
         if v is not s:
             for e in g.incident_edges(v, False):        # Consider INCOMING edges
