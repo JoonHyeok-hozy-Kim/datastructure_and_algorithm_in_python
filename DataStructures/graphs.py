@@ -88,3 +88,10 @@ class Graph:
         e = Edge(u, v, x)
         self._outgoing[u][v] = e
         self._incoming[v][u] = e
+
+    def truncate_edges(self):
+        for v in self.vertices():
+            self._outgoing[v] = {}
+            if self._is_directed():
+                self._incoming = {}
+        return
