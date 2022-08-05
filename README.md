@@ -37,11 +37,11 @@
 
 ### [Part 14. Graph Algorithms](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md)   
 * Concepts)
-  * Data Structures : Edge List, Adjacency List, Adjacency Map, Adjacency Matrix
-  * Traversal Algorithms : Depth First Search (DFS), Breadth First Search (BFS)
-  * Transitive Closure : Floyd-Warshall Algorithm
-  * Topological Sorting for Directed Acyclic Graph
-  * Shortest Path Finding Algorithm : Dijkstra's Algorithm
-  * Minimum Spanning Tree : Prim-Jarnik Algorithm, Kruskal's Algorithm
-  * Disjoint Partitions and Union Find Structures
+  * [Data Structures](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#142-data-structures-for-graphs) : Edge List, Adjacency List, Adjacency Map, Adjacency Matrix
+  * Traversal Algorithms : [Depth First Search (DFS)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#1431-depth-first-search-dfs), [Breadth First Search (BFS)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#1433-breadth-first-search)
+  * [Transitive Closure](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#144-transitive-closure) : [Floyd-Warshall Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#tech-floyd-warshall-algorithm)
+  * [Topological Sorting](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#1451-topological-ordering) for Directed Acyclic Graph
+  * Shortest Path Finding Algorithm : [Dijkstra's Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#1462-dijkstras-algorithm)
+  * Minimum Spanning Tree : [Prim-Jarnik Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#1471-prim-jarnik-algorithm), [Kruskal's Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#1472-kruskals-algorithm)
+  * [Disjoint Partitions](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#1473-disjoint-partitions-and-union-find-structures) and Union Find Structures
 * [Exercises](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_08_exercises.md)
