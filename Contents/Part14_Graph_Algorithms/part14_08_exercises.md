@@ -281,17 +281,22 @@ from GraphAlgorithms.depth_first_search import is_connected
 from random import randint
 g = Graph()
 v = {}
-weight_list = [i for i in range(16)]
 for i in range(8):
     char = chr(i+65)
     v[char] = g.insert_vertex(char)
 while not is_connected(g):
+    weight_list = [i for i in range(16)]
     g.truncate_edges()
-    for i in range(16):
-        rand_weight = weight_list.pop(randint(0, len(weight_list)-1)) if len(weight_list) > 1 else weight_list[0]
+    while len(weight_list) > 0:
+        if len(weight_list) > 1:
+            rand_weight = weight_list.pop(randint(0, len(weight_list)-1))
+        else:
+            rand_weight = weight_list.pop()
         x = y = None
         while x == y:
             x, y = v[chr(randint(0, 7)+65)], v[chr(randint(0, 7)+65)]
+            if g.get_edge(x, y) is not None:
+                x = y = None
         g.insert_edge(x, y, rand_weight)
 
 for e in g.edges():
@@ -310,6 +315,57 @@ for vertex in cloud:
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_hand_sol.png" style="float : left; width : 45%"></img>
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_simulator_result.png" style="float : right; width : 45%"></img>
 </div>
+
+
+### R-14.24 Show how to modify the pseudo-code for Dijkstra’s algorithm for the case when the graph is directed and we want to compute shortest directed paths from the source vertex to all the other vertices.
+* Sol.) Connectedness from s to all other vertices validation added.
+```python
+    from DataStructures.graphs import Graph
+    from GraphAlgorithms.depth_first_search import is_connected
+    from random import randint
+    g = Graph(True)
+    v = {}
+    for i in range(8):
+        char = chr(i+65)
+        v[char] = g.insert_vertex(char)
+    # print('NOT connected')
+    weight_list = [i for i in range(16)]
+    g.truncate_edges()
+    while len(weight_list) > 0:
+        if len(weight_list) > 1:
+            rand_weight = weight_list.pop(randint(0, len(weight_list)-1))
+        else:
+            rand_weight = weight_list.pop()
+        x = y = None
+        while x == y:
+            x, y = v[chr(randint(0, 7)+65)], v[chr(randint(0, 7)+65)]
+            if g.get_edge(x, y) is not None:
+                x = y = None
+        g.insert_edge(x, y, rand_weight)
+
+    connected_v = []
+    for v in g.vertices():
+        if is_connected(g, v):
+            connected_v.append(v)
+
+    if len(connected_v) > 0:
+        for e in g.edges():
+            print(e)
+        for v in connected_v:
+            print(v)
+
+        from GraphAlgorithms.shortest_paths import dijkstra_shortest_path_lengths
+        s = connected_v.pop()
+        print('Start : {}'.format(s))
+        cloud = dijkstra_shortest_path_lengths(g, s)
+        print('Dijkstra : ', end="")
+        for vertex in cloud:
+            print(vertex, end=" > ")
+```
+
+### R-14.25 Draw a simple, connected, undirected, weighted graph with 8 vertices and 16 edges, each with unique edge weights. Illustrate the execution of the Prim-Jarn´ık algorithm for computing the minimum spanning tree of this graph.
+
+
 
 
 
