@@ -30,15 +30,16 @@ def construct_path(u, v, discovered):
     return path
 
 
-def is_connected(g):
-    arbitrary = next(iter(g.vertices()))    # Get an arbitrary vertex from the graph
+def is_connected(g, s=None):
+    if s is None:
+        s = next(iter(g.vertices()))    # Get an arbitrary vertex from the graph
     d = {}
-    DFS(g, arbitrary, d)
+    DFS(g, s, d)
     if len(d) != g.vertex_count():
         return False
     elif g._outgoing != g._incoming:
         incoming_d = {}
-        _incoming_DFS(g, arbitrary, incoming_d)
+        _incoming_DFS(g, s, incoming_d)
         if len(incoming_d) != g.vertex_count():
             return False
     return True
@@ -59,6 +60,8 @@ def _incoming_DFS(g, u, discovered, starting=None):
     for adjacent in g._incoming:
         for v in g._incoming[adjacent]:
             if v == u:
+                if discovered.setdefault(adjacent, None) == g._incoming[adjacent][u]:   # infinite loop prevention
+                    return
                 discovered[adjacent] = g._incoming[adjacent][u]
                 _incoming_DFS(g, adjacent, discovered, starting)
 
