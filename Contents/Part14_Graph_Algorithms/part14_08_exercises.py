@@ -91,36 +91,65 @@ if __name__ == '__main__':
     # c = floyd_warshall(g)
     # print(len(c.edges()))
 
+    # from DataStructures.graphs import Graph
+    # courses_list = [
+    #     'LA15',
+    #     'LA16',
+    #     'LA22',
+    #     'LA31',
+    #     'LA32',
+    #     'LA126',
+    #     'LA127',
+    #     'LA141',
+    #     'LA169',
+    # ]
+    # g = Graph(True)
+    # v = {}
+    # for course in courses_list:
+    #     v[course] = g.insert_vertex(course)
+    #
+    # g.insert_edge(v['LA15'], v['LA16'])
+    # g.insert_edge(v['LA15'], v['LA31'])
+    # g.insert_edge(v['LA16'], v['LA32'])
+    # g.insert_edge(v['LA16'], v['LA127'])
+    # g.insert_edge(v['LA16'], v['LA141'])
+    # g.insert_edge(v['LA31'], v['LA32'])
+    # g.insert_edge(v['LA22'], v['LA126'])
+    # g.insert_edge(v['LA22'], v['LA141'])
+    # g.insert_edge(v['LA32'], v['LA126'])
+    # g.insert_edge(v['LA32'], v['LA169'])
+    #
+    # from SortingAlgorithms.topological_sort import topological_sort
+    # g_sorted = topological_sort(g)
+    # for v in g_sorted:
+    #     print(v, end=" -> ")
+
+
     from DataStructures.graphs import Graph
-    courses_list = [
-        'LA15',
-        'LA16',
-        'LA22',
-        'LA31',
-        'LA32',
-        'LA126',
-        'LA127',
-        'LA141',
-        'LA169',
-    ]
-    g = Graph(True)
+    from GraphAlgorithms.depth_first_search import is_connected
+    from random import randint
+    g = Graph()
     v = {}
-    for course in courses_list:
-        v[course] = g.insert_vertex(course)
+    weight_list = [i for i in range(16)]
+    for i in range(8):
+        char = chr(i+65)
+        v[char] = g.insert_vertex(char)
+    while not is_connected(g):
+        g.truncate_edges()
+        for i in range(16):
+            rand_weight = weight_list.pop(randint(0, len(weight_list)-1)) if len(weight_list) > 1 else weight_list[0]
+            x = y = None
+            while x == y:
+                x, y = v[chr(randint(0, 7)+65)], v[chr(randint(0, 7)+65)]
+            g.insert_edge(x, y, rand_weight)
 
-    g.insert_edge(v['LA15'], v['LA16'])
-    g.insert_edge(v['LA15'], v['LA31'])
-    g.insert_edge(v['LA16'], v['LA32'])
-    g.insert_edge(v['LA16'], v['LA127'])
-    g.insert_edge(v['LA16'], v['LA141'])
-    g.insert_edge(v['LA31'], v['LA32'])
-    g.insert_edge(v['LA22'], v['LA126'])
-    g.insert_edge(v['LA22'], v['LA141'])
-    g.insert_edge(v['LA32'], v['LA126'])
-    g.insert_edge(v['LA32'], v['LA169'])
+    for e in g.edges():
+        print('{} : {}'.format(e, e.element()))
 
-    from SortingAlgorithms.topological_sort import topological_sort
-    g_sorted = topological_sort(g)
-    for v in g_sorted:
-        print(v, end=" -> ")
-
+    from GraphAlgorithms.shortest_paths import dijkstra_shortest_path_lengths
+    random_start_vertex = v[chr(randint(0, 7)+65)]
+    print('Random Start : {}'.format(random_start_vertex))
+    cloud = dijkstra_shortest_path_lengths(g, random_start_vertex)
+    print('Dijkstra : ', end="")
+    for vertex in cloud:
+        print(vertex, end=" > ")

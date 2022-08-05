@@ -118,8 +118,6 @@ w
 GContents/Part14_Graph_Algorithms/part14_02_datastructures_for_graphs.py,2\f\2fd90a4afd609d9966139477625d82014f9c49d3
 l
 <Contents/Part13_Text_Processing/part13_00_text_processing.md,b\8\b85b340414adc1518c54ebc13348abdbbdc91282
-Q
-!DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
 l
 <Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
 N

@@ -274,8 +274,50 @@ for v in g_sorted:
 ```
 
 ### R-14.23 Draw a simple, connected, weighted graph with 8 vertices and 16 edges, each with unique edge weights. Identify one vertex as a “start” vertex and illustrate a running of Dijkstra’s algorithm on this graph.
+* Simulator
+```python
+from DataStructures.graphs import Graph
+from GraphAlgorithms.depth_first_search import is_connected
+from random import randint
+g = Graph()
+v = {}
+weight_list = [i for i in range(16)]
+for i in range(8):
+    char = chr(i+65)
+    v[char] = g.insert_vertex(char)
+while not is_connected(g):
+    g.truncate_edges()
+    for i in range(16):
+        rand_weight = weight_list.pop(randint(0, len(weight_list)-1)) if len(weight_list) > 1 else weight_list[0]
+        x = y = None
+        while x == y:
+            x, y = v[chr(randint(0, 7)+65)], v[chr(randint(0, 7)+65)]
+        g.insert_edge(x, y, rand_weight)
 
+for e in g.edges():
+    print('{} : {}'.format(e, e.element()))
 
+from GraphAlgorithms.shortest_paths import dijkstra_shortest_path_lengths
+random_start_vertex = v[chr(randint(0, 7)+65)]
+print('Random Start : {}'.format(random_start_vertex))
+cloud = dijkstra_shortest_path_lengths(g, random_start_vertex)
+print('Dijkstra : ', end="")
+for vertex in cloud:
+    print(vertex, end=" > ")
+```
+* Sol.)
+<div>
+<div style="float : left">
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_hand_sol.png" style=""></img><br/>
+</p>
+</div>
+<div style="float : left">
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/part14_08_exercises.png" style=""></img><br/>
+</p>
+</div>
+</div>
 
 
 
