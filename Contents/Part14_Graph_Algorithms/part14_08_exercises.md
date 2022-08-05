@@ -156,10 +156,14 @@ def insert_edge(u, v, x):
 * Sol.) One vertex will be the only ancestor of every other vertices and these vertices will be leaves.
 
 ### R-14.16 Let G be an undirected graph whose vertices are the integers 1 through 8, and let the adjacent vertices of each vertex be given by the table below:
-
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_16_sol.png"></img><br/>
+</p>
 
 ### R-14.17 Draw the transitive closure of the directed graph shown in Figure 14.2.
-
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_17_sol.png"></img><br/>
+</p>
 
 ### R-14.18 If the vertices of the graph from Figure 14.11 are numbered as (v1 = JFK, v2 = LAX, v3 = MIA, v4 = BOS, v5 = ORD, v6 = SFO, v7 = DFW), in what order would edges be added to the transitive closure during the Floyd-Warshall algorithm?
 * Sol.) 
@@ -364,7 +368,10 @@ for vertex in cloud:
 ```
 
 ### R-14.25 Draw a simple, connected, undirected, weighted graph with 8 vertices and 16 edges, each with unique edge weights. Illustrate the execution of the Prim-Jarn´ık algorithm for computing the minimum spanning tree of this graph.
-
+<div>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_25_graph.png" style="float : left; width : 45%"></img>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_25_tree.png" style="float : right; width : 45%"></img>
+</div>
 
 
 

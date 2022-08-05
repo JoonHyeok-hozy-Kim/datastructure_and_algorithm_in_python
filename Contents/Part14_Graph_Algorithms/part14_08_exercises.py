@@ -206,7 +206,7 @@ if __name__ == '__main__':
     from DataStructures.graphs import Graph
     from GraphAlgorithms.depth_first_search import is_connected
     from random import randint
-    g = Graph(True)
+    g = Graph()
     v = {}
     for i in range(8):
         char = chr(i+65)
@@ -229,3 +229,8 @@ if __name__ == '__main__':
 
     for e in g.edges():
         print('{} : {}'.format(e, e.element()))
+
+    from GraphAlgorithms.minimum_spanning_tree import MST_PrimJarnik
+    tree = MST_PrimJarnik(g)
+    for edge in tree:
+        print(edge)

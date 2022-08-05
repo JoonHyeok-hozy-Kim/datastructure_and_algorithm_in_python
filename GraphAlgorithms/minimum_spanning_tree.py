@@ -15,6 +15,7 @@ def MST_PrimJarnik(g):
     for v in g.vertices():
         if len(d) == 0:
             d[v] = 0            # Initialization with an arbitrary initial vertex
+            # print('Initial vertex : {}'.format(v))
         else:
             d[v] = float('inf')
         pq_locator[v] = pq.add(d[v],            # distance as the key
