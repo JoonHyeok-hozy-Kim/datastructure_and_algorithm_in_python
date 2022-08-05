@@ -218,6 +218,64 @@ if __name__ == '__main__':
     print(len(c.edges()))
 ```
 
+### R-14.21 Compute a topological ordering for the directed graph drawn with solid edges in Figure 14.3d.
+<p align="center">
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_21_figure14_3_d.png" style="height : 300px;"></img><br/>
+</p>
+
+* Sol) TBS
+
+### R-14.22 Bob loves foreign languages and wants to plan his course schedule for the following years. He is interested in the following nine language courses: LA15, LA16, LA22, LA31, LA32, LA126, LA127, LA141, and LA169.
+* The course prerequisites
+  * LA15: (none)
+  * LA16: LA15
+  * LA22: (none)
+  * LA31: LA15
+  * LA32: LA16, LA31
+  * LA126: LA22, LA32
+  * LA127: LA16
+  * LA141: LA22, LA16
+  * LA169: LA32
+#### In what order can Bob take these courses, respecting the prerequisites?
+* Sol.) (LA22) -> (LA15) -> (LA31) -> (LA16) -> (LA141) -> (LA127) -> (LA32) -> (LA169) -> (LA126)
+```python
+from DataStructures.graphs import Graph
+courses_list = [
+    'LA15',
+    'LA16',
+    'LA22',
+    'LA31',
+    'LA32',
+    'LA126',
+    'LA127',
+    'LA141',
+    'LA169',
+]
+g = Graph(True)
+v = {}
+for course in courses_list:
+    v[course] = g.insert_vertex(course)
+
+g.insert_edge(v['LA15'], v['LA16'])
+g.insert_edge(v['LA15'], v['LA31'])
+g.insert_edge(v['LA16'], v['LA32'])
+g.insert_edge(v['LA16'], v['LA127'])
+g.insert_edge(v['LA16'], v['LA141'])
+g.insert_edge(v['LA31'], v['LA32'])
+g.insert_edge(v['LA22'], v['LA126'])
+g.insert_edge(v['LA22'], v['LA141'])
+g.insert_edge(v['LA32'], v['LA126'])
+g.insert_edge(v['LA32'], v['LA169'])
+
+from SortingAlgorithms.topological_sort import topological_sort
+g_sorted = topological_sort(g)
+for v in g_sorted:
+    print(v, end=" -> ")
+```
+
+### R-14.23 Draw a simple, connected, weighted graph with 8 vertices and 16 edges, each with unique edge weights. Identify one vertex as a “start” vertex and illustrate a running of Dijkstra’s algorithm on this graph.
+
+
 
 
 

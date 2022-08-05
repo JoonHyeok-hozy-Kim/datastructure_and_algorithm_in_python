@@ -80,13 +80,47 @@ if __name__ == '__main__':
     #     print()
 
 
-    from DataStructures.tree import LinkedBinaryTree
-    t = LinkedBinaryTree()
-    t.fill_tree_height(4)
-    print(t)
-    transform = TreeGraphTransform(t)
-    g = transform.execute()
+    # from DataStructures.tree import LinkedBinaryTree
+    # t = LinkedBinaryTree()
+    # t.fill_tree_height(4)
+    # print(t)
+    # transform = TreeGraphTransform(t)
+    # g = transform.execute()
+    #
+    # from GraphAlgorithms.transitive_closure import floyd_warshall
+    # c = floyd_warshall(g)
+    # print(len(c.edges()))
 
-    from GraphAlgorithms.transitive_closure import floyd_warshall
-    c = floyd_warshall(g)
-    print(len(c.edges()))
+    from DataStructures.graphs import Graph
+    courses_list = [
+        'LA15',
+        'LA16',
+        'LA22',
+        'LA31',
+        'LA32',
+        'LA126',
+        'LA127',
+        'LA141',
+        'LA169',
+    ]
+    g = Graph(True)
+    v = {}
+    for course in courses_list:
+        v[course] = g.insert_vertex(course)
+
+    g.insert_edge(v['LA15'], v['LA16'])
+    g.insert_edge(v['LA15'], v['LA31'])
+    g.insert_edge(v['LA16'], v['LA32'])
+    g.insert_edge(v['LA16'], v['LA127'])
+    g.insert_edge(v['LA16'], v['LA141'])
+    g.insert_edge(v['LA31'], v['LA32'])
+    g.insert_edge(v['LA22'], v['LA126'])
+    g.insert_edge(v['LA22'], v['LA141'])
+    g.insert_edge(v['LA32'], v['LA126'])
+    g.insert_edge(v['LA32'], v['LA169'])
+
+    from SortingAlgorithms.topological_sort import topological_sort
+    g_sorted = topological_sort(g)
+    for v in g_sorted:
+        print(v, end=" -> ")
+
