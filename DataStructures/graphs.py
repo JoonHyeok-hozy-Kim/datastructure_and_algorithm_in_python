@@ -94,5 +94,5 @@ class Graph:
         for v in self.vertices():
             self._outgoing[v] = {}
             if self._is_directed():
-                self._incoming = {}
+                self._incoming[v] = {}
         return
