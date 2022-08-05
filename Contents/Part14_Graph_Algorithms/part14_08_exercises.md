@@ -312,9 +312,9 @@ for vertex in cloud:
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_hand_sol.png" style="width : 40%"></img><br/>
 </p>
 </div>
-<div style="float : left">
+<div style="float : right">
 <p align="center">
-<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/part14_08_exercises.png" style="width : 40%"></img><br/>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_23_simulator_result.png" style="width : 40%"></img><br/>
 </p>
 </div>
 </div>
