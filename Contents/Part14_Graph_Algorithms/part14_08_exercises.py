@@ -232,5 +232,12 @@ if __name__ == '__main__':
 
     from GraphAlgorithms.minimum_spanning_tree import MST_PrimJarnik
     tree = MST_PrimJarnik(g)
+    print('MST_PrimJarnik')
+    for edge in tree:
+        print(edge)
+
+    from GraphAlgorithms.minimum_spanning_tree import MST_Kruskal
+    tree = MST_Kruskal(g)
+    print('MST_Kruskal')
     for edge in tree:
         print(edge)

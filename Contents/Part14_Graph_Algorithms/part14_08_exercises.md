@@ -414,6 +414,20 @@ for edge in tree:
 <img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_26.png" ></img>
 </div>
 
+### R-14.27 There are eight small islands in a lake, and the state wants to build seven bridges to connect them so that each island can be reached from any other one via one or more bridges. The cost of constructing a bridge is proportional to its length. The distances between pairs of islands are given in the following table.
+<div>
+<img src="https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/images/14_08_27_table.png" style="height: 300px"></img>
+</div>
+
+#### Find which bridges to build to minimize the total construction cost.
+
+
+
+
+
+
+
+
 
 
 

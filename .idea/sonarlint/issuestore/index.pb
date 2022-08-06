@@ -126,5 +126,15 @@ x
 HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4fcb92e812d63c0199ad00450c9a16a577ce817e
 n
 >Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md,f\d\fd220cf2453ab1f34be4c84f2ad6f648e95f5e81
-K
-DataStructures/partition.py,2\5\2513bf2d9a488887d6ae28c029669bdd54bb7832
+F
+DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
+R
+"DataStructures/tree_application.py,6\7\6736714c11bab303b84b5ca0a9ed1360da28c90a
+s
+CContents/Part14_Graph_Algorithms/part14_07_minimum_spanning_tree.py,3\8\3841c382846a5c7f724a03393e741cd1f091d896
+l
+<Contents/Part14_Graph_Algorithms/part14_06_shortest_paths.py,e\2\e286f13d5e2879c49cba48a666d5c57d8f807fd8
+W
+'GraphAlgorithms/breadth_first_search.py,8\4\84c2023c72fc870b8484d4cada3ccb101cc200d7
+U
+%SortingAlgorithms/topological_sort.py,9\9\9928e13986e0f2bae41f5ecaac2b372f74bb5f08
