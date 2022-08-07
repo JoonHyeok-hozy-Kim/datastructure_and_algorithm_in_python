@@ -33,6 +33,16 @@
 * [Exercises](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md)
 
 ### [Part 13. Text Processing](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md)   
+* Concepts)
+  * Pattern Matching Algorithms
+    * [Brute Force](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#1321-brute-force)
+    * [Boyer-Moore](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#1322-the-boyer-moore-algorithm)
+    * [Knuth-Morris-Pratt (KMP)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#1323-the-knuth-morris-pratt-algorithm)
+  * Dynamic Programming
+    * [Optimal Parenthesizing for Chain of Matrix Products](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#1331-matrix-chain-product)
+    * [Longest Common Subsequence (LCS)](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#concept-longest-common-sequence-lcs)
+  * Text Compression : [Huffman Coding Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#1341-the-huffman-coding-algorithm)
+  * [Tries](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#135-tries)
 * [Exercises](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md)
 
 ### [Part 14. Graph Algorithms](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md)   
