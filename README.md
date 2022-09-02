@@ -25,7 +25,7 @@
 
 ### [Part 10. Maps, Hash Tables, and Skip Lists](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_00_maps_hash_tables_and_skip_lists.md)   
 #### [Exercises 10](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part10_Maps_Hash_Tables_and_Skip_Lists/part10_06_exercises.md)
-
+---
 ### [Part 11. Search Trees](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md)   
 * Concepts)
   * [Merge Sort](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md#122-merge-sort)
@@ -41,10 +41,10 @@
     * Prune-and-Search
     * Randomized Quick-Select
 #### [Exercises 11](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md)
-
+---
 ### [Part 12. Sorting and Selection](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md)   
 #### [Exercises 12](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md)
-
+---
 ### [Part 13. Text Processing](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md)   
 * Concepts)
   * Pattern Matching Algorithms
@@ -57,7 +57,7 @@
   * Text Compression : [Huffman Coding Algorithm](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#1341-the-huffman-coding-algorithm)
   * [Tries](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_00_text_processing.md#135-tries)
 #### [Exercises 13](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part13_Text_Processing/part13_06_exercises.md)
-
+---
 ### [Part 14. Graph Algorithms](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md)   
 * Concepts)
   * [Data Structures](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md#142-data-structures-for-graphs) : Edge List, Adjacency List, Adjacency Map, Adjacency Matrix
