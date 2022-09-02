@@ -112,8 +112,6 @@ l
 <Contents/Part09_Priority_Queues/part09_00_priority_queues.md,0\9\0938391657bffb425645a9ce05114165904316e2
 N
 SortingAlgorithms/heap_sort.py,d\4\d4437c1d92c57c1145b71cd6502b209e5e9e85d3
-x
-HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4fcb92e812d63c0199ad00450c9a16a577ce817e
 F
 DataStructures/tree.py,9\c\9cc31d0660b348b898d6d7e4cfd94acb4cad5e9b
 R
