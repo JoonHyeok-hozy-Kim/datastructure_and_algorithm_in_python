@@ -35,6 +35,10 @@
 
 ---
 ### [Part 11. Search Trees](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_00_search_trees.md)   
+#### [≫ Exercises 11](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md)
+
+---
+### [Part 12. Sorting and Selection](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md)   
 * Concepts)
   * [Merge Sort](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md#122-merge-sort)
     * [Bottom-Up (Nonrecursive) Merge Sort](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md#tech-a-bottom-up-nonrecursive-merge-sort)
@@ -48,10 +52,6 @@
   * [Selection](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md#127-selection)
     * Prune-and-Search
     * Randomized Quick-Select
-#### [≫ Exercises 11](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md)
-
----
-### [Part 12. Sorting and Selection](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md)   
 #### [≫ Exercises 12](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part12_Sorting_and_Selection/part12_08_exercises.md)
 
 ---
