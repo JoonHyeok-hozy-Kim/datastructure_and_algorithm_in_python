@@ -140,3 +140,23 @@ w
 GContents/Part14_Graph_Algorithms/part14_02_datastructures_for_graphs.py,2\f\2fd90a4afd609d9966139477625d82014f9c49d3
 u
 EContents/Part14_Graph_Algorithms/part14_05_directed_acyclic_graphs.py,1\e\1eae73627b83b41362c805574777f8b1aa347373
+f
+6XXXX_NOTE/gre_hackers_verbal/assignment_voca_parser.py,5\4\54687e43c74d106714d1895aa2a29feca9972aec
+O
+SortingAlgorithms/quick_sort.py,6\0\60ec3447d2f727cbfce62c6f36ca27b71a8c0429
+U
+%SortingAlgorithms/linear_time_sort.py,b\1\b1afd5340520e8d2e2b58cb8ac28d70cbb994696
+x
+HContents/Part12_Sorting_and_Selection/part12_00_sorting_and_selection.md,4\f\4fcb92e812d63c0199ad00450c9a16a577ce817e
+U
+%GraphAlgorithms/transitive_closure.py,0\2\027880b77345799c9ff5bf84ba360f7f9108d92b
+Q
+!DataStructures/priority_queues.py,1\7\1782179ab169a76ab206c3a061266cf9ac4e25e0
+U
+%GraphAlgorithms/depth_first_search.py,4\4\448c9ccfff320f676bb277e482d586b6858b91ea
+X
+(GraphAlgorithms/minimum_spanning_tree.py,e\c\ec150f12c399df97750d6b5b8d7619df7460d75a
+K
+DataStructures/partition.py,2\5\2513bf2d9a488887d6ae28c029669bdd54bb7832
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

@@ -1,0 +1,4 @@
+
+fpython:S1542"IRename function "DFS" to match the regular expression ^[a-z_][a-z0-9_]*$.(é±‰ëüÿÿÿÿ
+kpython:S15420"SRename function "_incoming_DFS" to match the regular expression ^[a-z_][a-z0-9_]*$.(Òíû´
+opython:S1542E"RRename function "DFS_complete" to match the regular expression ^[a-z_][a-z0-9_]*$.(ƒØî™úÿÿÿÿ
