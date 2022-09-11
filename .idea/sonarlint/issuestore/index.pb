@@ -67,8 +67,6 @@ a
 1Contents/Part12_Sorting_and_Selection/__init__.py,e\6\e6287d452e46f5177a31869f20481d6c6937588c
 O
 SortingAlgorithms/merge_sort.py,9\2\928cb04a8226e622ea702dd5815d2d54405414b7
-O
-SortingAlgorithms/quick_sort.py,6\0\60ec3447d2f727cbfce62c6f36ca27b71a8c0429
 l
 <Contents/Part12_Sorting_and_Selection/part12_08_exercises.py,2\6\262297a0311980a33ae6eec090f90f59441d1af9
 m
@@ -140,3 +138,5 @@ n
 >Contents/Part14_Graph_Algorithms/part14_00_graph_algorithms.md,f\d\fd220cf2453ab1f34be4c84f2ad6f648e95f5e81
 w
 GContents/Part14_Graph_Algorithms/part14_02_datastructures_for_graphs.py,2\f\2fd90a4afd609d9966139477625d82014f9c49d3
+u
+EContents/Part14_Graph_Algorithms/part14_05_directed_acyclic_graphs.py,1\e\1eae73627b83b41362c805574777f8b1aa347373
