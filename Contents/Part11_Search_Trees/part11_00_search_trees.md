@@ -390,7 +390,7 @@ Algorithm restructure(x):
 </p>
 
 #### Prop. 11.7) An n-item multiway search tree has n+1 external nodes.
-* pf.) <a href="">C-11.52</a>
+* pf.) [C-11.52](https://github.com/JoonHyeok-hozy-Kim/datastructure_and_algorithm_in_python/blob/main/Contents/Part11_Search_Trees/part11_07_exercises.md#c-1152-justify-proposition-117)
 
 #### Tech.) Searching in a Multiway Tree
 * Start from the root of the tree T.
