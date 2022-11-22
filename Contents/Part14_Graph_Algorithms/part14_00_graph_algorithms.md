@@ -671,7 +671,7 @@ if __name__ == '__main__':
   * We will apply greedy method pattern to the single-source-shortest path problem.
     * by performing a “weighted” breadth-first search starting at the source vertex s.
   * We can use the greedy method to develop an algorithm that iteratively grows a “cloud” of vertices out of s, with the vertices entering the cloud in order of their distances from s.
-    * in each iteration, the next vertex chosen pis the vertex outside the cloud that is closest to s.
+    * in each iteration, the next vertex chosen is the vertex outside the cloud that is closest to s.
   * The algorithm terminates when no more vertices are outside the cloud (or when those outside the cloud are not connected to those within the cloud), at which point we have a shortest path from s to every vertex of G that is reachable from s.
 
 
